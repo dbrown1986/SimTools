@@ -1,0 +1,55 @@
+[Main]
+ButtonInfoText=When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed.
+FrameworkInfoText=It is strongly recommended to install the Mod Framework. If you already have the Mod Framework, please purge your 'Mods' folder and reinstall from the button below. This version of the Mod Framework is specially vetted and prepared for TS3Tools.
+ComparisonLabel=Comparison
+Btn_TS3Vanilla=TS3 Vanilla (No Mods)
+Btn_TS3WithSimTools=TS3 With SimTools
+Btn_VideoTutorial=SimTools Video Guide
+Btn_GPU=GPU Support >
+Btn_Tweaks=Game Tweaks >
+GPU_Description=Use these tools to identify and install support for your GPU to help leverage the games engine. Available for Sims 2, Sims Stories and Sims 3.
+Tweaks_Description=This menu features loads of tweaks, all of which will help games run better in many different ways. Only select fixes for expansions you have installed.
+
+[Messages]
+Error_OpenLink=Unable to open link: {0}
+Error_Title=Error
+Warn_MenuConverted=This page has been converted into a menu. Please right-click the button to view the options.
+Warn_Title=Warning
+Error_DownloadFailed=Download failed for {0}
+Error_DownloadTitle=Download Error
+
+[ContextMenu]
+GPU_Sims2=The Sims 2
+GPU_SimsStories=The Sims Stories
+GPU_Sims3=The Sims 3
+Bit_32=32-Bit
+Bit_64=64-Bit
+Tweaks_Sims1=The Sims 1
+Tweaks_Simitone=Simitone
+
+[Language]
+Window_Title=Select Your Language
+Window_Subtitle=Choose a language for SimTools. This can be changed at any time via Settings.
+Checkbox_DoNotAsk=Do not ask me again
+
+[Settings]
+Window_Title=SimTools - Settings
+Section_Language=Language
+Label_Language=Language:
+Btn_Reset=Reset - Show Language Selection on Next Launch
+Section_Directories=Game & Mod Directories
+Label_GameDir=Game Directory:
+Label_ModsDir=Mods Directory:
+Btn_Browse=Browse...
+Btn_Save=Save
+Btn_Cancel=Cancel
+Msg_Saved=Settings saved successfully.
+Msg_Reset=Language selection will appear on the next launch.
+
+[Download]
+Window_Title=Downloading
+Progress_Finalising=Finalising...
+
+[Splash]
+Loading=v 4.0.1.3868
+Retic=Reticulating Splines...

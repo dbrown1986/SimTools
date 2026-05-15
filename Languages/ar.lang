@@ -1,0 +1,55 @@
+﻿[Main]
+ButtonInfoText=عند تحديد خيار، سيغير كل زر ألوانه عند تمرير الماوس فوقه. تشير هذه الألوان إلى أهمية كل وظيفة. الأخضر طبيعي، والأصفر موصى به، والأحمر موصى به بشدة. كقاعدة عامة، ستتطلب معظم التعديلات وإصلاحات الأخطاء تثبيت إطار عمل المودات.
+FrameworkInfoText=يُنصح بشدة بتثبيت إطار عمل المودات. إذا كان لديك إطار عمل المودات بالفعل، يرجى حذف مجلد 'Mods' وإعادة التثبيت من الزر أدناه. تم فحص هذا الإصدار وإعداده خصيصًا لـ TS3Tools.
+ComparisonLabel=مقارنة
+Btn_TS3Vanilla=TS3 نقي (بدون مودات)
+Btn_TS3WithSimTools=TS3 مع SimTools
+Btn_VideoTutorial=دليل فيديو SimTools
+Btn_GPU=دعم GPU >
+Btn_Tweaks=تعديلات اللعبة >
+GPU_Description=استخدم هذه الأدوات للتعرف على دعم GPU وتثبيته. متاح لـ Sims 2 وSims Stories وSims 3.
+Tweaks_Description=يتضمن هذا القائمة العديد من التعديلات لتحسين أداء الألعاب. اختر فقط الإصلاحات الخاصة بالإضافات المثبتة لديك.
+
+[Messages]
+Error_OpenLink=تعذر فتح الرابط: {0}
+Error_Title=خطأ
+Warn_MenuConverted=تم تحويل هذه الصفحة إلى قائمة. يرجى النقر بزر الماوس الأيمن على الزر لعرض الخيارات.
+Warn_Title=تحذير
+Error_DownloadFailed=فشل التنزيل لـ {0}
+Error_DownloadTitle=خطأ في التنزيل
+
+[ContextMenu]
+GPU_Sims2=The Sims 2
+GPU_SimsStories=The Sims Stories
+GPU_Sims3=The Sims 3
+Bit_32=32-بت
+Bit_64=64-بت
+Tweaks_Sims1=The Sims 1
+Tweaks_Simitone=Simitone
+
+[Language]
+Window_Title=اختر لغتك
+Window_Subtitle=اختر لغة لـ SimTools. يمكن تغييرها في أي وقت من خلال الإعدادات.
+Checkbox_DoNotAsk=لا تسألني مرة أخرى
+
+[Settings]
+Window_Title=SimTools - الإعدادات
+Section_Language=اللغة
+Label_Language=اللغة:
+Btn_Reset=إعادة تعيين - عرض اختيار اللغة عند التشغيل التالي
+Section_Directories=مجلدات الألعاب والمودات
+Label_GameDir=مجلد اللعبة:
+Label_ModsDir=مجلد المودات:
+Btn_Browse=استعراض...
+Btn_Save=حفظ
+Btn_Cancel=إلغاء
+Msg_Saved=تم حفظ الإعدادات بنجاح.
+Msg_Reset=سيظهر اختيار اللغة عند التشغيل التالي.
+
+[Download]
+Window_Title=جارٍ التنزيل
+Progress_Finalising=جارٍ الإنهاء...
+
+[Splash]
+Loading=v 4.0.1.3868
+Retic=خطوط شبكية...

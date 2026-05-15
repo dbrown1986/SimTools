@@ -1,0 +1,55 @@
+﻿[Main]
+ButtonInfoText=When selecting an option, each button will change colors when your mouse is over it. (Требуется перевод)
+FrameworkInfoText=It is strongly recommended to install the Mod Framework. (Требуется перевод)
+ComparisonLabel=Сравнение
+Btn_TS3Vanilla=TS3 Vanilla (Без модов)
+Btn_TS3WithSimTools=TS3 С SimTools
+Btn_VideoTutorial=Видеогид SimTools
+Btn_GPU=Поддержка GPU >
+Btn_Tweaks=Настройки игры >
+GPU_Description=Используйте эти инструменты для установки поддержки GPU. Доступно для Sims 2, Sims Stories и Sims 3.
+Tweaks_Description=Это меню содержит множество настроек для улучшения работы игр.
+
+[Messages]
+Error_OpenLink=Не удается открыть ссылку: {0}
+Error_Title=Ошибка
+Warn_MenuConverted=Эта страница преобразована в меню. Щелкните правой кнопкой мыши по кнопке, чтобы увидеть параметры.
+Warn_Title=Предупреждение
+Error_DownloadFailed=Ошибка загрузки {0}
+Error_DownloadTitle=Ошибка загрузки
+
+[ContextMenu]
+GPU_Sims2=The Sims 2
+GPU_SimsStories=The Sims Stories
+GPU_Sims3=The Sims 3
+Bit_32=32-бит
+Bit_64=64-бит
+Tweaks_Sims1=The Sims 1
+Tweaks_Simitone=Simitone
+
+[Language]
+Window_Title=Выберите язык
+Window_Subtitle=Выберите язык для SimTools. Его можно изменить в любое время в настройках.
+Checkbox_DoNotAsk=Больше не спрашивать
+
+[Settings]
+Window_Title=SimTools - Настройки
+Section_Language=Язык
+Label_Language=Язык:
+Btn_Reset=Сбросить - Показать выбор языка при следующем запуске
+Section_Directories=Папки игр и модов
+Label_GameDir=Папка игры:
+Label_ModsDir=Папка модов:
+Btn_Browse=Обзор...
+Btn_Save=Сохранить
+Btn_Cancel=Отмена
+Msg_Saved=Настройки успешно сохранены.
+Msg_Reset=Выбор языка появится при следующем запуске.
+
+[Download]
+Window_Title=Загрузка
+Progress_Finalising=Завершение...
+
+[Splash]
+Loading=v 4.0.1.3868
+Retic=Сетчатые сплайны...

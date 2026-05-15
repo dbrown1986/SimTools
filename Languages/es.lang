@@ -1,0 +1,55 @@
+[Main]
+ButtonInfoText=When selecting an option, each button will change colors when your mouse is over it. (Traduccion necesaria)
+FrameworkInfoText=It is strongly recommended to install the Mod Framework. (Traduccion necesaria)
+ComparisonLabel=Comparacion
+Btn_TS3Vanilla=TS3 Vanilla (Sin mods)
+Btn_TS3WithSimTools=TS3 Con SimTools
+Btn_VideoTutorial=Guia de video SimTools
+Btn_GPU=Soporte GPU >
+Btn_Tweaks=Ajustes del juego >
+GPU_Description=Use estas herramientas para instalar soporte de GPU. Disponible para Sims 2, Sims Stories y Sims 3.
+Tweaks_Description=Este menu ofrece muchos ajustes para mejorar el rendimiento de los juegos.
+
+[Messages]
+Error_OpenLink=No se puede abrir el enlace: {0}
+Error_Title=Error
+Warn_MenuConverted=Esta pagina se ha convertido en menu. Haga clic derecho en el boton para ver las opciones.
+Warn_Title=Advertencia
+Error_DownloadFailed=Error al descargar {0}
+Error_DownloadTitle=Error de descarga
+
+[ContextMenu]
+GPU_Sims2=Los Sims 2
+GPU_SimsStories=Los Sims Stories
+GPU_Sims3=Los Sims 3
+Bit_32=32 bits
+Bit_64=64 bits
+Tweaks_Sims1=Los Sims 1
+Tweaks_Simitone=Simitone
+
+[Language]
+Window_Title=Seleccionar idioma
+Window_Subtitle=Elija un idioma para SimTools. Se puede cambiar en cualquier momento en Configuracion.
+Checkbox_DoNotAsk=No volver a preguntar
+
+[Settings]
+Window_Title=SimTools - Configuracion
+Section_Language=Idioma
+Label_Language=Idioma:
+Btn_Reset=Restablecer - Mostrar seleccion de idioma en el siguiente inicio
+Section_Directories=Directorios de juegos y mods
+Label_GameDir=Directorio del juego:
+Label_ModsDir=Directorio de mods:
+Btn_Browse=Explorar...
+Btn_Save=Guardar
+Btn_Cancel=Cancelar
+Msg_Saved=Configuracion guardada correctamente.
+Msg_Reset=La seleccion de idioma aparecera en el siguiente inicio.
+
+[Download]
+Window_Title=Descargando
+Progress_Finalising=Finalizando...
+
+[Splash]
+Loading=v 4.0.1.3868
+Retic=Splines reticulados...

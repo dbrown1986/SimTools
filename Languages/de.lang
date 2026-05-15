@@ -1,0 +1,55 @@
+[Main]
+ButtonInfoText=Wenn Sie eine Option auswahlen, andert jede Schaltflache die Farbe, wenn Sie mit der Maus daruber fahren. Diese Farben zeigen die Wichtigkeit der jeweiligen Funktion an. Grun bedeutet normal, Gelb bedeutet empfohlen, Rot bedeutet dringend empfohlen. Als Faustregel gilt: Fast alle Anpassungen und Fehlerbehebungen erfordern wahrscheinlich die Installation des Mod-Frameworks.
+FrameworkInfoText=Es wird dringend empfohlen, das Mod-Framework zu installieren. Wenn Sie das Mod-Framework bereits installiert haben, leeren Sie bitte Ihren Mods-Ordner und installieren Sie es uber die Schaltflache unten neu. Diese Version des Mod-Frameworks wurde speziell fur SimTools gepruft und vorbereitet.
+ComparisonLabel=Vergleich
+Btn_TS3Vanilla=TS3 Vanilla (Ohne Mods)
+Btn_TS3WithSimTools=TS3 Mit SimTools
+Btn_VideoTutorial=SimTools Videoanleitung
+Btn_GPU=GPU-Unterstutzung >
+Btn_Tweaks=Spielanpassungen >
+GPU_Description=Verwenden Sie diese Tools, um GPU-Unterstutzung zu identifizieren und zu installieren. Verfugbar fur Sims 2, Sims Stories und Sims 3.
+Tweaks_Description=Dieses Menu enthalt viele Anpassungen, die Spiele auf verschiedene Weise verbessern.
+
+[Messages]
+Error_OpenLink=Link konnte nicht geoffnet werden: {0}
+Error_Title=Fehler
+Warn_MenuConverted=Diese Seite wurde in ein Menu umgewandelt. Bitte rechtsklicken Sie die Schaltflache, um die Optionen anzuzeigen.
+Warn_Title=Warnung
+Error_DownloadFailed=Download fehlgeschlagen fur {0}
+Error_DownloadTitle=Download-Fehler
+
+[ContextMenu]
+GPU_Sims2=Die Sims 2
+GPU_SimsStories=Die Sims Stories
+GPU_Sims3=Die Sims 3
+Bit_32=32-Bit
+Bit_64=64-Bit
+Tweaks_Sims1=Die Sims 1
+Tweaks_Simitone=Simitone
+
+[Language]
+Window_Title=Sprache auswahlen
+Window_Subtitle=Wahlen Sie eine Sprache fur SimTools. Anderbar jederzeit in den Einstellungen.
+Checkbox_DoNotAsk=Nicht mehr fragen
+
+[Settings]
+Window_Title=SimTools - Einstellungen
+Section_Language=Sprache
+Label_Language=Sprache:
+Btn_Reset=Zurucksetzen - Sprachauswahl beim nachsten Start anzeigen
+Section_Directories=Spiel- und Mod-Verzeichnisse
+Label_GameDir=Spielverzeichnis:
+Label_ModsDir=Mod-Verzeichnis:
+Btn_Browse=Durchsuchen...
+Btn_Save=Speichern
+Btn_Cancel=Abbrechen
+Msg_Saved=Einstellungen erfolgreich gespeichert.
+Msg_Reset=Die Sprachauswahl erscheint beim nachsten Start.
+
+[Download]
+Window_Title=Herunterladen
+Progress_Finalising=Abschliessen...
+
+[Splash]
+Loading=v 4.0.1.3868
+Retic=Retikulierende Splines...

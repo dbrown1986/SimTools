@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>SimTools.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="SimTools.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\button_normal.png" />
+	<Resource Include="Images\button_yellow.png" />
+	  <Resource Include="Images\button_green.png" />
+	  <Resource Include="Images\button_red.png" />
+	  <Resource Include="Images\close-button.png" />
+	  <Resource Include="Images\Menu_Main.png" />
+    <Resource Include="Images\plumbob.gif" />
+    <Resource Include="Images\SimTools_Logo.png" />
+	  <Resource Include="Images\TS3_Box2.png" />
+	  <Resource Include="SimTools.ico" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Languages\*.lang">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Images\close-button.png" />
+	</ItemGroup>
+
+</Project>

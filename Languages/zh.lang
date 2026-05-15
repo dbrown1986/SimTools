@@ -1,0 +1,55 @@
+﻿[Main]
+ButtonInfoText=选择选项时，每个按钮在鼠标悬停时会改变颜色。这些颜色表示每个功能的重要程度。绿色为正常，黄色为推荐，红色为强烈推荐。一般来说，几乎所有的调整和错误修复都需要安装模组框架。
+FrameworkInfoText=强烈建议安装模组框架。如果您已安装模组框架，请清空"Mods"文件夹并从下方按钮重新安装。此版本的模组框架已经过专门审查，为 TS3Tools 精心准备。
+ComparisonLabel=对比
+Btn_TS3Vanilla=TS3 原版（无模组）
+Btn_TS3WithSimTools=TS3 搭配 SimTools
+Btn_VideoTutorial=SimTools 视频指南
+Btn_GPU=GPU 支持 >
+Btn_Tweaks=游戏调整 >
+GPU_Description=使用这些工具识别并安装 GPU 支持，以充分利用游戏引擎。适用于模拟人生 2、模拟人生故事和模拟人生 3。
+Tweaks_Description=此菜单包含大量调整选项，可通过多种方式帮助游戏运行得更好。仅选择您已安装的扩展包对应的修复。
+
+[Messages]
+Error_OpenLink=无法打开链接：{0}
+Error_Title=错误
+Warn_MenuConverted=此页面已转换为菜单。请右键单击按钮以查看选项。
+Warn_Title=警告
+Error_DownloadFailed={0} 下载失败
+Error_DownloadTitle=下载错误
+
+[ContextMenu]
+GPU_Sims2=模拟人生 2
+GPU_SimsStories=模拟人生故事
+GPU_Sims3=模拟人生 3
+Bit_32=32 位
+Bit_64=64 位
+Tweaks_Sims1=模拟人生 1
+Tweaks_Simitone=Simitone
+
+[Language]
+Window_Title=选择语言
+Window_Subtitle=为 SimTools 选择语言，可随时在设置中更改。
+Checkbox_DoNotAsk=不再询问
+
+[Settings]
+Window_Title=SimTools - 设置
+Section_Language=语言
+Label_Language=语言：
+Btn_Reset=重置 - 在下次启动时显示语言选择
+Section_Directories=游戏和模组目录
+Label_GameDir=游戏目录：
+Label_ModsDir=模组目录：
+Btn_Browse=浏览...
+Btn_Save=保存
+Btn_Cancel=取消
+Msg_Saved=设置已成功保存。
+Msg_Reset=语言选择将在下次启动时显示。
+
+[Download]
+Window_Title=正在下载
+Progress_Finalising=正在完成...
+
+[Splash]
+Loading=v 4.0.1.3868
+Retic=网状样条...

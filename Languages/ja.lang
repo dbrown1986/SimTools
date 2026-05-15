@@ -1,0 +1,55 @@
+﻿[Main]
+ButtonInfoText=オプションを選択すると、マウスを重ねたときにボタンの色が変わります。この色は各機能の重要度を示しています。緑は通常、黄色は推奨、赤は強く推奨を意味します。ほとんどの調整やバグ修正には、モッドフレームワークのインストールが必要です。
+FrameworkInfoText=モッドフレームワークのインストールを強くお勧めします。すでにモッドフレームワークをお持ちの場合は、「Mods」フォルダーを削除し、下のボタンから再インストールしてください。このバージョンのモッドフレームワークは、TS3Tools向けに特別に検証・準備されています。
+ComparisonLabel=比較
+Btn_TS3Vanilla=TS3 バニラ（MODなし）
+Btn_TS3WithSimTools=TS3 + SimTools
+Btn_VideoTutorial=SimTools ビデオガイド
+Btn_GPU=GPU サポート >
+Btn_Tweaks=ゲーム調整 >
+GPU_Description=これらのツールを使用して、ゲームエンジンを最大限に活用するためのGPUサポートを識別・インストールします。シムズ2、シムズストーリーズ、シムズ3に対応しています。
+Tweaks_Description=このメニューには、さまざまな方法でゲームの動作を改善する多くの調整が含まれています。インストール済みの拡張パックに対応する修正のみを選択してください。
+
+[Messages]
+Error_OpenLink=リンクを開けません：{0}
+Error_Title=エラー
+Warn_MenuConverted=このページはメニューに変換されました。ボタンを右クリックしてオプションを表示してください。
+Warn_Title=警告
+Error_DownloadFailed={0} のダウンロードに失敗しました
+Error_DownloadTitle=ダウンロードエラー
+
+[ContextMenu]
+GPU_Sims2=ザ・シムズ 2
+GPU_SimsStories=ザ・シムズ ストーリーズ
+GPU_Sims3=ザ・シムズ 3
+Bit_32=32ビット
+Bit_64=64ビット
+Tweaks_Sims1=ザ・シムズ 1
+Tweaks_Simitone=Simitone
+
+[Language]
+Window_Title=言語を選択
+Window_Subtitle=SimTools の言語を選択してください。設定からいつでも変更できます。
+Checkbox_DoNotAsk=次回から表示しない
+
+[Settings]
+Window_Title=SimTools - 設定
+Section_Language=言語
+Label_Language=言語：
+Btn_Reset=リセット - 次回起動時に言語選択を表示
+Section_Directories=ゲームと MOD のディレクトリ
+Label_GameDir=ゲームディレクトリ：
+Label_ModsDir=MOD ディレクトリ：
+Btn_Browse=参照...
+Btn_Save=保存
+Btn_Cancel=キャンセル
+Msg_Saved=設定が正常に保存されました。
+Msg_Reset=次回起動時に言語選択が表示されます。
+
+[Download]
+Window_Title=ダウンロード中
+Progress_Finalising=完了処理中...
+
+[Splash]
+Loading=v 4.0.1.3868
+Retic=網状スプライン...

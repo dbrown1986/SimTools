@@ -1,0 +1,55 @@
+[Main]
+ButtonInfoText=When selecting an option, each button will change colors when your mouse is over it. (Translation needed)
+FrameworkInfoText=It is strongly recommended to install the Mod Framework. (Translation needed)
+ComparisonLabel=Comparaison
+Btn_TS3Vanilla=TS3 Vanilla (Sans mods)
+Btn_TS3WithSimTools=TS3 Avec SimTools
+Btn_VideoTutorial=Guide video SimTools
+Btn_GPU=Support GPU >
+Btn_Tweaks=Ajustements >
+GPU_Description=Utilisez ces outils pour identifier et installer le support de votre GPU. Disponible pour Sims 2, Sims Stories et Sims 3.
+Tweaks_Description=Ce menu propose de nombreux ajustements pour ameliorer les performances des jeux.
+
+[Messages]
+Error_OpenLink=Impossible d'ouvrir le lien : {0}
+Error_Title=Erreur
+Warn_MenuConverted=Cette page a ete convertie en menu. Faites un clic droit sur le bouton pour voir les options.
+Warn_Title=Avertissement
+Error_DownloadFailed=Echec du telechargement de {0}
+Error_DownloadTitle=Erreur de telechargement
+
+[ContextMenu]
+GPU_Sims2=Les Sims 2
+GPU_SimsStories=Les Sims Stories
+GPU_Sims3=Les Sims 3
+Bit_32=32 bits
+Bit_64=64 bits
+Tweaks_Sims1=Les Sims 1
+Tweaks_Simitone=Simitone
+
+[Language]
+Window_Title=Choisissez votre langue
+Window_Subtitle=Choisissez une langue pour SimTools. Modifiable a tout moment dans les Parametres.
+Checkbox_DoNotAsk=Ne plus me demander
+
+[Settings]
+Window_Title=SimTools - Parametres
+Section_Language=Langue
+Label_Language=Langue :
+Btn_Reset=Reinitialiser - Afficher la selection de langue au prochain lancement
+Section_Directories=Repertoires des jeux et mods
+Label_GameDir=Repertoire du jeu :
+Label_ModsDir=Repertoire des mods :
+Btn_Browse=Parcourir...
+Btn_Save=Enregistrer
+Btn_Cancel=Annuler
+Msg_Saved=Parametres enregistres avec succes.
+Msg_Reset=La selection de langue apparaitra au prochain lancement.
+
+[Download]
+Window_Title=Telechargement
+Progress_Finalising=Finalisation...
+
+[Splash]
+Loading=v 4.0.1.3868
+Retic=Splines réticulées...
