@@ -1,3 +1,18 @@
+[IntroductoryPage]
+IntroText1=Welcome to the SimTools Suite
+
+This program will help guide you through installing and implementing the best tweaks for your installation of the various sim games. Many of the older games are left unoptimized and even more so, early Maxis games circa 1990's have a hard time running on newer hardware.
+
+This suite of tools will allow personal computers, either old or new to run the games at a much better pace by enabling certain features left disabled at release, patching old executables, disabling unecessary features (such as certain hard drive caching methods when most modern PC's have solid state drives now) and much more! A great deal of care has gone into this tool.
+
+It is HIGHLY recommended that you run this tool on a FRESH install of your sim games. Please be sure you create a backup of your games installation in case you run into any issues while installing the fixes and tweaks that are provided with this tool.
+
+Some input by the end-user (you) is required. This program will attempt to break everything down as best as possible, and even automate some features, but if ever you find you are uncertain what a feature does, you can cancel it and are encouraged to do so to avoid breaking your games installation.
+
+When you're finished reading this message, please click the continue button below on the bottom left; to continue, or click the red 'X' above to the upper right to exit this program.
+
+P.S. - There is an easter egg within the program. It is only on ONE sub-page and hidden deep. Props to anyone who can find it. If you do, feel free to comment on the Discord about it.
+
 [Main]
 ButtonInfoText=When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed.
 FrameworkInfoText=It is strongly recommended to install the Mod Framework. If you already have the Mod Framework, please purge your 'Mods' folder and reinstall from the button below. This version of the Mod Framework is specially vetted and prepared for TS3Tools.
