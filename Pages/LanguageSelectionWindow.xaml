@@ -1,4 +1,4 @@
-﻿<Window x:Class="SimTools_v4.LanguageSelectionWindow"
+﻿<Window x:Class="SimTools.LanguageSelectionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Language Selection — SimTools"

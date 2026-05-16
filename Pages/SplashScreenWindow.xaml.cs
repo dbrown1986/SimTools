@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
-namespace SimTools_v4
+namespace SimTools
 {
     public partial class SplashScreenWindow : Window
     {

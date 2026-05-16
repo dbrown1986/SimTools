@@ -1,4 +1,4 @@
-﻿using SimTools_v4;
+﻿
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -10,7 +10,7 @@ using System.Windows.Controls;
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
 
-namespace SimTools_v4
+namespace SimTools
 {
     // Interaction logic for MainWindow.xaml
     public partial class MainWindow : Window

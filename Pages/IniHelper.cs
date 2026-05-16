@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace SimTools_v4
+namespace SimTools
 {
     /// <summary>
     /// Lightweight INI reader/writer. Stored at: {AppDirectory}\settings.ini

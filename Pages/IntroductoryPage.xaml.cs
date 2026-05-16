@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
 
-namespace SimTools_v4
+namespace SimTools
 {
     /// <summary>
     /// Interaction logic for Page1.xaml

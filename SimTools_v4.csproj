@@ -8,6 +8,7 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>SimTools.ico</ApplicationIcon>
+    <AssemblyName>SimTools</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

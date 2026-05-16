@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace SimTools_v4
+namespace SimTools
 {
     public static class LanguageManager
     {

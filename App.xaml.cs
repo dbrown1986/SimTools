@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace SimTools_v4
+namespace SimTools
 {
     public partial class App : System.Windows.Application
     {

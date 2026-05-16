@@ -14,7 +14,7 @@ using WpfFont = System.Windows.Media.FontFamily;
 using WpfHAlign = System.Windows.HorizontalAlignment;
 using FolderDlg = System.Windows.Forms.FolderBrowserDialog;
 
-namespace SimTools_v4
+namespace SimTools
 {
     public class SettingsWindow : Window
     {

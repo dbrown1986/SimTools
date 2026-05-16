@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SimTools_v4"
+        xmlns:local="clr-namespace:SimTools"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:Mime="clr-namespace:System.Net.Mime;assembly=System.Net.Mail"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Name="MainPage"
-        x:Class="SimTools_v4.MainWindow"
+        x:Class="SimTools.MainWindow"
         mc:Ignorable="d"
         Title="SimTools - Main Page" Height="720" Width="840" WindowStyle="None" Icon="/SimTools.ico" ResizeMode="NoResize">
     <Grid x:Name="RootGrid" Width="840">

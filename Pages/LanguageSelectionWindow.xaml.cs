@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using WpfButton = System.Windows.Controls.Button;
 
-namespace SimTools_v4
+namespace SimTools
 {
     public partial class LanguageSelectionWindow : Window
     {

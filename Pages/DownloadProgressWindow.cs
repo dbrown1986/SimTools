@@ -7,7 +7,7 @@ using WpfBrushes = System.Windows.Media.Brushes;
 using WpfBrush = System.Windows.Media.SolidColorBrush;
 using WpfPBar = System.Windows.Controls.ProgressBar;
 
-namespace SimTools_v4
+namespace SimTools
 {
     public class DownloadProgressWindow : Window
     {
