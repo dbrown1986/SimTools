@@ -1,12 +1,15 @@
-﻿<Page x:Class="SimTools_v4.Page1"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SimTools_v4"
-      mc:Ignorable="d" 
-      d:DesignHeight="640" d:DesignWidth="840"
-      Title="SimTools - Introduction">
+﻿<Window x:Class="SimTools_v4.IntroductoryPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:SimTools_v4"
+        mc:Ignorable="d"
+        Title="SimTools - Introduction"
+        Height="640" Width="840"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
 
     <Grid>
         <Grid.Background>
@@ -33,11 +36,11 @@
                 <ImageBrush ImageSource="/Images/button_red.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="ExitApp" Content="" HorizontalAlignment="Left" Margin="801,8,0,0" VerticalAlignment="Top" Click="ExitApp_Click" Width="32" Height="32">
+        <Button x:Name="ExitApp" Content="" HorizontalAlignment="Left" Margin="801,8,0,0" VerticalAlignment="Top" Click="ExitApp_Click" Width="32" Height="32" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/close-button.png"/>
             </Button.Background>
         </Button>
 
     </Grid>
-</Page>
+</Window>

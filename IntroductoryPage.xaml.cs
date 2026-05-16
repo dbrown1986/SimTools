@@ -22,9 +22,9 @@ namespace SimTools_v4
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class IntroductoryPage : Window
     {
-        public Page1()
+        public IntroductoryPage()
         {
             InitializeComponent();
         }
@@ -38,15 +38,14 @@ namespace SimTools_v4
         {
             MessageBox.Show(
                 "SimTools (previously TS3Tools) is still the same suite of tools previously developed, but now includes options for a variety of Maxis' sim genre of games. SimTools includes options for Sims 1, Sims 2, Sims Stories, Sims 3, Sims 4, Simcity 2000, Simcity 3000, Simcity 3000 Unlimited, Simcity 4, Simcity 2K13, SimCopter and Streets of Simcity, with more to come in later versions.",
-                "About SimTools",
+                "What is SimTools?",
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
         }
 
         private void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
-            var main = new MainWindow();
-            main.Show();
+            Close();
         }
     }
 }

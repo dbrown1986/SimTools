@@ -10,7 +10,6 @@ namespace SimTools_v4
             base.OnStartup(e);
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
-            // Load language strings before any window is shown
             LanguageManager.Load();
 
             var splash = new SplashScreenWindow();
@@ -23,9 +22,13 @@ namespace SimTools_v4
             {
                 var lang = new LanguageSelectionWindow();
                 lang.ShowDialog();
-                // Reload language strings after the user makes a selection
+                if (Dispatcher.HasShutdownStarted) return;
                 LanguageManager.Load();
             }
+
+            var intro = new IntroductoryPage();
+            intro.ShowDialog();
+            if (Dispatcher.HasShutdownStarted) return;
 
             ShutdownMode = ShutdownMode.OnMainWindowClose;
             var main = new MainWindow();
