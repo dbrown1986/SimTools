@@ -12,13 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="SimTools.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+    <PackageReference Include="WPFMediaKit" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,10 +24,13 @@
 	  <Resource Include="Images\close-button.png" />
 	  <Resource Include="Images\Menu_Main.png" />
     <Resource Include="Images\plumbob.gif" />
+    <Resource Include="Images\plumbob_shatter.gif" />
     <Resource Include="Images\SimTools_Logo.png" />
     <Resource Include="Images\sulsul.png" />
 	  <Resource Include="Images\TS3_Box2.png" />
-	  <Resource Include="SimTools.ico" />
+	  <Resource Include="SimTools.ico">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
   </ItemGroup>
 
 	<ItemGroup>
@@ -43,6 +41,7 @@
 
 	<ItemGroup>
 	  <None Remove="Images\close-button.png" />
+	  <None Remove="Images\plumbob_shatter.gif" />
 	  <None Remove="Images\sulsul.png" />
 	</ItemGroup>
 

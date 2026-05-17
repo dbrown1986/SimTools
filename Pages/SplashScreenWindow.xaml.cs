@@ -51,7 +51,7 @@ namespace SimTools
         public async Task RunAsync()
         {
             await FadeAsync(to: 1, durationMs: 600);
-            await Task.Delay(10_000);
+            await Task.Delay(13_500);
             await FadeAsync(to: 0, durationMs: 600);
         }
 

@@ -13,18 +13,9 @@
 
     <Grid Width="480" Height="320">
         <!-- Background image fills the window -->
-
-        <!-- Animated plumbob top-left, matching MainWindow -->
-        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif"
-               HorizontalAlignment="Left" VerticalAlignment="Top"
-               Width="113" Height="201" Stretch="Fill"
-               Margin="184,40,0,0"/>
+        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob_shatter.gif" Stretch="Fill"/>
 
         <!-- Logo -->
-        <Image Source="/Images/SimTools_Logo.png"
-               HorizontalAlignment="Left" VerticalAlignment="Top"
-               Width="162" Height="202" Stretch="Uniform"
-               Margin="160,40,0,0"/>
 
         <!-- App name centred -->
         <TextBlock x:Name="Retic"
