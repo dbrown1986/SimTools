@@ -185,8 +185,38 @@ namespace SimTools
             Directory.CreateDirectory(downloadDirectory);
 
             string exePath = Path.Combine(downloadDirectory, fileName);
+            bool needsDownload = !File.Exists(exePath);
 
-            if (!File.Exists(exePath))
+            // If the file already exists locally, do a lightweight HEAD request to check
+            // whether the server has a newer version (via Last-Modified header).
+            if (!needsDownload)
+            {
+                try
+                {
+                    using var headClient = new HttpClient();
+                    headClient.Timeout = TimeSpan.FromSeconds(10);
+                    using var headResponse = await headClient.SendAsync(
+                        new HttpRequestMessage(HttpMethod.Head, url));
+
+                    if (headResponse.IsSuccessStatusCode)
+                    {
+                        DateTimeOffset? remoteDate = headResponse.Content.Headers.LastModified;
+                        if (remoteDate.HasValue)
+                        {
+                            DateTime localWriteUtc = File.GetLastWriteTimeUtc(exePath);
+                            // 5-second tolerance absorbs minor clock skew between client and server
+                            needsDownload = remoteDate.Value.UtcDateTime > localWriteUtc.AddSeconds(5);
+                        }
+                        // If the server sends no Last-Modified, we cannot compare — keep local copy
+                    }
+                }
+                catch
+                {
+                    // Network unavailable or HEAD not supported — run the local copy silently
+                }
+            }
+
+            if (needsDownload)
             {
                 var progressWindow = new DownloadProgressWindow(fileName)
                 {
@@ -194,11 +224,16 @@ namespace SimTools
                 };
                 progressWindow.Show();
 
+                DateTimeOffset? remoteLastModified = null;
+
                 try
                 {
                     using var http = new HttpClient();
                     using var response = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
                     response.EnsureSuccessStatusCode();
+
+                    // Capture Last-Modified from the GET response so we can stamp the local file
+                    remoteLastModified = response.Content.Headers.LastModified;
 
                     long? totalBytes = response.Content.Headers.ContentLength;
 
@@ -230,6 +265,11 @@ namespace SimTools
                             progressWindow.SetIndeterminate();
                         }
                     }
+
+                    // Stamp the local file with the server's Last-Modified time so the next
+                    // HEAD comparison works correctly even after an app restart.
+                    if (remoteLastModified.HasValue)
+                        File.SetLastWriteTimeUtc(exePath, remoteLastModified.Value.UtcDateTime);
                 }
                 catch (Exception ex)
                 {
@@ -239,9 +279,9 @@ namespace SimTools
                     progressWindow.Close();
 
                     MessageBox.Show(
-                    $"{LanguageManager.Format("Messages", "Error_DownloadFailed", fileName)}\n{ex.Message}",
-                    LanguageManager.Get("Messages", "Error_DownloadTitle", "Download Error"),
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                        $"{LanguageManager.Format("Messages", "Error_DownloadFailed", fileName)}\n{ex.Message}",
+                        LanguageManager.Get("Messages", "Error_DownloadTitle", "Download Error"),
+                        MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 finally
