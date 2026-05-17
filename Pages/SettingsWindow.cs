@@ -49,7 +49,8 @@ namespace SimTools
         ];
 
         // ── Fields ─────────────────────────────────────────────────────────────
-        private WpfComboBox _langCombo = null!;
+        private WpfComboBox _langCombo   = null!;
+        private WpfTextBox  _baseUrlBox  = null!;
         private readonly Dictionary<string, (WpfTextBox GameDir, WpfTextBox? ModDir)> _dirs = new();
 
         // ── Constructor ────────────────────────────────────────────────────────
@@ -105,6 +106,51 @@ namespace SimTools
             resetBtn.Margin = new Thickness(0, 6, 0, 20);
             resetBtn.Click += ResetLanguage_Click;
             root.Children.Add(resetBtn);
+
+
+            // ── Network section ────────────────────────────────────────────────
+            root.Children.Add(SectionHeader("Network"));
+
+            // Base URL row
+            var urlGrid = new Grid { Margin = new Thickness(0, 0, 0, 4) };
+            urlGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(110) });
+            urlGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+            var urlLabel = new TextBlock
+            {
+                Text = "Base URL:",
+                FontFamily = new WpfFont("Tahoma"),
+                FontSize = 11,
+                Foreground = WpfBrushes.Gray,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 6, 0)
+            };
+
+            _baseUrlBox = new WpfTextBox
+            {
+                Height = 26,
+                Background  = new WpfBrush(WpfColor.FromRgb(42, 42, 42)),
+                Foreground  = WpfBrushes.White,
+                BorderBrush = new WpfBrush(WpfColor.FromRgb(75, 75, 75)),
+                FontFamily  = new WpfFont("Tahoma"),
+                FontSize    = 11,
+                Padding     = new Thickness(4, 0, 4, 0),
+                VerticalContentAlignment = VerticalAlignment.Center
+            };
+
+            Grid.SetColumn(urlLabel,   0);
+            Grid.SetColumn(_baseUrlBox, 1);
+            urlGrid.Children.Add(urlLabel);
+            urlGrid.Children.Add(_baseUrlBox);
+            root.Children.Add(urlGrid);
+
+            // Reset base URL to default
+            var resetUrlBtn = MakeButton($"Reset to Default  ({AppSettings.DefaultBaseUrl})",
+                WpfColor.FromRgb(50, 50, 50), width: double.NaN);
+            resetUrlBtn.HorizontalAlignment = WpfHAlign.Left;
+            resetUrlBtn.Margin = new Thickness(0, 4, 0, 20);
+            resetUrlBtn.Click += (_, _) => _baseUrlBox.Text = AppSettings.DefaultBaseUrl;
+            root.Children.Add(resetUrlBtn);
 
             // Directory section
             root.Children.Add(SectionHeader(LanguageManager.Get("Settings", "Section_Directories", "Game & Mod Directories")));
@@ -285,6 +331,8 @@ namespace SimTools
                 if (pair.ModDir is not null)
                     pair.ModDir.Text = IniHelper.Read("Directories", $"{key}_Mods", "");
             }
+
+            _baseUrlBox.Text = IniHelper.Read("Network", "BaseUrl", AppSettings.DefaultBaseUrl);
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -295,6 +343,8 @@ namespace SimTools
                 IniHelper.Write("Language", "SelectedLanguage", code);
                 LanguageManager.LoadCode(code);              // apply immediately
             }
+
+            IniHelper.Write("Network", "BaseUrl", _baseUrlBox.Text.Trim());
 
             foreach (var (key, _) in Games)
             {

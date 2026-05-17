@@ -160,7 +160,7 @@ namespace SimTools
             // ── The Sims 3 (no sub-menu) ───────────────────────────────────────
             var sims3Item = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims3", "The Sims 3") };
             sims3Item.Click += (s, args) => DownloadAndOpenExe(
-                url: "https://repo.ts3tools.com/bin/x86/TS3_GPU_Addon.exe",  // ← replace
+                url: "%baseurl%/bin/x86/TS3_GPU_Addon.exe",
                 fileName: "TS3_GPU_Addon.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
             );
@@ -178,6 +178,9 @@ namespace SimTools
         // ── Helper: download only if missing, then launch ─────────────────────────
         private async void DownloadAndOpenExe(string url, string fileName, string downloadDirectory)
         {
+            // Resolve %baseurl% placeholder before any network call
+            url = AppSettings.ResolveUrl(url);
+
             // Create the directory if it doesn't exist yet
             Directory.CreateDirectory(downloadDirectory);
 
