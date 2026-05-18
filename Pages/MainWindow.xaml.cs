@@ -104,10 +104,12 @@ namespace SimTools
         // User clicked the "New GPU" button, show a warning message box
         private void NewGPUButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(
-                LanguageManager.Get("Messages", "Warn_MenuConverted"),
-                LanguageManager.Get("Messages", "Warn_Title", "Warning"),
-                MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (sender is Button btn && btn.ContextMenu != null)
+            {
+                btn.ContextMenu.PlacementTarget = btn;
+                btn.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                btn.ContextMenu.IsOpen = true;
+            }
         }
 
 
@@ -173,7 +175,7 @@ namespace SimTools
         }
 
         // Handler is now empty — menu is pre-built, nothing to do here
-        private void NewGPUButton_Context(object sender, ContextMenuEventArgs e) { }
+        private void NewGPUButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
 
         // ── Helper: download only if missing, then launch ─────────────────────────
         private async void DownloadAndOpenExe(string url, string fileName, string downloadDirectory)
@@ -296,10 +298,12 @@ namespace SimTools
         // User clicked the Tweaks button, show a warning message box
         private void TweakButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(
-                LanguageManager.Get("Messages", "Warn_MenuConverted"),
-                LanguageManager.Get("Messages", "Warn_Title", "Warning"),
-                MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (sender is Button btn && btn.ContextMenu != null)
+            {
+                btn.ContextMenu.PlacementTarget = btn;
+                btn.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                btn.ContextMenu.IsOpen = true;
+            }
         }
 
 
@@ -326,7 +330,7 @@ namespace SimTools
         }
 
         // Handler is now empty — menu is pre-built, nothing to do here
-        private void TweakButton_Context(object sender, ContextMenuEventArgs e) { }
+        private void TweakButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
 
         // Settings Handler
         private void SettingsButton_Click(object sender, RoutedEventArgs e)

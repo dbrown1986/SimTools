@@ -25,9 +25,15 @@
     </Window.Resources>
 
     <!-- Outer container: dark card with rounded corners and drop shadow -->
-    <Border Background="#1E1E1E"
+    <Border
             CornerRadius="8"
             Padding="10">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0E4152"/>
+                <GradientStop Color="#FF0395C7" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Border.Effect>
             <DropShadowEffect BlurRadius="14" ShadowDepth="3"
                               Color="Black" Opacity="0.65"/>
@@ -102,17 +108,17 @@
             <UniformGrid Rows="1" Margin="0,2,0,0">
                 <Button Content="⏮"
                         Style="{StaticResource PlayerBtn}"
-                        Click="SkipBack_Click"/>
+                        Click="SkipBack_Click" Background="#FF135F0C"/>
                 <Button x:Name="PlayPauseBtn"
                         Content="▶"
                         Style="{StaticResource PlayerBtn}"
-                        Click="PlayPause_Click"/>
+                        Click="PlayPause_Click" Background="#FF135F0C"/>
                 <Button Content="⏭"
                         Style="{StaticResource PlayerBtn}"
-                        Click="SkipForward_Click"/>
+                        Click="SkipForward_Click" Background="#FF135F0C"/>
                 <Button Content="■"
                         Style="{StaticResource PlayerBtn}"
-                        Click="Stop_Click"/>
+                        Click="Stop_Click" Background="#FF8E3131"/>
                 <Button x:Name="MuteBtn"
                         Content="🔊"
                         Style="{StaticResource PlayerBtn}"
@@ -121,7 +127,7 @@
                 <Button x:Name="NoteBtn"
                         Content="♪"
                         Style="{StaticResource PlayerBtn}"
-                        Click="Note_Click"/>
+                        Click="Note_Click" Background="#FF2F449C"/>
             </UniformGrid>
 
             <!-- ═══ Song-selection popup (toggled by the ♪ button) ══════════ -->

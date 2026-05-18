@@ -50,6 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="res\music\Guifrog - Musicolours %28Sims 3%29.m4a">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="res\music\README.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

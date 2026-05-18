@@ -13,7 +13,7 @@
 
     <Grid Width="480" Height="320">
         <!-- Background image fills the window -->
-        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob_shatter.gif" Stretch="Fill"/>
+        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob_shatter.gif" Stretch="Fill" Width="240 " Height="270" Margin="120,0,120,50"/>
 
         <!-- Logo -->
 
