@@ -31,7 +31,7 @@ namespace SimTools
             // Show the first-run download prompt (synchronous — just a MessageBox).
             // If the user says YES the download runs in the background and reloads
             // the playlist automatically when complete.
-            player.ShowFirstRunPrompt(musicFolder);
+            player.ShowFirstRunPrompt(musicFolder, this);
 
             // Load whatever songs are already in /res/music and start playing now.
             // (If the folder is empty the player waits quietly until the download

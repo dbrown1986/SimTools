@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -97,11 +96,11 @@ namespace SimTools
 
         // ── First-run music prompt (called from IntroductoryPage) ─────────
         /// <summary>
-        /// Shows the first-run download prompt if needed, then returns immediately.
-        /// If the user accepts, the download runs in the background and reloads the
-        /// playlist automatically when complete — it does NOT block the caller.
+        /// Shows the first-run download prompt. If the user accepts, a modal
+        /// progress window opens and blocks the owner until the download
+        /// completes or is cancelled. Returns when the window is dismissed.
         /// </summary>
-        public void ShowFirstRunPrompt(string musicFolder)
+        public void ShowFirstRunPrompt(string musicFolder, Window owner)
         {
             bool prompted = IniHelper.ReadBool("Music", "DownloadPromptShown", false);
             if (prompted) return;
@@ -117,66 +116,11 @@ namespace SimTools
 
             if (result != MessageBoxResult.Yes) return;
 
-            // Fire-and-forget — never block the UI thread waiting for downloads
-            _ = DownloadMusicPackAsync(musicFolder).ContinueWith(_ =>
-            {
-                // Reload playlist on the UI thread once download finishes
-                if (System.Windows.Application.Current == null) return;
-                Dispatcher.InvokeAsync(() =>
-                {
-                    MusicPlayerService.LoadPlaylist(musicFolder);
-                    if (!MusicPlayerService.IsPlaying && MusicPlayerService.Playlist.Count > 0)
-                        MusicPlayerService.Play();
-                });
-            }, System.Threading.Tasks.TaskContinuationOptions.None);
+            // Modal — IntroductoryPage is blocked until download completes or cancels
+            new MusicDownloadWindow(musicFolder) { Owner = owner }.ShowDialog();
         }
 
-        private static async Task DownloadMusicPackAsync(string musicFolder)
-        {
-            try
-            {
-                Directory.CreateDirectory(musicFolder);
 
-                string manifestUrl = AppSettings.ResolveUrl("%baseurl%/res/music/manifest.txt");
-                using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
-
-                // Verify the manifest is reachable before parsing
-                using var manifestResp = await http.GetAsync(manifestUrl);
-                if (!manifestResp.IsSuccessStatusCode) return;
-
-                string manifest = await manifestResp.Content.ReadAsStringAsync();
-
-                foreach (var line in manifest.Split(new[] { '\r', '\n' },
-                             StringSplitOptions.RemoveEmptyEntries))
-                {
-                    // Each line is a bare filename — skip blanks, HTML, and comments
-                    string name = line.Trim();
-                    if (string.IsNullOrEmpty(name) ||
-                        name.StartsWith('<') ||
-                        name.StartsWith('#'))
-                        continue;
-
-                    string dest = Path.Combine(musicFolder, name);
-                    if (File.Exists(dest)) continue;
-
-                    try
-                    {
-                        // Construct URL from base + encoded filename
-                        string fileUrl = AppSettings.ResolveUrl(
-                            $"%baseurl%/res/music/{Uri.EscapeDataString(name)}");
-
-                        using var resp = await http.GetAsync(fileUrl);
-                        if (!resp.IsSuccessStatusCode) continue;
-
-                        await using var fs = new FileStream(
-                            dest, FileMode.Create, FileAccess.Write);
-                        await resp.Content.CopyToAsync(fs);
-                    }
-                    catch { /* skip any individual track that fails */ }
-                }
-            }
-            catch { /* network unavailable or other fatal error — fail silently */ }
-        }
 
         // ── Drag bar ──────────────────────────────────────────────────────
         private void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
