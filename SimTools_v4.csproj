@@ -53,6 +53,9 @@
     <None Update="res\music\README.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="res\music\Sims_3_Musicolours_OC_ReMix.m4a">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="res\music\Sims_3_Musicolours_OC_ReMix.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
