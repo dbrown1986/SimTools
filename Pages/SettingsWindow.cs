@@ -154,6 +154,28 @@ namespace SimTools
             resetUrlBtn.Click += (_, _) => _baseUrlBox.Text = AppSettings.DefaultBaseUrl;
             root.Children.Add(resetUrlBtn);
 
+            // ── Music section ─────────────────────────────────────────────────
+            root.Children.Add(SectionHeader("Music"));
+
+            _musicEnabledCheck = new WpfCheckBox
+            {
+                Content    = "Enable music player",
+                Foreground = new WpfBrush(WpfColor.FromRgb(220, 220, 220)),
+                FontSize   = 13,
+                Margin     = new Thickness(0, 0, 0, 4),
+                IsChecked  = true
+            };
+            root.Children.Add(_musicEnabledCheck);
+
+            root.Children.Add(new TextBlock
+            {
+                Text         = "Place your own songs (MP3 / WAV / FLAC / M4A) in the /res/music folder.",
+                Foreground   = new WpfBrush(WpfColor.FromRgb(0x88, 0x88, 0x88)),
+                FontSize     = 11,
+                TextWrapping = TextWrapping.Wrap,
+                Margin       = new Thickness(0, 0, 0, 20)
+            });
+
             // Directory section
             root.Children.Add(SectionHeader(LanguageManager.Get("Settings", "Section_Directories", "Game & Mod Directories")));
 
