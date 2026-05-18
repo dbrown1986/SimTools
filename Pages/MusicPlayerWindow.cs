@@ -149,31 +149,21 @@ namespace SimTools
                 foreach (var line in manifest.Split(new[] { '\r', '\n' },
                              StringSplitOptions.RemoveEmptyEntries))
                 {
-                    string rawLine = line.Trim();
-
-                    // Skip blank lines, HTML, and comment lines
-                    if (string.IsNullOrEmpty(rawLine) ||
-                        rawLine.StartsWith('<') ||
-                        rawLine.StartsWith('#'))
+                    // Each line is a bare filename — skip blanks, HTML, and comments
+                    string name = line.Trim();
+                    if (string.IsNullOrEmpty(name) ||
+                        name.StartsWith('<') ||
+                        name.StartsWith('#'))
                         continue;
 
-                    // Each manifest line is a full URL.
-                    // Extract the decoded filename for local storage.
-                    int lastSlash = rawLine.LastIndexOf('/');
-                    if (lastSlash < 0) continue;
-
-                    string rawFilename = Uri.UnescapeDataString(
-                        rawLine.Substring(lastSlash + 1));
-                    if (string.IsNullOrEmpty(rawFilename)) continue;
-
-                    string dest = Path.Combine(musicFolder, rawFilename);
+                    string dest = Path.Combine(musicFolder, name);
                     if (File.Exists(dest)) continue;
 
                     try
                     {
-                        // Re-encode the filename so spaces become %20, etc.
-                        string fileUrl = rawLine.Substring(0, lastSlash + 1)
-                                       + Uri.EscapeDataString(rawFilename);
+                        // Construct URL from base + encoded filename
+                        string fileUrl = AppSettings.ResolveUrl(
+                            $"%baseurl%/res/music/{Uri.EscapeDataString(name)}");
 
                         using var resp = await http.GetAsync(fileUrl);
                         if (!resp.IsSuccessStatusCode) continue;
