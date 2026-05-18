@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
-    <PackageReference Include="WPFMediaKit" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup>
