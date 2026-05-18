@@ -31,6 +31,7 @@
 - [Technical Notes](#technical-notes)
 - [Contributing](#contributing)
 - [Easter Egg](#easter-egg)
+- [AI Usage](#ai-usage)
 - [License](#license)
 
 ---
@@ -438,6 +439,12 @@ Bug reports and feature requests can be submitted via the [Issues](https://githu
 ## Easter Egg
 
 There is a hidden easter egg somewhere within SimTools — tucked away on one specific sub-page. Props to anyone who manages to find it. If you do, feel free to mention it on the Discord.
+
+---
+
+## AI Usage
+
+Claude has been used in an effort to check code for warnings and errors, clean up the code and assist with certain features.
 
 ---
 
