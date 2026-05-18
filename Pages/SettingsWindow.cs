@@ -12,7 +12,8 @@ using WpfBrush = System.Windows.Media.SolidColorBrush;
 using WpfColor = System.Windows.Media.Color;
 using WpfFont = System.Windows.Media.FontFamily;
 using WpfHAlign = System.Windows.HorizontalAlignment;
-using FolderDlg = System.Windows.Forms.FolderBrowserDialog;
+using FolderDlg   = System.Windows.Forms.FolderBrowserDialog;
+using WpfCheckBox = System.Windows.Controls.CheckBox;
 
 namespace SimTools
 {
@@ -52,6 +53,7 @@ namespace SimTools
         private WpfComboBox _langCombo   = null!;
         private WpfTextBox  _baseUrlBox  = null!;
         private readonly Dictionary<string, (WpfTextBox GameDir, WpfTextBox? ModDir)> _dirs = new();
+        private WpfCheckBox _musicEnabledCheck = null!;
 
         // ── Constructor ────────────────────────────────────────────────────────
         public SettingsWindow()
@@ -333,6 +335,7 @@ namespace SimTools
             }
 
             _baseUrlBox.Text = IniHelper.Read("Network", "BaseUrl", AppSettings.DefaultBaseUrl);
+            _musicEnabledCheck.IsChecked = IniHelper.ReadBool("Music", "Enabled", true);
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -345,6 +348,10 @@ namespace SimTools
             }
 
             IniHelper.Write("Network", "BaseUrl", _baseUrlBox.Text.Trim());
+
+            bool musicEnabled = _musicEnabledCheck.IsChecked == true;
+            IniHelper.WriteBool("Music", "Enabled", musicEnabled);
+            App.MusicPlayer?.SetEnabled(musicEnabled);
 
             foreach (var (key, _) in Games)
             {
