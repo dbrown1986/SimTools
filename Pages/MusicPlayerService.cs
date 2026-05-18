@@ -100,6 +100,21 @@ namespace SimTools
             TrackChanged?.Invoke();
         }
 
+        public static void PlayPrevious()
+        {
+            if (_playlist.Count == 0) return;
+
+            // If more than 3 seconds in, restart the current track instead
+            if (_reader != null && _reader.CurrentTime.TotalSeconds > 3)
+            {
+                _reader.CurrentTime = TimeSpan.Zero;
+                return;
+            }
+
+            _index = (_index - 1 + _playlist.Count) % _playlist.Count;
+            OpenAndPlay(_playlist[_index]);
+        }
+
         public static void PlayNext()
         {
             if (_playlist.Count == 0) return;

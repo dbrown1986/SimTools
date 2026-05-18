@@ -98,11 +98,18 @@
             </Grid>
 
             <!-- ═══ Control buttons ═════════════════════════════════════════ -->
+            <!-- Order: ⏮  ▶/⏸  ⏭  ■  🔊  ♪ -->
             <UniformGrid Rows="1" Margin="0,2,0,0">
+                <Button Content="⏮"
+                        Style="{StaticResource PlayerBtn}"
+                        Click="SkipBack_Click"/>
                 <Button x:Name="PlayPauseBtn"
                         Content="▶"
                         Style="{StaticResource PlayerBtn}"
                         Click="PlayPause_Click"/>
+                <Button Content="⏭"
+                        Style="{StaticResource PlayerBtn}"
+                        Click="SkipForward_Click"/>
                 <Button Content="■"
                         Style="{StaticResource PlayerBtn}"
                         Click="Stop_Click"/>

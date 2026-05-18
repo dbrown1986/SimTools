@@ -127,6 +127,18 @@ namespace SimTools
             => DragMove();
 
         // ── Button handlers ───────────────────────────────────────────────
+        private void SkipBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (MusicPlayerService.Playlist.Count == 0) return;
+            MusicPlayerService.PlayPrevious();
+        }
+
+        private void SkipForward_Click(object sender, RoutedEventArgs e)
+        {
+            if (MusicPlayerService.Playlist.Count == 0) return;
+            MusicPlayerService.PlayNext();
+        }
+
         private void PlayPause_Click(object sender, RoutedEventArgs e)
         {
             if (MusicPlayerService.Playlist.Count == 0) return;
