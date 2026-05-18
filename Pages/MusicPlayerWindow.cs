@@ -4,68 +4,30 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Effects;
 using System.Windows.Threading;
 
-using WpfButton      = System.Windows.Controls.Button;
-using WpfImage       = System.Windows.Controls.Image;
-using WpfListBox     = System.Windows.Controls.ListBox;
 using WpfListBoxItem = System.Windows.Controls.ListBoxItem;
-using WpfSeparator   = System.Windows.Controls.Separator;
 using WpfColor       = System.Windows.Media.Color;
-using WpfColors      = System.Windows.Media.Colors;
 using WpfBrushes     = System.Windows.Media.Brushes;
-using WpfCursors     = System.Windows.Input.Cursors;
 using WpfMessageBox  = System.Windows.MessageBox;
-using WpfHAlign      = System.Windows.HorizontalAlignment;
-using WpfVAlign      = System.Windows.VerticalAlignment;
 
 namespace SimTools
 {
-    public class MusicPlayerWindow : Window
+    public partial class MusicPlayerWindow : Window
     {
-        // ── Brushes (match app dark theme) ────────────────────────────────
-        private static readonly SolidColorBrush BgBrush     = new(WpfColor.FromRgb(0x1E, 0x1E, 0x1E));
-        private static readonly SolidColorBrush AccentBrush = new(WpfColor.FromRgb(0x4A, 0x9E, 0x5C));
-        private static readonly SolidColorBrush TextBrush   = new(WpfColors.White);
-        private static readonly SolidColorBrush DimBrush    = new(WpfColor.FromRgb(0xAA, 0xAA, 0xAA));
-        private static readonly SolidColorBrush BtnBrush    = new(WpfColor.FromRgb(0x2D, 0x2D, 0x2D));
-        private static readonly SolidColorBrush BtnHover    = new(WpfColor.FromRgb(0x3A, 0x3A, 0x3A));
-        private static readonly SolidColorBrush BorderBrush2 = new(WpfColor.FromRgb(0x3A, 0x3A, 0x3A));
-
-        // ── UI controls ───────────────────────────────────────────────────
-        private WpfImage    _artImage     = null!;
-        private TextBlock _titleBlock   = null!;
-        private TextBlock _artistBlock  = null!;
-        private TextBlock _timeBlock    = null!;
-        private WpfButton   _playPauseBtn = null!;
-        private WpfButton   _muteBtn      = null!;
-        private Popup     _songPopup    = null!;
-        private WpfListBox  _songList     = null!;
-
         // ── State ─────────────────────────────────────────────────────────
         private Window?         _parent;
-        private DispatcherTimer _timer = null!;
+        private DispatcherTimer _timer      = null!;
         private bool            _appClosing = false;
 
         // ── Constructor ───────────────────────────────────────────────────
         public MusicPlayerWindow()
         {
-            WindowStyle        = WindowStyle.None;
-            AllowsTransparency = true;
-            Background         = WpfBrushes.Transparent;
-            Width              = 256;
-            SizeToContent      = SizeToContent.Height;
-            ShowInTaskbar      = false;
-            ResizeMode         = ResizeMode.NoResize;
-            WindowStartupLocation = WindowStartupLocation.Manual;
+            InitializeComponent();
 
-            Content = BuildUI();
-
-            // Timer — fires every second to update the time display
+            // Timer — fires every second to keep the time display current
             _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _timer.Tick += (_, _) =>
             {
@@ -77,7 +39,7 @@ namespace SimTools
 
             MusicPlayerService.TrackChanged += OnTrackChanged;
 
-            // Prevent close — hide instead (unless app is shutting down)
+            // Hide instead of close while the app is running
             Closing += (_, e) =>
             {
                 if (!_appClosing)
@@ -118,7 +80,7 @@ namespace SimTools
             Top  = _parent.Top;
         }
 
-        // ── Enable / disable (called from Settings) ───────────────────────
+        // ── Enable / disable (called from SettingsWindow) ─────────────────
         public void SetEnabled(bool enabled)
         {
             if (enabled)
@@ -163,11 +125,10 @@ namespace SimTools
                 using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
                 string manifest = await http.GetStringAsync(manifestUrl);
 
-                var tracks = manifest.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
-                foreach (var track in tracks)
+                foreach (var line in manifest.Split(new[] { '\r', '\n' },
+                             StringSplitOptions.RemoveEmptyEntries))
                 {
-                    string name = track.Trim();
+                    string name = line.Trim();
                     if (string.IsNullOrEmpty(name)) continue;
 
                     string dest = Path.Combine(musicFolder, name);
@@ -195,213 +156,39 @@ namespace SimTools
             }
         }
 
-        // ── UI builder ────────────────────────────────────────────────────
-        private UIElement BuildUI()
-        {
-            var outer = new Border
-            {
-                Background   = BgBrush,
-                CornerRadius = new CornerRadius(8),
-                Padding      = new Thickness(10),
-                Effect       = new DropShadowEffect
-                {
-                    BlurRadius  = 14,
-                    ShadowDepth = 3,
-                    Color       = WpfColors.Black,
-                    Opacity     = 0.65
-                }
-            };
-
-            var root = new StackPanel();
-
-            // ── Drag bar ──────────────────────────────────────────────────
-            var dragBar = new DockPanel { Margin = new Thickness(0, 0, 0, 6), LastChildFill = true };
-            var dragTitle = new TextBlock
-            {
-                Text              = "♪  SimTools Music",
-                Foreground        = AccentBrush,
-                FontSize          = 11,
-                FontWeight        = FontWeights.SemiBold,
-                VerticalAlignment = WpfVAlign.Center
-            };
-            dragBar.Children.Add(dragTitle);
-            dragBar.MouseLeftButtonDown += (_, _) => DragMove();
-            root.Children.Add(dragBar);
-
-            // ── Thin separator ────────────────────────────────────────────
-            root.Children.Add(new WpfSeparator
-            {
-                Background = BorderBrush2,
-                Margin     = new Thickness(0, 0, 0, 8)
-            });
-
-            // ── Art + Info row ────────────────────────────────────────────
-            var infoRow = new Grid { Margin = new Thickness(0, 0, 0, 8) };
-            infoRow.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            infoRow.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-
-            // Album art
-            var artBorder = new Border
-            {
-                Width        = 76,
-                Height       = 76,
-                CornerRadius = new CornerRadius(4),
-                Background   = BtnBrush,
-                Margin       = new Thickness(0, 0, 10, 0),
-                ClipToBounds = true
-            };
-            var artGrid = new Grid();
-            var artPlaceholder = new TextBlock
-            {
-                Text                = "♪",
-                FontSize            = 28,
-                Foreground          = DimBrush,
-                HorizontalAlignment = WpfHAlign.Center,
-                VerticalAlignment   = VerticalAlignment.Center
-            };
-            _artImage = new WpfImage
-            {
-                Stretch    = Stretch.UniformToFill,
-                Visibility = Visibility.Collapsed
-            };
-            artGrid.Children.Add(artPlaceholder);
-            artGrid.Children.Add(_artImage);
-            artBorder.Child = artGrid;
-            Grid.SetColumn(artBorder, 0);
-
-            // Song info
-            var infoStack = new StackPanel { VerticalAlignment = WpfVAlign.Center };
-            _titleBlock = new TextBlock
-            {
-                Text         = "No track loaded",
-                Foreground   = TextBrush,
-                FontSize     = 12,
-                FontWeight   = FontWeights.SemiBold,
-                TextTrimming = TextTrimming.CharacterEllipsis,
-                TextWrapping = TextWrapping.NoWrap
-            };
-            _artistBlock = new TextBlock
-            {
-                Text         = "",
-                Foreground   = DimBrush,
-                FontSize     = 11,
-                TextTrimming = TextTrimming.CharacterEllipsis,
-                TextWrapping = TextWrapping.NoWrap,
-                Margin       = new Thickness(0, 3, 0, 0)
-            };
-            _timeBlock = new TextBlock
-            {
-                Text       = "0:00 / 0:00",
-                Foreground = DimBrush,
-                FontSize   = 10,
-                Margin     = new Thickness(0, 8, 0, 0)
-            };
-            infoStack.Children.Add(_titleBlock);
-            infoStack.Children.Add(_artistBlock);
-            infoStack.Children.Add(_timeBlock);
-            Grid.SetColumn(infoStack, 1);
-
-            infoRow.Children.Add(artBorder);
-            infoRow.Children.Add(infoStack);
-            root.Children.Add(infoRow);
-
-            // ── Control buttons ───────────────────────────────────────────
-            // Layout: [▶/⏸]  [■]  [🔊]  [♪]
-            var controls = new UniformGrid { Rows = 1, Margin = new Thickness(0, 2, 0, 0) };
-
-            _playPauseBtn = MakeBtn("▶", PlayPause_Click);
-            var stopBtn   = MakeBtn("■", Stop_Click);
-            _muteBtn      = MakeBtn("🔊", Mute_Click);
-            var noteBtn   = MakeBtn("♪", Note_Click);
-
-            controls.Children.Add(_playPauseBtn);
-            controls.Children.Add(stopBtn);
-            controls.Children.Add(_muteBtn);
-            controls.Children.Add(noteBtn);
-            root.Children.Add(controls);
-
-            // ── Song-selection popup ───────────────────────────────────────
-            _songList = new WpfListBox
-            {
-                Background  = BgBrush,
-                Foreground  = TextBrush,
-                BorderBrush = BorderBrush2,
-                MaxHeight   = 280,
-                MinWidth    = 234,
-                FontSize    = 11
-            };
-            _songList.MouseDoubleClick += SongList_DoubleClick;
-
-            _songPopup = new Popup
-            {
-                Child = new Border
-                {
-                    Child           = _songList,
-                    Background      = BgBrush,
-                    BorderBrush     = AccentBrush,
-                    BorderThickness = new Thickness(1),
-                    CornerRadius    = new CornerRadius(4),
-                    Padding         = new Thickness(2)
-                },
-                PlacementTarget    = noteBtn,
-                Placement          = PlacementMode.Top,
-                StaysOpen          = false,
-                AllowsTransparency = true
-            };
-
-            outer.Child = root;
-            return outer;
-        }
-
-        private WpfButton MakeBtn(string content, RoutedEventHandler handler)
-        {
-            var btn = new WpfButton
-            {
-                Content         = content,
-                FontSize        = 16,
-                Height          = 36,
-                Background      = BtnBrush,
-                Foreground      = TextBrush,
-                BorderBrush     = BorderBrush2,
-                BorderThickness = new Thickness(1),
-                Cursor          = WpfCursors.Hand,
-                Margin          = new Thickness(2)
-            };
-            btn.Click += handler;
-            return btn;
-        }
+        // ── Drag bar ──────────────────────────────────────────────────────
+        private void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+            => DragMove();
 
         // ── Button handlers ───────────────────────────────────────────────
-        private void PlayPause_Click(object s, RoutedEventArgs e)
+        private void PlayPause_Click(object sender, RoutedEventArgs e)
         {
             if (MusicPlayerService.Playlist.Count == 0) return;
             MusicPlayerService.TogglePlayPause();
             RefreshPlayPauseButton();
         }
 
-        private void Stop_Click(object s, RoutedEventArgs e)
-        {
-            MusicPlayerService.Stop();
-        }
+        private void Stop_Click(object sender, RoutedEventArgs e)
+            => MusicPlayerService.Stop();
 
-        private void Mute_Click(object s, RoutedEventArgs e)
+        private void Mute_Click(object sender, RoutedEventArgs e)
         {
             MusicPlayerService.ToggleMute();
-            _muteBtn.Content = MusicPlayerService.IsMuted ? "🔇" : "🔊";
+            MuteBtn.Content = MusicPlayerService.IsMuted ? "🔇" : "🔊";
         }
 
-        private void Note_Click(object s, RoutedEventArgs e)
+        private void Note_Click(object sender, RoutedEventArgs e)
         {
             PopulateSongList();
-            _songPopup.IsOpen = !_songPopup.IsOpen;
+            SongPopup.IsOpen = !SongPopup.IsOpen;
         }
 
-        private void SongList_DoubleClick(object s, MouseButtonEventArgs e)
+        private void SongList_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (_songList.SelectedItem is WpfListBoxItem { Tag: int idx })
+            if (SongList.SelectedItem is WpfListBoxItem { Tag: int idx })
             {
                 MusicPlayerService.SelectTrack(idx);
-                _songPopup.IsOpen = false;
+                SongPopup.IsOpen = false;
             }
         }
 
@@ -411,17 +198,19 @@ namespace SimTools
             Dispatcher.InvokeAsync(() =>
             {
                 var song = MusicPlayerService.CurrentSong;
-                _titleBlock.Text  = song?.Title  ?? "No track loaded";
-                _artistBlock.Text = song?.Artist ?? "";
+                TitleBlock.Text  = song?.Title  ?? "No track loaded";
+                ArtistBlock.Text = song?.Artist ?? "";
 
                 if (song?.AlbumArt != null)
                 {
-                    _artImage.Source     = song.AlbumArt;
-                    _artImage.Visibility = Visibility.Visible;
+                    AlbumArtImage.Source     = song.AlbumArt;
+                    AlbumArtImage.Visibility = Visibility.Visible;
+                    ArtPlaceholder.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    _artImage.Visibility = Visibility.Collapsed;
+                    AlbumArtImage.Visibility  = Visibility.Collapsed;
+                    ArtPlaceholder.Visibility = Visibility.Visible;
                 }
 
                 RefreshPlayPauseButton();
@@ -430,37 +219,36 @@ namespace SimTools
         }
 
         private void RefreshPlayPauseButton()
-            => _playPauseBtn.Content = MusicPlayerService.IsPlaying ? "⏸" : "▶";
+            => PlayPauseBtn.Content = MusicPlayerService.IsPlaying ? "⏸" : "▶";
 
         private void RefreshTimeDisplay()
         {
             static string Fmt(TimeSpan t) => $"{(int)t.TotalMinutes}:{t.Seconds:D2}";
-            _timeBlock.Text = $"{Fmt(MusicPlayerService.CurrentTime)} / {Fmt(MusicPlayerService.TotalTime)}";
+            TimeBlock.Text = $"{Fmt(MusicPlayerService.CurrentTime)} / {Fmt(MusicPlayerService.TotalTime)}";
         }
 
         private void PopulateSongList()
         {
-            _songList.Items.Clear();
+            SongList.Items.Clear();
             int i = 0;
             foreach (var path in MusicPlayerService.Playlist)
             {
-                var item = new WpfListBoxItem
+                SongList.Items.Add(new WpfListBoxItem
                 {
                     Content    = Path.GetFileNameWithoutExtension(path),
                     Tag        = i,
                     Background = (i == MusicPlayerService.CurrentIndex)
                         ? new SolidColorBrush(WpfColor.FromRgb(0x2A, 0x4A, 0x30))
                         : WpfBrushes.Transparent,
-                    Foreground = TextBrush,
+                    Foreground = WpfBrushes.White,
                     Padding    = new Thickness(6, 3, 6, 3)
-                };
-                _songList.Items.Add(item);
+                });
                 i++;
             }
 
             if (MusicPlayerService.CurrentIndex >= 0 &&
-                MusicPlayerService.CurrentIndex < _songList.Items.Count)
-                _songList.ScrollIntoView(_songList.Items[MusicPlayerService.CurrentIndex]);
+                MusicPlayerService.CurrentIndex < SongList.Items.Count)
+                SongList.ScrollIntoView(SongList.Items[MusicPlayerService.CurrentIndex]);
         }
     }
 }
