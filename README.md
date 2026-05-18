@@ -1,4 +1,4 @@
-# SimTools
+![](Images/SimTools_Logo.png)
 
 [![Build](https://github.com/dbrown1986/SimTools/actions/workflows/build.yml/badge.svg)](https://github.com/dbrown1986/SimTools/actions/workflows/build.yml)
 
