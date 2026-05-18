@@ -16,7 +16,7 @@ namespace SimTools
         }
 
         // ── Music startup ─────────────────────────────────────────────────
-        private async void OnContentRendered(object? sender, EventArgs e)
+        private void OnContentRendered(object? sender, EventArgs e)
         {
             var player = App.MusicPlayer;
             if (player == null) return;
@@ -28,13 +28,17 @@ namespace SimTools
             string musicFolder = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory, "res", "music");
 
-            // First-run prompt: offer to download the music pack
-            await player.ShowFirstRunPromptAsync(musicFolder);
-            if (App.Current == null || !IsLoaded) return;
+            // Show the first-run download prompt (synchronous — just a MessageBox).
+            // If the user says YES the download runs in the background and reloads
+            // the playlist automatically when complete.
+            player.ShowFirstRunPrompt(musicFolder);
 
-            // Load the playlist (may include newly downloaded files)
+            // Load whatever songs are already in /res/music and start playing now.
+            // (If the folder is empty the player waits quietly until the download
+            // callback populates it.)
             MusicPlayerService.LoadPlaylist(musicFolder);
-            MusicPlayerService.Play();
+            if (MusicPlayerService.Playlist.Count > 0)
+                MusicPlayerService.Play();
         }
 
         // ── Button handlers ───────────────────────────────────────────────

@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -97,7 +96,12 @@ namespace SimTools
         }
 
         // ── First-run music prompt (called from IntroductoryPage) ─────────
-        public async Task ShowFirstRunPromptAsync(string musicFolder)
+        /// <summary>
+        /// Shows the first-run download prompt if needed, then returns immediately.
+        /// If the user accepts, the download runs in the background and reloads the
+        /// playlist automatically when complete — it does NOT block the caller.
+        /// </summary>
+        public void ShowFirstRunPrompt(string musicFolder)
         {
             bool prompted = IniHelper.ReadBool("Music", "DownloadPromptShown", false);
             if (prompted) return;
@@ -105,14 +109,26 @@ namespace SimTools
 
             var result = WpfMessageBox.Show(
                 "Would you like to download a free background music pack?\n\n" +
-                "Tip: You can also drop your own songs (MP3, WAV, FLAC, M4A)\n" +
-                $"into the /res/music folder at any time:\n{musicFolder}",
+                "You can also drop your own songs (MP3, WAV, FLAC, M4A) into\n" +
+                $"the /res/music folder at any time:\n{musicFolder}",
                 "Background Music",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
-            if (result == MessageBoxResult.Yes)
-                await DownloadMusicPackAsync(musicFolder);
+            if (result != MessageBoxResult.Yes) return;
+
+            // Fire-and-forget — never block the UI thread waiting for downloads
+            _ = DownloadMusicPackAsync(musicFolder).ContinueWith(_ =>
+            {
+                // Reload playlist on the UI thread once download finishes
+                if (System.Windows.Application.Current == null) return;
+                Dispatcher.InvokeAsync(() =>
+                {
+                    MusicPlayerService.LoadPlaylist(musicFolder);
+                    if (!MusicPlayerService.IsPlaying && MusicPlayerService.Playlist.Count > 0)
+                        MusicPlayerService.Play();
+                });
+            }, System.Threading.Tasks.TaskContinuationOptions.None);
         }
 
         private static async Task DownloadMusicPackAsync(string musicFolder)
@@ -123,37 +139,38 @@ namespace SimTools
 
                 string manifestUrl = AppSettings.ResolveUrl("%baseurl%/res/music/manifest.txt");
                 using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
-                string manifest = await http.GetStringAsync(manifestUrl);
+
+                // Check the manifest exists before trying to parse it — GetStringAsync
+                // does NOT throw on 4xx responses, so we must inspect the status code.
+                using var manifestResp = await http.GetAsync(manifestUrl);
+                if (!manifestResp.IsSuccessStatusCode) return; // no manifest yet — silent no-op
+
+                string manifest = await manifestResp.Content.ReadAsStringAsync();
 
                 foreach (var line in manifest.Split(new[] { '\r', '\n' },
                              StringSplitOptions.RemoveEmptyEntries))
                 {
                     string name = line.Trim();
-                    if (string.IsNullOrEmpty(name)) continue;
+                    // Skip blank lines and anything that looks like HTML / metadata
+                    if (string.IsNullOrEmpty(name) || name.StartsWith('<') || name.StartsWith('#'))
+                        continue;
 
                     string dest = Path.Combine(musicFolder, name);
                     if (File.Exists(dest)) continue;
 
                     try
                     {
-                        string fileUrl = AppSettings.ResolveUrl($"%baseurl%/res/music/{name}");
+                        string fileUrl = AppSettings.ResolveUrl($"%baseurl%/res/music/{Uri.EscapeDataString(name)}");
                         using var resp = await http.GetAsync(fileUrl);
                         if (!resp.IsSuccessStatusCode) continue;
 
                         await using var fs = new FileStream(dest, FileMode.Create, FileAccess.Write);
                         await resp.Content.CopyToAsync(fs);
                     }
-                    catch { /* skip individual failed track */ }
+                    catch { /* skip any individual track that fails */ }
                 }
             }
-            catch
-            {
-                WpfMessageBox.Show(
-                    "Could not reach the music server. You can manually place songs in the /res/music folder.",
-                    "Music Download",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
-            }
+            catch { /* network unavailable or other fatal error — fail silently */ }
         }
 
         // ── Drag bar ──────────────────────────────────────────────────────
