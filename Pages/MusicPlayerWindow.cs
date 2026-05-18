@@ -138,33 +138,48 @@ namespace SimTools
                 Directory.CreateDirectory(musicFolder);
 
                 string manifestUrl = AppSettings.ResolveUrl("%baseurl%/res/music/manifest.txt");
-                using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
+                using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
 
-                // Check the manifest exists before trying to parse it — GetStringAsync
-                // does NOT throw on 4xx responses, so we must inspect the status code.
+                // Verify the manifest is reachable before parsing
                 using var manifestResp = await http.GetAsync(manifestUrl);
-                if (!manifestResp.IsSuccessStatusCode) return; // no manifest yet — silent no-op
+                if (!manifestResp.IsSuccessStatusCode) return;
 
                 string manifest = await manifestResp.Content.ReadAsStringAsync();
 
                 foreach (var line in manifest.Split(new[] { '\r', '\n' },
                              StringSplitOptions.RemoveEmptyEntries))
                 {
-                    string name = line.Trim();
-                    // Skip blank lines and anything that looks like HTML / metadata
-                    if (string.IsNullOrEmpty(name) || name.StartsWith('<') || name.StartsWith('#'))
+                    string rawLine = line.Trim();
+
+                    // Skip blank lines, HTML, and comment lines
+                    if (string.IsNullOrEmpty(rawLine) ||
+                        rawLine.StartsWith('<') ||
+                        rawLine.StartsWith('#'))
                         continue;
 
-                    string dest = Path.Combine(musicFolder, name);
+                    // Each manifest line is a full URL.
+                    // Extract the decoded filename for local storage.
+                    int lastSlash = rawLine.LastIndexOf('/');
+                    if (lastSlash < 0) continue;
+
+                    string rawFilename = Uri.UnescapeDataString(
+                        rawLine.Substring(lastSlash + 1));
+                    if (string.IsNullOrEmpty(rawFilename)) continue;
+
+                    string dest = Path.Combine(musicFolder, rawFilename);
                     if (File.Exists(dest)) continue;
 
                     try
                     {
-                        string fileUrl = AppSettings.ResolveUrl($"%baseurl%/res/music/{Uri.EscapeDataString(name)}");
+                        // Re-encode the filename so spaces become %20, etc.
+                        string fileUrl = rawLine.Substring(0, lastSlash + 1)
+                                       + Uri.EscapeDataString(rawFilename);
+
                         using var resp = await http.GetAsync(fileUrl);
                         if (!resp.IsSuccessStatusCode) continue;
 
-                        await using var fs = new FileStream(dest, FileMode.Create, FileAccess.Write);
+                        await using var fs = new FileStream(
+                            dest, FileMode.Create, FileAccess.Write);
                         await resp.Content.CopyToAsync(fs);
                     }
                     catch { /* skip any individual track that fails */ }
