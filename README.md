@@ -40,6 +40,8 @@
 
 SimTools is a Windows desktop application built with WPF (.NET 8) that serves as a one-stop toolkit for players of the Sims and SimCity game series. Many of these games are years or decades old and require manual configuration steps — such as editing graphics rules files or installing compatibility patches — that are not obvious to average users. SimTools simplifies this by providing guided downloads, clear instructions, and direct links to the right tools for each game.
 
+Due to the use of WPF, support is limited to Windows. At this time, no plans exist to port the project to Linux or MacOS, though I encourage other developers to take the first step in doing so, if they please.
+
 SimTools was previously known as **TS3Tools**, and while its roots are firmly in The Sims 3, the scope has since expanded to cover a wide range of Maxis titles across both The Sims and SimCity franchises. The application is fully localised, supports right-to-left layouts for Arabic, and stores all user preferences in a plain-text INI file that sits alongside the executable.
 
 ---
@@ -148,10 +150,10 @@ SimTools covers 14 titles across The Sims and SimCity franchises.
 | The Sims | The Sims Medieval |
 | SimCity | SimCopter |
 | SimCity | Streets of SimCity |
-| SimCity | SimCity 2000 |
-| SimCity | SimCity 3000 Unlimited |
-| SimCity | SimCity 4 Deluxe |
-| SimCity | SimCity (2013) |
+| SimCity | SimCity 2000, SimCity 2000 Special Edition |
+| SimCity | SimCity 3000, SimCity 3000 Unlimited |
+| SimCity | SimCity 4, SimCity 4: Rush Hour, SimCity 4 Deluxe |
+| SimCity | SimCity (2013), SimCity: Cities of Tomorrow (2013)  |
 
 The majority of tools, tweaks, and fixes in the current release are focused on **The Sims 3**. Support for additional titles is planned for future versions.
 
@@ -169,7 +171,7 @@ SimTools is compatible with the following Sims 3 distribution platforms:
 
 SimTools can be installed on top of an existing **1.67 or 1.69** installation. A **clean install of The Sims 3 is strongly recommended** before running SimTools for the best results.
 
-You can run SimTools regardless of which Expansion Packs or Stuff Packs you have installed — just be mindful to only install fixes and patches for packs you actually own.
+You can run SimTools regardless of which Expansion Packs or Stuff Packs you have installed — just be mindful to only install fixes and patches for packs you actually have installed. If you disable packs, you'll need to disable or remove the fixes and mods for it as well to avoid crashes.
 
 ---
 
@@ -186,7 +188,7 @@ You can run SimTools regardless of which Expansion Packs or Stuff Packs you have
 
 1. Download the latest release from the [Releases](https://github.com/dbrown1986/SimTools/releases) page
 2. Extract the ZIP to a folder of your choice (e.g. `C:\Tools\SimTools\`)
-3. Run `SimTools_v4.exe`
+3. Run `SimTools.exe`
 4. On first launch, select your preferred language
 5. Read through the introductory page and click **Continue**
 6. Optionally open **Settings** (⚙ button, top-right) to configure your game directories
@@ -223,6 +225,8 @@ Output is placed in `bin/Release/net8.0-windows/`.
 | Package | Version | Purpose |
 |---|---|---|
 | `WpfAnimatedGif` | 2.0.2 | Renders the animated plumbob GIF on the splash screen |
+| NAudio | 2.2.1 | Audio playback engine (MP3, WAV, FLAC, M4A) |
+| TagLibSharp | 2.3.0 | ID3/metadata tag reading (artist, title, album art)|
 
 ---
 
@@ -358,7 +362,7 @@ SimTools/
 
 ## Configuration File
 
-SimTools stores all user settings in `settings.ini`, located in the same directory as `SimTools_v4.exe`. The file is created automatically on first run and can be edited manually in any text editor.
+SimTools stores all user settings in `settings.ini`, located in the same directory as `SimTools.exe`. The file is created automatically on first run and can be edited manually in any text editor.
 
 ```ini
 [Language]
@@ -389,7 +393,7 @@ SimCity4_Game=
 SimCity2013_Game=
 ```
 
-> **Tip:** You do not need to fill in directories for games you do not own. Empty values are simply ignored.
+> **Tip:** You do not need to fill in directories for games you do not own. Empty values are simply ignored. At first run, directories may not show in the INI file until set in configuration section.
 
 ---
 
@@ -410,7 +414,7 @@ using MessageBox = System.Windows.MessageBox;
 The GPU and Tweaks context menus are built once in `ApplyLanguage()` rather than in the `ContextMenuOpening` event. This prevents a bug where left-clicking the button fires the event handler and immediately launches the first menu item.
 
 ### Download Caching
-Downloaded files are stored in the `install/` subfolder relative to the executable. If a file already exists at the target path, the download step is skipped and the file is launched directly. To force a re-download, delete the file from `install/`.
+Downloaded files are stored in the `install/` subfolder relative to the executable. If a file already exists at the target path, the remote file header is checked to see if it is newer, if it is not, the download step is skipped and the file is launched directly. To force a re-download, delete the file from `install/`.
 
 ### Transparent Splash Screen
 `AllowsTransparency="True"` must be combined with `WindowStyle="None"` for a WPF window to render with a transparent background. Without it, `Background="{x:Null}"` still produces a solid black window.
