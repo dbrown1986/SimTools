@@ -1,95 +1,100 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Version>4.0.1.3868</Version>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>SimTools.ico</ApplicationIcon>
-    <AssemblyName>SimTools</AssemblyName>
-	<StartupObject>SimTools.Program</StartupObject>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Version>4.0.1.3868</Version>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ApplicationIcon>SimTools.ico</ApplicationIcon>
+		<AssemblyName>SimTools</AssemblyName>
+		<!-- Custom entry point — lets us register AssemblyResolve before WPF loads -->
+		<StartupObject>SimTools.Program</StartupObject>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Resource Include="Images\button_normal.png" />
-	<Resource Include="Images\button_yellow.png" />
-	  <Resource Include="Images\button_green.png" />
-	  <Resource Include="Images\button_red.png" />
-	  <Resource Include="Images\close-button.png" />
-	  <Resource Include="Images\discord.png" />
-	  <Resource Include="Images\gradient.png" />
-	  <Resource Include="Images\gradient_hi.png" />
-	  <Resource Include="Images\Icons\AuroraSkies.ico" />
-	  <Resource Include="Images\Icons\BarnacleBay.ico" />
-	  <Resource Include="Images\Icons\caw.ico" />
-	  <Resource Include="Images\Icons\DragonValley.ico" />
-	  <Resource Include="Images\Icons\HiddenSprings.ico" />
-	  <Resource Include="Images\Icons\HSMVBundle.ico" />
-	  <Resource Include="Images\Icons\LuckyPalms.ico" />
-	  <Resource Include="Images\Icons\LunarLakes.ico" />
-	  <Resource Include="Images\Icons\MidnightHollow.ico" />
-	  <Resource Include="Images\Icons\MonteVista.ico" />
-	  <Resource Include="Images\Icons\Riverview.ico" />
-	  <Resource Include="Images\Icons\RoaringHeights.ico" />
-	  <Resource Include="Images\Icons\Sims3.ico" />
-	  <Resource Include="Images\Icons\Sims3EP01.ico" />
-	  <Resource Include="Images\Icons\Sims3EP02.ico" />
-	  <Resource Include="Images\Icons\Sims3EP03.ico" />
-	  <Resource Include="Images\Icons\Sims3EP04.ico" />
-	  <Resource Include="Images\Icons\Sims3EP05.ico" />
-	  <Resource Include="Images\Icons\Sims3EP06.ico" />
-	  <Resource Include="Images\Icons\Sims3EP06CE.ico" />
-	  <Resource Include="Images\Icons\Sims3EP07.ico" />
-	  <Resource Include="Images\Icons\Sims3EP08.ico" />
-	  <Resource Include="Images\Icons\Sims3EP09.ico" />
-	  <Resource Include="Images\Icons\Sims3EP10.ico" />
-	  <Resource Include="Images\Icons\Sims3EP11.ico" />
-	  <Resource Include="Images\Icons\Sims3SP01.ico" />
-	  <Resource Include="Images\Icons\Sims3SP02.ico" />
-	  <Resource Include="Images\Icons\Sims3SP03.ico" />
-	  <Resource Include="Images\Icons\Sims3SP04.ico" />
-	  <Resource Include="Images\Icons\Sims3SP05.ico" />
-	  <Resource Include="Images\Icons\Sims3SP06.ico" />
-	  <Resource Include="Images\Icons\Sims3SP07.ico" />
-	  <Resource Include="Images\Icons\Sims3SP08.ico" />
-	  <Resource Include="Images\Icons\Sims3SP09.ico" />
-	  <Resource Include="Images\Icons\SimsEPs.ico" />
-	  <Resource Include="Images\Icons\SimsSPs.ico" />
-	  <Resource Include="Images\Icons\Store.ico" />
-	  <Resource Include="Images\Icons\SunlitTides.ico" />
-	  <Resource Include="Images\Icons\ts3pd.ico" />
-	  <Resource Include="Images\Icons\vendors\amazon.ico" />
-	  <Resource Include="Images\Icons\vendors\ea.ico" />
-	  <Resource Include="Images\Icons\vendors\ebay.ico" />
-	  <Resource Include="Images\Icons\vendors\eneba.ico" />
-	  <Resource Include="Images\Icons\vendors\g2a.ico" />
-	  <Resource Include="Images\Icons\vendors\gamers-outlet.ico" />
-	  <Resource Include="Images\Icons\vendors\gamivo.ico" />
-	  <Resource Include="Images\Icons\vendors\gvg.ico" />
-	  <Resource Include="Images\Icons\vendors\hrk.ico" />
-	  <Resource Include="Images\Icons\vendors\ig.ico" />
-	  <Resource Include="Images\Icons\vendors\k4g.ico" />
-	  <Resource Include="Images\Icons\vendors\mmoga.ico" />
-	  <Resource Include="Images\Icons\vendors\steam.ico" />
-	  <Resource Include="Images\Menu_Main.png" />
-	  <Resource Include="Images\musicon.png" />
-    <Resource Include="Images\plumbob.gif" />
-    <Resource Include="Images\plumbob_shatter.gif" />
-    <Resource Include="Images\setup.ico" />
-    <Resource Include="Images\SimTools_Logo.png" />
-    <Resource Include="Images\sulsul.png" />
-    <Resource Include="Images\TS3_Box.png" />
-	  <Resource Include="Images\TS3_Box2.png" />
-	  <Resource Include="Resources\Fonts\simsun.ttc" />
-	  <Resource Include="Resources\Fonts\STENCIL.TTF" />
-		
-	  <Resource Include="SimTools.ico">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Resource>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Images\button_normal.png" />
+		<Resource Include="Images\button_yellow.png" />
+		<Resource Include="Images\button_green.png" />
+		<Resource Include="Images\button_red.png" />
+		<Resource Include="Images\close-button.png" />
+		<Resource Include="Images\discord.png" />
+		<Resource Include="Images\gradient.png" />
+		<Resource Include="Images\gradient_hi.png" />
+		<Resource Include="Images\Icons\AuroraSkies.ico" />
+		<Resource Include="Images\Icons\BarnacleBay.ico" />
+		<Resource Include="Images\Icons\caw.ico" />
+		<Resource Include="Images\Icons\DragonValley.ico" />
+		<Resource Include="Images\Icons\HiddenSprings.ico" />
+		<Resource Include="Images\Icons\HSMVBundle.ico" />
+		<Resource Include="Images\Icons\LuckyPalms.ico" />
+		<Resource Include="Images\Icons\LunarLakes.ico" />
+		<Resource Include="Images\Icons\MidnightHollow.ico" />
+		<Resource Include="Images\Icons\MonteVista.ico" />
+		<Resource Include="Images\Icons\Riverview.ico" />
+		<Resource Include="Images\Icons\RoaringHeights.ico" />
+		<Resource Include="Images\Icons\Sims3.ico" />
+		<Resource Include="Images\Icons\Sims3EP01.ico" />
+		<Resource Include="Images\Icons\Sims3EP02.ico" />
+		<Resource Include="Images\Icons\Sims3EP03.ico" />
+		<Resource Include="Images\Icons\Sims3EP04.ico" />
+		<Resource Include="Images\Icons\Sims3EP05.ico" />
+		<Resource Include="Images\Icons\Sims3EP06.ico" />
+		<Resource Include="Images\Icons\Sims3EP06CE.ico" />
+		<Resource Include="Images\Icons\Sims3EP07.ico" />
+		<Resource Include="Images\Icons\Sims3EP08.ico" />
+		<Resource Include="Images\Icons\Sims3EP09.ico" />
+		<Resource Include="Images\Icons\Sims3EP10.ico" />
+		<Resource Include="Images\Icons\Sims3EP11.ico" />
+		<Resource Include="Images\Icons\Sims3SP01.ico" />
+		<Resource Include="Images\Icons\Sims3SP02.ico" />
+		<Resource Include="Images\Icons\Sims3SP03.ico" />
+		<Resource Include="Images\Icons\Sims3SP04.ico" />
+		<Resource Include="Images\Icons\Sims3SP05.ico" />
+		<Resource Include="Images\Icons\Sims3SP06.ico" />
+		<Resource Include="Images\Icons\Sims3SP07.ico" />
+		<Resource Include="Images\Icons\Sims3SP08.ico" />
+		<Resource Include="Images\Icons\Sims3SP09.ico" />
+		<Resource Include="Images\Icons\SimsEPs.ico" />
+		<Resource Include="Images\Icons\SimsSPs.ico" />
+		<Resource Include="Images\Icons\Store.ico" />
+		<Resource Include="Images\Icons\SunlitTides.ico" />
+		<Resource Include="Images\Icons\ts3pd.ico" />
+		<Resource Include="Images\Icons\vendors\amazon.ico" />
+		<Resource Include="Images\Icons\vendors\ea.ico" />
+		<Resource Include="Images\Icons\vendors\ebay.ico" />
+		<Resource Include="Images\Icons\vendors\eneba.ico" />
+		<Resource Include="Images\Icons\vendors\g2a.ico" />
+		<Resource Include="Images\Icons\vendors\gamers-outlet.ico" />
+		<Resource Include="Images\Icons\vendors\gamivo.ico" />
+		<Resource Include="Images\Icons\vendors\gvg.ico" />
+		<Resource Include="Images\Icons\vendors\hrk.ico" />
+		<Resource Include="Images\Icons\vendors\ig.ico" />
+		<Resource Include="Images\Icons\vendors\k4g.ico" />
+		<Resource Include="Images\Icons\vendors\mmoga.ico" />
+		<Resource Include="Images\Icons\vendors\steam.ico" />
+		<Resource Include="Images\Menu_Main.png" />
+		<Resource Include="Images\musicon.png" />
+		<Resource Include="Images\plumbob.gif" />
+		<Resource Include="Images\plumbob_shatter.gif" />
+		<Resource Include="Images\setup.ico" />
+		<Resource Include="Images\SimTools_Logo.png" />
+		<Resource Include="Images\sulsul.png" />
+		<Resource Include="Images\TS3_Box.png" />
+		<Resource Include="Images\TS3_Box2.png" />
+		<Resource Include="Resources\Fonts\simsun.ttc" />
+		<Resource Include="Resources\Fonts\STENCIL.TTF" />
+		<Resource Include="Resources\sfx01.mp3" />
+		<Resource Include="SimTools.ico">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
 
 	<ItemGroup>
 		<Content Include="Languages\*.lang">
@@ -97,22 +102,22 @@
 		</Content>
 	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="NAudio" Version="2.2.1" />
-    <PackageReference Include="TagLibSharp" Version="2.3.0" />
-	<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="TagLibSharp" Version="2.3.0" />
+		<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="Resources\Music\Guifrog - Musicolours (Sims 3).m4a">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Music\README.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="Resources\Music\Guifrog - Musicolours %28Sims 3%29.m4a">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Music\README.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
-<!--
+	<!--
     ═══ NuGet dependency organiser ════════════════════════════════════════
     After every build, move all NuGet DLLs out of the root output directory
     and into a Dependencies\ sub-folder. The custom entry point in Program.cs
@@ -122,20 +127,25 @@
       - SkipUnchangedFiles prevents redundant work on incremental builds.
       - Delete on a missing file is a silent no-op, so clean→rebuild is safe.
   -->
-  <Target Name="OrganiseDependencies" AfterTargets="Build">
-    <ItemGroup>
-      <!-- NAudio splits into multiple DLLs — glob catches them all -->
-      <_DepDlls Include="$(OutputPath)NAudio*.dll" />
-      <!-- TagLibSharp outputs TagLibSharp.dll -->
-      <_DepDlls Include="$(OutputPath)TagLibSharp.dll" Condition="Exists('$(OutputPath)TagLibSharp.dll')" />
-      <_DepDlls Include="$(OutputPath)WpfAnimatedGif.dll" Condition="Exists('$(OutputPath)WpfAnimatedGif.dll')" />
-    </ItemGroup>
+	<Target Name="OrganiseDependencies" AfterTargets="Build">
+		<ItemGroup>
+			<!-- NAudio splits into multiple DLLs — glob catches them all -->
+			<_DepDlls Include="$(OutputPath)NAudio*.dll" />
+			<!-- TagLibSharp outputs TagLibSharp.dll -->
+			<_DepDlls Include="$(OutputPath)TagLibSharp.dll"
+					  Condition="Exists('$(OutputPath)TagLibSharp.dll')" />
+			<!-- WpfAnimatedGif outputs WpfAnimatedGif.dll -->
+			<_DepDlls Include="$(OutputPath)WpfAnimatedGif.dll"
+					  Condition="Exists('$(OutputPath)WpfAnimatedGif.dll')" />
+		</ItemGroup>
 
-    <MakeDir Directories="$(OutputPath)Dependencies" />
+		<MakeDir Directories="$(OutputPath)Dependencies" />
 
-    <Copy SourceFiles="@(_DepDlls)" DestinationFolder="$(OutputPath)Dependencies" SkipUnchangedFiles="true" />
+		<Copy SourceFiles="@(_DepDlls)"
+			  DestinationFolder="$(OutputPath)Dependencies"
+			  SkipUnchangedFiles="true" />
 
-    <Delete Files="@(_DepDlls)" />
-  </Target>
+		<Delete Files="@(_DepDlls)" />
+	</Target>
 
 </Project>

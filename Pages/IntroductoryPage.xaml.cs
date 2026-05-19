@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
-using Button     = System.Windows.Controls.Button;
+using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
 
 namespace SimTools
@@ -29,14 +29,14 @@ namespace SimTools
             player.Show();
 
             string musicFolder = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory, "res", "music");
+                AppDomain.CurrentDomain.BaseDirectory, "Resources", "Music");
 
             // Show the first-run download prompt (synchronous — just a MessageBox).
             // If the user says YES the download runs in the background and reloads
             // the playlist automatically when complete.
             player.ShowFirstRunPrompt(musicFolder, this);
 
-            // Load whatever songs are already in /Resources/Music and start playing now.
+            // Load whatever songs are already in /Resources/Music and start playing.
             // (If the folder is empty the player waits quietly until the download
             // callback populates it.)
             MusicPlayerService.LoadPlaylist(musicFolder);
@@ -70,8 +70,8 @@ namespace SimTools
                     return;
                 }
 
-                string content    = await resp.Content.ReadAsStringAsync();
-                string[] lines    = content.Split(
+                string content = await resp.Content.ReadAsStringAsync();
+                string[] lines = content.Split(
                     new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
                 if (lines.Length < 2)
@@ -84,7 +84,7 @@ namespace SimTools
                     return;
                 }
 
-                string remoteVersionStr  = lines[0].Trim();
+                string remoteVersionStr = lines[0].Trim();
                 string installerFilename = lines[1].Trim();
 
                 // 2. Compare with local assembly version
@@ -130,7 +130,7 @@ namespace SimTools
                 string downloadUrl = AppSettings.ResolveUrl(
                     $"%baseurl%/updates/{Uri.EscapeDataString(installerFilename)}");
 
-                string tempDir  = Path.Combine(Path.GetTempPath(), "SimToolsUpdate");
+                string tempDir = Path.Combine(Path.GetTempPath(), "SimToolsUpdate");
                 string destPath = Path.Combine(tempDir, installerFilename);
 
                 var dlg = new UpdateDownloadWindow(downloadUrl, destPath)
@@ -138,7 +138,6 @@ namespace SimTools
                     Owner = this
                 };
                 dlg.ShowDialog();
-                // If the user cancels, the window closes and we just re-enable the button.
             }
             catch (TaskCanceledException)
             {

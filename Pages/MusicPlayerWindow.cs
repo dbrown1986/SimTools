@@ -7,18 +7,18 @@ using System.Windows.Media;
 using System.Windows.Threading;
 
 using WpfListBoxItem = System.Windows.Controls.ListBoxItem;
-using WpfColor       = System.Windows.Media.Color;
-using WpfBrushes     = System.Windows.Media.Brushes;
-using WpfMessageBox  = System.Windows.MessageBox;
+using WpfColor = System.Windows.Media.Color;
+using WpfBrushes = System.Windows.Media.Brushes;
+using WpfMessageBox = System.Windows.MessageBox;
 
 namespace SimTools
 {
     public partial class MusicPlayerWindow : Window
     {
         // ── State ─────────────────────────────────────────────────────────
-        private Window?         _parent;
-        private DispatcherTimer _timer      = null!;
-        private bool            _appClosing = false;
+        private Window? _parent;
+        private DispatcherTimer _timer = null!;
+        private bool _appClosing = false;
 
         // ── Constructor ───────────────────────────────────────────────────
         public MusicPlayerWindow()
@@ -60,12 +60,12 @@ namespace SimTools
             if (_parent != null)
             {
                 _parent.LocationChanged -= OnParentGeometryChanged;
-                _parent.SizeChanged     -= OnParentGeometryChanged;
+                _parent.SizeChanged -= OnParentGeometryChanged;
             }
 
             _parent = parent;
             parent.LocationChanged += OnParentGeometryChanged;
-            parent.SizeChanged     += OnParentGeometryChanged;
+            parent.SizeChanged += OnParentGeometryChanged;
             UpdatePosition();
         }
 
@@ -75,7 +75,7 @@ namespace SimTools
         {
             if (_parent == null) return;
             Left = _parent.Left + _parent.ActualWidth + 10;
-            Top  = _parent.Top;
+            Top = _parent.Top;
         }
 
         // ── Enable / disable (called from SettingsWindow) ─────────────────
@@ -96,9 +96,11 @@ namespace SimTools
 
         // ── First-run music prompt (called from IntroductoryPage) ─────────
         /// <summary>
-        /// Shows the first-run download prompt. If the user accepts, a modal
-        /// progress window opens and blocks the owner until the download
-        /// completes or is cancelled. Returns when the window is dismissed.
+        /// Shows the first-run download prompt. Passing <paramref name="owner"/>
+        /// makes the MessageBox owned by IntroductoryPage — it appears on top,
+        /// blocks all interaction with the owner, and is always in front.
+        /// If the user accepts, a modal progress window opens and blocks the
+        /// owner until the download completes or is cancelled.
         /// </summary>
         public void ShowFirstRunPrompt(string musicFolder, Window owner)
         {
@@ -106,7 +108,8 @@ namespace SimTools
             if (prompted) return;
             IniHelper.WriteBool("Music", "DownloadPromptShown", true);
 
-            var result = WpfMessageBox.Show(owner, 
+            var result = WpfMessageBox.Show(
+                owner,
                 "Would you like to download a free background music pack?\n\n" +
                 "You can also drop your own songs (MP3, WAV, FLAC, M4A) into\n" +
                 $"the /Resources/Music folder at any time:\n{musicFolder}",
@@ -176,18 +179,18 @@ namespace SimTools
             Dispatcher.InvokeAsync(() =>
             {
                 var song = MusicPlayerService.CurrentSong;
-                TitleBlock.Text  = song?.Title  ?? "No track loaded";
+                TitleBlock.Text = song?.Title ?? "No track loaded";
                 ArtistBlock.Text = song?.Artist ?? "";
 
                 if (song?.AlbumArt != null)
                 {
-                    AlbumArtImage.Source     = song.AlbumArt;
+                    AlbumArtImage.Source = song.AlbumArt;
                     AlbumArtImage.Visibility = Visibility.Visible;
                     ArtPlaceholder.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    AlbumArtImage.Visibility  = Visibility.Collapsed;
+                    AlbumArtImage.Visibility = Visibility.Collapsed;
                     ArtPlaceholder.Visibility = Visibility.Visible;
                 }
 
@@ -213,13 +216,13 @@ namespace SimTools
             {
                 SongList.Items.Add(new WpfListBoxItem
                 {
-                    Content    = Path.GetFileNameWithoutExtension(path),
-                    Tag        = i,
+                    Content = Path.GetFileNameWithoutExtension(path),
+                    Tag = i,
                     Background = (i == MusicPlayerService.CurrentIndex)
                         ? new SolidColorBrush(WpfColor.FromRgb(0x2A, 0x4A, 0x30))
                         : WpfBrushes.Transparent,
                     Foreground = WpfBrushes.White,
-                    Padding    = new Thickness(6, 3, 6, 3)
+                    Padding = new Thickness(6, 3, 6, 3)
                 });
                 i++;
             }

@@ -13,7 +13,7 @@ namespace SimTools
 {
     public partial class MusicDownloadWindow : Window
     {
-        private readonly string              _musicFolder;
+        private readonly string _musicFolder;
         private readonly CancellationTokenSource _cts = new();
 
         public MusicDownloadWindow(string musicFolder)
@@ -23,7 +23,7 @@ namespace SimTools
             ContentRendered += async (_, _) => await RunDownloadAsync();
         }
 
-        // ── Download logic ────────────────────────────────────────────────
+        // ── Download logic ───────────────────────────────��────────────────
         private async System.Threading.Tasks.Task RunDownloadAsync()
         {
             try
@@ -63,7 +63,7 @@ namespace SimTools
 
                     // Update UI
                     StatusLabel.Text = name;
-                    CountLabel.Text  = $"{completed} of {tracks.Count} tracks";
+                    CountLabel.Text = $"{completed} of {tracks.Count} tracks";
 
                     string dest = Path.Combine(_musicFolder, name);
 
@@ -116,7 +116,7 @@ namespace SimTools
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             CancelBtn.IsEnabled = false;
-            CancelBtn.Content   = "Cancelling…";
+            CancelBtn.Content = "Cancelling…";
             _cts.Cancel();
         }
     }
