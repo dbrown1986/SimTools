@@ -30,7 +30,7 @@ namespace SimTools
             {
                 Directory.CreateDirectory(_musicFolder);
 
-                string manifestUrl = AppSettings.ResolveUrl("%baseurl%/res/music/manifest.txt");
+                string manifestUrl = AppSettings.ResolveUrl("%baseurl%/Resources/Music/manifest.txt");
                 using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
 
                 // Fetch manifest
@@ -72,7 +72,7 @@ namespace SimTools
                         try
                         {
                             string fileUrl = AppSettings.ResolveUrl(
-                                $"%baseurl%/res/music/{Uri.EscapeDataString(name)}");
+                                $"%baseurl%/Resources/Music/{Uri.EscapeDataString(name)}");
 
                             using var resp = await http.GetAsync(fileUrl, _cts.Token);
                             if (resp.IsSuccessStatusCode)

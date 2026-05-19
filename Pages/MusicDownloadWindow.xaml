@@ -26,7 +26,7 @@
                        FontSize="15" FontWeight="SemiBold"
                        Margin="0,0,0,4"/>
 
-            <TextBlock Text="Files will be saved to your /res/music folder."
+            <TextBlock Text="Files will be saved to your /Resources/Music folder."
                        Foreground="#888888"
                        FontSize="11"
                        Margin="0,0,0,20"/>

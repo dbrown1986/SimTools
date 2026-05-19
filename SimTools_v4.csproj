@@ -10,11 +10,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>SimTools.ico</ApplicationIcon>
     <AssemblyName>SimTools</AssemblyName>
+	<StartupObject>SimTools.Program</StartupObject>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
-  </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\button_normal.png" />
@@ -26,29 +23,17 @@
 	  <Resource Include="Images\gradient.png" />
 	  <Resource Include="Images\gradient_hi.png" />
 	  <Resource Include="Images\Icons\AuroraSkies.ico" />
-	  <Resource Include="Images\Icons\AuroraSkies.png" />
 	  <Resource Include="Images\Icons\BarnacleBay.ico" />
-	  <Resource Include="Images\Icons\BarnacleBay.png" />
 	  <Resource Include="Images\Icons\caw.ico" />
-	  <Resource Include="Images\Icons\caw.png" />
 	  <Resource Include="Images\Icons\DragonValley.ico" />
-	  <Resource Include="Images\Icons\DragonValley.png" />
 	  <Resource Include="Images\Icons\HiddenSprings.ico" />
-	  <Resource Include="Images\Icons\HiddenSprings.png" />
 	  <Resource Include="Images\Icons\HSMVBundle.ico" />
-	  <Resource Include="Images\Icons\HSMVBundle.png" />
 	  <Resource Include="Images\Icons\LuckyPalms.ico" />
-	  <Resource Include="Images\Icons\LuckyPalms.png" />
 	  <Resource Include="Images\Icons\LunarLakes.ico" />
-	  <Resource Include="Images\Icons\LunarLakes.png" />
 	  <Resource Include="Images\Icons\MidnightHollow.ico" />
-	  <Resource Include="Images\Icons\MidnightHollow.png" />
 	  <Resource Include="Images\Icons\MonteVista.ico" />
-	  <Resource Include="Images\Icons\MonteVista.png" />
 	  <Resource Include="Images\Icons\Riverview.ico" />
-	  <Resource Include="Images\Icons\Riverview.png" />
 	  <Resource Include="Images\Icons\RoaringHeights.ico" />
-	  <Resource Include="Images\Icons\RoaringHeights.png" />
 	  <Resource Include="Images\Icons\Sims3.ico" />
 	  <Resource Include="Images\Icons\Sims3EP01.ico" />
 	  <Resource Include="Images\Icons\Sims3EP02.ico" />
@@ -75,23 +60,17 @@
 	  <Resource Include="Images\Icons\SimsSPs.ico" />
 	  <Resource Include="Images\Icons\Store.ico" />
 	  <Resource Include="Images\Icons\SunlitTides.ico" />
-	  <Resource Include="Images\Icons\SunlitTides.png" />
 	  <Resource Include="Images\Icons\ts3pd.ico" />
 	  <Resource Include="Images\Icons\vendors\amazon.ico" />
 	  <Resource Include="Images\Icons\vendors\ea.ico" />
 	  <Resource Include="Images\Icons\vendors\ebay.ico" />
 	  <Resource Include="Images\Icons\vendors\eneba.ico" />
 	  <Resource Include="Images\Icons\vendors\g2a.ico" />
-	  <Resource Include="Images\Icons\vendors\G2A.png" />
 	  <Resource Include="Images\Icons\vendors\gamers-outlet.ico" />
-	  <Resource Include="Images\Icons\vendors\gamers-outlet.png" />
 	  <Resource Include="Images\Icons\vendors\gamivo.ico" />
 	  <Resource Include="Images\Icons\vendors\gvg.ico" />
-	  <Resource Include="Images\Icons\vendors\gvg.png" />
 	  <Resource Include="Images\Icons\vendors\hrk.ico" />
-	  <Resource Include="Images\Icons\vendors\hrk.png" />
 	  <Resource Include="Images\Icons\vendors\ig.ico" />
-	  <Resource Include="Images\Icons\vendors\ig.png" />
 	  <Resource Include="Images\Icons\vendors\k4g.ico" />
 	  <Resource Include="Images\Icons\vendors\mmoga.ico" />
 	  <Resource Include="Images\Icons\vendors\steam.ico" />
@@ -101,13 +80,12 @@
     <Resource Include="Images\plumbob_shatter.gif" />
     <Resource Include="Images\setup.ico" />
     <Resource Include="Images\SimTools_Logo.png" />
-    <Resource Include="Images\simtools_text.mp4" />
     <Resource Include="Images\sulsul.png" />
     <Resource Include="Images\TS3_Box.png" />
 	  <Resource Include="Images\TS3_Box2.png" />
-	  <Resource Include="res\fonts\simsun.ttc" />
-	  <Resource Include="res\fonts\STENCIL.TTF" />
-	  <Resource Include="res\sfx01.mp3" />
+	  <Resource Include="Resources\Fonts\simsun.ttc" />
+	  <Resource Include="Resources\Fonts\STENCIL.TTF" />
+	  <Resource Include="Resources\sfx01.mp3" />
 	  <Resource Include="SimTools.ico">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </Resource>
@@ -119,111 +97,45 @@
 		</Content>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Remove="Images\close-button.png" />
-	  <None Remove="Images\discord.png" />
-	  <None Remove="Images\gradient.png" />
-	  <None Remove="Images\gradient_hi.png" />
-	  <None Remove="Images\Icons\AuroraSkies.ico" />
-	  <None Remove="Images\Icons\AuroraSkies.png" />
-	  <None Remove="Images\Icons\BarnacleBay.ico" />
-	  <None Remove="Images\Icons\BarnacleBay.png" />
-	  <None Remove="Images\Icons\caw.ico" />
-	  <None Remove="Images\Icons\caw.png" />
-	  <None Remove="Images\Icons\DragonValley.ico" />
-	  <None Remove="Images\Icons\DragonValley.png" />
-	  <None Remove="Images\Icons\HiddenSprings.ico" />
-	  <None Remove="Images\Icons\HiddenSprings.png" />
-	  <None Remove="Images\Icons\HSMVBundle.ico" />
-	  <None Remove="Images\Icons\HSMVBundle.png" />
-	  <None Remove="Images\Icons\LuckyPalms.ico" />
-	  <None Remove="Images\Icons\LuckyPalms.png" />
-	  <None Remove="Images\Icons\LunarLakes.ico" />
-	  <None Remove="Images\Icons\LunarLakes.png" />
-	  <None Remove="Images\Icons\MidnightHollow.ico" />
-	  <None Remove="Images\Icons\MidnightHollow.png" />
-	  <None Remove="Images\Icons\MonteVista.ico" />
-	  <None Remove="Images\Icons\MonteVista.png" />
-	  <None Remove="Images\Icons\Riverview.ico" />
-	  <None Remove="Images\Icons\Riverview.png" />
-	  <None Remove="Images\Icons\RoaringHeights.ico" />
-	  <None Remove="Images\Icons\RoaringHeights.png" />
-	  <None Remove="Images\Icons\Sims3.ico" />
-	  <None Remove="Images\Icons\Sims3EP01.ico" />
-	  <None Remove="Images\Icons\Sims3EP02.ico" />
-	  <None Remove="Images\Icons\Sims3EP03.ico" />
-	  <None Remove="Images\Icons\Sims3EP04.ico" />
-	  <None Remove="Images\Icons\Sims3EP05.ico" />
-	  <None Remove="Images\Icons\Sims3EP06.ico" />
-	  <None Remove="Images\Icons\Sims3EP06CE.ico" />
-	  <None Remove="Images\Icons\Sims3EP07.ico" />
-	  <None Remove="Images\Icons\Sims3EP08.ico" />
-	  <None Remove="Images\Icons\Sims3EP09.ico" />
-	  <None Remove="Images\Icons\Sims3EP10.ico" />
-	  <None Remove="Images\Icons\Sims3EP11.ico" />
-	  <None Remove="Images\Icons\Sims3SP01.ico" />
-	  <None Remove="Images\Icons\Sims3SP02.ico" />
-	  <None Remove="Images\Icons\Sims3SP03.ico" />
-	  <None Remove="Images\Icons\Sims3SP04.ico" />
-	  <None Remove="Images\Icons\Sims3SP05.ico" />
-	  <None Remove="Images\Icons\Sims3SP06.ico" />
-	  <None Remove="Images\Icons\Sims3SP07.ico" />
-	  <None Remove="Images\Icons\Sims3SP08.ico" />
-	  <None Remove="Images\Icons\Sims3SP09.ico" />
-	  <None Remove="Images\Icons\SimsEPs.ico" />
-	  <None Remove="Images\Icons\SimsSPs.ico" />
-	  <None Remove="Images\Icons\Store.ico" />
-	  <None Remove="Images\Icons\SunlitTides.ico" />
-	  <None Remove="Images\Icons\SunlitTides.png" />
-	  <None Remove="Images\Icons\ts3pd.ico" />
-	  <None Remove="Images\Icons\vendors\amazon.ico" />
-	  <None Remove="Images\Icons\vendors\ea.ico" />
-	  <None Remove="Images\Icons\vendors\ebay.ico" />
-	  <None Remove="Images\Icons\vendors\eneba.ico" />
-	  <None Remove="Images\Icons\vendors\g2a.ico" />
-	  <None Remove="Images\Icons\vendors\G2A.png" />
-	  <None Remove="Images\Icons\vendors\gamers-outlet.ico" />
-	  <None Remove="Images\Icons\vendors\gamers-outlet.png" />
-	  <None Remove="Images\Icons\vendors\gamivo.ico" />
-	  <None Remove="Images\Icons\vendors\gvg.ico" />
-	  <None Remove="Images\Icons\vendors\gvg.png" />
-	  <None Remove="Images\Icons\vendors\hrk.ico" />
-	  <None Remove="Images\Icons\vendors\hrk.png" />
-	  <None Remove="Images\Icons\vendors\ig.ico" />
-	  <None Remove="Images\Icons\vendors\ig.png" />
-	  <None Remove="Images\Icons\vendors\k4g.ico" />
-	  <None Remove="Images\Icons\vendors\mmoga.ico" />
-	  <None Remove="Images\Icons\vendors\steam.ico" />
-	  <None Remove="Images\info.png" />
-	  <None Remove="Images\musicon.png" />
-	  <None Remove="Images\plumbob_shatter.gif" />
-	  <None Remove="Images\setup.ico" />
-	  <None Remove="Images\simtools_text.mp4" />
-	  <None Remove="Images\sulsul.png" />
-	  <None Remove="Images\TS3_Box.png" />
-	  <None Remove="res\fonts\simsun.ttc" />
-	  <None Remove="res\fonts\STENCIL.TTF" />
-	  <None Remove="res\sfx01.mp3" />
-	</ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="TagLibSharp" Version="2.3.0" />
+	<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="res\music\Guifrog - Musicolours %28Sims 3%29.m4a">
+    <None Update="Resources\Music\Guifrog - Musicolours (Sims 3).m4a">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\music\README.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="res\music\Sims_3_Musicolours_OC_ReMix.m4a">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="res\music\Sims_3_Musicolours_OC_ReMix.mp3">
+    <None Update="Resources\Music\README.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+<!--
+    ═══ NuGet dependency organiser ════════════════════════════════════════
+    After every build, move all NuGet DLLs out of the root output directory
+    and into a Dependencies\ sub-folder. The custom entry point in Program.cs
+    registers an AssemblyLoadContext resolver so the runtime finds them there.
+
+    Copy + Delete (rather than Move) is intentional:
+      - SkipUnchangedFiles prevents redundant work on incremental builds.
+      - Delete on a missing file is a silent no-op, so clean→rebuild is safe.
+  -->
+  <Target Name="OrganiseDependencies" AfterTargets="Build">
+    <ItemGroup>
+      <!-- NAudio splits into multiple DLLs — glob catches them all -->
+      <_DepDlls Include="$(OutputPath)NAudio*.dll" />
+      <!-- TagLibSharp outputs TagLibSharp.dll -->
+      <_DepDlls Include="$(OutputPath)TagLibSharp.dll" Condition="Exists('$(OutputPath)TagLibSharp.dll')" />
+      <_DepDlls Include="$(OutputPath)WpfAnimatedGif.dll" Condition="Exists('$(OutputPath)WpfAnimatedGif.dll')" />
+    </ItemGroup>
+
+    <MakeDir Directories="$(OutputPath)Dependencies" />
+
+    <Copy SourceFiles="@(_DepDlls)" DestinationFolder="$(OutputPath)Dependencies" SkipUnchangedFiles="true" />
+
+    <Delete Files="@(_DepDlls)" />
+  </Target>
 
 </Project>

@@ -109,7 +109,7 @@ namespace SimTools
             var result = WpfMessageBox.Show(owner, 
                 "Would you like to download a free background music pack?\n\n" +
                 "You can also drop your own songs (MP3, WAV, FLAC, M4A) into\n" +
-                $"the /res/music folder at any time:\n{musicFolder}",
+                $"the /Resources/Music folder at any time:\n{musicFolder}",
                 "Background Music",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);

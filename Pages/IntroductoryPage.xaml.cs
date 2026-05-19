@@ -36,7 +36,7 @@ namespace SimTools
             // the playlist automatically when complete.
             player.ShowFirstRunPrompt(musicFolder, this);
 
-            // Load whatever songs are already in /res/music and start playing now.
+            // Load whatever songs are already in /Resources/Music and start playing now.
             // (If the folder is empty the player waits quietly until the download
             // callback populates it.)
             MusicPlayerService.LoadPlaylist(musicFolder);

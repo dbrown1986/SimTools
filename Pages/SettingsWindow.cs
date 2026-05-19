@@ -169,7 +169,7 @@ namespace SimTools
 
             root.Children.Add(new TextBlock
             {
-                Text         = "Place your own songs (MP3 / WAV / FLAC / M4A) in the /res/music folder.",
+                Text         = "Place your own songs (MP3 / WAV / FLAC / M4A) in the /Resources/Music folder.",
                 Foreground   = new WpfBrush(WpfColor.FromRgb(0x88, 0x88, 0x88)),
                 FontSize     = 11,
                 TextWrapping = TextWrapping.Wrap,
