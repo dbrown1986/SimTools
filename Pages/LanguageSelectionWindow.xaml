@@ -4,7 +4,9 @@
         Title="Language Selection — SimTools"
         Height="512" Width="513"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" WindowStyle="None" Foreground="{x:Null}">
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True">
 
     <Window.Resources>
         <Style x:Key="LangBtn" TargetType="Button">

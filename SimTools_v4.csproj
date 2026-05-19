@@ -15,10 +15,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Resource Include="Images\button_normal.png" />
 		<Resource Include="Images\button_yellow.png" />
 		<Resource Include="Images\button_green.png" />

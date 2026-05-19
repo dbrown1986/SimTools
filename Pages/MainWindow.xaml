@@ -9,6 +9,7 @@
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Name="MainPage"
         x:Class="SimTools.MainWindow"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="SimTools - Main Page" Height="720" Width="840" WindowStyle="None" Icon="/SimTools.ico" ResizeMode="NoResize">
     <Grid x:Name="RootGrid" Width="840">
         <Grid.Background>
