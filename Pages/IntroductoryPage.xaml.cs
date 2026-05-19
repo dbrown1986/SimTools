@@ -1,5 +1,8 @@
 using System;
 using System.IO;
+using System.Net.Http;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 
 using Button     = System.Windows.Controls.Button;
@@ -39,6 +42,124 @@ namespace SimTools
             MusicPlayerService.LoadPlaylist(musicFolder);
             if (MusicPlayerService.Playlist.Count > 0)
                 MusicPlayerService.Play();
+        }
+
+        // ── Update check ──────────────────────────────────────────────────
+        private async void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateButton.IsEnabled = false;
+
+            try
+            {
+                // 1. Fetch version.txt from the server
+                //    Expected format (two lines):
+                //      1.0.1
+                //      SimTools_v4_Setup.exe
+                string versionUrl = AppSettings.ResolveUrl("%baseurl%/version.txt");
+
+                using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
+                using var resp = await http.GetAsync(versionUrl);
+
+                if (!resp.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(
+                        "Could not reach the update server.\nPlease check your connection and try again.",
+                        "Update Check Failed",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                string content    = await resp.Content.ReadAsStringAsync();
+                string[] lines    = content.Split(
+                    new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (lines.Length < 2)
+                {
+                    MessageBox.Show(
+                        "The version file on the server is malformed.",
+                        "Update Check Failed",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                string remoteVersionStr  = lines[0].Trim();
+                string installerFilename = lines[1].Trim();
+
+                // 2. Compare with local assembly version
+                Version remoteVersion;
+                if (!Version.TryParse(remoteVersionStr, out remoteVersion!))
+                {
+                    MessageBox.Show(
+                        $"Could not parse remote version: \"{remoteVersionStr}\"",
+                        "Update Check Failed",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                Version localVersion =
+                    Assembly.GetExecutingAssembly().GetName().Version
+                    ?? new Version(1, 0, 0);
+
+                // 3. No update available
+                if (remoteVersion <= localVersion)
+                {
+                    MessageBox.Show(
+                        $"You are already running the latest version ({localVersion.ToString(3)}).",
+                        "Up to Date",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                    return;
+                }
+
+                // 4. Update available — ask the user
+                var confirm = MessageBox.Show(
+                    $"Version {remoteVersionStr} is available (you have {localVersion.ToString(3)}).\n\n" +
+                    "Would you like to download and install it now?\n" +
+                    "SimTools will close automatically once the installer launches.",
+                    "Update Available",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (confirm != MessageBoxResult.Yes)
+                    return;
+
+                // 5. Download and launch via UpdateDownloadWindow
+                string downloadUrl = AppSettings.ResolveUrl(
+                    $"%baseurl%/updates/{Uri.EscapeDataString(installerFilename)}");
+
+                string tempDir  = Path.Combine(Path.GetTempPath(), "SimToolsUpdate");
+                string destPath = Path.Combine(tempDir, installerFilename);
+
+                var dlg = new UpdateDownloadWindow(downloadUrl, destPath)
+                {
+                    Owner = this
+                };
+                dlg.ShowDialog();
+                // If the user cancels, the window closes and we just re-enable the button.
+            }
+            catch (TaskCanceledException)
+            {
+                MessageBox.Show(
+                    "The update check timed out.\nPlease try again later.",
+                    "Update Check Failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"An unexpected error occurred:\n{ex.Message}",
+                    "Update Check Failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            finally
+            {
+                UpdateButton.IsEnabled = true;
+            }
         }
 
         // ── Button handlers ───────────────────────────────────────────────
