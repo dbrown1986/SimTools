@@ -30,5 +30,10 @@ namespace SimTools
 
             Close();
         }
+
+        private void ExitApp_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

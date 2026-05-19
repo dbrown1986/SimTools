@@ -322,7 +322,7 @@ SimTools/
 │   ├── SimTools_Logo.png                 # Application logo
 │   ├── sulsul.png                        # Sul Sul character image (introductory page)
 │   ├── TS3_Box2.png                      # Language selection window background
-│   └── White_Bkg.png                     # White gradient overlay (introductory page text area)
+│   └── gradient_hi.png                     # White gradient overlay (introductory page text area)
 │
 ├── Languages/                            # Copied to output directory alongside the .exe
 │   ├── en.lang                           # English (base / fallback language)

@@ -106,7 +106,7 @@ namespace SimTools
             if (prompted) return;
             IniHelper.WriteBool("Music", "DownloadPromptShown", true);
 
-            var result = WpfMessageBox.Show(
+            var result = WpfMessageBox.Show(owner, 
                 "Would you like to download a free background music pack?\n\n" +
                 "You can also drop your own songs (MP3, WAV, FLAC, M4A) into\n" +
                 $"the /res/music folder at any time:\n{musicFolder}",

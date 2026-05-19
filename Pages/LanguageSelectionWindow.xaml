@@ -4,7 +4,7 @@
         Title="Language Selection — SimTools"
         Height="512" Width="513"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" WindowStyle="None">
+        ResizeMode="NoResize" WindowStyle="None" Foreground="{x:Null}">
 
     <Window.Resources>
         <Style x:Key="LangBtn" TargetType="Button">
@@ -12,8 +12,7 @@
             <Setter Property="FontSize"        Value="13"/>
             <Setter Property="FontWeight"      Value="Bold"/>
             <Setter Property="Foreground"      Value="#FFFFD200"/>
-            <Setter Property="Background"      Value="#FF2D2D2D"/>
-            <Setter Property="BorderBrush"     Value="#FF444444"/>
+            <Setter Property="Background"      Value="{x:Null}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Margin"          Value="6"/>
             <Setter Property="Cursor"          Value="Hand"/>
@@ -29,7 +28,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF3A3A00"/>
+                                <Setter Property="Background" Value="{x:Null}"/>
                                 <Setter Property="BorderBrush" Value="#FFFFD200"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
@@ -45,7 +44,7 @@
         <ImageBrush ImageSource="/Images/TS3_Box2.png"/>
     </Window.Background>
 
-    <Grid Margin="24">
+    <Grid Margin="24,24,24,203">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -57,61 +56,62 @@
             <TextBlock x:Name="TitleText"
                Text="Select Your Language"
                FontFamily="Tahoma" FontSize="22" FontWeight="Bold"
-               Foreground="#FFFFD200" HorizontalAlignment="Center"/>
+               Foreground="#FF476DCA" HorizontalAlignment="Center"/>
             <TextBlock x:Name="SubtitleText"
                Text="Choose a language for SimTools. This can be changed at any time via Settings."
-               FontFamily="Tahoma" FontSize="11" Foreground="Gray"
+               FontFamily="Tahoma" FontSize="11" Foreground="Black"
                HorizontalAlignment="Center" TextAlignment="Center"
-               TextWrapping="Wrap" Margin="0,6,0,0"/>
+               TextWrapping="Wrap" Margin="0,6,0,0" FontWeight="Bold"/>
         </StackPanel>
 
         <!-- 3 × 3 language button grid -->
-        <UniformGrid Grid.Row="1" Rows="3" Columns="3">
-            <Button Content="العربية"    Tag="ar" Click="Language_Click" Style="{StaticResource LangBtn}" Foreground="Black" Width="140" Height="35">
+        <UniformGrid x:Name="LanguageSelectionGrid" Grid.Row="1" Rows="3" Columns="3" Margin="0,0,0,35">
+            <Button x:Name="ArabicButton" Content="العربية"    Tag="ar" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Margin="7,8,8,20" Foreground="Black" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="中国人"   Tag="zh" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black">
+            <Button x:Name="ChineseButton" Content="中国人"   Tag="zh" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black" Margin="7,8,8,20" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="Deutsch"    Tag="de" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black">
+            <Button x:Name="GermanButton" Content="Deutsch"    Tag="de" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black" Margin="7,8,8,20" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="English"   Tag="en" Click="Language_Click" Style="{StaticResource LangBtn}" Foreground="Black" Width="140" Height="35">
+            <Button x:Name="FrenchButton" Content="Français"   Tag="fr" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black" Margin="7,-11,8,38" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="Español"    Tag="es" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black">
+            <Button x:Name="EnglishButton" Content="English"   Tag="en" Click="Language_Click" Style="{StaticResource LangBtn}" Foreground="Black" Width="140" Height="35" Margin="7,-11,8,38" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="Français"   Tag="fr" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="38" Foreground="Black">
+            <Button x:Name="SpanishButton" Content="Español"    Tag="es" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black" Margin="7,-13,8,37" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="日本語"   Tag="ja" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black">
+            <Button x:Name="JapaneseButton" Content="日本語"   Tag="ja" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black" Margin="7,-31,8,59" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="Português"  Tag="pt" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black">
+            <Button x:Name="PortogueseButton" Content="Português"  Tag="pt" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black" Margin="7,-31,8,59" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="Русский"    Tag="ru" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black">
+            <Button x:Name="RussianButton" Content="Русский"    Tag="ru" Click="Language_Click" Style="{StaticResource LangBtn}" Width="140" Height="35" Foreground="Black" Margin="7,-31,8,59" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/button_normal.png"/>
                 </Button.Background>
             </Button>
+
         </UniformGrid>
 
         <!-- Do not ask again checkbox -->
@@ -120,6 +120,9 @@
                   Content="Do not ask me again"
                   Foreground="Gray" FontFamily="Tahoma" FontSize="11"
                   HorizontalAlignment="Center"
-                  Margin="0,16,0,0"/>
+                  Margin="0,107,0,-121" Width="126"/>
+
+        <Button x:Name="ExitApp" Content="" Width="25" Height="32" HorizontalAlignment="Left" Margin="415,156,0,-187" Click="ExitApp_Click" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
+
     </Grid>
 </Window>
