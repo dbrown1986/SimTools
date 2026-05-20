@@ -10,8 +10,8 @@
         x:Class="SimTools.MainWindow"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="SimTools - Main Page" Height="720" Width="840" WindowStyle="None" Icon="/SimTools.ico" ResizeMode="NoResize">
-    <Grid x:Name="RootGrid" Width="840">
+        Title="SimTools - Main Page" Height="640" Width="840" WindowStyle="None" Icon="/SimTools.ico" ResizeMode="NoResize">
+    <Grid x:Name="RootGrid" Width="840" Height="640">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Menu_Main.png"/>
         </Grid.Background>
@@ -143,10 +143,61 @@
         <RichTextBox Width="160" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,600,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" FontFamily="SimSun" FontSize="11" FontWeight="Bold">
             <FlowDocument/>
         </RichTextBox>
-        <TextBlock x:Name="VersionInfo" HorizontalAlignment="Left" Margin="8,600,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="SimSun" FontSize="11" FontWeight="Bold" TextAlignment="Center" Width="160" Height="36"><Run Text="Copyright © 2025"/><LineBreak/><Run Text="Archeon Industries, LLC."/><LineBreak/><Run Text="v 4.0.1.3868"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="VersionInfo" HorizontalAlignment="Left" Margin="8,590,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="SimSun" FontSize="11" FontWeight="Bold" TextAlignment="Center" Width="160" Height="36"><Run Text="Copyright © 2025"/><LineBreak/><Run Text="Archeon Industries, LLC."/><LineBreak/><Run Text="v 4.0.1.3868"/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="TS3StoreText" HorizontalAlignment="Left" Margin="184,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="If you're interested in collecting any of the store items for The Sims 3, then look no further. Everything you need will be in this section."/>
         <TextBlock x:Name="BuyTS3Text" HorizontalAlignment="Left" Margin="184,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Here you can find links for buying The Sims 3 and it's various expansion and stuff packs. I earn commission per sale if you elect to purchase through SimTools."/>
         <TextBlock x:Name="ModToolsText" HorizontalAlignment="Left" Margin="184,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11"><Run Text="A collection of tools to help you create worlds, objects, skins, clothing, scripts, packages, etc. Use with care. Various tutorials can be found on YouTube."/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="GenKeysText" HorizontalAlignment="Left" Margin="184,536,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Lost your game case? Bought a game second-hand with no case at all? This menu will display generic keys that can be used to install from Retail discs."/>
+        <Button x:Name="ModFrameworkButton" Content="Mod Framework" HorizontalAlignment="Left" Margin="184,600,0,0" VerticalAlignment="Top" Width="122" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="DonateButton" Content="Mod Framework" HorizontalAlignment="Left" Margin="313,600,0,0" VerticalAlignment="Top" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ThanksButton" Content="Special Thanks" HorizontalAlignment="Left" Margin="449,600,0,0" VerticalAlignment="Top" Width="146" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+        <Image x:Name="SulSul" HorizontalAlignment="Left" Height="225" Margin="584,281,0,0" VerticalAlignment="Top" Width="225" Source="/Images/sulsul.png"/>
+        <Button x:Name="WarningButton" Content="IMPORTANT NOTICE!" HorizontalAlignment="Left" Margin="624,512,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_red.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="SimPortButton" Content="Add Me on SimPort" HorizontalAlignment="Left" Margin="624,552,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="DiscordButton" Content="" HorizontalAlignment="Left" Margin="640,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/discord.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="FacebookButton" Content="" HorizontalAlignment="Left" Margin="680,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/facebook.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="YoutubeButton" Content="" HorizontalAlignment="Left" Margin="720,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/youtube.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="SteamButton" Content="" HorizontalAlignment="Left" Margin="760,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/steam.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="InfoButton" Content="" HorizontalAlignment="Left" Margin="800,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/info.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

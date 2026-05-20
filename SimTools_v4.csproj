@@ -75,15 +75,19 @@
 		<Resource Include="Images\Icons\vendors\k4g.ico" />
 		<Resource Include="Images\Icons\vendors\mmoga.ico" />
 		<Resource Include="Images\Icons\vendors\steam.ico" />
+		<Resource Include="Images\info.png" />
 		<Resource Include="Images\Menu_Main.png" />
 		<Resource Include="Images\musicon.png" />
 		<Resource Include="Images\plumbob.gif" />
 		<Resource Include="Images\plumbob_shatter.gif" />
 		<Resource Include="Images\setup.ico" />
 		<Resource Include="Images\SimTools_Logo.png" />
+		<Resource Include="Images\steam.png" />
 		<Resource Include="Images\sulsul.png" />
 		<Resource Include="Images\TS3_Box.png" />
 		<Resource Include="Images\TS3_Box2.png" />
+		<Resource Include="Images\youtube.png" />
+		<Resource Include="Images\facebook.png" />
 		<Resource Include="Resources\Fonts\simsun.ttc" />
 		<Resource Include="Resources\Fonts\STENCIL.TTF" />
 		<Resource Include="Resources\sfx01.mp3" />
@@ -128,18 +132,14 @@
 			<!-- NAudio splits into multiple DLLs — glob catches them all -->
 			<_DepDlls Include="$(OutputPath)NAudio*.dll" />
 			<!-- TagLibSharp outputs TagLibSharp.dll -->
-			<_DepDlls Include="$(OutputPath)TagLibSharp.dll"
-					  Condition="Exists('$(OutputPath)TagLibSharp.dll')" />
+			<_DepDlls Include="$(OutputPath)TagLibSharp.dll" Condition="Exists('$(OutputPath)TagLibSharp.dll')" />
 			<!-- WpfAnimatedGif outputs WpfAnimatedGif.dll -->
-			<_DepDlls Include="$(OutputPath)WpfAnimatedGif.dll"
-					  Condition="Exists('$(OutputPath)WpfAnimatedGif.dll')" />
+			<_DepDlls Include="$(OutputPath)WpfAnimatedGif.dll" Condition="Exists('$(OutputPath)WpfAnimatedGif.dll')" />
 		</ItemGroup>
 
 		<MakeDir Directories="$(OutputPath)Dependencies" />
 
-		<Copy SourceFiles="@(_DepDlls)"
-			  DestinationFolder="$(OutputPath)Dependencies"
-			  SkipUnchangedFiles="true" />
+		<Copy SourceFiles="@(_DepDlls)" DestinationFolder="$(OutputPath)Dependencies" SkipUnchangedFiles="true" />
 
 		<Delete Files="@(_DepDlls)" />
 	</Target>
