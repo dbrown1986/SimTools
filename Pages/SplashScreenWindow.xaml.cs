@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
@@ -11,10 +12,13 @@ namespace SimTools
         private DispatcherTimer _typingTimer = null!;
         private readonly string _fullText = LanguageManager.Get("Splash", "Retic", "Reticulating Splines...");
         private int _charIndex = 0;
+        private readonly bool _skippable;
+        private TaskCompletionSource<bool>? _skipTcs;
 
-        public SplashScreenWindow()
+        public SplashScreenWindow(bool skippable = false)
         {
             InitializeComponent();
+            _skippable = skippable;
             LoadingText.Text = LanguageManager.Get("Splash", "Loading", "Loading...");
             StartTypingAnimation();
         }
@@ -38,7 +42,7 @@ namespace SimTools
                 else
                 {
                     _typingTimer.Stop();
-                    await Task.Delay(500);   // pause at full text for 0.5 s
+                    await Task.Delay(500);
                     Retic.Text = "";
                     _charIndex = 0;
                     _typingTimer.Start();
@@ -48,10 +52,24 @@ namespace SimTools
             _typingTimer.Start();
         }
 
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            if (_skippable)
+                _skipTcs?.TrySetResult(true);
+        }
+
         public async Task RunAsync()
         {
+            _skipTcs = new TaskCompletionSource<bool>();
+
             await FadeAsync(to: 1, durationMs: 600);
-            await Task.Delay(13_500);
+
+            if (_skippable)
+                await Task.WhenAny(Task.Delay(13_500), _skipTcs.Task);
+            else
+                await Task.Delay(13_500);
+
             await FadeAsync(to: 0, durationMs: 600);
         }
 

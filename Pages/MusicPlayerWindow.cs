@@ -20,6 +20,14 @@ namespace SimTools
         private DispatcherTimer _timer = null!;
         private bool _appClosing = false;
 
+        // ── P/Invoke — bring to front without stealing focus ──────────────
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
+        private static readonly IntPtr HWND_TOP = IntPtr.Zero;
+        private const uint SWP_NOMOVE = 0x0002;
+        private const uint SWP_NOSIZE = 0x0001;
+        private const uint SWP_NOACTIVATE = 0x0010;
+
         // ── Constructor ───────────────────────────────────────────────────
         public MusicPlayerWindow()
         {
@@ -61,15 +69,24 @@ namespace SimTools
             {
                 _parent.LocationChanged -= OnParentGeometryChanged;
                 _parent.SizeChanged -= OnParentGeometryChanged;
+                _parent.Activated -= OnParentActivated;
             }
 
             _parent = parent;
             parent.LocationChanged += OnParentGeometryChanged;
             parent.SizeChanged += OnParentGeometryChanged;
+            parent.Activated += OnParentActivated;
             UpdatePosition();
         }
 
         private void OnParentGeometryChanged(object? s, EventArgs e) => UpdatePosition();
+
+        private void OnParentActivated(object? s, EventArgs e)
+        {
+            if (!IsVisible) return;
+            var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
+            SetWindowPos(hwnd, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+        }
 
         private void UpdatePosition()
         {
@@ -122,8 +139,6 @@ namespace SimTools
             // Modal — IntroductoryPage is blocked until download completes or cancels
             new MusicDownloadWindow(musicFolder) { Owner = owner }.ShowDialog();
         }
-
-
 
         // ── Drag bar ──────────────────────────────────────────────────────
         private void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

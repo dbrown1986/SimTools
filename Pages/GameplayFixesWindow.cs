@@ -105,51 +105,51 @@ namespace SimTools
                 new("Atomic Age Stair Fix by EnableLlamas", "SimTools/Packages/enablellamasAtomicAgeStairsFixDR.package", "%baseurl%/Mods/Sims3/packages/base/enablellamasAtomicAgeStairsFixDR.package"),
                 new("Walk Cycle Edits by SimBouquet", "SimTools/Overrides/simbouquet_OVERRIDE_WalkCycleEdits.package", "%baseurl%/Mods/Sims3/overrides/base/simbouquet_OVERRIDE_WalkCycleEdits.package"),
                 new("Medieval Facial Expressions by SimBouquet", "SimTools/Overrides/simbouquet_OVERRIDE_TSMtoTS3_FacialExpressions.package", "%baseurl%/Mods/Sims3/overrides/base/simbouquet_OVERRIDE_TSMtoTS3_FacialExpressions.package"),
-                new("Random Sim Fixes by LazyDuchess", "SimTools/Packages/ld_RandomSimFixes.package", "baseurl%/Mods/Sims3/packages/base/ld_RandomSimFixes.package"),
-                new("Sim Bin Genetics Male Presets by Anime_Boom", "SimTools/Packages/SimBinYAAMPresets.package", "baseurl%/Mods/Sims3/packages/base/SimBinYAAMPresets.package"),
-                new("Sim Bin Genetics Female Presets by Anime_Boom", "SimTools/Packages/SimBinYAFAFPresets.package", "baseurl%/Mods/Sims3/packages/base/SimBinYAFAFPresets.package"),
-                new("Pick Up Toddler Fix by TheSweetSimmer", "SimTools/Packages/TSS_PickUpToddlerFix.package", "baseurl%/Mods/Sims3/packages/base/TSS_PickUpToddlerFix.package"),
-                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/BASE GAME - Stencils Unlocked.package", "baseurl%/Mods/Sims3/packages/base/BASE GAME - Stencils Unlocked.package"),
-                new("Fishing Box Fix by NanaBx3", "SimTools/Packages/NanaBx3_fishingBoxChest_Fix.package", "baseurl%/Mods/Sims3/packages/base/NanaBx3_fishingBoxChest_Fix.package"),
-                new("Cross-Eye Fix by LazyDuchess", "SimTools/Packages/ld_CrossEyeFix.package", "baseurl%/Mods/Sims3/packages/base/ld_CrossEyeFix.package"),
-                // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/base/*.package"),
-                // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/base/*.package"),
+                new("Random Sim Fixes by LazyDuchess", "SimTools/Packages/ld_RandomSimFixes.package", "%baseurl%/Mods/Sims3/packages/base/ld_RandomSimFixes.package"),
+                new("Sim Bin Genetics Male Presets by Anime_Boom", "SimTools/Packages/SimBinYAAMPresets.package", "%baseurl%/Mods/Sims3/packages/base/SimBinYAAMPresets.package"),
+                new("Sim Bin Genetics Female Presets by Anime_Boom", "SimTools/Packages/SimBinYAFAFPresets.package", "%baseurl%/Mods/Sims3/packages/base/SimBinYAFAFPresets.package"),
+                new("Pick Up Toddler Fix by TheSweetSimmer", "SimTools/Packages/TSS_PickUpToddlerFix.package", "%baseurl%/Mods/Sims3/packages/base/TSS_PickUpToddlerFix.package"),
+                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/BASE GAME - Stencils Unlocked.package", "%baseurl%/Mods/Sims3/packages/base/BASE GAME - Stencils Unlocked.package"),
+                new("Fishing Box Fix by NanaBx3", "SimTools/Packages/NanaBx3_fishingBoxChest_Fix.package", "%baseurl%/Mods/Sims3/packages/base/NanaBx3_fishingBoxChest_Fix.package"),
+                new("Cross-Eye Fix by LazyDuchess", "SimTools/Packages/ld_CrossEyeFix.package", "%baseurl%/Mods/Sims3/packages/base/ld_CrossEyeFix.package"),
+                // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/base/*.package"),
+                // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/base/*.package"),
             });
 
             // ── World Adventures (6 items) ─────────────────────────
             yield return ("World Adventures", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__WorldAdventures__Sims_need_less_Space.package", "baseurl%/Mods/Sims3/packages/world_adventures/OhRudi__WorldAdventures__Sims_need_less_Space.package"),
-                new("Champs les Sims Distant Terrain Tree Fix by PotatoBalladSims", "SimTools/Packages/PotatoBalladSims_terraindistantFrance_FIX.package", "baseurl%/Mods/Sims3/packages/world_adventures/PotatoBalladSims_terraindistantFrance_FIX.package"),
-                new("European Steam Train Fix by PotatoBalladSims", "SimTools/Packages/PotatoBalladSims_European_Steam_Train.package", "baseurl%/Mods/Sims3/packages/world_adventures/PotatoBalladSims_European_Steam_Train.package"),
-                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/WORLD ADVENTURES - Tileable_Items_Shader_FIXED.package", "baseurl%/Mods/Sims3/packages/world_adventures/WORLD ADVENTURES - Tileable_Items_Shader_FIXED.package"),
-                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/WORLD ADVENTURES - Unlocked Stencils.package", "baseurl%/Mods/Sims3/packages/world_adventures/WORLD ADVENTURES - Unlocked Stencils.package"),
-                new("Asian Window Reflects Light Fix by OhRudi", "SimTools/Packages/OhRudi__WorldAdventures__asian_window_fix__king_qings_window.package", "baseurl%/Mods/Sims3/packages/world_adventures/OhRudi__WorldAdventures__asian_window_fix__king_qings_window.package"),
-                // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/world_adventures/*.package"),
-                // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/world_adventures/*.package"),
+                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__WorldAdventures__Sims_need_less_Space.package", "%baseurl%/Mods/Sims3/packages/world_adventures/OhRudi__WorldAdventures__Sims_need_less_Space.package"),
+                new("Champs les Sims Distant Terrain Tree Fix by PotatoBalladSims", "SimTools/Packages/PotatoBalladSims_terraindistantFrance_FIX.package", "%baseurl%/Mods/Sims3/packages/world_adventures/PotatoBalladSims_terraindistantFrance_FIX.package"),
+                new("European Steam Train Fix by PotatoBalladSims", "SimTools/Packages/PotatoBalladSims_European_Steam_Train.package", "%baseurl%/Mods/Sims3/packages/world_adventures/PotatoBalladSims_European_Steam_Train.package"),
+                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/WORLD ADVENTURES - Tileable_Items_Shader_FIXED.package", "%baseurl%/Mods/Sims3/packages/world_adventures/WORLD ADVENTURES - Tileable_Items_Shader_FIXED.package"),
+                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/WORLD ADVENTURES - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/packages/world_adventures/WORLD ADVENTURES - Unlocked Stencils.package"),
+                new("Asian Window Reflects Light Fix by OhRudi", "SimTools/Packages/OhRudi__WorldAdventures__asian_window_fix__king_qings_window.package", "%baseurl%/Mods/Sims3/packages/world_adventures/OhRudi__WorldAdventures__asian_window_fix__king_qings_window.package"),
+                // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/world_adventures/*.package"),
+                // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/world_adventures/*.package"),
             });
 
             // ── High-End Loft Stuff (1 item) ────────────────────────────────
             yield return ("High End Loft Stuff", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/HELS - Tileable_Items_Shader_FIXED.package", "baseurl%/Mods/Sims3/packages/high_end_loft_stuff/HELS - Tileable_Items_Shader_FIXED.package"),
-                // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/high_end_loft_stuff/*.package"),
-                // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/high_end_loft_stuff/*.package"),
+                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/HELS - Tileable_Items_Shader_FIXED.package", "%baseurl%/Mods/Sims3/packages/high_end_loft_stuff/HELS - Tileable_Items_Shader_FIXED.package"),
+                // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/high_end_loft_stuff/*.package"),
+                // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/high_end_loft_stuff/*.package"),
             });
 
             // ── Ambitions (5 items) ────────────────────────────────
             yield return ("Ambitions", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-                new("Harvester Fix by Fantuanss12", "SimTools/Packages/Fantuanss12_Harverster_TempFix.package", "baseurl%/Mods/Sims3/packages/ambitions/Fantuanss12_Harverster_TempFix.package"),
-                new("No Magic Clothesline Fix by Gamefreak130", "SimTools/Packages/Gamefreak130_NoMagicClothesline.package", "baseurl%/Mods/Sims3/packages/ambitions/Gamefreak130_NoMagicClothesline.package"),
-                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/AMBITIONS - Unlocked Stencils.package", "baseurl%/Mods/Sims3/packages/ambitions/AMBITIONS - Unlocked Stencils.package"),
-                new("EA Eyeshadow Fix by Lavsm", "SimTools/Packages/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package", "baseurl%/Mods/Sims3/packages/ambitions/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package"),
-                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__Ambitions__Sims_need_less_Space.package", "baseurl%/Mods/Sims3/packages/ambitions/OhRudi__Ambitions__Sims_need_less_Space.package"),
-                // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/ambitions/*.package"),
-                // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/ambitions/*.package"),
+                new("Harvester Fix by Fantuanss12", "SimTools/Packages/Fantuanss12_Harverster_TempFix.package", "%baseurl%/Mods/Sims3/packages/ambitions/Fantuanss12_Harverster_TempFix.package"),
+                new("No Magic Clothesline Fix by Gamefreak130", "SimTools/Packages/Gamefreak130_NoMagicClothesline.package", "%baseurl%/Mods/Sims3/packages/ambitions/Gamefreak130_NoMagicClothesline.package"),
+                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/AMBITIONS - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/packages/ambitions/AMBITIONS - Unlocked Stencils.package"),
+                new("EA Eyeshadow Fix by Lavsm", "SimTools/Packages/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package", "%baseurl%/Mods/Sims3/packages/ambitions/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package"),
+                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__Ambitions__Sims_need_less_Space.package", "%baseurl%/Mods/Sims3/packages/ambitions/OhRudi__Ambitions__Sims_need_less_Space.package"),
+                // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/ambitions/*.package"),
+                // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/ambitions/*.package"),
             });
 
             // There are currently no Fast Lane Stuff fixes, but this is here as a placeholder.
@@ -157,24 +157,24 @@ namespace SimTools
             // yield return ("Fast Lane Stuff", new List<GameplayFixItem>
             // {
             // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-            // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/fast_lane_stuff/*.package"),
-            // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/fast_lane_stuff/*.package"),
+            // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/fast_lane_stuff/*.package"),
+            // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/fast_lane_stuff/*.package"),
             // });
 
             // ── Late Night (8 items) ───────────────────────────────
             yield return ("Late Night", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-                new("Celeb Fridge Texture Fix by EnableLlamas", "SimTools/Packages/enablellamasRefrigeratorCelebSpecFix.package", "baseurl%/Mods/Sims3/packages/late_night/enablellamasRefrigeratorCelebSpecFix.package"),
-                new("Enable Crane (Medium) in buydebug by Armiel", "SimTools/Packages/armiel_craneMedium.package", "baseurl%/Mods/Sims3/packages/late_night/armiel_craneMedium.package"),
-                new("Enable Crane (Large) in buydebug by Armiel", "SimTools/Packages/armiel_craneLarge.package", "baseurl%/Mods/Sims3/packages/late_night/armiel_craneLarge.package"),
-                new("Late Night Plant Fixes by Robodl95", "SimTools/Packages/Robodl95_ LN Plant fix.package", "baseurl%/Mods/Sims3/packages/late_night/Robodl95_ LN Plant fix.package"),
-                new("Bridgeport Workbench Fix by DividingByZero", "SimTools/Packages/Bridgeport Workbench Fix.package", "baseurl%/Mods/Sims3/packages/late_night/Bridgeport Workbench Fix.package"),
-                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/LATE NIGHT - Unlocked Stencils.package", "baseurl%/Mods/Sims3/packages/late_night/LATE NIGHT - Unlocked Stencils.package"),
-                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/LATE NIGHT - Tileable_Items_Shader_FIXED.package", "baseurl%/Mods/Sims3/packages/late_night/LATE NIGHT - Tileable_Items_Shader_FIXED.package"),
-                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__LateNight__Sims_need_less_Space.package", "baseurl%/Mods/Sims3/packages/late_night/OhRudi__LateNight__Sims_need_less_Space.package"),
-                // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/late_night/*.package"),
-                // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/late_night/*.package"),
+                new("Celeb Fridge Texture Fix by EnableLlamas", "SimTools/Packages/enablellamasRefrigeratorCelebSpecFix.package", "%baseurl%/Mods/Sims3/packages/late_night/enablellamasRefrigeratorCelebSpecFix.package"),
+                new("Enable Crane (Medium) in buydebug by Armiel", "SimTools/Packages/armiel_craneMedium.package", "%baseurl%/Mods/Sims3/packages/late_night/armiel_craneMedium.package"),
+                new("Enable Crane (Large) in buydebug by Armiel", "SimTools/Packages/armiel_craneLarge.package", "%baseurl%/Mods/Sims3/packages/late_night/armiel_craneLarge.package"),
+                new("Late Night Plant Fixes by Robodl95", "SimTools/Packages/Robodl95_ LN Plant fix.package", "%baseurl%/Mods/Sims3/packages/late_night/Robodl95_ LN Plant fix.package"),
+                new("Bridgeport Workbench Fix by DividingByZero", "SimTools/Packages/Bridgeport Workbench Fix.package", "%baseurl%/Mods/Sims3/packages/late_night/Bridgeport Workbench Fix.package"),
+                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/LATE NIGHT - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/packages/late_night/LATE NIGHT - Unlocked Stencils.package"),
+                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/LATE NIGHT - Tileable_Items_Shader_FIXED.package", "%baseurl%/Mods/Sims3/packages/late_night/LATE NIGHT - Tileable_Items_Shader_FIXED.package"),
+                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__LateNight__Sims_need_less_Space.package", "%baseurl%/Mods/Sims3/packages/late_night/OhRudi__LateNight__Sims_need_less_Space.package"),
+                // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/late_night/*.package"),
+                // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/late_night/*.package"),
             });
 
             // There are currently no Outdoor Living Stuff fixes, but this is here as a placeholder.
@@ -182,23 +182,23 @@ namespace SimTools
             // yield return ("Outdoor Living Stuff", new List<GameplayFixItem>
             // {
             // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-            // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/outdoor_living_stuff/*.package"),
-            // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/outdoor_living_stuff/*.package"),
+            // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/outdoor_living_stuff/*.package"),
+            // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/outdoor_living_stuff/*.package"),
             // });
 
-            // ── Generations (6 items) ──────────────────────────────
+            // ── Generations (7 items) ──────────────────────────────
             yield return ("Generations", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-                new("Generations Shirt & Sweater Top - Channel Fix by sweetdevil", "SimTools/Packages/sweetdevil_GENShirtSweaterTopChannelFix_TAM_DR.package", "baseurl%/Mods/Sims3/packages/generations/sweetdevil_GENShirtSweaterTopChannelFix_TAM_DR.package"),
-                new("Teen Fantasy Painting Fix by ThomasRiordan", "SimTools/Packages/PTS3_ThomasRiordan_paintingGenTeenFantasyFixed.package", "baseurl%/Mods/Sims3/packages/generations/PTS3_ThomasRiordan_paintingGenTeenFantasyFixed.package"),
-                new("Awkward Family Photo Fixed by ThomasRiordan", "SimTools/Packages/PTS3_ThomasRiordan_paintingGenAwkwardFamilyPhotoFixed.package", "baseurl%/Mods/Sims3/packages/generations/PTS3_ThomasRiordan_paintingGenAwkwardFamilyPhotoFixed.package"),
-                new("Read Toddler to Sleep Fix by Danjaley", "SimTools/Packages/danjaley_read2sleepfix.package", "baseurl%/Mods/Sims3/packages/generations/danjaley_read2sleepfix.package"),
-                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/GENERATIONS - Unlocked Stencils.package", "baseurl%/Mods/Sims3/packages/generations/GENERATIONS - Unlocked Stencils.package"),
-                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/DECADES -Tileable_Items_Shader_FIXED.package", "baseurl%/Mods/Sims3/packages/generations/DECADES -Tileable_Items_Shader_FIXED.package"),
-                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__Generations__Sims_need_less_Space.package", "baseurl%/Mods/Sims3/packages/generations/OhRudi__Generations__Sims_need_less_Space.package"),
-             // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/generations/*.package"),
-             // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/generations/*.package"),
+                new("Generations Shirt & Sweater Top - Channel Fix by sweetdevil", "SimTools/Packages/sweetdevil_GENShirtSweaterTopChannelFix_TAM_DR.package", "%baseurl%/Mods/Sims3/packages/generations/sweetdevil_GENShirtSweaterTopChannelFix_TAM_DR.package"),
+                new("Teen Fantasy Painting Fix by ThomasRiordan", "SimTools/Packages/PTS3_ThomasRiordan_paintingGenTeenFantasyFixed.package", "%baseurl%/Mods/Sims3/packages/generations/PTS3_ThomasRiordan_paintingGenTeenFantasyFixed.package"),
+                new("Awkward Family Photo Fixed by ThomasRiordan", "SimTools/Packages/PTS3_ThomasRiordan_paintingGenAwkwardFamilyPhotoFixed.package", "%baseurl%/Mods/Sims3/packages/generations/PTS3_ThomasRiordan_paintingGenAwkwardFamilyPhotoFixed.package"),
+                new("Read Toddler to Sleep Fix by Danjaley", "SimTools/Packages/danjaley_read2sleepfix.package", "%baseurl%/Mods/Sims3/packages/generations/danjaley_read2sleepfix.package"),
+                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/GENERATIONS - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/packages/generations/GENERATIONS - Unlocked Stencils.package"),
+                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/DECADES -Tileable_Items_Shader_FIXED.package", "%baseurl%/Mods/Sims3/packages/generations/DECADES -Tileable_Items_Shader_FIXED.package"),
+                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__Generations__Sims_need_less_Space.package", "%baseurl%/Mods/Sims3/packages/generations/OhRudi__Generations__Sims_need_less_Space.package"),
+             // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/generations/*.package"),
+             // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/generations/*.package"),
             });
 
             // There are currently no Town Life Stuff fixes, but this is here as a placeholder.
@@ -206,43 +206,43 @@ namespace SimTools
             // yield return ("Town Life Stuff", new List<GameplayFixItem>
             // {
             // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-            // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/town_life_stuff/*.package"),
-            // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/town_life_stuff/*.package"),
+            // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/town_life_stuff/*.package"),
+            // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/town_life_stuff/*.package"),
             // });
 
             // ── Pets (6 items) ─────────────────────────────────────
             yield return ("Pets", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-                new("Pets Need Less Space by OhRudi", "SimTools/Packages/OhRudi__Routing Fix__Pets_need_less_space.package", "baseurl%/Mods/Sims3/packages/pets/OhRudi__Routing Fix__Pets_need_less_space.package"),
-                new("Gallop Faster Animation Fix by Shimrod101", "SimTools/Packages/ShimrodsAnimHorseGallopFastestFix.package", "baseurl%/Mods/Sims3/packages/pets/ShimrodsAnimHorseGallopFastestFix.package"),
-                new("Pet Tombstone Shadow Fix by MenaceMan44", "SimTools/Packages/MM_PetTombstoneShadowFix.package", "baseurl%/Mods/Sims3/packages/pets/MM_PetTombstoneShadowFix.package"),
-                new("Horse Tail Fixes by Simsi45", "SimTools/Packages/Simsi45_Horse_Braided_Tail_NoRandom.package", "baseurl%/Mods/Sims3/packages/pets/Simsi45_Horse_Braided_Tail_NoRandom.package"),
-                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/PETS - Unlocked Stencils.package", "baseurl%/Mods/Sims3/packages/pets/PETS - Unlocked Stencils.package"),
-                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/PETS - Tileable_Items_Shader_FIXED.package", "baseurl%/Mods/Sims3/packages/pets/PETS - Tileable_Items_Shader_FIXED.package"),
-                // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/pets/*.package"),
-                // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/pets/*.package"),
+                new("Pets Need Less Space by OhRudi", "SimTools/Packages/OhRudi__Routing Fix__Pets_need_less_space.package", "%baseurl%/Mods/Sims3/packages/pets/OhRudi__Routing Fix__Pets_need_less_space.package"),
+                new("Gallop Faster Animation Fix by Shimrod101", "SimTools/Packages/ShimrodsAnimHorseGallopFastestFix.package", "%baseurl%/Mods/Sims3/packages/pets/ShimrodsAnimHorseGallopFastestFix.package"),
+                new("Pet Tombstone Shadow Fix by MenaceMan44", "SimTools/Packages/MM_PetTombstoneShadowFix.package", "%baseurl%/Mods/Sims3/packages/pets/MM_PetTombstoneShadowFix.package"),
+                new("Horse Tail Fixes by Simsi45", "SimTools/Packages/Simsi45_Horse_Braided_Tail_NoRandom.package", "%baseurl%/Mods/Sims3/packages/pets/Simsi45_Horse_Braided_Tail_NoRandom.package"),
+                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/PETS - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/packages/pets/PETS - Unlocked Stencils.package"),
+                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/PETS - Tileable_Items_Shader_FIXED.package", "%baseurl%/Mods/Sims3/packages/pets/PETS - Tileable_Items_Shader_FIXED.package"),
+                // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/pets/*.package"),
+                // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/pets/*.package"),
             });
 
             // ── Master Suite Stuff (1 item) ─────────────────────────────────────
             yield return ("Master Suite Stuff", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/MASTER SUITE STUFF - Unlocked Stencils.package", "baseurl%/Mods/Sims3/packages/master_suite_stuff/MASTER SUITE STUFF - Unlocked Stencils.package"),
-                // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/master_suite_stuff/*.package"),
-                // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/master_suite_stuff/*.package"),
+                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/MASTER SUITE STUFF - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/packages/master_suite_stuff/MASTER SUITE STUFF - Unlocked Stencils.package"),
+                // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/master_suite_stuff/*.package"),
+                // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/master_suite_stuff/*.package"),
             });
 
-            // ── Showtime / Showtime Collectors Edition (1 item) ──────────────────────────────────
+            // ── Showtime / Showtime Collectors Edition (4 items) ──────────────────────────────────
             yield return ("Showtime", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-                new("No NPC's Performing For Tips by Spicsshane", "SimTools/Packages/NoNPCsPerformingforTips.package", "baseurl%/Mods/Sims3/packages/showtime/NoNPCsPerformingforTips.package"),
-                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/SHOWTIME - Unlocked Stencils.package", "baseurl%/Mods/Sims3/packages/showtime/SHOWTIME - Unlocked Stencils.package"),
-                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/SHOWTIME - Tileable_Items_Shader_FIXED.package", "baseurl%/Mods/Sims3/packages/showtime/SHOWTIME - Tileable_Items_Shader_FIXED.package"),
-                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__Showtime__Sims_need_less_Space.package", "baseurl%/Mods/Sims3/packages/showtime/OhRudi__Showtime__Sims_need_less_Space.package"),
-                // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/showtime/*.package"),
-                // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/showtime/*.package"),
+                new("No NPC's Performing For Tips by Spicsshane", "SimTools/Packages/NoNPCsPerformingforTips.package", "%baseurl%/Mods/Sims3/packages/showtime/NoNPCsPerformingforTips.package"),
+                new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/SHOWTIME - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/packages/showtime/SHOWTIME - Unlocked Stencils.package"),
+                new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/SHOWTIME - Tileable_Items_Shader_FIXED.package", "%baseurl%/Mods/Sims3/packages/showtime/SHOWTIME - Tileable_Items_Shader_FIXED.package"),
+                new("Sims Need Less Space by OhRudi", "SimTools/Packages/OhRudi__Showtime__Sims_need_less_Space.package", "%baseurl%/Mods/Sims3/packages/showtime/OhRudi__Showtime__Sims_need_less_Space.package"),
+                // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/showtime/*.package"),
+                // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/showtime/*.package"),
             });
 
             // There are currently no Katy Perry Sweet Treat fixes, but this is here as a placeholder.
@@ -250,8 +250,8 @@ namespace SimTools
             // yield return ("Town Life Stuff", new List<GameplayFixItem>
             // {
             // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
-            // new("Name", "SimTools/Packages/*.package", "baseurl%/Mods/Sims3/packages/kpst/*.package"),
-            // new("Name", "SimTools/Overrides/*.package", "baseurl%/Mods/Sims3/overrides/kpst/*.package"),
+            // new("Name", "SimTools/Packages/*.package", "%baseurl%/Mods/Sims3/packages/kpst/*.package"),
+            // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/kpst/*.package"),
             // });
 
             // ── Diesel Stuff (1 item) ─────────────────────────────
@@ -302,13 +302,13 @@ namespace SimTools
                 // new("Name", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/70s80s90s/*.package"),
             });
 
-            // ── University Life (6 items) ─────────────────────────
+            // ── University Life (7 items) ─────────────────────────
             yield return ("University Life", new List<GameplayFixItem>
             {
                 // new GameplayFixItem("Fix Display Name", "filename.package", "%baseurl%/Mods/Sims3/packages/filename.package"),
                 new("University - More Shell Entries by AussomeDays", "SimTools/Overrides/University - More Shell Entries.package", "%baseurl%/Mods/Sims3/overrides/university/University - More Shell Entries.package"),
-                new("University - Replacement Shells by AussomeDays", "SimTools/Overrides/*.package", "%baseurl%/Mods/Sims3/overrides/university/*.package"),
-                new("University Life Visual Fixes by SimBouquet", "SimTools/Overrides/simbouquet_OVERRIDE_EP9visualfixes.package", "%baseurl%/Mods/Sims3/packages/university/simbouquet_OVERRIDE_EP9visualfixes.package"),
+                new("University - Replacement Shells by AussomeDays", "SimTools/Overrides/University - Replacement Shells (overrides).package", "%baseurl%/Mods/Sims3/overrides/university/University - Replacement Shells (overrides).package"),
+                new("University Life Visual Fixes by SimBouquet", "SimTools/Overrides/simbouquet_OVERRIDE_EP9visualfixes.package", "%baseurl%/Mods/Sims3/overrides/university/simbouquet_OVERRIDE_EP9visualfixes.package"),
                 new("No More University Protests by Don Babilon", "SimTools/Packages/DB_ImprovedProtestSituation_NoNPCProtests.package", "%baseurl%/Mods/Sims3/packages/university/DB_ImprovedProtestSituation_NoNPCProtests.package"),
                 new("Alpha & Omega Door Fix by CeltySims", "SimTools/Packages/AlphaOmegaDoorFixed.package", "%baseurl%/Mods/Sims3/packages/university/AlphaOmegaDoorFixed.package"),
                 new("Tileable Items Shader Fix by Simsi45", "SimTools/Packages/UNIVERSITY LIFE - Tileable_Items_FIXED.package", "%baseurl%/Mods/Sims3/packages/university/UNIVERSITY LIFE - Tileable_Items_FIXED.package"),
@@ -622,7 +622,7 @@ namespace SimTools
                     }
                     catch (Exception ex)
                     {
-                        if (File.Exists(destPath)) File.Delete(destPath);
+                        try { if (File.Exists(destPath)) File.Delete(destPath); } catch { }
                         failed++;
                         MessageBox.Show(
                             $"Failed to download {item.FileName}:\n{ex.Message}",

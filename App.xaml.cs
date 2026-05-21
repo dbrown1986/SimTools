@@ -16,10 +16,13 @@ namespace SimTools
             LanguageManager.Load();
 
             // ── Splash ────────────────────────────────────────────────────
-            var splash = new SplashScreenWindow();
+            bool isFirstRun = !IniHelper.ReadBool("App", "HasLaunched", false);
+            var splash = new SplashScreenWindow(skippable: !isFirstRun);
             splash.Show();
             await splash.RunAsync();
             splash.Close();
+            if (isFirstRun)
+                IniHelper.WriteBool("App", "HasLaunched", true);
 
             // ── Language selection ─────────────────────────────────────────
             bool skipLang = IniHelper.ReadBool("Language", "DoNotAskAgain", false);

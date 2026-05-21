@@ -101,19 +101,19 @@
             </Button.Background>
         </Button>
         <TextBlock x:Name="BugfixText" HorizontalAlignment="Left" Margin="185,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="33" FontFamily="SimSun" Foreground="White" FontSize="11"><Run Text="Various modifications to core and global game variables that work to address the many bugs The Sims 3 has developed over the years."/><LineBreak/><Run/></TextBlock>
-        <Button x:Name="SaveCleanerButton" Content="Save Cleaner" HorizontalAlignment="Left" Margin="8,336,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="SaveCleanerButton" Content="Save Cleaner" HorizontalAlignment="Left" Margin="8,336,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SaveCleanerButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
         </Button>
         <TextBlock x:Name="SaveCleanerText" HorizontalAlignment="Left" Margin="184,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="The Sims 3 save files will bloat over time to the point that they reach several gigabytes in size and may get corrupted. Use this tool to clean them regularly."/>
-        <Button x:Name="ModButton" Content="Recommended Mods &gt;" HorizontalAlignment="Left" Margin="8,376,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="ModButton" Content="Recommended Mods &gt;" HorizontalAlignment="Left" Margin="8,376,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ModButton_Click" FontSize="11" ContextMenuOpening="ModButton_Context" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
         </Button>
         <TextBlock x:Name="ModsText" HorizontalAlignment="Left" Margin="184,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11"><Run Text="Featured here, are mods recommended by myself and the community but that do not vastly tweak the engine or fix bugs (requires The Sims 3 Mod Framework)."/><LineBreak/><Run/></TextBlock>
-        <Button x:Name="StoreButton" Content="Sims 3 Store &gt;" HorizontalAlignment="Left" Margin="8,416,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="StoreButton" Content="Sims 3 Store &gt;" HorizontalAlignment="Left" Margin="8,416,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="StoreButton_Click" FontSize="11" BorderBrush="{x:Null}" ContextMenuOpening="StoreButton_Context">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
