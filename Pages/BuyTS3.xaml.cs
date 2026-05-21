@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 namespace SimTools_v4.Pages
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for BuyTS3.xaml
     /// </summary>
     public partial class Window1 : Window
     {
         public Window1()
         {
-            InitializeComponent();
+         //   InitializeComponent();
         }
     }
 }
