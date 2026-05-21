@@ -1,7 +1,8 @@
-﻿
+
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,6 +50,7 @@ namespace SimTools
             // ── Rebuild context menus with localised headers ────────────────────
             SetupGPUContextMenu();
             SetupTweakContextMenu();
+            SetupBugFixContextMenu();
         }
 
         // Routes user to the vanilla demo video on YouTube
@@ -162,7 +164,7 @@ namespace SimTools
             // ── The Sims 3 (no sub-menu) ───────────────────────────────────────
             var sims3Item = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims3", "The Sims 3") };
             sims3Item.Click += (s, args) => DownloadAndOpenExe(
-                url: "%baseurl%/bin/x86/TS3_GPU_Addon.exe",
+                url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
                 fileName: "TS3_GPU_Addon.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
             );
@@ -331,6 +333,553 @@ namespace SimTools
 
         // Handler is now empty — menu is pre-built, nothing to do here
         private void TweakButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // BUGFIX BUTTON
+        // ═══════════════════════════════════════════════════════════════════════
+
+        // Opens the context menu on left-click (same pattern as GPU / Tweaks buttons)
+        private void BugFixButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.ContextMenu != null)
+            {
+                btn.ContextMenu.PlacementTarget = btn;
+                btn.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                btn.ContextMenu.IsOpen = true;
+            }
+        }
+
+        // Suppress the native right-click popup — menu is pre-built
+        private void BugFixButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
+
+        // ── SetupBugFixContextMenu ─────────────────────────────────────────────
+        // Builds the Bugfix Central context menu. Called from ApplyLanguage() so
+        // it rebuilds automatically after a language change.
+        //
+        // Structure:
+        //   The Sims 1       → warning message (use Simitone)
+        //   The Sims 2
+        //     Sim Shadow Fix → info msg → download .package to %Sims2Mods%
+        //     Bright CAS Fix → info msg → download .package to %Sims2Mods%
+        //   The Sims 3
+        //     Patch Downloader → 2× info msg → download TS3Lib.dll + TS3PD.exe → run TS3PD.exe
+        //     Simler90's Fixes → info msg → download .package to %Sims3Mods%
+        //     Gameplay Fixes   → info msg → open GameplayFixesWindow
+        //   The Sims 4       → warning message (placeholder)
+        //   SimCopter
+        //     SimCopterX → info msg → download SimCopterX.exe to %SimCopter% → run
+        //   Streets of SimCity
+        //     SimStreetsX → info msg → download SSXLauncher.exe to %StreetsOfSimCity% → run
+        //   SimCity 2000
+        //     SC2kFix  → info msg → download + extract sc2kfix-r10.zip to %SimCity2000%
+        //     SC2000X  → info msg → download SC2000X.exe to %SimCity2000% → run
+        // ──────────────────────────────────────────────────────────────────────
+        private void SetupBugFixContextMenu()
+        {
+            var contextMenu = new ContextMenu();
+
+            // Shared local Install dir — used for tools that live next to the app
+            string installDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Install");
+
+            // ─────────────────────────────────────────────────────────────────
+            // The Sims 1 — no fixes available; redirect user to Simitone
+            // ─────────────────────────────────────────────────────────────────
+            var sims1Item = new MenuItem { Header = "The Sims 1" };
+            sims1Item.Click += (_, _) =>
+                MessageBox.Show(
+                    "Please use Simitone under Game Tweaks to address The Sims 1 game bugs.",
+                    "The Sims 1 — Bug Fixes",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            contextMenu.Items.Add(sims1Item);
+
+            // ─────────────────────────────────────────────────────────────────
+            // The Sims 2
+            // ─────────────────────────────────────────────────────────────────
+            var sims2Item = new MenuItem { Header = "The Sims 2" };
+
+            // ── Sim Shadow Fix ────────────────────────────────────────────────
+            var sims2_shadowFix = new MenuItem { Header = "Sim Shadow Fix" };
+            sims2_shadowFix.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "With this mod, Sims' and pets' indoor shadows no longer appear as black rectangles. " +
+                    "This problem occurs on many modern graphics cards.",
+                    "Sim Shadow Fix — The Sims 2",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
+                {
+                    MessageBox.Show(
+                        "Your Sims 2 Mods directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                await DownloadFileOnly(
+                    "%baseurl%/Mods/Sims2/Downloads/simNopke-simShadowFix-maxisMatch.package",
+                    Path.Combine(GamePaths.Sims2Mods, "simNopke-simShadowFix-maxisMatch.package"));
+            };
+            sims2Item.Items.Add(sims2_shadowFix);
+
+            // ── Bright CAS Fix ────────────────────────────────────────────────
+            var sims2_brightCas = new MenuItem { Header = "Bright CAS Fix" };
+            sims2_brightCas.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "This mod fixes CAS parts that were made without Bump Map support looking glowy in CAS, " +
+                    "or nearly everything being glowy for people playing with shaders disabled. LazyDuchess FTW!",
+                    "Bright CAS Fix — The Sims 2",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
+                {
+                    MessageBox.Show(
+                        "Your Sims 2 Mods directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                await DownloadFileOnly(
+                    "%baseurl%/Mods/Sims2/Downloads/ld_BrightCASFix.package",
+                    Path.Combine(GamePaths.Sims2Mods, "ld_BrightCASFix.package"));
+            };
+            sims2Item.Items.Add(sims2_brightCas);
+
+            contextMenu.Items.Add(sims2Item);
+
+            // ─────────────────────────────────────────────────────────────────
+            // The Sims 3
+            // ─────────────────────────────────────────────────────────────────
+            var sims3Item = new MenuItem { Header = "The Sims 3" };
+
+            // ── Patch Downloader ──────────────────────────────────────────────
+            // Shows two info messages, downloads TS3Lib.dll + TS3PD.exe to /Install,
+            // then launches TS3PD.exe.  Both files use HEAD-check / skip-if-same logic.
+            var ts3_patchDl = new MenuItem { Header = "Patch Downloader" };
+            ts3_patchDl.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "INFO: You should only need to update to 1.67 if you are running the game from the Retail discs. " +
+                    "EA App and Steam versions will already be updated to the latest versions when installed.",
+                    "Patch Downloader — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                MessageBox.Show(
+                    "Use the following Patch Downloader to download patches for the base game " +
+                    "and expansions you have installed.",
+                    "Patch Downloader — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                MessageBox.Show(
+                    "Furthermore, it is highly recommended that you patch each title after " +
+                    "you have installed it. As an example, install base game, patch it, install " +
+                    "World Adventures, patch it, and so on and so forth.",
+                    "Patch Downloader — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                Directory.CreateDirectory(installDir);
+
+                var (libOk, _) = await DownloadFileOnly(
+                    "%baseurl%/Sideload-Apps/x86/TS3PD/TS3Lib.dll",
+                    Path.Combine(installDir, "TS3Lib.dll"));
+                if (!libOk) return;
+
+                var (exeOk, _) = await DownloadFileOnly(
+                    "%baseurl%/Sideload-Apps/x86/TS3PD/TS3PD.exe",
+                    Path.Combine(installDir, "TS3PD.exe"));
+                if (!exeOk) return;
+
+                Process.Start(new ProcessStartInfo(
+                    Path.Combine(installDir, "TS3PD.exe")) { UseShellExecute = true });
+            };
+            sims3Item.Items.Add(ts3_patchDl);
+
+            // ── Simler90's Fixes ──────────────────────────────────────────────
+            var ts3_simler90 = new MenuItem { Header = "Simler90's Fixes" };
+            ts3_simler90.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "Simler90's Gameplay Systems Core Mod fixes a long list of issues and bugs with the base game " +
+                    "and many of the expansion packs. STRONGLY recommended.",
+                    "Simler90's Fixes — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                await DownloadFileOnly(
+                    "%baseurl%/Mods/Sims3/packages/simler90GameplayCoreMod-UPDATE206.package",
+                    Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/simler90GameplayCoreMod-UPDATE206.package"));
+            };
+            sims3Item.Items.Add(ts3_simler90);
+
+            // ── LazyDuchess' Mono Patcher ──────────────────────────────────────────────
+            var ts3_mono_patcher = new MenuItem { Header = "Mono Patch" };
+            ts3_mono_patcher.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "Mono Patcher is a library that allows Script Modders " +
+                    "to replace Sims 3 methods with as much compatibility " +
+                    "as possible - No need to create core mods anymore to " +
+                    "replace game functions.",
+                    "LazyDuchess Mono Patcher — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                MessageBox.Show(
+                    "Mono Patcher is required for some of the mods featured " +
+                    "by SimTools. It's installation is highly suggested.",
+                    "LazyDuchess Mono Patcher — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                await DownloadFileOnly(
+                    "%baseurl%/Mods/Sims3/packages/base/ld_MonoPatcher.package",
+                    Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/ld_MonoPatcher.package"));
+                await DownloadFileOnly(
+                    "%baseurl%/Sideload-Apps/x86/MonoPatcher.asi",
+                    Path.Combine(GamePaths.Sims3Game, "Game/Bin/MonoPatcher.asi"));
+                await DownloadFileOnly(
+                    "%baseurl%/Sideload-Apps/x86/wininet.dll",
+                    Path.Combine(GamePaths.Sims3Game, "Game/Bin/wininet.dll"));
+            };
+            sims3Item.Items.Add(ts3_mono_patcher);
+
+            // ── Gameplay Fixes ────────────────────────────────────────────────
+            // Opens the multi-section AIO checkbox installer window.
+            var ts3_gameplayFixes = new MenuItem { Header = "Gameplay Fixes" };
+            ts3_gameplayFixes.Click += (_, _) =>
+            {
+                MessageBox.Show(
+                    "Launching Game Fixes AIO installer. " +
+                    "Select fixes ONLY for the expansions that you have installed.",
+                    "Gameplay Fixes — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                new GameplayFixesWindow(GamePaths.Sims3Mods) { Owner = this }.ShowDialog();
+            };
+            sims3Item.Items.Add(ts3_gameplayFixes);
+
+            contextMenu.Items.Add(sims3Item);
+
+            // ─────────────────────────────────────────────────────────────────
+            // The Sims 4 — placeholder
+            // ─────────────────────────────────────────────────────────────────
+            var sims4Item = new MenuItem { Header = "The Sims 4" };
+            sims4Item.Click += (_, _) =>
+                MessageBox.Show(
+                    "To be implemented at a later time.",
+                    "The Sims 4 — Bug Fixes",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            contextMenu.Items.Add(sims4Item);
+
+            // ─────────────────────────────────────────────────────────────────
+            // SimCopter → SimCopterX
+            // ─────────────────────────────────────────────────────────────────
+            var simCopterItem = new MenuItem { Header = "SimCopter" };
+            var simCopterX    = new MenuItem { Header = "SimCopterX" };
+            simCopterX.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "This is an alert from central dispatch - you're cleared for takeoff on Windows 10. " +
+                    "You no longer need to use a virtual machine or CPU Killer, just nerves of steel. " +
+                    "Additionally the patcher has optional higher-resolution modes to choose from including " +
+                    "16:9 and 16:10 aspect ratios so you can fill up your screen; " +
+                    "you'll feel like you're actually up in the sky saving shipwrecked Sims.",
+                    "SimCopterX",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.SimCopterGame))
+                {
+                    MessageBox.Show(
+                        "Your SimCopter game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var dest = Path.Combine(GamePaths.SimCopterGame, "SimCopterX.exe");
+                var (ok, _) = await DownloadFileOnly(
+                    "http://krimsky.net/patchers/download/SimCopterX.exe", dest);
+                if (!ok) return;
+
+                Process.Start(new ProcessStartInfo(dest) { UseShellExecute = true });
+            };
+            simCopterItem.Items.Add(simCopterX);
+            contextMenu.Items.Add(simCopterItem);
+
+            // ─────────────────────────────────────────────────────────────────
+            // Streets of SimCity → SimStreetsX
+            // ─────────────────────────────────────────────────────────────────
+            var streetsItem = new MenuItem { Header = "Streets of SimCity" };
+            var simStreetsX  = new MenuItem { Header = "SimStreetsX" };
+            simStreetsX.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "Take your rage to the streets on Windows 10 by becoming a lunatic Sim driver. " +
+                    "You no longer need to use a virtual machine or CPU Killer, just a lead foot. " +
+                    "The patcher comes with a variety of options so you can either take a relaxing drive " +
+                    "or battle up to seven other players over a network.",
+                    "SimStreetsX",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.StreetsOfSimCityGame))
+                {
+                    MessageBox.Show(
+                        "Your Streets of SimCity game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var dest = Path.Combine(GamePaths.StreetsOfSimCityGame, "SSXLauncher.exe");
+                var (ok, _) = await DownloadFileOnly(
+                    "http://krimsky.net/patchers/download/SSXLauncher.exe", dest);
+                if (!ok) return;
+
+                Process.Start(new ProcessStartInfo(dest) { UseShellExecute = true });
+            };
+            streetsItem.Items.Add(simStreetsX);
+            contextMenu.Items.Add(streetsItem);
+
+            // ─────────────────────────────────────────────────────────────────
+            // SimCity 2000 → SC2kFix + SC2000X
+            // ─────────────────────────────────────────────────────────────────
+            var sc2000Item = new MenuItem { Header = "SimCity 2000" };
+
+            // ── SC2kFix (ZIP download + extract) ──────────────────────────────
+            var sc2kFix = new MenuItem { Header = "SC2kFix" };
+            sc2kFix.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "SC2KFix is a bugfix and modding plugin for SimCity 2000 Special Edition. " +
+                    "Compatible with the Windows 95 version only. Use alongside SC2000X is untested.",
+                    "SC2kFix — SimCity 2000",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.SimCity2000Game))
+                {
+                    MessageBox.Show(
+                        "Your SimCity 2000 game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                await DownloadZipAndExtract(
+                    "https://github.com/sc2kfix/sc2kfix/releases/download/r10/sc2kfix-r10.zip",
+                    "sc2kfix-r10.zip",
+                    GamePaths.SimCity2000Game);
+            };
+            sc2000Item.Items.Add(sc2kFix);
+
+            // ── SC2000X (EXE download + run) ──────────────────────────────────
+            var sc2000X = new MenuItem { Header = "SC2000X" };
+            sc2000X.Click += async (_, _) =>
+            {
+                MessageBox.Show(
+                    "SC2000X is an open-source installer and patcher for SimCity 2000 (Win95). " +
+                    "In addition to being an all-in-one solution, it's completely open source and supports " +
+                    "multiple versions of the game. The patcher fixes the “Save-As” crash bug, " +
+                    "which is actually a general dialog bug extending to “Load Tile Set” as well.",
+                    "SC2000X — SimCity 2000",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.SimCity2000Game))
+                {
+                    MessageBox.Show(
+                        "Your SimCity 2000 game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var dest = Path.Combine(GamePaths.SimCity2000Game, "SC2000X.exe");
+                var (ok, _) = await DownloadFileOnly(
+                    "https://github.com/alekasm/SC2000X/releases/download/1.01/SC2000X.exe", dest);
+                if (!ok) return;
+
+                Process.Start(new ProcessStartInfo(dest) { UseShellExecute = true, Verb = "runas" });
+            };
+            sc2000Item.Items.Add(sc2000X);
+
+            contextMenu.Items.Add(sc2000Item);
+
+            // ── Assign to button ───────────────────────────────────────────────
+            BugFixButton.ContextMenu = contextMenu;
+        }
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // SHARED DOWNLOAD HELPERS
+        // ═══════════════════════════════════════════════════════════════════════
+
+        // ── DownloadFileOnly ───────────────────────────────────────────────────
+        // Downloads a file to an exact destination path.
+        //   • Resolves %baseurl% in the url parameter.
+        //   • Creates the destination directory if it doesn't exist.
+        //   • Skips the download when the file already exists AND the server's
+        //     Last-Modified header is not newer than the local write time (with
+        //     a 5-second clock-skew tolerance).
+        //   • Shows DownloadProgressWindow during the transfer.
+        //
+        // Returns:
+        //   (true,  true)  — freshly downloaded
+        //   (true,  false) — file was already current; download skipped
+        //   (false, false) — download error (error MessageBox already shown)
+        private async Task<(bool Success, bool IsNew)> DownloadFileOnly(string url, string destFilePath)
+        {
+            url = AppSettings.ResolveUrl(url);
+
+            // Ensure destination directory exists
+            var dir = Path.GetDirectoryName(destFilePath);
+            if (!string.IsNullOrEmpty(dir))
+                Directory.CreateDirectory(dir);
+
+            string fileName    = Path.GetFileName(destFilePath);
+            bool needsDownload = !File.Exists(destFilePath);
+
+            // ── HEAD check — skip download if local file is already current ────
+            if (!needsDownload)
+            {
+                try
+                {
+                    using var headClient = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+                    using var headResp   = await headClient.SendAsync(
+                        new HttpRequestMessage(HttpMethod.Head, url));
+
+                    if (headResp.IsSuccessStatusCode)
+                    {
+                        var remoteDate = headResp.Content.Headers.LastModified;
+                        if (remoteDate.HasValue)
+                        {
+                            var localWrite = File.GetLastWriteTimeUtc(destFilePath);
+                            needsDownload  = remoteDate.Value.UtcDateTime > localWrite.AddSeconds(5);
+                        }
+                        // No Last-Modified header → can't compare → keep local copy
+                    }
+                }
+                catch
+                {
+                    // Network unavailable or HEAD not supported — keep local copy silently
+                }
+            }
+
+            if (!needsDownload) return (true, false);
+
+            // ── Download ──────────────────────────────────────────────────────
+            var progressWindow = new DownloadProgressWindow(fileName)
+            {
+                Owner = System.Windows.Application.Current.MainWindow
+            };
+            progressWindow.Show();
+
+            try
+            {
+                using var http     = new HttpClient();
+                using var response = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+                response.EnsureSuccessStatusCode();
+
+                var  remoteLastModified = response.Content.Headers.LastModified;
+                long? totalBytes        = response.Content.Headers.ContentLength;
+
+                await using var contentStream = await response.Content.ReadAsStreamAsync();
+                await using var fileStream    = new FileStream(
+                    destFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+
+                var buffer     = new byte[8192];
+                long bytesRead = 0;
+                int lastPercent = 0, chunk;
+
+                while ((chunk = await contentStream.ReadAsync(buffer)) > 0)
+                {
+                    await fileStream.WriteAsync(buffer.AsMemory(0, chunk));
+                    bytesRead += chunk;
+
+                    if (totalBytes.HasValue)
+                    {
+                        int pct = (int)(bytesRead * 100 / totalBytes.Value);
+                        if (pct != lastPercent)
+                        {
+                            lastPercent = pct;
+                            progressWindow.UpdateProgress(pct);
+                        }
+                    }
+                    else
+                    {
+                        progressWindow.SetIndeterminate();
+                    }
+                }
+
+                // Stamp the local file with the server's Last-Modified so the next
+                // HEAD comparison works correctly even after an app restart.
+                if (remoteLastModified.HasValue)
+                    File.SetLastWriteTimeUtc(destFilePath, remoteLastModified.Value.UtcDateTime);
+
+                return (true, true);
+            }
+            catch (Exception ex)
+            {
+                if (File.Exists(destFilePath)) File.Delete(destFilePath);
+
+                MessageBox.Show(
+                    $"Download failed: {fileName}\n{ex.Message}",
+                    LanguageManager.Get("Messages", "Error_DownloadTitle", "Download Error"),
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+
+                return (false, false);
+            }
+            finally
+            {
+                progressWindow.Close();
+            }
+        }
+
+        // ── DownloadZipAndExtract ──────────────────────────────────────────────
+        // Downloads a ZIP archive to destDir/<zipName> using DownloadFileOnly
+        // (HEAD-check, skip-if-same), then extracts its contents into destDir.
+        //
+        // Extraction is only performed when the ZIP was freshly downloaded —
+        // if the HEAD check determined the local copy is already current the
+        // extracted files are assumed to be current too, so no extraction runs.
+        //
+        // Returns true on success (including the already-current skip case).
+        private async Task<bool> DownloadZipAndExtract(string url, string zipName, string destDir)
+        {
+            var zipPath       = Path.Combine(destDir, zipName);
+            var (ok, isNew)   = await DownloadFileOnly(url, zipPath);
+
+            if (!ok)    return false;   // download failed — error already shown
+            if (!isNew) return true;    // ZIP already current — extraction already done previously
+
+            try
+            {
+                // overwriteFiles: true prevents exceptions on re-extraction
+                ZipFile.ExtractToDirectory(zipPath, destDir, overwriteFiles: true);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to extract {zipName}:\n{ex.Message}",
+                    "Extract Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
 
         // Settings Handler
         private void SettingsButton_Click(object sender, RoutedEventArgs e)

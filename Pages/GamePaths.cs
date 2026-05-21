@@ -63,11 +63,20 @@ namespace SimTools
         // ── SimCity 2000 ──────────────────────────────────────────────────────
         public static string SimCity2000Game         => Game("SimCity2000");
 
+        // ── SimCity 3000 ────────────────────────────────────────────
+        public static string SimCity3000Game => Game("SimCity3000");
+
         // ── SimCity 3000 Unlimited ────────────────────────────────────────────
-        public static string SimCity3000Game         => Game("SimCity3000");
+        public static string SimCity3000UnlimitedGame => Game("SimCity3000U");
 
         // ── SimCity 4 Deluxe ──────────────────────────────────────────────────
-        public static string SimCity4Game            => Game("SimCity4");
+        public static string SimCity4Game => Game("SimCity4");
+
+        // ── SimCity 4 Rush Hour ──────────────────────────────────────────────────
+        public static string SimCity4RHGame => Game("SimCity4RH");
+
+        // ── SimCity 4 Deluxe ──────────────────────────────────────────────────
+        public static string SimCity4DeluxeGame            => Game("SimCity4Deluxe");
 
         // ── SimCity (2013) ────────────────────────────────────────────────────
         public static string SimCity2013Game         => Game("SimCity2013");
