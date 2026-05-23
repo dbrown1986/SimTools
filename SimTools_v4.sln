@@ -5,12 +5,6 @@ VisualStudioVersion = 17.14.37216.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimTools_v4", "SimTools_v4.csproj", "{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimToolsUpdater", "..\SimToolsUpdater\SimToolsUpdater.csproj", "{2316341A-7BF3-4DA5-8269-C34811932766}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimToolsInstaller", "..\SimToolsInstaller\SimToolsInstaller.csproj", "{DAB13363-1D1F-4844-95BF-C45D08DE95A4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimToolsLanguageAssistant", "..\SimToolsLanguageAssistant\SimToolsLanguageAssistant.csproj", "{B1DA4CC3-A40A-42D5-9CE6-611FE9A32435}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
