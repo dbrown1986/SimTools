@@ -15,11 +15,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Resource Include="Images\button_gray.png" />
 		<Resource Include="Images\button_normal.png" />
 		<Resource Include="Images\button_yellow.png" />
 		<Resource Include="Images\button_green.png" />
 		<Resource Include="Images\button_red.png" />
 		<Resource Include="Images\close-button.png" />
+		<Resource Include="Images\CodingWithDyslexia.gif" />
 		<Resource Include="Images\discord.png" />
 		<Resource Include="Images\gradient.png" />
 		<Resource Include="Images\gradient_hi.png" />
@@ -100,6 +102,11 @@
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Images\button_gray.png" />
+	  <None Remove="Images\CodingWithDyslexia.gif" />
 	</ItemGroup>
 
 	<ItemGroup>

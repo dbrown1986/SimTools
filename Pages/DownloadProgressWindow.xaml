@@ -1,0 +1,51 @@
+<Window x:Class="SimTools.DownloadProgressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Downloading"
+        Width="420"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False" WindowStyle="None">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/TS3_Box.png"/>
+    </Window.Background>
+
+    <Grid Margin="16 12 16 14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="StatusText"
+                   Grid.Row="0"
+                   Text="Preparing&#x2026;"
+                   TextWrapping="Wrap"
+                   Foreground="White"
+                   FontFamily="Tahoma"
+                   FontSize="12"/>
+
+        <ProgressBar x:Name="ProgressBar"
+                     Grid.Row="2"
+                     Height="18"
+                     Minimum="0" Maximum="100" Value="0">
+            <ProgressBar.Foreground>
+                <ImageBrush ImageSource="/Images/button_green.png"/>
+            </ProgressBar.Foreground>
+            <ProgressBar.Background>
+                <ImageBrush ImageSource="/Images/button_gray.png"/>
+            </ProgressBar.Background>
+        </ProgressBar>
+
+        <TextBlock x:Name="PercentText"
+                   Grid.Row="4"
+                   Text=""
+                   HorizontalAlignment="Right"
+                   Foreground="Gray"
+                   FontFamily="Tahoma"
+                   FontSize="11"/>
+    </Grid>
+</Window>

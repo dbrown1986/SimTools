@@ -130,14 +130,14 @@ namespace SimTools
             sims2_32.Click += (s, args) => DownloadAndOpenExe(
                 url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
                 fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
             var sims2_64 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_64", "64-Bit") };
             sims2_64.Click += (s, args) => DownloadAndOpenExe(
                 url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
                 fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
             sims2Item.Items.Add(sims2_32);
@@ -150,14 +150,14 @@ namespace SimTools
             simsStories_32.Click += (s, args) => DownloadAndOpenExe(
                 url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
                 fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
             var simsStories_64 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_64", "64-Bit") };
             simsStories_64.Click += (s, args) => DownloadAndOpenExe(
                 url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
                 fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
             simsStoriesItem.Items.Add(simsStories_32);
@@ -168,7 +168,7 @@ namespace SimTools
             sims3Item.Click += (s, args) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
                 fileName: "TS3_GPU_Addon.exe",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
             contextMenu.Items.Add(sims2Item);

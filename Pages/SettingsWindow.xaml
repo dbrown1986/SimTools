@@ -1,0 +1,199 @@
+<Window x:Class="SimTools.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SimTools - Settings"
+        Width="680" Height="720"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="#1A1A1A">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+        <Style x:Key="DarkTextBox" TargetType="TextBox">
+            <Setter Property="Background"               Value="#2A2A2A"/>
+            <Setter Property="Foreground"               Value="White"/>
+            <Setter Property="BorderBrush"              Value="#4B4B4B"/>
+            <Setter Property="FontFamily"               Value="Tahoma"/>
+            <Setter Property="FontSize"                 Value="11"/>
+            <Setter Property="Height"                   Value="26"/>
+            <Setter Property="Padding"                  Value="4 0 4 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="DarkButton" TargetType="Button">
+            <Setter Property="Background"  Value="#373737"/>
+            <Setter Property="Foreground"  Value="White"/>
+            <Setter Property="FontFamily"  Value="Tahoma"/>
+            <Setter Property="FontSize"    Value="11"/>
+            <Setter Property="FontWeight"  Value="Bold"/>
+            <Setter Property="Height"      Value="30"/>
+            <Setter Property="Padding"     Value="10 0 10 0"/>
+        </Style>
+
+        <Style x:Key="BrowseButton" TargetType="Button" BasedOn="{StaticResource DarkButton}">
+            <Setter Property="Width"   Value="70"/>
+            <Setter Property="Height"  Value="26"/>
+            <Setter Property="Margin"  Value="4 0 0 0"/>
+        </Style>
+
+        <Style x:Key="SectionHeaderText" TargetType="TextBlock">
+            <Setter Property="Foreground"  Value="#FFD200"/>
+            <Setter Property="FontFamily"  Value="Tahoma"/>
+            <Setter Property="FontSize"    Value="15"/>
+            <Setter Property="FontWeight"  Value="Bold"/>
+            <Setter Property="Margin"      Value="0 12 0 8"/>
+        </Style>
+
+        <Style x:Key="RowLabelText" TargetType="TextBlock">
+            <Setter Property="Foreground"        Value="Gray"/>
+            <Setter Property="FontFamily"        Value="Tahoma"/>
+            <Setter Property="FontSize"          Value="11"/>
+            <Setter Property="Width"             Value="110"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="GameNameText" TargetType="TextBlock">
+            <Setter Property="Foreground"  Value="White"/>
+            <Setter Property="FontFamily"  Value="Tahoma"/>
+            <Setter Property="FontSize"    Value="12"/>
+            <Setter Property="FontWeight"  Value="Bold"/>
+            <Setter Property="Margin"      Value="0 6 0 3"/>
+        </Style>
+
+        <Style x:Key="DividerLine" TargetType="Separator">
+            <Setter Property="Background" Value="#373737"/>
+            <Setter Property="Margin"     Value="0 8 0 8"/>
+        </Style>
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+        <StackPanel>
+
+            <!-- ── Language ───────────────────────────────────────────── -->
+            <TextBlock x:Name="SectionLangHeader" Style="{StaticResource SectionHeaderText}"
+                       Text="Language"/>
+
+            <DockPanel Margin="0 0 0 6">
+                <TextBlock Style="{StaticResource RowLabelText}" Text="Language:"/>
+                <ComboBox x:Name="LangCombo" Width="160" Margin="8 0 0 0"
+                          VerticalAlignment="Center"/>
+            </DockPanel>
+
+            <Button x:Name="ResetLangBtn"
+                    Style="{StaticResource DarkButton}"
+                    HorizontalAlignment="Left"
+                    Width="Auto" MinWidth="200"
+                    Margin="0 6 0 20"
+                    Content="Reset - Show Language Selection on Next Launch"
+                    Click="ResetLanguage_Click"/>
+
+            <!-- ── Network ────────────────────────────────────────────── -->
+            <TextBlock Style="{StaticResource SectionHeaderText}" Text="Network"/>
+
+            <Grid Margin="0 0 0 4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Style="{StaticResource RowLabelText}" Text="Base URL:"/>
+                <TextBox   x:Name="BaseUrlBox" Grid.Column="1" Style="{StaticResource DarkTextBox}"/>
+            </Grid>
+
+            <Button x:Name="ResetUrlBtn"
+                    Style="{StaticResource DarkButton}"
+                    HorizontalAlignment="Left"
+                    Width="Auto" MinWidth="200"
+                    Margin="0 4 0 20"
+                    Click="ResetUrl_Click"/>
+
+            <!-- ── Music ──────────────────────────────────────────────── -->
+            <TextBlock Style="{StaticResource SectionHeaderText}" Text="Music"/>
+
+            <CheckBox x:Name="MusicEnabledCheck"
+                      Content="Enable music player"
+                      Foreground="#DCDCDC"
+                      FontSize="13"
+                      Margin="0 0 0 4"
+                      IsChecked="True"/>
+
+            <TextBlock Foreground="#888888"
+                       FontFamily="Tahoma" FontSize="11"
+                       TextWrapping="Wrap"
+                       Margin="0 0 0 20"
+                       Text="Place your own songs (MP3 / WAV / FLAC / M4A) in the /Resources/Music folder."/>
+
+            <!-- ── Game &amp; Mod Directories ────────────────────────── -->
+            <TextBlock x:Name="SectionDirsHeader" Style="{StaticResource SectionHeaderText}"
+                       Text="Game &amp; Mod Directories"/>
+
+            <ItemsControl x:Name="GameDirsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}" Style="{StaticResource GameNameText}"/>
+
+                            <!-- Game directory row -->
+                            <Grid Margin="0 2 0 2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource RowLabelText}"
+                                           Text="Game Directory:"/>
+                                <TextBox   Grid.Column="1"
+                                           Style="{StaticResource DarkTextBox}"
+                                           Text="{Binding GameDir, UpdateSourceTrigger=PropertyChanged}"
+                                           Margin="4 0"/>
+                                <Button    Grid.Column="2"
+                                           Style="{StaticResource BrowseButton}"
+                                           Content="Browse..."
+                                           Command="{Binding BrowseGameCommand}"/>
+                            </Grid>
+
+                            <!-- Mods directory row (hidden when HasMods = false) -->
+                            <Grid Margin="0 2 0 2"
+                                  Visibility="{Binding HasMods, Converter={StaticResource BoolToVis}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource RowLabelText}"
+                                           Text="Mods Directory:"/>
+                                <TextBox   Grid.Column="1"
+                                           Style="{StaticResource DarkTextBox}"
+                                           Text="{Binding ModDir, UpdateSourceTrigger=PropertyChanged}"
+                                           Margin="4 0"/>
+                                <Button    Grid.Column="2"
+                                           Style="{StaticResource BrowseButton}"
+                                           Content="Browse..."
+                                           Command="{Binding BrowseModCommand}"/>
+                            </Grid>
+
+                            <Separator Style="{StaticResource DividerLine}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- ── Save / Cancel ──────────────────────────────────────── -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 12 0 4">
+                <Button x:Name="SaveBtn"
+                        Style="{StaticResource DarkButton}"
+                        Background="#FFD200" Foreground="Black"
+                        Width="90" Margin="0 0 8 0"
+                        Content="Save"
+                        Click="Save_Click"/>
+                <Button x:Name="CancelBtn"
+                        Style="{StaticResource DarkButton}"
+                        Width="90"
+                        Content="Cancel"
+                        Click="Cancel_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
