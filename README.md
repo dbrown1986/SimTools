@@ -450,6 +450,8 @@ There is a hidden easter egg somewhere within SimTools — tucked away on one sp
 
 Claude has been used in an effort to check code for warnings and errors, clean up the code and assist with certain features.
 
+AI and translation tools have also been used to create the initial translations for the software. Bilingual individuals are encouraged to submit corrections or use the translation tool (coming soon) to prepare a corrected .lang file.
+
 ---
 
 ## License
