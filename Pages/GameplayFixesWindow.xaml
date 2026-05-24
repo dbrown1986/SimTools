@@ -4,10 +4,9 @@
         xmlns:local="clr-namespace:SimTools"
         Title="Gameplay Fixes AIO &#x2014; The Sims 3"
         Width="720" Height="660"
-        WindowStyle="ToolWindow"
+        WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner"
-        Background="#1A1A1A">
+        WindowStartupLocation="CenterOwner">
 
     <Window.Resources>
 
@@ -215,6 +214,9 @@
         </Style>
 
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
 
     <DockPanel>
 

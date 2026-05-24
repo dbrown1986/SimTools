@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         ShowInTaskbar="False" WindowStyle="None">
     <Window.Background>
-        <ImageBrush ImageSource="/Images/TS3_Box.png"/>
+        <ImageBrush ImageSource="/Images/TS3_Box3.png"/>
     </Window.Background>
 
     <Grid Margin="16 12 16 14">
@@ -26,17 +26,17 @@
                    TextWrapping="Wrap"
                    Foreground="White"
                    FontFamily="Tahoma"
-                   FontSize="12"/>
+                   FontSize="12" HorizontalAlignment="Center"/>
 
         <ProgressBar x:Name="ProgressBar"
                      Grid.Row="2"
                      Height="18"
-                     Minimum="0" Maximum="100" Value="0">
+                     Minimum="0" Maximum="100" Value="0" BorderBrush="{x:Null}">
             <ProgressBar.Foreground>
-                <ImageBrush ImageSource="/Images/button_green.png"/>
+                <ImageBrush ImageSource="/Images/DownloadProgress2.png"/>
             </ProgressBar.Foreground>
             <ProgressBar.Background>
-                <ImageBrush ImageSource="/Images/button_gray.png"/>
+                <ImageBrush ImageSource="/Images/DownloadProgress1.png"/>
             </ProgressBar.Background>
         </ProgressBar>
 

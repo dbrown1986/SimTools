@@ -127,18 +127,38 @@ namespace SimTools
             var sims2Item = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims2", "The Sims 2") };
 
             var sims2_32 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_32", "32-Bit") };
-            sims2_32.Click += (s, args) => DownloadAndOpenExe(
-                url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
-                fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
-            );
+            sims2_32.Click += (s, args) =>
+            {
+                MessageBox.Show(
+                    "Do NOT apply this patch if you are running the Legacy Collection of Sims 2, as it is no longer " +
+                    "required with the latest release of the new Legacy Collection. DO patch if you are running " +
+                    "Retail or Complete Collection editions.",
+                    "Graphics Rules Maker — The Sims 2",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                DownloadAndOpenExe(
+                    url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
+                    fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
+                    downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
+                );
+            };
 
             var sims2_64 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_64", "64-Bit") };
-            sims2_64.Click += (s, args) => DownloadAndOpenExe(
-                url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
-                fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
-            );
+            sims2_64.Click += (s, args) =>
+            {
+                MessageBox.Show(
+                    "Do NOT apply this patch if you are running the Legacy Collection of Sims 2, as it is no longer " +
+                    "required with the latest release of the new Legacy Collection. DO patch if you are running " +
+                    "Retail or Complete Collection editions.",
+                    "Graphics Rules Maker — The Sims 2",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                DownloadAndOpenExe(
+                    url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
+                    fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
+                    downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
+                );
+            };
 
             sims2Item.Items.Add(sims2_32);
             sims2Item.Items.Add(sims2_64);
@@ -314,21 +334,256 @@ namespace SimTools
         private void SetupTweakContextMenu()
         {
             var contextMenu = new ContextMenu();
+            string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
 
-            // ── The Sims 1 (sub-menu) ──────────────────────────────────────────
+            // ── The Sims 1 ────────────────────────────────────────────────────────────
             var sims1Item = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Tweaks_Sims1", "The Sims 1") };
 
-            // ── Simitone ──────────────────────────────────────────
             var sims1_simitone = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Tweaks_Simitone", "Simitone") };
             sims1_simitone.Click += (s, args) => DownloadAndOpenExe(
                 url: "https://github.com/riperiperi/Simitone/releases/download/v0.8.12/SimitoneWindows.zip",  // ← replace
                 fileName: "SimitoneWindows.zip",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
             );
-
             sims1Item.Items.Add(sims1_simitone);
-
             contextMenu.Items.Add(sims1Item);
+
+            // ── The Sims 2 ────────────────────────────────────────────────────────────
+            var sims2Item = new MenuItem { Header = "The Sims 2" };
+
+            var sims2_rpc = new MenuItem { Header = "Sims2RPC" };
+            sims2_rpc.Click += (_, _) => DownloadAndOpenExe(
+                url: "%baseurl%/Sideload-Apps/x86/Sims2RPCInstaller.exe",
+                fileName: "Sims2RPCInstaller.exe",
+                downloadDirectory: binDir
+            );
+            sims2Item.Items.Add(sims2_rpc);
+            contextMenu.Items.Add(sims2Item);
+
+            // ── The Sims: Castaway Stories ────────────────────────────────────────────
+            var castawayItem = new MenuItem { Header = "The Sims: Castaway Stories" };
+            castawayItem.Click += (_, _) => OpenUrl("https://modthesims.info/t/513463");
+            contextMenu.Items.Add(castawayItem);
+
+            // ── The Sims 3 ────────────────────────────────────────────────────────────
+            var sims3Item = new MenuItem { Header = "The Sims 3" };
+
+            // ── Best In-Game Settings (placeholder) ───────────────────────────────────
+            var ts3_bestSettings = new MenuItem
+            {
+                Header = "Best In-Game Settings",
+                IsEnabled = false                       // window not yet built
+            };
+            sims3Item.Items.Add(ts3_bestSettings);
+
+            // ── Game INI Tweaks (placeholder) ─────────────────────────────────────────
+            var ts3_iniTweaks = new MenuItem
+            {
+                Header = "Game INI Tweaks",
+                IsEnabled = false                       // window not yet built
+            };
+            sims3Item.Items.Add(ts3_iniTweaks);
+
+            // ── Intel Alder Lake Fix ──────────────────────────────────────────────────
+            var ts3_alderLake = new MenuItem { Header = "Intel Alder Lake Fix" };
+            ts3_alderLake.Click += (_, _) =>
+            {
+                MessageBox.Show(
+                    "On the newest Core i3-i9, 12th gen Intel Alder Lake CPU, The Sims 3 crashes upon starting. " +
+                    "This fix will allow users with Alder Lake CPU's to be able to play the game again.",
+                    "Intel Alder Lake Fix — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                MessageBox.Show(
+                    "If you are running the EA App version of The Sims 3, this fix is no longer required as it " +
+                    "has been fixed in v1.69.47.024017 (01/13/2025). Users running the Retail or Steam versions " +
+                    "of the game will still need to use this patch to run the game on newer Intel CPU's.",
+                    "Intel Alder Lake Fix — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/AlderLakePatch.exe",
+                    fileName: "AlderLakePatch.exe",
+                    downloadDirectory: GamePaths.Sims3Game
+                );
+            };
+            sims3Item.Items.Add(ts3_alderLake);
+
+            // ── LazyDuchess Smooth Patch (sub-menu) ───────────────────────────────────
+            var ts3_smoothPatch = new MenuItem { Header = "LazyDuchess Smooth Patch" };
+
+            var smoothPatch_ts3 = new MenuItem { Header = "The Sims 3" };
+            smoothPatch_ts3.Click += (_, _) =>
+            {
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/LD_SmoothPatch_TS3.exe",
+                    fileName: "LD_SmoothPatch_TS3.exe",
+                    downloadDirectory: GamePaths.Sims3Game
+                );
+            };
+            ts3_smoothPatch.Items.Add(smoothPatch_ts3);
+
+            var smoothPatch_tsm = new MenuItem { Header = "The Sims Medieval" };
+            smoothPatch_tsm.Click += (_, _) =>
+            {
+                if (!GamePaths.IsConfigured(GamePaths.SimsMedievalGame))
+                {
+                    MessageBox.Show(
+                        "Your Sims Medieval Game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/LD_SmoothPatch_TSM.exe",
+                    fileName: "LD_SmoothPatch_TSM.exe",
+                    downloadDirectory: GamePaths.SimsMedievalGame
+                );
+            };
+            ts3_smoothPatch.Items.Add(smoothPatch_tsm);
+
+            sims3Item.Items.Add(ts3_smoothPatch);
+
+            // ── LazyDuchess Launcher ──────────────────────────────────────────────────
+            var ts3_ldLauncher = new MenuItem { Header = "LazyDuchess Launcher" };
+            ts3_ldLauncher.Click += (_, _) =>
+            {
+                MessageBox.Show(
+                    "A custom TS3 Launcher for the EA App (version 1.69), allowing for greater control. " +
+                    "Features ASI mod support, launcher bypass, show all EP's, better SimPort login & disable all CC.",
+                    "LazyDuchess Launcher — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                MessageBox.Show(
+                    "For EA App only. By default, this installer extracts to the default path and will replace " +
+                    "the game's vanilla launcher. If you have installed The Sims 3 elsewhere, you will need to " +
+                    "manually change the install location.",
+                    "LazyDuchess Launcher — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/LD_TS3Launcher.exe",
+                    fileName: "LD_TS3Launcher.exe",
+                    downloadDirectory: GamePaths.Sims3Game
+                );
+            };
+            sims3Item.Items.Add(ts3_ldLauncher);
+
+            // ── Mono Patcher Library ──────────────────────────────────────────────────
+            var ts3_monoPatcher = new MenuItem { Header = "Mono Patcher Library" };
+            ts3_monoPatcher.Click += (_, _) =>
+            {
+                MessageBox.Show(
+                    "Another amazing mod by LazyDuchess, Mono Patcher is a library that allows Script Modders " +
+                    "to replace Sims 3 methods with as much compatibility as possible - No need to create core " +
+                    "mods anymore to replace game functions.",
+                    "Mono Patcher Library — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                MessageBox.Show(
+                    "Current Version: 0.2.2",
+                    "Mono Patcher Library — The Sims 3",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/ld_mpl.exe",
+                    fileName: "ld_mpl.exe",
+                    downloadDirectory: GamePaths.Sims3Game
+                );
+            };
+            sims3Item.Items.Add(ts3_monoPatcher);
+
+            // ── TinyUI Fix ────────────────────────────────────────────────────────────
+            var ts3_tinyUI = new MenuItem { Header = "TinyUI Fix" };
+            ts3_tinyUI.Click += (_, _) =>
+            {
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/TinyUIFix.exe",
+                    fileName: "TinyUIFix.exe",
+                    downloadDirectory: GamePaths.Sims3Game
+                );
+            };
+            sims3Item.Items.Add(ts3_tinyUI);
+
+            // ── Sweet Treats Conversion Guide ─────────────────────────────────────────
+            var ts3_sweetTreats = new MenuItem { Header = "Sweet Treats Conversion Guide" };
+            ts3_sweetTreats.Click += (_, _) => OpenUrl("%baseurl%/guides/sweet-treats");  // ← replace with actual URL
+            sims3Item.Items.Add(ts3_sweetTreats);
+
+            // ── nRaas Core Mods (sub-menu) ────────────────────────────────────────────
+            var ts3_nraas = new MenuItem { Header = "nRaas Core Mods" };
+
+            // Local helper — creates a package download item targeting Sims3Mods/SimTools/Packages/nraas/
+            MenuItem NRaasPackageItem(string header, string fileName)
+            {
+                var item = new MenuItem { Header = header };
+                item.Click += async (_, _) =>
+                {
+                    if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
+                    {
+                        MessageBox.Show(
+                            "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.",
+                            "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    await DownloadFileOnly(
+                        $"%baseurl%/Mods/Sims3/packages/nraas/{fileName}",
+                        Path.Combine(GamePaths.Sims3Mods, "SimTools", "Packages", "nraas", fileName));
+                };
+                return item;
+            }
+
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap", "NRaas_ErrorTrap.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Overwatch", "NRaas_Overwatch.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Master Controller", "NRaas_MasterController.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Register", "NRaas_Register.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Saver", "NRaas_Saver.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Debug Enabler", "NRaas_DebugEnabler.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("nRaas No-CD", "NRaas_NoCD.package"));
+
+            var nraas_more = new MenuItem { Header = "More nRaas Mods" };
+            nraas_more.Click += (_, _) => OpenUrl("https://www.nraas.net/community/home");
+            ts3_nraas.Items.Add(nraas_more);
+
+            sims3Item.Items.Add(ts3_nraas);
+            contextMenu.Items.Add(sims3Item);
 
             TweakButton.ContextMenu = contextMenu;
         }

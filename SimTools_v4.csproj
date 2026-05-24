@@ -23,6 +23,8 @@
 		<Resource Include="Images\close-button.png" />
 		<Resource Include="Images\CodingWithDyslexia.gif" />
 		<Resource Include="Images\discord.png" />
+		<Resource Include="Images\DownloadProgress1.png" />
+		<Resource Include="Images\DownloadProgress2.png" />
 		<Resource Include="Images\gradient.png" />
 		<Resource Include="Images\gradient_hi.png" />
 		<Resource Include="Images\Icons\AuroraSkies.ico" />
@@ -88,6 +90,7 @@
 		<Resource Include="Images\sulsul.png" />
 		<Resource Include="Images\TS3_Box.png" />
 		<Resource Include="Images\TS3_Box2.png" />
+		<Resource Include="Images\TS3_Box3.png" />
 		<Resource Include="Images\youtube.png" />
 		<Resource Include="Images\facebook.png" />
 		<Resource Include="Resources\Fonts\simsun.ttc" />
@@ -107,6 +110,9 @@
 	<ItemGroup>
 	  <None Remove="Images\button_gray.png" />
 	  <None Remove="Images\CodingWithDyslexia.gif" />
+	  <None Remove="Images\DownloadProgress1.png" />
+	  <None Remove="Images\DownloadProgress2.png" />
+	  <None Remove="Images\TS3_Box3.png" />
 	</ItemGroup>
 
 	<ItemGroup>
