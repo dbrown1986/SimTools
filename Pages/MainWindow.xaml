@@ -199,5 +199,10 @@
                 <ImageBrush ImageSource="/Images/info.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="EasterEgg" Content="Button"
+        HorizontalAlignment="Left" Margin="688,396,0,0" VerticalAlignment="Top"
+        Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}"
+        Width="16" Height="16"
+        Click="EasterEgg_Click"/>
     </Grid>
 </Window>

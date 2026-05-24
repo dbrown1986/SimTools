@@ -6,7 +6,7 @@
         WindowStyle="ToolWindow"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
-        Background="#1A1A1A">
+        Background="#FF2E5B84">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>

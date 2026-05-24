@@ -1501,5 +1501,11 @@ namespace SimTools
             // ── Assign to button ──────────────────────────────────────────────
             StoreButton.ContextMenu = contextMenu;
         }
+
+            private void EasterEgg_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl("https://archive.org/details/the-minds-eye-raw-dv-captures/The+Mind's+Eye+(1990%2C+original%2C+LaserDisc).avi");
+        }
+
     }
 }

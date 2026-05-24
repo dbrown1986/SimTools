@@ -6,7 +6,7 @@
         Width="720" Height="660"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner" Background="#FF89B9E6">
 
     <Window.Resources>
 
@@ -214,9 +214,6 @@
         </Style>
 
     </Window.Resources>
-    <Window.Background>
-        <ImageBrush/>
-    </Window.Background>
 
     <DockPanel>
 
@@ -227,18 +224,24 @@
             <Button Content="Cancel"
                     Width="100" Height="30"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Background="#373737" Foreground="White"
+                    VerticalAlignment="Center" Foreground="White"
                     FontFamily="Tahoma" FontWeight="Bold"
-                    Click="Cancel_Click"/>
+                    Click="Cancel_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/button_red.png"/>
+                </Button.Background>
+            </Button>
             <Button x:Name="DownloadBtn"
                     Content="Download Selected"
                     Width="160" Height="30"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Background="#FFD200" Foreground="Black"
+                    VerticalAlignment="Center" Foreground="Black"
                     FontFamily="Tahoma" FontWeight="Bold"
-                    Click="DownloadSelected_Click"/>
+                    Click="DownloadSelected_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/button_normal.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
 
         <!-- ── Global "Select All" ── -->
