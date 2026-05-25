@@ -6,20 +6,20 @@
         Width="720" Height="660"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner" Background="#FF89B9E6">
+        WindowStartupLocation="CenterOwner">
 
     <Window.Resources>
 
         <!-- ── Section "Select All" checkbox style ── -->
         <Style x:Key="SectionCheckBox" TargetType="CheckBox">
-            <Setter Property="Foreground" Value="#B4B4B4"/>
+            <Setter Property="Foreground" Value="#555555"/>
             <Setter Property="FontStyle"  Value="Italic"/>
             <Setter Property="Margin"     Value="0 0 0 5"/>
         </Style>
 
         <!-- ── Expander header text ── -->
         <Style x:Key="ExpanderHeaderText" TargetType="TextBlock">
-            <Setter Property="Foreground"        Value="#FFD200"/>
+            <Setter Property="Foreground"        Value="#1A1A1A"/>
             <Setter Property="FontFamily"        Value="Tahoma"/>
             <Setter Property="FontSize"          Value="12"/>
             <Setter Property="FontWeight"        Value="Bold"/>
@@ -41,7 +41,7 @@
                                 <!-- Expanded state: chevron pointing down ▾ -->
                                 <Path x:Name="ChevronDown"
                                       Data="M 1 3 L 7 9 L 13 3"
-                                      Stroke="#FFD200"
+                                      Stroke="#555555"
                                       StrokeThickness="2"
                                       StrokeLineJoin="Round"
                                       HorizontalAlignment="Center"
@@ -50,7 +50,7 @@
                                 <!-- Collapsed state: chevron pointing right ▶ -->
                                 <Path x:Name="ChevronRight"
                                       Data="M 3 1 L 9 7 L 3 13"
-                                      Stroke="#FFD200"
+                                      Stroke="#555555"
                                       StrokeThickness="2"
                                       StrokeLineJoin="Round"
                                       HorizontalAlignment="Center"
@@ -72,8 +72,8 @@
 
         <!-- ── Full Expander style ── -->
         <Style TargetType="Expander">
-            <Setter Property="Background"      Value="#222222"/>
-            <Setter Property="BorderBrush"     Value="#464646"/>
+            <Setter Property="Background"      Value="#F5F5F5"/>
+            <Setter Property="BorderBrush"     Value="#CCCCCC"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Margin"          Value="4 4 4 4"/>
             <Setter Property="Template">
@@ -87,7 +87,7 @@
 
                                 <!-- Header row -->
                                 <Border DockPanel.Dock="Top"
-                                        Background="#2A2A2A"
+                                        Background="#E8E8E8"
                                         CornerRadius="3 3 0 0"
                                         Padding="8 6">
                                     <DockPanel>
@@ -127,15 +127,15 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Thumb">
-                        <Border Background="#666666"
+                        <Border Background="#AAAAAA"
                                 CornerRadius="3"
                                 Margin="2 0"/>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#999999"/>
+                                <Setter Property="Background" Value="#777777"/>
                             </Trigger>
                             <Trigger Property="IsDragging" Value="True">
-                                <Setter Property="Background" Value="#BBBBBB"/>
+                                <Setter Property="Background" Value="#555555"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -158,7 +158,7 @@
                             </Grid.RowDefinitions>
 
                             <Border Grid.RowSpan="3"
-                                    Background="#2A2A2A"
+                                    Background="#E0E0E0"
                                     CornerRadius="2"/>
 
                             <!-- Up arrow -->
@@ -168,7 +168,7 @@
                                           BorderThickness="0"
                                           Focusable="False">
                                 <Path Data="M 6 2 L 12 10 L 0 10 Z"
-                                      Fill="#AAAAAA"
+                                      Fill="#666666"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Center"/>
                             </RepeatButton>
@@ -203,7 +203,7 @@
                                           BorderThickness="0"
                                           Focusable="False">
                                 <Path Data="M 6 10 L 12 2 L 0 2 Z"
-                                      Fill="#AAAAAA"
+                                      Fill="#666666"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Center"/>
                             </RepeatButton>
@@ -214,6 +214,9 @@
         </Style>
 
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/TS3_Box.png"/>
+    </Window.Background>
 
     <DockPanel>
 
@@ -221,47 +224,45 @@
         <Grid DockPanel.Dock="Bottom"
               Margin="12 8 12 12"
               Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="221*"/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
             <Button Content="Cancel"
-                    Width="100" Height="30"
+                    Width="37" Height="42"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Center" Foreground="White"
+                    VerticalAlignment="Top" Foreground="{x:Null}"
                     FontFamily="Tahoma" FontWeight="Bold"
-                    Click="Cancel_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/button_red.png"/>
-                </Button.Background>
-            </Button>
+                    Click="Cancel_Click" Margin="605,-12,0,0" Background="{x:Null}" BorderBrush="{x:Null}" OpacityMask="White"/>
             <Button x:Name="DownloadBtn"
                     Content="Download Selected"
-                    Width="160" Height="30"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center" Foreground="Black"
+                    Width="53" Height="63"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Foreground="{x:Null}"
                     FontFamily="Tahoma" FontWeight="Bold"
-                    Click="DownloadSelected_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/button_normal.png"/>
-                </Button.Background>
-            </Button>
+                    Click="DownloadSelected_Click" Margin="648,-23,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Grid.ColumnSpan="2" OpacityMask="White"/>
         </Grid>
 
         <!-- ── Global "Select All" ── -->
         <CheckBox x:Name="GlobalSelectAll"
                   DockPanel.Dock="Top"
                   Content="Select All"
-                  Foreground="White"
+                  Foreground="#ffffff"
                   FontWeight="Bold"
                   FontFamily="Tahoma"
-                  Margin="12 10 12 4"
-                  Click="GlobalSelectAll_Click"/>
+                  Margin="15,34,12,4"
+                  Click="GlobalSelectAll_Click" Height="15" Width="660"/>
 
         <!-- ── Scrollable sections ── -->
         <ScrollViewer VerticalScrollBarVisibility="Visible"
-                      HorizontalScrollBarVisibility="Disabled"
-                      Padding="8 4 8 4">
+              HorizontalScrollBarVisibility="Disabled"
+              Padding="8 4 8 4"
+              Margin="16 0 16 0"
+              MaxHeight="476">
 
             <ItemsControl x:Name="SectionsControl">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type local:GameplaySectionViewModel}">
+                <DataTemplate DataType="{x:Type local:GameplaySectionViewModel}">
 
                         <Expander IsExpanded="True">
                             <Expander.Header>
@@ -284,13 +285,14 @@
                                             <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay}"
                                                       IsEnabled="{Binding IsActive}"
                                                       Content="{Binding DisplayName}"
+                                                      Foreground="#1A1A1A"
                                                       Margin="0 2">
                                                 <CheckBox.Style>
                                                     <Style TargetType="CheckBox">
-                                                        <Setter Property="Foreground" Value="White"/>
+                                                        <Setter Property="Foreground" Value="#1A1A1A"/>
                                                         <Style.Triggers>
                                                             <DataTrigger Binding="{Binding IsActive}" Value="False">
-                                                                <Setter Property="Foreground" Value="#4B4B4B"/>
+                                                                <Setter Property="Foreground" Value="#AAAAAA"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>

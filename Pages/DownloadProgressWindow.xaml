@@ -6,7 +6,7 @@
         SizeToContent="Height"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
-        ShowInTaskbar="False" WindowStyle="None">
+        ShowInTaskbar="False" WindowStyle="None" Height="170">
     <Window.Background>
         <ImageBrush ImageSource="/Images/TS3_Box3.png"/>
     </Window.Background>
@@ -26,12 +26,12 @@
                    TextWrapping="Wrap"
                    Foreground="White"
                    FontFamily="Tahoma"
-                   FontSize="12" HorizontalAlignment="Center"/>
+                   FontSize="16" HorizontalAlignment="Center" Margin="0,40,0,57" Grid.RowSpan="3"/>
 
         <ProgressBar x:Name="ProgressBar"
                      Grid.Row="2"
-                     Height="18"
-                     Minimum="0" Maximum="100" Value="0" BorderBrush="{x:Null}">
+                     Height="36"
+                     Minimum="0" Maximum="100" Value="0" BorderBrush="{x:Null}" Margin="0,32,0,10" Width="360">
             <ProgressBar.Foreground>
                 <ImageBrush ImageSource="/Images/DownloadProgress2.png"/>
             </ProgressBar.Foreground>
