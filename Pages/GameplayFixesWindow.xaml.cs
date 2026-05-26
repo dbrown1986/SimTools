@@ -496,5 +496,11 @@ public partial class GameplayFixesWindow : Window
             new("Haute Hacienda Fireplace Fix by Qahne",       "SimTools/Packages/Qahne_MOD_HauteHaciendaFireplace Fixes.package",           "%baseurl%/Mods/Sims3/packages/store/Qahne_MOD_HauteHaciendaFireplace Fixes.package"),
             new("Now & Then Staircase Fix by Simsi45",         "SimTools/Packages/Simsi45_Curved_Staircase_FIX_RECAT.package",               "%baseurl%/Mods/Sims3/packages/store/Simsi45_Curved_Staircase_FIX_RECAT.package"),
         });
+
+        // ── Probationary Mods (0 items) ─────────────────────────────────────────────
+        yield return ("Probationary Mods (In Testing)", new List<GameplayFixItem>
+        {
+            new("", "", ""),
+        });
     }
 }
