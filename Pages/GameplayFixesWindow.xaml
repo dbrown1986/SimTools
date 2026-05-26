@@ -5,6 +5,7 @@
         Title="Gameplay Fixes AIO &#x2014; The Sims 3"
         Width="720" Height="660"
         WindowStyle="None"
+        AllowsTransparency="True"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner">
 

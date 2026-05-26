@@ -12,9 +12,9 @@ namespace SimTools;
 // ══════════════════════════════════════════════════════════════════════════════
 public sealed class GameSettingViewModel : INotifyPropertyChanged
 {
-    public string Key     { get; }
-    public string Name    { get; }
-    public bool   HasMods { get; }
+    public string Key { get; }
+    public string Name { get; }
+    public bool HasMods { get; }
 
     private string _gameDir = string.Empty;
     public string GameDir
@@ -31,12 +31,12 @@ public sealed class GameSettingViewModel : INotifyPropertyChanged
     }
 
     public ICommand BrowseGameCommand { get; }
-    public ICommand BrowseModCommand  { get; }
+    public ICommand BrowseModCommand { get; }
 
     public GameSettingViewModel(string key, string name, bool hasMods)
     {
-        Key     = key;
-        Name    = name;
+        Key = key;
+        Name = name;
         HasMods = hasMods;
 
         BrowseGameCommand = new RelayCommand(_ =>
@@ -122,11 +122,11 @@ public partial class SettingsWindow : Window
         Title = LanguageManager.Get("Settings", "Window_Title", "SimTools - Settings");
         SectionLangHeader.Text = LanguageManager.Get("Settings", "Section_Language", "Language");
         SectionDirsHeader.Text = LanguageManager.Get("Settings", "Section_Directories", "Game & Mod Directories");
-        ResetLangBtn.Content   = LanguageManager.Get("Settings", "Btn_Reset",
+        ResetLangBtn.Content = LanguageManager.Get("Settings", "Btn_Reset",
             "Reset - Show Language Selection on Next Launch");
-        ResetUrlBtn.Content    = $"Reset to Default  ({AppSettings.DefaultBaseUrl})";
-        SaveBtn.Content        = LanguageManager.Get("Settings", "Btn_Save",   "Save");
-        CancelBtn.Content      = LanguageManager.Get("Settings", "Btn_Cancel", "Cancel");
+        ResetUrlBtn.Content = $"Reset to Default  ({AppSettings.DefaultBaseUrl})";
+        SaveBtn.Content = LanguageManager.Get("Settings", "Btn_Save", "Save");
+        CancelBtn.Content = LanguageManager.Get("Settings", "Btn_Cancel", "Cancel");
 
         // Populate language combo
         foreach (var (code, display) in Languages)
@@ -227,4 +227,16 @@ public partial class SettingsWindow : Window
     // ── Reset Base URL ────────────────────────────────────────────────────────
     private void ResetUrl_Click(object sender, RoutedEventArgs e)
         => BaseUrlBox.Text = AppSettings.DefaultBaseUrl;
+
+    // ── Reset Auto-Update Check ───────────────────────────────────────────────
+    private void ResetAutoUpdateCheck_Click(object sender, RoutedEventArgs e)
+    {
+        IniHelper.Write("Updates", "SuppressAutoCheckUntil", "");
+        System.Windows.MessageBox.Show(
+            "Automatic update notifications have been re-enabled.\n\n" +
+            "SimTools will check for updates the next time it starts.",
+            "Update Check Reset",
+            MessageBoxButton.OK,
+            MessageBoxImage.Information);
+    }
 }
