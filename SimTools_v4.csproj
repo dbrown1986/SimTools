@@ -77,8 +77,10 @@
 		<Resource Include="Images\Icons\vendors\hrk.ico" />
 		<Resource Include="Images\Icons\vendors\ig.ico" />
 		<Resource Include="Images\Icons\vendors\k4g.ico" />
+		<Resource Include="Images\Icons\vendors\kinguin.ico" />
 		<Resource Include="Images\Icons\vendors\mmoga.ico" />
 		<Resource Include="Images\Icons\vendors\steam.ico" />
+		<Resource Include="Images\Icons\worlds.ico" />
 		<Resource Include="Images\info.png" />
 		<Resource Include="Images\Menu_Main.png" />
 		<Resource Include="Images\musicon.png" />
@@ -112,6 +114,8 @@
 	  <None Remove="Images\CodingWithDyslexia.gif" />
 	  <None Remove="Images\DownloadProgress1.png" />
 	  <None Remove="Images\DownloadProgress2.png" />
+	  <None Remove="Images\Icons\vendors\kinguin.ico" />
+	  <None Remove="Images\Icons\worlds.ico" />
 	  <None Remove="Images\TS3_Box3.png" />
 	</ItemGroup>
 

@@ -1507,5 +1507,11 @@ namespace SimTools
             OpenUrl("https://archive.org/details/the-minds-eye-raw-dv-captures/The+Mind's+Eye+(1990%2C+original%2C+LaserDisc).avi");
         }
 
+        private void BuySimsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new BuyTS3();
+            window.Owner = this;
+            window.Show();
+        }
     }
 }
