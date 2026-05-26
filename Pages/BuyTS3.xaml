@@ -30,13 +30,13 @@
     <Grid>
         <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
-        <Button x:Name="BackButton" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="8,596,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="BackButton" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="8,596,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BackButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
         </Button>
         <TextBlock x:Name="Digital" Margin="184,283,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="White" Width="297" Height="26" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="16" Text="Digital Distribution" FontStyle="Italic" TextAlignment="Center"/>
-        <Button x:Name="WarningButton" Content="CLICK HERE FOR AN IMPORTANT WARNING!" HorizontalAlignment="Left" Margin="328,92,0,0" VerticalAlignment="Top" Width="298" Height="31" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="WarningButton" Content="CLICK HERE FOR AN IMPORTANT WARNING!" HorizontalAlignment="Left" Margin="328,92,0,0" VerticalAlignment="Top" Width="298" Height="31" FontFamily="Tahoma" FontWeight="Bold" Click="WarningButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_red.png"/>
             </Button.Background>
