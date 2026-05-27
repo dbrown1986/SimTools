@@ -160,12 +160,13 @@ public partial class BuyTS3 : Window
             BuildSC3KU(),
             BuildSC4DE(),
             BuildSC2013(),
-            BuildSimsMedieval(),
-            BuildSimsMedievalPN(),
+            BuildSimsMedievalGroup(),
         };
 
         BuyGamesRetail.ItemsSource = new ObservableCollection<BuyTreeNode>
         {
+            BuildSims1Retail(),
+            BuildSims2Retail(),
             BuildSims3Retail(),
             BuildSC2KRetail(),
             BuildSC3KURetail(),
@@ -173,11 +174,8 @@ public partial class BuyTS3 : Window
             BuildSC2013Retail(),
             BuildCopterRetail(),
             BuildStreetsRetail(),
-            BuildTSCastawayRetail(),
-            BuildTSLifeRetail(),
-            BuildTSPetsRetail(),
-            BuildSimsMedievalRetail(),
-            BuildSimsMedievalPNRetail(),
+            BuildTSStoriesRetail(),
+            BuildSimsMedievalGroupRetail(),
         };
     }
 
@@ -677,6 +675,13 @@ public partial class BuyTS3 : Window
             }
         };
 
+    // ── The Sims: Medieval (Group) ─────────────────────────────────────────────
+
+    private static BuyTreeNode BuildSimsMedievalGroup() =>
+        N("The Sims: Medieval", I.SimsMedieval,
+            BuildSimsMedieval(),
+            BuildSimsMedievalPN());
+
     // ── SimCity 2000 ──────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildSC2K() =>
@@ -745,6 +750,20 @@ public partial class BuyTS3 : Window
     // ══════════════════════════════════════════════════════════════════════════
     // RETAIL TREES
     // ══════════════════════════════════════════════════════════════════════════
+
+    // ── The Sims ────────────────────────────────────────────────────────────
+    private static BuyTreeNode BuildSims1Retail() =>
+        N("The Sims", I.Sims1,
+            RetailVendors(
+                amazon: "https://www.amazon.com/Sims-Complete-Collection-PC/dp/B000BAVN14/ref=sr_1_1?sr=8-1",
+                ebay: "https://www.ebay.com/sch/i.html?_nkw=the+sims+1+complete+collection+pc&_sacat=0&_from=R40&_trksid=p4624852.m570.l1311"));
+
+    // ── The Sims 2 ────────────────────────────────────────────────────────────
+    private static BuyTreeNode BuildSims2Retail() =>
+        N("The Sims 2", I.Sims2,
+            RetailVendors(
+                amazon: "https://www.amazon.com/s?k=The+Sims+2+pc",
+                ebay: "https://www.ebay.com/sch/i.html?_nkw=the+sims+2+complete+collection+pc&_sacat=0&_from=R40&_trksid=p2334524.m570.l1313&_odkw=the+sims+1+complete+collection+pc&_osacat=0"));
 
     // ── The Sims 3 ────────────────────────────────────────────────────────────
 
@@ -849,6 +868,14 @@ public partial class BuyTS3 : Window
             }
         };
 
+    // ── The Sims Stories (Retail Group) ──────────────────────────────────────────
+
+    private static BuyTreeNode BuildTSStoriesRetail() =>
+        N("The Sims Stories", I.TSCastaway,
+            BuildTSCastawayRetail(),
+            BuildTSLifeRetail(),
+            BuildTSPetsRetail());
+
     // ── Sims Castaway Stories (Retail) ─────────────────────────────────────────────────
 
     private static BuyTreeNode BuildTSCastawayRetail() =>
@@ -872,6 +899,13 @@ public partial class BuyTS3 : Window
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=the+sims+pet+stories&crid=1TYK48QKMZML8&sprefix=the+sims+pet+stories%2Caps%2C155&ref=nb_sb_noss_2",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=the+sims+pet+stories&_sacat=0&_from=R40&_trksid=p4432023.m570.l1311"));
+
+    // ── The Sims: Medieval (Retail Group) ──────────────────────────────────────
+
+    private static BuyTreeNode BuildSimsMedievalGroupRetail() =>
+        N("The Sims: Medieval", I.SimsMedieval,
+            BuildSimsMedievalRetail(),
+            BuildSimsMedievalPNRetail());
 
     // ── SimCity 2000 (Retail) ─────────────────────────────────────────────────
 
