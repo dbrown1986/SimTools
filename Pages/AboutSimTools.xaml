@@ -59,7 +59,7 @@
                     <GradientStop Color="Black"/>
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
-            </TextBlock.Foreground><Run Text="Version: 4.0.1, Build 3868"/><LineBreak/><Run Text="Released: ??/??/2025"/><LineBreak/><Run Text="Website: http://www.ts3tools.com"/><LineBreak/><Run Text="© 2025, Archeon Industries, LLC."/><LineBreak/><Run/></TextBlock>
+            </TextBlock.Foreground><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="Text6" HorizontalAlignment="Left" Margin="32,432,0,0" TextWrapping="Wrap" Text="For Faith, who inspired me to finally finish this program." VerticalAlignment="Top" Width="169" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

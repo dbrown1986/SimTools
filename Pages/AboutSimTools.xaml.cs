@@ -19,8 +19,58 @@ public partial class AboutSimTools : Window
     public AboutSimTools()
     {
         InitializeComponent();
+        PopulateVersionInfo();
         Loaded += (_, _) => StartSlideshow();
         Closing += (_, _) => _slideTimer?.Stop();
+    }
+
+    // ── Version info ──────────────────────────────────────────────────────────────
+    //
+    //  • Version + Build  — read from AssemblyName.Version (Major.Minor.Build, Build Revision)
+    //  • Git hash         — read from AssemblyInformationalVersion ("x.y.z+<hash>")
+    //  • Compile date     — last-write time of the executing assembly on disk
+    //
+    private void PopulateVersionInfo()
+    {
+        var asm = Assembly.GetExecutingAssembly();
+
+        // Version: Major.Minor.Patch, Build <number>
+        //   ver.Major    = Major  (4)
+        //   ver.Minor    = Minor  (0)
+        //   ver.Build    = Patch  (1)   ← .NET names this "Build"
+        //   ver.Revision = Build  (3868) ← .NET names this "Revision"
+        var ver = asm.GetName().Version ?? new Version(4, 0, 1, 0);
+        string versionBase = $"{ver.Major}.{ver.Minor}.{ver.Build}";
+        string buildPart = ver.Revision > 0 ? $", Build {ver.Revision}" : "";
+
+        // Short git hash from AssemblyInformationalVersion ("4.0.1.3868+abc1234...")
+        string commitSuffix = "";
+        string infoVer = asm.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+                            ?.InformationalVersion ?? "";
+        int plusIdx = infoVer.IndexOf('+');
+        if (plusIdx >= 0 && plusIdx < infoVer.Length - 1)
+        {
+            string hash = infoVer[(plusIdx + 1)..];
+            if (hash.Length > 7) hash = hash[..7];
+            commitSuffix = $" ({hash})";
+        }
+
+        // Compile date = last-write time of the assembly file
+        string asmPath = asm.Location;
+        DateTime built = File.Exists(asmPath) ? File.GetLastWriteTime(asmPath) : DateTime.Now;
+        string builtStr = built.ToString("MM/dd/yyyy, h:mm tt");
+
+        // Rebuild Text5 Inlines — x:Name on <Run> does not generate code-behind fields
+        Text5.Inlines.Clear();
+        Text5.Inlines.Add(new System.Windows.Documents.Run($"Version: {versionBase}{buildPart}{commitSuffix}"));
+        Text5.Inlines.Add(new System.Windows.Documents.LineBreak());
+        Text5.Inlines.Add(new System.Windows.Documents.Run($"Released: {builtStr}"));
+        Text5.Inlines.Add(new System.Windows.Documents.LineBreak());
+        Text5.Inlines.Add(new System.Windows.Documents.Run("Website: http://www.simtools-app.com"));
+        Text5.Inlines.Add(new System.Windows.Documents.LineBreak());
+        int currentYear = DateTime.Now.Year;
+        string copyrightYear = currentYear > 2025 ? $"2025\u2013{currentYear}" : "2025";
+        Text5.Inlines.Add(new System.Windows.Documents.Run($"\u00a9 {copyrightYear}, Archeon Industries, LLC."));
     }
 
     // ── Changelog button ──────────────────────────────────────────────────────
