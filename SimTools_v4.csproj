@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>4.0.1.3868</Version>
+		<BaseVersion>4.0.1</BaseVersion>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
@@ -203,6 +203,42 @@
 		<Copy SourceFiles="@(_DepDlls)" DestinationFolder="$(OutputPath)Dependencies" SkipUnchangedFiles="true" />
 
 		<Delete Files="@(_DepDlls)" />
+	</Target>
+
+
+	<!-- ── Auto-incrementing build counter ─────────────────────────────────── -->
+	<!-- Reads build.counter, increments by 1 each build, writes it back,      -->
+	<!-- then stamps Version / AssemblyVersion / FileVersion.                  -->
+	<!-- Skipped during VS design-time background builds.                      -->
+	<Target Name="IncrementBuildCounter"
+	        BeforeTargets="BeforeBuild"
+	        Condition="'$(DesignTimeBuild)' != 'true'">
+
+		<PropertyGroup>
+			<_CounterFile>$(MSBuildProjectDirectory)\build.counter</_CounterFile>
+		</PropertyGroup>
+
+		<!-- Read current number (defaults to 0 if file is missing) -->
+		<ReadLinesFromFile File="$(_CounterFile)" Condition="Exists('$(_CounterFile)')">
+			<Output TaskParameter="Lines" ItemName="_CounterLines"/>
+		</ReadLinesFromFile>
+		<PropertyGroup>
+			<_Build Condition="'@(_CounterLines)' != ''">@(_CounterLines)</_Build>
+			<_Build Condition="'$(_Build)' == ''">0</_Build>
+			<_Build>$([MSBuild]::Add($(_Build), 1))</_Build>
+		</PropertyGroup>
+
+		<!-- Write incremented number back to disk -->
+		<WriteLinesToFile File="$(_CounterFile)" Lines="$(_Build)" Overwrite="true"/>
+
+		<!-- Stamp the full version -->
+		<PropertyGroup>
+			<Version>$(BaseVersion).$(_Build)</Version>
+			<AssemblyVersion>$(BaseVersion).$(_Build)</AssemblyVersion>
+			<FileVersion>$(BaseVersion).$(_Build)</FileVersion>
+		</PropertyGroup>
+
+		<Message Text="▶ Build number: $(_Build)" Importance="high"/>
 	</Target>
 
 </Project>
