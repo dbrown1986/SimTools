@@ -646,7 +646,7 @@ public partial class BuyTS3 : Window
                     Leaf("Buy on G2A (EA App)",            I.G2A,     "https://www.g2a.com/the-sims-medieval-ea-app-key-global-i10000043987003?gname=ts3tools"),
                     Leaf("Buy on Gamivo (EA App)",         I.Gamivo,  "https://www.gamivo.com/product/the-sims-medieval?glv=p1b0e0fh"),
                     Leaf("Buy on K4G (EA App)",            I.K4G,     "https://k4g.com/product/the-sims-medieval-ea-app-global-cd-key-AC51F906?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin, "https://www.kinguin.net/category/2576/the-sims-3-movie-stuff-dlc-origin-cd-key/?r=66716563950ad")),
+                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin, "https://www.kinguin.net/category/1816/the-sims-medieval-ea-app-cd-key?r=66716563950ad")),
             }
         };
 
@@ -736,9 +736,9 @@ public partial class BuyTS3 : Window
                 gog:   null,
                 icon:  I.EA),
             Partners(
-                    Leaf("Buy on Eneba (Steam)", I.Eneba, "https://www.eneba.com/origin-simcity-eng-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (Steam)", I.G2A, "https://www.g2a.com/simcity-standard-edition-english-only-ea-app-key-global-i10000043863001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (Steam)", I.Gamivo, "https://www.gamivo.com/product/simcity-eng?glv=p1b0e0fh"),
+                    Leaf("Buy on Eneba (EA App)", I.Eneba, "https://www.eneba.com/origin-simcity-eng-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf("Buy on G2A (EA App)", I.G2A, "https://www.g2a.com/simcity-standard-edition-english-only-ea-app-key-global-i10000043863001?gname=ts3tools"),
+                    Leaf("Buy on Gamivo (EA App)", I.Gamivo, "https://www.gamivo.com/product/simcity-eng?glv=p1b0e0fh"),
                     Leaf("Buy on K4G (EA App)", I.K4G, "https://k4g.com/product/simcity-ea-app-global-complete-edition-cd-key-B4F1E98E?r=ts3tools"),
                     Leaf("Buy on Kinguin (EA App)", I.Kinguin, "https://www.kinguin.net/category/545/simcity-en-language-only-ea-app-cd-key?r=66716563950ad")));
 
