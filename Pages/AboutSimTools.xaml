@@ -1,10 +1,11 @@
-﻿<Window x:Name="AboutSimTools1" x:Class="SimTools_v4.Pages.AboutSimTools"
+﻿<Window x:Name="AboutSimTools1" x:Class="SimTools.AboutSimTools"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SimTools_v4.Pages"
+        xmlns:local="clr-namespace:SimTools"
         mc:Ignorable="d"
+        AllowsTransparency="True"
         Title="AboutSimTools" Height="530" Width="530" WindowStyle="None" Foreground="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
         
     <Window.Background>
@@ -67,12 +68,12 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>
-        <Button x:Name="UpdateButton" Content="Check for Updates" HorizontalAlignment="Left" Margin="376,346,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
+        <Button x:Name="UpdateButton" Content="Check for Updates" Click="UpdateButton_Click" HorizontalAlignment="Left" Margin="376,346,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="ChangelogButton" Content="Changelog" HorizontalAlignment="Left" Margin="376,380,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
+        <Button x:Name="ChangelogButton" Content="Changelog" Click="ChangelogButton_Click" HorizontalAlignment="Left" Margin="376,380,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
@@ -84,6 +85,7 @@
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </TextBlock.Foreground></TextBlock>
+        <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="454,479,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="25" Height="32" Click="CloseButton_Click"/>
 
     </Grid>
 </Window>

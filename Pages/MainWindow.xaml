@@ -194,7 +194,7 @@
                 <ImageBrush ImageSource="/Images/steam.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="InfoButton" Content="" HorizontalAlignment="Left" Margin="800,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="InfoButton" Content="" HorizontalAlignment="Left" Margin="800,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="InfoButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/info.png"/>
             </Button.Background>

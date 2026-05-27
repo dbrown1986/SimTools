@@ -591,6 +591,13 @@ namespace SimTools
         // Handler is now empty — menu is pre-built, nothing to do here
         private void TweakButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
 
+        // Opens the About SimTools window
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            var about = new AboutSimTools { Owner = this };
+            about.ShowDialog();
+        }
+
         // ═══════════════════════════════════════════════════════════════════════
         // BUGFIX BUTTON
         // ═══════════════════════════════════════════════════════════════════════
