@@ -33,11 +33,19 @@ public partial class BuyTS3 : Window
         new() { Label = label, Icon = LoadIcon(icon), Url = url };
 
     // Standard "* Official" sub-node with EA App + Steam + GOG leaves
-    private static BuyTreeNode Official(string ea = "", string steam = "", string gog = "", string icon = "") =>
-        N("* Official", string.IsNullOrEmpty(icon) ? I.EA : icon,
-            Leaf("Buy on EA App", I.EA,    ea),
-            Leaf("Buy on Steam",  I.Steam, steam),
-            Leaf("Buy on GOG",    I.GOG,   gog));
+    // Pass null for a platform to omit it entirely; pass "" to include with no URL yet
+    private static BuyTreeNode Official(string? ea = "", string? steam = "", string? gog = "", string icon = "")
+    {
+        var node = new BuyTreeNode
+        {
+            Label = "* Official",
+            Icon  = LoadIcon(string.IsNullOrEmpty(icon) ? I.EA : icon)
+        };
+        if (ea    is not null) node.Children.Add(Leaf("Buy on EA App", I.EA,    ea));
+        if (steam is not null) node.Children.Add(Leaf("Buy on Steam",  I.Steam, steam));
+        if (gog   is not null) node.Children.Add(Leaf("Buy on GOG",    I.GOG,   gog));
+        return node;
+    }
 
     // Standard "Partners" sub-node (digital grey-market vendors)
     private static BuyTreeNode Partners(params BuyTreeNode[] items) =>
@@ -179,6 +187,7 @@ public partial class BuyTS3 : Window
             Official(
                 ea:    "https://www.ea.com/en/games/the-sims/the-sims-25th-anniv-edition",
                 steam: "https://store.steampowered.com/app/3314060/The_Sims_Legacy_Collection/",
+                gog:   null,
                 icon:  I.EA));
 
     // ── The Sims 2: Legacy Collection ─────────────────────────────────────────
@@ -188,6 +197,7 @@ public partial class BuyTS3 : Window
             Official(
                 ea:    "https://www.ea.com/games/the-sims/the-sims-2-25th-anniv-edition",
                 steam: "https://store.steampowered.com/app/3314070/The_Sims_2_Legacy_Collection/",
+                gog:   null,
                 icon:  I.EA));
 
     // ── The Sims 3 ────────────────────────────────────────────────────────────
@@ -205,8 +215,9 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildBaseGame() =>
         N("Base Game", I.Sims3,
             Official(
-                ea: "https://www.ea.com/games/the-sims/the-sims-3",
+                ea:    "https://www.ea.com/games/the-sims/the-sims-3",
                 steam: "https://store.steampowered.com/app/47890/The_Sims_3",
+                gog:   null,
                 icon:  I.EA),
             Partners(
                 Leaf("Buy on Eneba (EA App)",   I.Eneba,    "https://www.eneba.com/origin-the-sims-3-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global"),
@@ -226,6 +237,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-world-adventures-expansion-pack/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47892/The_Sims_3_World_Adventures",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-world-adventures-dlc-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global&utm_medium=af&utm_source=TS3Tools"),
@@ -241,6 +253,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/buy/addon/the-sims-3-ambitions",
                 steam: "https://store.steampowered.com/app/47893/The_Sims_3_Ambitions",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-ambitions-dlc-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global&utm_medium=af&utm_source=TS3Tools"),
@@ -258,6 +271,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/en/games/the-sims/the-sims-3/buy/addon/the-sims-3-late-night-expansion-pack",
                 steam: "https://store.steampowered.com/app/47894/The_Sims_3_Late_Night",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-late-night-dlc-origin-key-global?af_id=TS3Tools&currency=USD&region=global&utm_medium=af&utm_source=TS3Tools"),
@@ -276,6 +290,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-generations/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47898/The_Sims_3_Generations/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-generations-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -294,6 +309,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-pets/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47930/The_Sims_3_Pets/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-pets-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -311,6 +327,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-showtime/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47932/The_Sims_3_Showtime/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-showtime-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -334,6 +351,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-supernatural/buy-bundle",
                 steam: "https://store.steampowered.com/app/223593/The_Sims_3_Supernatural/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-supernatural-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -352,6 +370,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-seasons/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223594/The_Sims_3_Seasons/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-seasons-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -369,6 +388,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-university-life/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223597/The_Sims_3_University_Life/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-university-life-dlc-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -387,6 +407,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-island-paradise/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223598/The_Sims_3_Island_Paradise/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-island-paradise-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -405,6 +426,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-into-the-future/buy-microcontent",
                 steam: "https://store.steampowered.com/app/249180/The_Sims_3__Into_the_Future/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",              I.Eneba, "https://www.eneba.com/origin-the-sims-3-into-the-future-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -427,6 +449,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-high-end-loft-stuff/buy-expansion-pack",
                 steam: "https://store.steampowered.com/app/47895/The_Sims_3_HighEnd_Loft_Stuff/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-high-end-loft-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -443,6 +466,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-fast-lane-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47896/The_Sims_3_Fast_Lane_Stuff/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-fast-lane-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -461,6 +485,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-outdoor-living-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47897/The_Sims_3_Outdoor_Living_Stuff/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-outdoor-living-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -478,6 +503,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-town-life-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47899/The_Sims_3_Town_Life_Stuff/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-town-life-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -495,6 +521,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-master-suite-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47931/The_Sims_3_Master_Suite_Stuff/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-master-suite-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -533,6 +560,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-diesel-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223592/The_Sims_3_Diesel_Stuff/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-diesel-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -550,6 +578,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-70s-80s-and-90s-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223595/The_Sims_3_70s_80s_and_90s/",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-70s-80s-90s-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -567,6 +596,7 @@ public partial class BuyTS3 : Window
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-movie-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/249181/The_Sims_3__Movie_Stuff/?cc=us",
+                gog:  null,
                 icon: I.EA),
                 Partners(
                     Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-movie-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
@@ -652,9 +682,10 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildSC2K() =>
         N("SimCity 2000", I.SC2K,
             Official(
-                ea:   "https://www.ea.com/en/games/simcity/simcity-2000",
-                gog:  "https://www.gog.com/en/game/simcity_2000_special_edition",
-                icon: I.EA),
+                ea:    "https://www.ea.com/en/games/simcity/simcity-2000",
+                steam: null,
+                gog:   "https://www.gog.com/en/game/simcity_2000_special_edition",
+                icon:  I.EA),
             Partners(
                 Leaf("Buy on Eneba (GOG)", I.Eneba, "https://www.eneba.com/origin-simcity-2000-special-edition-gog-com-key-global?af_id=TS3Tools&currency=USD&region=global"),
                 Leaf("Buy on G2A (EA App)", I.G2A, "https://www.g2a.com/simcity-2000-special-edition-ea-app-key-global-i10000000711001?gname=ts3tools"),
@@ -667,9 +698,10 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildSC3KU() =>
         N("SimCity 3000 Unlimited", I.SC3KU,
             Official(
+                ea:    null,
                 steam: "https://store.steampowered.com/app/2741560/SimCity_3000_Unlimited/",
-                gog: "https://www.gog.com/en/game/simcity_3000",
-                icon: I.EA),
+                gog:   "https://www.gog.com/en/game/simcity_3000",
+                icon:  I.EA),
                         Partners(
                 Leaf("Buy on G2A (GOG)", I.G2A, "https://www.g2a.com/simcity-3000-unlimited-gogcom-key-global-i10000149205002?gname=ts3tools"),
                 Leaf("Buy on Kinguin (EA App)", I.Kinguin, "https://www.kinguin.net/category/63343/simcity-3000-unlimited-gog-cd-key?r=66716563950ad")));
@@ -699,8 +731,10 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildSC2013() =>
         N("SimCity 2013", I.SC2013,
             Official(
-                ea:   "https://www.ea.com/en/games/simcity/simcity",
-                icon: I.EA),
+                ea:    "https://www.ea.com/en/games/simcity/simcity",
+                steam: null,
+                gog:   null,
+                icon:  I.EA),
             Partners(
                     Leaf("Buy on Eneba (Steam)", I.Eneba, "https://www.eneba.com/origin-simcity-eng-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
                     Leaf("Buy on G2A (Steam)", I.G2A, "https://www.g2a.com/simcity-standard-edition-english-only-ea-app-key-global-i10000043863001?gname=ts3tools"),
