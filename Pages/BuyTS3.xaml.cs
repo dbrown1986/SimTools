@@ -32,10 +32,11 @@ public partial class BuyTS3 : Window
         new() { Label = label, Icon = LoadIcon(icon), Url = url };
 
     // Standard "* Official" sub-node with EA App + Steam leaves
-    private static BuyTreeNode Official(string ea = "", string steam = "", string icon = "") =>
+    private static BuyTreeNode Official(string ea = "", string steam = "", string gog = "", string icon = "") =>
         N("* Official", string.IsNullOrEmpty(icon) ? I.EA : icon,
             Leaf("Buy on EA App", I.EA, ea),
-            Leaf("Buy on Steam", I.Steam, steam));
+            Leaf("Buy on Steam", I.Steam, steam),
+            Leaf("Buy on GOG", I.GOG, gog));
 
     // Standard "Partners" sub-node
     private static BuyTreeNode Partners(params BuyTreeNode[] items) =>
@@ -48,12 +49,22 @@ public partial class BuyTS3 : Window
         public const string Sims2 = "Images/Icons/Sims2.ico";
         public const string Sims3 = "Images/Icons/Sims3.ico";
         public const string SimsMedieval = "Images/Icons/TSM.ico";
+        public const string SC2K = "Images/Icons/SC2K.ico";
+        public const string SC3KU = "Images/Icons/SC3KU.ico";
+        public const string SC4DE = "Images/Icons/SC4DE.ico";
+        public const string SC2013 = "Images/Icons/SC2013.ico";
+        public const string SimCopter = "Images/Icons/Copter.ico";
+        public const string Streets = "Images/Icons/Streets.ico";
+        public const string TSCastaway = "Images/Icons/TSCastaway.ico";
+        public const string TSLife = "Images/Icons/TSLife.ico";
+        public const string TSPets = "Images/Icons/TSPets.ico";
         public const string EPs = "Images/Icons/SimsEPs.ico";
         public const string SPs = "Images/Icons/SimsSPs.ico";
         public const string Store = "Images/Icons/Store.ico";
         public const string Worlds = "Images/Icons/Worlds.ico";
         public const string EA = "Images/Icons/vendors/ea.ico";
         public const string Steam = "Images/Icons/vendors/steam.ico";
+        public const string GOG = "Images/Icons/vendors/gog.ico";
         public const string Eneba = "Images/Icons/vendors/eneba.ico";
         public const string G2A = "Images/Icons/vendors/g2a.ico";
         public const string Gamivo = "Images/Icons/vendors/gamivo.ico";
@@ -126,7 +137,10 @@ public partial class BuyTS3 : Window
             BuildSims1(),
             BuildSims2(),
             BuildSims3(),
-            BuildSimsMedieval(),
+            BuildSC2K(),
+            BuildSC3KU(),
+            BuildSC4DE(),
+            BuildSC2013(),
         };
     }
 
@@ -135,36 +149,18 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildSims1() =>
         N("The Sims: Legacy Collection", I.Sims1,
             Official(
-                ea: "",
-                steam: "",
-                icon: I.Sims1),
-            Partners(
-                Leaf("Buy on Eneba (EA App)", I.Eneba, ""),
-                Leaf("Buy on G2A (EA App)", I.G2A, ""),
-                Leaf("Buy on G2A (Steam)", I.G2A, ""),
-                Leaf("Buy on Gamivo (EA App)", I.Gamivo, ""),
-                Leaf("Buy on K4G (EA App)", I.K4G, ""),
-                Leaf("Buy on Kinguin (EA App)", I.Kinguin, ""),
-                Leaf("Buy on Kinguin (Steam)", I.Kinguin, ""),
-                Leaf("Buy on MMOGA (EA App)", I.MMOGA, "")));
+                ea: "https://www.ea.com/en/games/the-sims/the-sims-25th-anniv-edition",
+                steam: "https://store.steampowered.com/app/3314060/The_Sims_Legacy_Collection/",
+                icon: I.EA));
 
     // ── The Sims 2: Legacy Collection ─────────────────────────────────────────
 
     private static BuyTreeNode BuildSims2() =>
         N("The Sims 2: Legacy Collection", I.Sims2,
             Official(
-                ea: "",
-                steam: "",
-                icon: I.Sims2),
-            Partners(
-                Leaf("Buy on Eneba (EA App)", I.Eneba, ""),
-                Leaf("Buy on G2A (EA App)", I.G2A, ""),
-                Leaf("Buy on G2A (Steam)", I.G2A, ""),
-                Leaf("Buy on Gamivo (EA App)", I.Gamivo, ""),
-                Leaf("Buy on K4G (EA App)", I.K4G, ""),
-                Leaf("Buy on Kinguin (EA App)", I.Kinguin, ""),
-                Leaf("Buy on Kinguin (Steam)", I.Kinguin, ""),
-                Leaf("Buy on MMOGA (EA App)", I.MMOGA, "")));
+                ea: "https://www.ea.com/games/the-sims/the-sims-2-25th-anniv-edition",
+                steam: "https://store.steampowered.com/app/3314070/The_Sims_2_Legacy_Collection/",
+                icon: I.EA));
 
     // ── The Sims 3 ────────────────────────────────────────────────────────────
 
@@ -180,7 +176,10 @@ public partial class BuyTS3 : Window
 
     private static BuyTreeNode BuildBaseGame() =>
         N("Base Game", I.Sims3,
-            Official(),
+            Official(
+                ea: "https://www.ea.com/games/the-sims/the-sims-3",
+                steam: "https://store.steampowered.com/app/47890/The_Sims_3",
+                icon: I.EA),
             Partners(
                 Leaf("Buy on Eneba (EA App)", I.Eneba, ""),
                 Leaf("Buy on G2A (EA App)", I.G2A, ""),
@@ -511,23 +510,37 @@ public partial class BuyTS3 : Window
             Leaf("Roaring Heights", I.Roaring, ""),
             Leaf("Hidden Springs & Monte Vista Bundle", I.HSMV, ""));
 
-    // ── The Sims: Medieval ───────────────────────────────────────────
-
-    private static BuyTreeNode BuildSimsMedieval() =>
-        N("The Sims: Medieval", I.SimsMedieval,
+    // Simcity 2000 / Simcity 2000 Special Edition
+    private static BuyTreeNode BuildSC2K() =>
+        N("Simcity 2000", I.SC2K,
             Official(
-                ea: "",
-                steam: "",
-                icon: I.Sims1),
-            Partners(
-                Leaf("Buy on Eneba (EA App)", I.Eneba, ""),
-                Leaf("Buy on G2A (EA App)", I.G2A, ""),
-                Leaf("Buy on G2A (Steam)", I.G2A, ""),
-                Leaf("Buy on Gamivo (EA App)", I.Gamivo, ""),
-                Leaf("Buy on K4G (EA App)", I.K4G, ""),
-                Leaf("Buy on Kinguin (EA App)", I.Kinguin, ""),
-                Leaf("Buy on Kinguin (Steam)", I.Kinguin, ""),
-                Leaf("Buy on MMOGA (EA App)", I.MMOGA, "")));
+                ea: "https://www.ea.com/en/games/simcity/simcity-2000",
+                gog: "https://www.gog.com/en/game/simcity_2000_special_edition",
+                icon: I.EA));
+
+    // Simcity 3000 Unlimited
+    private static BuyTreeNode BuildSC3KU() =>
+        N("Simcity 3000 Unlimited", I.SC3KU,
+            Official(
+                steam: "https://store.steampowered.com/app/2741560/SimCity_3000_Unlimited/",
+                gog: "https://www.gog.com/en/game/simcity_3000",
+                icon: I.EA));
+
+    // SimCity 4 Deluxe Edition
+    private static BuyTreeNode BuildSC4DE() =>
+    N("SimCity 4 Deluxe Edition", I.SC4DE,
+        Official(
+            ea: "https://www.ea.com/en/games/simcity/simcity-4",
+            steam: "https://store.steampowered.com/app/24780/SimCity_4_Deluxe_Edition/",
+            gog: "https://www.gog.com/en/game/simcity_4_deluxe_edition",
+            icon: I.EA));
+
+    // SimCity (2013)
+    private static BuyTreeNode BuildSC2013() =>
+    N("SimCity 2013", I.SC2013,
+        Official(
+            ea: "https://www.ea.com/en/games/simcity/simcity",
+            icon: I.EA));
 
     private void BackButton_Click(object sender, RoutedEventArgs e) => Close();
 
