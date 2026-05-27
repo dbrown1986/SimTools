@@ -6,6 +6,7 @@ using System.IO.Compression;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
+using System.Runtime.Versioning;
 
 // Add these two aliases to resolve the ambiguity:
 using Button = System.Windows.Controls.Button;
@@ -1157,6 +1158,8 @@ namespace SimTools
             System.Windows.Application.Current.Shutdown();
         }
 
+
+        [SupportedOSPlatform("windows")]
         private async void SaveCleanerButton_Click(object sender, RoutedEventArgs e)
         {
             if (!GamePaths.IsConfigured(GamePaths.Sims3Game))

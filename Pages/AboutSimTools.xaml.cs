@@ -5,6 +5,9 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
@@ -16,6 +19,8 @@ public partial class AboutSimTools : Window
     public AboutSimTools()
     {
         InitializeComponent();
+        Loaded += (_, _) => StartSlideshow();
+        Closing += (_, _) => _slideTimer?.Stop();
     }
 
     // ── Changelog button ──────────────────────────────────────────────────────
@@ -209,6 +214,49 @@ public partial class AboutSimTools : Window
             : "indefinite";
 
         IniHelper.Write("Updates", "SuppressAutoCheckUntil", until);
+    }
+
+    // ── Slideshow ─────────────────────────────────────────────────────────────────
+
+    private static readonly string[] _slides =
+    [
+        "pack://application:,,,/Images/Dev/001.png",
+    "pack://application:,,,/Images/Dev/002.jpg",
+    "pack://application:,,,/Images/Dev/003.png",
+    "pack://application:,,,/Images/Dev/004.jpg",
+    "pack://application:,,,/Images/Dev/005.jpg",
+    "pack://application:,,,/Images/Dev/006.jpg",
+    "pack://application:,,,/Images/Dev/007.jpg",
+    "pack://application:,,,/Images/Dev/008.jpg",
+    "pack://application:,,,/Images/Dev/009.jpg",
+];
+
+    private int _slideIndex = 0;
+    private DispatcherTimer? _slideTimer;
+
+    private void StartSlideshow()
+    {
+        // Show first image immediately
+        DevSlideShow.Source = new BitmapImage(new Uri(_slides[0], UriKind.Absolute));
+
+        _slideTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(5) };
+        _slideTimer.Tick += (_, _) => AdvanceSlide();
+        _slideTimer.Start();
+    }
+
+    private void AdvanceSlide()
+    {
+        _slideIndex = (_slideIndex + 1) % _slides.Length;
+
+        // Optional fade — comment out the two lines below and just set Source directly if you don't want it
+        var fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
+        fadeOut.Completed += (_, _) =>
+        {
+            DevSlideShow.Source = new BitmapImage(new Uri(_slides[_slideIndex], UriKind.Absolute));
+            var fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(300));
+            DevSlideShow.BeginAnimation(OpacityProperty, fadeIn);
+        };
+        DevSlideShow.BeginAnimation(OpacityProperty, fadeOut);
     }
 
     private void CloseButton_Click(object sender, RoutedEventArgs e)
