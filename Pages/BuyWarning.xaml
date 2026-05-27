@@ -25,9 +25,9 @@
                    Text="With partner sites, It is recommended to buy direct from the partner whenever possible and avoid third-party sellers on their sites, as some of these sellers have used illegitimate means (Stolen CC, Chargebacks) to purchase the keys and the keys could be revoked later. Purchasing direct from EA or Steam is highly recommended. The higher the prices, the more likely the deal is legitimate."/>
 
         <!-- Detailed body -->
-        <TextBlock HorizontalAlignment="Left" Margin="32,112,0,0"
+        <TextBlock HorizontalAlignment="Center" Margin="0,112,0,0"
                    TextWrapping="Wrap" VerticalAlignment="Top"
-                   Width="465" Height="380"
+                   Width="465" Height="412"
                    FontFamily="Tahoma" FontSize="10" FontWeight="Bold">
             <Run Text="Many of these third party sites are legitimate in scope, and often times have good deals and trustworthy merchants. However, there is sometimes a bad apple in the batch. Be wary of low prices and deals that are too good to be true, they usually are."/>
             <LineBreak/><Run/><LineBreak/>
@@ -54,15 +54,11 @@
         <Button x:Name="CloseButton"
                 Content="Close"
                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                Margin="32,0,0,16"
-                Width="120" Height="34"
+                Margin="456,0,0,22"
+                Width="24" Height="37"
                 FontFamily="Tahoma" FontWeight="Bold" FontSize="11"
                 BorderBrush="{x:Null}"
-                Click="CloseButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_normal.png"/>
-            </Button.Background>
-        </Button>
+                Click="CloseButton_Click" Foreground="{x:Null}" Background="{x:Null}"/>
 
     </Grid>
 </Window>

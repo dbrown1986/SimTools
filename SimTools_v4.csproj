@@ -22,6 +22,15 @@
 		<Resource Include="Images\button_red.png" />
 		<Resource Include="Images\close-button.png" />
 		<Resource Include="Images\CodingWithDyslexia.gif" />
+		<Resource Include="Images\Dev\001.png" />
+		<Resource Include="Images\Dev\002.jpg" />
+		<Resource Include="Images\Dev\003.png" />
+		<Resource Include="Images\Dev\004.jpg" />
+		<Resource Include="Images\Dev\005.jpg" />
+		<Resource Include="Images\Dev\006.jpg" />
+		<Resource Include="Images\Dev\007.jpg" />
+		<Resource Include="Images\Dev\008.jpg" />
+		<Resource Include="Images\Dev\009.jpg" />
 		<Resource Include="Images\discord.png" />
 		<Resource Include="Images\DownloadProgress1.png" />
 		<Resource Include="Images\DownloadProgress2.png" />
@@ -125,6 +134,15 @@
 	<ItemGroup>
 	  <None Remove="Images\button_gray.png" />
 	  <None Remove="Images\CodingWithDyslexia.gif" />
+	  <None Remove="Images\Dev\001.png" />
+	  <None Remove="Images\Dev\002.jpg" />
+	  <None Remove="Images\Dev\003.png" />
+	  <None Remove="Images\Dev\004.jpg" />
+	  <None Remove="Images\Dev\005.jpg" />
+	  <None Remove="Images\Dev\006.jpg" />
+	  <None Remove="Images\Dev\007.jpg" />
+	  <None Remove="Images\Dev\008.jpg" />
+	  <None Remove="Images\Dev\009.jpg" />
 	  <None Remove="Images\DownloadProgress1.png" />
 	  <None Remove="Images\DownloadProgress2.png" />
 	  <None Remove="Images\Icons\Copter.ico" />

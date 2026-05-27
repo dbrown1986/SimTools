@@ -1,0 +1,57 @@
+﻿<Window x:Name="AboutSimTools1" x:Class="SimTools_v4.Pages.AboutSimTools"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimTools_v4.Pages"
+        mc:Ignorable="d"
+        Title="AboutSimTools" Height="530" Width="530" WindowStyle="None" Foreground="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+        
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/TS3_Box2.png"/>
+
+    </Window.Background>
+    <Grid>
+        <TextBlock x:Name="Text3" HorizontalAlignment="Left" Margin="32,40,0,0" TextWrapping="Wrap" Text="SimTools is the culmination of years of work!" VerticalAlignment="Top" Width="265" Height="17" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <TextBlock x:Name="Text2" HorizontalAlignment="Left" Margin="32,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" Height="201" FontFamily="Tahoma" FontSize="10.5">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground><Run Text="In the beginning, SimTools started out as little more than an enhanced launcher for The Sims 3, that had a few tools built-in to it that could be ran before launching the game, in order to help ease things along."/><LineBreak/><Run/><LineBreak/><Run Text="It has since become much more than that, morphing into a comprehensive suite of tools that hopefully even a novice can use to revolutionize their various sim games experience."/><LineBreak/><Run/><LineBreak/><Run Text="If SimTools has helped you experience your sim-style games in newer and better ways, please be sure to show your support. If you need help, or would like to share your experiences with the community, please feel free to join the SimTools Discord Server."/></TextBlock>
+        <Image x:Name="DevSlideShow" HorizontalAlignment="Left" Height="177" Margin="304,42,0,0" VerticalAlignment="Top" Width="193" Source="/Images/Dev/001.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0" AngleY="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="304,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground><Run Text="David Brown, creator of SimTools."/><LineBreak/><Run Text="Playing since OG Sims in 2000."/></TextBlock>
+        <TextBlock x:Name="Text3_Copy" HorizontalAlignment="Left" Margin="32,272,0,0" TextWrapping="Wrap" Text="Warning: SimTools is protected under the GNU General Public License v3.0. It is open-source software, made available to the public and open to contributions, however; I would prefer that SimTools not be used for commercial gain. " VerticalAlignment="Top" Width="473" Height="58" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+    </Grid>
+</Window>
