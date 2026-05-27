@@ -44,7 +44,7 @@
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </TextBlock.Foreground><Run Text="David Brown, creator of SimTools."/><LineBreak/><Run Text="Playing since OG Sims in 2000."/></TextBlock>
-        <TextBlock x:Name="Text3_Copy" HorizontalAlignment="Left" Margin="32,272,0,0" TextWrapping="Wrap" Text="Warning: SimTools is protected under the GNU General Public License v3.0. It is open-source software, made available to the public and open to contributions, however; I would prefer that SimTools not be used for commercial gain. " VerticalAlignment="Top" Width="473" Height="58" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
+        <TextBlock x:Name="Text4" HorizontalAlignment="Left" Margin="32,272,0,0" TextWrapping="Wrap" Text="SimTools is protected under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC) license. It is open-source software, made available to the public and open to contributions. This software, in no part should be used for commercial gain." VerticalAlignment="Top" Width="473" Height="58" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic" TextAlignment="Center">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -52,6 +52,38 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>
+        <TextBlock x:Name="Text5" HorizontalAlignment="Left" Margin="32,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" Height="57" FontFamily="Tahoma" FontSize="10.5" TextAlignment="Center">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground><Run Text="Version: 4.0.1, Build 3868"/><LineBreak/><Run Text="Released: ??/??/2025"/><LineBreak/><Run Text="Website: http://www.ts3tools.com"/><LineBreak/><Run Text="© 2025, Archeon Industries, LLC."/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="Text6" HorizontalAlignment="Left" Margin="32,432,0,0" TextWrapping="Wrap" Text="For Faith, who inspired me to finally finish this program." VerticalAlignment="Top" Width="169" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <Button x:Name="UpdateButton" Content="Check for Updates" HorizontalAlignment="Left" Margin="376,346,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ChangelogButton" Content="Changelog" HorizontalAlignment="Left" Margin="376,380,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="PreviousMenu" HorizontalAlignment="Left" Margin="328,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="25" FontFamily="SimSun" FontSize="10.5" TextAlignment="Center" Text="Click the 'X' to go back to the previous menu.">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground></TextBlock>
 
     </Grid>
 </Window>
