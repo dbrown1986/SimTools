@@ -46,7 +46,7 @@
         <TextBlock x:Name="Retail" Margin="496,283,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="White" Width="297" Height="26" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="16" Text="Retail Discs" FontStyle="Italic" TextAlignment="Center"/>
         <TreeView x:Name="BuyGamesDigital" Width="296" Height="265" Margin="184,308,0,67" HorizontalAlignment="Left"
                   SelectedItemChanged="OnBuyTreeItemSelected"/>
-        <TreeView x:Name="BuyGamesDigital_Copy" Width="296" Height="265" Margin="496,308,0,67" HorizontalAlignment="Left"
+        <TreeView x:Name="BuyGamesRetail" Width="296" Height="265" Margin="496,308,0,67" HorizontalAlignment="Left"
                   SelectedItemChanged="OnBuyTreeItemSelected"/>
         <TextBlock x:Name="Text2_Copy" Margin="184,580,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFE87F43" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Text="If you buy your Sims 3 games on Steam, you can view your game key, and cross-register it on the EA App / Origin. This is only uni-directional and will only work with the Steam copies. You cannot cross register Sims 3 EA keys on Steam. Digital keys will also not work for retail copies, but retail codes that are unused will register on EA (but not Steam). Buying sealed retail copies or Steam copies is your best bet!"/>
         <TextBlock x:Name="UseText" Margin="184,16,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="White" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11">
