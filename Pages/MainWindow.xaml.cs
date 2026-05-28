@@ -586,6 +586,7 @@ namespace SimTools
                             "SimTools â€” Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
+                    if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
                     await DownloadFileOnly(
                         $"%baseurl%/Mods/Sims3/packages/nraas/{fileName}",
                         Path.Combine(GamePaths.Sims3Mods, "SimTools", "Packages", "nraas", fileName));
@@ -613,6 +614,122 @@ namespace SimTools
 
         // Handler is now empty â€” menu is pre-built, nothing to do here
         private void TweakButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
+
+        // ── Mod Framework Button ───────────────────────────────────────────────────
+        // Installs Resource.cfg and the standard folder structure into %Sims3Mods%.
+        // If the path is not configured, attempts to auto-detect and offers to create
+        // the Mods folder under Documents\Electronic Arts\The Sims 3.
+        private void ModFrameworkButton_Click(object sender, RoutedEventArgs e)
+        {
+            string modsPath = GamePaths.Sims3Mods;
+
+            if (!GamePaths.IsConfigured(modsPath))
+            {
+                // ── Auto-detect: Documents\Electronic Arts\The Sims 3 ────────────
+                string docs    = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string ts3Root = Path.Combine(docs, "Electronic Arts", "The Sims 3");
+                string candidate = Path.Combine(ts3Root, "Mods");
+
+                if (Directory.Exists(ts3Root))
+                {
+                    var answer = MessageBox.Show(
+                        "Your Sims 3 Mods directory has not been configured in Settings.\n\n" +
+                        $"SimTools detected your Sims 3 user data folder at:\n{ts3Root}\n\n" +
+                        "Would you like to create a 'Mods' folder there and proceed with the installation?",
+                        "SimTools — Mods Directory Not Set",
+                        MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                    if (answer != MessageBoxResult.Yes) return;
+
+                    Directory.CreateDirectory(candidate);
+                    IniHelper.Write("Directories", "Sims3_Mods", candidate);
+                    modsPath = candidate;
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Mods directory has not been configured in Settings.\n\n" +
+                        "To install the Mod Framework:\n\n" +
+                        "1. Create a folder named 'Mods' inside:\n" +
+                        "   Documents\\Electronic Arts\\The Sims 3\n\n" +
+                        "2. Open Settings and set your Sims 3 Mods path to that folder.\n\n" +
+                        "Then click 'Mod Framework' again.",
+                        "SimTools — Mods Directory Not Set",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+            }
+
+            InstallModFramework(modsPath);
+        }
+
+        private static void InstallModFramework(string modsPath)
+        {
+            try
+            {
+                // ── 1. Extract Resource.cfg from compiled resources (pack URI) ──────
+                string destCfg = Path.Combine(modsPath, "Resource.cfg");
+                var sri = System.Windows.Application.GetResourceStream(
+                    new Uri("pack://application:,,,/Resources/Resource.cfg"));
+                if (sri == null)
+                {
+                    MessageBox.Show(
+                        "Resource.cfg could not be found in the compiled resources.\n" +
+                        "Please reinstall SimTools and try again.",
+                        "SimTools \u2014 Missing Resource",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                using (var inStream  = sri.Stream)
+                using (var outStream = File.Create(destCfg))
+                    inStream.CopyTo(outStream);
+
+                // ── 2. Create folder structure ────────────────────────────────────
+                string[] subfolders =
+                {
+                    "Disabled",
+                    Path.Combine("Disabled", "Overrides"),
+                    Path.Combine("Disabled", "Packages"),
+                    Path.Combine("Disabled", "Probation"),
+                    Path.Combine("Disabled", "Test"),
+                    "Overrides",
+                    "Packages",
+                    "Probation",
+                    Path.Combine("Probation", "Overrides"),
+                    Path.Combine("Probation", "Packages"),
+                    "SimTools",
+                    Path.Combine("SimTools", "Overrides"),
+                    Path.Combine("SimTools", "Packages"),
+                    "Test",
+                    Path.Combine("Test", "Overrides"),
+                    Path.Combine("Test", "Packages"),
+                };
+
+                foreach (var sub in subfolders)
+                    Directory.CreateDirectory(Path.Combine(modsPath, sub));
+
+                // ── 3. Report success ─────────────────────────────────────────────
+                MessageBox.Show(
+                    "The SimTools Mod Framework has been installed successfully!\n\n" +
+                    $"Location:\n{modsPath}\n\n" +
+                    "Folders created:\n" +
+                    "  • Disabled  (Overrides, Packages, Probation, Test)\n" +
+                    "  • Overrides  •  Packages\n" +
+                    "  • Probation  (Overrides, Packages)\n" +
+                    "  • SimTools  (Overrides, Packages)\n" +
+                    "  • Test  (Overrides, Packages)\n\n" +
+                    "Resource.cfg has been installed to your Mods folder.",
+                    "SimTools — Mod Framework Installed",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to install the Mod Framework:\n\n{ex.Message}",
+                    "SimTools — Installation Failed",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
         // Opens the About SimTools window
         private void InfoButton_Click(object sender, RoutedEventArgs e)
@@ -799,6 +916,7 @@ namespace SimTools
                         "SimTools â€” Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
+                if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
 
                 await DownloadFileOnly(
                     "%baseurl%/Mods/Sims3/packages/simler90GameplayCoreMod-UPDATE206.package",
@@ -831,6 +949,7 @@ namespace SimTools
                         "SimTools â€” Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
+                if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
 
                 await DownloadFileOnly(
                     "%baseurl%/Mods/Sims3/packages/base/ld_MonoPatcher.package",

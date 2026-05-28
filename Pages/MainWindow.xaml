@@ -83,7 +83,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="TweakButton" Content="Game Tweaks &gt;" HorizontalAlignment="Left" Margin="8,256,0,0" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="TweakButton" Content="Game Tweaks &gt;" HorizontalAlignment="Left" Margin="8,256,0,0" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
@@ -148,7 +148,7 @@
         <TextBlock x:Name="BuyTS3Text" HorizontalAlignment="Left" Margin="184,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Here you can find links for buying The Sims 3 and it's various expansion and stuff packs. I earn commission per sale if you elect to purchase through SimTools."/>
         <TextBlock x:Name="ModToolsText" HorizontalAlignment="Left" Margin="184,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11"><Run Text="A collection of tools to help you create worlds, objects, skins, clothing, scripts, packages, etc. Use with care. Various tutorials can be found on YouTube."/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="GenKeysText" HorizontalAlignment="Left" Margin="184,536,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Lost your game case? Bought a game second-hand with no case at all? This menu will display generic keys that can be used to install from Retail discs."/>
-        <Button x:Name="ModFrameworkButton" Content="Mod Framework" HorizontalAlignment="Left" Margin="184,600,0,0" VerticalAlignment="Top" Width="122" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="ModFrameworkButton" Content="Mod Framework" HorizontalAlignment="Left" Margin="184,600,0,0" VerticalAlignment="Top" Width="122" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ModFrameworkButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>

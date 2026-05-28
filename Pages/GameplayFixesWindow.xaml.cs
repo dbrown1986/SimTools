@@ -1,120 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Input;
 
 using WpfMessageBox = System.Windows.MessageBox;
 
 namespace SimTools;
-
-// ══════════════════════════════════════════════════════════════════════════════
-//  Data record — top-level so all ViewModels can reference it
-// ══════════════════════════════════════════════════════════════════════════════
-public sealed record GameplayFixItem(
-    string DisplayName,
-    string FileName,
-    string Url,
-    string OnCheckedMessage = "");
-
-// ══════════════════════════════════════════════════════════════════════════════
-//  Item ViewModel
-// ══════════════════════════════════════════════════════════════════════════════
-public sealed class GameplayFixViewModel : INotifyPropertyChanged
-{
-    public string DisplayName      { get; }
-    public string FileName         { get; }
-    public string Url              { get; }
-    public string OnCheckedMessage { get; }
-
-    /// <summary>True for real items; false for TBD placeholders (empty FileName).</summary>
-    public bool IsActive => !string.IsNullOrEmpty(FileName);
-
-    private bool _isChecked;
-    public bool IsChecked
-    {
-        get => _isChecked;
-        set
-        {
-            if (_isChecked == value) return;
-            _isChecked = value;
-            OnPropertyChanged();
-
-            if (value && !string.IsNullOrEmpty(OnCheckedMessage))
-                CheckedMessageRequested?.Invoke(this, OnCheckedMessage);
-        }
-    }
-
-    public event EventHandler<string>? CheckedMessageRequested;
-
-    public GameplayFixViewModel(GameplayFixItem item)
-    {
-        DisplayName      = item.DisplayName;
-        FileName         = item.FileName;
-        Url              = item.Url;
-        OnCheckedMessage = item.OnCheckedMessage;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string? n = null)
-        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(n));
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-//  Section ViewModel
-// ══════════════════════════════════════════════════════════════════════════════
-public sealed class GameplaySectionViewModel : INotifyPropertyChanged
-{
-    public string                                     Header { get; }
-    public ObservableCollection<GameplayFixViewModel> Items  { get; }
-    public ICommand                                   ToggleAllCommand { get; }
-
-    /// <summary>
-    /// Drives the section-header three-state checkbox (OneWay binding).
-    /// Considers only active (non-TBD) items.
-    /// </summary>
-    public bool? IsAllSelected
-    {
-        get
-        {
-            var active = Items.Where(i => i.IsActive).ToList();
-            if (active.Count == 0) return false;
-            bool any = active.Any(i => i.IsChecked);
-            bool all = active.All(i => i.IsChecked);
-            return all ? true : any ? null : false;
-        }
-    }
-
-    public GameplaySectionViewModel(string header, IEnumerable<GameplayFixViewModel> items)
-    {
-        Header = header;
-        Items  = new ObservableCollection<GameplayFixViewModel>(items);
-
-        ToggleAllCommand = new RelayCommand(_ =>
-        {
-            var active = Items.Where(i => i.IsActive).ToList();
-            bool check = active.Any(i => !i.IsChecked);
-            foreach (var item in active)
-                item.IsChecked = check;
-        });
-
-        foreach (var item in Items)
-            item.PropertyChanged += (_, args) =>
-            {
-                if (args.PropertyName == nameof(GameplayFixViewModel.IsChecked))
-                    OnPropertyChanged(nameof(IsAllSelected));
-            };
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    private void OnPropertyChanged([CallerMemberName] string? n = null)
-        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(n));
-}
 
 // ══════════════════════════════════════════════════════════════════════════════
 //  Window code-behind
@@ -162,6 +55,29 @@ public partial class GameplayFixesWindow : Window
     private void GlobalSelectAll_Click(object sender, RoutedEventArgs e)
     {
         bool check = GlobalSelectAll.IsChecked == true;
+
+        if (check)
+        {
+            var result = WpfMessageBox.Show(
+                "You are about to select every available fix.\n\n" +
+                "SimTools is designed to make games run better — but installing " +
+                "every package will increase load times and may bog down the engine. " +
+                "It is strongly recommended to only install fixes for features and " +
+                "objects you actively use.\n\n" +
+                "Additionally, installing fixes for Expansion Packs or Stuff Packs " +
+                "that are not installed on your system can result in crashes or " +
+                "unexpected behaviour.\n\n" +
+                "Do you still want to select all fixes?",
+                "SimTools — Select All Warning",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+            {
+                GlobalSelectAll.IsChecked = false;
+                return;
+            }
+        }
+
         foreach (var item in AllActiveItems())
             item.IsChecked = check;
     }
@@ -181,6 +97,8 @@ public partial class GameplayFixesWindow : Window
                 "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
+
+        if (!ModFrameworkHelper.EnsureInstalled(_sims3Mods)) return;
 
         var toDownload = _sections
             .SelectMany(s => s.Items)
