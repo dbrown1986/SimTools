@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SimTools_v4.Pages
+namespace SimTools
 {
     /// <summary>
     /// Interaction logic for SpecialThanks.xaml
@@ -27,6 +27,11 @@ namespace SimTools_v4.Pages
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void ViewDonors_Click(object sender, RoutedEventArgs e)
+        {
+            new Donors { Owner = this }.ShowDialog();
         }
     }
 }

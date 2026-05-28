@@ -123,7 +123,7 @@
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="ModToolsButton" Content="Mod Tools &gt;" HorizontalAlignment="Left" Margin="8,496,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="ModToolsButton" Content="Mod Tools &gt;" HorizontalAlignment="Left" Margin="8,496,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ThanksButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
@@ -158,7 +158,7 @@
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="ThanksButton" Content="Special Thanks" HorizontalAlignment="Left" Margin="449,600,0,0" VerticalAlignment="Top" Width="146" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="ThanksButton" Content="Special Thanks" HorizontalAlignment="Left" Margin="449,600,0,0" VerticalAlignment="Top" Width="146" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ThanksButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
