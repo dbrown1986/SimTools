@@ -13,8 +13,11 @@ namespace SimTools
     /// Validates that the configured %baseurl% resolves to a trusted domain and IP,
     /// and that the local hosts file has not redirected it to an unexpected address.
     ///
-    /// Trusted sources are read from trusted-sources.json in the application directory.
-    /// All checks are advisory — failures generate a warning dialog but never block downloads.
+    /// Trusted sources are read from TrustedSources.cs during assembly. New mirrors should be
+    /// added there and included in the build process. Warnings will continue until the user
+    /// updates to a version of the app with the new trusted source included.
+    /// 
+    /// All checks are advisory — failures generate a warning dialog but never blocks downloads.
     ///
     /// Validation runs at most once per domain per application session (cached).
     /// Call InvalidateCache() if the user changes the BaseUrl in Settings.
