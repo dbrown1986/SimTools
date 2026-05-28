@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Runtime.Versioning;
+using System.Linq;
+using System.IO;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -33,6 +36,7 @@ public sealed class GameSettingViewModel : INotifyPropertyChanged
     public ICommand BrowseGameCommand { get; }
     public ICommand BrowseModCommand { get; }
 
+    [SupportedOSPlatform("windows")]
     public GameSettingViewModel(string key, string name, bool hasMods)
     {
         Key = key;
@@ -114,6 +118,7 @@ public partial class SettingsWindow : Window
     private readonly List<GameSettingViewModel> _gameViewModels;
 
     // ── Constructor ──────────────────────────────────────────────────────────
+    [SupportedOSPlatform("windows")]
     public SettingsWindow()
     {
         InitializeComponent();
@@ -222,6 +227,54 @@ public partial class SettingsWindow : Window
             LanguageManager.Get("Settings", "Msg_Reset",
                 "Language selection will appear on the next launch."),
             "SimTools", MessageBoxButton.OK, MessageBoxImage.Information);
+    }
+
+    // ── Auto-Detect Directories ───────────────────────────────────────────────
+    [SupportedOSPlatform("windows")]
+    private void AutoDetect_Click(object sender, RoutedEventArgs e)
+    {
+        var results = GamePathDetector.DetectAll();
+
+        int filled = 0;
+        foreach (var vm in _gameViewModels)
+        {
+            if (!results.TryGetValue(vm.Key, out var r)) continue;
+
+            // Game directory — only fill if currently empty
+            if (r.GamePath is not null && string.IsNullOrWhiteSpace(vm.GameDir))
+            {
+                vm.GameDir = r.GamePath;
+                filled++;
+            }
+
+            // Mod directory — only fill if currently empty
+            if (vm.HasMods && r.ModPath is not null && string.IsNullOrWhiteSpace(vm.ModDir))
+            {
+                vm.ModDir = r.ModPath;
+                filled++;
+            }
+        }
+
+        if (filled == 0)
+        {
+            System.Windows.MessageBox.Show(
+                "No game or mod directories could be detected automatically.\n\n" +
+                "Common install locations were checked, including Steam, GOG, EA Games,\n" +
+                "Electronic Arts, and Origin Games folders.\n\n" +
+                "You can set paths manually using the Browse buttons.",
+                "Auto-Detect \u2014 Nothing Found",
+                MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        else
+        {
+            string dirWord = filled == 1 ? "y was" : "ies were";
+            System.Windows.MessageBox.Show(
+                $"{filled} director{dirWord} detected and filled in.\n\n" +
+                "Paths that were already set have not been changed.\n" +
+                "Please review the results and click Save when ready.",
+                "Auto-Detect Complete",
+                MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 
     // ── Reset Base URL ────────────────────────────────────────────────────────
