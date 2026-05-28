@@ -1,0 +1,21 @@
+﻿<Window x:Name="DonorsWindow" x:Class="SimTools_v4.Pages.Donors"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimTools_v4.Pages"
+        mc:Ignorable="d"
+        Title="Donors" Height="532" Width="530" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/TS3_Box2.png"/>
+    </Window.Background>
+    <Grid>
+        <TextBlock x:Name="DonorsText" HorizontalAlignment="Left" Margin="32,40,0,0" TextWrapping="Wrap" Text="Whether through one-time, or recurring donations (fiscal or otherwise), the following people have contributed to SimTools:" VerticalAlignment="Top" Width="465" Height="49" FontFamily="Tahoma" FontWeight="Bold"/>
+        <TextBlock x:Name="DonorList1" HorizontalAlignment="Left" Margin="32,96,0,0" TextWrapping="Wrap" Text="EliSims Love" VerticalAlignment="Top" Width="145" Height="321" FontFamily="SimSun" TextAlignment="Center"/>
+        <TextBlock x:Name="DonorList2" HorizontalAlignment="Left" Margin="184,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Height="321" FontFamily="SimSun" TextAlignment="Center"/>
+        <TextBlock x:Name="DonorList3" HorizontalAlignment="Left" Margin="336,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Height="321" FontFamily="SimSun" TextAlignment="Center"/>
+        <TextBlock x:Name="PreviousMenu" HorizontalAlignment="Left" Margin="328,424,0,0" TextWrapping="Wrap" Text="Click the 'X' to go back to the previous menu." VerticalAlignment="Top" Width="161" Height="33" FontFamily="SimSun" TextAlignment="Center"/>
+        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="455,481,0,0" VerticalAlignment="Top" Click="CloseButton_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="25" Height="32"/>
+
+    </Grid>
+</Window>
