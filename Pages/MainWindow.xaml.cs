@@ -8,6 +8,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Runtime.Versioning;
 
+using System.Reflection;
+using System.Windows.Documents;
 // Add these two aliases to resolve the ambiguity:
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
@@ -21,7 +23,26 @@ namespace SimTools
         {
             InitializeComponent();
             ApplyLanguage();
+            PopulateVersionInfo();
             // Context menu handling, so event handlers don't fire off early when the XAML is loading
+        }
+
+        // Populates the VersionInfo TextBlock with dynamic copyright year and build version
+        private void PopulateVersionInfo()
+        {
+            var asm = Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly();
+            var ver = asm.GetName().Version ?? new Version(4, 0, 1, 0);
+
+            int currentYear = DateTime.Now.Year;
+            // ver.Major.Minor.Build = 4.0.1 ; ver.Revision = build counter
+            string versionStr = $"v {ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}";
+
+            VersionInfo.Inlines.Clear();
+            VersionInfo.Inlines.Add(new Run($"Copyright \u00a9 {currentYear}"));
+            VersionInfo.Inlines.Add(new LineBreak());
+            VersionInfo.Inlines.Add(new Run("Archeon Industries, LLC."));
+            VersionInfo.Inlines.Add(new LineBreak());
+            VersionInfo.Inlines.Add(new Run(versionStr));
         }
 
         // Called on load and by SettingsWindow after a language change

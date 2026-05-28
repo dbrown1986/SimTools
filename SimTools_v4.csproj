@@ -119,6 +119,7 @@
 		<Resource Include="Images\facebook.png" />
 		<Resource Include="Resources\Fonts\simsun.ttc" />
 		<Resource Include="Resources\Fonts\STENCIL.TTF" />
+		<Resource Include="Resources\Resource.cfg" />
 		<Resource Include="Resources\sfx01.mp3" />
 		<Resource Include="SimTools.ico">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -129,38 +130,6 @@
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Images\button_gray.png" />
-	  <None Remove="Images\CodingWithDyslexia.gif" />
-	  <None Remove="Images\Dev\001.png" />
-	  <None Remove="Images\Dev\002.jpg" />
-	  <None Remove="Images\Dev\003.png" />
-	  <None Remove="Images\Dev\004.jpg" />
-	  <None Remove="Images\Dev\005.jpg" />
-	  <None Remove="Images\Dev\006.jpg" />
-	  <None Remove="Images\Dev\007.jpg" />
-	  <None Remove="Images\Dev\008.jpg" />
-	  <None Remove="Images\Dev\009.jpg" />
-	  <None Remove="Images\DownloadProgress1.png" />
-	  <None Remove="Images\DownloadProgress2.png" />
-	  <None Remove="Images\Icons\Copter.ico" />
-	  <None Remove="Images\Icons\gog.ico" />
-	  <None Remove="Images\Icons\SC2013.ico" />
-	  <None Remove="Images\Icons\SC2K.ico" />
-	  <None Remove="Images\Icons\SC3KU.ico" />
-	  <None Remove="Images\Icons\SC4DE.ico" />
-	  <None Remove="Images\Icons\Sims1.ico" />
-	  <None Remove="Images\Icons\Sims2.ico" />
-	  <None Remove="Images\Icons\Streets.ico" />
-	  <None Remove="Images\Icons\TSCastaway.ico" />
-	  <None Remove="Images\Icons\TSLife.ico" />
-	  <None Remove="Images\Icons\TSM.ico" />
-	  <None Remove="Images\Icons\TSPets.ico" />
-	  <None Remove="Images\Icons\vendors\kinguin.ico" />
-	  <None Remove="Images\Icons\worlds.ico" />
-	  <None Remove="Images\TS3_Box3.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -210,9 +179,7 @@
 	<!-- Reads build.counter, increments by 1 each build, writes it back,      -->
 	<!-- then stamps Version / AssemblyVersion / FileVersion.                  -->
 	<!-- Skipped during VS design-time background builds.                      -->
-	<Target Name="IncrementBuildCounter"
-	        BeforeTargets="BeforeBuild"
-	        Condition="'$(DesignTimeBuild)' != 'true'">
+	<Target Name="IncrementBuildCounter" BeforeTargets="BeforeBuild" Condition="'$(DesignTimeBuild)' != 'true'">
 
 		<PropertyGroup>
 			<_CounterFile>$(MSBuildProjectDirectory)\build.counter</_CounterFile>
@@ -220,7 +187,7 @@
 
 		<!-- Read current number (defaults to 0 if file is missing) -->
 		<ReadLinesFromFile File="$(_CounterFile)" Condition="Exists('$(_CounterFile)')">
-			<Output TaskParameter="Lines" ItemName="_CounterLines"/>
+			<Output TaskParameter="Lines" ItemName="_CounterLines" />
 		</ReadLinesFromFile>
 		<PropertyGroup>
 			<_Build Condition="'@(_CounterLines)' != ''">@(_CounterLines)</_Build>
@@ -229,7 +196,7 @@
 		</PropertyGroup>
 
 		<!-- Write incremented number back to disk -->
-		<WriteLinesToFile File="$(_CounterFile)" Lines="$(_Build)" Overwrite="true"/>
+		<WriteLinesToFile File="$(_CounterFile)" Lines="$(_Build)" Overwrite="true" />
 
 		<!-- Stamp the full version -->
 		<PropertyGroup>
@@ -238,7 +205,7 @@
 			<FileVersion>$(BaseVersion).$(_Build)</FileVersion>
 		</PropertyGroup>
 
-		<Message Text="▶ Build number: $(_Build)" Importance="high"/>
+		<Message Text="▶ Build number: $(_Build)" Importance="high" />
 	</Target>
 
 </Project>
