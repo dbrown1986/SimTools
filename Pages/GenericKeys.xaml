@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimTools"
         mc:Ignorable="d"
-        Title="GenericKeys" Height="450" Width="800">
+        Title="GenericKeys" Height="500" Width="400" WindowStyle="None" AllowsTransparency="True" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{x:Null}">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/TS3_Box2.png"/>
+    </Window.Background>
     <Grid>
-        
+        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="344,451,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="30" Width="18" Click="CloseButton_Click"/>
+        <Button x:Name="GenKeysButton" Content="Select Game &gt;" HorizontalAlignment="Left" Margin="40,32,0,0" VerticalAlignment="Top" Click="GenKeysButton_Click" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="KeysInfoText" HorizontalAlignment="Center" Margin="0,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="352" Height="141" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontFamily="Tahoma" FontWeight="Bold" TextAlignment="Center"><Run Text="Please select a game using the button above."/><LineBreak/><Run/><LineBreak/><Run Text="If a key is not working, or if an entire set of keys is not working. Please let me know in the Discord, so I can remedy it in the next version."/><LineBreak/><Run/><LineBreak/><Run Text="This feature, and all features related to it, may be removed in a future version of SimTools, at any time, at the behest of EA."/></TextBlock>
+        <TextBox x:Name="KeyField" HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" Text="Select a game and hit generate..." VerticalAlignment="Top" Width="252" Height="24"/>
+        <Button x:Name="GenerateButton" Content="Generate" HorizontalAlignment="Left" Margin="75,333,0,0" VerticalAlignment="Top" Click="GenKeysButton_Click" Width="120" Height="34" FontFamily="Tahoma" FontWeight="Bold">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="CopyButton" Content="Copy" HorizontalAlignment="Left" Margin="205,333,0,0" VerticalAlignment="Top" Click="GenKeysButton_Click" Width="120" Height="34" FontFamily="Tahoma" FontWeight="Bold">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_normal.png"/>
+            </Button.Background>
+        </Button>
+
     </Grid>
 </Window>

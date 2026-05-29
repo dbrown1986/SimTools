@@ -23,5 +23,15 @@ namespace SimTools
         {
             InitializeComponent();
         }
+
+        private void CloseButton_Click(object sender)
+        {
+            Close();
+        }
+
+        private void GenKeysButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
