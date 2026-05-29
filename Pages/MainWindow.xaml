@@ -169,27 +169,27 @@
                 <ImageBrush ImageSource="/Images/button_red.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="SimPortButton" Content="Add Me on SimPort" HorizontalAlignment="Left" Margin="624,552,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="SimPortButton" Content="Add Me on SimPort" HorizontalAlignment="Left" Margin="624,552,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SimPortButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="DiscordButton" Content="" HorizontalAlignment="Left" Margin="640,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="DiscordButton" Content="" HorizontalAlignment="Left" Margin="640,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="DiscordButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/discord.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="FacebookButton" Content="" HorizontalAlignment="Left" Margin="680,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="FacebookButton" Content="" HorizontalAlignment="Left" Margin="680,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="FacebookButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/facebook.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="YoutubeButton" Content="" HorizontalAlignment="Left" Margin="720,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="YoutubeButton" Content="" HorizontalAlignment="Left" Margin="720,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="YoutubeButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/youtube.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="SteamButton" Content="" HorizontalAlignment="Left" Margin="760,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="SteamButton" Content="" HorizontalAlignment="Left" Margin="760,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="SteamButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/steam.png"/>
             </Button.Background>
