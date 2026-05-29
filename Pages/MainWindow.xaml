@@ -164,7 +164,7 @@
             </Button.Background>
         </Button>
         <Image x:Name="SulSul" HorizontalAlignment="Left" Height="225" Margin="584,281,0,0" VerticalAlignment="Top" Width="225" Source="/Images/sulsul.png"/>
-        <Button x:Name="WarningButton" Content="IMPORTANT NOTICE!" HorizontalAlignment="Left" Margin="624,512,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" ContextMenuOpening="TweakButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="WarningButton" Content="IMPORTANT NOTICE!" HorizontalAlignment="Left" Margin="624,512,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="WarningButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_red.png"/>
             </Button.Background>

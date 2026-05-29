@@ -1747,5 +1747,15 @@ namespace SimTools
             }
         }
 
+        private void WarningButton_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                MessageBox.Show(
+                    "A great deal has changed between v3.2.4 and v4.0.1. Please take a moment to watch the new video guide by clicking the 'SimTools Video Guide' button. This and the changelog will hopefully better aclimate you to the massive changes.",
+                    "Watch the Video Guide!",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+            }
+        }
     }
 }
