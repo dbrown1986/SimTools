@@ -1,0 +1,56 @@
+﻿<Window x:Class="SimTools.SupportSimTools"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimTools"
+        mc:Ignorable="d"
+        Title="SupportSimTools" Height="532" Width="530" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/TS3_Box2.png"/>
+    </Window.Background>
+    <Grid>
+        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="456,480,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="24" Height="33" Click="CloseButton_Click"/>
+        <TextBlock x:Name="SupportText" HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="First off, thank you for your interest in supporting SimTools. There are various ways in which you can offer support to the SimTools Project. These include, but are not limited to the following:" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="44"/>
+        <TextBlock x:Name="FiscalSupport" HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" Text="Fiscally" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
+        <TextBlock x:Name="FiscalSupport2" HorizontalAlignment="Center" Margin="0,125,0,0" TextWrapping="Wrap" Text="I designed SimTools as a hobby, but SimTools does incur monthly hosting costs and annual domain renewals. You can help offset these costs by donating to the project." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="44"/>
+        <Button x:Name="PayPalButton" Content="Button" HorizontalAlignment="Left" Margin="89,176,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="PayPalButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/paypal.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="CashAppButton" Content="Button" HorizontalAlignment="Left" Margin="279,176,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="CashAppButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/cashapp.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BMACButton" Content="Button" HorizontalAlignment="Left" Margin="89,226,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BMACButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/bmac.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="PatreonButton" Content="Button" HorizontalAlignment="Left" Margin="279,226,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="PatreonButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/patreon.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="FiscalSupport_Copy" HorizontalAlignment="Center" Margin="0,280,0,0" TextWrapping="Wrap" Text="Contribute" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
+        <TextBlock x:Name="FiscalSupport2_Copy" HorizontalAlignment="Center" TextWrapping="Wrap" Text="You can contribute code to the SimTools GitHub page, or host a file repository mirror. You can also use the language translation tool to help bring new languages to SimTools." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="31" Margin="0,304,0,0"/>
+        <Button x:Name="GitHubButton" Content="Button" HorizontalAlignment="Left" Margin="29,346,0,0" VerticalAlignment="Top" Width="150" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="GitHubButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/github.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="RepoMakerButton" Content="📁 Repo Maker" HorizontalAlignment="Left" Margin="188,346,0,0" VerticalAlignment="Top" Width="151" Height="35" BorderBrush="{x:Null}" Click="RepoMakerButton_Click" Foreground="Black" FontWeight="Bold" FontFamily="Tahoma" FontSize="10">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_green.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="TranslationButton" Content="🌐 Translation Tool" HorizontalAlignment="Left" Margin="348,346,0,0" VerticalAlignment="Top" Width="150" Height="35" BorderBrush="{x:Null}" Click="TranslationButton_Click" Foreground="Black" FontFamily="Tahoma" FontSize="10" FontWeight="Bold">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_green.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

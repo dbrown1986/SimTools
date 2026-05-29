@@ -75,7 +75,6 @@ namespace SimTools
             SetupBugFixContextMenu();
             SetupModContextMenu();
             SetupStoreContextMenu();
-            SetupDonateContextMenu();
         }
 
         // Routes user to the vanilla demo video on YouTube
@@ -1620,39 +1619,6 @@ namespace SimTools
 
         private void StoreButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
 
-        // ── Donate button context menu ────────────────────────────────────────────
-        // Opens a context menu with donation platform links on left-click.
-        private void SetupDonateContextMenu()
-        {
-            var contextMenu = new ContextMenu();
-
-            void Browse(string url)
-                => OpenUrl(url);
-
-            // ── PayPal ──────────────────────────────────────────────────────────
-            var paypal = new MenuItem { Header = "PayPal" };
-            paypal.Click += (_, _) => Browse("https://www.paypal.com/donate/?hosted_button_id=VJZMHREBUFSC4");
-            contextMenu.Items.Add(paypal);
-
-            // ── Buy Me a Coffee ─────────────────────────────────────────────────
-            var bmc = new MenuItem { Header = "Buy Me a Coffee" };
-            bmc.Click += (_, _) => Browse("https://buymeacoffee.com/dbrown1986");
-            contextMenu.Items.Add(bmc);
-
-            // ── CashApp ─────────────────────────────────────────────────────────
-            var cashapp = new MenuItem { Header = "Cash App" };
-            cashapp.Click += (_, _) => Browse("https://cash.app/f/POOL?id=mu2otu1w");
-            contextMenu.Items.Add(cashapp);
-
-            // ── Patreon ─────────────────────────────────────────────────────────
-            var patreon = new MenuItem { Header = "Patreon" };
-            patreon.Click += (_, _) => Browse("https://www.patreon.com/cw/SimTools");
-            contextMenu.Items.Add(patreon);
-
-            // ── Assign to button ────────────────────────────────────────────────
-            DonateButton.ContextMenu = contextMenu;
-        }
-
         private void SetupStoreContextMenu()
         {
             var contextMenu = new ContextMenu();
@@ -1755,6 +1721,15 @@ namespace SimTools
                     "Watch the Video Guide!",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
+            }
+        }
+
+        // Opens the support window
+        private void DonateButton_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                var about = new SupportSimTools { Owner = this };
+                about.ShowDialog();
             }
         }
     }

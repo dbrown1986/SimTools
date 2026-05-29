@@ -15,11 +15,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Resource Include="Images\bmac.png" />
 		<Resource Include="Images\button_gray.png" />
 		<Resource Include="Images\button_normal.png" />
 		<Resource Include="Images\button_yellow.png" />
 		<Resource Include="Images\button_green.png" />
 		<Resource Include="Images\button_red.png" />
+		<Resource Include="Images\cashapp.png" />
 		<Resource Include="Images\close-button.png" />
 		<Resource Include="Images\CodingWithDyslexia.gif" />
 		<Resource Include="Images\Dev\001.png" />
@@ -34,6 +36,7 @@
 		<Resource Include="Images\discord.png" />
 		<Resource Include="Images\DownloadProgress1.png" />
 		<Resource Include="Images\DownloadProgress2.png" />
+		<Resource Include="Images\github.png" />
 		<Resource Include="Images\gradient.png" />
 		<Resource Include="Images\gradient_hi.png" />
 		<Resource Include="Images\Icons\AuroraSkies.ico" />
@@ -106,6 +109,8 @@
 		<Resource Include="Images\info.png" />
 		<Resource Include="Images\Menu_Main.png" />
 		<Resource Include="Images\musicon.png" />
+		<Resource Include="Images\patreon.png" />
+		<Resource Include="Images\paypal.png" />
 		<Resource Include="Images\plumbob.gif" />
 		<Resource Include="Images\plumbob_shatter.gif" />
 		<Resource Include="Images\setup.ico" />
@@ -130,6 +135,14 @@
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Images\bmac.png" />
+	  <None Remove="Images\cashapp.png" />
+	  <None Remove="Images\github.png" />
+	  <None Remove="Images\patreon.png" />
+	  <None Remove="Images\paypal.png" />
 	</ItemGroup>
 
 	<ItemGroup>
