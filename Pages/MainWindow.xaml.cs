@@ -363,11 +363,55 @@ namespace SimTools
             var sims1Item = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Tweaks_Sims1", "The Sims 1") };
 
             var sims1_simitone = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Tweaks_Simitone", "Simitone") };
-            sims1_simitone.Click += (s, args) => DownloadAndOpenExe(
-                url: "https://github.com/riperiperi/Simitone/releases/download/v0.8.12/SimitoneWindows.zip",  // ← replace
-                fileName: "SimitoneWindows.zip",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "install")
-            );
+            sims1_simitone.Click += async (_, _) =>
+            {
+                if (!GamePaths.IsConfigured(GamePaths.Sims1Game))
+                {
+                    MessageBox.Show(
+                        LanguageManager.Get("Messages", "Error_Sims1PathNotSet",
+                            "The Sims 1 game directory has not been configured.\nPlease set it in Settings before using this feature."),
+                        "SimTools — Path Not Set",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                string gameDir = GamePaths.Sims1Game;
+                string tempZip = Path.Combine(Path.GetTempPath(), "SimitoneWindows.zip");
+
+                var (ok, _) = await DownloadFileOnly(
+                    url: "https://github.com/riperiperi/Simitone/releases/download/v0.8.12/SimitoneWindows.zip",  // ← replace
+                    destFilePath: tempZip);
+
+                if (!ok) return;
+
+                try
+                {
+                    ZipFile.ExtractToDirectory(tempZip, gameDir, overwriteFiles: true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"Failed to extract Simitone:\n{ex.Message}",
+                        "SimTools — Extraction Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                string simitoneExe = Path.Combine(gameDir, "Simitone.Windows.exe");
+                string message = File.Exists(simitoneExe)
+                    ? "Simitone has been installed to your Sims 1 directory.\n\nWould you like to create a desktop shortcut to Simitone.Windows.exe?"
+                    : "Simitone has been extracted to your Sims 1 directory.\n\nWould you like to create a desktop shortcut?";
+
+                var result = MessageBox.Show(message,
+                    "SimTools — Simitone Installed",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                    CreateDesktopShortcut(
+                        targetExe:   File.Exists(simitoneExe) ? simitoneExe : gameDir,
+                        shortcutName: "Simitone",
+                        description:  "Simitone — The Sims 1 for Modern Computers");
+            };
             sims1Item.Items.Add(sims1_simitone);
             contextMenu.Items.Add(sims1Item);
 
@@ -741,6 +785,18 @@ namespace SimTools
         private void ThanksButton_Click(object sender, RoutedEventArgs e)
         {
             new SpecialThanks { Owner = this }.ShowDialog();
+        }
+
+        private void GenericKeysButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(
+                "This feature provides generic product keys for legacy Maxis/EA titles.\n\n"
+              + "It may be removed from a future version of SimTools at any time, at the behest of EA.",
+                "SimTools \u2014 Generic Keys",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+
+            new GenericKeys { Owner = this }.ShowDialog();
         }
 
         // ═══════════════════════════════════════════════════════════════════════
@@ -1731,6 +1787,32 @@ namespace SimTools
                 var about = new SupportSimTools { Owner = this };
                 about.ShowDialog();
             }
+        }
+
+        // ── Desktop shortcut helper ───────────────────────────────────────────────
+        /// <summary>
+        /// Creates a .lnk shortcut on the user's Desktop using WScript.Shell COM.
+        /// </summary>
+        [System.Runtime.Versioning.SupportedOSPlatform("windows")]
+        private static void CreateDesktopShortcut(string targetExe, string shortcutName, string description = "")
+        {
+            string desktop     = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string shortcutPath = Path.Combine(desktop, shortcutName + ".lnk");
+
+            Type   shellType = Type.GetTypeFromProgID("WScript.Shell")
+                               ?? throw new InvalidOperationException("WScript.Shell is not available.");
+            dynamic shell    = Activator.CreateInstance(shellType)!;
+            dynamic shortcut = shell.CreateShortcut(shortcutPath);
+
+            shortcut.TargetPath       = targetExe;
+            shortcut.WorkingDirectory = Path.GetDirectoryName(targetExe) ?? string.Empty;
+            shortcut.Description      = description;
+            shortcut.Save();
+        }
+
+        private void ModToolsButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

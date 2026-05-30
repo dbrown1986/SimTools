@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="GenericKeys" Height="500" Width="400" WindowStyle="None"
         AllowsTransparency="True" HorizontalAlignment="Left" VerticalAlignment="Top"
-        Foreground="{x:Null}">
+        Foreground="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="/Images/TS3_Box2.png"/>
     </Window.Background>
@@ -45,7 +45,7 @@
 
         <!-- Read-only output field -->
         <TextBox x:Name="KeyField"
-                 HorizontalAlignment="Center" Margin="0,300,0,0"
+                 HorizontalAlignment="Center" Margin="0,250,0,0"
                  VerticalAlignment="Top" Width="252" Height="24"
                  TextWrapping="Wrap"
                  IsReadOnly="True"
@@ -55,7 +55,7 @@
 
         <!-- Generate -->
         <Button x:Name="GenerateButton" Content="Generate"
-                HorizontalAlignment="Left" Margin="75,333,0,0" VerticalAlignment="Top"
+                HorizontalAlignment="Left" Margin="75,283,0,0" VerticalAlignment="Top"
                 Width="120" Height="34" FontFamily="Tahoma" FontWeight="Bold"
                 Click="GenerateButton_Click">
             <Button.Background>
@@ -65,13 +65,18 @@
 
         <!-- Copy -->
         <Button x:Name="CopyButton" Content="Copy"
-                HorizontalAlignment="Left" Margin="205,333,0,0" VerticalAlignment="Top"
+                HorizontalAlignment="Left" Margin="205,283,0,0" VerticalAlignment="Top"
                 Width="120" Height="34" FontFamily="Tahoma" FontWeight="Bold"
                 Click="CopyButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_normal.png"/>
             </Button.Background>
         </Button>
+        <TextBlock x:Name="KeysInfoText_Copy"
+            HorizontalAlignment="Center" Margin="0,332,0,0"
+            TextWrapping="Wrap" VerticalAlignment="Top"
+            Width="352" Height="32"
+            FontFamily="Tahoma" FontWeight="Bold" TextAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"><Run Text="These keys will not work for online registration."/><LineBreak/><Run Text="They will only allow for installation from retail discs."/></TextBlock>
 
     </Grid>
 </Window>

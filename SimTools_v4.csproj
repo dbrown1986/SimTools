@@ -113,6 +113,7 @@
 		<Resource Include="Images\paypal.png" />
 		<Resource Include="Images\plumbob.gif" />
 		<Resource Include="Images\plumbob_shatter.gif" />
+		<Resource Include="Images\Settings.png" />
 		<Resource Include="Images\setup.ico" />
 		<Resource Include="Images\SimTools_Logo.png" />
 		<Resource Include="Images\steam.png" />
@@ -145,6 +146,7 @@
 	  <None Remove="Images\github.png" />
 	  <None Remove="Images\patreon.png" />
 	  <None Remove="Images\paypal.png" />
+	  <None Remove="Images\Settings.png" />
 	</ItemGroup>
 
 	<ItemGroup>
