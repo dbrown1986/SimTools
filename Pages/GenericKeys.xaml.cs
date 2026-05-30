@@ -3,6 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
+using Clipboard = System.Windows.Clipboard;
+using SystemColors = System.Windows.SystemColors;
+
 namespace SimTools;
 
 /// <summary>
@@ -129,6 +132,7 @@ public partial class GenericKeys : Window
     // ══════════════════════════════════════════════════════════════════════
 
     /// <summary>Non-clickable bold section header.</summary>
+    
     private static MenuItem Header(string title) => new()
     {
         Header     = title,
@@ -173,7 +177,7 @@ public partial class GenericKeys : Window
         var uri = new Uri($"pack://application:,,,/Resources/Keys/{fileName}");
         try
         {
-            using var stream = Application.GetResourceStream(uri)?.Stream;
+            using var stream = App.GetResourceStream(uri)?.Stream;
             if (stream is null) return [];
 
             using var reader = new StreamReader(stream);
