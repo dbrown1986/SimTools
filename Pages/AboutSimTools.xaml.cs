@@ -69,7 +69,7 @@ public partial class AboutSimTools : Window
         Text5.Inlines.Add(new System.Windows.Documents.Run("Website: http://www.simtools-app.com"));
         Text5.Inlines.Add(new System.Windows.Documents.LineBreak());
         int currentYear = DateTime.Now.Year;
-        string copyrightYear = currentYear > 2025 ? $"2025\u2013{currentYear}" : "2025";
+        string copyrightYear = currentYear > 2024 ? $"2024\u2013{currentYear}" : "2025";
         Text5.Inlines.Add(new System.Windows.Documents.Run($"\u00a9 {copyrightYear}, Archeon Industries, LLC."));
     }
 

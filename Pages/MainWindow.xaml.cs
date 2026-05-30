@@ -38,7 +38,7 @@ namespace SimTools
             string versionStr = $"v {ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}";
 
             VersionInfo.Inlines.Clear();
-            VersionInfo.Inlines.Add(new Run($"Copyright \u00a9 {currentYear}"));
+            VersionInfo.Inlines.Add(new Run($"Copyright \u00a9 2004 - {currentYear}"));
             VersionInfo.Inlines.Add(new LineBreak());
             VersionInfo.Inlines.Add(new Run("Archeon Industries, LLC."));
             VersionInfo.Inlines.Add(new LineBreak());
@@ -418,12 +418,39 @@ namespace SimTools
             // ── The Sims 2 ────────────────────────────────────────────────────────────
             var sims2Item = new MenuItem { Header = "The Sims 2" };
 
+        
+
             var sims2_rpc = new MenuItem { Header = "Sims2RPC" };
-            sims2_rpc.Click += (_, _) => DownloadAndOpenExe(
-                url: "%baseurl%/Sideload-Apps/x86/Sims2RPCInstaller.exe",
-                fileName: "Sims2RPCInstaller.exe",
-                downloadDirectory: binDir
-            );
+            sims2_rpc.Click += (_, _) =>
+            {
+                var result = MessageBox.Show(
+                    "Which version of The Sims 2 do you have installed?\n\n"
+                  + "• YES  —  Standard / vanilla release (disc or Origin)\n"
+                  + "• NO   —  The Sims 2 Legacy Edition (EA App)\n\n"
+                  + "Selecting YES installs Sims2RPC.\n"
+                  + "Selecting NO opens the LazyDuchess Legacy Extender page for manual installation.",
+                    "SimTools \u2014 Sims2RPC / Legacy Extender",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Vanilla Sims 2 — install Sims2RPC
+                    DownloadAndOpenExe(
+                        url: "%baseurl%/Sideload-Apps/x86/Sims2RPCInstaller.exe",
+                        fileName: "Sims2RPCInstaller.exe",
+                        downloadDirectory: binDir);
+                }
+                else
+                {
+                    // Legacy Edition — open LazyDuchess Legacy Extender GitHub page
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = "https://github.com/LazyDuchess/TS2-Extender",
+                        UseShellExecute = true
+                    });
+                }
+            };
             sims2Item.Items.Add(sims2_rpc);
             contextMenu.Items.Add(sims2Item);
 
