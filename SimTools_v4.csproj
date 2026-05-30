@@ -125,6 +125,8 @@
 		<Resource Include="Resources\Fonts\simsun.ttc" />
 		<Resource Include="Resources\Fonts\STENCIL.TTF" />
 		<Resource Include="Resources\Resource.cfg" />
+		<!-- Generic key lists — one .txt per title, populated separately -->
+		<Resource Include="Resources\Keys\*.txt" />
 		<Resource Include="Resources\sfx01.mp3" />
 		<Resource Include="SimTools.ico">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
