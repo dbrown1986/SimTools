@@ -765,7 +765,7 @@ namespace SimTools
         // Installs Resource.cfg and the standard folder structure into %Sims3Mods%.
         // If the path is not configured, attempts to auto-detect and offers to create
         // the Mods folder under Documents\Electronic Arts\The Sims 3.
-        private void ModFrameworkButton_Click(object sender, RoutedEventArgs e)
+        private async void ModFrameworkButton_Click(object sender, RoutedEventArgs e)
         {
             string modsPath = GamePaths.Sims3Mods;
 
@@ -806,10 +806,65 @@ namespace SimTools
                 }
             }
 
-            InstallModFramework(modsPath);
+            if (!InstallModFramework(modsPath)) return;
+
+            string simtoolsPkgDir = Path.Combine(modsPath, "SimTools", "Packages");
+
+            // ── Silent: nobuildsparkles.package ───────────────────────────────────
+            var (ok1, _) = await DownloadFileOnly(
+                url: "%baseurl%/Framework/NoBuildSparkles.package",  // ← replace
+                destFilePath: Path.Combine(simtoolsPkgDir, "NoBuildSparkles.package"));
+            if (!ok1) return;
+
+            // ── Silent: nointro.package ───────────────────────────────────────────
+            var (ok2, _) = await DownloadFileOnly(
+                url: "%baseurl%/Framework/nointromaxis.package",          // ← replace
+                destFilePath: Path.Combine(simtoolsPkgDir, "nointromaxis.package"));
+            if (!ok2) return;
+
+            // ── Optional: SimTools custom game intro ──────────────────────────────
+            if (MessageBox.Show(
+                    "Would you like to install the SimTools custom game intro?\n\n" +
+                    "This replaces the standard EA game intro with a SimTools branded one.",
+                    "SimTools — Custom Game Intro",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var (okIntro, _) = await DownloadFileOnly(
+                    url: "%baseurl%/Framework/SimToolsIntro.package",        // ← replace
+                    destFilePath: Path.Combine(simtoolsPkgDir, "SimToolsIntro.package"));
+                if (!okIntro) return;
+            }
+
+            // ── Optional: SimTools custom splashscreen ────────────────────────────
+            if (MessageBox.Show(
+                    "Would you like to install the SimTools custom splashscreen?\n\n" +
+                    "This replaces the standard loading splashscreen with a SimTools branded one.",
+                    "SimTools — Custom Splashscreen",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var (okSplash, _) = await DownloadFileOnly(
+                    url: "%baseurl%/Mod-Framework/SimToolsSplashscreen.package",    // ← replace
+                    destFilePath: Path.Combine(simtoolsPkgDir, "SimToolsSplashscreen.package"));
+                if (!okSplash) return;
+            }
+
+            // ── Unified success message ───────────────────────────────────────────
+            MessageBox.Show(
+                "The SimTools Mod Framework has been installed successfully!\n\n" +
+                $"Location:\n{modsPath}\n\n" +
+                "Folders created:\n" +
+                "  \u2022 Disabled  (Overrides, Packages, Probation, Test)\n" +
+                "  \u2022 Overrides  \u2022  Packages\n" +
+                "  \u2022 Probation  (Overrides, Packages)\n" +
+                "  \u2022 SimTools  (Overrides, Packages)\n" +
+                "  \u2022 Test  (Overrides, Packages)\n\n" +
+                "Resource.cfg has been installed to your Mods folder.\n" +
+                "Core packages have been installed to SimTools\\Packages.",
+                "SimTools \u2014 Mod Framework Installed",
+                MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private static void InstallModFramework(string modsPath)
+        private static bool InstallModFramework(string modsPath)
         {
             try
             {
@@ -824,7 +879,7 @@ namespace SimTools
                         "Please reinstall SimTools and try again.",
                         "SimTools \u2014 Missing Resource",
                         MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    return false;
                 }
                 using (var inStream  = sri.Stream)
                 using (var outStream = File.Create(destCfg))
@@ -855,18 +910,7 @@ namespace SimTools
                     Directory.CreateDirectory(Path.Combine(modsPath, sub));
 
                 // ── 3. Report success ─────────────────────────────────────────────
-                MessageBox.Show(
-                    "The SimTools Mod Framework has been installed successfully!\n\n" +
-                    $"Location:\n{modsPath}\n\n" +
-                    "Folders created:\n" +
-                    "  • Disabled  (Overrides, Packages, Probation, Test)\n" +
-                    "  • Overrides  •  Packages\n" +
-                    "  • Probation  (Overrides, Packages)\n" +
-                    "  • SimTools  (Overrides, Packages)\n" +
-                    "  • Test  (Overrides, Packages)\n\n" +
-                    "Resource.cfg has been installed to your Mods folder.",
-                    "SimTools — Mod Framework Installed",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                return true;
             }
             catch (Exception ex)
             {
@@ -874,6 +918,7 @@ namespace SimTools
                     $"Failed to install the Mod Framework:\n\n{ex.Message}",
                     "SimTools — Installation Failed",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
         }
 
