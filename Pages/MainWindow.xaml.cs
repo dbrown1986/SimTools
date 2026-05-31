@@ -75,6 +75,7 @@ namespace SimTools
             SetupBugFixContextMenu();
             SetupModContextMenu();
             SetupStoreContextMenu();
+            SetupModToolsContextMenu();
         }
 
         // Routes user to the vanilla demo video on YouTube
@@ -127,7 +128,7 @@ namespace SimTools
             }
         }
 
-        // User clicked the "New GPU" button, show a warning message box
+        // GPU button handler, forces left-click context-menu interaction.
         private void NewGPUButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn && btn.ContextMenu != null)
@@ -342,7 +343,7 @@ namespace SimTools
             Process.Start(new ProcessStartInfo(exePath) { UseShellExecute = true });
         }
 
-        // User clicked the Tweaks button, show a warning message box
+        // Tweaks button left-click context menu.
         private void TweakButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn && btn.ContextMenu != null)
@@ -407,10 +408,11 @@ namespace SimTools
                     MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
-                    CreateDesktopShortcut(
-                        targetExe:   File.Exists(simitoneExe) ? simitoneExe : gameDir,
-                        shortcutName: "Simitone",
-                        description:  "Simitone — The Sims 1 for Modern Computers");
+                    if (OperatingSystem.IsWindows())
+                        CreateDesktopShortcut(
+                            targetExe: File.Exists(simitoneExe) ? simitoneExe : gameDir,
+                            shortcutName: "Simitone",
+                            description: "Simitone — The Sims 1 for Modern Computers");
             };
             sims1Item.Items.Add(sims1_simitone);
             contextMenu.Items.Add(sims1Item);
@@ -462,19 +464,19 @@ namespace SimTools
             // ── The Sims 3 ────────────────────────────────────────────────────────────
             var sims3Item = new MenuItem { Header = "The Sims 3" };
 
-            // ── Best In-Game Settings (placeholder) ───────────────────────────────────
-            var ts3_bestSettings = new MenuItem
+            // ── Best In-Game Settings for TS3 ─────────────────────────────────────────
+            var ts3_bestSettings = new MenuItem { Header = "Best In-Game Settings" };
+            ts3_bestSettings.Click += (_, _) =>
             {
-                Header = "Best In-Game Settings",
-                IsEnabled = false                       // window not yet built
+                new BestSettingsTS3 { Owner = this }.ShowDialog();
             };
             sims3Item.Items.Add(ts3_bestSettings);
 
-            // ── Game INI Tweaks (placeholder) ─────────────────────────────────────────
-            var ts3_iniTweaks = new MenuItem
+            // ── Game INI Tweaks ─────────────────────────────────────────
+            var ts3_iniTweaks = new MenuItem { Header = "Game INI Tweaks" };
+            ts3_iniTweaks.Click += (_, _) =>
             {
-                Header = "Game INI Tweaks",
-                IsEnabled = false                       // window not yet built
+                new TS3INITweaks { Owner = this }.ShowDialog();
             };
             sims3Item.Items.Add(ts3_iniTweaks);
 
@@ -1007,7 +1009,7 @@ namespace SimTools
                 if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
 
                 await DownloadFileOnly(
-                    "%baseurl%/Mods/Sims3/packages/simler90GameplayCoreMod-UPDATE206.package",
+                    "%baseurl%/Mods/Sims3/Fixes/Packages/simler90GameplayCoreMod.package",
                     Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/simler90GameplayCoreMod-UPDATE206.package"));
             };
             sims3Item.Items.Add(ts3_simler90);
@@ -1040,7 +1042,7 @@ namespace SimTools
                 if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
 
                 await DownloadFileOnly(
-                    "%baseurl%/Mods/Sims3/packages/base/ld_MonoPatcher.package",
+                    "%baseurl%/Mods/Sims3/Packages/Fixes/base/ld_MonoPatcher.package",
                     Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/ld_MonoPatcher.package"));
                 await DownloadFileOnly(
                     "%baseurl%/Sideload-Apps/x86/MonoPatcher.asi",
@@ -1378,6 +1380,7 @@ namespace SimTools
         }
 
         // Settings Handler
+        [System.Runtime.Versioning.SupportedOSPlatform("windows")]
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             var settings = new SettingsWindow { Owner = this };
@@ -1402,7 +1405,7 @@ namespace SimTools
             }
 
             const string zipName = "RegulSaveCleaner-v4.0.2-win.zip";
-            const string url = "%baseurl%/Sideload-Apps/x64/RegulSaveCleaner-v4.0.2-win.zip";
+            const string url = "https://github.com/Onebeld/RegulSaveCleaner/releases/download/v4.0.2/RegulSaveCleaner-v4.0.2-win.zip";
             var destDir = GamePaths.Sims3Game;
             var exePath = Path.Combine(destDir, "RegulSaveCleaner-v4.0.2-win", "RegulSaveCleaner.exe");
 
@@ -1735,9 +1738,9 @@ namespace SimTools
             contextMenu.Items.Add(videoGuide);
 
             // ── Buy TS3 Games (placeholder — window not yet implemented) ──────
-            // var buyGames = new MenuItem { Header = "Buy TS3 Games" };
-            // buyGames.Click += (_, _) => new BuyGamesWindow { Owner = this }.ShowDialog();
-            // contextMenu.Items.Add(buyGames);
+            var buyGames = new MenuItem { Header = "Buy TS3 Games" };
+            buyGames.Click += (_, _) => new BuyTS3 { Owner = this }.ShowDialog();
+            contextMenu.Items.Add(buyGames);
 
             // ── Assign to button ──────────────────────────────────────────────
             StoreButton.ContextMenu = contextMenu;
@@ -1837,9 +1840,128 @@ namespace SimTools
             shortcut.Save();
         }
 
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // MOD TOOLS BUTTON
+        // ═══════════════════════════════════════════════════════════════════════
+
+        private void SetupModToolsContextMenu()
+        {
+            var contextMenu = new ContextMenu();
+            string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
+
+            // Local helper: verify the required game path is set, then download and run.
+            void RunTool(string requiredPath, string gameName, string url, string fileName)
+            {
+                if (!GamePaths.IsConfigured(requiredPath))
+                {
+                    MessageBox.Show(
+                        $"The {gameName} game directory has not been configured.\n"
+                      + "Please set it in Settings before using this feature.",
+                        "SimTools \u2014 Path Not Set",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                DownloadAndOpenExe(url, fileName, binDir);
+            }
+
+            // ── The Sims (disabled) ──────────────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "The Sims", IsEnabled = false });
+
+            // ── The Sims 2 (disabled) ───────────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "The Sims 2", IsEnabled = false });
+
+            // ── The Sims 3 ───────────────────────────────────────────────────────────
+            var sims3 = new MenuItem { Header = "The Sims 3" };
+
+            // Create-A-World sub-menu
+            var caw = new MenuItem { Header = "Create-A-World" };
+
+            var caw167 = new MenuItem { Header = "CAW for 1.67" };
+            caw167.Click += (_, _) => RunTool(
+                GamePaths.Sims3Game, "Sims 3",
+                "%baseurl%/Mod-Tools/Sims3/CAW_1.67.exe",  // ← replace
+                "CAW_1.67.exe");
+
+            var caw169 = new MenuItem { Header = "CAW for 1.69" };
+            caw169.Click += (_, _) => RunTool(
+                GamePaths.Sims3Game, "Sims 3",
+                "%baseurl%/Mod-Tools/Sims3/CAW_1.69.exe",  // ← replace
+                "CAW_1.69.exe");
+
+            caw.Items.Add(caw167);
+            caw.Items.Add(caw169);
+            sims3.Items.Add(caw);
+
+            var s3pe = new MenuItem { Header = "Sims 3 Package Editor" };
+            s3pe.Click += (_, _) => RunTool(
+                GamePaths.Sims3Game, "Sims 3",
+                "%baseurl%/Mod-Tools/Sims3/S3PE.exe",        // ← replace
+                "S3PE.exe");
+
+            var s3pack = new MenuItem { Header = "Sims 3 Pack Extractor" };
+            s3pack.Click += (_, _) => RunTool(
+                GamePaths.Sims3Game, "Sims 3",
+                "%baseurl%/Mod-Tools/Sims3/S3PackExtractor.exe",  // ← replace
+                "S3PackExtractor.exe");
+
+            var s3dash = new MenuItem { Header = "Sims 3 Dashboard" };
+            s3dash.Click += (_, _) => RunTool(
+                GamePaths.Sims3Game, "Sims 3",
+                "%baseurl%/Mod-Tools/Sims3/S3Dashboard.exe",  // ← replace
+                "S3Dashboard.exe");
+
+            var showtime = new MenuItem { Header = "Convert Showtime to Collector's Edition" };
+            showtime.Click += (_, _) => RunTool(
+                GamePaths.Sims3Game, "Sims 3",
+                "%baseurl%/Mod-Tools/Sims3/ShowtimeConverter.exe",  // ← replace
+                "ShowtimeConverter.exe");
+
+            // CCMagic is a standalone installer; no game-path check required.
+            var ccmagic = new MenuItem { Header = "Install CCMagic" };
+            ccmagic.Click += (_, _) => DownloadAndOpenExe(
+                url: "%baseurl%/Mod-Tools/Sims3/CCMagicInstaller.exe",  // ← replace
+                fileName: "CCMagicInstaller.exe",
+                downloadDirectory: binDir);
+
+            foreach (var item in new[] { s3pe, s3pack, s3dash, showtime, ccmagic })
+                sims3.Items.Add(item);
+
+            contextMenu.Items.Add(sims3);
+
+            // ── The Sims 4 ───────────────────────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "The Sims 4", IsEnabled = false });
+
+            // ── The Sims Medieval (disabled) ──────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "The Sims Medieval", IsEnabled = false });
+
+            // ── The Sims Stories (disabled) ───────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "The Sims Stories", IsEnabled = false });
+
+            // ── SimCity 2000 (disabled) ───────────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "SimCity 2000", IsEnabled = false });
+
+            // ── SimCity 3000 (disabled) ───────────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "SimCity 3000", IsEnabled = false });
+
+            // ── SimCity 4 (disabled) ──────────────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "SimCity 4", IsEnabled = false });
+
+            // ── SimCity 2013 (disabled) ───────────────────────────────────────────────
+            contextMenu.Items.Add(new MenuItem { Header = "SimCity 2013", IsEnabled = false });
+
+            // ── Assign to button ─────────────────────────────────────────────────────
+            ModToolsButton.ContextMenu = contextMenu;
+        }
+
         private void ModToolsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (sender is Button btn && btn.ContextMenu != null)
+            {
+                btn.ContextMenu.PlacementTarget = btn;
+                btn.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                btn.ContextMenu.IsOpen = true;
+            }
         }
     }
 }
