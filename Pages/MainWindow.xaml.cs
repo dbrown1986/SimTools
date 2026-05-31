@@ -160,8 +160,8 @@ namespace SimTools
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 DownloadAndOpenExe(
-                    url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
-                    fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
+                    url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
+                    fileName: "graphicsrulesmaker-32bit.exe",
                     downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
                 );
             };
@@ -177,8 +177,8 @@ namespace SimTools
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 DownloadAndOpenExe(
-                    url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
-                    fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
+                    url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
+                    fileName: "graphicsrulesmaker-64bit.exe",
                     downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
                 );
             };
@@ -191,15 +191,15 @@ namespace SimTools
 
             var simsStories_32 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_32", "32-Bit") };
             simsStories_32.Click += (s, args) => DownloadAndOpenExe(
-                url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
-                fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
+                url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
+                fileName: "graphicsrulesmaker-32bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
             var simsStories_64 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_64", "64-Bit") };
             simsStories_64.Click += (s, args) => DownloadAndOpenExe(
-                url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
-                fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
+                url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
+                fileName: "graphicsrulesmaker-64bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
@@ -380,7 +380,7 @@ namespace SimTools
                 string tempZip = Path.Combine(Path.GetTempPath(), "SimitoneWindows.zip");
 
                 var (ok, _) = await DownloadFileOnly(
-                    url: "https://github.com/riperiperi/Simitone/releases/download/v0.8.12/SimitoneWindows.zip",  // ← replace
+                    url: "%baseurl%/Sideload-Apps/x86/SimitoneWindows.zip",  // ← replace
                     destFilePath: tempZip);
 
                 if (!ok) return;
@@ -482,7 +482,7 @@ namespace SimTools
 
             // ── Intel Alder Lake Fix ──────────────────────────────────────────────────
             var ts3_alderLake = new MenuItem { Header = "Intel Alder Lake Fix" };
-            ts3_alderLake.Click += (_, _) =>
+            ts3_alderLake.Click += async (_, _) =>
             {
                 MessageBox.Show(
                     "On the newest Core i3-i9, 12th gen Intel Alder Lake CPU, The Sims 3 crashes upon starting. " +
@@ -505,19 +505,45 @@ namespace SimTools
                     return;
                 }
 
-                DownloadAndOpenExe(
-                    url: "%baseurl%/Sideload-Apps/x86/AlderLakePatch.exe",
-                    fileName: "AlderLakePatch.exe",
-                    downloadDirectory: GamePaths.Sims3Game
-                );
+                string gameDir = GamePaths.Sims3Game;
+                string tempZip = Path.Combine(Path.GetTempPath(), "AlderLakePatch.zip");
+
+                var (ok, _) = await DownloadFileOnly(
+                    url: "%baseurl%/Sideload-Apps/x86/AlderLakePatch.zip",  // ← replace
+                    destFilePath: tempZip);
+
+                if (!ok) return;
+
+                try { ZipFile.ExtractToDirectory(tempZip, gameDir, overwriteFiles: true); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to extract Alder Lake patch:\n{ex.Message}",
+                        "SimTools — Extraction Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                string patchExe = Path.Combine(gameDir, "AlderLakePatch.exe");
+
+                if (!File.Exists(patchExe))
+                {
+                    MessageBox.Show(
+                        "Extraction succeeded but AlderLakePatch.exe could not be found in your Sims 3 directory.",
+                        "SimTools — File Not Found", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName         = patchExe,
+                    WorkingDirectory = gameDir,
+                    UseShellExecute  = true
+                });
             };
             sims3Item.Items.Add(ts3_alderLake);
 
-            // ── LazyDuchess Smooth Patch (sub-menu) ───────────────────────────────────
-            var ts3_smoothPatch = new MenuItem { Header = "LazyDuchess Smooth Patch" };
-
-            var smoothPatch_ts3 = new MenuItem { Header = "The Sims 3" };
-            smoothPatch_ts3.Click += (_, _) =>
+            // ── Ultimate ASI Loader ───────────────────────────────────
+            var ts3_uasil = new MenuItem { Header = "Ultimate ASI Loader" };
+            ts3_uasil.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
@@ -526,33 +552,48 @@ namespace SimTools
                         "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                DownloadAndOpenExe(
-                    url: "%baseurl%/Sideload-Apps/x86/LD_SmoothPatch_TS3.exe",
-                    fileName: "LD_SmoothPatch_TS3.exe",
-                    downloadDirectory: GamePaths.Sims3Game
-                );
-            };
-            ts3_smoothPatch.Items.Add(smoothPatch_ts3);
 
-            var smoothPatch_tsm = new MenuItem { Header = "The Sims Medieval" };
-            smoothPatch_tsm.Click += (_, _) =>
+                await DownloadFileOnly(
+                    url: "%baseurl%/Sideload-Apps/x86/wininet.dll",  // ← replace
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "wininet.dll"));
+            };
+            sims3Item.Items.Add(ts3_uasil);
+
+            // ── Sims 3 Settings Setter ───────────────────────────────────
+            var ts3_s3ss = new MenuItem { Header = "Sims 3 Settings Setter" };
+            ts3_s3ss.Click += async (_, _) =>
             {
-                if (!GamePaths.IsConfigured(GamePaths.SimsMedievalGame))
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        "Your Sims Medieval Game directory is not configured.\nPlease open Settings and set it first.",
+                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
                         "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                DownloadAndOpenExe(
-                    url: "%baseurl%/Sideload-Apps/x86/LD_SmoothPatch_TSM.exe",
-                    fileName: "LD_SmoothPatch_TSM.exe",
-                    downloadDirectory: GamePaths.SimsMedievalGame
-                );
-            };
-            ts3_smoothPatch.Items.Add(smoothPatch_tsm);
 
-            sims3Item.Items.Add(ts3_smoothPatch);
+                await DownloadFileOnly(
+                    url: "%baseurl%/Sideload-Apps/x86/S3SS/Sims3SettingsSetter.asi",  // ← replace
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Sims3SettingsSetter.asi"));
+            };
+            sims3Item.Items.Add(ts3_s3ss);
+
+            // ── DXVK for Sims 3───────────────────────────────────
+            var ts3_dxvk = new MenuItem { Header = "DXVK for Sims 3" };
+            ts3_dxvk.Click += async (_, _) =>
+            {
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                await DownloadFileOnly(
+                    url: "%baseurl%/Sideload-Apps/x86/d3d9.dll",  // ← replace
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "d3d9.dll"));
+            };
+            sims3Item.Items.Add(ts3_dxvk);
 
             // ── LazyDuchess Launcher ──────────────────────────────────────────────────
             var ts3_ldLauncher = new MenuItem { Header = "LazyDuchess Launcher" };
@@ -646,7 +687,7 @@ namespace SimTools
             // ── nRaas Core Mods (sub-menu) ────────────────────────────────────────────
             var ts3_nraas = new MenuItem { Header = "nRaas Core Mods" };
 
-            // Local helper — creates a package download item targeting Sims3Mods/SimTools/Packages/nraas/
+            // Local helper — creates a package download item targeting Sims3Mods/SimTools/Packages
             MenuItem NRaasPackageItem(string header, string fileName)
             {
                 var item = new MenuItem { Header = header };
@@ -661,13 +702,15 @@ namespace SimTools
                     }
                     if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
                     await DownloadFileOnly(
-                        $"%baseurl%/Mods/Sims3/packages/nraas/{fileName}",
-                        Path.Combine(GamePaths.Sims3Mods, "SimTools", "Packages", "nraas", fileName));
+                        $"%baseurl%/Mods/Sims3/nRaas/{fileName}",
+                        Path.Combine(GamePaths.Sims3Mods, "SimTools", "Packages", fileName));
                 };
                 return item;
             }
 
-            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap", "NRaas_ErrorTrap.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for EA (1.69)", "NRaas_ErrorTrap_EA.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Steam (1.67)", "NRaas_ErrorTrap_Steam.package"));
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Retail (1.67)", "NRaas_ErrorTrap_Retail.package"));
             ts3_nraas.Items.Add(NRaasPackageItem("Overwatch", "NRaas_Overwatch.package"));
             ts3_nraas.Items.Add(NRaasPackageItem("Master Controller", "NRaas_MasterController.package"));
             ts3_nraas.Items.Add(NRaasPackageItem("Register", "NRaas_Register.package"));
@@ -676,11 +719,41 @@ namespace SimTools
             ts3_nraas.Items.Add(NRaasPackageItem("nRaas No-CD", "NRaas_NoCD.package"));
 
             var nraas_more = new MenuItem { Header = "More nRaas Mods" };
-            nraas_more.Click += (_, _) => OpenUrl("https://www.nraas.net/community/home");
+            nraas_more.Click += (_, _) => OpenUrl("https://www.nraas.net/community/Mods-List");
             ts3_nraas.Items.Add(nraas_more);
 
             sims3Item.Items.Add(ts3_nraas);
             contextMenu.Items.Add(sims3Item);
+
+            // ── The Sims Medieval ─────────────────────────────────────────────────────
+            var medievalItem = new MenuItem { Header = "The Sims Medieval" };
+
+            var medieval_smoothPatch = new MenuItem { Header = "LazyDuchess Smooth Patch" };
+            medieval_smoothPatch.Click += (_, _) =>
+            {
+                if (!GamePaths.IsConfigured(GamePaths.SimsMedievalGame))
+                {
+                    MessageBox.Show(
+                        "Your Sims Medieval Game directory is not configured.\nPlease open Settings and set it first.",
+                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/TSM_SP/TS3Patch.asi",
+                    fileName: "TS3Patch.asi",
+                    downloadDirectory: GamePaths.SimsMedievalGame);
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/TSM_SP/TS3Patch.txt",
+                    fileName: "TS3Patch.txt",
+                    downloadDirectory: GamePaths.SimsMedievalGame);
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/TSM_SP/LD_SmoothPatch_TSM.exe",
+                    fileName: "wininet.dll",
+                    downloadDirectory: GamePaths.SimsMedievalGame);
+            };
+            medievalItem.Items.Add(medieval_smoothPatch);
+
+            contextMenu.Items.Add(medievalItem);
 
             TweakButton.ContextMenu = contextMenu;
         }

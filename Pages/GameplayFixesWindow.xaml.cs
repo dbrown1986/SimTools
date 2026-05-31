@@ -1,3 +1,4 @@
+using NAudio.SoundFont;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -257,9 +258,13 @@ public partial class GameplayFixesWindow : Window
             new("Sim Bin Genetics Female Presets by Anime_Boom",    "SimTools/Packages/SimBinYAFAFPresets.package",                                             "%baseurl%/Mods/Sims3/Fixes/Packages/base/SimBinYAFAFPresets.package"),
             new("Pick Up Toddler Fix by TheSweetSimmer",            "SimTools/Packages/TSS_PickUpToddlerFix.package",                                           "%baseurl%/Mods/Sims3/Fixes/Packages/base/TSS_PickUpToddlerFix.package"),
             new("Hidden Stencils Unlocked & Fixed by Simsi45",      "SimTools/Packages/BASE GAME - Stencils Unlocked.package",                                  "%baseurl%/Mods/Sims3/Fixes/Packages/base/BASE GAME - Stencils Unlocked.package"),
-            new("Fishing Box Fix by NanaBx3",                       "SimTools/Packages/NanaBx3_fishingBoxChest_Fix.package",                                   "%baseurl%/Mods/Sims3/Fixes/Packages/base/NanaBx3_fishingBoxChest_Fix.package"),
-            new("Cross-Eye Fix by LazyDuchess",                     "SimTools/Packages/ld_CrossEyeFix.package",                                                "%baseurl%/Mods/Sims3/Fixes/Packages/base/ld_CrossEyeFix.package"),
+            new("Fishing Box Fix by NanaBx3 & caoride",             "SimTools/Packages/NanaBx3_fishingBoxChest_collectionFix.package",                          "%baseurl%/Mods/Sims3/Fixes/Packages/base/NanaBx3_fishingBoxChest_collectionFix.package"),
+            new("Cross-Eye Fix by LazyDuchess",                     "SimTools/Packages/ld_CrossEyeFix.package",                                                 "%baseurl%/Mods/Sims3/Fixes/Packages/base/ld_CrossEyeFix.package"),
+            new("Pigtails Glitch Fix by Phantom99",                 "SimTools/Packages/PigtailGlitchFix.package",                                               "%baseurl%/Mods/Sims3/Fixes/Packages/base/PigtailGlitchFix.package"),
+            new("Watery Grave Plaque Fix by fantuanss12",           "SimTools/Packages/Fantuanss12_UrnstonePlaqueEditV2.package",                               "%baseurl%/Mods/Sims3/Fixes/Packages/base/Fantuanss12_UrnstonePlaqueEditV2.package"),
+            new("Grocery Fixes by Swiffy",                          "SimTools/Packages/swiffyMisc.GroceryFixes-RequiresMonoPatcher-v1.1.package",               "%baseurl%/Mods/Sims3/Fixes/Packages/base/swiffyMisc.GroceryFixes-RequiresMonoPatcher-v1.1.package", "This mod requires Mono Patcher by LazyDuchess to be installed. Please be sure you have installed it from the Bugfix menu first."),
         });
+
 
         // ── World Adventures (6 items) ────────────────────────────────────────
         yield return ("World Adventures", new List<GameplayFixItem>
@@ -286,6 +291,7 @@ public partial class GameplayFixesWindow : Window
             new("Hidden Stencils Unlocked & Fixed by Simsi45", "SimTools/Packages/AMBITIONS - Unlocked Stencils.package",                          "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/AMBITIONS - Unlocked Stencils.package"),
             new("EA Eyeshadow Fix by Lavsm",                   "SimTools/Packages/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package",         "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package"),
             new("Sims Need Less Space by OhRudi",              "SimTools/Packages/OhRudi__Ambitions__Sims_need_less_Space.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/OhRudi__Ambitions__Sims_need_less_Space.package"),
+            new("No More Non-Cases for Investigators by jm2k",         "SimTools/Packages/jm2k_InvestigatorCaseFix.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/jm2k_InvestigatorCaseFix.package", "Fixes an issue were investigators could roll university and supernatural opportunities instead of the opportunities from the investigator career. University Life or Supernatural are required to also be installed otherwise the bug will not be present."),
         });
 
         // ── Late Night (8 items) ──────────────────────────────────────────────
@@ -296,6 +302,7 @@ public partial class GameplayFixesWindow : Window
             new("Enable Crane (Large) in buydebug by Armiel",      "SimTools/Packages/armiel_craneLarge.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/armiel_craneLarge.package"),
             new("Late Night Plant Fixes by Robodl95",               "SimTools/Packages/Robodl95_ LN Plant fix.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/Robodl95_ LN Plant fix.package"),
             new("Bridgeport Workbench Fix by DividingByZero",       "SimTools/Packages/Bridgeport Workbench Fix.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/Bridgeport Workbench Fix.package"),
+            new("Elevator Shaft Placement Fix by Vesko",       "SimTools/Packages/[vesko_sims3] Elevator Shaft Placement FIX.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/[vesko_sims3] Elevator Shaft Placement FIX.package"),
             new("Hidden Stencils Unlocked & Fixed by Simsi45",     "SimTools/Packages/LATE NIGHT - Unlocked Stencils.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/LATE NIGHT - Unlocked Stencils.package"),
             new("Tileable Items Shader Fix by Simsi45",             "SimTools/Packages/LATE NIGHT - Tileable_Items_Shader_FIXED.package",      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/LATE NIGHT - Tileable_Items_Shader_FIXED.package"),
             new("Sims Need Less Space by OhRudi",                   "SimTools/Packages/OhRudi__LateNight__Sims_need_less_Space.package",       "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/OhRudi__LateNight__Sims_need_less_Space.package"),
@@ -352,6 +359,7 @@ public partial class GameplayFixesWindow : Window
             new("Restoration Spell Fix by Arsil",               "SimTools/Packages/Arsil_RestorationSpellFix.package",                    "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/Arsil_RestorationSpellFix.package"),
             new("Money Tree Bug Fix by Chicken0895",            "SimTools/Packages/Chicken0895 Money Tree Bug Fix.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/Chicken0895 Money Tree Bug Fix.package"),
             new("No More Zombies Generated At Full Moon by PersonCalledJoy","SimTools/Packages/ByeByeZombie.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ByeByeZombie.package"),
+            new("LLAMA Sound Fix",                    "SimTools/Packages/ProtectusCZ_Llama_Sound_Fix.package", "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ProtectusCZ_Llama_Sound_Fix.package"),
             new("EA Eyeshadow Fix by Lavsm",                    "SimTools/Packages/EyeshadowAlphaFix_Supernatural_DefaultReplacement.package","%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/EyeshadowAlphaFix_Supernatural_DefaultReplacement.package"),
             new("Tileable Items Shader Fix by Simsi45",         "SimTools/Packages/SUPERNATURAL - Tileable_Items_Shader_FIXED.package",   "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/SUPERNATURAL - Tileable_Items_Shader_FIXED.package"),
             new("Sims Need Less Space by OhRudi",               "SimTools/Packages/OhRudi__Supernatural__Sims_need_less_Space.package",   "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/OhRudi__Supernatural__Sims_need_less_Space.package"),
@@ -362,9 +370,11 @@ public partial class GameplayFixesWindow : Window
         // ── Seasons (6 items) ─────────────────────────────────────────────────
         yield return ("Seasons", new List<GameplayFixItem>
         {
+            new("nRaas Tempest by Chain_Reaction",                       "SimTools/Packages/NRaas_Tempest.package",                             "%baseurl%/Mods/Sims3/nRaas/NRaas_Tempest.package"),
             new("Faster Raking by Mikey",                       "SimTools/Packages/faster_raking.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/faster_raking.package"),
             new("Weather Forecast Tweaks by Gamefreak130",      "SimTools/Packages/Gamefreak130_WeatherForecastTweaks.package",         "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/Gamefreak130_WeatherForecastTweaks.package"),
             new("Truly Eclipsing Fog by Gamefreak130",          "SimTools/Packages/Gamefreak130_TrulyEclipsingFog.package",            "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/Gamefreak130_TrulyEclipsingFog.package"),
+            new("Apple Bobbing Tank - Fix for Children by Hundefreund",          "SimTools/Packages/appleBobbingTank_FixForChildren.package",            "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/appleBobbingTank_FixForChildren.package"),
             new("Hidden Stencils Unlocked & Fixed by Simsi45",  "SimTools/Packages/SEASONS - Unlocked Stencils.package",              "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/SEASONS - Unlocked Stencils.package"),
             new("Sims Need Less Space by OhRudi",               "SimTools/Packages/OhRudi__Seasons__Sims_need_less_Space.package",     "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/OhRudi__Seasons__Sims_need_less_Space.package"),
             new("No More Ugly Snowprints by Lyralei",           "SimTools/Overrides/Lyralei - NoMoreUglySnowPrints.package",           "%baseurl%/Mods/Sims3/Fixes/Overrides/seasons/Lyralei - NoMoreUglySnowPrints.package"),
@@ -393,6 +403,7 @@ public partial class GameplayFixesWindow : Window
         {
             new("Hanging Lantern Fix by Heaven",        "SimTools/Packages/heaven_IPHangingLanternFix.package",                    "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/heaven_IPHangingLanternFix.package"),
             new("Reduce Houseboat Lag by MaryDeHoyos",  "SimTools/Packages/StopAutopilot_Helm_Updated_03_29_22.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/StopAutopilot_Helm_Updated_03_29_22.package"),
+            new("Autonomous Play In The Ocean Fix by Phantom99",       "SimTools/Packages/GoAndPlayInOceanFix.package",  "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/GoAndPlayInOceanFix.package"),
             new("Sims Need Less Space by OhRudi",       "SimTools/Packages/OhRudi__IslandParadise__Sims_need_less_Space.package",  "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/OhRudi__IslandParadise__Sims_need_less_Space.package"),
         });
 
