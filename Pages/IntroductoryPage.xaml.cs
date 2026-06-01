@@ -1,12 +1,12 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
 
@@ -17,6 +17,7 @@ namespace SimTools
         public IntroductoryPage()
         {
             InitializeComponent();
+            ApplyLanguage();
             ContentRendered += OnContentRendered;
             LoadPersonalization();
         }
@@ -139,6 +140,22 @@ namespace SimTools
                 if (answer == MessageBoxResult.Yes)
                     IniHelper.Write(iniSection, "BaseUrl", best.Domain);
             });
+        }
+
+        // ── Translation strings (with fallback) ─────────────────────────────────
+        public void ApplyLanguage()
+        {
+            // ── RTL / LTR layout direction ─────────────────────────────────────
+            var lang = IniHelper.Read("Language", "SelectedLanguage", "en");
+
+            // Add any future RTL languages to this set
+            var rtlLanguages = new HashSet<string> { "ar" };
+            FlowDirection = rtlLanguages.Contains(lang)
+            ? System.Windows.FlowDirection.RightToLeft
+            : System.Windows.FlowDirection.LeftToRight;
+
+            // ── Text strings ───────────────────────────────────────────────────
+            IntroText.Text = LanguageManager.Get("IntroductoryPage", "IntroText1", IntroText.Text);
         }
 
         // ── Automatic update check on startup ─────────────────────────────────

@@ -94,7 +94,19 @@ namespace SimTools
             BuyTS3Text.Text = LanguageManager.Get("Main", "BuyGame_Description", BuyTS3Text.Text);
             ModToolsText.Text = LanguageManager.Get("Main", "ModTools_Description", ModToolsText.Text);
             GenKeysText.Text = LanguageManager.Get("Main", "GenKeys_Description", GenKeysText.Text);
-
+            BugFixButton.Content = LanguageManager.Get("Main", "Bugfix_Button", "Bugfix Central >");
+            SaveCleanerButton.Content = LanguageManager.Get("Main", "SaveCleaner_Button", "Save Cleaner");
+            ModButton.Content = LanguageManager.Get("Main", "Mods_Button", "Recommended Mods >");
+            StoreButton.Content = LanguageManager.Get("Main", "Store_Button", "Sims 3 Store >");
+            ModToolsButton.Content = LanguageManager.Get("Main", "ModTools_Button", "Mod Tools >");
+            BuySimsButton.Content = LanguageManager.Get("Main", "BuyGame_Button", "Buy Sims Games");
+            GenericKeysButton.Content = LanguageManager.Get("Main", "GenKeys_Button", "Generic Game Keys");
+            ModFrameworkButton.Content = LanguageManager.Get("Main", "ModFramework_Button", "Mod Framework");
+            DonateButton.Content = LanguageManager.Get("Main", "Donate_Button", "Support Me!");
+            ThanksButton.Content = LanguageManager.Get("Main", "Thanks_Button", "Acknowledgements");
+            WarningButton.Content = LanguageManager.Get("Main", "Warning_Button", "IMPORTANT NOTICE!");
+            SimPortButton.Content = LanguageManager.Get("Main", "SimPort_Button", "Add Me on SimPort");
+            
             // ── Rebuild context menus with localised headers ────────────────────
             SetupGPUContextMenu();
             SetupTweakContextMenu();

@@ -23,6 +23,7 @@
 		<Resource Include="Images\button_red.png" />
 		<Resource Include="Images\cashapp.png" />
 		<Resource Include="Images\close-button.png" />
+		<Resource Include="Images\close-hover.png" />
 		<Resource Include="Images\CodingWithDyslexia.gif" />
 		<Resource Include="Images\Dev\001.png" />
 		<Resource Include="Images\Dev\002.jpg" />
@@ -33,9 +34,11 @@
 		<Resource Include="Images\Dev\007.jpg" />
 		<Resource Include="Images\Dev\008.jpg" />
 		<Resource Include="Images\Dev\009.jpg" />
+		<Resource Include="Images\discord-hover.png" />
 		<Resource Include="Images\discord.png" />
 		<Resource Include="Images\DownloadProgress1.png" />
 		<Resource Include="Images\DownloadProgress2.png" />
+		<Resource Include="Images\facebook-hover.png" />
 		<Resource Include="Images\github.png" />
 		<Resource Include="Images\gradient.png" />
 		<Resource Include="Images\gradient_hi.png" />
@@ -114,6 +117,7 @@
 		<Resource Include="Images\Icons\vendors\mmoga.ico" />
 		<Resource Include="Images\Icons\vendors\steam.ico" />
 		<Resource Include="Images\Icons\worlds.ico" />
+		<Resource Include="Images\info-hover.png" />
 		<Resource Include="Images\info.png" />
 		<Resource Include="Images\Menu_Main.png" />
 		<Resource Include="Images\musicon.png" />
@@ -124,11 +128,13 @@
 		<Resource Include="Images\Settings.png" />
 		<Resource Include="Images\setup.ico" />
 		<Resource Include="Images\SimTools_Logo.png" />
+		<Resource Include="Images\steam-hover.png" />
 		<Resource Include="Images\steam.png" />
 		<Resource Include="Images\sulsul.png" />
 		<Resource Include="Images\TS3_Box.png" />
 		<Resource Include="Images\TS3_Box2.png" />
 		<Resource Include="Images\TS3_Box3.png" />
+		<Resource Include="Images\youtube-hover.png" />
 		<Resource Include="Images\youtube.png" />
 		<Resource Include="Images\facebook.png" />
 		<Resource Include="Resources\Fonts\simsun.ttc" />
@@ -146,6 +152,15 @@
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Images\close-hover.png" />
+	  <None Remove="Images\discord-hover.png" />
+	  <None Remove="Images\facebook-hover.png" />
+	  <None Remove="Images\info-hover.png" />
+	  <None Remove="Images\steam-hover.png" />
+	  <None Remove="Images\youtube-hover.png" />
 	</ItemGroup>
 
 	<ItemGroup>

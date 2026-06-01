@@ -1,5 +1,5 @@
 [IntroductoryPage]
-IntroText1=Welcome to the SimTools Suite
+IntroText1=Welcome to the SimTools Suite\n\nThis program will help guide you through installing and implementing the best tweaks for your installation of the various sim games. Many of the older games are left unoptimized and even more so, early Maxis games circa 1990's have a hard time running on newer hardware.\n\nThis suite of tools will allow personal computers, either old or new to run the games at a much better pace by enabling certain features left disabled at release, patching old executables, disabling unecessary features (such as certain hard drive caching methods when most modern PC's have solid state drives now) and much more! A great deal of care has gone into this tool.\n\nIt is HIGHLY recommended that you run this tool on a FRESH install of your sim games. Please be sure you create a backup of your games installation in case you run into any issues while installing the fixes and tweaks that are provided with this tool.\n\nSome input by the end-user (you) is required. This program will attempt to break everything down as best as possible, and even automate some features, but if ever you find you are uncertain what a feature does, you can cancel it and are encouraged to do so to avoid breaking your games installation.\n\nWhen you're finished reading this message, please click the continue button below on the bottom left; to continue, or click the red 'X' above to the upper right to exit this program.\n\nP.S. - There are five easter eggs within the program. Find them all, and there's a surprise waiting.
 
 [Main]
 ButtonInfoText=When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed.
@@ -19,6 +19,18 @@ ModTools_Description=A collection of tools to help you create worlds, objects, s
 GenKeys_Description=Lost your game case? Bought a game second-hand with no case at all? This menu will display generic keys that can be used to install from Retail discs.
 GPU_Description=Use these tools to identify and install support for your GPU to help leverage the games engine. Available for Sims 2, Sims Stories and Sims 3.
 Tweaks_Description=This menu features loads of tweaks, all of which will help games run better in many different ways. Only select fixes for expansions you have installed.
+Bugfix_Button=Bugfix Central >
+SaveCleaner_Button=Save Cleaner
+Mods_Button=Recommended Mods >
+Store_Button=Sims 3 Store >
+BuyGame_Button=Buy Sims Games
+ModTools_Button=Mod Tools >
+GenKeys_Button=Generic Game Keys
+ModFramework_Button=Mod Framework
+Donate_Button=Support Me!
+Thanks_Button=Special Thanks
+Warning_Button=IMPORTANT NOTICE!
+SimPort_Button=Add Me on SimPort
 
 [Messages]
 Error_OpenLink=Unable to open link: {0}
