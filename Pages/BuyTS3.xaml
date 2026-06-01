@@ -61,5 +61,6 @@
                 <ImageBrush ImageSource="/Images/close-button.png"/>
             </Button.Background>
         </Button>
+        <TextBlock x:Name="EasterEgg3" HorizontalAlignment="Left" Margin="830,624,0,0" TextWrapping="Wrap" Text="π" VerticalAlignment="Top" Foreground="#FF6B6B6B" MouseDown="EasterEgg3_Click"/>
     </Grid>
 </Window>

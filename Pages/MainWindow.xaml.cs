@@ -4,15 +4,16 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
+using System.Reflection;
+using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Controls;
-using System.Runtime.Versioning;
-
-using System.Reflection;
 using System.Windows.Documents;
+using System.Windows.Media.Imaging;
 // Add these two aliases to resolve the ambiguity:
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
+using Image = System.Windows.Controls.Image;
 
 namespace SimTools
 {
@@ -77,6 +78,14 @@ namespace SimTools
             SetupStoreContextMenu();
             SetupModToolsContextMenu();
         }
+
+        // Context menu icon helper
+        private static Image MenuIcon(string packPath) => new Image
+        {
+            Source = new BitmapImage(new Uri(packPath)),
+            Width = 16,
+            Height = 16
+        };
 
         // Routes user to the vanilla demo video on YouTube
         private void TS3Vanilla_Click(object? sender, RoutedEventArgs e)
@@ -147,7 +156,7 @@ namespace SimTools
             var contextMenu = new ContextMenu();
 
             // ── The Sims 2 (sub-menu) ──────────────────────────────────────────
-            var sims2Item = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims2", "The Sims 2") };
+            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("ContextMenu", "GPU_Sims2", "The Sims 2") };
 
             var sims2_32 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_32", "32-Bit") };
             sims2_32.Click += (s, args) =>
@@ -187,7 +196,7 @@ namespace SimTools
             sims2Item.Items.Add(sims2_64);
 
             // ── The Sims Stories (sub-menu) ────────────────────────────────────
-            var simsStoriesItem = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_SimsStories", "The Sims Stories") };
+            var simsStoriesItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSLife.ico"), Header = LanguageManager.Get("ContextMenu", "GPU_SimsStories", "The Sims Stories") };
 
             var simsStories_32 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_32", "32-Bit") };
             simsStories_32.Click += (s, args) => DownloadAndOpenExe(
@@ -207,7 +216,7 @@ namespace SimTools
             simsStoriesItem.Items.Add(simsStories_64);
 
             // ── The Sims 3 (no sub-menu) ───────────────────────────────────────
-            var sims3Item = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims3", "The Sims 3") };
+            var sims3Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = LanguageManager.Get("ContextMenu", "GPU_Sims3", "The Sims 3") };
             sims3Item.Click += (s, args) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
                 fileName: "TS3_GPU_Addon.exe",
@@ -361,7 +370,7 @@ namespace SimTools
             string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
 
             // ── The Sims 1 ────────────────────────────────────────────────────────────
-            var sims1Item = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Tweaks_Sims1", "The Sims 1") };
+            var sims1Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = LanguageManager.Get("ContextMenu", "Tweaks_Sims1", "The Sims 1") };
 
             var sims1_simitone = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Tweaks_Simitone", "Simitone") };
             sims1_simitone.Click += async (_, _) =>
@@ -418,11 +427,11 @@ namespace SimTools
             contextMenu.Items.Add(sims1Item);
 
             // ── The Sims 2 ────────────────────────────────────────────────────────────
-            var sims2Item = new MenuItem { Header = "The Sims 2" };
+            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = "The Sims 2" };
 
         
 
-            var sims2_rpc = new MenuItem { Header = "Sims2RPC" };
+            var sims2_rpc = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2RPC.ico"), Header = "Sims2RPC" };
             sims2_rpc.Click += (_, _) =>
             {
                 var result = MessageBox.Show(
@@ -457,12 +466,12 @@ namespace SimTools
             contextMenu.Items.Add(sims2Item);
 
             // ── The Sims: Castaway Stories ────────────────────────────────────────────
-            var castawayItem = new MenuItem { Header = "The Sims: Castaway Stories" };
+            var castawayItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSCastaway.ico"), Header = "The Sims: Castaway Stories" };
             castawayItem.Click += (_, _) => OpenUrl("https://modthesims.info/t/513463");
             contextMenu.Items.Add(castawayItem);
 
             // ── The Sims 3 ────────────────────────────────────────────────────────────
-            var sims3Item = new MenuItem { Header = "The Sims 3" };
+            var sims3Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = "The Sims 3" };
 
             // ── Best In-Game Settings for TS3 ─────────────────────────────────────────
             var ts3_bestSettings = new MenuItem { Header = "Best In-Game Settings" };
@@ -486,7 +495,8 @@ namespace SimTools
             {
                 MessageBox.Show(
                     "On the newest Core i3-i9, 12th gen Intel Alder Lake CPU, The Sims 3 crashes upon starting. " +
-                    "This fix will allow users with Alder Lake CPU's to be able to play the game again.",
+                    "This fix will allow users with Alder Lake CPU's to be able to play the game again." +
+                    "The Ultimate ASI Loader & Sims 3 Settings Setter also solve this issue as well.",
                     "Intel Alder Lake Fix — The Sims 3",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
@@ -620,9 +630,32 @@ namespace SimTools
                     return;
                 }
 
+                // ── Silently back up the existing launcher before overwriting ─────────
+                string launcherPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "Sims3Launcher.exe");
+                string backupPath = launcherPath + ".bak";
+
+                if (File.Exists(launcherPath))
+                {
+                    try
+                    {
+                        if (File.Exists(backupPath))
+                            File.Delete(backupPath);
+                        File.Move(launcherPath, backupPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            $"Could not back up the existing Sims3Launcher.exe:\n{ex.Message}\n\n" +
+                            "The installation will not proceed.",
+                            "SimTools — Backup Failed",
+                            MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
                 DownloadAndOpenExe(
-                    url: "%baseurl%/Sideload-Apps/x86/LD_TS3Launcher.exe",
-                    fileName: "LD_TS3Launcher.exe",
+                    url: "%baseurl%/Sideload-Apps/x86/Sims3Launcher.exe",
+                    fileName: "Game/Bin/Sims3Launcher.exe",
                     downloadDirectory: GamePaths.Sims3Game
                 );
             };
@@ -672,8 +705,8 @@ namespace SimTools
                     return;
                 }
                 DownloadAndOpenExe(
-                    url: "%baseurl%/Sideload-Apps/x86/TinyUIFix.exe",
-                    fileName: "TinyUIFix.exe",
+                    url: "%baseurl%/Sideload-Apps/x86/tiny-ui-fix-for-ts3.bat",
+                    fileName: "tiny-ui-fix-for-ts3.bat",
                     downloadDirectory: GamePaths.Sims3Game
                 );
             };
@@ -726,7 +759,7 @@ namespace SimTools
             contextMenu.Items.Add(sims3Item);
 
             // ── The Sims Medieval ─────────────────────────────────────────────────────
-            var medievalItem = new MenuItem { Header = "The Sims Medieval" };
+            var medievalItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSM.ico"), Header = "The Sims Medieval" };
 
             var medieval_smoothPatch = new MenuItem { Header = "LazyDuchess Smooth Patch" };
             medieval_smoothPatch.Click += (_, _) =>
@@ -747,7 +780,7 @@ namespace SimTools
                     fileName: "TS3Patch.txt",
                     downloadDirectory: GamePaths.SimsMedievalGame);
                 DownloadAndOpenExe(
-                    url: "%baseurl%/Sideload-Apps/x86/TSM_SP/LD_SmoothPatch_TSM.exe",
+                    url: "%baseurl%/Sideload-Apps/x86/TSM_SP/wininet.dll",
                     fileName: "wininet.dll",
                     downloadDirectory: GamePaths.SimsMedievalGame);
             };
@@ -996,7 +1029,7 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // The Sims 1 — no fixes available; redirect user to Simitone
             // ─────────────────────────────────────────────────────────────────
-            var sims1Item = new MenuItem { Header = "The Sims 1" };
+            var sims1Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = "The Sims 1" };
             sims1Item.Click += (_, _) =>
                 MessageBox.Show(
                     "Please use Simitone under Game Tweaks to address The Sims 1 game bugs.",
@@ -1007,7 +1040,7 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // The Sims 2
             // ─────────────────────────────────────────────────────────────────
-            var sims2Item = new MenuItem { Header = "The Sims 2" };
+            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = "The Sims 2" };
 
             // ── Sim Shadow Fix ────────────────────────────────────────────────
             var sims2_shadowFix = new MenuItem { Header = "Sim Shadow Fix" };
@@ -1062,7 +1095,7 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // The Sims 3
             // ─────────────────────────────────────────────────────────────────
-            var sims3Item = new MenuItem { Header = "The Sims 3" };
+            var sims3Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = "The Sims 3" };
 
             // ── Patch Downloader ──────────────────────────────────────────────
             // Shows two info messages, downloads TS3Lib.dll + TS3PD.exe to /Install,
@@ -1199,7 +1232,7 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // The Sims 4 — placeholder
             // ─────────────────────────────────────────────────────────────────
-            var sims4Item = new MenuItem { Header = "The Sims 4" };
+            var sims4Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = "The Sims 4" };
             sims4Item.Click += (_, _) =>
                 MessageBox.Show(
                     "To be implemented at a later time.",
@@ -1210,7 +1243,7 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // SimCopter → SimCopterX
             // ─────────────────────────────────────────────────────────────────
-            var simCopterItem = new MenuItem { Header = "SimCopter" };
+            var simCopterItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = "SimCopter" };
             var simCopterX = new MenuItem { Header = "SimCopterX" };
             simCopterX.Click += async (_, _) =>
             {
@@ -1244,7 +1277,7 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // Streets of SimCity → SimStreetsX
             // ─────────────────────────────────────────────────────────────────
-            var streetsItem = new MenuItem { Header = "Streets of SimCity" };
+            var streetsItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Streets.ico"), Header = "Streets of SimCity" };
             var simStreetsX = new MenuItem { Header = "SimStreetsX" };
             simStreetsX.Click += async (_, _) =>
             {
@@ -1277,7 +1310,7 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // SimCity 2000 → SC2kFix + SC2000X
             // ─────────────────────────────────────────────────────────────────
-            var sc2000Item = new MenuItem { Header = "SimCity 2000" };
+            var sc2000Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2K.ico"), Header = "SimCity 2000" };
 
             // ── SC2kFix (ZIP download + extract) ──────────────────────────────
             var sc2kFix = new MenuItem { Header = "SC2kFix" };
@@ -1623,10 +1656,10 @@ namespace SimTools
             }
 
             // ── The Sims 1 ────────────────────────────────────────────────────
-            var sims1 = new MenuItem { Header = "The Sims 1" };
+            var sims1 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = "The Sims 1" };
             var s1_corylea = new MenuItem { Header = "Corylea Sims 1 Mods" };
-            var s1_tsr = new MenuItem { Header = "The Sims 1 on TSR" };
-            var s1_mts = new MenuItem { Header = "The Sims 1 on MTS" };
+            var s1_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 1 on TSR" };
+            var s1_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 1 on MTS" };
             s1_corylea.Click += (_, _) => Browse("http://corylea.com/Sims1ModsByCorylea.html");
             s1_tsr.Click += (_, _) => Browse("https://www.thesimsresource.com/downloads/browse/category/sims1/skipsetitems/1/");
             s1_mts.Click += (_, _) => Browse("https://modthesims.info/f/562/");
@@ -1636,9 +1669,9 @@ namespace SimTools
             contextMenu.Items.Add(sims1);
 
             // ── The Sims 2 ────────────────────────────────────────────────────
-            var sims2 = new MenuItem { Header = "The Sims 2" };
-            var s2_tsr = new MenuItem { Header = "The Sims 2 on TSR" };
-            var s2_mts = new MenuItem { Header = "The Sims 2 on MTS" };
+            var sims2 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = "The Sims 2" };
+            var s2_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 2 on TSR" };
+            var s2_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 2 on MTS" };
             s2_tsr.Click += (_, _) => Browse("https://www.thesimsresource.com/downloads/browse/category/sims2/skipsetitems/1/");
             s2_mts.Click += (_, _) => Browse("https://modthesims.info/downloads/ts2/");
             sims2.Items.Add(s2_tsr);
@@ -1646,87 +1679,87 @@ namespace SimTools
             contextMenu.Items.Add(sims2);
 
             // ── The Sims 3 ────────────────────────────────────────────────────
-            var sims3 = new MenuItem { Header = "The Sims 3" };
+            var sims3 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = "The Sims 3" };
 
-            var s3_tsr = new MenuItem { Header = "The Sims 3 on TSR" };
-            var s3_mts = new MenuItem { Header = "The Sims 3 on MTS" };
+            var s3_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 3 on TSR" };
+            var s3_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 3 on MTS" };
             s3_tsr.Click += (_, _) => Browse("https://www.thesimsresource.com/downloads/browse/category/sims3/skipsetitems/1/");
             s3_mts.Click += (_, _) => Browse("https://modthesims.info/downloads/ts3/");
             sims3.Items.Add(s3_tsr);
             sims3.Items.Add(s3_mts);
             sims3.Items.Add(new Separator());
 
-            var s3_autoTC = new MenuItem { Header = "Auto TestingCheats" };
+            var s3_autoTC = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Auto TestingCheats" };
             s3_autoTC.Click += (_, _) => AskThenBrowse(
                 "This mod will automatically activate the cheat \"testingcheatsenabled true\" every time you run the game. No more, no less. It's a very simple mod.\n\nWould you like to visit this mod's download page?",
                 "Auto TestingCheats", "https://modthesims.info/download.php?t=387543");
 
-            var s3_bbi = new MenuItem { Header = "Bigger Builder's Island" };
+            var s3_bbi = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Bigger Builder's Island" };
             s3_bbi.Click += (_, _) => AskThenBrowse(
                 "A completely empty map with plenty of space for you to put all of your lots and housing onto. Good for projects you plan to build and share.\n\nWould you like to visit this mod's download page?",
                 "Bigger Builder's Island", "https://modthesims.info/d/546927");
 
-            var s3_cso = new MenuItem { Header = "Can Station Overhaul" };
+            var s3_cso = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Can Station Overhaul" };
             s3_cso.Click += (_, _) => AskThenBrowse(
                 "The Canning Station Overhaul introduces new features to Grandma's Canning Station from the Sims 3 Store. It also fixes a number of existing bugs in the item. REQUIRES this Store item to function.\n\nWould you like to visit this mod's download page?",
                 "Can Station Overhaul", "https://modthesims.info/download.php?t=580462");
 
-            var s3_carpool = new MenuItem { Header = "Carpool Disabler" };
+            var s3_carpool = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Carpool Disabler" };
             s3_carpool.Click += (_, _) => AskThenBrowse(
                 "This mod allows you to stop the honking lunatics at least in TS3. Click on the mailbox of your current lot to find the interactions.\n\nWould you like to visit this mod's download page?",
                 "Carpool Disabler", "https://modthesims.info/download.php?t=410296");
 
-            var s3_cotm = new MenuItem { Header = "Children of the Moon" };
+            var s3_cotm = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Children of the Moon" };
             s3_cotm.Click += (_, _) => AskThenBrowse(
                 "When your sim gives birth during the full moon, at night, the birth now will have a chance of being a supernatural one. That means the newborn will be assigned a random supernatural type if so.\n\nWould you like to visit this mod's download page?",
                 "Children of the Moon", "https://modthesims.info/download.php?t=520400");
 
-            var s3_skills = new MenuItem { Header = "Faster / Slower Skills" };
+            var s3_skills = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Faster / Slower Skills" };
             s3_skills.Click += (_, _) => AskThenBrowse(
                 "This is a tuning mod that can do two things. It decreases or increases the amount of time it takes for Sims to learn all Skills.\n\nWould you like to visit this mod's download page?",
                 "Faster / Slower Skills", "https://modthesims.info/download.php?t=486247");
 
-            var s3_upgrades = new MenuItem { Header = "Faster Upgrade Times" };
+            var s3_upgrades = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Faster Upgrade Times" };
             s3_upgrades.Click += (_, _) => AskThenBrowse(
                 "This mod makes all upgrade times shorter.\n\nWould you like to visit this mod's download page?",
                 "Faster Upgrade Times", "https://modthesims.info/download.php?t=526870");
 
-            var s3_gardener = new MenuItem { Header = "Gardener Service" };
+            var s3_gardener = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Gardener Service" };
             s3_gardener.Click += (_, _) => AskThenBrowse(
                 "Allows you to request a Gardener from any Telephone (not Mobile) to take care of your Garden.\n\nWould you like to visit this mod's download page?",
                 "Gardener Service", "https://modthesims.info/download.php?t=459967");
 
-            var s3_grow = new MenuItem { Header = "Grow" };
+            var s3_grow = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Grow" };
             s3_grow.Click += (_, _) => AskThenBrowse(
                 "This mod attempts to give the impression of your Sim kids growing up.\n\nWould you like to visit this mod's download page?",
                 "Grow", "https://modthesims.info/download.php?t=490536");
 
-            var s3_banking = new MenuItem { Header = "Online Banking Mod" };
+            var s3_banking = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Online Banking Mod" };
             s3_banking.Click += (_, _) => AskThenBrowse(
                 "This mod adds an online banking system to all computers in the world. Sims can open an account and make deposits and withdrawals separate from their household funds.\n\nWould you like to visit this mod's download page?",
                 "Online Banking Mod", "https://modthesims.info/download.php?t=438835");
 
-            var s3_party = new MenuItem { Header = "Party Pooper Mod" };
+            var s3_party = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Party Pooper Mod" };
             s3_party.Click += (_, _) => AskThenBrowse(
                 "If your sim is a social recluse whose phone is ringing off the hook with incessant party invitations AND you don't plan on attending any parties, then this is the mod for you.\n\nWould you like to visit this mod's download page?",
                 "Party Pooper Mod", "https://modthesims.info/download.php?t=604846");
 
-            var s3_study = new MenuItem { Header = "Study Skills Online" };
+            var s3_study = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Study Skills Online" };
             s3_study.Click += (_, _) => AskThenBrowse(
                 "This mod simply adds a \"Study Skills Online\" menu to all computers, smartphones and tablets, where you can choose skills for your sims to learn. Once a skill has been chosen, your sim will start studying it.\n\nWould you like to visit this mod's download page?",
                 "Study Skills Online", "https://modthesims.info/download.php?t=478271");
 
-            var s3_washburn = new MenuItem { Header = "TS3 Washburn Edition" };
+            var s3_washburn = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/sheets.ico"), Header = "TS3 Washburn Edition" };
             s3_washburn.Click += (_, _) => AskThenBrowse(
                 "Curated by Golden Ennina. This collection of mods overhauls many aspects of the game, including fixes, tweaks and graphical overhauls. Please note some mods on the list are also included as part of SimTools.\n\nWould you like to visit this mod's download page?",
                 "TS3 Washburn Edition", "https://docs.google.com/spreadsheets/d/1my3HxmlWeIEQZ69BwAWHZ6-89mMcOQck/edit?gid=1712644223#gid=1712644223");
 
-            var s3_careers = new MenuItem { Header = "Ultimate Careers" };
+            var s3_careers = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "Ultimate Careers" };
             s3_careers.Click += (_, _) => AskThenBrowse(
                 "The end of career rabbitholes is here! With Ultimate Careers, instead of going into a rabbithole to work, Sims will spend the work day at a community lot, doing work-related interactions - or slacking off. The mod scans the Sim's interaction queue, and increases performance depending on which interactions are being used.\n\nWould you like to visit this mod's download page?",
                 "Ultimate Careers", "https://modthesims.info/download.php?t=517911");
 
-            var s3_skins = new MenuItem { Header = "You Are Real Skins" };
+            var s3_skins = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/sfs.ico"), Header = "You Are Real Skins" };
             s3_skins.Click += (_, _) => AskThenBrowse(
                 "Originally posted by Buhudain on his blog. The blog has since been removed. This is a mirror of the last release of his mesh and skins.\n\nWould you like to visit this mod's download page?",
                 "You Are Real Skins", "https://simfileshare.net/folder/146836/");
@@ -1740,9 +1773,9 @@ namespace SimTools
             contextMenu.Items.Add(sims3);
 
             // ── The Sims 4 ────────────────────────────────────────────────────
-            var sims4 = new MenuItem { Header = "The Sims 4" };
-            var s4_tsr = new MenuItem { Header = "The Sims 4 on TSR" };
-            var s4_mts = new MenuItem { Header = "The Sims 4 on MTS" };
+            var sims4 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = "The Sims 4" };
+            var s4_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 4 on TSR" };
+            var s4_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 4 on MTS" };
             s4_tsr.Click += (_, _) => Browse("https://www.thesimsresource.com/downloads/browse/category/sims4/skipsetitems/1/");
             s4_mts.Click += (_, _) => Browse("https://modthesims.info/downloads/ts4/");
             sims4.Items.Add(s4_tsr);
@@ -1750,25 +1783,25 @@ namespace SimTools
             contextMenu.Items.Add(sims4);
 
             // ── SimCity 2000 ──────────────────────────────────────────────────
-            var sc2000 = new MenuItem { Header = "SimCity 2000" };
+            var sc2000 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "SimCity 2000" };
             sc2000.Click += (_, _) => Browse("https://community.simtropolis.com/clubs/30-simcity-2000-resource-page/");
             contextMenu.Items.Add(sc2000);
 
             // ── SimCity 3000 ──────────────────────────────────────────────────
-            var sc3000 = new MenuItem { Header = "SimCity 3000" };
+            var sc3000 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "SimCity 3000" };
             sc3000.Click += (_, _) => Browse("https://community.simtropolis.com/files/category/41-simcity-3000-files/");
             contextMenu.Items.Add(sc3000);
 
             // ── SimCity 4 ─────────────────────────────────────────────────────
-            var sc4 = new MenuItem { Header = "SimCity 4" };
+            var sc4 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "SimCity 4" };
             sc4.Click += (_, _) => Browse("https://community.simtropolis.com/forums/topic/762126-the-ultimate-guide-to-simcity-4-mods-for-new-players/");
             contextMenu.Items.Add(sc4);
 
             // ── SimCity 2013 ──────────────────────────────────────────────────
-            var sc2013 = new MenuItem { Header = "SimCity 2013" };
+            var sc2013 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2013.ico"), Header = "SimCity 2013" };
             const string sc2013Warning = "A majority of SimCity 2013 mods will only work in Offline Mode. You will experience disconnections if attempting to play with these mods in online mode.";
 
-            var sc2013_twinzens = new MenuItem { Header = "Mod Collection by Twinzens" };
+            var sc2013_twinzens = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "Mod Collection by Twinzens" };
             sc2013_twinzens.Click += (_, _) =>
             {
                 MessageBox.Show(sc2013Warning,
@@ -1787,8 +1820,8 @@ namespace SimTools
             contextMenu.Items.Add(sc2013);
 
             // ── SimCopter ─────────────────────────────────────────────────────
-            var simCopter = new MenuItem { Header = "SimCopter" };
-            var simCopter_maxis = new MenuItem { Header = "Maxis Mods" };
+            var simCopter = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = "SimCopter" };
+            var simCopter_maxis = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/github.ico"), Header = "Maxis Mods" };
             simCopter_maxis.Click += (_, _) => InfoThenBrowse(
                 "Silly little mods for SimCopter.",
                 "https://github.com/CahootsMalone/maxis-mods");
@@ -1796,8 +1829,8 @@ namespace SimTools
             contextMenu.Items.Add(simCopter);
 
             // ── Streets of SimCity ────────────────────────────────────────────
-            var streets = new MenuItem { Header = "Streets of SimCity" };
-            var streets_maxis = new MenuItem { Header = "Maxis Mods" };
+            var streets = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Streets.ico"), Header = "Streets of SimCity" };
+            var streets_maxis = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/github.ico"), Header = "Maxis Mods" };
             streets_maxis.Click += (_, _) => InfoThenBrowse(
                 "Silly little mods for Streets of SimCity.",
                 "https://github.com/CahootsMalone/maxis-mods");
@@ -1864,7 +1897,7 @@ namespace SimTools
             StoreButton.ContextMenu = contextMenu;
         }
 
-        private void EasterEgg_Click(object sender, RoutedEventArgs e)
+        private void EasterEgg1_Click(object sender, RoutedEventArgs e)
         {
             OpenUrl("https://archive.org/details/the-minds-eye-raw-dv-captures/The+Mind's+Eye+(1990%2C+original%2C+LaserDisc).avi");
         }

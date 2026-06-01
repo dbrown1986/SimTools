@@ -44,7 +44,15 @@
 		<Resource Include="Images\Icons\caw.ico" />
 		<Resource Include="Images\Icons\Copter.ico" />
 		<Resource Include="Images\Icons\DragonValley.ico" />
+		<Resource Include="Images\Icons\github.ico" />
+		<Resource Include="Images\Icons\MTS.ico" />
 		<Resource Include="Images\Icons\SC4DE.ico" />
+		<Resource Include="Images\Icons\sfs.ico" />
+		<Resource Include="Images\Icons\sheets.ico" />
+		<Resource Include="Images\Icons\Sims2RPC.ico" />
+		<Resource Include="Images\Icons\Sims4.ico" />
+		<Resource Include="Images\Icons\simtropolis.ico" />
+		<Resource Include="Images\Icons\TSR.ico" />
 		<Resource Include="Images\Icons\vendors\gog.ico" />
 		<Resource Include="Images\Icons\HiddenSprings.ico" />
 		<Resource Include="Images\Icons\HSMVBundle.ico" />
@@ -138,15 +146,6 @@
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Images\bmac.png" />
-	  <None Remove="Images\cashapp.png" />
-	  <None Remove="Images\github.png" />
-	  <None Remove="Images\patreon.png" />
-	  <None Remove="Images\paypal.png" />
-	  <None Remove="Images\Settings.png" />
 	</ItemGroup>
 
 	<ItemGroup>

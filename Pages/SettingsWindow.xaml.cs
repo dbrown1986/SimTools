@@ -45,6 +45,14 @@ public sealed class GameSettingViewModel : INotifyPropertyChanged
 
         BrowseGameCommand = new RelayCommand(_ =>
         {
+            if (Key == "Sims3")
+                System.Windows.MessageBox.Show(
+                    "Please set your Sims 3 game directory to the root directory where the " +
+                    "expansion and stuff pack folders are, do not select the Game/Bin folder.",
+                    "SimTools \u2014 Sims 3 Directory",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Information);
+
             using var dlg = new System.Windows.Forms.FolderBrowserDialog
             {
                 ShowNewFolderButton = true

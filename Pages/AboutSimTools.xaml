@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         AllowsTransparency="True"
         Title="AboutSimTools" Height="530" Width="530" WindowStyle="None" Foreground="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
-        
+
     <Window.Background>
         <ImageBrush ImageSource="/Images/TS3_Box2.png"/>
 
@@ -28,7 +28,7 @@
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </TextBlock.Foreground><Run Text="In the beginning, SimTools started out as little more than an enhanced launcher for The Sims 3, that had a few tools built-in to it that could be ran before launching the game, in order to help ease things along."/><LineBreak/><Run/><LineBreak/><Run Text="It has since become much more than that, morphing into a comprehensive suite of tools that hopefully even a novice can use to revolutionize their various sim games experience."/><LineBreak/><Run/><LineBreak/><Run Text="If SimTools has helped you experience your sim-style games in newer and better ways, please be sure to show your support. If you need help, or would like to share your experiences with the community, please feel free to join the SimTools Discord Server."/></TextBlock>
-        <Image x:Name="DevSlideShow" Stretch="Fill" Width="193" Height="177" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,40,0,0">
+        <Image x:Name="DevSlideShow" Stretch="Fill" Width="193" Height="177" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,40,0,0" MouseDown="EasterEgg2_MouseDown">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -86,6 +86,7 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground></TextBlock>
         <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="454,479,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="25" Height="32" Click="CloseButton_Click"/>
+        <TextBlock x:Name="EasterEgg4" HorizontalAlignment="Left" Margin="507,393,0,0" TextWrapping="Wrap" Text="π" VerticalAlignment="Top" Width="8" Foreground="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Height="14" MouseDown="EasterEgg4_MouseDown"/>
 
     </Grid>
 </Window>

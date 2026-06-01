@@ -970,4 +970,14 @@ public partial class BuyTS3 : Window
     {
         System.Windows.Application.Current.Shutdown();
     }
+
+    private void EasterEgg3_Click(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        new CodingWithDyslexia { Owner = this }.ShowDialog();
+    }
+
+    private void EasterEgg3_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        new CodingWithDyslexia { Owner = this }.ShowDialog();
+    }
 }
