@@ -1900,6 +1900,7 @@ namespace SimTools
         private void EasterEgg1_Click(object sender, RoutedEventArgs e)
         {
             OpenUrl("https://archive.org/details/the-minds-eye-raw-dv-captures/The+Mind's+Eye+(1990%2C+original%2C+LaserDisc).avi");
+            App.NotifyEasterEggFound(1);
         }
 
         private void BuySimsButton_Click(object sender, RoutedEventArgs e)

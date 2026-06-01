@@ -334,6 +334,7 @@ public partial class AboutSimTools : Window
         {
             UseShellExecute = true
         });
+        App.NotifyEasterEggFound(2);
     }
 
     private void EasterEgg4_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -343,5 +344,6 @@ public partial class AboutSimTools : Window
         {
             UseShellExecute = true
         });
+        App.NotifyEasterEggFound(4);
     }
 }

@@ -974,10 +974,12 @@ public partial class BuyTS3 : Window
     private void EasterEgg3_Click(object sender, System.Windows.Input.MouseEventArgs e)
     {
         new CodingWithDyslexia { Owner = this }.ShowDialog();
+        App.NotifyEasterEggFound(3);
     }
 
     private void EasterEgg3_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
         new CodingWithDyslexia { Owner = this }.ShowDialog();
+        App.NotifyEasterEggFound(3);
     }
 }
