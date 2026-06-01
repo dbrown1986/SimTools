@@ -18,6 +18,21 @@ namespace SimTools
         {
             InitializeComponent();
             ContentRendered += OnContentRendered;
+            LoadPersonalization();
+        }
+
+        // ── Donor personalisation banner ──────────────────────────────────
+        private void LoadPersonalization()
+        {
+            string key = IniHelper.Read("Personalization", "DonorKey", "");
+            if (string.IsNullOrWhiteSpace(key)) return;
+
+            if (!DonorKeyHelper.TryDecodeKey(key, out string firstName, out string lastName))
+                return;
+
+            PersonalizationText.Text =
+                $"This copy of SimTools designed with care for {firstName} {lastName}.\nThank you for your support!";
+            PersonalizationText.Visibility = System.Windows.Visibility.Visible;
         }
 
         // ── Music startup + automatic update check ────────────────────────

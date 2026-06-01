@@ -52,5 +52,21 @@
             </Button.Background>
         </Button>
 
+        <!-- Donor personalisation unlock -->
+        <Button x:Name="UnlockPersonalizationButton"
+                Content="🔑 Unlock Personalisation"
+                HorizontalAlignment="Left"
+                Margin="348,396,0,0"
+                VerticalAlignment="Top"
+                Width="150" Height="35"
+                BorderBrush="{x:Null}"
+                Foreground="Black"
+                FontFamily="Tahoma" FontSize="10" FontWeight="Bold"
+                Click="UnlockPersonalizationButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/button_yellow.png"/>
+            </Button.Background>
+        </Button>
+
     </Grid>
 </Window>

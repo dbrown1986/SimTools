@@ -1,0 +1,83 @@
+<Window x:Class="SimTools.KeyGeneratorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SimTools — Donor Key Generator  [DEVELOPER]"
+        Height="255" Width="500"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                   Text="Generate a personalised donor key. Keep this window confidential."
+                   FontFamily="Tahoma" FontWeight="Bold" FontSize="11"
+                   TextWrapping="Wrap"/>
+
+        <!-- First Name -->
+        <TextBlock Grid.Row="2" Grid.Column="0"
+                   Text="First Name:" FontFamily="Tahoma"
+                   VerticalAlignment="Center"/>
+        <TextBox x:Name="FirstNameBox"
+                 Grid.Row="2" Grid.Column="1"
+                 FontFamily="Tahoma" FontSize="12"
+                 Padding="5,3"
+                 TextChanged="NameBox_TextChanged"/>
+
+        <!-- Last Name -->
+        <TextBlock Grid.Row="4" Grid.Column="0"
+                   Text="Last Name:" FontFamily="Tahoma"
+                   VerticalAlignment="Center"/>
+        <TextBox x:Name="LastNameBox"
+                 Grid.Row="4" Grid.Column="1"
+                 FontFamily="Tahoma" FontSize="12"
+                 Padding="5,3"
+                 TextChanged="NameBox_TextChanged"/>
+
+        <!-- Generated key (read-only) -->
+        <TextBlock Grid.Row="6" Grid.Column="0"
+                   Text="Key:" FontFamily="Tahoma"
+                   VerticalAlignment="Center"/>
+        <TextBox x:Name="GeneratedKeyBox"
+                 Grid.Row="6" Grid.Column="1"
+                 FontFamily="Consolas" FontSize="11"
+                 Padding="5,3"
+                 IsReadOnly="True"
+                 Background="#F5F5F5"
+                 Text="(enter a name above)"/>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button x:Name="CopyButton"
+                    Content="📋  Copy Key"
+                    Width="100" Height="28"
+                    FontFamily="Tahoma" FontWeight="Bold"
+                    Margin="0,0,8,0"
+                    Click="CopyButton_Click"/>
+            <Button Content="Close"
+                    Width="80" Height="28"
+                    FontFamily="Tahoma"
+                    IsCancel="True"
+                    Click="CloseButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

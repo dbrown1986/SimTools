@@ -111,5 +111,11 @@ namespace SimTools
                 OpenUrl("https://simtools-app.com/st-translator");
             }
         }
+
+        private void UnlockPersonalizationButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new UnlockPersonalizationDialog { Owner = this };
+            dialog.ShowDialog();
+        }
     }
 }

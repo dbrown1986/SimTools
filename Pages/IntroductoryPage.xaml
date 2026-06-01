@@ -43,5 +43,20 @@
             </Button.Background>
         </Button>
 
+        <!-- Donor personalisation banner — hidden unless a valid donor key is stored -->
+        <TextBlock x:Name="PersonalizationText"
+                   HorizontalAlignment="Left"
+                   Margin="560,492,0,0"
+                   Width="270"
+                   TextWrapping="Wrap"
+                   Text=""
+                   Visibility="Collapsed"
+                   FontFamily="Gabriola"
+                   FontSize="24"
+                   FontStyle="Italic"
+                   Foreground="#FFD700"
+                   TextAlignment="Center"
+                   ToolTip="This copy of SimTools was personalised just for you."/>
+
     </Grid>
 </Window>
