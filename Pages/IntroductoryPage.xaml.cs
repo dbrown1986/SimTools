@@ -81,15 +81,28 @@ namespace SimTools
         {
             try
             {
-                // 1. Fetch version.txt from the server
-                //    Expected format (one line minimum):
-                //      1.0.1
-                string versionUrl = AppSettings.ResolveUrl("%baseurl%/version.txt");
+                // 1. Fetch version.txt — always try the official repo first,
+                //    then fall back to the user-configured repo if the primary fails.
+                const string officialVersionUrl = "https://repo.simtools-app.com/version.txt";
+                string userVersionUrl = AppSettings.ResolveUrl("%baseurl%/version.txt");
 
                 using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
-                using var resp = await http.GetAsync(versionUrl);
+                HttpResponseMessage? resp = null;
 
-                if (!resp.IsSuccessStatusCode)
+                // Try the official repo first regardless of user settings
+                try   { resp = await http.GetAsync(officialVersionUrl); }
+                catch { /* unreachable — fall through to user repo */ }
+
+                // Fall back to the user-configured repo only if the official one failed
+                if ((resp == null || !resp.IsSuccessStatusCode)
+                    && !userVersionUrl.Equals(officialVersionUrl, StringComparison.OrdinalIgnoreCase))
+                {
+                    resp?.Dispose();
+                    try   { resp = await http.GetAsync(userVersionUrl); }
+                    catch { /* also unreachable */ }
+                }
+
+                if (resp == null || !resp.IsSuccessStatusCode)
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
