@@ -26,8 +26,8 @@
                    Foreground="#FFFFD200" Margin="8,272,0,0" FontStyle="Italic"/>
 
         <!-- Loading label bottom-centre -->
-        <TextBlock x:Name="LoadingText"
-				   Text="Loading..."
+        <TextBlock x:Name="VersionText"
+				   Text="v 4.0.1.3868"
 				   HorizontalAlignment="Left"
 				   VerticalAlignment="Top"
 				   FontFamily="Tahoma"
