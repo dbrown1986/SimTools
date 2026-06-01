@@ -210,14 +210,14 @@ public partial class GenericKeys : Window
     {
         if (_selectedFile is null)
         {
-            KeyField.Text = "Please select a game first.";
+            KeyField.Text = LanguageManager.Get("GenericKeys", "SelectFirst", "Please select a game first.");
             return;
         }
 
         var keys = LoadKeys(_selectedFile);
         if (keys.Length == 0)
         {
-            KeyField.Text = "No keys available for this title yet.";
+            KeyField.Text = LanguageManager.Get("GenericKeys", "NoKeys", "No keys available for this title yet.");
             return;
         }
 

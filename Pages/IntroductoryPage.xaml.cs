@@ -31,7 +31,7 @@ namespace SimTools
                 return;
 
             PersonalizationText.Text =
-                $"This copy of SimTools designed with care for {firstName} {lastName}.\nThank you for your support!";
+                LanguageManager.Format("Personalization", "PersonalizationText", firstName, lastName, "");
             PersonalizationText.Visibility = System.Windows.Visibility.Visible;
         }
 
@@ -131,11 +131,8 @@ namespace SimTools
             Dispatcher.Invoke(() =>
             {
                 var answer = MessageBox.Show(
-                    "SimTools ran a quick speed test against available repositories.\n\n" +
-                    $"The fastest server for your connection is:\n  {best.Domain}  ({best.Ms} ms)\n\n" +
-                    $"Your current repository is:\n  {currentHost}\n\n" +
-                    "Would you like to switch to the faster server?",
-                    "SimTools \u2014 Repository Speed Test",
+                    LanguageManager.Format("RepoSpeed", "Prompt", best.Domain, best.Ms, currentHost),
+                    LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Information);
 
@@ -202,8 +199,8 @@ namespace SimTools
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
-                            "Could not reach the update server.\nPlease check your connection and try again.",
-                            "Update Check Failed",
+                            LanguageManager.Get("Updates", "NoServer", "Could not reach the update server."),
+                            LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Warning);
                     return;
@@ -217,8 +214,8 @@ namespace SimTools
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
-                            "The version file on the server is malformed.",
-                            "Update Check Failed",
+                            LanguageManager.Get("Updates", "Malformed", "The version file on the server is malformed."),
+                            LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Warning);
                     return;
@@ -231,8 +228,8 @@ namespace SimTools
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
-                            $"Could not parse remote version: \"{remoteVersionStr}\"",
-                            "Update Check Failed",
+                            LanguageManager.Format("Updates", "BadVersion", remoteVersionStr),
+                            LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Warning);
                     return;
@@ -247,8 +244,8 @@ namespace SimTools
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
-                            $"You are already running the latest version ({localVersion.ToString(3)}).",
-                            "Up to Date",
+                            LanguageManager.Format("Updates", "UpToDate", localVersion.ToString(3)),
+                            LanguageManager.Get("Updates", "Title_UpToDate", "Up to Date"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
                     return;
@@ -256,10 +253,8 @@ namespace SimTools
 
                 // 4. Update available — ask the user
                 var confirm = MessageBox.Show(
-                    $"Version {remoteVersionStr} is available (you have {localVersion.ToString(3)}).\n\n" +
-                    "Would you like to update now?\n" +
-                    "SimTools will close automatically once the updater launches.",
-                    "Update Available",
+                    LanguageManager.Format("Updates", "NewVersion", remoteVersionStr, localVersion.ToString(3)),
+                    LanguageManager.Get("Updates", "Title_Available", "Update Available"),
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
 
@@ -277,8 +272,8 @@ namespace SimTools
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        "The update check timed out.\nPlease try again later.",
-                        "Update Check Failed",
+                        LanguageManager.Get("Updates", "Timeout", "The update check timed out."),
+                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
             }
@@ -286,8 +281,8 @@ namespace SimTools
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        $"An unexpected error occurred:\n{ex.Message}",
-                        "Update Check Failed",
+                        LanguageManager.Format("Updates", "Unexpected", ex.Message),
+                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Error);
             }
@@ -302,9 +297,8 @@ namespace SimTools
             if (!File.Exists(updaterPath))
             {
                 MessageBox.Show(
-                    "SimToolsUpdater.exe was not found in the application directory.\n" +
-                    "Please re-download SimTools manually.",
-                    "Updater Not Found",
+                    LanguageManager.Get("Updates", "UpdaterMissing", "SimToolsUpdater.exe was not found."),
+                    LanguageManager.Get("Updates", "Title_MissingUpdater", "Updater Not Found"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return;
@@ -322,18 +316,16 @@ namespace SimTools
         private static void PromptSuppression()
         {
             var suppress = MessageBox.Show(
-                "Would you like to suppress automatic update notifications?",
-                "Suppress Update Notifications",
+                LanguageManager.Get("Updates", "Suppress_Ask", "Would you like to suppress automatic update notifications?"),
+                LanguageManager.Get("Updates", "Suppress_Title", "Suppress Update Notifications"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
             if (suppress != MessageBoxResult.Yes) return;
 
             var duration = MessageBox.Show(
-                "How long would you like to suppress update notifications?\n\n" +
-                "  Yes  —  Suppress for 30 days\n" +
-                "  No   —  Suppress indefinitely",
-                "Suppression Duration",
+                LanguageManager.Get("Updates", "Suppress_Duration", "How long would you like to suppress update notifications?"),
+                LanguageManager.Get("Updates", "Suppress_DurTitle", "Suppression Duration"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
@@ -368,12 +360,8 @@ namespace SimTools
         private void SimToolsButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                "SimTools (previously TS3Tools) is still the same suite of tools previously developed, " +
-                "but now includes options for a variety of Maxis' sim genre of games. SimTools includes " +
-                "options for Sims 1, Sims 2, Sims Stories, Sims 3, Sims 4, Simcity 2000, Simcity 3000, " +
-                "Simcity 3000 Unlimited, Simcity 4, Simcity 2K13, SimCopter and Streets of Simcity, " +
-                "with more to come in later versions.",
-                "What is SimTools?",
+                LanguageManager.Get("AboutSimTools", "WhatIsSimTools", "SimTools (previously TS3Tools) is still the same suite of tools."),
+                LanguageManager.Get("AboutSimTools", "WhatIsSimTools_Title", "What is SimTools?"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
         }

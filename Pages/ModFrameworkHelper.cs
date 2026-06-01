@@ -55,12 +55,8 @@ namespace SimTools
             if (IsInstalled(modsPath)) return true;
 
             MessageBox.Show(
-                "The SimTools Mod Framework does not appear to be installed, or " +
-                "your Resource.cfg is missing the required SimTools package path.\n\n" +
-                "Before downloading .package files, please install the Mod Framework " +
-                "using the 'Mod Framework' button on the main window.\n\n" +
-                "This ensures the game can find and load your packages correctly.",
-                "SimTools — Mod Framework Required",
+                LanguageManager.Get("Framework", "NotInstalled", "The SimTools Mod Framework does not appear to be installed."),
+                LanguageManager.Get("Framework", "NotInstalled_Title", "SimTools — Mod Framework Required"),
                 MessageBoxButton.OK, MessageBoxImage.Warning);
 
             return false;

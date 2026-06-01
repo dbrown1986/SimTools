@@ -136,8 +136,8 @@ public partial class AboutSimTools : Window
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        "Could not reach the update server.\nPlease check your connection and try again.",
-                        "Update Check Failed",
+                        LanguageManager.Get("Updates", "NoServer", "Could not reach the update server."),
+                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
                 return;
@@ -151,8 +151,8 @@ public partial class AboutSimTools : Window
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        "The version file on the server is malformed.",
-                        "Update Check Failed",
+                        LanguageManager.Get("Updates", "Malformed", "The version file on the server is malformed."),
+                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
                 return;
@@ -165,8 +165,8 @@ public partial class AboutSimTools : Window
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        $"Could not parse remote version: \"{remoteVersionStr}\"",
-                        "Update Check Failed",
+                        LanguageManager.Format("Updates", "BadVersion", remoteVersionStr),
+                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
                 return;
@@ -181,8 +181,8 @@ public partial class AboutSimTools : Window
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        $"You are already running the latest version ({localVersion.ToString(3)}).",
-                        "Up to Date",
+                        LanguageManager.Format("Updates", "UpToDate", localVersion.ToString(3)),
+                        LanguageManager.Get("Updates", "Title_UpToDate", "Up to Date"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
                 return;
@@ -190,10 +190,9 @@ public partial class AboutSimTools : Window
 
             // 4. Update available — ask the user
             var confirm = MessageBox.Show(
-                $"Version {remoteVersionStr} is available (you have {localVersion.ToString(3)}).\n\n" +
-                "Would you like to update now?\n" +
-                "SimTools will close automatically once the updater launches.",
-                "Update Available",
+                LanguageManager.Format("Updates", "NewVersion",
+                    remoteVersionStr, localVersion.ToString(3)),
+                LanguageManager.Get("Updates", "Title_Available", "Update Available"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
@@ -211,8 +210,8 @@ public partial class AboutSimTools : Window
         {
             if (!isAutomatic)
                 MessageBox.Show(
-                    "The update check timed out.\nPlease try again later.",
-                    "Update Check Failed",
+                    LanguageManager.Get("Updates", "Timeout", "The update check timed out."),
+                    LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
         }
@@ -220,8 +219,8 @@ public partial class AboutSimTools : Window
         {
             if (!isAutomatic)
                 MessageBox.Show(
-                    $"An unexpected error occurred:\n{ex.Message}",
-                    "Update Check Failed",
+                    LanguageManager.Format("Updates", "Unexpected", ex.Message),
+                    LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
         }
@@ -237,9 +236,9 @@ public partial class AboutSimTools : Window
         if (!File.Exists(updaterPath))
         {
             MessageBox.Show(
-                "SimToolsUpdater.exe was not found in the application directory.\n" +
-                "Please re-download SimTools manually.",
-                "Updater Not Found",
+                LanguageManager.Get("Updates", "UpdaterMissing",
+                    "SimToolsUpdater.exe was not found in the application directory."),
+                LanguageManager.Get("Updates", "Title_MissingUpdater", "Updater Not Found"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
             return;
@@ -257,18 +256,20 @@ public partial class AboutSimTools : Window
     private static void PromptSuppression()
     {
         var suppress = MessageBox.Show(
-            "Would you like to suppress automatic update notifications?",
-            "Suppress Update Notifications",
+            LanguageManager.Get("Updates", "Suppress_Ask",
+                "Would you like to suppress automatic update notifications?"),
+            LanguageManager.Get("Updates", "Suppress_Title",
+                "Suppress Update Notifications"),
             MessageBoxButton.YesNo,
             MessageBoxImage.Question);
 
         if (suppress != MessageBoxResult.Yes) return;
 
         var duration = MessageBox.Show(
-            "How long would you like to suppress update notifications?\n\n" +
-            "  Yes  —  Suppress for 30 days\n" +
-            "  No   —  Suppress indefinitely",
-            "Suppression Duration",
+            LanguageManager.Get("Updates", "Suppress_Duration",
+                "How long would you like to suppress update notifications?"),
+            LanguageManager.Get("Updates", "Suppress_DurTitle",
+                "Suppression Duration"),
             MessageBoxButton.YesNo,
             MessageBoxImage.Question);
 

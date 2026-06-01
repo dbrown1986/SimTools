@@ -127,10 +127,8 @@ namespace SimTools
 
             var result = WpfMessageBox.Show(
                 owner,
-                "Would you like to download a free background music pack?\n\n" +
-                "You can also drop your own songs (MP3, WAV, FLAC, M4A) into\n" +
-                $"the /Resources/Music folder at any time:\n{musicFolder}",
-                "Background Music",
+                LanguageManager.Format("Music", "FirstRun", musicFolder),
+                LanguageManager.Get("Music", "FirstRun_Title", "Background Music"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
@@ -194,7 +192,7 @@ namespace SimTools
             Dispatcher.InvokeAsync(() =>
             {
                 var song = MusicPlayerService.CurrentSong;
-                TitleBlock.Text = song?.Title ?? "No track loaded";
+                TitleBlock.Text = song?.Title ?? LanguageManager.Get("Music", "NoTrack", "No track loaded");
                 ArtistBlock.Text = song?.Artist ?? "";
 
                 if (song?.AlbumArt != null)

@@ -47,9 +47,8 @@ public sealed class GameSettingViewModel : INotifyPropertyChanged
         {
             if (Key == "Sims3")
                 System.Windows.MessageBox.Show(
-                    "Please set your Sims 3 game directory to the root directory where the " +
-                    "expansion and stuff pack folders are, do not select the Game/Bin folder.",
-                    "SimTools \u2014 Sims 3 Directory",
+                    LanguageManager.Get("Settings", "Sims3DirWarning", "Please set your Sims 3 game directory to the root directory."),
+                    LanguageManager.Get("Settings", "Sims3DirWarning_Title", "SimTools — Sims 3 Directory"),
                     System.Windows.MessageBoxButton.OK,
                     System.Windows.MessageBoxImage.Information);
 
@@ -266,21 +265,16 @@ public partial class SettingsWindow : Window
         if (filled == 0)
         {
             System.Windows.MessageBox.Show(
-                "No game or mod directories could be detected automatically.\n\n" +
-                "Common install locations were checked, including Steam, GOG, EA Games,\n" +
-                "Electronic Arts, and Origin Games folders.\n\n" +
-                "You can set paths manually using the Browse buttons.",
-                "Auto-Detect \u2014 Nothing Found",
+                LanguageManager.Get("Settings", "AutoDetect_Nothing", "No game or mod directories could be detected automatically."),
+                LanguageManager.Get("Settings", "AutoDetect_Nothing_Title", "Auto-Detect — Nothing Found"),
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
         else
         {
             string dirWord = filled == 1 ? "y was" : "ies were";
             System.Windows.MessageBox.Show(
-                $"{filled} director{dirWord} detected and filled in.\n\n" +
-                "Paths that were already set have not been changed.\n" +
-                "Please review the results and click Save when ready.",
-                "Auto-Detect Complete",
+                LanguageManager.Format("Settings", "AutoDetect_Found", filled, dirWord),
+                LanguageManager.Get("Settings", "AutoDetect_Found_Title", "Auto-Detect Complete"),
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
@@ -294,9 +288,8 @@ public partial class SettingsWindow : Window
     {
         IniHelper.Write("Updates", "SuppressAutoCheckUntil", "");
         System.Windows.MessageBox.Show(
-            "Automatic update notifications have been re-enabled.\n\n" +
-            "SimTools will check for updates the next time it starts.",
-            "Update Check Reset",
+            LanguageManager.Get("Settings", "ReenabledUpdates", "Automatic update notifications have been re-enabled."),
+            LanguageManager.Get("Settings", "ReenabledUpdates_Title", "Update Check Reset"),
             MessageBoxButton.OK,
             MessageBoxImage.Information);
     }

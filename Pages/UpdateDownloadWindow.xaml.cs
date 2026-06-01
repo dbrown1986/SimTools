@@ -88,7 +88,7 @@ namespace SimTools
                 }
 
                 // Success — launch installer and exit
-                StatusLabel.Text                    = "Download complete! Launching installer…";
+                StatusLabel.Text                    = LanguageManager.Get("UpdateDL", "Complete", "Download complete! Launching installer…");
                 DownloadProgressBar.Value           = DownloadProgressBar.Maximum;
                 DownloadProgressBar.IsIndeterminate = false;
                 CancelBtn.IsEnabled                 = false;
@@ -105,7 +105,7 @@ namespace SimTools
             }
             catch (OperationCanceledException)
             {
-                StatusLabel.Text = "Download cancelled.";
+                StatusLabel.Text = LanguageManager.Get("UpdateDL", "Cancelled", "Download cancelled.");
                 await System.Threading.Tasks.Task.Delay(400);
                 Close();
             }
@@ -121,7 +121,7 @@ namespace SimTools
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             CancelBtn.IsEnabled = false;
-            CancelBtn.Content   = "Cancelling…";
+            CancelBtn.Content   = LanguageManager.Get("UpdateDL", "Cancelling", "Cancelling…");
             _cts.Cancel();
         }
 

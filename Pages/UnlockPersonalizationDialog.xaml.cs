@@ -34,13 +34,13 @@ namespace SimTools
 
             if (string.IsNullOrWhiteSpace(key))
             {
-                ShowStatus("Please enter a key.");
+                ShowStatus(LanguageManager.Get("Personalization", "EnterKey", "Please enter a key."));
                 return;
             }
 
             if (!DonorKeyHelper.TryDecodeKey(key, out string firstName, out string lastName))
             {
-                ShowStatus("That key is not valid. Please check it and try again.");
+                ShowStatus(LanguageManager.Get("Personalization", "InvalidKey", "That key is not valid. Please check it and try again."));
                 return;
             }
 
@@ -52,8 +52,8 @@ namespace SimTools
             KeyChanged = true;
 
             MessageBox.Show(
-                $"Personalisation unlocked! Welcome, {firstName}.",
-                "SimTools — Personalization",
+                LanguageManager.Format("Personalization", "Unlocked", firstName),
+                LanguageManager.Get("Personalization", "Unlocked_Title", "SimTools — Personalization"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
 
@@ -64,8 +64,8 @@ namespace SimTools
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show(
-                "Remove your personalisation key? The banner will no longer appear on the welcome screen.",
-                "SimTools — Remove Personalisation",
+                LanguageManager.Get("Personalization", "RemoveAsk", "Remove your personalisation key?"),
+                LanguageManager.Get("Personalization", "RemoveAsk_Title", "SimTools — Remove Personalisation"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 

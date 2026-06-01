@@ -34,7 +34,7 @@ namespace SimTools
                 using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
 
                 // Fetch manifest
-                StatusLabel.Text = "Fetching track list…";
+                StatusLabel.Text = LanguageManager.Get("Music", "Fetching", "Fetching track list…");
                 using var manifestResp = await http.GetAsync(manifestUrl, _cts.Token);
                 if (!manifestResp.IsSuccessStatusCode)
                 {
@@ -92,16 +92,16 @@ namespace SimTools
                 }
 
                 StatusLabel.Text = _cts.Token.IsCancellationRequested
-                    ? "Download cancelled."
-                    : "Download complete!";
+                    ? LanguageManager.Get("Music", "Cancelled", "Download cancelled.")
+                    : LanguageManager.Get("Music", "Complete", "Download complete!");
             }
             catch (OperationCanceledException)
             {
-                StatusLabel.Text = "Download cancelled.";
+                StatusLabel.Text = LanguageManager.Get("Music", "Cancelled", "Download cancelled.");
             }
             catch
             {
-                StatusLabel.Text = "Could not reach the music server.";
+                StatusLabel.Text = LanguageManager.Get("Music", "NoServer", "Could not reach the music server.");
             }
             finally
             {
@@ -116,7 +116,7 @@ namespace SimTools
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             CancelBtn.IsEnabled = false;
-            CancelBtn.Content = "Cancelling…";
+            CancelBtn.Content = LanguageManager.Get("Music", "Cancelling", "Cancelling…");
             _cts.Cancel();
         }
     }

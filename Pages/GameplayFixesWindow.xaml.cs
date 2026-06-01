@@ -60,16 +60,10 @@ public partial class GameplayFixesWindow : Window
         if (check)
         {
             var result = WpfMessageBox.Show(
-                "You are about to select every available fix.\n\n" +
-                "SimTools is designed to make games run better — but installing " +
-                "every package will increase load times and may bog down the engine. " +
-                "It is strongly recommended to only install fixes for features and " +
-                "objects you actively use.\n\n" +
-                "Additionally, installing fixes for Expansion Packs or Stuff Packs " +
-                "that are not installed on your system can result in crashes or " +
-                "unexpected behaviour.\n\n" +
-                "Do you still want to select all fixes?",
-                "SimTools — Select All Warning",
+                LanguageManager.Get("GameplayFixes", "SelectAll_Ask",
+                    "You are about to select every available fix."),
+                LanguageManager.Get("GameplayFixes", "SelectAll_Title",
+                    "SimTools — Select All Warning"),
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result != MessageBoxResult.Yes)
@@ -94,8 +88,10 @@ public partial class GameplayFixesWindow : Window
         if (!GamePaths.IsConfigured(_sims3Mods))
         {
             WpfMessageBox.Show(
-                "Your Sims 3 Mods directory is no longer configured.\nPlease open Settings and set it first.",
-                "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                LanguageManager.Get("Paths", "Sims3Mods",
+                    "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first."),
+                LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"),
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
@@ -109,8 +105,11 @@ public partial class GameplayFixesWindow : Window
         if (toDownload.Count == 0)
         {
             WpfMessageBox.Show(
-                "No fixes are selected.\n\nNote: greyed-out items are placeholders not yet defined.",
-                "Nothing to Download", MessageBoxButton.OK, MessageBoxImage.Information);
+                LanguageManager.Get("GameplayFixes", "NoneSelected",
+                    "No fixes are selected."),
+                LanguageManager.Get("GameplayFixes", "NoneSelected_Title",
+                    "Nothing to Download"),
+                MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
 
@@ -206,8 +205,11 @@ public partial class GameplayFixesWindow : Window
                     try { if (File.Exists(destPath)) File.Delete(destPath); } catch { }
                     failed++;
                     WpfMessageBox.Show(
-                        $"Failed to download {item.FileName}:\n{ex.Message}",
-                        "Download Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        LanguageManager.Format("GameplayFixes", "DownloadError",
+                            item.FileName, ex.Message),
+                        LanguageManager.Get("GameplayFixes", "DownloadError_Title",
+                            "Download Error"),
+                        MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -216,8 +218,10 @@ public partial class GameplayFixesWindow : Window
             }
 
             WpfMessageBox.Show(
-                $"Done.\n\nDownloaded: {downloaded}  |  Already up-to-date: {skipped}  |  Failed: {failed}",
-                "Gameplay Fixes — The Sims 3",
+                LanguageManager.Format("GameplayFixes", "Done",
+                    downloaded, skipped, failed),
+                LanguageManager.Get("GameplayFixes", "Done_Title",
+                    "Gameplay Fixes — The Sims 3"),
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
         finally

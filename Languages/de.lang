@@ -1,3 +1,6 @@
+[IntroductoryPage]
+IntroText1=Willkommen bei der SimTools-Suite
+
 [Main]
 ButtonInfoText=Wenn Sie eine Option auswahlen, andert jede Schaltflache die Farbe, wenn Sie mit der Maus daruber fahren. Diese Farben zeigen die Wichtigkeit der jeweiligen Funktion an. Grun bedeutet normal, Gelb bedeutet empfohlen, Rot bedeutet dringend empfohlen. Als Faustregel gilt: Fast alle Anpassungen und Fehlerbehebungen erfordern wahrscheinlich die Installation des Mod-Frameworks.
 FrameworkInfoText=Es wird dringend empfohlen, das Mod-Framework zu installieren. Wenn Sie das Mod-Framework bereits installiert haben, leeren Sie bitte Ihren Mods-Ordner und installieren Sie es uber die Schaltflache unten neu. Diese Version des Mod-Frameworks wurde speziell fur SimTools gepruft und vorbereitet.
@@ -17,6 +20,7 @@ Warn_MenuConverted=Diese Seite wurde in ein Menu umgewandelt. Bitte rechtsklicke
 Warn_Title=Warnung
 Error_DownloadFailed=Download fehlgeschlagen fur {0}
 Error_DownloadTitle=Download-Fehler
+Error_Sims1PathNotSet=Das Spielverzeichnis für The Sims 1 wurde nicht konfiguriert. Bitte legen Sie es in den Einstellungen fest, bevor Sie diese Funktion verwenden.
 
 [ContextMenu]
 GPU_Sims2=Die Sims 2
@@ -53,3 +57,190 @@ Progress_Finalising=Abschliessen...
 [Splash]
 Loading=v 4.0.1.3868
 Retic=Retikulierende Splines...
+
+
+[Updates]
+NoServer=Der Update-Server konnte nicht erreicht werden.\nBitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.
+Malformed=Die Versionsdatei auf dem Server ist fehlerhaft.
+BadVersion=Remote-Version konnte nicht geparst werden: "{0}"
+UpToDate=Sie verwenden bereits die neueste Version ({0}).
+NewVersion=Version {0} ist verfügbar (Sie haben {1}).\n\nMöchten Sie jetzt aktualisieren?\nSimTools wird automatisch geschlossen, sobald das Updater-Programm startet.
+Timeout=Die Updateprüfung hat das Zeitlimit überschritten.\nBitte versuchen Sie es später erneut.
+Unexpected=Ein unerwarteter Fehler ist aufgetreten:\n{0}
+UpdaterMissing=SimToolsUpdater.exe wurde im Anwendungsverzeichnis nicht gefunden.\nBitte laden Sie SimTools manuell erneut herunter.
+Title_Failed=Updateprüfung fehlgeschlagen
+Title_UpToDate=Aktuell
+Title_Available=Update verfügbar
+Title_MissingUpdater=Updater nicht gefunden
+Suppress_Ask=Möchten Sie automatische Update-Benachrichtigungen unterdrücken?
+Suppress_Title=Update-Benachrichtigungen unterdrücken
+Suppress_Duration=Wie lange möchten Sie Update-Benachrichtigungen unterdrücken?\n\n  Ja   —  30 Tage unterdrücken\n  Nein —  Dauerhaft unterdrücken
+Suppress_DurTitle=Unterdrückungsdauer
+
+[RepoSpeed]
+Prompt=SimTools hat einen kurzen Geschwindigkeitstest der verfügbaren Repositories durchgeführt.\n\nDer schnellste Server für Ihre Verbindung ist:\n  {0}  ({1} ms)\n\nIhr aktuelles Repository ist:\n  {2}\n\nMöchten Sie zum schnelleren Server wechseln?
+Title=SimTools — Repository-Geschwindigkeitstest
+
+[Paths]
+Title=SimTools — Pfad nicht gesetzt
+Sims3Game=Ihr Sims 3-Spielverzeichnis ist nicht konfiguriert.\nBitte öffnen Sie die Einstellungen und setzen Sie es zuerst.
+Sims3Mods=Ihr Sims 3-Mod-Verzeichnis ist nicht konfiguriert.\nBitte öffnen Sie die Einstellungen und setzen Sie es zuerst.
+Sims2Mods=Ihr Sims 2-Mod-Verzeichnis ist nicht konfiguriert.\nBitte öffnen Sie die Einstellungen und setzen Sie es zuerst.
+SimsMedieval=Ihr Sims Medieval-Spielverzeichnis ist nicht konfiguriert.\nBitte öffnen Sie die Einstellungen und setzen Sie es zuerst.
+SimCopter=Ihr SimCopter-Spielverzeichnis ist nicht konfiguriert.\nBitte öffnen Sie die Einstellungen und setzen Sie es zuerst.
+SimStreets=Ihr Streets of SimCity-Spielverzeichnis ist nicht konfiguriert.\nBitte öffnen Sie die Einstellungen und setzen Sie es zuerst.
+SimCity2000=Ihr SimCity 2000-Spielverzeichnis ist nicht konfiguriert.\nBitte öffnen Sie die Einstellungen und setzen Sie es zuerst.
+Generic=Das {0}-Spielverzeichnis wurde nicht konfiguriert.\nBitte setzen Sie es in den Einstellungen, bevor Sie diese Funktion verwenden.
+
+[GPU]
+Sims2Warning=Wenden Sie diesen Patch NICHT an, wenn Sie die Legacy Collection von Sims 2 verwenden, da er mit der neuesten Version der neuen Legacy Collection nicht mehr erforderlich ist. Patchen Sie, wenn Sie Retail- oder Complete Collection-Editionen verwenden.
+Sims2Title=Graphics Rules Maker — The Sims 2
+
+[Tweaks]
+AlderLake_Info1=Bei den neuesten Core i3-i9, 12. Gen Intel Alder Lake-CPUs stürzt The Sims 3 beim Start ab. Dieser Fix ermöglicht Benutzern mit Alder Lake-CPUs, das Spiel wieder zu spielen. Der Ultimate ASI Loader & Sims 3 Settings Setter lösen dieses Problem ebenfalls.
+AlderLake_Info2=Wenn Sie die EA App-Version von The Sims 3 verwenden, ist dieser Fix nicht mehr erforderlich, da er in v1.69.47.024017 (01.13.2025) behoben wurde. Benutzer, die die Retail- oder Steam-Versionen des Spiels ausführen, müssen diesen Patch weiterhin verwenden.
+AlderLake_Title=Intel Alder Lake Fix — The Sims 3
+AlderLake_ExtractFail=Alder Lake-Patch konnte nicht extrahiert werden:\n{0}
+AlderLake_NotFound=Extraktion erfolgreich, aber AlderLakePatch.exe konnte nicht in Ihrem Sims 3-Verzeichnis gefunden werden.
+LDLauncher_Info1=Ein benutzerdefinierter TS3-Launcher für die EA App (Version 1.69) mit mehr Kontrolle. Unterstützt ASI-Mods, Launcher-Bypass, alle EPs anzeigen, besseren SimPort-Login & alle CC deaktivieren.
+LDLauncher_Info2=Nur für EA App. Standardmäßig extrahiert dieser Installer in den Standardpfad und ersetzt den Standard-Launcher des Spiels. Wenn Sie The Sims 3 anderswo installiert haben, müssen Sie den Installationsort manuell ändern.
+LDLauncher_Title=LazyDuchess Launcher — The Sims 3
+LDLauncher_BackupFail=Sims3Launcher.exe konnte nicht gesichert werden:\n{0}\n\nDie Installation wird nicht fortgesetzt.
+MonoPatcher_Info1=Ein weiterer großartiger Mod von LazyDuchess. Mono Patcher ist eine Bibliothek, die es Script-Moddern ermöglicht, Sims 3-Methoden mit maximaler Kompatibilität zu ersetzen – keine Core-Mods mehr nötig.
+MonoPatcher_Info2=Aktuelle Version: 0.2.2
+MonoPatcher_Title=Mono Patcher Library — The Sims 3
+MonoPatch_Info1=Mono Patcher ist eine Bibliothek, die es Script-Moddern ermöglicht, Sims 3-Methoden mit maximaler Kompatibilität zu ersetzen – keine Core-Mods mehr nötig.
+MonoPatch_Info2=Mono Patcher ist für einige der von SimTools angebotenen Mods erforderlich. Die Installation wird dringend empfohlen.
+MonoPatch_Title=LazyDuchess Mono Patcher — The Sims 3
+PatchDL_Info1=HINWEIS: Sie müssen nur auf 1.67 aktualisieren, wenn Sie das Spiel von den Retail-Discs spielen. EA App- und Steam-Versionen sind bei der Installation bereits auf die neuesten Versionen aktualisiert.
+PatchDL_Info2=Verwenden Sie den folgenden Patch-Downloader, um Patches für das Basisspiel und die installierten Erweiterungen herunterzuladen.
+PatchDL_Info3=Außerdem wird dringend empfohlen, jeden Titel nach der Installation zu patchen. Zum Beispiel: Basisspiel installieren, patchen, World Adventures installieren, patchen usw.
+PatchDL_Title=Patch-Downloader — The Sims 3
+Simler90_Info=Simler90's Gameplay Systems Core Mod behebt eine lange Liste von Problemen und Bugs im Basisspiel und vielen Erweiterungen. DRINGEND empfohlen.
+Simler90_Title=Simler90's Fixes — The Sims 3
+GameplayFixes_Info=Starte Gameplay-Fixes AIO-Installer. Wählen Sie NUR Fixes für die installierten Erweiterungen aus.
+GameplayFixes_Title=Gameplay-Fixes — The Sims 3
+SimCopterX_Info=Dies ist ein Alarm von der Zentrale – Sie dürfen unter Windows 10 abheben. Sie brauchen keine virtuelle Maschine oder CPU Killer mehr, nur starke Nerven. Der Patcher bietet optionale höhere Auflösungen wie 16:9 und 16:10.
+SimCopterX_Title=SimCopterX
+SimStreetsX_Info=Toben Sie sich unter Windows 10 auf den Straßen aus. Sie brauchen keine virtuelle Maschine mehr. Der Patcher bietet viele Optionen für eine entspannte Fahrt oder bis zu sieben Spieler im Netzwerk.
+SimStreetsX_Title=SimStreetsX
+SC2kFix_Info=SC2KFix ist ein Bugfix- und Modding-Plugin für SimCity 2000 Special Edition. Kompatibel nur mit der Windows 95-Version. Nutzung zusammen mit SC2000X ist nicht getestet.
+SC2kFix_Title=SC2kFix — SimCity 2000
+SC2000X_Info=SC2000X ist ein Open-Source-Installer und Patcher für SimCity 2000 (Win95). Er behebt u.a. den „Speichern unter"-Absturzbug.
+SC2000X_Title=SC2000X — SimCity 2000
+
+[BugFixes]
+Sims1_Info=Bitte verwenden Sie Simitone unter Spielanpassungen, um Fehler in The Sims 1 zu beheben.
+Sims1_Title=The Sims 1 — Fehlerbehebungen
+Sims4_Info=Wird zu einem späteren Zeitpunkt implementiert.
+Sims4_Title=The Sims 4 — Fehlerbehebungen
+ShadowFix_Info=Mit diesem Mod erscheinen die Innenschatten von Sims und Haustieren nicht mehr als schwarze Rechtecke. Dieses Problem tritt bei vielen modernen Grafikkarten auf.
+ShadowFix_Title=Sim Shadow Fix — The Sims 2
+BrightCAS_Info=Dieser Mod behebt CAS-Teile ohne Bump Map-Unterstützung, die im CAS leuchtend erscheinen. Erstellt von LazyDuchess.
+BrightCAS_Title=Bright CAS Fix — The Sims 2
+
+[ModResources]
+Simitone_Installed=Simitone wurde in Ihr Sims 1-Verzeichnis installiert.\n\nMöchten Sie eine Desktop-Verknüpfung zu Simitone.Windows.exe erstellen?
+Simitone_Extracted=Simitone wurde in Ihr Sims 1-Verzeichnis extrahiert.\n\nMöchten Sie eine Desktop-Verknüpfung erstellen?
+Simitone_Title=SimTools — Simitone installiert
+Simitone_ExtractFail=Simitone konnte nicht extrahiert werden:\n{0}
+Simitone_ExtractTitle=SimTools — Extraktionsfehler
+Sims2RPC_Ask=Welche Version von The Sims 2 haben Sie installiert?\n\n• JA   —  Standard-/Vanilla-Version (Disc oder Origin)\n• NEIN —  The Sims 2 Legacy Edition (EA App)\n\nJA installiert Sims2RPC.\nNEIN öffnet die LazyDuchess Legacy Extender-Seite.
+Sims2RPC_Title=SimTools — Sims2RPC / Legacy Extender
+SaveCleaner_Download=Möchten Sie den Regul Save Cleaner herunterladen?
+SaveCleaner_Title=Regul Save Cleaner
+SaveCleaner_Shortcut=Möchten Sie eine Desktop-Verknüpfung zum Regul Save Cleaner erstellen?
+SaveCleaner_ShortcutTitle=Verknüpfung erstellen
+SaveCleaner_ShortcutFail=Verknüpfung konnte nicht erstellt werden:\n{0}
+SaveCleaner_ShortcutFailTitle=Verknüpfungsfehler
+SaveCleaner_NotFound=RegulSaveCleaner.exe wurde nicht gefunden unter:\n{0}
+SaveCleaner_NotFoundTitle=SimTools — Datei nicht gefunden
+
+[Framework]
+NotInstalled=Das SimTools Mod Framework scheint nicht installiert zu sein, oder Ihre Resource.cfg fehlt den erforderlichen SimTools-Paketpfad.\n\nBitte installieren Sie das Mod Framework über die Schaltfläche "Mod Framework" im Hauptfenster.
+NotInstalled_Title=SimTools — Mod Framework erforderlich
+ModsNotSet_Ask=Ihr Sims 3-Mod-Verzeichnis wurde in den Einstellungen nicht konfiguriert.\n\nSimTools hat Ihren Sims 3-Benutzerdatenordner gefunden unter:\n{0}\n\nMöchten Sie dort einen "Mods"-Ordner erstellen und mit der Installation fortfahren?
+ModsNotSet_Title=SimTools — Mods-Verzeichnis nicht gesetzt
+ModsNotSet_Manual=Ihr Sims 3-Mod-Verzeichnis ist nicht konfiguriert.\n\nFür die Installation des Mod Frameworks:\n\n1. Erstellen Sie einen Ordner namens "Mods" in:\n   Dokumente\Elektronische Künste\The Sims 3\n\n2. Öffnen Sie Einstellungen und setzen Sie den Sims 3 Mods-Pfad.\n\nKlicken Sie dann erneut auf "Mod Framework".
+Installed=Das SimTools Mod Framework wurde erfolgreich installiert!\n\nSpeicherort:\n{0}\n\nErstellte Ordner:\n  • Disabled  (Overrides, Packages, Probation, Test)\n  • Overrides  •  Packages\n  • Probation  (Overrides, Packages)\n  • SimTools  (Overrides, Packages)\n  • Test  (Overrides, Packages)\n\nResource.cfg wurde in Ihren Mods-Ordner installiert.\nKernpakete wurden in SimTools\Packages installiert.
+Installed_Title=SimTools — Mod Framework installiert
+MissingResource=Resource.cfg konnte nicht in den kompilierten Ressourcen gefunden werden.\nBitte installieren Sie SimTools neu und versuchen Sie es erneut.
+MissingResource_Title=SimTools — Fehlende Ressource
+InstallFailed=Mod Framework konnte nicht installiert werden:\n\n{0}
+InstallFailed_Title=SimTools — Installation fehlgeschlagen
+GameIntro_Ask=Möchten Sie das benutzerdefinierte SimTools-Spielintro installieren?\n\nDies ersetzt das Standard-EA-Spielintro durch ein SimTools-gebrandetes.
+GameIntro_Title=SimTools — Benutzerdefiniertes Spielintro
+Splashscreen_Ask=Möchten Sie den benutzerdefinierten SimTools-Splashscreen installieren?\n\nDies ersetzt den Standard-Ladebildschirm durch einen SimTools-gebrandeten.
+Splashscreen_Title=SimTools — Benutzerdefinierter Splashscreen
+ExtractFail=Extraktion von {0} fehlgeschlagen:\n{1}
+ExtractFail_Title=Extraktionsfehler
+
+[GenericKeys]
+Info=Diese Funktion stellt generische Produktschlüssel für ältere Maxis/EA-Titel bereit.\n\nSie kann in einer zukünftigen Version von SimTools auf Wunsch von EA entfernt werden.
+Info_Title=SimTools — Generische Schlüssel
+SelectFirst=Bitte wählen Sie zuerst ein Spiel aus.
+NoKeys=Für diesen Titel sind noch keine Schlüssel verfügbar.
+ClickToGenerate=Klicken Sie auf Generieren, um einen Schlüssel zu erstellen.
+
+[Music]
+Fetching=Trackliste wird abgerufen…
+Cancelled=Download abgebrochen.
+Complete=Download abgeschlossen!
+NoServer=Der Musik-Server konnte nicht erreicht werden.
+Cancelling=Wird abgebrochen…
+FirstRun=Möchten Sie ein kostenloses Hintergrundmusikpaket herunterladen?\n\nSie können auch eigene Songs (MP3, WAV, FLAC, M4A) in den\nOrdner /Resources/Music ablegen:\n{0}
+FirstRun_Title=Hintergrundmusik
+NoTrack=Kein Track geladen
+
+[UpdateDL]
+Complete=Download abgeschlossen! Installer wird gestartet…
+Cancelled=Download abgebrochen.
+Cancelling=Wird abgebrochen…
+
+[Personalization]
+EnterKey=Bitte geben Sie einen Schlüssel ein.
+InvalidKey=Dieser Schlüssel ist ungültig. Bitte überprüfen und erneut versuchen.
+Unlocked=Personalisierung entsperrt! Willkommen, {0}.
+Unlocked_Title=SimTools — Personalisierung
+RemoveAsk=Personalisierungsschlüssel entfernen? Das Banner erscheint dann nicht mehr auf dem Willkommensbildschirm.
+RemoveAsk_Title=SimTools — Personalisierung entfernen
+PersonalizationText=Diese Kopie von SimTools wurde liebevoll erstellt für {0} {1}.\nVielen Dank für Ihre Unterstützung!
+
+[KeyGen]
+Copied=Schlüssel in die Zwischenablage kopiert.
+Copied_Title=SimTools — Schlüsselgenerator
+
+[Repo]
+Warning=Eine Repository-Vertrauensprüfung ist fehlgeschlagen für:  {0}\n\n{1}\nDies könnte auf eine falsch konfigurierte Repository-URL, einen Netzwerkabfangangriff oder eine modifizierte Hosts-Datei hinweisen.\n\nVorsicht walten lassen. Downloads von dieser Quelle sind möglicherweise nicht sicher.
+Warning_Title=Nicht vertrauenswürdige Repository-Quelle
+Domain_Untrusted=  • Domain "{0}" ist nicht als vertrauenswürdige Quelle aufgeführt.
+IP_Untrusted=  • Aufgelöste IP-Adresse ({0}) stimmt mit keiner vertrauenswürdigen IP überein.
+Hosts_Tampered=  • Ihre lokale Hosts-Datei leitet "{0}" zu {1} weiter, was keine vertrauenswürdige Adresse ist.
+
+[AboutSimTools]
+WhatIsSimTools=SimTools (früher TS3Tools) ist dieselbe Suite von Tools wie zuvor, enthält jetzt aber Optionen für eine Vielzahl von Maxis-Spielen, darunter Sims 1, 2, Stories, 3, 4, SimCity 2000/3000/4/2013, SimCopter und Streets of SimCity.
+WhatIsSimTools_Title=Was ist SimTools?
+WarningMessage=Zwischen v3.2.4 und v4.0.1 hat sich viel verändert. Bitte nehmen Sie sich einen Moment Zeit, um den neuen Videoleitfaden anzusehen, indem Sie auf die Schaltfläche 'SimTools-Videoleitfaden' klicken.
+WarningMessage_Title=Videoleitfaden ansehen!
+SC2013Warning=Die meisten SimCity 2013-Mods funktionieren nur im Offline-Modus. Im Online-Modus mit diesen Mods werden Verbindungsabbrüche auftreten.
+SC2013Warning_Title=SimCity 2013 — Warnung
+
+[Settings]
+Sims3DirWarning=Bitte setzen Sie Ihr Sims 3-Spielverzeichnis auf das Stammverzeichnis, in dem sich die Erweiterungs- und Stuff-Pack-Ordner befinden. Wählen Sie nicht den Ordner Game/Bin.
+Sims3DirWarning_Title=SimTools — Sims 3-Verzeichnis
+AutoDetect_Nothing=Keine Spiel- oder Mod-Verzeichnisse konnten automatisch erkannt werden.\n\nGängige Installationsorte wurden überprüft, einschließlich Steam, GOG, EA Games, Electronic Arts und Origin Games.\n\nSie können Pfade manuell über die Durchsuchen-Schaltflächen festlegen.
+AutoDetect_Nothing_Title=Automatische Erkennung — Nichts gefunden
+AutoDetect_Found_Title=Automatische Erkennung abgeschlossen
+ReenabledUpdates=Automatische Update-Benachrichtigungen wurden wieder aktiviert.\n\nSimTools wird beim nächsten Start nach Updates suchen.
+ReenabledUpdates_Title=Update-Prüfung zurückgesetzt
+
+[GameplayFixes]
+SelectAll_Ask=Sie sind dabei, alle verfügbaren Fixes auszuwählen.\n\nSimTools wurde entwickelt, um Spiele besser laufen zu lassen – aber das Installieren aller Pakete erhöht die Ladezeiten und kann die Engine verlangsamen. Es wird dringend empfohlen, nur Fixes für Features und Objekte zu installieren, die Sie aktiv nutzen.\n\nDarüber hinaus kann das Installieren von Fixes für Erweiterungspakete oder Stuff-Packs, die nicht auf Ihrem System installiert sind, zu Abstürzen oder unerwartetem Verhalten führen.\n\nMöchten Sie trotzdem alle Fixes auswählen?
+SelectAll_Title=SimTools — Alle auswählen – Warnung
+NoneSelected=Keine Fixes ausgewählt.\n\nHinweis: Ausgegraute Elemente sind Platzhalter, die noch nicht definiert wurden.
+NoneSelected_Title=Nichts zum Herunterladen
+DownloadError=Fehler beim Herunterladen von {0}:\n{1}
+DownloadError_Title=Download-Fehler
+Done=Fertig.\n\nHeruntergeladen: {0}  |  Bereits aktuell: {1}  |  Fehlgeschlagen: {2}
+Done_Title=Gameplay-Fixes — Die Sims 3
+

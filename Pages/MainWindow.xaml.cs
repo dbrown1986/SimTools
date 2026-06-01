@@ -87,6 +87,13 @@ namespace SimTools
             TweakButton.Content = LanguageManager.Get("Main", "Btn_Tweaks", "Game Tweaks >");
             GPUText.Text = LanguageManager.Get("Main", "GPU_Description", GPUText.Text);
             TweakText.Text = LanguageManager.Get("Main", "Tweaks_Description", TweakText.Text);
+            BugfixText.Text = LanguageManager.Get("Main", "Bugfix_Description", BugfixText.Text);
+            SaveCleanerText.Text = LanguageManager.Get("Main", "SaveCleaner_Description", SaveCleanerText.Text);
+            ModsText.Text = LanguageManager.Get("Main", "Mods_Description", ModsText.Text);
+            TS3StoreText.Text = LanguageManager.Get("Main", "Store_Description=", TS3StoreText.Text);
+            BuyTS3Text.Text = LanguageManager.Get("Main", "BuyGame_Description", BuyTS3Text.Text);
+            ModToolsText.Text = LanguageManager.Get("Main", "ModTools_Description", ModToolsText.Text);
+            GenKeysText.Text = LanguageManager.Get("Main", "GenKeys_Description", GenKeysText.Text);
 
             // ── Rebuild context menus with localised headers ────────────────────
             SetupGPUContextMenu();
@@ -180,10 +187,8 @@ namespace SimTools
             sims2_32.Click += (s, args) =>
             {
                 MessageBox.Show(
-                    "Do NOT apply this patch if you are running the Legacy Collection of Sims 2, as it is no longer " +
-                    "required with the latest release of the new Legacy Collection. DO patch if you are running " +
-                    "Retail or Complete Collection editions.",
-                    "Graphics Rules Maker — The Sims 2",
+                    LanguageManager.Get("GPU", "Sims2Warning", "Do NOT apply this patch for Legacy Collection."),
+                    LanguageManager.Get("GPU", "Sims2Title", "Graphics Rules Maker — The Sims 2"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 DownloadAndOpenExe(
@@ -197,10 +202,8 @@ namespace SimTools
             sims2_64.Click += (s, args) =>
             {
                 MessageBox.Show(
-                    "Do NOT apply this patch if you are running the Legacy Collection of Sims 2, as it is no longer " +
-                    "required with the latest release of the new Legacy Collection. DO patch if you are running " +
-                    "Retail or Complete Collection editions.",
-                    "Graphics Rules Maker — The Sims 2",
+                    LanguageManager.Get("GPU", "Sims2Warning", "Do NOT apply this patch for Legacy Collection."),
+                    LanguageManager.Get("GPU", "Sims2Title", "Graphics Rules Maker — The Sims 2"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 DownloadAndOpenExe(
@@ -398,7 +401,7 @@ namespace SimTools
                     MessageBox.Show(
                         LanguageManager.Get("Messages", "Error_Sims1PathNotSet",
                             "The Sims 1 game directory has not been configured.\nPlease set it in Settings before using this feature."),
-                        "SimTools — Path Not Set",
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"),
                         MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
@@ -419,19 +422,19 @@ namespace SimTools
                 catch (Exception ex)
                 {
                     MessageBox.Show(
-                        $"Failed to extract Simitone:\n{ex.Message}",
-                        "SimTools — Extraction Error",
+                        LanguageManager.Format("ModResources", "Simitone_ExtractFail", ex.Message),
+                        LanguageManager.Get("ModResources", "Simitone_ExtractTitle", "SimTools — Extraction Error"),
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
                 string simitoneExe = Path.Combine(gameDir, "Simitone.Windows.exe");
                 string message = File.Exists(simitoneExe)
-                    ? "Simitone has been installed to your Sims 1 directory.\n\nWould you like to create a desktop shortcut to Simitone.Windows.exe?"
-                    : "Simitone has been extracted to your Sims 1 directory.\n\nWould you like to create a desktop shortcut?";
+                    ? LanguageManager.Get("ModResources", "Simitone_Installed", "Simitone has been installed.")
+                    : LanguageManager.Get("ModResources", "Simitone_Extracted", "Simitone has been extracted.");
 
                 var result = MessageBox.Show(message,
-                    "SimTools — Simitone Installed",
+                    LanguageManager.Get("ModResources", "Simitone_Title", "SimTools — Simitone Installed"),
                     MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
@@ -453,12 +456,8 @@ namespace SimTools
             sims2_rpc.Click += (_, _) =>
             {
                 var result = MessageBox.Show(
-                    "Which version of The Sims 2 do you have installed?\n\n"
-                  + "• YES  —  Standard / vanilla release (disc or Origin)\n"
-                  + "• NO   —  The Sims 2 Legacy Edition (EA App)\n\n"
-                  + "Selecting YES installs Sims2RPC.\n"
-                  + "Selecting NO opens the LazyDuchess Legacy Extender page for manual installation.",
-                    "SimTools \u2014 Sims2RPC / Legacy Extender",
+                    LanguageManager.Get("ModResources", "Sims2RPC_Ask", "Which version of The Sims 2 do you have installed?"),
+                    LanguageManager.Get("ModResources", "Sims2RPC_Title", "SimTools — Sims2RPC / Legacy Extender"),
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
 
@@ -512,24 +511,20 @@ namespace SimTools
             ts3_alderLake.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "On the newest Core i3-i9, 12th gen Intel Alder Lake CPU, The Sims 3 crashes upon starting. " +
-                    "This fix will allow users with Alder Lake CPU's to be able to play the game again." +
-                    "The Ultimate ASI Loader & Sims 3 Settings Setter also solve this issue as well.",
-                    "Intel Alder Lake Fix — The Sims 3",
+                    LanguageManager.Get("Tweaks", "AlderLake_Info1", "Intel Alder Lake Fix for The Sims 3."),
+                    LanguageManager.Get("Tweaks", "AlderLake_Title", "Intel Alder Lake Fix — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 MessageBox.Show(
-                    "If you are running the EA App version of The Sims 3, this fix is no longer required as it " +
-                    "has been fixed in v1.69.47.024017 (01/13/2025). Users running the Retail or Steam versions " +
-                    "of the game will still need to use this patch to run the game on newer Intel CPU's.",
-                    "Intel Alder Lake Fix — The Sims 3",
+                    LanguageManager.Get("Tweaks", "AlderLake_Info2", "EA App version info for Alder Lake."),
+                    LanguageManager.Get("Tweaks", "AlderLake_Title", "Intel Alder Lake Fix — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -545,8 +540,8 @@ namespace SimTools
                 try { ZipFile.ExtractToDirectory(tempZip, gameDir, overwriteFiles: true); }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Failed to extract Alder Lake patch:\n{ex.Message}",
-                        "SimTools — Extraction Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(LanguageManager.Format("Tweaks", "AlderLake_ExtractFail", ex.Message),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -555,8 +550,8 @@ namespace SimTools
                 if (!File.Exists(patchExe))
                 {
                     MessageBox.Show(
-                        "Extraction succeeded but AlderLakePatch.exe could not be found in your Sims 3 directory.",
-                        "SimTools — File Not Found", MessageBoxButton.OK, MessageBoxImage.Error);
+                        LanguageManager.Get("Tweaks", "AlderLake_NotFound", "AlderLakePatch.exe could not be found."),
+                        LanguageManager.Get("Messages", "Error_Title", "Error"), MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -576,8 +571,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -594,8 +589,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -612,8 +607,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -628,23 +623,20 @@ namespace SimTools
             ts3_ldLauncher.Click += (_, _) =>
             {
                 MessageBox.Show(
-                    "A custom TS3 Launcher for the EA App (version 1.69), allowing for greater control. " +
-                    "Features ASI mod support, launcher bypass, show all EP's, better SimPort login & disable all CC.",
-                    "LazyDuchess Launcher — The Sims 3",
+                    LanguageManager.Get("Tweaks", "LDLauncher_Info1", "LazyDuchess Launcher info."),
+                    LanguageManager.Get("Tweaks", "LDLauncher_Title", "LazyDuchess Launcher — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    "For EA App only. By default, this installer extracts to the default path and will replace " +
-                    "the game's vanilla launcher. If you have installed The Sims 3 elsewhere, you will need to " +
-                    "manually change the install location.",
-                    "LazyDuchess Launcher — The Sims 3",
+                    LanguageManager.Get("Tweaks", "LDLauncher_Info2", "LazyDuchess Launcher install info."),
+                    LanguageManager.Get("Tweaks", "LDLauncher_Title", "LazyDuchess Launcher — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -684,22 +676,20 @@ namespace SimTools
             ts3_monoPatcher.Click += (_, _) =>
             {
                 MessageBox.Show(
-                    "Another amazing mod by LazyDuchess, Mono Patcher is a library that allows Script Modders " +
-                    "to replace Sims 3 methods with as much compatibility as possible - No need to create core " +
-                    "mods anymore to replace game functions.",
-                    "Mono Patcher Library — The Sims 3",
+                    LanguageManager.Get("Tweaks", "MonoPatcher_Info1", "Mono Patcher info."),
+                    LanguageManager.Get("Tweaks", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    "Current Version: 0.2.2",
-                    "Mono Patcher Library — The Sims 3",
+                    LanguageManager.Get("Tweaks", "MonoPatcher_Info2", "Current Version: 0.2.2"),
+                    LanguageManager.Get("Tweaks", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -718,8 +708,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 DownloadAndOpenExe(
@@ -747,8 +737,8 @@ namespace SimTools
                     if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                     {
                         MessageBox.Show(
-                            "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.",
-                            "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            LanguageManager.Get("Paths", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                            LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
                     if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
@@ -785,8 +775,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.SimsMedievalGame))
                 {
                     MessageBox.Show(
-                        "Your Sims Medieval Game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "SimsMedieval", "Your Sims Medieval Game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 DownloadAndOpenExe(
@@ -830,10 +820,8 @@ namespace SimTools
                 if (Directory.Exists(ts3Root))
                 {
                     var answer = MessageBox.Show(
-                        "Your Sims 3 Mods directory has not been configured in Settings.\n\n" +
-                        $"SimTools detected your Sims 3 user data folder at:\n{ts3Root}\n\n" +
-                        "Would you like to create a 'Mods' folder there and proceed with the installation?",
-                        "SimTools — Mods Directory Not Set",
+                        LanguageManager.Format("Framework", "ModsNotSet_Ask", ts3Root),
+                        LanguageManager.Get("Framework", "ModsNotSet_Title", "SimTools — Mods Directory Not Set"),
                         MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                     if (answer != MessageBoxResult.Yes) return;
@@ -845,13 +833,8 @@ namespace SimTools
                 else
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Mods directory has not been configured in Settings.\n\n" +
-                        "To install the Mod Framework:\n\n" +
-                        "1. Create a folder named 'Mods' inside:\n" +
-                        "   Documents\\Electronic Arts\\The Sims 3\n\n" +
-                        "2. Open Settings and set your Sims 3 Mods path to that folder.\n\n" +
-                        "Then click 'Mod Framework' again.",
-                        "SimTools — Mods Directory Not Set",
+                        LanguageManager.Get("Framework", "ModsNotSet_Manual", "Mods directory not set - manual instructions."),
+                        LanguageManager.Get("Framework", "ModsNotSet_Title", "SimTools — Mods Directory Not Set"),
                         MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
@@ -875,9 +858,8 @@ namespace SimTools
 
             // ── Optional: SimTools custom game intro ──────────────────────────────
             if (MessageBox.Show(
-                    "Would you like to install the SimTools custom game intro?\n\n" +
-                    "This replaces the standard EA game intro with a SimTools branded one.",
-                    "SimTools — Custom Game Intro",
+                    LanguageManager.Get("Framework", "GameIntro_Ask", "Install SimTools custom game intro?"),
+                    LanguageManager.Get("Framework", "GameIntro_Title", "SimTools — Custom Game Intro"),
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var (okIntro, _) = await DownloadFileOnly(
@@ -888,9 +870,8 @@ namespace SimTools
 
             // ── Optional: SimTools custom splashscreen ────────────────────────────
             if (MessageBox.Show(
-                    "Would you like to install the SimTools custom splashscreen?\n\n" +
-                    "This replaces the standard loading splashscreen with a SimTools branded one.",
-                    "SimTools — Custom Splashscreen",
+                    LanguageManager.Get("Framework", "Splashscreen_Ask", "Install SimTools custom splashscreen?"),
+                    LanguageManager.Get("Framework", "Splashscreen_Title", "SimTools — Custom Splashscreen"),
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var (okSplash, _) = await DownloadFileOnly(
@@ -901,17 +882,8 @@ namespace SimTools
 
             // ── Unified success message ───────────────────────────────────────────
             MessageBox.Show(
-                "The SimTools Mod Framework has been installed successfully!\n\n" +
-                $"Location:\n{modsPath}\n\n" +
-                "Folders created:\n" +
-                "  \u2022 Disabled  (Overrides, Packages, Probation, Test)\n" +
-                "  \u2022 Overrides  \u2022  Packages\n" +
-                "  \u2022 Probation  (Overrides, Packages)\n" +
-                "  \u2022 SimTools  (Overrides, Packages)\n" +
-                "  \u2022 Test  (Overrides, Packages)\n\n" +
-                "Resource.cfg has been installed to your Mods folder.\n" +
-                "Core packages have been installed to SimTools\\Packages.",
-                "SimTools \u2014 Mod Framework Installed",
+                LanguageManager.Format("Framework", "Installed", modsPath),
+                LanguageManager.Get("Framework", "Installed_Title", "SimTools — Mod Framework Installed"),
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -926,9 +898,8 @@ namespace SimTools
                 if (sri == null)
                 {
                     MessageBox.Show(
-                        "Resource.cfg could not be found in the compiled resources.\n" +
-                        "Please reinstall SimTools and try again.",
-                        "SimTools \u2014 Missing Resource",
+                        LanguageManager.Get("Framework", "MissingResource", "Resource.cfg could not be found."),
+                        LanguageManager.Get("Framework", "MissingResource_Title", "SimTools — Missing Resource"),
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
@@ -966,8 +937,8 @@ namespace SimTools
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"Failed to install the Mod Framework:\n\n{ex.Message}",
-                    "SimTools — Installation Failed",
+                    LanguageManager.Format("Framework", "InstallFailed", ex.Message),
+                    LanguageManager.Get("Framework", "InstallFailed_Title", "SimTools — Installation Failed"),
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -988,9 +959,8 @@ namespace SimTools
         private void GenericKeysButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                "This feature provides generic product keys for legacy Maxis/EA titles.\n\n"
-              + "It may be removed from a future version of SimTools at any time, at the behest of EA.",
-                "SimTools \u2014 Generic Keys",
+                LanguageManager.Get("GenericKeys", "Info", "Generic product keys info."),
+                LanguageManager.Get("GenericKeys", "Info_Title", "SimTools — Generic Keys"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
 
@@ -1050,8 +1020,8 @@ namespace SimTools
             var sims1Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = "The Sims 1" };
             sims1Item.Click += (_, _) =>
                 MessageBox.Show(
-                    "Please use Simitone under Game Tweaks to address The Sims 1 game bugs.",
-                    "The Sims 1 — Bug Fixes",
+                    LanguageManager.Get("BugFixes", "Sims1_Info", "Please use Simitone under Game Tweaks for Sims 1 bugs."),
+                    LanguageManager.Get("BugFixes", "Sims1_Title", "The Sims 1 — Bug Fixes"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
             contextMenu.Items.Add(sims1Item);
 
@@ -1065,16 +1035,15 @@ namespace SimTools
             sims2_shadowFix.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "With this mod, Sims' and pets' indoor shadows no longer appear as black rectangles. " +
-                    "This problem occurs on many modern graphics cards.",
-                    "Sim Shadow Fix — The Sims 2",
+                    LanguageManager.Get("BugFixes", "ShadowFix_Info", "Sim Shadow Fix info."),
+                    LanguageManager.Get("BugFixes", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
                 {
                     MessageBox.Show(
-                        "Your Sims 2 Mods directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1089,16 +1058,15 @@ namespace SimTools
             sims2_brightCas.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "This mod fixes CAS parts that were made without Bump Map support looking glowy in CAS, " +
-                    "or nearly everything being glowy for people playing with shaders disabled. LazyDuchess FTW!",
-                    "Bright CAS Fix — The Sims 2",
+                    LanguageManager.Get("BugFixes", "BrightCAS_Info", "Bright CAS Fix info."),
+                    LanguageManager.Get("BugFixes", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
                 {
                     MessageBox.Show(
-                        "Your Sims 2 Mods directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1122,22 +1090,18 @@ namespace SimTools
             ts3_patchDl.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "INFO: You should only need to update to 1.67 if you are running the game from the Retail discs. " +
-                    "EA App and Steam versions will already be updated to the latest versions when installed.",
-                    "Patch Downloader — The Sims 3",
+                    LanguageManager.Get("Tweaks", "PatchDL_Info1", "Patch Downloader info."),
+                    LanguageManager.Get("Tweaks", "PatchDL_Title", "Patch Downloader — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    "Use the following Patch Downloader to download patches for the base game " +
-                    "and expansions you have installed.",
-                    "Patch Downloader — The Sims 3",
+                    LanguageManager.Get("Tweaks", "PatchDL_Info2", "Patch Downloader usage info."),
+                    LanguageManager.Get("Tweaks", "PatchDL_Title", "Patch Downloader — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    "Furthermore, it is highly recommended that you patch each title after " +
-                    "you have installed it. As an example, install base game, patch it, install " +
-                    "World Adventures, patch it, and so on and so forth.",
-                    "Patch Downloader — The Sims 3",
+                    LanguageManager.Get("Tweaks", "PatchDL_Info3", "Patch each title recommendation."),
+                    LanguageManager.Get("Tweaks", "PatchDL_Title", "Patch Downloader — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Directory.CreateDirectory(installDir);
@@ -1163,16 +1127,15 @@ namespace SimTools
             ts3_simler90.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "Simler90's Gameplay Systems Core Mod fixes a long list of issues and bugs with the base game " +
-                    "and many of the expansion packs. STRONGLY recommended.",
-                    "Simler90's Fixes — The Sims 3",
+                    LanguageManager.Get("Tweaks", "Simler90_Info", "Simler90 fixes info."),
+                    LanguageManager.Get("Tweaks", "Simler90_Title", "Simler90's Fixes — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
@@ -1188,24 +1151,20 @@ namespace SimTools
             ts3_mono_patcher.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "Mono Patcher is a library that allows Script Modders " +
-                    "to replace Sims 3 methods with as much compatibility " +
-                    "as possible - No need to create core mods anymore to " +
-                    "replace game functions.",
-                    "LazyDuchess Mono Patcher — The Sims 3",
+                    LanguageManager.Get("Tweaks", "MonoPatch_Info1", "Mono Patcher info."),
+                    LanguageManager.Get("Tweaks", "MonoPatch_Title", "LazyDuchess Mono Patcher — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    "Mono Patcher is required for some of the mods featured " +
-                    "by SimTools. It's installation is highly suggested.",
-                    "LazyDuchess Mono Patcher — The Sims 3",
+                    LanguageManager.Get("Tweaks", "MonoPatch_Info2", "Mono Patcher is required for some SimTools mods."),
+                    LanguageManager.Get("Tweaks", "MonoPatch_Title", "LazyDuchess Mono Patcher — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
@@ -1228,16 +1187,15 @@ namespace SimTools
             ts3_gameplayFixes.Click += (_, _) =>
             {
                 MessageBox.Show(
-                    "Launching Game Fixes AIO installer. " +
-                    "Select fixes ONLY for the expansions that you have installed.",
-                    "Gameplay Fixes — The Sims 3",
+                    LanguageManager.Get("Tweaks", "GameplayFixes_Info", "Gameplay Fixes info."),
+                    LanguageManager.Get("Tweaks", "GameplayFixes_Title", "Gameplay Fixes — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                 {
                     MessageBox.Show(
-                        "Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1253,8 +1211,8 @@ namespace SimTools
             var sims4Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = "The Sims 4" };
             sims4Item.Click += (_, _) =>
                 MessageBox.Show(
-                    "To be implemented at a later time.",
-                    "The Sims 4 — Bug Fixes",
+                    LanguageManager.Get("BugFixes", "Sims4_Info", "To be implemented at a later time."),
+                    LanguageManager.Get("BugFixes", "Sims4_Title", "The Sims 4 — Bug Fixes"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
             contextMenu.Items.Add(sims4Item);
 
@@ -1266,19 +1224,15 @@ namespace SimTools
             simCopterX.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "This is an alert from central dispatch - you're cleared for takeoff on Windows 10. " +
-                    "You no longer need to use a virtual machine or CPU Killer, just nerves of steel. " +
-                    "Additionally the patcher has optional higher-resolution modes to choose from including " +
-                    "16:9 and 16:10 aspect ratios so you can fill up your screen; " +
-                    "you'll feel like you're actually up in the sky saving shipwrecked Sims.",
-                    "SimCopterX",
+                    LanguageManager.Get("Tweaks", "SimCopterX_Info", "SimCopterX info."),
+                    LanguageManager.Get("Tweaks", "SimCopterX_Title", "SimCopterX"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.SimCopterGame))
                 {
                     MessageBox.Show(
-                        "Your SimCopter game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "SimCopter", "Your SimCopter game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1300,18 +1254,15 @@ namespace SimTools
             simStreetsX.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "Take your rage to the streets on Windows 10 by becoming a lunatic Sim driver. " +
-                    "You no longer need to use a virtual machine or CPU Killer, just a lead foot. " +
-                    "The patcher comes with a variety of options so you can either take a relaxing drive " +
-                    "or battle up to seven other players over a network.",
-                    "SimStreetsX",
+                    LanguageManager.Get("Tweaks", "SimStreetsX_Info", "SimStreetsX info."),
+                    LanguageManager.Get("Tweaks", "SimStreetsX_Title", "SimStreetsX"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.StreetsOfSimCityGame))
                 {
                     MessageBox.Show(
-                        "Your Streets of SimCity game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "SimStreets", "Your Streets of SimCity game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1335,16 +1286,15 @@ namespace SimTools
             sc2kFix.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "SC2KFix is a bugfix and modding plugin for SimCity 2000 Special Edition. " +
-                    "Compatible with the Windows 95 version only. Use alongside SC2000X is untested.",
-                    "SC2kFix — SimCity 2000",
+                    LanguageManager.Get("Tweaks", "SC2kFix_Info", "SC2kFix info."),
+                    LanguageManager.Get("Tweaks", "SC2kFix_Title", "SC2kFix — SimCity 2000"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.SimCity2000Game))
                 {
                     MessageBox.Show(
-                        "Your SimCity 2000 game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "SimCity2000", "Your SimCity 2000 game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1360,18 +1310,15 @@ namespace SimTools
             sc2000X.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    "SC2000X is an open-source installer and patcher for SimCity 2000 (Win95). " +
-                    "In addition to being an all-in-one solution, it's completely open source and supports " +
-                    "multiple versions of the game. The patcher fixes the “Save-As” crash bug, " +
-                    "which is actually a general dialog bug extending to “Load Tile Set” as well.",
-                    "SC2000X — SimCity 2000",
+                    LanguageManager.Get("Tweaks", "SC2000X_Info", "SC2000X info."),
+                    LanguageManager.Get("Tweaks", "SC2000X_Title", "SC2000X — SimCity 2000"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.SimCity2000Game))
                 {
                     MessageBox.Show(
-                        "Your SimCity 2000 game directory is not configured.\nPlease open Settings and set it first.",
-                        "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "SimCity2000", "Your SimCity 2000 game directory is not configured."),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1504,7 +1451,7 @@ namespace SimTools
                 if (File.Exists(destFilePath)) File.Delete(destFilePath);
 
                 MessageBox.Show(
-                    $"Download failed: {fileName}\n{ex.Message}",
+                    LanguageManager.Format("Messages", "Error_DownloadFailed", fileName) + "\n" + ex.Message,
                     LanguageManager.Get("Messages", "Error_DownloadTitle", "Download Error"),
                     MessageBoxButton.OK, MessageBoxImage.Error);
 
@@ -1542,8 +1489,8 @@ namespace SimTools
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"Failed to extract {zipName}:\n{ex.Message}",
-                    "Extract Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    LanguageManager.Format("Framework", "ExtractFail", zipName, ex.Message),
+                    LanguageManager.Get("Framework", "ExtractFail_Title", "Extract Error"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
         }
@@ -1568,8 +1515,8 @@ namespace SimTools
             if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
             {
                 MessageBox.Show(
-                    "Your Sims 3 game directory is not configured.\nPlease open Settings and set it first.",
-                    "SimTools — Path Not Set", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                    LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -1580,8 +1527,8 @@ namespace SimTools
 
             var download = !File.Exists(exePath)
     ? MessageBox.Show(
-        "Do you want to download the Regul Save Cleaner?",
-        "Regul Save Cleaner", MessageBoxButton.YesNo, MessageBoxImage.Question)
+        LanguageManager.Get("ModResources", "SaveCleaner_Download", "Do you want to download the Regul Save Cleaner?"),
+        LanguageManager.Get("ModResources", "SaveCleaner_Title", "Regul Save Cleaner"), MessageBoxButton.YesNo, MessageBoxImage.Question)
     : MessageBoxResult.No;
 
             if (download == MessageBoxResult.Yes)
@@ -1600,8 +1547,8 @@ namespace SimTools
                 if (!File.Exists(lnkPath))
                 {
                     var choice = MessageBox.Show(
-                        "Would you like to create a desktop shortcut to Regul Save Cleaner?",
-                        "Create Shortcut", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        LanguageManager.Get("ModResources", "SaveCleaner_Shortcut", "Would you like to create a desktop shortcut to Regul Save Cleaner?"),
+                        LanguageManager.Get("ModResources", "SaveCleaner_ShortcutTitle", "Create Shortcut"), MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                     if (choice == MessageBoxResult.Yes)
                     {
@@ -1616,8 +1563,8 @@ namespace SimTools
                         catch (Exception ex)
                         {
                             MessageBox.Show(
-                                $"Could not create shortcut:\n{ex.Message}",
-                                "Shortcut Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                LanguageManager.Format("ModResources", "SaveCleaner_ShortcutFail", ex.Message),
+                                LanguageManager.Get("ModResources", "SaveCleaner_ShortcutFailTitle", "Shortcut Error"), MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                     }
                 }
@@ -1626,8 +1573,8 @@ namespace SimTools
             if (!File.Exists(exePath))
             {
                 MessageBox.Show(
-                    $"RegulSaveCleaner.exe was not found at:\n{exePath}",
-                    "SimTools — File Not Found", MessageBoxButton.OK, MessageBoxImage.Error);
+                    LanguageManager.Format("ModResources", "SaveCleaner_NotFound", exePath),
+                    LanguageManager.Get("ModResources", "SaveCleaner_NotFoundTitle", "SimTools — File Not Found"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -1817,13 +1764,13 @@ namespace SimTools
 
             // ── SimCity 2013 ──────────────────────────────────────────────────
             var sc2013 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2013.ico"), Header = "SimCity 2013" };
-            const string sc2013Warning = "A majority of SimCity 2013 mods will only work in Offline Mode. You will experience disconnections if attempting to play with these mods in online mode.";
+            string sc2013Warning = LanguageManager.Get("AboutSimTools", "SC2013Warning", "A majority of SimCity 2013 mods will only work in Offline Mode.");
 
             var sc2013_twinzens = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "Mod Collection by Twinzens" };
             sc2013_twinzens.Click += (_, _) =>
             {
                 MessageBox.Show(sc2013Warning,
-                    "SimCity 2013 — Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LanguageManager.Get("AboutSimTools", "SC2013Warning_Title", "SimCity 2013 — Warning"), MessageBoxButton.OK, MessageBoxImage.Information);
                 InfoThenBrowse(
                     "Let me introduce you to the most up-to-date and tested mod collection covering the whole ST exchange for SC13k!",
                     "https://community.simtropolis.com/files/file/33611-sc13-2020-mod-collection-by-twinzens/");
@@ -1973,8 +1920,8 @@ namespace SimTools
         {
             {
                 MessageBox.Show(
-                    "A great deal has changed between v3.2.4 and v4.0.1. Please take a moment to watch the new video guide by clicking the 'SimTools Video Guide' button. This and the changelog will hopefully better aclimate you to the massive changes.",
-                    "Watch the Video Guide!",
+                    LanguageManager.Get("AboutSimTools", "WarningMessage", "A great deal has changed between versions."),
+                    LanguageManager.Get("AboutSimTools", "WarningMessage_Title", "Watch the Video Guide!"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
             }
@@ -2026,9 +1973,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(requiredPath))
                 {
                     MessageBox.Show(
-                        $"The {gameName} game directory has not been configured.\n"
-                      + "Please set it in Settings before using this feature.",
-                        "SimTools \u2014 Path Not Set",
+                        LanguageManager.Format("Paths", "Generic", gameName),
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"),
                         MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }

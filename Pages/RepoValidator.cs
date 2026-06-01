@@ -211,35 +211,30 @@ namespace SimTools
 
         private static void ShowWarningDialog(ValidationReport report)
         {
-            var sb = new StringBuilder();
-            sb.AppendLine($"A repository trust check failed for:  {report.Domain}");
-            sb.AppendLine();
+            var bullets = new StringBuilder();
 
             if (!report.DomainTrusted)
-                sb.AppendLine($"  • Domain \"{report.Domain}\" is not listed as a trusted source.");
+                bullets.AppendLine(LanguageManager.Format("Repo", "Domain_Untrusted",
+                    report.Domain));
 
             if (!report.IPTrusted)
             {
                 string ips = report.ResolvedIPs.Length > 0
                     ? string.Join(", ", report.ResolvedIPs)
                     : "(unable to resolve)";
-                sb.AppendLine($"  • Resolved IP address ({ips}) does not match any trusted IP.");
+                bullets.AppendLine(LanguageManager.Format("Repo", "IP_Untrusted", ips));
             }
 
             if (!report.HostsFileClean)
-                sb.AppendLine(
-                    $"  • Your local hosts file is redirecting \"{report.Domain}\" " +
-                    $"to {report.HostsOverrideIP}, which is not a trusted address.");
+                bullets.AppendLine(LanguageManager.Format("Repo", "Hosts_Tampered",
+                    report.Domain, report.HostsOverrideIP ?? ""));
 
-            sb.AppendLine();
-            sb.AppendLine("This may indicate a misconfigured repository URL, a network");
-            sb.AppendLine("interception attempt, or a modified hosts file.");
-            sb.AppendLine();
-            sb.AppendLine("Proceed with caution. Downloads from this source may not be safe.");
+            string body = LanguageManager.Format("Repo", "Warning",
+                report.Domain, bullets.ToString());
 
             System.Windows.MessageBox.Show(
-                sb.ToString(),
-                "Untrusted Repository Source",
+                body,
+                LanguageManager.Get("Repo", "Warning_Title", "Untrusted Repository Source"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
         }

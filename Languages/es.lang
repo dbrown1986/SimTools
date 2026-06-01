@@ -1,6 +1,9 @@
+[IntroductoryPage]
+IntroText1=Bienvenido a la Suite de SimTools
+
 [Main]
-ButtonInfoText=When selecting an option, each button will change colors when your mouse is over it. (Traduccion necesaria)
-FrameworkInfoText=It is strongly recommended to install the Mod Framework. (Traduccion necesaria)
+ButtonInfoText=Al seleccionar una opción, cada botón cambiará de color cuando el cursor esté sobre él. Estos colores indican la importancia de cada función. Verde es normal, amarillo es recomendado, rojo es muy recomendado. Como regla general, casi todos los ajustes y correcciones de errores requieren la instalación del marco de mods.
+FrameworkInfoText=Se recomienda encarecidamente instalar el Marco de Mods. Si ya tienes el Marco de Mods, limpia tu carpeta Mods y reinstálalo desde el botón de abajo. Esta versión del Marco de Mods está especialmente revisada y preparada para SimTools.
 ComparisonLabel=Comparacion
 Btn_TS3Vanilla=TS3 Vanilla (Sin mods)
 Btn_TS3WithSimTools=TS3 Con SimTools
@@ -17,6 +20,7 @@ Warn_MenuConverted=Esta pagina se ha convertido en menu. Haga clic derecho en el
 Warn_Title=Advertencia
 Error_DownloadFailed=Error al descargar {0}
 Error_DownloadTitle=Error de descarga
+Error_Sims1PathNotSet=El directorio del juego The Sims 1 no ha sido configurado. Por favor, configúrelo en Ajustes antes de usar esta función.
 
 [ContextMenu]
 GPU_Sims2=Los Sims 2
@@ -53,3 +57,190 @@ Progress_Finalising=Finalizando...
 [Splash]
 Loading=v 4.0.1.3868
 Retic=Splines reticulados...
+
+
+[Updates]
+NoServer=No se pudo llegar al servidor de actualizaciones.\nComprueba tu conexión e inténtalo de nuevo.
+Malformed=El archivo de versión en el servidor está malformado.
+BadVersion=No se pudo analizar la versión remota: "{0}"
+UpToDate=Ya tienes la última versión ({0}).
+NewVersion=La versión {0} está disponible (tienes la {1}).\n\n¿Te gustaría actualizar ahora?\nSimTools se cerrará automáticamente una vez que se inicie el actualizador.
+Timeout=La verificación de actualizaciones expiró.\nInténtalo de nuevo más tarde.
+Unexpected=Ocurrió un error inesperado:\n{0}
+UpdaterMissing=SimToolsUpdater.exe no se encontró en el directorio de la aplicación.\nDescarga SimTools manualmente.
+Title_Failed=Error al verificar actualizaciones
+Title_UpToDate=Actualizado
+Title_Available=Actualización disponible
+Title_MissingUpdater=Actualizador no encontrado
+Suppress_Ask=¿Deseas suprimir las notificaciones de actualizaciones automáticas?
+Suppress_Title=Suprimir notificaciones de actualizaciones
+Suppress_Duration=¿Cuánto tiempo deseas suprimir las notificaciones?\n\n  Sí  —  Suprimir por 30 días\n  No  —  Suprimir indefinidamente
+Suppress_DurTitle=Duración de la supresión
+
+[RepoSpeed]
+Prompt=SimTools realizó una prueba de velocidad rápida.\n\nEl servidor más rápido para tu conexión es:\n  {0}  ({1} ms)\n\nTu repositorio actual es:\n  {2}\n\n¿Te gustaría cambiar al servidor más rápido?
+Title=SimTools — Prueba de velocidad del repositorio
+
+[Paths]
+Title=SimTools — Ruta no configurada
+Sims3Game=El directorio del juego de Los Sims 3 no está configurado.\nAbre Configuración y establécelo primero.
+Sims3Mods=El directorio de mods de Los Sims 3 no está configurado.\nAbre Configuración y establécelo primero.
+Sims2Mods=El directorio de mods de Los Sims 2 no está configurado.\nAbre Configuración y establécelo primero.
+SimsMedieval=El directorio del juego Los Sims Medieval no está configurado.\nAbre Configuración y establécelo primero.
+SimCopter=El directorio del juego SimCopter no está configurado.\nAbre Configuración y establécelo primero.
+SimStreets=El directorio de Streets of SimCity no está configurado.\nAbre Configuración y establécelo primero.
+SimCity2000=El directorio del juego SimCity 2000 no está configurado.\nAbre Configuración y establécelo primero.
+Generic=El directorio del juego {0} no está configurado.\nEstablécelo en Configuración antes de usar esta función.
+
+[GPU]
+Sims2Warning=NO apliques este parche si usas la Legacy Collection de Los Sims 2, ya que no es necesario con la nueva versión. Sí aplícalo en ediciones Retail o Complete Collection.
+Sims2Title=Graphics Rules Maker — Los Sims 2
+
+[Tweaks]
+AlderLake_Info1=En los CPUs Intel Alder Lake de 12ª gen (Core i3-i9), Los Sims 3 se cuelga al iniciar. Este parche permite a los usuarios volver a jugar. El Ultimate ASI Loader y Sims 3 Settings Setter también solucionan este problema.
+AlderLake_Info2=Si usas la versión EA App de Los Sims 3, este parche ya no es necesario desde v1.69.47.024017 (13/01/2025). Los usuarios de versiones Retail o Steam siguen necesitando este parche.
+AlderLake_Title=Intel Alder Lake Fix — Los Sims 3
+AlderLake_ExtractFail=No se pudo extraer el parche Alder Lake:\n{0}
+AlderLake_NotFound=La extracción fue exitosa pero no se encontró AlderLakePatch.exe en el directorio de Los Sims 3.
+LDLauncher_Info1=Un launcher personalizado de TS3 para EA App (versión 1.69) con mayor control. Soporte de mods ASI, bypass del launcher, mostrar todos los EPs, mejor login en SimPort y deshabilitar todo el CC.
+LDLauncher_Info2=Solo para EA App. Por defecto, el instalador extrae en la ruta predeterminada y reemplaza el launcher original. Si instalaste Los Sims 3 en otro lugar, deberás cambiar la ubicación manualmente.
+LDLauncher_Title=LazyDuchess Launcher — Los Sims 3
+LDLauncher_BackupFail=No se pudo hacer copia de seguridad de Sims3Launcher.exe:\n{0}\n\nLa instalación no continuará.
+MonoPatcher_Info1=Otro mod increíble de LazyDuchess. Mono Patcher es una biblioteca que permite a los modders reemplazar métodos de Los Sims 3 con máxima compatibilidad, sin necesidad de crear core mods.
+MonoPatcher_Info2=Versión actual: 0.2.2
+MonoPatcher_Title=Mono Patcher Library — Los Sims 3
+MonoPatch_Info1=Mono Patcher es una biblioteca que permite a los modders de scripts reemplazar métodos de Los Sims 3 sin necesidad de crear core mods.
+MonoPatch_Info2=Mono Patcher es necesario para algunos mods de SimTools. Su instalación es muy recomendada.
+MonoPatch_Title=LazyDuchess Mono Patcher — Los Sims 3
+PatchDL_Info1=AVISO: Solo necesitas actualizar a 1.67 si ejecutas el juego desde los discos Retail. Las versiones de EA App y Steam ya están actualizadas al instalarse.
+PatchDL_Info2=Usa el siguiente Patch Downloader para descargar parches para el juego base y las expansiones instaladas.
+PatchDL_Info3=Además, se recomienda encarecidamente parchear cada título después de instalarlo. Por ejemplo: instala el juego base, parchéalo, instala World Adventures, parchéalo, y así sucesivamente.
+PatchDL_Title=Descargador de parches — Los Sims 3
+Simler90_Info=El Core Mod de Simler90 corrige una larga lista de problemas y bugs del juego base y muchas expansiones. MUY recomendado.
+Simler90_Title=Fixes de Simler90 — Los Sims 3
+GameplayFixes_Info=Iniciando el instalador AIO de Gameplay Fixes. Selecciona SOLO los fixes de las expansiones que tienes instaladas.
+GameplayFixes_Title=Gameplay Fixes — Los Sims 3
+SimCopterX_Info=Estás autorizado a despegar en Windows 10. Ya no necesitas una máquina virtual ni CPU Killer. El patcher incluye modos de resolución más alta como 16:9 y 16:10.
+SimCopterX_Title=SimCopterX
+SimStreetsX_Info=Desata tu furia en las calles de Windows 10. Ya no necesitas una máquina virtual. El patcher ofrece varias opciones y soporte para hasta siete jugadores en red.
+SimStreetsX_Title=SimStreetsX
+SC2kFix_Info=SC2KFix es un plugin de corrección de errores y modding para SimCity 2000 Special Edition. Compatible solo con la versión de Windows 95.
+SC2kFix_Title=SC2kFix — SimCity 2000
+SC2000X_Info=SC2000X es un instalador y patcher de código abierto para SimCity 2000 (Win95). Corrige el bug de "Guardar como" y otros errores de diálogos.
+SC2000X_Title=SC2000X — SimCity 2000
+
+[BugFixes]
+Sims1_Info=Usa Simitone en Ajustes del juego para resolver errores de Los Sims 1.
+Sims1_Title=Los Sims 1 — Correcciones de errores
+Sims4_Info=Se implementará en una versión posterior.
+Sims4_Title=Los Sims 4 — Correcciones de errores
+ShadowFix_Info=Con este mod, las sombras interiores de los Sims y mascotas ya no aparecen como rectángulos negros. Este problema ocurre en muchas tarjetas gráficas modernas.
+ShadowFix_Title=Sim Shadow Fix — Los Sims 2
+BrightCAS_Info=Este mod corrige las partes de CAS que brillan en el modo CAS por falta de soporte de Bump Map. Creado por LazyDuchess.
+BrightCAS_Title=Bright CAS Fix — Los Sims 2
+
+[ModResources]
+Simitone_Installed=Simitone se instaló en el directorio de Los Sims 1.\n\n¿Te gustaría crear un acceso directo en el escritorio para Simitone.Windows.exe?
+Simitone_Extracted=Simitone se extrajo en el directorio de Los Sims 1.\n\n¿Te gustaría crear un acceso directo en el escritorio?
+Simitone_Title=SimTools — Simitone instalado
+Simitone_ExtractFail=No se pudo extraer Simitone:\n{0}
+Simitone_ExtractTitle=SimTools — Error de extracción
+Sims2RPC_Ask=¿Qué versión de Los Sims 2 tienes instalada?\n\n• SÍ  —  Versión estándar/vanilla (disco u Origin)\n• NO  —  Los Sims 2 Legacy Edition (EA App)\n\nSÍ instala Sims2RPC.\nNO abre la página de LazyDuchess Legacy Extender.
+Sims2RPC_Title=SimTools — Sims2RPC / Legacy Extender
+SaveCleaner_Download=¿Deseas descargar Regul Save Cleaner?
+SaveCleaner_Title=Regul Save Cleaner
+SaveCleaner_Shortcut=¿Te gustaría crear un acceso directo en el escritorio para Regul Save Cleaner?
+SaveCleaner_ShortcutTitle=Crear acceso directo
+SaveCleaner_ShortcutFail=No se pudo crear el acceso directo:\n{0}
+SaveCleaner_ShortcutFailTitle=Error de acceso directo
+SaveCleaner_NotFound=RegulSaveCleaner.exe no se encontró en:\n{0}
+SaveCleaner_NotFoundTitle=SimTools — Archivo no encontrado
+
+[Framework]
+NotInstalled=El Mod Framework de SimTools no parece estar instalado, o a tu Resource.cfg le falta la ruta de paquetes de SimTools.\n\nAntes de descargar archivos .package, instala el Mod Framework con el botón "Mod Framework" de la ventana principal.
+NotInstalled_Title=SimTools — Mod Framework requerido
+ModsNotSet_Ask=El directorio de mods de Los Sims 3 no está configurado.\n\nSimTools detectó tu carpeta de datos de Los Sims 3 en:\n{0}\n\n¿Te gustaría crear una carpeta "Mods" ahí y continuar con la instalación?
+ModsNotSet_Title=SimTools — Directorio de Mods no configurado
+ModsNotSet_Manual=El directorio de Mods de Los Sims 3 no está configurado.\n\nPara instalar el Mod Framework:\n\n1. Crea una carpeta llamada "Mods" en:\n   Documentos\Artes Electrónicas\Los Sims 3\n\n2. Abre Configuración y establece la ruta de Mods.\n\nLuego haz clic en "Mod Framework" de nuevo.
+Installed=¡El Mod Framework de SimTools se instaló correctamente!\n\nUbicación:\n{0}\n\nCarpetas creadas:\n  • Disabled  (Overrides, Packages, Probation, Test)\n  • Overrides  •  Packages\n  • Probation  (Overrides, Packages)\n  • SimTools  (Overrides, Packages)\n  • Test  (Overrides, Packages)\n\nResource.cfg se instaló en tu carpeta Mods.\nLos paquetes principales se instalaron en SimTools\Packages.
+Installed_Title=SimTools — Mod Framework instalado
+MissingResource=Resource.cfg no se encontró en los recursos compilados.\nRe-instala SimTools e inténtalo de nuevo.
+MissingResource_Title=SimTools — Recurso faltante
+InstallFailed=No se pudo instalar el Mod Framework:\n\n{0}
+InstallFailed_Title=SimTools — Instalación fallida
+GameIntro_Ask=¿Te gustaría instalar el intro personalizado de SimTools?\n\nEsto reemplaza el intro estándar de EA por uno con marca SimTools.
+GameIntro_Title=SimTools — Intro personalizado del juego
+Splashscreen_Ask=¿Te gustaría instalar la pantalla de carga personalizada de SimTools?\n\nEsto reemplaza la pantalla de carga estándar por una con marca SimTools.
+Splashscreen_Title=SimTools — Pantalla de carga personalizada
+ExtractFail=Error al extraer {0}:\n{1}
+ExtractFail_Title=Error de extracción
+
+[GenericKeys]
+Info=Esta función proporciona claves de producto genéricas para títulos legacy de Maxis/EA.\n\nPuede ser eliminada en una versión futura de SimTools a solicitud de EA.
+Info_Title=SimTools — Claves genéricas
+SelectFirst=Por favor, selecciona un juego primero.
+NoKeys=No hay claves disponibles para este título todavía.
+ClickToGenerate=Haz clic en Generar para obtener una clave.
+
+[Music]
+Fetching=Obteniendo lista de pistas…
+Cancelled=Descarga cancelada.
+Complete=¡Descarga completada!
+NoServer=No se pudo conectar con el servidor de música.
+Cancelling=Cancelando…
+FirstRun=¿Te gustaría descargar un paquete de música de fondo gratuito?\n\nTambién puedes añadir tus propias canciones (MP3, WAV, FLAC, M4A) en\nla carpeta /Resources/Music:\n{0}
+FirstRun_Title=Música de fondo
+NoTrack=Sin pista cargada
+
+[UpdateDL]
+Complete=Descarga completada. Iniciando instalador…
+Cancelled=Descarga cancelada.
+Cancelling=Cancelando…
+
+[Personalization]
+EnterKey=Por favor, introduce una clave.
+InvalidKey=Esta clave no es válida. Compruébala e inténtalo de nuevo.
+Unlocked=Personalización desbloqueada. Bienvenido/a, {0}.
+Unlocked_Title=SimTools — Personalización
+RemoveAsk=¿Eliminar tu clave de personalización? El banner ya no aparecerá en la pantalla de bienvenida.
+RemoveAsk_Title=SimTools — Eliminar personalización
+PersonalizationText=Esta copia de SimTools fue diseñada con cariño para {0} {1}.\n¡Gracias por tu apoyo!
+
+[KeyGen]
+Copied=Clave copiada al portapapeles.
+Copied_Title=SimTools — Generador de claves
+
+[Repo]
+Warning=Una verificación de confianza del repositorio falló para:  {0}\n\n{1}\nEsto puede indicar una URL de repositorio mal configurada, un intento de interceptación de red o un archivo hosts modificado.\n\nProcede con cautela.
+Warning_Title=Fuente de repositorio no confiable
+Domain_Untrusted=  • El dominio "{0}" no está listado como fuente de confianza.
+IP_Untrusted=  • La dirección IP resuelta ({0}) no coincide con ninguna IP de confianza.
+Hosts_Tampered=  • Tu archivo hosts local está redirigiendo "{0}" a {1}, que no es una dirección de confianza.
+
+[AboutSimTools]
+WhatIsSimTools=SimTools (anteriormente TS3Tools) es la misma suite de herramientas de siempre, pero ahora incluye opciones para varios juegos de Maxis, incluyendo Los Sims 1, 2, Stories, 3, 4, SimCity 2000/3000/4/2013, SimCopter y Streets of SimCity.
+WhatIsSimTools_Title=¿Qué es SimTools?
+WarningMessage=Muchas cosas han cambiado entre v3.2.4 y v4.0.1. Tómate un momento para ver el nuevo video guía haciendo clic en el botón 'Video guía de SimTools'.
+WarningMessage_Title=¡Mira el video guía!
+SC2013Warning=La mayoría de los mods de SimCity 2013 solo funcionan en modo Sin conexión. Experimentarás desconexiones si intentas jugar con estos mods en modo en línea.
+SC2013Warning_Title=SimCity 2013 — Advertencia
+
+[Settings]
+Sims3DirWarning=Establece el directorio del juego Los Sims 3 en el directorio raíz donde están las carpetas de expansiones y stuff packs. No selecciones la carpeta Game/Bin.
+Sims3DirWarning_Title=SimTools — Directorio de Los Sims 3
+AutoDetect_Nothing=No se detectaron directorios de juegos o mods automáticamente.\n\nSe revisaron ubicaciones comunes, incluyendo Steam, GOG, EA Games, Electronic Arts y Origin Games.\n\nPuedes establecer las rutas manualmente con los botones Examinar.
+AutoDetect_Nothing_Title=Detección automática — Nada encontrado
+AutoDetect_Found_Title=Detección automática completada
+ReenabledUpdates=Las notificaciones de actualizaciones automáticas se han vuelto a activar.\n\nSimTools buscará actualizaciones la próxima vez que se inicie.
+ReenabledUpdates_Title=Verificación de actualizaciones restablecida
+
+[GameplayFixes]
+SelectAll_Ask=Estás a punto de seleccionar todas las correcciones disponibles.\n\nSimTools está diseñado para mejorar el rendimiento de los juegos, pero instalar todos los paquetes aumentará los tiempos de carga y puede sobrecargar el motor. Se recomienda encarecidamente instalar solo las correcciones para las funciones y objetos que uses activamente.\n\nAdemás, instalar correcciones para Expansion Packs o Stuff Packs que no están instalados en tu sistema puede causar bloqueos o comportamientos inesperados.\n\n¿Deseas seleccionar todas las correcciones de todos modos?
+SelectAll_Title=SimTools — Advertencia: Seleccionar todo
+NoneSelected=No se ha seleccionado ninguna corrección.\n\nNota: los elementos en gris son marcadores de posición aún no definidos.
+NoneSelected_Title=Nada que descargar
+DownloadError=Error al descargar {0}:\n{1}
+DownloadError_Title=Error de descarga
+Done=Listo.\n\nDescargados: {0}  |  Ya actualizados: {1}  |  Con errores: {2}
+Done_Title=Correcciones de gameplay — Los Sims 3
+

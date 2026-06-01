@@ -42,8 +42,8 @@ namespace SimTools
 
             Clipboard.SetText(key);
             MessageBox.Show(
-                "Key copied to clipboard.",
-                "SimTools — Key Generator",
+                LanguageManager.Get("KeyGen", "Copied", "Key copied to clipboard."),
+                LanguageManager.Get("KeyGen", "Copied_Title", "SimTools — Key Generator"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
         }

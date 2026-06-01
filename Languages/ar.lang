@@ -1,4 +1,7 @@
-﻿[Main]
+[IntroductoryPage]
+IntroText1=مرحباً بك في مجموعة SimTools
+
+[Main]
 ButtonInfoText=عند تحديد خيار، سيغير كل زر ألوانه عند تمرير الماوس فوقه. تشير هذه الألوان إلى أهمية كل وظيفة. الأخضر طبيعي، والأصفر موصى به، والأحمر موصى به بشدة. كقاعدة عامة، ستتطلب معظم التعديلات وإصلاحات الأخطاء تثبيت إطار عمل المودات.
 FrameworkInfoText=يُنصح بشدة بتثبيت إطار عمل المودات. إذا كان لديك إطار عمل المودات بالفعل، يرجى حذف مجلد 'Mods' وإعادة التثبيت من الزر أدناه. تم فحص هذا الإصدار وإعداده خصيصًا لـ TS3Tools.
 ComparisonLabel=مقارنة
@@ -7,6 +10,13 @@ Btn_TS3WithSimTools=TS3 مع SimTools
 Btn_VideoTutorial=دليل فيديو SimTools
 Btn_GPU=دعم GPU >
 Btn_Tweaks=تعديلات اللعبة >
+Bugfix_Description=تعديلات متنوعة على متغيرات اللعبة الأساسية والعامة، تعمل على معالجة العديد من الأخطاء البرمجية التي ظهرت في لعبة The Sims 3 على مر السنين.
+SaveCleaner_Description=تتضخم ملفات الحفظ الخاصة بلعبة The Sims 3 بمرور الوقت، لتصل أحجامها إلى عدة غيغابايتات، وقد تتعرض للتلف. لذا، استخدم هذه الأداة لتنظيفها بانتظام.
+Mods_Description=نستعرض هنا تعديلاتٍ أوصيتُ بها أنا والمجتمع، ولكنها لا تُجري تغييراتٍ جذريةً على محرك اللعبة ولا تعمل على إصلاح الأخطاء البرمجية (تتطلب إطار عمل التعديلات The Sims 3 Mod Framework).
+Store_Description=إذا كنت مهتماً بجمع أيٍّ من عناصر المتجر الخاصة بلعبة The Sims 3، فلا داعي لمزيد من البحث؛ فكل ما تحتاجه ستجده في هذا القسم.
+BuyGame_Description=ستجد هنا روابط لشراء لعبة The Sims 3، بالإضافة إلى مختلف حزم التوسعة وحزم المحتويات الخاصة بها. أحصل على عمولة مقابل كل عملية بيع في حال اخترت الشراء عبر SimTools.
+ModTools_Description=مجموعة من الأدوات لمساعدتك في إنشاء العوالم، والأغراض، والجلود، والملابس، والسكربتات، والحزم، وغيرها. يُرجى استخدامها بحذر؛ حيث تتوفر العديد من الشروحات التعليمية على موقع يوتيوب.
+GenKeys_Description=هل فقدت غلاف لعبتك؟ أم اشتريت لعبة مستعملة دون غلاف على الإطلاق؟ ستعرض لك هذه القائمة مفاتيح عامة يمكن استخدامها للتثبيت من أقراص النسخ التجارية (Retail).
 GPU_Description=استخدم هذه الأدوات للتعرف على دعم GPU وتثبيته. متاح لـ Sims 2 وSims Stories وSims 3.
 Tweaks_Description=يتضمن هذا القائمة العديد من التعديلات لتحسين أداء الألعاب. اختر فقط الإصلاحات الخاصة بالإضافات المثبتة لديك.
 
@@ -17,6 +27,7 @@ Warn_MenuConverted=تم تحويل هذه الصفحة إلى قائمة. يرج
 Warn_Title=تحذير
 Error_DownloadFailed=فشل التنزيل لـ {0}
 Error_DownloadTitle=خطأ في التنزيل
+Error_Sims1PathNotSet=لم يتم تهيئة مجلد لعبة The Sims 1. يرجى تعيينه في الإعدادات قبل استخدام هذه الميزة.
 
 [ContextMenu]
 GPU_Sims2=The Sims 2
@@ -53,3 +64,190 @@ Progress_Finalising=جارٍ الإنهاء...
 [Splash]
 Loading=v 4.0.1.3868
 Retic=خطوط شبكية...
+
+
+[Updates]
+NoServer=تعذّر الوصول إلى خادم التحديثات.\nتحقق من اتصالك وحاول مرة أخرى.
+Malformed=ملف الإصدار الموجود على الخادم تالف.
+BadVersion=تعذّر تحليل الإصدار البعيد: "{0}"
+UpToDate=أنت تستخدم أحدث إصدار ({0}) بالفعل.
+NewVersion=الإصدار {0} متاح (إصدارك الحالي {1}).\n\nهل تريد التحديث الآن?\nسيتم إغلاق SimTools تلقائياً عند تشغيل برنامج التحديث.
+Timeout=انتهت مهلة التحقق من التحديثات.\nحاول مرة أخرى لاحقاً.
+Unexpected=حدث خطأ غير متوقع:\n{0}
+UpdaterMissing=لم يتم العثور على SimToolsUpdater.exe في مجلد التطبيق.\nيُرجى تنزيل SimTools يدوياً.
+Title_Failed=فشل التحقق من التحديثات
+Title_UpToDate=محدّث
+Title_Available=يتوفر تحديث
+Title_MissingUpdater=برنامج التحديث غير موجود
+Suppress_Ask=هل تريد إيقاف إشعارات التحديثات التلقائية؟
+Suppress_Title=إيقاف إشعارات التحديثات
+Suppress_Duration=كم من الوقت تريد إيقاف الإشعارات؟\n\n  نعم —  إيقاف لمدة 30 يوماً\n  لا  —  إيقاف نهائي
+Suppress_DurTitle=مدة الإيقاف
+
+[RepoSpeed]
+Prompt=أجرى SimTools اختبار سرعة سريعاً للمستودعات المتاحة.\n\nأسرع خادم لاتصالك هو:\n  {0}  ({1} مللي ثانية)\n\nمستودعك الحالي:\n  {2}\n\nهل تريد التبديل إلى الخادم الأسرع؟
+Title=SimTools — اختبار سرعة المستودع
+
+[Paths]
+Title=SimTools — المسار غير مُعيَّن
+Sims3Game=لم يتم تكوين مجلد لعبة The Sims 3.\nافتح الإعدادات وعيّنه أولاً.
+Sims3Mods=لم يتم تكوين مجلد الحزم الإضافية لـ The Sims 3.\nافتح الإعدادات وعيّنه أولاً.
+Sims2Mods=لم يتم تكوين مجلد الحزم الإضافية لـ The Sims 2.\nافتح الإعدادات وعيّنه أولاً.
+SimsMedieval=لم يتم تكوين مجلد لعبة The Sims Medieval.\nافتح الإعدادات وعيّنه أولاً.
+SimCopter=لم يتم تكوين مجلد لعبة SimCopter.\nافتح الإعدادات وعيّنه أولاً.
+SimStreets=لم يتم تكوين مجلد لعبة Streets of SimCity.\nافتح الإعدادات وعيّنه أولاً.
+SimCity2000=لم يتم تكوين مجلد لعبة SimCity 2000.\nافتح الإعدادات وعيّنه أولاً.
+Generic=لم يتم تكوين مجلد لعبة {0}.\nعيّنه في الإعدادات قبل استخدام هذه الميزة.
+
+[GPU]
+Sims2Warning=لا تطبّق هذا التصحيح إذا كنت تستخدم مجموعة Legacy Collection لـ The Sims 2. طبّقه فقط لإصدارات Retail أو Complete Collection.
+Sims2Title=محرر قواعد الرسومات — The Sims 2
+
+[Tweaks]
+AlderLake_Info1=تتعطل لعبة The Sims 3 عند التشغيل على معالجات Intel Alder Lake الجيل الثاني عشر. هذا الإصلاح يتيح للمستخدمين اللعب مجدداً.
+AlderLake_Info2=إذا كنت تستخدم إصدار EA App من The Sims 3، فهذا الإصلاح لم يعد ضرورياً منذ الإصدار v1.69.47.024017 (13/01/2025).
+AlderLake_Title=إصلاح Intel Alder Lake — The Sims 3
+AlderLake_ExtractFail=فشل استخراج تصحيح Alder Lake:\n{0}
+AlderLake_NotFound=نجح الاستخراج لكن لم يتم العثور على AlderLakePatch.exe في مجلد The Sims 3.
+LDLauncher_Info1=مشغّل TS3 مخصص لـ EA App (الإصدار 1.69) يوفر تحكماً أكبر. يدعم مودات ASI، وتجاوز المشغّل، وإظهار جميع حزم التوسعة.
+LDLauncher_Info2=لـ EA App فقط. يستخرج المثبّت افتراضياً في المسار الافتراضي ويستبدل المشغّل الأصلي. إذا قمت بتثبيت The Sims 3 في مكان آخر، غيّر موقع التثبيت يدوياً.
+LDLauncher_Title=LazyDuchess Launcher — The Sims 3
+LDLauncher_BackupFail=تعذّر إنشاء نسخة احتياطية من Sims3Launcher.exe:\n{0}\n\nلن تستمر عملية التثبيت.
+MonoPatcher_Info1=مود رائع آخر من LazyDuchess. Mono Patcher مكتبة تتيح لمطوري المودات استبدال أساليب The Sims 3 دون الحاجة لإنشاء مودات أساسية.
+MonoPatcher_Info2=الإصدار الحالي: 0.2.2
+MonoPatcher_Title=Mono Patcher Library — The Sims 3
+MonoPatch_Info1=Mono Patcher مكتبة تتيح استبدال أساليب The Sims 3 دون الحاجة لمودات أساسية.
+MonoPatch_Info2=Mono Patcher مطلوب لبعض مودات SimTools. يُوصى بتثبيته بشدة.
+MonoPatch_Title=LazyDuchess Mono Patcher — The Sims 3
+PatchDL_Info1=ملاحظة: تحتاج فقط للتحديث إلى 1.67 إذا كنت تلعب من أقراص Retail. إصدارات EA App وSteam محدّثة تلقائياً.
+PatchDL_Info2=استخدم أداة تنزيل التصحيحات التالية لتنزيل تصحيحات اللعبة الأساسية والتوسعات المثبّتة.
+PatchDL_Info3=يُوصى بشدة بتصحيح كل عنوان بعد تثبيته. مثلاً: ثبّت اللعبة الأساسية، صحّحها، ثبّت World Adventures، صحّحها، وهكذا.
+PatchDL_Title=أداة تنزيل التصحيحات — The Sims 3
+Simler90_Info=يُصلح مود Simler90 قائمة طويلة من الأخطاء في اللعبة الأساسية والعديد من حزم التوسعة. يُوصى به بشدة.
+Simler90_Title=إصلاحات Simler90 — The Sims 3
+GameplayFixes_Info=جارٍ تشغيل مثبّت Gameplay Fixes AIO. اختر فقط الإصلاحات الخاصة بالتوسعات المثبّتة لديك.
+GameplayFixes_Title=إصلاحات اللعب — The Sims 3
+SimCopterX_Info=أنت مُصرَّح بالإقلاع على Windows 10. لا حاجة لآلة افتراضية. يدعم المُصحّح أوضاع دقة أعلى مثل 16:9 و16:10.
+SimCopterX_Title=SimCopterX
+SimStreetsX_Info=أطلق عنان فوضاك في شوارع Windows 10. يدعم المُصحّح خيارات متعددة وتعدد لاعبين حتى سبعة في الشبكة.
+SimStreetsX_Title=SimStreetsX
+SC2kFix_Info=SC2KFix مكوّن إضافي لإصلاح الأخطاء وتعديل SimCity 2000 Special Edition. متوافق مع إصدار Windows 95 فقط.
+SC2kFix_Title=SC2kFix — SimCity 2000
+SC2000X_Info=SC2000X مثبّت ومُصحّح مفتوح المصدر لـ SimCity 2000 (Win95). يُصلح خطأ الانهيار عند "حفظ باسم".
+SC2000X_Title=SC2000X — SimCity 2000
+
+[BugFixes]
+Sims1_Info=استخدم Simitone ضمن تعديلات اللعبة لمعالجة أخطاء The Sims 1.
+Sims1_Title=The Sims 1 — إصلاح الأخطاء
+Sims4_Info=سيتم التنفيذ في إصدار لاحق.
+Sims4_Title=The Sims 4 — إصلاح الأخطاء
+ShadowFix_Info=بهذا المود، لن تظهر الظلال الداخلية للسيمز والحيوانات الأليفة كمستطيلات سوداء بعد الآن. يحدث هذا على بطاقات رسومات حديثة كثيرة.
+ShadowFix_Title=إصلاح ظلال السيمز — The Sims 2
+BrightCAS_Info=يُصلح هذا المود عناصر CAS التي تظهر مضيئة في وضع CAS بسبب غياب دعم Bump Map. من إبداع LazyDuchess.
+BrightCAS_Title=إصلاح إضاءة CAS — The Sims 2
+
+[ModResources]
+Simitone_Installed=تم تثبيت Simitone في مجلد The Sims 1.\n\nهل تريد إنشاء اختصار سطح مكتب لـ Simitone.Windows.exe؟
+Simitone_Extracted=تم استخراج Simitone في مجلد The Sims 1.\n\nهل تريد إنشاء اختصار سطح مكتب؟
+Simitone_Title=SimTools — تم تثبيت Simitone
+Simitone_ExtractFail=فشل استخراج Simitone:\n{0}
+Simitone_ExtractTitle=SimTools — خطأ في الاستخراج
+Sims2RPC_Ask=ما إصدار The Sims 2 لديك؟\n\n• نعم —  الإصدار القياسي (قرص أو Origin)\n• لا  —  The Sims 2 Legacy Edition (EA App)\n\nنعم: تثبيت Sims2RPC.\nلا: فتح صفحة LazyDuchess Legacy Extender.
+Sims2RPC_Title=SimTools — Sims2RPC / Legacy Extender
+SaveCleaner_Download=هل تريد تنزيل Regul Save Cleaner؟
+SaveCleaner_Title=Regul Save Cleaner
+SaveCleaner_Shortcut=هل تريد إنشاء اختصار سطح مكتب لـ Regul Save Cleaner؟
+SaveCleaner_ShortcutTitle=إنشاء اختصار
+SaveCleaner_ShortcutFail=تعذّر إنشاء الاختصار:\n{0}
+SaveCleaner_ShortcutFailTitle=خطأ في الاختصار
+SaveCleaner_NotFound=لم يتم العثور على RegulSaveCleaner.exe في:\n{0}
+SaveCleaner_NotFoundTitle=SimTools — الملف غير موجود
+
+[Framework]
+NotInstalled=لا يبدو أن SimTools Mod Framework مثبّت، أو أن Resource.cfg لا يتضمن مسار حزم SimTools المطلوب.\n\nيُرجى تثبيت Mod Framework عبر زر "Mod Framework" في النافذة الرئيسية.
+NotInstalled_Title=SimTools — مطلوب Mod Framework
+ModsNotSet_Ask=لم يتم تكوين مجلد الحزم الإضافية لـ The Sims 3.\n\nاكتشف SimTools مجلد بيانات The Sims 3 في:\n{0}\n\nهل تريد إنشاء مجلد "Mods" هناك ومتابعة التثبيت؟
+ModsNotSet_Title=SimTools — مجلد الحزم الإضافية غير مُعيَّن
+ModsNotSet_Manual=لم يتم تكوين مجلد الحزم الإضافية لـ The Sims 3.\n\nلتثبيت Mod Framework:\n\n1. أنشئ مجلداً باسم "Mods" في:\n   المستندات\EA Games\The Sims 3\n\n2. افتح الإعدادات وعيّن مسار Mods.\n\nثم انقر على "Mod Framework" مرة أخرى.
+Installed=تم تثبيت SimTools Mod Framework بنجاح!\n\nالموقع:\n{0}\n\nالمجلدات المنشأة:\n  • Disabled  (Overrides, Packages, Probation, Test)\n  • Overrides  •  Packages\n  • Probation  (Overrides, Packages)\n  • SimTools  (Overrides, Packages)\n  • Test  (Overrides, Packages)\n\nتم تثبيت Resource.cfg في مجلد Mods.\nتم تثبيت الحزم الأساسية في SimTools\Packages.
+Installed_Title=SimTools — تم تثبيت Mod Framework
+MissingResource=لم يتم العثور على Resource.cfg في الموارد المُجمَّعة.\nأعد تثبيت SimTools وحاول مرة أخرى.
+MissingResource_Title=SimTools — مورد مفقود
+InstallFailed=فشل تثبيت Mod Framework:\n\n{0}
+InstallFailed_Title=SimTools — فشل التثبيت
+GameIntro_Ask=هل تريد تثبيت مقدمة اللعبة المخصصة من SimTools؟\n\nسيستبدل هذا المقدمة القياسية من EA بأخرى تحمل علامة SimTools.
+GameIntro_Title=SimTools — مقدمة لعبة مخصصة
+Splashscreen_Ask=هل تريد تثبيت شاشة التحميل المخصصة من SimTools؟\n\nسيستبدل هذا شاشة التحميل القياسية بأخرى تحمل علامة SimTools.
+Splashscreen_Title=SimTools — شاشة تحميل مخصصة
+ExtractFail=فشل استخراج {0}:\n{1}
+ExtractFail_Title=خطأ في الاستخراج
+
+[GenericKeys]
+Info=توفر هذه الميزة مفاتيح منتج عامة للألعاب القديمة من Maxis/EA.\n\nقد تتم إزالتها في إصدار مستقبلي من SimTools بطلب من EA.
+Info_Title=SimTools — المفاتيح العامة
+SelectFirst=الرجاء تحديد لعبة أولاً.
+NoKeys=لا تتوفر مفاتيح لهذا العنوان حتى الآن.
+ClickToGenerate=انقر على "توليد" للحصول على مفتاح.
+
+[Music]
+Fetching=جارٍ جلب قائمة المقطوعات…
+Cancelled=تم إلغاء التنزيل.
+Complete=اكتمل التنزيل!
+NoServer=تعذّر الوصول إلى خادم الموسيقى.
+Cancelling=جارٍ الإلغاء…
+FirstRun=هل تريد تنزيل حزمة موسيقى خلفية مجانية؟\n\nيمكنك أيضاً إضافة أغانيك (MP3، WAV، FLAC، M4A) إلى\nمجلد /Resources/Music:\n{0}
+FirstRun_Title=موسيقى الخلفية
+NoTrack=لم يتم تحميل أي مقطوعة
+
+[UpdateDL]
+Complete=اكتمل التنزيل! جارٍ تشغيل المثبّت…
+Cancelled=تم إلغاء التنزيل.
+Cancelling=جارٍ الإلغاء…
+
+[Personalization]
+EnterKey=الرجاء إدخال مفتاح.
+InvalidKey=هذا المفتاح غير صالح. تحقق منه وحاول مرة أخرى.
+Unlocked=تم فتح التخصيص! أهلاً بك، {0}.
+Unlocked_Title=SimTools — التخصيص
+RemoveAsk=هل تريد إزالة مفتاح التخصيص؟ لن تظهر اللافتة بعد ذلك على شاشة الترحيب.
+RemoveAsk_Title=SimTools — إزالة التخصيص
+PersonalizationText=تم تصميم هذه النسخة من SimTools بعناية لـ {0} {1}.\nشكراً لدعمك!
+
+[KeyGen]
+Copied=تم نسخ المفتاح إلى الحافظة.
+Copied_Title=SimTools — مولّد المفاتيح
+
+[Repo]
+Warning=فشل التحقق من ثقة المستودع لـ:  {0}\n\n{1}\nقد يشير هذا إلى عنوان URL مُعطَّل أو محاولة اعتراض شبكي أو ملف hosts مُعدَّل.\n\nتصرف بحذر.
+Warning_Title=مصدر مستودع غير موثوق
+Domain_Untrusted=  • النطاق "{0}" غير مُدرج كمصدر موثوق.
+IP_Untrusted=  • عنوان IP المُحلَّل ({0}) لا يتطابق مع أي IP موثوق.
+Hosts_Tampered=  • ملف hosts المحلي يُعيد توجيه "{0}" إلى {1}، وهو عنوان غير موثوق.
+
+[AboutSimTools]
+WhatIsSimTools=SimTools (المعروف سابقاً بـ TS3Tools) هو نفس مجموعة الأدوات السابقة، لكنه يتضمن الآن خيارات لألعاب Maxis المتعددة: The Sims 1 و2 وStories و3 و4 وSimCity 2000/3000/4/2013 وSimCopter وStreets of SimCity.
+WhatIsSimTools_Title=ما هو SimTools؟
+WarningMessage=تغيّر الكثير بين الإصدار v3.2.4 والإصدار v4.0.1. خذ لحظة لمشاهدة الدليل المرئي الجديد بالنقر على زر 'دليل SimTools المرئي'.
+WarningMessage_Title=شاهد الدليل المرئي!
+SC2013Warning=معظم مودات SimCity 2013 تعمل فقط في وضع عدم الاتصال. ستواجه انقطاعات إذا حاولت اللعب بهذه المودات في وضع الاتصال.
+SC2013Warning_Title=SimCity 2013 — تحذير
+
+[Settings]
+Sims3DirWarning=عيّن مجلد لعبة The Sims 3 على المجلد الجذري الذي يحتوي على مجلدات التوسعة وحزم الإضافات. لا تختر مجلد Game/Bin.
+Sims3DirWarning_Title=SimTools — مجلد The Sims 3
+AutoDetect_Nothing=لم يتم اكتشاف أي مجلدات للألعاب أو الحزم الإضافية تلقائياً.\n\nتم فحص المواقع الشائعة: Steam وGOG وEA Games وElectronic Arts وOrigin Games.\n\nيمكنك تعيين المسارات يدوياً باستخدام أزرار التصفح.
+AutoDetect_Nothing_Title=الاكتشاف التلقائي — لم يتم العثور على شيء
+AutoDetect_Found_Title=اكتمل الاكتشاف التلقائي
+ReenabledUpdates=تم إعادة تفعيل إشعارات التحديثات التلقائية.\n\nسيتحقق SimTools من التحديثات عند التشغيل القادم.
+ReenabledUpdates_Title=تم إعادة تعيين التحقق من التحديثات
+
+[GameplayFixes]
+SelectAll_Ask=أنت على وشك تحديد جميع الإصلاحات المتاحة.\n\nتم تصميم SimTools لتحسين أداء الألعاب، لكن تثبيت جميع الحزم سيزيد أوقات التحميل وقد يُبطئ المحرك. يُنصح بشدة بتثبيت الإصلاحات الخاصة بالميزات والكائنات التي تستخدمها بنشاط فقط.\n\nبالإضافة إلى ذلك، قد يؤدي تثبيت إصلاحات لحزم التوسعة أو حزم الإضافات غير المثبتة على نظامك إلى أعطال أو سلوك غير متوقع.\n\nهل تريد تحديد جميع الإصلاحات على أي حال؟
+SelectAll_Title=SimTools — تحذير: تحديد الكل
+NoneSelected=لم يتم تحديد أي إصلاحات.\n\nملاحظة: العناصر الرمادية هي عناصر نائبة لم تُحدَّد بعد.
+NoneSelected_Title=لا شيء للتنزيل
+DownloadError=فشل تنزيل {0}:\n{1}
+DownloadError_Title=خطأ في التنزيل
+Done=تمّ.\n\nتم تنزيله: {0}  |  محدّث بالفعل: {1}  |  فشل: {2}
+Done_Title=إصلاحات اللعب — The Sims 3
+
