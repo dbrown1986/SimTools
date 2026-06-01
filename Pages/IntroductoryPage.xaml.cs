@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Reflection;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -46,9 +47,89 @@ namespace SimTools
 
             // Automatic update check — runs silently if suppressed
             _ = CheckForUpdateOnStartupAsync();
+
+            // One-time repo speed test — recommends the fastest mirror
+            _ = RunRepoSpeedTestAsync();
         }
 
-        // ── Automatic update check on startup ─────────────────────────────
+        // ── One-time repository speed test ───────────────────────────────────
+        //
+        //  Fires once per install (flagged in INI under [Network] RepoSpeedTestDone).
+        //  Pings every non-localhost domain in TrustedSources.Domains in parallel,
+        //  measures the first successful HTTP response time, and recommends switching
+        //  if a faster repo than the current one is found.
+        //
+        private async Task RunRepoSpeedTestAsync()
+        {
+            const string iniSection = "Network";
+            const string iniKey     = "RepoSpeedTestDone";
+
+            if (IniHelper.ReadBool(iniSection, iniKey, false)) return;
+
+            // Exclude localhost — not a useful remote mirror
+            string[] candidates = TrustedSources.Domains
+                .Where(d => !d.Equals("localhost", StringComparison.OrdinalIgnoreCase))
+                .ToArray();
+
+            if (candidates.Length == 0)
+            {
+                IniHelper.WriteBool(iniSection, iniKey, true);
+                return;
+            }
+
+            using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+
+            // Fire all pings in parallel and collect (domain, elapsed ms) pairs
+            var tasks = candidates.Select(async domain =>
+            {
+                string url = $"https://{domain}/version.txt";
+                var sw = Stopwatch.StartNew();
+                try
+                {
+                    using var resp = await http.GetAsync(url);
+                    sw.Stop();
+                    return (Domain: domain, Ms: resp.IsSuccessStatusCode ? sw.ElapsedMilliseconds : long.MaxValue);
+                }
+                catch
+                {
+                    return (Domain: domain, Ms: long.MaxValue);
+                }
+            });
+
+            var results = await Task.WhenAll(tasks);
+
+            // Mark done regardless of outcome so we never re-run
+            IniHelper.WriteBool(iniSection, iniKey, true);
+
+            var best = results.OrderBy(r => r.Ms).FirstOrDefault();
+            if (best.Domain == null || best.Ms == long.MaxValue) return;
+
+            // Strip protocol + trailing slash for a clean comparison
+            string currentHost = AppSettings.BaseUrl
+                .Replace("https://", "", StringComparison.OrdinalIgnoreCase)
+                .Replace("http://",  "", StringComparison.OrdinalIgnoreCase)
+                .TrimEnd('/');
+
+            if (best.Domain.Equals(currentHost, StringComparison.OrdinalIgnoreCase)) return;
+
+            // Show recommendation on the UI thread
+            Dispatcher.Invoke(() =>
+            {
+                var answer = MessageBox.Show(
+                    "SimTools ran a quick speed test against available repositories.\n\n" +
+                    $"The fastest server for your connection is:\n  {best.Domain}  ({best.Ms} ms)\n\n" +
+                    $"Your current repository is:\n  {currentHost}\n\n" +
+                    "Would you like to switch to the faster server?",
+                    "SimTools \u2014 Repository Speed Test",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Information);
+
+                if (answer == MessageBoxResult.Yes)
+                    IniHelper.Write(iniSection, "BaseUrl", best.Domain);
+            });
+        }
+
+        // ── Automatic update check on startup ─────────────────────────────────
         private async Task CheckForUpdateOnStartupAsync()
         {
             if (IsAutoCheckSuppressed()) return;
