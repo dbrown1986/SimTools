@@ -27,7 +27,7 @@
 
         <!-- Loading label bottom-centre -->
         <TextBlock x:Name="VersionText"
-				   Text="v 4.0.1.3868"
+				   Text=""
 				   HorizontalAlignment="Left"
 				   VerticalAlignment="Top"
 				   FontFamily="Tahoma"

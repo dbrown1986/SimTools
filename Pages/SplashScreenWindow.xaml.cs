@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using System.Reflection;
 using System.Windows.Threading;
 
 namespace SimTools
@@ -19,7 +20,13 @@ namespace SimTools
         {
             InitializeComponent();
             _skippable = skippable;
-            LoadingText.Text = LanguageManager.Get("Splash", "Loading", "Loading...");
+            VersionText.Text = LanguageManager.Get("Splash", "Loading", "Loading...");
+
+            // Populate version dynamically from the compiled assembly
+            var ver = Assembly.GetExecutingAssembly().GetName().Version ?? new Version(4, 0, 1, 0);
+            VersionText.Text = ver.Revision > 0
+                ? $"v {ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}"
+                : $"v {ver.Major}.{ver.Minor}.{ver.Build}";
             StartTypingAnimation();
         }
 
