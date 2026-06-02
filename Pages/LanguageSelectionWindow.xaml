@@ -70,7 +70,23 @@
 
         <!-- 3 × 3 language button grid -->
         <UniformGrid x:Name="LanguageSelectionGrid" Grid.Row="1" Rows="3" Columns="3" Margin="0,0,0,35">
-            <Button x:Name="ArabicButton" Content="العربية"    Tag="ar" Click="Language_Click" Width="140" Height="35" Margin="7,8,8,20" Foreground="Black" BorderBrush="{x:Null}">
+            <Button x:Name="ArabicButton" Tag="ar" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,8,8,20"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/flags/ar.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="العربية"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -90,7 +106,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -99,8 +115,25 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
-            <Button x:Name="ChineseButton" Content="中国人"   Tag="zh" Click="Language_Click" Width="140" Height="35" Foreground="Black" Margin="7,8,8,20" BorderBrush="{x:Null}">
+            <Button x:Name="ChineseButton" Tag="zh" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,8,8,20"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/flags/zh.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="中国人"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -120,7 +153,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -129,8 +162,25 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
-            <Button x:Name="GermanButton" Content="Deutsch"    Tag="de" Click="Language_Click" Width="140" Height="35" Foreground="Black" Margin="7,8,8,20" BorderBrush="{x:Null}">
+            <Button x:Name="GermanButton" Tag="de" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,8,8,20"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/flags/de.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Deutsch"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -150,7 +200,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -159,8 +209,25 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
-            <Button x:Name="FrenchButton" Content="Français"   Tag="fr" Click="Language_Click" Width="140" Height="35" Foreground="Black" Margin="7,-11,8,38" BorderBrush="{x:Null}">
+            <Button x:Name="FrenchButton" Tag="fr" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,-11,8,38"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/flags/fr.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Français"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -180,7 +247,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -189,8 +256,25 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
-            <Button x:Name="EnglishButton" Content="English"   Tag="en" Click="Language_Click" Foreground="Black" Width="140" Height="35" Margin="7,-11,8,38" BorderBrush="{x:Null}">
+            <Button x:Name="EnglishButton" Tag="en" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,-11,8,38"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/Flags/en.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="English"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -210,7 +294,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -219,8 +303,25 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
-            <Button x:Name="SpanishButton" Content="Español"    Tag="es" Click="Language_Click" Width="140" Height="35" Foreground="Black" Margin="7,-13,8,37" BorderBrush="{x:Null}">
+            <Button x:Name="SpanishButton" Tag="es" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,-11,8,38"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/flags/es.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Español"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -240,7 +341,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -249,8 +350,25 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
-            <Button x:Name="JapaneseButton" Content="日本語"   Tag="ja" Click="Language_Click" Width="140" Height="35" Foreground="Black" Margin="7,-31,8,59" BorderBrush="{x:Null}">
+            <Button x:Name="JapaneseButton" Tag="ja" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,-31,8,59"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/flags/ja.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="日本語"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -270,7 +388,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -279,8 +397,25 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
-            <Button x:Name="PortogueseButton" Content="Português"  Tag="pt" Click="Language_Click" Width="140" Height="35" Foreground="Black" Margin="7,-31,8,59" BorderBrush="{x:Null}">
+            <Button x:Name="PortogueseButton" Tag="pt" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,-31,8,59"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/flags/pt.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Português"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -300,7 +435,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -309,8 +444,25 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
-            <Button x:Name="RussianButton" Content="Русский"    Tag="ru" Click="Language_Click" Width="140" Height="35" Foreground="Black" Margin="7,-31,8,59" BorderBrush="{x:Null}">
+            <Button x:Name="RussianButton" Tag="ru" Click="Language_Click"
+        Foreground="Black" Width="140" Height="35" Margin="7,-31,8,59"
+        BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Tahoma">
+
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Image Source="/Images/flags/ru.jpg"
+                   Width="20" Height="14"
+                   Margin="0,0,6,0"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Русский"
+                       VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -330,7 +482,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                      VerticalAlignment="Center"/>
+                                                      VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -339,6 +491,7 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+
             </Button>
 
         </UniformGrid>
@@ -347,9 +500,9 @@
         <CheckBox x:Name="DoNotAskCheckBox"
                   Grid.Row="2"
                   Content="Do not ask me again"
-                  Foreground="Gray" FontFamily="Tahoma" FontSize="11"
+                  Foreground="Black" FontFamily="Tahoma" FontSize="11"
                   HorizontalAlignment="Center"
-                  Margin="0,107,0,-121" Width="126"/>
+                  Margin="0,107,0,-121" Width="135" FontWeight="Bold"/>
 
         <Button x:Name="ExitApp" Content="" Width="25" Height="32" HorizontalAlignment="Left" Margin="415,156,0,-187" Click="ExitApp_Click" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
 

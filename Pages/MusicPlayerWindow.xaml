@@ -106,28 +106,283 @@
             <!-- ═══ Control buttons ═════════════════════════════════════════ -->
             <!-- Order: ⏮  ▶/⏸  ⏭  ■  🔊  ♪ -->
             <UniformGrid Rows="1" Margin="0,2,0,0">
-                <Button Content="⏮"
-                        Style="{StaticResource PlayerBtn}"
-                        Click="SkipBack_Click" Background="#FF135F0C"/>
-                <Button x:Name="PlayPauseBtn"
-                        Content="▶"
-                        Style="{StaticResource PlayerBtn}"
-                        Click="PlayPause_Click" Background="#FF135F0C"/>
-                <Button Content="⏭"
-                        Style="{StaticResource PlayerBtn}"
-                        Click="SkipForward_Click" Background="#FF135F0C"/>
-                <Button Content="■"
-                        Style="{StaticResource PlayerBtn}"
-                        Click="Stop_Click" Background="#FF8E3131"/>
-                <Button x:Name="MuteBtn"
-                        Content="🔊"
-                        Style="{StaticResource PlayerBtn}"
-                        Click="Mute_Click"/>
+                <Button Content="⏮" Click="SkipBack_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
+
+                            <!-- Default background image -->
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_green.png"
+                                Stretch="Fill"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Base template — must be here so Background renders at all -->
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_yellow.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_red.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="PlayPauseBtn" Content="▶" Click="PlayPause_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
+
+                            <!-- Default background image -->
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_green.png"
+                                Stretch="Fill"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Base template — must be here so Background renders at all -->
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_yellow.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_red.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="⏭" Click="SkipForward_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
+
+                            <!-- Default background image -->
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_green.png"
+                                Stretch="Fill"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Base template — must be here so Background renders at all -->
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_yellow.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_red.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="■" Click="Stop_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
+
+                            <!-- Default background image -->
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_red.png"
+                                Stretch="Fill"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Base template — must be here so Background renders at all -->
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_yellow.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_gray.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="MuteBtn" Content="🔊" Click="Mute_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
+
+                            <!-- Default background image -->
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_gray.png"
+                                Stretch="Fill"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Base template — must be here so Background renders at all -->
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_yellow.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_red.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <!-- ♪ button opens the song-selection popup -->
-                <Button x:Name="NoteBtn"
-                        Content="♪"
-                        Style="{StaticResource PlayerBtn}"
-                        Click="Note_Click" Background="#FF2F449C"/>
+                <Button Content="♪" Click="Note_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
+
+                            <!-- Default background image -->
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_normal.png"
+                                Stretch="Fill"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Base template — must be here so Background renders at all -->
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_yellow.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/Images/button_red.png"
+                                        Stretch="Fill"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </Button.Style>
+                </Button>
             </UniformGrid>
 
             <!-- ═══ Song-selection popup (toggled by the ♪ button) ══════════ -->

@@ -32,7 +32,7 @@ namespace SimTools
         public static string Get(string section, string key, string fallback = "")
         {
             if (_data.TryGetValue(section, out var sec) && sec.TryGetValue(key, out var val))
-                return val;
+                return val.Replace("\\n", "\n");
             return fallback;
         }
 

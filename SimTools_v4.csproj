@@ -39,6 +39,15 @@
 		<Resource Include="Images\DownloadProgress1.png" />
 		<Resource Include="Images\DownloadProgress2.png" />
 		<Resource Include="Images\facebook-hover.png" />
+		<Resource Include="Images\Flags\ar.jpg" />
+		<Resource Include="Images\Flags\de.jpg" />
+		<Resource Include="Images\Flags\en.jpg" />
+		<Resource Include="Images\Flags\es.jpg" />
+		<Resource Include="Images\Flags\fr.jpg" />
+		<Resource Include="Images\Flags\ja.jpg" />
+		<Resource Include="Images\Flags\pt.jpg" />
+		<Resource Include="Images\Flags\ru.jpg" />
+		<Resource Include="Images\Flags\zh.jpg" />
 		<Resource Include="Images\github.png" />
 		<Resource Include="Images\gradient.png" />
 		<Resource Include="Images\gradient_hi.png" />
@@ -152,15 +161,6 @@
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Images\close-hover.png" />
-	  <None Remove="Images\discord-hover.png" />
-	  <None Remove="Images\facebook-hover.png" />
-	  <None Remove="Images\info-hover.png" />
-	  <None Remove="Images\steam-hover.png" />
-	  <None Remove="Images\youtube-hover.png" />
 	</ItemGroup>
 
 	<ItemGroup>
