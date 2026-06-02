@@ -1,5 +1,8 @@
 [IntroductoryPage]
 IntroText1=Welcome to the SimTools Suite\n\nThis program will help guide you through installing and implementing the best tweaks for your installation of the various sim games. Many of the older games are left unoptimized and even more so, early Maxis games circa 1990's have a hard time running on newer hardware.\n\nThis suite of tools will allow personal computers, either old or new to run the games at a much better pace by enabling certain features left disabled at release, patching old executables, disabling unecessary features (such as certain hard drive caching methods when most modern PC's have solid state drives now) and much more! A great deal of care has gone into this tool.\n\nIt is HIGHLY recommended that you run this tool on a FRESH install of your sim games. Please be sure you create a backup of your games installation in case you run into any issues while installing the fixes and tweaks that are provided with this tool.\n\nSome input by the end-user (you) is required. This program will attempt to break everything down as best as possible, and even automate some features, but if ever you find you are uncertain what a feature does, you can cancel it and are encouraged to do so to avoid breaking your games installation.\n\nWhen you're finished reading this message, please click the continue button below on the bottom left; to continue, or click the red 'X' above to the upper right to exit this program.\n\nP.S. - There are five easter eggs within the program. Find them all, and there's a surprise waiting.
+UpdateButton_Text=Check for Updates
+ContinueButton_Text=Continue
+SimToolsButton_Text=What is SimTools?
 
 [Main]
 ButtonInfoText=When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed.
@@ -40,6 +43,12 @@ Warn_Title=Warning
 Error_DownloadFailed=Download failed for {0}
 Error_DownloadTitle=Download Error
 Error_Sims1PathNotSet=The Sims 1 game directory has not been configured. Please set it in Settings before using this feature.
+WhatIsSimTools=SimTools (previously TS3Tools) is still the same suite of tools previously developed, but now includes options for a variety of Maxis' sim genre of games. SimTools includes options for Sims 1, Sims 2, Sims Stories, Sims 3, Sims 4, Simcity 2000, Simcity 3000, Simcity 3000 Unlimited, Simcity 4, Simcity 2K13, SimCopter and Streets of Simcity, with more to come in later versions.
+WhatIsSimTools_Title=What is SimTools?
+WarningMessage=A great deal has changed between v3.2.4 and v4.0.1. Please take a moment to watch the new video guide by clicking the 'SimTools Video Guide' button. This and the changelog will hopefully better aclimate you to the massive changes.
+WarningMessage_Title=Watch the Video Guide!
+SC2013Warning=A majority of SimCity 2013 mods will only work in Offline Mode. You will experience disconnections if attempting to play with these mods in online mode.
+SC2013Warning_Title=SimCity 2013 — Warning
 
 [ContextMenu]
 GPU_Sims2=The Sims 2
@@ -233,14 +242,6 @@ Warning_Title=Untrusted Repository Source
 Domain_Untrusted=  • Domain "{0}" is not listed as a trusted source.
 IP_Untrusted=  • Resolved IP address ({0}) does not match any trusted IP.
 Hosts_Tampered=  • Your local hosts file is redirecting "{0}" to {1}, which is not a trusted address.
-
-[AboutSimTools]
-WhatIsSimTools=SimTools (previously TS3Tools) is still the same suite of tools previously developed, but now includes options for a variety of Maxis' sim genre of games. SimTools includes options for Sims 1, Sims 2, Sims Stories, Sims 3, Sims 4, Simcity 2000, Simcity 3000, Simcity 3000 Unlimited, Simcity 4, Simcity 2K13, SimCopter and Streets of Simcity, with more to come in later versions.
-WhatIsSimTools_Title=What is SimTools?
-WarningMessage=A great deal has changed between v3.2.4 and v4.0.1. Please take a moment to watch the new video guide by clicking the 'SimTools Video Guide' button. This and the changelog will hopefully better aclimate you to the massive changes.
-WarningMessage_Title=Watch the Video Guide!
-SC2013Warning=A majority of SimCity 2013 mods will only work in Offline Mode. You will experience disconnections if attempting to play with these mods in online mode.
-SC2013Warning_Title=SimCity 2013 — Warning
 
 [Settings]
 Sims3DirWarning=Please set your Sims 3 game directory to the root directory where the expansion and stuff pack folders are, do not select the Game/Bin folder.

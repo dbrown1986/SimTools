@@ -156,6 +156,9 @@ namespace SimTools
 
             // ── Text strings ───────────────────────────────────────────────────
             IntroText.Text = LanguageManager.Get("IntroductoryPage", "IntroText1", IntroText.Text);
+            UpdateButton.Content = LanguageManager.Get("IntroductoryPage", "UpdateButton_Text", "Check for Updates");
+            ContinueButton.Content = LanguageManager.Get("IntroductoryPage", "ContinueButton_Text", "Continue");
+            SimToolsButton.Content = LanguageManager.Get("IntroductoryPage", "SimToolsButton_Text", "What is SimTools?");
         }
 
         // ── Automatic update check on startup ─────────────────────────────────
@@ -377,8 +380,8 @@ namespace SimTools
         private void SimToolsButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                LanguageManager.Get("AboutSimTools", "WhatIsSimTools", "SimTools (previously TS3Tools) is still the same suite of tools."),
-                LanguageManager.Get("AboutSimTools", "WhatIsSimTools_Title", "What is SimTools?"),
+                LanguageManager.Get("Messages", "WhatIsSimTools", "SimTools (previously TS3Tools) is still the same suite of tools."),
+                LanguageManager.Get("Messages", "WhatIsSimTools_Title", "What is SimTools?"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
         }
