@@ -506,16 +506,42 @@ namespace SimTools
             var ts3_bestSettings = new MenuItem { Header = "Best In-Game Settings" };
             ts3_bestSettings.Click += (_, _) =>
             {
-                new BestSettingsTS3 { Owner = this }.ShowDialog();
+                MessageBox.Show(
+                    LanguageManager.Get("Messages", "BestSettingsDeprecated_Message", "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."),
+                    LanguageManager.Get("Messages", "BestSettingsDeprecated_Title", "Best Settings Article Deprecated — The Sims 3"),
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                {
+                    OpenUrl("https://simtools-app.com/best-in-game-settings-ts3");
+                };
             };
+            
             sims3Item.Items.Add(ts3_bestSettings);
 
             // ── Game INI Tweaks ─────────────────────────────────────────
             var ts3_iniTweaks = new MenuItem { Header = "Game INI Tweaks" };
-            ts3_iniTweaks.Click += (_, _) =>
+
+            var iniItems = new[]
             {
-                new TS3INITweaks { Owner = this }.ShowDialog();
-            };
+    ("Limit Game FPS",   "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools.",   "https://simtools-app.com/limit-game-fps-ts3"),
+    ("Allow More CPU Usage",   "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools.",   "https://simtools-app.com/allow-more-cpu-usage-ts3"),
+    ("Allow More GPU Usage", "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools.", "https://simtools-app.com/allow-more-gpu-usage-ts3"),
+    ("Clean DCBackup Cache",  "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools.",  "https://simtools-app.com/clean-dcbackup-ts3"),
+};
+
+            foreach (var (label, warning, url) in iniItems)
+            {
+                var item = new MenuItem { Header = label };
+                item.Click += (_, _) =>
+                {
+                    var result = MessageBox.Show(warning, "SimTools — Warning",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                    if (result == MessageBoxResult.OK)
+                        Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                };
+                ts3_iniTweaks.Items.Add(item);
+            }
+
             sims3Item.Items.Add(ts3_iniTweaks);
 
             // ── Intel Alder Lake Fix ──────────────────────────────────────────────────
