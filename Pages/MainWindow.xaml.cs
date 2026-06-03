@@ -1,4 +1,3 @@
-
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -517,16 +516,16 @@ namespace SimTools
             
             sims3Item.Items.Add(ts3_bestSettings);
 
-            // ── Game INI Tweaks ─────────────────────────────────────────
+            // ── Game INI Tweaks ─────────────────────────────────────────────────
             var ts3_iniTweaks = new MenuItem { Header = "Game INI Tweaks" };
 
             var iniItems = new[]
             {
-    ("Limit Game FPS",   "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools.",   "https://simtools-app.com/limit-game-fps-ts3"),
-    ("Allow More CPU Usage",   "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools.",   "https://simtools-app.com/allow-more-cpu-usage-ts3"),
-    ("Allow More GPU Usage", "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools.", "https://simtools-app.com/allow-more-gpu-usage-ts3"),
-    ("Clean DCBackup Cache",  "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools.",  "https://simtools-app.com/clean-dcbackup-ts3"),
-};
+                ("Limit Game FPS", LanguageManager.Get("Tweaks", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/limit-game-fps-ts3"),
+                ("Allow More CPU Usage", LanguageManager.Get("Tweaks", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/allow-more-cpu-usage-ts3"),
+                ("Allow More GPU Usage", LanguageManager.Get("Tweaks", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/allow-more-gpu-usage-ts3"),
+                ("Clean DCBackup Cache", LanguageManager.Get("Tweaks", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/clean-dcbackup-ts3"),
+            };
 
             foreach (var (label, warning, url) in iniItems)
             {
@@ -1595,7 +1594,8 @@ namespace SimTools
                             var shell = (dynamic)Activator.CreateInstance(Type.GetTypeFromProgID("WScript.Shell")!)!;
                             var shortcut = shell.CreateShortcut(lnkPath);
                             shortcut.TargetPath = exePath;
-                            shortcut.WorkingDirectory = Path.GetDirectoryName(exePath);
+                            shortcut.WorkingDirectory = Path.GetDirectoryName(exePath) ?? string.Empty;
+                            shortcut.Description = "Regul Save Cleaner for The Sims 3";
                             shortcut.Save();
                         }
                         catch (Exception ex)

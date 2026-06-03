@@ -8,7 +8,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>
-		<ApplicationIcon>SimTools.ico</ApplicationIcon>
+		<ApplicationIcon>Images\Icons\SimTools.ico</ApplicationIcon>
 		<AssemblyName>SimTools</AssemblyName>
 		<!-- Custom entry point — lets us register AssemblyResolve before WPF loads -->
 		<StartupObject>SimTools.Program</StartupObject>
@@ -103,6 +103,7 @@
 		<Resource Include="Images\Icons\Sims3SP09.ico" />
 		<Resource Include="Images\Icons\SimsEPs.ico" />
 		<Resource Include="Images\Icons\SimsSPs.ico" />
+		<Resource Include="Images\Icons\SimTools.ico" />
 		<Resource Include="Images\Icons\Store.ico" />
 		<Resource Include="Images\Icons\Streets.ico" />
 		<Resource Include="Images\Icons\SunlitTides.ico" />
@@ -151,9 +152,8 @@
 		<Resource Include="Resources\Resource.cfg" />
 		<!-- Generic key lists — one .txt per title, populated separately -->
 		<Resource Include="Resources\Keys\*.txt" />
-		<Resource Include="Resources\sfx01.mp3" />
-		<Resource Include="SimTools.ico">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		<Resource Include="Resources\sfx01.mp3">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</Resource>
 	</ItemGroup>
 

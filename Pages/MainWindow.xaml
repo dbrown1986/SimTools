@@ -10,7 +10,7 @@
         x:Class="SimTools.MainWindow"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="SimTools - Main Page" Height="640" Width="840" WindowStyle="None" Icon="/SimTools.ico" ResizeMode="NoResize">
+        Title="SimTools - Main Page" Height="640" Width="840" WindowStyle="None" Icon="/Images/Icons/SimTools.ico" ResizeMode="NoResize">
     <Grid x:Name="RootGrid" Width="840" Height="640">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Menu_Main.png"/>
