@@ -16,7 +16,7 @@ namespace SimTools
     public static class AppSettings
     {
         /// <summary>Default base URL shown in Settings and used when no override is saved.</summary>
-        public const string DefaultBaseUrl = "repo.simtools-app.com";
+        public const string DefaultBaseUrl = "us1-repo.simtools-app.com";
 
         /// <summary>
         /// The configured base URL, read live from settings.ini.
