@@ -196,7 +196,7 @@ namespace SimTools
             {
                 // 1. Fetch version.txt — always try the official repo first,
                 //    then fall back to the user-configured repo if the primary fails.
-                const string officialVersionUrl = "https://repo.simtools-app.com/version.txt";
+                const string officialVersionUrl = "https://us1-repo.simtools-app.com/version.txt";
                 string userVersionUrl = AppSettings.ResolveUrl("%baseurl%/version.txt");
 
                 using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
