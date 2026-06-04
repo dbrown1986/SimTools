@@ -51,12 +51,10 @@ SimTools was previously known as **TS3Tools**, and while its roots are firmly in
 SimTools offers a comprehensive set of tools, fixes, and guides for getting the most out of your Sims installations:
 
 - **Update GPU Graphics Rules** — Add support for newer graphics cards to the game engine so the game correctly identifies and leverages your hardware.
-- **Alder Lake CPU Support** — Install a patch for Intel Alder Lake CPU users who experience immediate crashes to desktop due to the game's incompatibility with hybrid core architectures.
-- **Lazy Duchess' Smooth Patch & Enhanced Launcher** — Install engine tweaks for faster CAS loading, reduced lag, and an enhanced EA 1.69 launcher with ASI Loading and CC disable features.
 - **nRaas Tweaks** — Install nRaas core mods to mitigate in-game script errors and provide greater debugging control over the game engine.
-- **Game Config Guides** — Follow comprehensive guides to manually tweak game configuration files and allow the engine to harness more power from your system.
+- **Ultimate ASI Loader** — A packaged DLL file that will allow loading ASI's into Retail, Steam or EA App copies of The Sims 3
+- **Sims 3 Settings Setter (S3SS)**  — An ASI file that allows for manipulating engine settings from within the game in real-time. S3SS also solves the Alder Lake CPU issue, as well as including its own Smooth Patch.
 - **UI Resolution Scaling** — Stretch the in-game UI to fit FHD (1440p) and UHD (2160p) resolutions using the TinyUI Fix PowerShell utility.
-- **Loading Optimisation** — Find the best in-game settings to speed up loading into neighbourhoods and reduce lot placement times.
 - **Katy Perry Sweet Treats Migration** — Migrate Katy Perry's Sweet Treats from EA to Steam or Retail without losing your content.
 - **Expansion & Stuff Pack Deals** — Find various exclusive deals on expansions and stuff packs.
 - **Official Patches** — Install patches for the Base Game through to Outdoor Living Stuff (Retail installations only).
@@ -65,6 +63,14 @@ SimTools offers a comprehensive set of tools, fixes, and guides for getting the 
 - **Regul's Save Cleaner** — Install and run Regul's Save Cleaner to debloat saves and keep your game running smoothly over long playthroughs.
 - **Curated Mod Browser** — View and download various curated and recommended mods from within the application.
 - **Daily Deal Guide** — In-depth guide to obtaining Store items at the best price using the Daily Deal rotation spreadsheet.
+- **Fixes & Tweaks for SimCity titles** — SimTools now includes fixes and tweaks for the SimCity titles, Streets of SimCity & SimCopter!
+
+The following features/tools have been deprecated, but are still included for posterity, or as alternatives in the event users experience issues with newer innovations:
+
+- **Alder Lake CPU Support** — Install a patch for Intel Alder Lake CPU users who experience immediate crashes to desktop due to the game's incompatibility with hybrid core architectures.
+- **Lazy Duchess' Smooth Patch & Enhanced Launcher** — Install engine tweaks for faster CAS loading, reduced lag, and an enhanced EA 1.69 launcher with ASI Loading and CC disable features.
+- **Game Config Guides** — Follow comprehensive guides to manually tweak game configuration files and allow the engine to harness more power from your system.
+- **Loading Optimisation** — Find the best in-game settings to speed up loading into neighbourhoods and reduce lot placement times.
 
 ---
 
@@ -96,6 +102,7 @@ Installing every tweak and bugfix SimTools has to offer results in a noticeably 
 | Tweak | Description |
 |---|---|
 | **Alder Lake Patcher** | Patches the game executable to run on Intel Alder Lake CPUs, which otherwise cause immediate crashes to desktop due to the game's incompatibility with hybrid core scheduling. |
+| **Sims 3 Settings Setter** | An all-inclusive real-time settings adjuster that runs within the game. Includes its own smooth patch and patches Alder Lake CPU issues in sideload. |
 | **nRaas Core Mods** | A set of nRaas mods included to give users greater control over debugging and engine behaviour, as well as catching and handling script errors before they cause crashes. |
 | **Smooth Patch** | Engine-level tweaks by Lazy Duchess that enable faster loading into CAS and smooth out a number of other lag-inducing elements throughout the game. |
 | **TinyUI Fix** | A PowerShell utility that stretches and enhances the in-game UI to properly fit FHD (1440p) and UHD (2160p) display resolutions. |
@@ -111,7 +118,7 @@ Installing every tweak and bugfix SimTools has to offer results in a noticeably 
 | **S3PE** | A package editing utility for reading, editing, and extracting resources from Sims 3 `.package` files. |
 | **Sims3Pack Multi Installer** | A utility for extracting `.Sims3Pack` files down to their base elements for editing, staging, or repacking. |
 | **S3Dash** | A tool for detecting conflicts and errors between installed mods, helping diagnose issues caused by incompatible packages. |
-| **ShowtimeCE** | A conversion utility for converting the Showtime Collector's Edition content. |
+| **ShowtimeCE** | A conversion utility for converting the Showtime Collector's Edition content (a guide for now, but will be fleshed out). |
 
 ---
 
@@ -166,8 +173,8 @@ SimTools is compatible with the following Sims 3 distribution platforms:
 | Platform | Supported |
 |---|---|
 | EA App (1.67 / 1.69) | ✅ |
-| Steam | ✅ |
-| Retail (disc / retail digital) | ✅ |
+| Steam (1.67) | ✅ |
+| Retail (disc / retail digital) (1.67) | ✅ |
 
 SimTools can be installed on top of an existing **1.67 or 1.69** installation. A **clean install of The Sims 3 is strongly recommended** before running SimTools for the best results.
 
@@ -186,14 +193,25 @@ You can run SimTools regardless of which Expansion Packs or Stuff Packs you have
 
 ## Installation
 
-1. Download the latest release from the [Releases](https://github.com/dbrown1986/SimTools/releases) page
+**Installer**
+
+1. Download the latest release installer exe from the [Releases](https://github.com/dbrown1986/SimTools/releases) page or from the SimTools site
+2. Run `SimtoolsInstaller.exe` to a folder of your choice (e.g. `C:\Program Files\SimTools`)
+3. Run `SimTools.exe` after install
+4. On first launch, select your preferred language and regional repository
+5. Read through the introductory page and click **Continue**
+6. Open **Settings** (⚙ button, top-right) to configure your game directories
+
+**Portable**
+
+1. Download the latest release ZIP from the [Releases](https://github.com/dbrown1986/SimTools/releases) page
 2. Extract the ZIP to a folder of your choice (e.g. `C:\Tools\SimTools\`)
 3. Run `SimTools.exe`
-4. On first launch, select your preferred language
+4. On first launch, select your preferred language and regional repository
 5. Read through the introductory page and click **Continue**
-6. Optionally open **Settings** (⚙ button, top-right) to configure your game directories
+6. Open **Settings** (⚙ button, top-right) to configure your game directories
 
-No installer is required. SimTools is fully portable — all settings are written to `settings.ini` in the same folder as the executable.
+For the portable version, no installer is required. The ZIP version of SimTools is fully portable — all settings are written to `settings.ini` in the same folder as the executable.
 
 ---
 
@@ -225,8 +243,8 @@ Output is placed in `bin/Release/net8.0-windows/`.
 | Package | Version | Purpose |
 |---|---|---|
 | `WpfAnimatedGif` | 2.0.2 | Renders the animated plumbob GIF on the splash screen |
-| NAudio | 2.2.1 | Audio playback engine (MP3, WAV, FLAC, M4A) |
-| TagLibSharp | 2.3.0 | ID3/metadata tag reading (artist, title, album art)|
+| `NAudio` | 2.2.1 | Audio playback engine (MP3, WAV, FLAC, M4A) |
+| `TagLibSharp` | 2.3.0 | ID3/metadata tag reading (artist, title, album art)|
 
 ---
 
@@ -251,6 +269,8 @@ Arabic is the only currently supported RTL language. When Arabic is selected, th
 ### Language File Format
 
 Language files use a simple INI-style format with named sections and key=value pairs. They live in the `Languages/` folder next to the executable and are plain UTF-8 text files — no compilation step is needed.
+
+A guide to writing your own language files can be found [here](http://simtools-app.com/translations.html)
 
 ```ini
 [Main]
@@ -407,14 +427,11 @@ using Button     = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
 ```
 
-### Code-Only Windows
-`SettingsWindow` and `DownloadProgressWindow` are built entirely in C# with no XAML files. This sidesteps XAML compilation issues that can arise when WinForms types leak into WPF XAML namespace resolution at build time.
-
 ### Context Menu Timing
 The GPU and Tweaks context menus are built once in `ApplyLanguage()` rather than in the `ContextMenuOpening` event. This prevents a bug where left-clicking the button fires the event handler and immediately launches the first menu item.
 
 ### Download Caching
-Downloaded files are stored in the `install/` subfolder relative to the executable. If a file already exists at the target path, the remote file header is checked to see if it is newer, if it is not, the download step is skipped and the file is launched directly. To force a re-download, delete the file from `install/`.
+Downloaded files are stored in the `Binaries/` subfolder relative to the executable. If a file already exists at the target path, the remote file header is checked to see if it is newer, if it is not, the download step is skipped and the file is launched directly. To force a re-download, delete the file from `Binaries/`.
 
 ### Transparent Splash Screen
 `AllowsTransparency="True"` must be combined with `WindowStyle="None"` for a WPF window to render with a transparent background. Without it, `Background="{x:Null}"` still produces a solid black window.
@@ -440,9 +457,9 @@ Bug reports and feature requests can be submitted via the [Issues](https://githu
 
 ---
 
-## Easter Egg
+## Easter Eggs
 
-There is a hidden easter egg somewhere within SimTools — tucked away on one specific sub-page. Props to anyone who manages to find it. If you do, feel free to mention it on the Discord.
+There are five hidden easter eggs within SimTools — tucked away. Props to anyone who manages to find them. If you do, there is a secret unlocked.
 
 ---
 
