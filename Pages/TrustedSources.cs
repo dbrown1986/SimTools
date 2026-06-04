@@ -13,7 +13,8 @@ namespace SimTools
         public static readonly string[] Domains =
         [
             "simtools-app.com", // SimTools root domain (covers all subdomains)
-            "repo.simtools-app.com", // SimTools repository domain (explicitly listed for clarity)
+            "us1-repo.simtools-app.com", // US SimTools repository domain
+            "eu1-repo.simtools-app.com", // EU SimTools repository domain
             "localhost", // Localhost (for repo caching with RepoMaker)
             "github.com" // GitHub (for potential future use, e.g. hosting repos or assets)
         ];
@@ -24,7 +25,8 @@ namespace SimTools
         /// </summary>
         public static readonly string[] IPs =
         [
-            "194.238.26.127", // Primary SimTools Repo IP
+            "194.238.26.127", // US SimTools Repo IP
+            "62.171.179.173", // EU SimTools Repo IP
             "140.82.116.4", // GitHub IP (for potential future use, e.g. hosting repos or assets)
             "127.0.0.1" // Localhost (for repo caching with RepoMaker)
         ];
