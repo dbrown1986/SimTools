@@ -58,7 +58,7 @@
                 Width="24" Height="37"
                 FontFamily="Tahoma" FontWeight="Bold" FontSize="11"
                 BorderBrush="{x:Null}"
-                Click="CloseButton_Click" Foreground="{x:Null}" Background="{x:Null}"/>
+                Click="CloseButton_Click" Foreground="{x:Null}" Background="{x:Null}" Opacity="0"/>
 
     </Grid>
 </Window>

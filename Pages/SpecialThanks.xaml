@@ -11,11 +11,36 @@
     </Window.Background>
     <Grid>
         <TextBlock x:Name="MuchThanksText" HorizontalAlignment="Left" Margin="32,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465" Height="369" FontFamily="SimSun" FontSize="10"><Run Text="The entire 'The Sims 3' Facebook group - Thank you for inspiring this suite of tools. So many of you had many issues over the years; and this tool aims to help in every way possible to put those issues to rest."/><LineBreak/><Run/><LineBreak/><Run Text="Anime_Boom - For their comprehensive tweak and performance guide published on Steam, most of which has been incorporated into this tool."/><LineBreak/><Run/><LineBreak/><Run Text="alfa1295 - For your incredible work on The Sims 3 GPU Addon software and bringing support for modern-day graphics cards."/><LineBreak/><Run/><LineBreak/><Run Text="Dmitry Zhutkov - For Regul Save Cleaner. Truly amazing bit of software. Our saves are safe!"/><LineBreak/><Run/><LineBreak/><Run Text="LazyDuchess - Many useful modifications to the game engine."/><LineBreak/><Run/><LineBreak/><Run Text="Chain_Reaction / Twallan - For nRaas and its dedicated community of TS3 modders. Several package and core mods overhauling scripts within the game."/><LineBreak/><Run/><LineBreak/><Run Text="Guifrog - Guifrog is a composer on OCRemix, whose theme is featured in this suite. It features melodies from The Sims 3 and The Sims 1. His profile can be found at https://ocremix.org/artist/9047/guifrog"/><LineBreak/><Run/><LineBreak/><Run Text="Blocky9032 &amp; JonySimmer - New Intros to bring TS3 into the modern age!"/><LineBreak/><Run/><LineBreak/><Run Text="Eli Sims - For her amazing work translating SimTools to French (Bonjour!)"/></TextBlock>
-        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="455,481,0,0" VerticalAlignment="Top" Width="25" Height="32" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="CloseButton_Click"/>
+        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="455,481,0,0" VerticalAlignment="Top" Width="25" Height="32" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="CloseButton_Click" Opacity="0"/>
         <Button x:Name="ViewDonors" Content="View Donors" Click="ViewDonors_Click" HorizontalAlignment="Left" Margin="32,416,0,0" VerticalAlignment="Top" Width="154" Height="34" FontWeight="Bold" FontFamily="Tahoma">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_normal.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_green.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
         <TextBlock x:Name="PreviousMenu" HorizontalAlignment="Center" Margin="328,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="25" FontFamily="SimSun" FontSize="10" Text="Click the 'X' to go back to the previous menu."/>
 

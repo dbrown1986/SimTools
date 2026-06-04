@@ -25,24 +25,6 @@ namespace SimTools
             ApplyLanguage();
             PopulateVersionInfo();
             // Context menu handling, so event handlers don't fire off early when the XAML is loading
-            PreviewKeyDown += MainWindow_PreviewKeyDown;
-        }
-
-        // ── Secret developer shortcut: Ctrl+Shift+Alt+G → Key Generator ─────
-        private void MainWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.G
-                && (System.Windows.Input.Keyboard.Modifiers &
-                    (System.Windows.Input.ModifierKeys.Control
-                     | System.Windows.Input.ModifierKeys.Shift
-                     | System.Windows.Input.ModifierKeys.Alt))
-                == (System.Windows.Input.ModifierKeys.Control
-                    | System.Windows.Input.ModifierKeys.Shift
-                    | System.Windows.Input.ModifierKeys.Alt))
-            {
-                e.Handled = true;
-                new KeyGeneratorWindow { Owner = this }.ShowDialog();
-            }
         }
 
         // Populates the VersionInfo TextBlock with dynamic copyright year and build version

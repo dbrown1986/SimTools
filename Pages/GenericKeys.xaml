@@ -16,17 +16,42 @@
         <!-- Close -->
         <Button x:Name="CloseButton" HorizontalAlignment="Left" Margin="344,451,0,0"
                 VerticalAlignment="Top" Width="18" Height="30"
-                Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}"
-                Click="CloseButton_Click"/>
+                Background="Black" BorderBrush="{x:Null}" Foreground="{x:Null}"
+                Click="CloseButton_Click" Opacity="0"/>
 
         <!-- Game selector — context menu opened on left-click -->
         <Button x:Name="GenKeysButton" Content="Select Game ▸"
                 HorizontalAlignment="Left" Margin="40,32,0,0" VerticalAlignment="Top"
                 Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold"
                 Click="GenKeysButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_normal.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
 
         <!-- Info text -->
@@ -58,9 +83,34 @@
                 HorizontalAlignment="Left" Margin="75,283,0,0" VerticalAlignment="Top"
                 Width="120" Height="34" FontFamily="Tahoma" FontWeight="Bold"
                 Click="GenerateButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_normal.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
 
         <!-- Copy -->
@@ -68,9 +118,34 @@
                 HorizontalAlignment="Left" Margin="205,283,0,0" VerticalAlignment="Top"
                 Width="120" Height="34" FontFamily="Tahoma" FontWeight="Bold"
                 Click="CopyButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_normal.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
         <TextBlock x:Name="KeysInfoText_Copy"
             HorizontalAlignment="Center" Margin="0,332,0,0"

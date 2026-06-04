@@ -31,15 +31,65 @@
         <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
         <Button x:Name="BackButton" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="8,596,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BackButton_Click" FontSize="11" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_normal.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
         <TextBlock x:Name="Digital" Margin="184,283,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="White" Width="297" Height="26" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="16" Text="Digital Distribution" FontStyle="Italic" TextAlignment="Center"/>
         <Button x:Name="WarningButton" Content="CLICK HERE FOR AN IMPORTANT WARNING!" HorizontalAlignment="Left" Margin="328,92,0,0" VerticalAlignment="Top" Width="298" Height="31" FontFamily="Tahoma" FontWeight="Bold" Click="WarningButton_Click" FontSize="11" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_red.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_red.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
         <TextBlock x:Name="Text2" Margin="184,148,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFE87F43" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Text="If you buy your Sims 3 games on Steam, you can view your game key, and cross-register it on the EA App / Origin. This is only uni-directional and will only work with the Steam copies. You cannot cross register Sims 3 EA keys on Steam. Digital keys will also not work for retail copies, but retail codes that are unused will register on EA (but not Steam). Buying sealed retail copies or Steam copies is your best bet!"/>
         <TextBlock x:Name="Text3" Margin="184,212,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFE7E843" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Text="Not every vendor is going to have the best deal, so be mindful and shop around. Some vendors may have an asking price that is higher than if you bought the title on Steam or EA, so compare all deals and make sure you are getting the best offers possible. Also wishlist on Steam and EA, as sometimes there is a 75% off sale for the expansions and stuff packs, making them $5 a pop!"/>
@@ -48,7 +98,7 @@
                   SelectedItemChanged="OnBuyTreeItemSelected"/>
         <TreeView x:Name="BuyGamesRetail" Width="296" Height="265" Margin="496,308,0,67" HorizontalAlignment="Left"
                   SelectedItemChanged="OnBuyTreeItemSelected"/>
-        <TextBlock x:Name="Text2_Copy" Margin="184,580,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFE87F43" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Text="If you buy your Sims 3 games on Steam, you can view your game key, and cross-register it on the EA App / Origin. This is only uni-directional and will only work with the Steam copies. You cannot cross register Sims 3 EA keys on Steam. Digital keys will also not work for retail copies, but retail codes that are unused will register on EA (but not Steam). Buying sealed retail copies or Steam copies is your best bet!"/>
+        <TextBlock x:Name="AffiliateText" Margin="184,580,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFE87F43" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Text="Merchants marked with an asterisk (*) have not accepted the SimTools affiliation requests yet, or simply do not offer any affiliate programs. SimTools will not receive any commissions from those merchants who have not accepted affiliation agreements."/>
         <TextBlock x:Name="UseText" Margin="184,16,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="White" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11">
         "You can use the following selection box to select the game(s) you would like to purchase, and it will redirect you to that games purchase page with your given selections. The sections are expandable."
         <LineBreak />
@@ -57,9 +107,34 @@
         </TextBlock>
         <TextBlock x:Name="BrokenLinksText" Margin="8,308,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Width="162" Height="82" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Text="If any of these links are broken, please submit an Issue ticket on the SimTools Github or post on the Discord, so the link can be corrected or removed."/>
         <Button x:Name="CloseButton" Content="Button" Margin="801,8,2,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="32" Height="32" Click="CloseButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/close-button.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/close-button.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/close-hover.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
         <TextBlock x:Name="EasterEgg3" HorizontalAlignment="Left" Margin="830,624,0,0" TextWrapping="Wrap" Text="π" VerticalAlignment="Top" Foreground="#FF6B6B6B" MouseDown="EasterEgg3_Click"/>
     </Grid>

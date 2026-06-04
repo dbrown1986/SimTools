@@ -504,7 +504,7 @@
                   HorizontalAlignment="Center"
                   Margin="0,107,0,-121" Width="135" FontWeight="Bold"/>
 
-        <Button x:Name="ExitApp" Content="" Width="25" Height="32" HorizontalAlignment="Left" Margin="415,156,0,-187" Click="ExitApp_Click" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button x:Name="ExitApp" Content="" Width="25" Height="32" HorizontalAlignment="Left" Margin="415,156,0,-187" Click="ExitApp_Click" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Opacity="0"/>
 
     </Grid>
 </Window>

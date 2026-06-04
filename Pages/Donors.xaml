@@ -15,7 +15,7 @@
         <TextBlock x:Name="DonorList2" HorizontalAlignment="Left" Margin="184,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Height="321" FontFamily="SimSun" TextAlignment="Center"/>
         <TextBlock x:Name="DonorList3" HorizontalAlignment="Left" Margin="336,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Height="321" FontFamily="SimSun" TextAlignment="Center"/>
         <TextBlock x:Name="PreviousMenu" HorizontalAlignment="Left" Margin="328,424,0,0" TextWrapping="Wrap" Text="Click the 'X' to go back to the previous menu." VerticalAlignment="Top" Width="161" Height="33" FontFamily="SimSun" TextAlignment="Center"/>
-        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="455,481,0,0" VerticalAlignment="Top" Click="CloseButton_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="25" Height="32"/>
+        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="455,481,0,0" VerticalAlignment="Top" Click="CloseButton_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="25" Height="32" Opacity="0"/>
 
     </Grid>
 </Window>

@@ -271,7 +271,7 @@
                     Content="Cancel" Canvas.Top="16"
                     Click="Cancel_Click"
                     Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}"
-                    HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="3"/>
+                    HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="3" Opacity="0"/>
             <Button x:Name="SaveBtn"
                     Style="{StaticResource DarkButton}"
                     Width="49" Height="66"
@@ -279,7 +279,7 @@
                     Canvas.Left="42" Canvas.Top="4"
                     Click="Save_Click"
                     Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}"
-                    HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0"/>
         </Canvas>
 
     </Grid>

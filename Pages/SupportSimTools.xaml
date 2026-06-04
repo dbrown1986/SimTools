@@ -10,7 +10,7 @@
         <ImageBrush ImageSource="/Images/TS3_Box2.png"/>
     </Window.Background>
     <Grid>
-        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="456,480,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="24" Height="33" Click="CloseButton_Click"/>
+        <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="456,480,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="24" Height="33" Click="CloseButton_Click" Opacity="0"/>
         <TextBlock x:Name="SupportText" HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="First off, thank you for your interest in supporting SimTools. There are various ways in which you can offer support to the SimTools Project. These include, but are not limited to the following:" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="44"/>
         <TextBlock x:Name="FiscalSupport" HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" Text="Fiscally" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
         <TextBlock x:Name="FiscalSupport2" HorizontalAlignment="Center" Margin="0,125,0,0" TextWrapping="Wrap" Text="I designed SimTools as a hobby, but SimTools does incur monthly hosting costs and annual domain renewals ($96.10/mo). You can help offset these costs by donating to the project." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="44"/>

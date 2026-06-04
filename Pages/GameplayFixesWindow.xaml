@@ -112,7 +112,7 @@
                             </DockPanel>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsExpanded" Value="True">
+                            <Trigger Property="IsExpanded" Value="False">
                                 <Setter TargetName="ExpandSite"
                                         Property="Visibility"
                                         Value="Visible"/>
@@ -234,14 +234,14 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top" Foreground="{x:Null}"
                     FontFamily="Tahoma" FontWeight="Bold"
-                    Click="Cancel_Click" Margin="605,-12,0,0" Background="{x:Null}" BorderBrush="{x:Null}" OpacityMask="White"/>
+                    Click="Cancel_Click" Margin="605,-12,0,0" Background="{x:Null}" BorderBrush="{x:Null}" OpacityMask="White" Opacity="0"/>
             <Button x:Name="DownloadBtn"
                     Content="Download Selected"
                     Width="53" Height="63"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top" Foreground="{x:Null}"
                     FontFamily="Tahoma" FontWeight="Bold"
-                    Click="DownloadSelected_Click" Margin="648,-23,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Grid.ColumnSpan="2" OpacityMask="White"/>
+                    Click="DownloadSelected_Click" Margin="648,-23,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Grid.ColumnSpan="2" OpacityMask="White" Opacity="0"/>
         </Grid>
 
         <!-- ── Global "Select All" ── -->
@@ -265,7 +265,7 @@
                 <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type local:GameplaySectionViewModel}">
 
-                        <Expander IsExpanded="True">
+                        <Expander IsExpanded="False">
                             <Expander.Header>
                                 <TextBlock Text="{Binding Header}"
                                            Style="{StaticResource ExpanderHeaderText}"/>

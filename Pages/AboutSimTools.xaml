@@ -69,14 +69,64 @@
             </TextBlock.Foreground>
         </TextBlock>
         <Button x:Name="UpdateButton" Content="Check for Updates" Click="UpdateButton_Click" HorizontalAlignment="Left" Margin="376,346,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_normal.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
         <Button x:Name="ChangelogButton" Content="Changelog" Click="ChangelogButton_Click" HorizontalAlignment="Left" Margin="376,380,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/button_normal.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
         <TextBlock x:Name="PreviousMenu" HorizontalAlignment="Left" Margin="328,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="25" FontFamily="SimSun" FontSize="10.5" TextAlignment="Center" Text="Click the 'X' to go back to the previous menu.">
             <TextBlock.Foreground>
@@ -85,7 +135,7 @@
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </TextBlock.Foreground></TextBlock>
-        <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="454,479,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="25" Height="32" Click="CloseButton_Click"/>
+        <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="454,479,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="25" Height="32" Click="CloseButton_Click" Opacity="0"/>
         <TextBlock x:Name="EasterEgg4" HorizontalAlignment="Left" Margin="507,393,0,0" TextWrapping="Wrap" Text="π" VerticalAlignment="Top" Width="8" Foreground="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Height="14" MouseDown="EasterEgg4_MouseDown"/>
 
     </Grid>

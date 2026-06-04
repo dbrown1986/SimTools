@@ -164,6 +164,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Pages\UpdateDownloadWindow.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Remove="Pages\UpdateDownloadWindow.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="NAudio" Version="2.2.1" />
 		<PackageReference Include="TagLibSharp" Version="2.3.0" />
 		<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />

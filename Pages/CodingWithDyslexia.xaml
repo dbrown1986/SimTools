@@ -10,9 +10,34 @@
     <Grid>
         <Image gif:ImageBehavior.AnimatedSource="/Images/CodingWithDyslexia.gif" HorizontalAlignment="Left" Height="240" VerticalAlignment="Top" Width="320" Stretch="Fill"/>
         <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="290,5,0,0" VerticalAlignment="Top" Width="24" Height="24" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="CloseButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/close-button.png"/>
-            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/close-button.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/close-hover.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
         <TextBlock x:Name="Coding" HorizontalAlignment="Center" Margin="0,210,0,0" TextWrapping="Wrap" Text="Coding With Dyslexia" VerticalAlignment="Top" Width="320" Height="33" TextAlignment="Center" Foreground="#FF316523" FontWeight="Bold" FontFamily="Tahoma" FontSize="24" Background="#3FFFFFFF"/>
 
