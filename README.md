@@ -30,7 +30,8 @@
 - [Configuration File](#configuration-file)
 - [Technical Notes](#technical-notes)
 - [Contributing](#contributing)
-- [Easter Egg](#easter-egg)
+- [Patreon Support](#patreon-support)
+- [Easter Eggs](#easter-eggs)
 - [AI Usage](#ai-usage)
 - [License](#license)
 
