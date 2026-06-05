@@ -456,10 +456,15 @@ If you are adding a new language file, ensure all sections and keys from `en.lan
 Bug reports and feature requests can be submitted via the [Issues](https://github.com/dbrown1986/SimTools/issues) page.
 
 ---
+## Patreon Support
+
+I have coded in personalization and exclusive items for Patreon members, if you glance through the code and figure out how it works, congrats on earning free Patreon access.
 
 ## Easter Eggs
 
 There are five hidden easter eggs within SimTools — tucked away. Props to anyone who manages to find them. If you do, there is a secret unlocked.
+
+Hint: Four of them are clickables, so play around in the app and click on things that look out of place, hell click on EVERYTHING. The fifth is a cheat code almost as famous as the KONAMI code.
 
 ---
 
