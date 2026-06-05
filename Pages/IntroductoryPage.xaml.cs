@@ -34,6 +34,7 @@ namespace SimTools
             PersonalizationText.Text =
                 LanguageManager.Format("Personalization", "PersonalizationText", firstName, lastName, "");
             PersonalizationText.Visibility = System.Windows.Visibility.Visible;
+            ExclusiveItemsButton.Visibility = System.Windows.Visibility.Visible;
         }
 
         // ── Music startup + automatic update check ────────────────────────
@@ -159,6 +160,7 @@ namespace SimTools
             UpdateButton.Content = LanguageManager.Get("IntroductoryPage", "UpdateButton_Text", "Check for Updates");
             ContinueButton.Content = LanguageManager.Get("IntroductoryPage", "ContinueButton_Text", "Continue");
             SimToolsButton.Content = LanguageManager.Get("IntroductoryPage", "SimToolsButton_Text", "What is SimTools?");
+            ExclusiveItemsButton.Content = LanguageManager.Get("IntroductoryPage", "ExclusiveItemsButton_Text", "Exclusive Items");
         }
 
         // ── Automatic update check on startup ─────────────────────────────────
@@ -375,6 +377,11 @@ namespace SimTools
         private void ExitApp_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void ExclusiveItemsButton_Click(object sender, RoutedEventArgs e)
+        {
+            new ExclusiveItems { Owner = this }.Show();
         }
 
         private void SimToolsButton_Click(object sender, RoutedEventArgs e)
