@@ -207,6 +207,9 @@
 			<_DepDlls Include="$(OutputPath)TagLibSharp.dll" Condition="Exists('$(OutputPath)TagLibSharp.dll')" />
 			<!-- WpfAnimatedGif outputs WpfAnimatedGif.dll -->
 			<_DepDlls Include="$(OutputPath)WpfAnimatedGif.dll" Condition="Exists('$(OutputPath)WpfAnimatedGif.dll')" />
+			<!-- SharpCompress and its Zstd dependency -->
+			<_DepDlls Include="$(OutputPath)SharpCompress.dll" Condition="Exists('$(OutputPath)SharpCompress.dll')" />
+			<_DepDlls Include="$(OutputPath)ZstdSharp.dll" Condition="Exists('$(OutputPath)ZstdSharp.dll')" />
 		</ItemGroup>
 
 		<MakeDir Directories="$(OutputPath)Dependencies" />
