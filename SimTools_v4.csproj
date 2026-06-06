@@ -175,6 +175,9 @@
 		<PackageReference Include="NAudio" Version="2.2.1" />
 		<PackageReference Include="TagLibSharp" Version="2.3.0" />
 		<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+		<PackageReference Include="SharpCompress" Version="0.38.0">
+			<NoWarn>NU1902</NoWarn>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>

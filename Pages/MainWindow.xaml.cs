@@ -1,3 +1,6 @@
+using SharpCompress.Archives;
+using SharpCompress.Archives.SevenZip;
+using SharpCompress.Common;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -11,8 +14,8 @@ using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 // Add these two aliases to resolve the ambiguity:
 using Button = System.Windows.Controls.Button;
-using MessageBox = System.Windows.MessageBox;
 using Image = System.Windows.Controls.Image;
+using MessageBox = System.Windows.MessageBox;
 
 namespace SimTools
 {
@@ -789,27 +792,25 @@ namespace SimTools
             var medievalItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSM.ico"), Header = "The Sims Medieval" };
 
             var medieval_smoothPatch = new MenuItem { Header = "LazyDuchess Smooth Patch" };
-            medieval_smoothPatch.Click += (_, _) =>
+            medieval_smoothPatch.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.SimsMedievalGame))
                 {
                     MessageBox.Show(
                         LanguageManager.Get("Paths", "SimsMedieval", "Your Sims Medieval Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"),
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                DownloadAndOpenExe(
+                await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/TSM_SP/TS3Patch.asi",
-                    fileName: "TS3Patch.asi",
-                    downloadDirectory: GamePaths.SimsMedievalGame);
-                DownloadAndOpenExe(
+                    destFilePath: Path.Combine(GamePaths.SimsMedievalGame, "TS3Patch.asi"));
+                await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/TSM_SP/TS3Patch.txt",
-                    fileName: "TS3Patch.txt",
-                    downloadDirectory: GamePaths.SimsMedievalGame);
-                DownloadAndOpenExe(
+                    destFilePath: Path.Combine(GamePaths.SimsMedievalGame, "TS3Patch.txt"));
+                await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/TSM_SP/wininet.dll",
-                    fileName: "wininet.dll",
-                    downloadDirectory: GamePaths.SimsMedievalGame);
+                    destFilePath: Path.Combine(GamePaths.SimsMedievalGame, "wininet.dll"));
             };
             medievalItem.Items.Add(medieval_smoothPatch);
 
@@ -1031,7 +1032,7 @@ namespace SimTools
             var contextMenu = new ContextMenu();
 
             // Shared local Install dir — used for tools that live next to the app
-            string installDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Install");
+            string installDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
 
             // ─────────────────────────────────────────────────────────────────
             // The Sims 1 — no fixes available; redirect user to Simitone
@@ -1514,6 +1515,47 @@ namespace SimTools
             }
         }
 
+        // ── Download7zAndExtract ───────────────────────────────────────────────
+        // Downloads a .7z archive to destDir/<archiveName> using DownloadFileOnly
+        // (HEAD-check, skip-if-same), then extracts its contents into destDir.
+        // Extraction is only performed when the archive was freshly downloaded.
+        // Returns true on success (including the already-current skip case).
+        private async Task<bool> Download7zAndExtract(string url, string archiveName, string destDir)
+        {
+            var archivePath = Path.Combine(destDir, archiveName);
+            var (ok, isNew) = await DownloadFileOnly(url, archivePath);
+
+            if (!ok) return false;
+            if (!isNew) return true;
+
+            try
+            {
+                using var stream = File.OpenRead(archivePath);
+                using var archive = SevenZipArchive.Open(stream);
+
+                foreach (var entry in archive.Entries.Where(e => !e.IsDirectory))
+                {
+                    string entryPath = (entry.Key ?? string.Empty).Replace('/', Path.DirectorySeparatorChar);
+                    string outputPath = Path.Combine(destDir, entryPath);
+                    string? dir = Path.GetDirectoryName(outputPath);
+                    if (!string.IsNullOrEmpty(dir))
+                        Directory.CreateDirectory(dir);
+
+                    using var outStream = File.Open(outputPath, FileMode.Create, FileAccess.Write);
+                    entry.WriteTo(outStream);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    LanguageManager.Format("Framework", "ExtractFail", archiveName, ex.Message),
+                    LanguageManager.Get("Framework", "ExtractFail_Title", "Extract Error"),
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+
         // Settings Handler
         [System.Runtime.Versioning.SupportedOSPlatform("windows")]
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
@@ -1987,20 +2029,6 @@ namespace SimTools
             var contextMenu = new ContextMenu();
             string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
 
-            // Local helper: verify the required game path is set, then download and run.
-            void RunTool(string requiredPath, string gameName, string url, string fileName)
-            {
-                if (!GamePaths.IsConfigured(requiredPath))
-                {
-                    MessageBox.Show(
-                        LanguageManager.Format("Paths", "Generic", gameName),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"),
-                        MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-                DownloadAndOpenExe(url, fileName, binDir);
-            }
-
             // ── The Sims (disabled) ──────────────────────────────────────────────────
             contextMenu.Items.Add(new MenuItem { Header = "The Sims", IsEnabled = false });
 
@@ -2014,54 +2042,69 @@ namespace SimTools
             var caw = new MenuItem { Header = "Create-A-World" };
 
             var caw167 = new MenuItem { Header = "CAW for 1.67" };
-            caw167.Click += (_, _) => RunTool(
-                GamePaths.Sims3Game, "Sims 3",
-                "%baseurl%/Mod-Tools/Sims3/CAW_1.67.exe",  // ← replace
-                "CAW_1.67.exe");
+            caw167.Click += (_, _) => DownloadAndOpenExe(
+                url: "%baseurl%/Sideload-Apps/x86/CAW_1.67.exe",
+                fileName: "CAW_1.67.exe",
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
             var caw169 = new MenuItem { Header = "CAW for 1.69" };
-            caw169.Click += (_, _) => RunTool(
-                GamePaths.Sims3Game, "Sims 3",
-                "%baseurl%/Mod-Tools/Sims3/CAW_1.69.exe",  // ← replace
-                "CAW_1.69.exe");
+            caw169.Click += (_, _) => DownloadAndOpenExe(
+                url: "%baseurl%/Sideload-Apps/x86/CAW_1.69.exe",
+                fileName: "CAW_1.69.exe",
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
             caw.Items.Add(caw167);
             caw.Items.Add(caw169);
             sims3.Items.Add(caw);
 
             var s3pe = new MenuItem { Header = "Sims 3 Package Editor" };
-            s3pe.Click += (_, _) => RunTool(
-                GamePaths.Sims3Game, "Sims 3",
-                "%baseurl%/Mod-Tools/Sims3/S3PE.exe",        // ← replace
-                "S3PE.exe");
+            s3pe.Click += (_, _) => DownloadAndOpenExe(
+                url: "%baseurl%/Sideload-Apps/x86/s3pe.exe",        // ← replace
+                fileName: "s3pe.exe",
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
             var s3pack = new MenuItem { Header = "Sims 3 Pack Extractor" };
-            s3pack.Click += (_, _) => RunTool(
-                GamePaths.Sims3Game, "Sims 3",
-                "%baseurl%/Mod-Tools/Sims3/S3PackExtractor.exe",  // ← replace
-                "S3PackExtractor.exe");
+            s3pack.Click += (_, _) => DownloadAndOpenExe(
+                url: "%baseurl%/Sideload-Apps/x86/S3PackExtractor.exe",  // ← replace
+                fileName: "S3PackExtractor.exe",
+                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
             var s3dash = new MenuItem { Header = "Sims 3 Dashboard" };
-            s3dash.Click += (_, _) => RunTool(
-                GamePaths.Sims3Game, "Sims 3",
-                "%baseurl%/Mod-Tools/Sims3/S3Dashboard.exe",  // ← replace
-                "S3Dashboard.exe");
+            s3dash.Click += async (_, _) =>
+            {
+                string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
+                Directory.CreateDirectory(binDir);
 
-            var showtime = new MenuItem { Header = "Convert Showtime to Collector's Edition" };
-            showtime.Click += (_, _) => RunTool(
-                GamePaths.Sims3Game, "Sims 3",
-                "%baseurl%/Mod-Tools/Sims3/ShowtimeConverter.exe",  // ← replace
-                "ShowtimeConverter.exe");
+                bool ok = await Download7zAndExtract(
+                    url: "%baseurl%/Sideload-Apps/x86/MTS_Delphy_1048017_Sims3Dashboard.7z",
+                    archiveName: "MTS_Delphy_1048017_Sims3Dashboard.7z",
+                    destDir: binDir);
+
+                if (!ok) return;
+
+                string exePath = Path.Combine(binDir, "Sims3Dashboard.exe");
+                if (!File.Exists(exePath))
+                {
+                    MessageBox.Show(
+                        $"Extraction succeeded but S3Dashboard.exe was not found in the archive.",
+                        "SimTools — Launch Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                Process.Start(new ProcessStartInfo(exePath) { UseShellExecute = true });
+            };
 
             // CCMagic is a standalone installer; no game-path check required.
             var ccmagic = new MenuItem { Header = "Install CCMagic" };
             ccmagic.Click += (_, _) => DownloadAndOpenExe(
-                url: "%baseurl%/Mod-Tools/Sims3/CCMagicInstaller.exe",  // ← replace
-                fileName: "CCMagicInstaller.exe",
+                url: "%baseurl%/Sideload-Apps/x86/CCMagicSetup.exe",  // ← replace
+                fileName: "CCMagicSetup.exe",
                 downloadDirectory: binDir);
 
-            foreach (var item in new[] { s3pe, s3pack, s3dash, showtime, ccmagic })
-                sims3.Items.Add(item);
+            foreach (var item in new[] { s3pe, s3pack, s3dash, ccmagic })
+            // foreach (var item in new[] { s3pe, s3pack, s3dash, showtime, ccmagic })
+                    sims3.Items.Add(item);
 
             contextMenu.Items.Add(sims3);
 

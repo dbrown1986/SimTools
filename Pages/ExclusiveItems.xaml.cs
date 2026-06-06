@@ -23,6 +23,16 @@ namespace SimTools
         // ── Close button ──────────────────────────────────────────────────
         private void ExitApp_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void BackButton_Clic(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
             Close();
         }
     }

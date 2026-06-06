@@ -50,7 +50,7 @@
             </Button.Style>
         </Button>
         <Button x:Name="ExclusiveItemsButton" Content="Exclusive Items"
-                HorizontalAlignment="Left" Margin="8,256,0,0" VerticalAlignment="Top"
+                HorizontalAlignment="Left" Margin="8,288,0,0" VerticalAlignment="Top"
                 Width="162" Height="34"
                 FontFamily="Tahoma" FontWeight="Bold" FontSize="11"
                 BorderBrush="{x:Null}"
@@ -60,14 +60,14 @@
                 <Style TargetType="Button">
                     <Setter Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                            <ImageBrush ImageSource="/Images/button_green.png"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/Images/button_red.png"/>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Template">

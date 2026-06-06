@@ -53,8 +53,8 @@
 
         <!-- Title -->
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
-                   Margin="16,16,0,0"
-                   Text="Exclusive Items"
+                   Margin="196,16,0,0"
+                   Text="Donor / Patreon Exclusive Items"
                    Foreground="#FFD700"
                    FontFamily="Tahoma"
                    FontWeight="Bold"
@@ -62,7 +62,7 @@
 
         <!-- Content area -->
         <ScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top"
-                      Margin="16,56,0,0" Width="808" Height="564"
+                      Margin="196,56,0,0" Width="621" Height="564"
                       VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <TextBlock x:Name="ExclusiveItemsText"
@@ -71,9 +71,44 @@
                            FontFamily="Tahoma"
                            FontSize="12"
                            Margin="0,0,0,12"
-                           Text="Exclusive donor content will appear here."/>
+                           Text="Exclusive donor content will appear here. At the moment, there is no content available yet. I will however update this section as I make things."/>
+                <TextBlock x:Name="ExclusiveItemsText2"
+                    TextWrapping="Wrap"
+                    Foreground="#FFFDFF00"
+                    FontFamily="Tahoma"
+                    FontSize="12"
+                    Text="Users of SimTools who have donated can share these items with family and friends, but do not upload them to any modding sites."/>
             </StackPanel>
         </ScrollViewer>
-
+        <Button x:Name="BackButton" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="8,596,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BackButton_Click" FontSize="11" BorderBrush="{x:Null}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>
