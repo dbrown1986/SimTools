@@ -10,13 +10,11 @@ namespace SimTools
         /// Trusted hostnames. Subdomains are matched automatically
         /// (e.g. "repo.simtools-app.com" is covered by "simtools-app.com").
         /// </summary>
-        public static readonly string[] Domains =
+        public static readonly string[] Mirrors =
         [
-            "simtools-app.com", // SimTools root domain (covers all subdomains)
             "us1-repo.simtools-app.com", // US SimTools repository domain
             "eu1-repo.simtools-app.com", // EU SimTools repository domain
             "localhost", // Localhost (for repo caching with RepoMaker)
-            "github.com" // GitHub (for potential future use, e.g. hosting repos or assets)
         ];
 
         /// <summary>
@@ -27,7 +25,6 @@ namespace SimTools
         [
             "194.238.26.127", // US SimTools Repo IP
             "62.171.179.173", // EU SimTools Repo IP
-            "140.82.116.4", // GitHub IP (for potential future use, e.g. hosting repos or assets)
             "127.0.0.1" // Localhost (for repo caching with RepoMaker)
         ];
     }

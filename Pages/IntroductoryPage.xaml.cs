@@ -64,9 +64,6 @@ namespace SimTools
 
             // Automatic update check — runs silently if suppressed
             _ = CheckForUpdateOnStartupAsync();
-
-            // One-time repo speed test — recommends the fastest mirror
-            _ = RunRepoSpeedTestAsync();
         }
 
         // ── One-time repository speed test ───────────────────────────────────
@@ -78,25 +75,19 @@ namespace SimTools
         //
         private async Task RunRepoSpeedTestAsync()
         {
-            const string iniSection = "Network";
-            const string iniKey     = "RepoSpeedTestDone";
-
-            if (IniHelper.ReadBool(iniSection, iniKey, false)) return;
-
-            // Exclude localhost — not a useful remote mirror
-            string[] candidates = TrustedSources.Domains
-                .Where(d => !d.Equals("localhost", StringComparison.OrdinalIgnoreCase))
-                .ToArray();
+            string[] candidates = TrustedSources.Mirrors;
 
             if (candidates.Length == 0)
             {
-                IniHelper.WriteBool(iniSection, iniKey, true);
+                MessageBox.Show(
+                    LanguageManager.Get("RepoSpeed", "NoMirrors", "No repository mirrors are configured."),
+                    LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
 
-            // Fire all pings in parallel and collect (domain, elapsed ms) pairs
             var tasks = candidates.Select(async domain =>
             {
                 string url = $"https://{domain}/version.txt";
@@ -115,32 +106,51 @@ namespace SimTools
 
             var results = await Task.WhenAll(tasks);
 
-            // Mark done regardless of outcome so we never re-run
-            IniHelper.WriteBool(iniSection, iniKey, true);
-
             var best = results.OrderBy(r => r.Ms).FirstOrDefault();
-            if (best.Domain == null || best.Ms == long.MaxValue) return;
+            if (best.Domain == null || best.Ms == long.MaxValue)
+            {
+                MessageBox.Show(
+                    LanguageManager.Get("RepoSpeed", "NoResponse", "No mirrors responded. Please check your connection."),
+                    LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
-            // Strip protocol + trailing slash for a clean comparison
             string currentHost = AppSettings.BaseUrl
                 .Replace("https://", "", StringComparison.OrdinalIgnoreCase)
-                .Replace("http://",  "", StringComparison.OrdinalIgnoreCase)
+                .Replace("http://", "", StringComparison.OrdinalIgnoreCase)
                 .TrimEnd('/');
 
-            if (best.Domain.Equals(currentHost, StringComparison.OrdinalIgnoreCase)) return;
-
-            // Show recommendation on the UI thread
-            Dispatcher.Invoke(() =>
+            if (best.Domain.Equals(currentHost, StringComparison.OrdinalIgnoreCase))
             {
-                var answer = MessageBox.Show(
-                    LanguageManager.Format("RepoSpeed", "Prompt", best.Domain, best.Ms, currentHost),
+                MessageBox.Show(
+                    LanguageManager.Format("RepoSpeed", "AlreadyBest", best.Domain, best.Ms),
                     LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Information);
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
 
-                if (answer == MessageBoxResult.Yes)
-                    IniHelper.Write(iniSection, "BaseUrl", best.Domain);
-            });
+            var answer = MessageBox.Show(
+                LanguageManager.Format("RepoSpeed", "Prompt", best.Domain, best.Ms, currentHost),
+                LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Information);
+
+            if (answer == MessageBoxResult.Yes)
+                IniHelper.Write("Network", "BaseUrl", best.Domain);
+        }
+
+        private async void RepoSpeedButton_Click(object sender, RoutedEventArgs e)
+        {
+            RepoSpeedButton.IsEnabled = false;
+            try
+            {
+                await RunRepoSpeedTestAsync();
+            }
+            finally
+            {
+                RepoSpeedButton.IsEnabled = true;
+            }
         }
 
         // ── Translation strings (with fallback) ─────────────────────────────────

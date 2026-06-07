@@ -205,7 +205,7 @@ namespace SimTools
         // ── Load trusted sources from compiled TrustedSources.cs ─────────────
 
         private static (string[] Domains, string[] IPs) LoadTrustedSources() =>
-            (TrustedSources.Domains, TrustedSources.IPs);
+            (TrustedSources.Mirrors, TrustedSources.IPs);
 
         // ── Warning dialog ────────────────────────────────────────────────────
 
