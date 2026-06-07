@@ -99,12 +99,7 @@
         <TreeView x:Name="BuyGamesRetail" Width="296" Height="265" Margin="496,308,0,67" HorizontalAlignment="Left"
                   SelectedItemChanged="OnBuyTreeItemSelected"/>
         <TextBlock x:Name="AffiliateText" Margin="184,580,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFE87F43" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Text="Merchants marked with an asterisk (*) have not accepted the SimTools affiliation requests yet, or simply do not offer any affiliate programs. SimTools will not receive any commissions from those merchants who have not accepted affiliation agreements."/>
-        <TextBlock x:Name="UseText" Margin="184,16,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="White" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11">
-        "You can use the following selection box to select the game(s) you would like to purchase, and it will redirect you to that games purchase page with your given selections. The sections are expandable."
-        <LineBreak />
-        <LineBreak />
-        "All links are affiliated and tied to SimTools, I will earn 2% - 5% of each sale if you decide to purchase through any of my links here in SimTools. Doing so supports future development of SimTools."
-        </TextBlock>
+        <TextBlock x:Name="UseText" Margin="184,16,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="White" Width="609" Height="65" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11"><Run Text="You can use the following selection box to select the game(s) you would like to purchase, and it will redirect you to that games purchase page with your given selections. The sections are expandable."/><LineBreak/><Run/><LineBreak/><Run Text="All links are affiliated and tied to SimTools, I will earn 2% - 5% of each sale if you decide to purchase through any of my links here in SimTools. Doing so supports future development of SimTools."/></TextBlock>
         <TextBlock x:Name="BrokenLinksText" Margin="8,308,0,0" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Width="162" Height="82" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Text="If any of these links are broken, please submit an Issue ticket on the SimTools Github or post on the Discord, so the link can be corrected or removed."/>
         <Button x:Name="CloseButton" Content="Button" Margin="801,8,2,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="32" Height="32" Click="CloseButton_Click">
             <Button.Style>
