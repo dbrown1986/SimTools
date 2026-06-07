@@ -19,6 +19,7 @@ public partial class AboutSimTools : Window
     public AboutSimTools()
     {
         InitializeComponent();
+        ApplyLanguage();
         PopulateVersionInfo();
         Loaded += (_, _) => StartSlideshow();
         Closing += (_, _) => _slideTimer?.Stop();
@@ -73,7 +74,29 @@ public partial class AboutSimTools : Window
         Text5.Inlines.Add(new System.Windows.Documents.Run($"\u00a9 {copyrightYear}, Archeon Industries, LLC."));
     }
 
-    // ── Changelog button ──────────────────────────────────────────────────────
+    // Called on load and by SettingsWindow after a language change
+    public void ApplyLanguage()
+    {
+        // ── RTL / LTR layout direction ─────────────────────────────────────
+        var lang = IniHelper.Read("Language", "SelectedLanguage", "en");
+
+        // Add any future RTL languages to this set
+        var rtlLanguages = new HashSet<string> { "ar" };
+        FlowDirection = rtlLanguages.Contains(lang)
+        ? System.Windows.FlowDirection.RightToLeft
+        : System.Windows.FlowDirection.LeftToRight;
+
+        // ── Text strings ───────────────────────────────────────────────────
+        Text1.Text = LanguageManager.Get("AboutSimToolsPage", "SimToolsDev", Text1.Text);
+        Text2.Text = LanguageManager.Get("AboutSimToolsPage", "SimToolsDescription", Text2.Text);
+        Text3.Text = LanguageManager.Get("AboutSimToolsPage", "CulminationMessage", Text3.Text);
+        Text4.Text = LanguageManager.Get("AboutSimToolsPage", "LicenseMessage", Text4.Text);
+        Text6.Text = LanguageManager.Get("AboutSimToolsPage", "FaithDedication", Text6.Text);
+        PreviousMenu.Text = LanguageManager.Get("AboutSimToolsPage", "PreviousMenu", PreviousMenu.Text);
+        UpdateButton.Content = LanguageManager.Get("AboutSimToolsPage", "UpdateButton", "Check for Updates");
+        ChangelogButton.Content = LanguageManager.Get("AboutSimToolsPage", "ChangelogButton", "Changelog");
+    }
+        // ── Changelog button ──────────────────────────────────────────────────────
 
     private void ChangelogButton_Click(object sender, RoutedEventArgs e)
     {
@@ -136,8 +159,8 @@ public partial class AboutSimTools : Window
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        LanguageManager.Get("Updates", "NoServer", "Could not reach the update server."),
-                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                        LanguageManager.Get("AboutSimToolsPage", "NoServer", "Could not reach the update server."),
+                        LanguageManager.Get("AboutSimToolsPage", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
                 return;
@@ -151,8 +174,8 @@ public partial class AboutSimTools : Window
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        LanguageManager.Get("Updates", "Malformed", "The version file on the server is malformed."),
-                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                        LanguageManager.Get("AboutSimToolsPage", "Malformed", "The version file on the server is malformed."),
+                        LanguageManager.Get("AboutSimToolsPage", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
                 return;
@@ -165,8 +188,8 @@ public partial class AboutSimTools : Window
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        LanguageManager.Format("Updates", "BadVersion", remoteVersionStr),
-                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                        LanguageManager.Format("AboutSimToolsPage", "BadVersion", remoteVersionStr),
+                        LanguageManager.Get("AboutSimToolsPage", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
                 return;
@@ -181,8 +204,8 @@ public partial class AboutSimTools : Window
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        LanguageManager.Format("Updates", "UpToDate", localVersion.ToString(3)),
-                        LanguageManager.Get("Updates", "Title_UpToDate", "Up to Date"),
+                        LanguageManager.Format("AboutSimToolsPage", "UpToDate", localVersion.ToString(3)),
+                        LanguageManager.Get("AboutSimToolsPage", "Title_UpToDate", "Up to Date"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
                 return;
@@ -190,9 +213,9 @@ public partial class AboutSimTools : Window
 
             // 4. Update available — ask the user
             var confirm = MessageBox.Show(
-                LanguageManager.Format("Updates", "NewVersion",
+                LanguageManager.Format("AboutSimToolsPage", "NewVersion",
                     remoteVersionStr, localVersion.ToString(3)),
-                LanguageManager.Get("Updates", "Title_Available", "Update Available"),
+                LanguageManager.Get("AboutSimToolsPage", "Title_Available", "Update Available"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
@@ -210,8 +233,8 @@ public partial class AboutSimTools : Window
         {
             if (!isAutomatic)
                 MessageBox.Show(
-                    LanguageManager.Get("Updates", "Timeout", "The update check timed out."),
-                    LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                    LanguageManager.Get("AboutSimToolsPage", "Timeout", "The update check timed out."),
+                    LanguageManager.Get("AboutSimToolsPage", "Title_Failed", "Update Check Failed"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
         }
@@ -219,8 +242,8 @@ public partial class AboutSimTools : Window
         {
             if (!isAutomatic)
                 MessageBox.Show(
-                    LanguageManager.Format("Updates", "Unexpected", ex.Message),
-                    LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                    LanguageManager.Format("AboutSimToolsPage", "Unexpected", ex.Message),
+                    LanguageManager.Get("AboutSimToolsPage", "Title_Failed", "Update Check Failed"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
         }
@@ -236,9 +259,9 @@ public partial class AboutSimTools : Window
         if (!File.Exists(updaterPath))
         {
             MessageBox.Show(
-                LanguageManager.Get("Updates", "UpdaterMissing",
+                LanguageManager.Get("AboutSimToolsPage", "UpdaterMissing",
                     "SimToolsUpdater.exe was not found in the application directory."),
-                LanguageManager.Get("Updates", "Title_MissingUpdater", "Updater Not Found"),
+                LanguageManager.Get("AboutSimToolsPage", "Title_MissingUpdater", "Updater Not Found"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
             return;
@@ -256,9 +279,9 @@ public partial class AboutSimTools : Window
     private static void PromptSuppression()
     {
         var suppress = MessageBox.Show(
-            LanguageManager.Get("Updates", "Suppress_Ask",
+            LanguageManager.Get("AboutSimToolsPage", "Suppress_Ask",
                 "Would you like to suppress automatic update notifications?"),
-            LanguageManager.Get("Updates", "Suppress_Title",
+            LanguageManager.Get("AboutSimToolsPage", "Suppress_Title",
                 "Suppress Update Notifications"),
             MessageBoxButton.YesNo,
             MessageBoxImage.Question);
@@ -266,9 +289,9 @@ public partial class AboutSimTools : Window
         if (suppress != MessageBoxResult.Yes) return;
 
         var duration = MessageBox.Show(
-            LanguageManager.Get("Updates", "Suppress_Duration",
+            LanguageManager.Get("AboutSimToolsPage", "Suppress_Duration",
                 "How long would you like to suppress update notifications?"),
-            LanguageManager.Get("Updates", "Suppress_DurTitle",
+            LanguageManager.Get("AboutSimToolsPage", "Suppress_DurTitle",
                 "Suppression Duration"),
             MessageBoxButton.YesNo,
             MessageBoxImage.Question);
@@ -284,15 +307,15 @@ public partial class AboutSimTools : Window
 
     private static readonly string[] _slides =
     [
-        "pack://application:,,,/Images/Dev/001.png",
-    "pack://application:,,,/Images/Dev/002.jpg",
-    "pack://application:,,,/Images/Dev/003.png",
-    "pack://application:,,,/Images/Dev/004.jpg",
-    "pack://application:,,,/Images/Dev/005.jpg",
-    "pack://application:,,,/Images/Dev/006.jpg",
-    "pack://application:,,,/Images/Dev/007.jpg",
+    "pack://application:,,,/Images/Dev/009.png",
     "pack://application:,,,/Images/Dev/008.jpg",
-    "pack://application:,,,/Images/Dev/009.jpg",
+    "pack://application:,,,/Images/Dev/007.png",
+    "pack://application:,,,/Images/Dev/006.jpg",
+    "pack://application:,,,/Images/Dev/005.jpg",
+    "pack://application:,,,/Images/Dev/004.jpg",
+    "pack://application:,,,/Images/Dev/003.jpg",
+    "pack://application:,,,/Images/Dev/002.jpg",
+    "pack://application:,,,/Images/Dev/001.jpg",
 ];
 
     private int _slideIndex = 0;

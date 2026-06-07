@@ -12,10 +12,11 @@ public partial class BuyTS3 : Window
     public BuyTS3()
     {
         InitializeComponent();
+        ApplyLanguage();
         PopulateTrees();
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────────────
+        // ── Helpers ───────────────────────────────────────────────────────────────
 
     private static BitmapImage LoadIcon(string path) =>
         new(new Uri($"pack://application:,,,/{path}", UriKind.Absolute));
@@ -38,24 +39,24 @@ public partial class BuyTS3 : Window
     {
         var node = new BuyTreeNode
         {
-            Label = "* Official",
+            Label = LanguageManager.Get("BuyTS3", "Official", "* Official"),
             Icon  = LoadIcon(string.IsNullOrEmpty(icon) ? I.EA : icon)
         };
-        if (ea    is not null) node.Children.Add(Leaf("Buy on EA App", I.EA,    ea));
-        if (steam is not null) node.Children.Add(Leaf("Buy on Steam",  I.Steam, steam));
-        if (gog   is not null) node.Children.Add(Leaf("Buy on GOG",    I.GOG,   gog));
+        if (ea is not null) node.Children.Add(Leaf(LanguageManager.Get("BuyTS3", "Buy_EA", "Buy on EA App"), I.EA, ea));
+        if (steam is not null) node.Children.Add(Leaf(LanguageManager.Get("BuyTS3", "Buy_Steam", "Buy on Steam"), I.Steam, steam));
+        if (gog is not null) node.Children.Add(Leaf(LanguageManager.Get("BuyTS3", "Buy_GOG", "Buy on GOG"), I.GOG, gog));
         return node;
     }
 
     // Standard "Partners" sub-node (digital grey-market vendors)
     private static BuyTreeNode Partners(params BuyTreeNode[] items) =>
-        N("Partners", I.G2A, items);
+        N(LanguageManager.Get("BuyTS3", "BuyFromPartners", "Partners"), I.G2A, items);
 
     // Standard "* Retail" sub-node — Amazon and eBay
     private static BuyTreeNode RetailVendors(string amazon = "", string ebay = "") =>
-        N("* Retail", I.Amazon,
-            Leaf("Buy on Amazon", I.Amazon, amazon),
-            Leaf("Buy on eBay",   I.eBay,   ebay));
+        N(LanguageManager.Get("BuyTS3", "BuyFromRetail", "* Retail"), I.Amazon,
+            Leaf(LanguageManager.Get("BuyTS3", "Buy_Amazon", "Buy on Amazon"), I.Amazon, amazon),
+            Leaf(LanguageManager.Get("BuyTS3", "Buy_eBay", "Buy on eBay"),   I.eBay,   ebay));
 
     // ── Icon path constants ───────────────────────────────────────────────────
     private static class I
@@ -186,7 +187,7 @@ public partial class BuyTS3 : Window
     // ── The Sims: Legacy Collection ───────────────────────────────────────────
 
     private static BuyTreeNode BuildSims1() =>
-        N("The Sims: Legacy Collection", I.Sims1,
+        N(LanguageManager.Get("BuyTS3", "Sims1_Legacy", "The Sims: Legacy Collection"), I.Sims1,
             Official(
                 ea:    "https://www.ea.com/en/games/the-sims/the-sims-25th-anniv-edition",
                 steam: "https://store.steampowered.com/app/3314060/The_Sims_Legacy_Collection/",
@@ -196,7 +197,7 @@ public partial class BuyTS3 : Window
     // ── The Sims 2: Legacy Collection ─────────────────────────────────────────
 
     private static BuyTreeNode BuildSims2() =>
-        N("The Sims 2: Legacy Collection", I.Sims2,
+        N(LanguageManager.Get("BuyTS3", "Sims2_Legacy", "The Sims 2: Legacy Collection"), I.Sims2,
             Official(
                 ea:    "https://www.ea.com/games/the-sims/the-sims-2-25th-anniv-edition",
                 steam: "https://store.steampowered.com/app/3314070/The_Sims_2_Legacy_Collection/",
@@ -206,420 +207,419 @@ public partial class BuyTS3 : Window
     // ── The Sims 3 ────────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildSims3() =>
-        N("The Sims 3", I.Sims3,
+        N(LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3"), I.Sims3,
             BuildBaseGame(),
             BuildExpansions(),
             BuildStuffPacks(),
             BuildPremiumWorlds(),
-            Leaf("Store Items", I.Store, "https://store.thesims3.com"));
+            Leaf(LanguageManager.Get("BuyTS3", "Sims3_Store", "Store Items"), I.Store, "https://store.thesims3.com"));
 
     // ── Base Game ─────────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildBaseGame() =>
-        N("Base Game", I.Sims3,
+        N(LanguageManager.Get("BuyTS3", "Sims3BG", "Base Game"), I.Sims3,
             Official(
                 ea:    "https://www.ea.com/games/the-sims/the-sims-3",
                 steam: "https://store.steampowered.com/app/47890/The_Sims_3",
                 gog:   null,
                 icon:  I.EA),
             Partners(
-                Leaf("Buy on Eneba (EA App)",   I.Eneba,    "https://www.eneba.com/origin-the-sims-3-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global"),
-                Leaf("Buy on G2A (EA App)",     I.G2A,      "https://www.g2a.com/the-sims-3-origin-key-global-i10000023727004?gname=ts3tools"),
-                Leaf("Buy on G2A (Steam)",      I.G2A,      "https://www.g2a.com/the-sims-3-steam-gift-global-i10000023727001?gname=ts3tools"),
-                Leaf("Buy on Gamivo (EA App)",  I.Gamivo,   "https://www.gamivo.com/product/the-sims-3?glv=p1b0e0fh"),
-                Leaf("Buy on K4G (EA App)",     I.K4G,      "https://k4g.com/product/the-sims-3-origin-global-cd-key-5C2BA064?r=ts3tools"),
-                Leaf("Buy on Kinguin (EA App)", I.Kinguin,  "https://www.kinguin.net/category/131/the-sims-3-origin-cd-key/?r=66716563950ad"),
-                Leaf("Buy on Kinguin (Steam)",  I.Kinguin,  "https://www.kinguin.net/category/32666/the-sims-3-steam-cd-key/?r=66716563950ad"),
-                Leaf("Buy on MMOGA (EA App)",   I.MMOGA,    "https://www.mmoga.com/EA-Games/Sims-3-Key-Free-download-included.html?ref=63563&Partner=TS3Tools")));
+                Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"),   I.Eneba,    "https://www.eneba.com/origin-the-sims-3-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global"),
+                Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"),     I.G2A,      "https://www.g2a.com/the-sims-3-origin-key-global-i10000023727004?gname=ts3tools"),
+                Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"),      I.G2A,      "https://www.g2a.com/the-sims-3-steam-gift-global-i10000023727001?gname=ts3tools"),
+                Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"),  I.Gamivo,   "https://www.gamivo.com/product/the-sims-3?glv=p1b0e0fh"),
+                Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"),     I.K4G,      "https://k4g.com/product/the-sims-3-origin-global-cd-key-5C2BA064?r=ts3tools"),
+                Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin,  "https://www.kinguin.net/category/131/the-sims-3-origin-cd-key/?r=66716563950ad"),
+                Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"),  I.Kinguin,  "https://www.kinguin.net/category/32666/the-sims-3-steam-cd-key/?r=66716563950ad"),
+                Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"),   I.MMOGA,    "https://www.mmoga.com/EA-Games/Sims-3-Key-Free-download-included.html?ref=63563&Partner=TS3Tools")));
 
     // ── Expansions ────────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildExpansions() =>
-        N("Expansions", I.EPs,
-            N("World Adventures", I.EP01,
+        N(LanguageManager.Get("BuyTS3", "Expansions", "Expansions"), I.EPs,
+            N(LanguageManager.Get("BuyTS3", "WorldAdventures", "World Adventures"), I.EP01,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-world-adventures-expansion-pack/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47892/The_Sims_3_World_Adventures",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-world-adventures-dlc-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global&utm_medium=af&utm_source=TS3Tools"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-world-adventures-ea-app-key-global-i10000043589003?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-world-adventures-steam-gift-global-i10000043589001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-world-adventures?glv=p1b0e0fh"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-world-adventures-origin-global-cd-key-4EBA6D3A?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/1940/the-sims-3-world-adventures-dlc-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7660/the-sims-3-world-adventures-expansion-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-World-Adventures-addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-world-adventures-dlc-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global&utm_medium=af&utm_source=TS3Tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A,       "https://www.g2a.com/the-sims-3-world-adventures-ea-app-key-global-i10000043589003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A,       "https://www.g2a.com/the-sims-3-world-adventures-steam-gift-global-i10000043589001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-world-adventures?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G,       "https://k4g.com/product/the-sims-3-world-adventures-origin-global-cd-key-4EBA6D3A?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin,   "https://www.kinguin.net/category/1940/the-sims-3-world-adventures-dlc-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin,   "https://www.kinguin.net/category/7660/the-sims-3-world-adventures-expansion-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-World-Adventures-addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Ambitions", I.EP02,
+            N(LanguageManager.Get("BuyTS3", "Ambitions", "Ambitions"), I.EP02,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/buy/addon/the-sims-3-ambitions",
                 steam: "https://store.steampowered.com/app/47893/The_Sims_3_Ambitions",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-ambitions-dlc-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global&utm_medium=af&utm_source=TS3Tools"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-ambitions-ea-app-key-global-i10000043567003?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/fr/the-sims-3-ambitions-steam-gift-global-i10000043567001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-ambitions?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-ambitions#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/120-buy-the-sims-3-ambitions-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-ambitions-origin-global-cd-key-FD33BAE1?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/920/the-sims-3-ambitions-expansion-pack-dlc-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7650/the-sims-3-ambitions-expansion-pack-dlc-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Ambitions-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-ambitions-dlc-origin-key-global?af_id=TS3Tools%C2%A4cy=USD%C2%AEion=global&utm_medium=af&utm_source=TS3Tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A,       "https://www.g2a.com/the-sims-3-ambitions-ea-app-key-global-i10000043567003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A,       "https://www.g2a.com/fr/the-sims-3-ambitions-steam-gift-global-i10000043567001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-ambitions?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-ambitions#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG,        "https://www.instant-gaming.com/en/120-buy-the-sims-3-ambitions-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G,       "https://k4g.com/product/the-sims-3-ambitions-origin-global-cd-key-FD33BAE1?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin,   "https://www.kinguin.net/category/920/the-sims-3-ambitions-expansion-pack-dlc-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin,   "https://www.kinguin.net/category/7650/the-sims-3-ambitions-expansion-pack-dlc-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Ambitions-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Late Night", I.EP03,
+            N(LanguageManager.Get("BuyTS3", "Late Night", "Late Night"), I.EP03,
                 Official(
                 ea: "https://www.ea.com/en/games/the-sims/the-sims-3/buy/addon/the-sims-3-late-night-expansion-pack",
                 steam: "https://store.steampowered.com/app/47894/The_Sims_3_Late_Night",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-late-night-dlc-origin-key-global?af_id=TS3Tools&currency=USD&region=global&utm_medium=af&utm_source=TS3Tools"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-late-night-ea-app-key-global-i10000043600001?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-late-night-pc-steam-gift-global-i10000044185001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-late-night?glv=p1b0e0fh"),
-                    Leaf("Buy on Gamivo (Steam)",          I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-late-night-pc-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-late-night#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/81-buy-the-sims-3-late-night-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-late-night-origin-global-cd-key-81C0A15E?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/933/the-sims-3-late-night-expansion-pack-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/28489/the-sims-3-late-night-expansion-pack-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Late-Night-Expansion-Pack.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"),          I.Eneba,     "https://www.eneba.com/sims-3-website-the-sims-3-late-night-dlc-origin-key-global?af_id=TS3Tools&currency=USD&region=global&utm_medium=af&utm_source=TS3Tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"),            I.G2A,       "https://www.g2a.com/the-sims-3-late-night-ea-app-key-global-i10000043600001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A,       "https://www.g2a.com/the-sims-3-late-night-pc-steam-gift-global-i10000044185001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-late-night?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_Steam", "Buy on Gamivo (Steam)"), I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-late-night-pc-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-late-night#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG,        "https://www.instant-gaming.com/en/81-buy-the-sims-3-late-night-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G,       "https://k4g.com/product/the-sims-3-late-night-origin-global-cd-key-81C0A15E?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin,   "https://www.kinguin.net/category/933/the-sims-3-late-night-expansion-pack-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin,   "https://www.kinguin.net/category/28489/the-sims-3-late-night-expansion-pack-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Late-Night-Expansion-Pack.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Generations", I.EP04,
+            N(LanguageManager.Get("BuyTS3", "Generations", "Generations"), I.EP04,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-generations/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47898/The_Sims_3_Generations/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-generations-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-generations-ea-app-key-global-i10000043568005?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-generations-steam-gift-global-i10000043568003?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-generations?glv=p1b0e0fh"),
-                    Leaf("Buy on Gamivo (Steam)",          I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-generations-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard-pc?glv=p1b0e0fh&currency=usd"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-generations#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/123-buy-the-sims-3-generations-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-generations-origin-global-cd-key-8C25D117?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/931/the-sims-3-generations-expansion-pack-ea-origin-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7654/the-sims-3-generations-expansion-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Generations-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-pets-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-pets-key-global-i10000043577001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-pets-steam-gift-global-i10000043582001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-pets?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-simstm-3-pets#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/108-buy-the-sims-3-pets-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-pets-sims-3-online-global-cd-key-CEBDE5A1?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/926/the-sims-3-pets-expansion-pack-ea-origin-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7652/the-sims-3-pets-expansion-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Pets-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Pets", I.EP05,
+            N(LanguageManager.Get("BuyTS3", "Pets", "Pets"), I.EP05,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-pets/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47930/The_Sims_3_Pets/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-pets-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-pets-key-global-i10000043577001?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-pets-steam-gift-global-i10000043582001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-pets?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-pets#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/108-buy-the-sims-3-pets-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-pets-sims-3-online-global-cd-key-CEBDE5A1?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/926/the-sims-3-pets-expansion-pack-ea-origin-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7652/the-sims-3-pets-expansion-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Pets-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-pets-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-pets-key-global-i10000043577001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-pets-steam-gift-global-i10000043582001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-pets?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-simstm-3-pets#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/108-buy-the-sims-3-pets-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-pets-sims-3-online-global-cd-key-CEBDE5A1?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/926/the-sims-3-pets-expansion-pack-ea-origin-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7652/the-sims-3-pets-expansion-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Pets-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Showtime", I.EP06,
+            N(LanguageManager.Get("BuyTS3", "Showtime", "Showtime"), I.EP06,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-showtime/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47932/The_Sims_3_Showtime/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-showtime-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-showtime-ea-app-key-global-i10000001292003?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-showtime-steam-gift-global-i10000001292001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-showtime?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-showtime#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/109-buy-the-sims-3-showtime-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-showtime-origin-global-cd-key-A2FA0A04?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/25314/the-sims-3-showtime-dlc-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7643/the-sims-3-showtime-dlc-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Showtime-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-showtime-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-showtime-ea-app-key-global-i10000001292003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-showtime-steam-gift-global-i10000001292001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-showtime?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-simstm-3-showtime#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/109-buy-the-sims-3-showtime-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-showtime-origin-global-cd-key-A2FA0A04?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/25314/the-sims-3-showtime-dlc-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7643/the-sims-3-showtime-dlc-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Showtime-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Showtime: Katy Perry Collector's Edition", I.EP06CE,
+            N(LanguageManager.Get("BuyTS3", "ShowtimeCE", "Showtime: Katy Perry Collector's Edition"), I.EP06CE,
                 Partners(
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-showtime-katy-perry-collectors-edition-ea-app-key-global-i10000020285001?gname=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/118-buy-the-sims-3-showtime-katy-perry-collector-s-edition-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/7230/the-sims-3-katy-perry-collector-s-edition-origin-key/?r=66716563950ad"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-showtime-katy-perry-collectors-edition-ea-app-key-global-i10000020285001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/118-buy-the-sims-3-showtime-katy-perry-collector-s-edition-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/7230/the-sims-3-katy-perry-collector-s-edition-origin-key/?r=66716563950ad"))),
 
-            N("Supernatural", I.EP07,
+            N(LanguageManager.Get("BuyTS3", "Supernatural", "Supernatural"), I.EP07,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-supernatural/buy-bundle",
                 steam: "https://store.steampowered.com/app/223593/The_Sims_3_Supernatural/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-supernatural-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-supernatural-key-global-i10000043573001?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-supernatural-steam-gift-global-i10000048125001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-supernatural?glv=p1b0e0fh"),
-                    Leaf("Buy on Gamivo (Steam)",          I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-supernatural-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard-pc?glv=p1b0e0fh&currency=usd"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-sims-3-supernatural#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/80-buy-the-sims-3-supernatural-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-supernatural-origin-global-cd-key-8AD3CD23?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/1012/the-sims-3-supernatural-dlc-pack-ea-origin-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7658/the-sims-3-supernatural-dlc-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Supernatural-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-supernatural-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-supernatural-key-global-i10000043573001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-supernatural-steam-gift-global-i10000048125001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-supernatural?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_Steam", "Buy on Gamivo (Steam)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-supernatural-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard-pc?glv=p1b0e0fh&currency=usd"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-sims-3-supernatural#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/80-buy-the-sims-3-supernatural-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-supernatural-origin-global-cd-key-8AD3CD23?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/1012/the-sims-3-supernatural-dlc-pack-ea-origin-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7658/the-sims-3-supernatural-dlc-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Supernatural-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Seasons", I.EP08,
+            N(LanguageManager.Get("BuyTS3", "Seasons", "Seasons"), I.EP08,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-seasons/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223594/The_Sims_3_Seasons/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-seasons-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-seasons-origin-key-global-i10000047664003?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-seasons-steam-gift-global-i10000047664001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-seasons?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-sims-3-seasons#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/110-buy-the-sims-3-seasons-pc-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-seasons-origin-global-cd-key-A125D507?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/193/the-sims-3-seasons-expansion-pack-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7653/the-sims-3-seasons-expansion-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Seasons-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-seasons-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-seasons-origin-key-global-i10000047664003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-seasons-steam-gift-global-i10000047664001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-seasons?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-sims-3-seasons#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/110-buy-the-sims-3-seasons-pc-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-seasons-origin-global-cd-key-A125D507?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/193/the-sims-3-seasons-expansion-pack-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7653/the-sims-3-seasons-expansion-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Seasons-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("University Life", I.EP09,
+            N(LanguageManager.Get("BuyTS3", "University", "University Life"), I.EP09,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-university-life/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223597/The_Sims_3_University_Life/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-university-life-dlc-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-university-life-ea-app-key-global-i10000043727001?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-university-life-steam-gift-global-i10000050746001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-university-life?glv=p1b0e0fh"),
-                    Leaf("Buy on Gamivo (Steam)",          I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-university-life-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard-pc?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-sims-3-university-life#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/167-buy-the-sims-3-university-life-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-university-life-origin-global-cd-key-EE9A5F0D?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/1150/the-sims-3-university-life-expansion-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7651/the-sims-3-university-life-expansion-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-University-Life-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-university-life-dlc-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-university-life-ea-app-key-global-i10000043727001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-university-life-steam-gift-global-i10000050746001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-university-life?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_Steam", "Buy on Gamivo (Steam)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-university-life-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard-pc?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-sims-3-university-life#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/167-buy-the-sims-3-university-life-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-university-life-origin-global-cd-key-EE9A5F0D?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/1150/the-sims-3-university-life-expansion-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7651/the-sims-3-university-life-expansion-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-University-Life-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Island Paradise", I.EP10,
+            N(LanguageManager.Get("BuyTS3", "IslandParadise", "Island Paradise"), I.EP10,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-island-paradise/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223598/The_Sims_3_Island_Paradise/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-island-paradise-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-island-paradise-ea-app-key-global-i10000047665003?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-island-paradise-steam-gift-global-i10000047665001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-island-paradise?glv=p1b0e0fh"),
-                    Leaf("Buy on Gamivo (Steam)",          I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-island-paradise-pc-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-sims-3-island-paradise#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/219-buy-the-sims-3-island-paradise-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-island-paradise-origin-global-cd-key-DD3F2E28?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/1939/the-sims-3-island-paradise-dlc-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7657/the-sims-3-island-paradise-expansion-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Island-Paradise-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-island-paradise-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-island-paradise-ea-app-key-global-i10000047665003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-island-paradise-steam-gift-global-i10000047665001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-island-paradise?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_Steam", "Buy on Gamivo (Steam)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-island-paradise-pc-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-sims-3-island-paradise#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/219-buy-the-sims-3-island-paradise-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-island-paradise-origin-global-cd-key-DD3F2E28?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/1939/the-sims-3-island-paradise-dlc-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7657/the-sims-3-island-paradise-expansion-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Island-Paradise-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Into The Future", I.EP11,
+            N(LanguageManager.Get("BuyTS3", "ITFuture", "Into The Future"), I.EP11,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-into-the-future/buy-microcontent",
                 steam: "https://store.steampowered.com/app/249180/The_Sims_3__Into_the_Future/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",              I.Eneba, "https://www.eneba.com/origin-the-sims-3-into-the-future-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",                I.G2A,   "https://www.g2a.com/the-sims-3-into-the-future-ea-app-key-global-i10000043634003?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",                 I.G2A,   "https://www.g2a.com/the-sims-3-into-the-future-steam-gift-global-i10000043634001?gname=ts3tools"),
-                    Leaf("Buy on Gamer's Outlet (EA App)",     I.GO,    "https://www.gamers-outlet.net/en/buy-the-sims-3-into-the-future-cd-key-origin-global?tracking=R5VRFA0ohSmVuSK3DWrACuIV2Nd4g0g9XjbT5xGR9RslsEozej3OEUIeEJn3hbAr"),
-                    Leaf("Buy on Gamivo (EA App)",             I.Gamivo, "https://www.gamivo.com/product/the-sims-3-into-the-future?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",                I.HRK,   "https://www.hrkgame.com/en/games/product/the-sims-3-into-the-future#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)",     I.IG,    "https://www.instant-gaming.com/en/244-buy-the-sims-3-into-the-future-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",                I.K4G,   "https://k4g.com/product/the-sims-3-into-the-future-origin-global-cd-key-39F1A390?ref=63563&Partner=TS3Tools"),
-                    Leaf("Buy on Kinguin (EA App)",            I.Kinguin, "https://www.kinguin.net/category/2832/the-sims-3-into-the-future-expansion-pack-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",             I.Kinguin, "https://www.kinguin.net/category/23361/the-sims-3-into-the-future-expansion-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",              I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Into-the-Future-Addon.html?ref=63563&Partner=TS3Tools"))));
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-into-the-future-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-into-the-future-ea-app-key-global-i10000043634003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-into-the-future-steam-gift-global-i10000043634001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "GO_EA", "Buy on Gamer's Outlet (EA App)"), I.GO, "https://www.gamers-outlet.net/en/buy-the-sims-3-into-the-future-cd-key-origin-global?tracking=R5VRFA0ohSmVuSK3DWrACuIV2Nd4g0g9XjbT5xGR9RslsEozej3OEUIeEJn3hbAr"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-into-the-future?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-sims-3-into-the-future#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/244-buy-the-sims-3-into-the-future-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-into-the-future-origin-global-cd-key-39F1A390?ref=63563&Partner=TS3Tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/2832/the-sims-3-into-the-future-expansion-pack-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/23361/the-sims-3-into-the-future-expansion-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Into-the-Future-Addon.html?ref=63563&Partner=TS3Tools"))));
 
     // ── Stuff Packs ───────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildStuffPacks() =>
-        N("Stuff Packs", I.SPs,
-            N("High-End Loft Stuff", I.SP01,
+        N(LanguageManager.Get("BuyTS3", "StuffPacks", "Stuff Packs"), I.SPs,
+            N(LanguageManager.Get("BuyTS3", "HELStuff", "High-End Loft Stuff"), I.SP01,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-high-end-loft-stuff/buy-expansion-pack",
                 steam: "https://store.steampowered.com/app/47895/The_Sims_3_HighEnd_Loft_Stuff/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-high-end-loft-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-high-end-loft-stuff-ea-app-key-global-i10000043569002?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-high-end-loft-stuff-1?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-high-end-loft-stuff#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/121-buy-the-sims-3-high-end-loft-stuff-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-high-end-loft-stuff-origin-global-cd-key-266F0413?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/2337/the-sims-3-high-end-loft-stuff-pack-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/24041/the-sims-3-high-end-loft-stuff-pack-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-High-End-Loft-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-high-end-loft-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-high-end-loft-stuff-ea-app-key-global-i10000043569002?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-high-end-loft-stuff-1?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-simstm-3-high-end-loft-stuff#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/121-buy-the-sims-3-high-end-loft-stuff-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-high-end-loft-stuff-origin-global-cd-key-266F0413?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/2337/the-sims-3-high-end-loft-stuff-pack-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/24041/the-sims-3-high-end-loft-stuff-pack-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-High-End-Loft-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Fast Lane Stuff", I.SP02,
+            N(LanguageManager.Get("BuyTS3", "FLStuff", "Fast Lane Stuff"), I.SP02,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-fast-lane-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47896/The_Sims_3_Fast_Lane_Stuff/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-fast-lane-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-fast-lane-stuff-ea-app-key-global-i10000043841003?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-fast-lane-stuff-steam-gift-global-i10000043841001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-fast-lane-stuff?glv=p1b0e0fh"),
-                    Leaf("Buy on Gamivo (Steam)",          I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-fast-lane-stuff-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard-pc?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-fast-lane-stuff#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/117-buy-the-sims-3-fast-lane-stuff-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-fast-lane-stuff-origin-global-cd-key-967F7011?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/3319/the-sims-3-fast-lane-stuff-expansion-pack-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7661/the-sims-3-fast-lane-stuff-expansion-pack-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Fast-Lane-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-fast-lane-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-fast-lane-stuff-ea-app-key-global-i10000043841003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-fast-lane-stuff-steam-gift-global-i10000043841001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-fast-lane-stuff?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_Steam", "Buy on Gamivo (Steam)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-fast-lane-stuff-steam-gift-global-en-de-fr-it-pl-cs-pt-es-tr-standard-pc?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-simstm-3-fast-lane-stuff#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/117-buy-the-sims-3-fast-lane-stuff-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-fast-lane-stuff-origin-global-cd-key-967F7011?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/3319/the-sims-3-fast-lane-stuff-expansion-pack-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7661/the-sims-3-fast-lane-stuff-expansion-pack-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Fast-Lane-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Outdoor Living Stuff", I.SP03,
+            N(LanguageManager.Get("BuyTS3", "OLStuff", "Outdoor Living Stuff"), I.SP03,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-outdoor-living-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47897/The_Sims_3_Outdoor_Living_Stuff/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-outdoor-living-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-outdoor-living-stuff-ea-app-key-global-i10000044314003?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-outdoor-living-stuff-steam-gift-global-i10000044314001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-outdoor-living?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-outdoor-living-stuff#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/126-buy-the-sims-3-outdoor-living-stuff-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-outdoor-living-stuff-origin-global-cd-key-91B1F1F7?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/5175/the-sims-3-outdoor-living-stuff-pack-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7649/the-sims-3-0-outdoor-living-stuff-pack-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Outdoor-Living-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-outdoor-living-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-outdoor-living-stuff-ea-app-key-global-i10000044314003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-outdoor-living-stuff-steam-gift-global-i10000044314001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-outdoor-living?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-simstm-3-outdoor-living-stuff#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/126-buy-the-sims-3-outdoor-living-stuff-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-outdoor-living-stuff-origin-global-cd-key-91B1F1F7?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/5175/the-sims-3-outdoor-living-stuff-pack-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7649/the-sims-3-0-outdoor-living-stuff-pack-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Outdoor-Living-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Town Life Stuff", I.SP04,
+            N(LanguageManager.Get("BuyTS3", "TLStuff", "Town Life Stuff"), I.SP04,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-town-life-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47899/The_Sims_3_Town_Life_Stuff/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-town-life-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-town-life-stuff-pc-ea-app-key-global-i10000044318001?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-town-life-stuff-pc-steam-gift-global-i10000047458001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-town-life-stuff?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-town-life-stuff#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/127-buy-the-sims-3-town-life-stuff-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-town-life-stuff-origin-global-cd-key-BD248F04?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/109412/the-sims-3-town-life-stuff-pack-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7659/the-sims-3-town-life-stuff-expansion-pack-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Town-Life-Stuff.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-town-life-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-town-life-stuff-pc-ea-app-key-global-i10000044318001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-town-life-stuff-pc-steam-gift-global-i10000047458001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-town-life-stuff?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-simstm-3-town-life-stuff#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/127-buy-the-sims-3-town-life-stuff-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-town-life-stuff-origin-global-cd-key-BD248F04?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/109412/the-sims-3-town-life-stuff-pack-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7659/the-sims-3-town-life-stuff-expansion-pack-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Town-Life-Stuff.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Master Suite Stuff", I.SP05,
+            N(LanguageManager.Get("BuyTS3", "MSStuff", "Master Suite Stuff"), I.SP05,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-master-suite-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/47931/The_Sims_3_Master_Suite_Stuff/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-master-suite-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-master-suite-stuff-pc-ea-app-key-global-i10000044307001?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-master-suite-stuff-steam-gift-global-i10000047462001?gname=ts3tools"),
-                    Leaf("Buy on Gamer's Outlet (EA App)", I.GO,        "https://www.gamers-outlet.net/en/buy-the-sims-3-master-suite-stuff-cd-key-origin-global?tracking=R5VRFA0ohSmVuSK3DWrACuIV2Nd4g0g9XjbT5xGR9RslsEozej3OEUIeEJn3hbAr"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-master-suite-stuff?glv=p1b0e0fh"),
-                    Leaf("Buy on GVGMall (EA App)",        I.GVG,       "https://www.gvgmall.com/origin-games-cdkey/the-sims-3-master-suite-stuff-origin-cd-key.html?urd=ts3tools"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-simstm-3-master-suite-stuff#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/125-buy-the-sims-3-master-suite-stuff-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-master-suite-stuff-origin-global-cd-key-444BDE0B?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/3293/the-sims-3-master-suite-stuff-dlc-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7656/the-sims-3-master-suite-stuff-expansion-pack-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Master-Suite-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-master-suite-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-master-suite-stuff-pc-ea-app-key-global-i10000044307001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-master-suite-stuff-steam-gift-global-i10000047462001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "GO_EA", "Buy on Gamer's Outlet (EA App)"), I.GO, "https://www.gamers-outlet.net/en/buy-the-sims-3-master-suite-stuff-cd-key-origin-global?tracking=R5VRFA0ohSmVuSK3DWrACuIV2Nd4g0g9XjbT5xGR9RslsEozej3OEUIeEJn3hbAr"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-master-suite-stuff?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "GVG_EA", "Buy on GVG Mall (EA App)"), I.GVG, "https://www.gvgmall.com/origin-games-cdkey/the-sims-3-master-suite-stuff-origin-cd-key.html?urd=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-simstm-3-master-suite-stuff#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/125-buy-the-sims-3-master-suite-stuff-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-master-suite-stuff-origin-global-cd-key-444BDE0B?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/3293/the-sims-3-master-suite-stuff-dlc-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7656/the-sims-3-master-suite-stuff-expansion-pack-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Master-Suite-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
 
             // Discontinued — pops a warning when the node is selected
             new BuyTreeNode
             {
-                Label   = "Katy Perry's Sweet Treats",
+                Label   = LanguageManager.Get("BuyTS3", "KPSweetTreats", "Katy Perry's Sweet Treats"),
                 Icon    = LoadIcon(I.SP06),
-                Message = "Katy Perry's Sweet Treats is no longer sold or produced, and therefore " +
-                          "usually comes with a hefty price tag. It may also often be out of stock.",
+                Message = LanguageManager.Get("BuyTS3", "KPSTMessage", "Katy Perry's Sweet Treats is no longer sold or produced, and therefore " +
+                          "usually comes with a hefty price tag. It may also often be out of stock."),
                 Children =
                 {
                     Partners(
-                        Leaf("Buy on Eneba (EA App)",          I.Eneba,   "https://www.eneba.com/sims-3-website-the-sims-3-katy-perrys-sweet-treats-dlc-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                        Leaf("Buy on G2A (EA App)",            I.G2A,     "https://www.g2a.com/the-sims-3-katy-perrys-sweet-treats-ea-app-key-global-i10000045460003?gname=ts3tools"),
-                        Leaf("Buy on Gamivo (EA App)",         I.Gamivo,  "https://www.gamivo.com/product/the-sims-3-katy-perrys-sweet-treats?glv=p1b0e0fh"),
-                        Leaf("Buy on Instant Gaming (EA App)", I.IG,      "https://www.instant-gaming.com/en/124-buy-the-sims-3-katy-perry-s-sweet-treats-pc-mac-game/?igr=ts3tools"),
-                        Leaf("Buy on HRK (EA App)",            I.HRK,     "https://www.hrkgame.com/en/games/product/the-sims-3-katy-perrys-sweet-treats#a_aid=ts3tools"),
-                        Leaf("Buy on Kinguin (EA App)",        I.Kinguin, "https://www.kinguin.net/category/560/the-sims-3-katy-perry-s-sweet-treats-dlc-origin-cd-key/?r=66716563950ad"))
+                        Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba,   "https://www.eneba.com/sims-3-website-the-sims-3-katy-perrys-sweet-treats-dlc-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                        Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"),     I.G2A,     "https://www.g2a.com/the-sims-3-katy-perrys-sweet-treats-ea-app-key-global-i10000045460003?gname=ts3tools"),
+                        Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"),  I.Gamivo,  "https://www.gamivo.com/product/the-sims-3-katy-perrys-sweet-treats?glv=p1b0e0fh"),
+                        Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"),     I.HRK,     "https://www.hrkgame.com/en/games/product/the-sims-3-katy-perrys-sweet-treats#a_aid=ts3tools"),
+                        Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG,      "https://www.instant-gaming.com/en/124-buy-the-sims-3-katy-perry-s-sweet-treats-pc-mac-game/?igr=ts3tools"),
+                        Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/560/the-sims-3-katy-perry-s-sweet-treats-dlc-origin-cd-key/?r=66716563950ad"))
                 }
             },
 
-            N("Diesel Stuff", I.SP07,
+            N(LanguageManager.Get("BuyTS3", "DStuff", "Diesel Stuff"), I.SP07,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-diesel-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223592/The_Sims_3_Diesel_Stuff/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-diesel-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-diesel-stuff-pack-ea-app-global-i10000044815001?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-diesel-stuff-steam-gift-global-i10000049251001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-diesel-stuff?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-sims-3-diesel-stuff#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/122-buy-the-sims-3-diesel-stuff-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-diesel-stuff-pack-origin-global-cd-key-E1E0B89D?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/3320/the-sims-3-diesel-stuff-pack-ea-origin-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7636/the-sims-3-diesel-stuff-dlc-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Diesel-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-diesel-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-diesel-stuff-pack-ea-app-global-i10000044815001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-diesel-stuff-steam-gift-global-i10000049251001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-diesel-stuff?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-sims-3-diesel-stuff#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/122-buy-the-sims-3-diesel-stuff-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-diesel-stuff-pack-origin-global-cd-key-E1E0B89D?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/3320/the-sims-3-diesel-stuff-pack-ea-origin-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7636/the-sims-3-diesel-stuff-dlc-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Diesel-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("70s, 80s & 90s Stuff", I.SP08,
+            N(LanguageManager.Get("BuyTS3", "789Stuff", "70s, 80s & 90s Stuff"), I.SP08,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-70s-80s-and-90s-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/223595/The_Sims_3_70s_80s_and_90s/",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-70s-80s-90s-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-70s-80s-90s-stuff-ea-app-key-global-i10000043564001?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-70s-80s-90s-steam-gift-global-i10000049255001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-70s-80s-and-90s-stuff?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-sims-3-70s-80s-and-90s#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/119-buy-the-sims-3-70-s-80-s-and-90-s-stuff-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-70s-80s-90s-stuff-origin-global-cd-key-2BB56158?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/1774/the-sims-3-70s-80s-90s-dlc-pack-ea-origin-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7655/the-sims-3-70s-80s-90s-stuff-pack-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-70s-80s-and-90s-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-70s-80s-90s-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-70s-80s-90s-stuff-ea-app-key-global-i10000043564001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-70s-80s-90s-steam-gift-global-i10000049255001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-70s-80s-and-90s-stuff?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-sims-3-70s-80s-and-90s#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/119-buy-the-sims-3-70-s-80-s-and-90-s-stuff-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-70s-80s-90s-stuff-origin-global-cd-key-2BB56158?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/1774/the-sims-3-70s-80s-90s-dlc-pack-ea-origin-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7655/the-sims-3-70s-80s-90s-stuff-pack-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-70s-80s-and-90s-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N("Movie Stuff", I.SP09,
+            N(LanguageManager.Get("BuyTS3", "MStuff", "Movie Stuff"), I.SP09,
                 Official(
                 ea: "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-movie-stuff/buy-microcontent",
                 steam: "https://store.steampowered.com/app/249181/The_Sims_3__Movie_Stuff/?cc=us",
                 gog:  null,
                 icon: I.EA),
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,     "https://www.eneba.com/origin-the-sims-3-movie-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,       "https://www.g2a.com/the-sims-3-movie-stuff-pc-ea-app-key-global-i10000043037002?gname=ts3tools"),
-                    Leaf("Buy on G2A (Steam)",             I.G2A,       "https://www.g2a.com/the-sims-3-movie-stuff-steam-gift-global-i10000047454001?gname=ts3tools"),
-                    Leaf("Buy on Gamer's Outlet (EA App)", I.GO,        "https://www.gamers-outlet.net/en/buy-the-sims-3-movie-stuff-cd-key-origin-global?tracking=R5VRFA0ohSmVuSK3DWrACuIV2Nd4g0g9XjbT5xGR9RslsEozej3OEUIeEJn3hbAr"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,    "https://www.gamivo.com/product/the-sims-3-movie-stuff?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (EA App)",            I.HRK,       "https://www.hrkgame.com/en/games/product/the-sims-3-movie-stuff#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,        "https://www.instant-gaming.com/en/1162-buy-the-sims-3-movie-stuff-pc-mac-game/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,       "https://k4g.com/product/the-sims-3-movie-stuff-origin-global-cd-key-001D8720?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin,   "https://www.kinguin.net/category/2576/the-sims-3-movie-stuff-dlc-origin-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)",         I.Kinguin,   "https://www.kinguin.net/category/7639/the-sims-3-movie-stuff-dlc-steam-gift/?r=66716563950ad"),
-                    Leaf("Buy on MMOGA (EA App)",          I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Movie-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))));
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-the-sims-3-movie-stuff-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/the-sims-3-movie-stuff-pc-ea-app-key-global-i10000043037002?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/the-sims-3-movie-stuff-steam-gift-global-i10000047454001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "GO_EA", "Buy on Gamer's Outlet (EA App)"), I.GO, "https://www.gamers-outlet.net/en/buy-the-sims-3-movie-stuff-cd-key-origin-global?tracking=R5VRFA0ohSmVuSK3DWrACuIV2Nd4g0g9XjbT5xGR9RslsEozej3OEUIeEJn3hbAr"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/the-sims-3-movie-stuff?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (EA App)"), I.HRK, "https://www.hrkgame.com/en/games/product/the-sims-3-movie-stuff#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/1162-buy-the-sims-3-movie-stuff-pc-mac-game/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/the-sims-3-movie-stuff-origin-global-cd-key-001D8720?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/2576/the-sims-3-movie-stuff-dlc-origin-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7639/the-sims-3-movie-stuff-dlc-steam-gift/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA, "https://www.mmoga.com/EA-Games/The-Sims-3-Movie-Stuff-Addon.html?ref=63563&Partner=TS3Tools"))));
 
     // ── Premium Worlds ────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildPremiumWorlds() =>
-        N("Premium Worlds", I.Worlds,
-            Leaf("Aurora Skies",                        I.Aurora,     "https://store.thesims3.com/auroraskies.html?categoryId=12642"),
-            Leaf("Barnacle Bay",                        I.Barnacle,   "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-barnacle-bay/buy-microcontent"),
+        N(LanguageManager.Get("BuyTS3", "PremWorlds", "Premium Worlds"), I.Worlds,
+            Leaf(LanguageManager.Get("BuyTS3", "Aurora", "Aurora Skies"),                        I.Aurora,     "https://store.thesims3.com/auroraskies.html?categoryId=12642"),
+            Leaf(LanguageManager.Get("BuyTS3", "Barnacle", "Barnacle Bay"),                        I.Barnacle,   "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-barnacle-bay/buy-microcontent"),
             Leaf("Dragon Valley: Gold Edition",         I.Dragon,     "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-dragon-valley-gold-edition/buy-microcontent"),
             Leaf("Dragon Valley: Standard Edition",     I.Dragon,     "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-dragon-valley/buy-microcontent"),
             Leaf("Hidden Springs",                      I.Hidden,     "https://store.thesims3.com/hiddenSprings.html?categoryId=12642"),
@@ -954,6 +954,30 @@ public partial class BuyTS3 : Window
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=Simcity+2013",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=Simcity+2013&_sacat=0&_from=R40&_trksid=p4432023.m570.l1313"));
+
+    // Called on load and by SettingsWindow after a language change
+    public void ApplyLanguage()
+    {
+        // ── RTL / LTR layout direction ─────────────────────────────────────
+        var lang = IniHelper.Read("Language", "SelectedLanguage", "en");
+
+        // Add any future RTL languages to this set
+        var rtlLanguages = new HashSet<string> { "ar" };
+        FlowDirection = rtlLanguages.Contains(lang)
+        ? System.Windows.FlowDirection.RightToLeft
+        : System.Windows.FlowDirection.LeftToRight;
+
+        // ── Text strings ───────────────────────────────────────────────────
+        BrokenLinksText.Text = LanguageManager.Get("BuyTS3", "BrokenLinksText", BrokenLinksText.Text);
+        UseText.Text = LanguageManager.Get("BuyTS3", "UseText", UseText.Text);
+        WarningButton.Content = LanguageManager.Get("BuyTS3", "WarningButton", "CLICK HERE FOR AN IMPORTANT WARNING!");
+        Text2.Text = LanguageManager.Get("BuyTS3", "BuyOnSteam", Text2.Text);
+        Text3.Text = LanguageManager.Get("BuyTS3", "VendorTip", Text3.Text);
+        Digital.Text = LanguageManager.Get("BuyTS3", "BuyDigital", Digital.Text);
+        Retail.Text = LanguageManager.Get("BuyTS3", "BuyRetail", Retail.Text);
+        AffiliateText.Text = LanguageManager.Get("BuyTS3", "AffiliateText", AffiliateText.Text);
+        BackButton.Content = LanguageManager.Get("BuyTS3", "BackButton", "Back to Main Menu");
+    }
 
     // ── Navigation ────────────────────────────────────────────────────────────
 

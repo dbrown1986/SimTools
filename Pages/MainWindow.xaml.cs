@@ -1848,8 +1848,17 @@ namespace SimTools
             void Browse(string url)
                 => Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
 
+            // ── Pirated Store Warning ──────────────────────────────────────────────
+            var store_piracy = new MenuItem { Header = LanguageManager.Get("Main", "StorePiracyWarning", "Store Piracy Warning") };
+            MessageBox.Show(
+                    LanguageManager.Get("Main", "StorePiracy", "A great deal has changed between versions."),
+                    LanguageManager.Get("Main", "StorePiracy_Title", "Watch the Video Guide!"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+            contextMenu.Items.Add(store_piracy);
+
             // ── The Sims 3 Store ──────────────────────────────────────────────
-            var store = new MenuItem { Header = "The Sims 3 Store" };
+            var store = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Sims3Store", "The Sims 3 Store") };
             store.Click += (_, _) => Browse("https://store.thesims3.com/");
             contextMenu.Items.Add(store);
 
