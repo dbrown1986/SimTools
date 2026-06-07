@@ -271,7 +271,7 @@ public partial class BuyTS3 : Window
                     Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin,   "https://www.kinguin.net/category/7650/the-sims-3-ambitions-expansion-pack-dlc-steam-gift/?r=66716563950ad"),
                     Leaf(LanguageManager.Get("BuyTS3", "MMOGA_EA", "Buy on MMOGA (EA App)"), I.MMOGA,     "https://www.mmoga.com/EA-Games/The-Sims-3-Ambitions-Addon.html?ref=63563&Partner=TS3Tools"))),
 
-            N(LanguageManager.Get("BuyTS3", "Late Night", "Late Night"), I.EP03,
+            N(LanguageManager.Get("BuyTS3", "LateNight", "Late Night"), I.EP03,
                 Official(
                 ea: "https://www.ea.com/en/games/the-sims/the-sims-3/buy/addon/the-sims-3-late-night-expansion-pack",
                 steam: "https://store.steampowered.com/app/47894/The_Sims_3_Late_Night",
@@ -622,15 +622,15 @@ public partial class BuyTS3 : Window
             Leaf(LanguageManager.Get("BuyTS3", "Barnacle", "Barnacle Bay"),                        I.Barnacle,   "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-barnacle-bay/buy-microcontent"),
             Leaf(LanguageManager.Get("BuyTS3", "DVGold", "Dragon Valley: Gold Edition"),         I.Dragon,     "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-dragon-valley-gold-edition/buy-microcontent"),
             Leaf(LanguageManager.Get("BuyTS3", "DVStandard", "Dragon Valley: Standard Edition"),     I.Dragon,     "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-dragon-valley/buy-microcontent"),
-            Leaf("Hidden Springs",                      I.Hidden,     "https://store.thesims3.com/hiddenSprings.html?categoryId=12642"),
-            Leaf("Lucky Palms",                         I.Lucky,      "https://store.thesims3.com/luckypalms.html?categoryId=12642"),
-            Leaf("Lunar Lakes",                         I.Lunar,      "https://store.thesims3.com/lunarlakes.html?categoryId=12642"),
-            Leaf("Midnight Hollow",                     I.Midnight,   "https://store.thesims3.com/midnighthollow.html?categoryId=12642"),
-            Leaf("Monte Vista",                         I.Monte,      "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-monte-vista/buy-microcontent"),
-            Leaf("Riverview",                           I.Riverview,  "https://store.thesims3.com/riverview.html?categoryId=12642"),
-            Leaf("Roaring Heights: Gold Edition",       I.Roaring,    "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-roaring-heights-gold-edition/buy-microcontent"),
-            Leaf("Roaring Heights: Standard Edition", I.Roaring,      "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-roaring-heights/buy-microcontent"),
-            Leaf("Hidden Springs & Monte Vista Bundle", I.HSMV,       "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-worlds-bundle/buy-bundle?steps=pc"));
+            Leaf(LanguageManager.Get("BuyTS3", "HidSpring", "Hidden Springs"),                      I.Hidden,     "https://store.thesims3.com/hiddenSprings.html?categoryId=12642"),
+            Leaf(LanguageManager.Get("BuyTS3", "LuckyPalms", "Lucky Palms"),                         I.Lucky,      "https://store.thesims3.com/luckypalms.html?categoryId=12642"),
+            Leaf(LanguageManager.Get("BuyTS3", "LunarLakes", "Lunar Lakes"),                         I.Lunar,      "https://store.thesims3.com/lunarlakes.html?categoryId=12642"),
+            Leaf(LanguageManager.Get("BuyTS3", "MidnightHollow", "Midnight Hollow"),                     I.Midnight,   "https://store.thesims3.com/midnighthollow.html?categoryId=12642"),
+            Leaf(LanguageManager.Get("BuyTS3", "MonteVista", "Monte Vista"),                         I.Monte,      "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-monte-vista/buy-microcontent"),
+            Leaf(LanguageManager.Get("BuyTS3", "Riverview", "Riverview"),                           I.Riverview,  "https://store.thesims3.com/riverview.html?categoryId=12642"),
+            Leaf(LanguageManager.Get("BuyTS3", "RHGold", "Roaring Heights: Gold Edition"),       I.Roaring,    "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-roaring-heights-gold-edition/buy-microcontent"),
+            Leaf(LanguageManager.Get("BuyTS3", "RHStandard", "Roaring Heights: Standard Edition"), I.Roaring,      "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-roaring-heights/buy-microcontent"),
+            Leaf(LanguageManager.Get("BuyTS3", "HidMonteBundle", "Hidden Springs & Monte Vista Bundle"), I.HSMV,       "https://www.ea.com/games/the-sims/the-sims-3/the-sims-3-worlds-bundle/buy-bundle?steps=pc"));
 
     // ── The Sims: Medieval ──────────────────────────────────────────────────────────
 
@@ -638,18 +638,17 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildSimsMedieval() =>
         new()
         {
-            Label   = "The Sims: Medieval",
+            Label   = LanguageManager.Get("BuyTS3", "TSM1", "The Sims: Medieval"),
             Icon    = LoadIcon(I.SimsMedieval),
-            Message = "The Sims: Medieval is no longer sold or produced, and therefore " +
-                      "usually comes with a hefty price tag. It may also often be out of stock.",
+            Message = LanguageManager.Get("BuyTS3", "TSM2", "The Sims: Medieval is no longer sold or produced, and therefore usually comes with a hefty price tag. It may also often be out of stock."),
             Children =
             {
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,   "https://www.eneba.com/origin-the-sims-medieval-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,     "https://www.g2a.com/the-sims-medieval-ea-app-key-global-i10000043987003?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,  "https://www.gamivo.com/product/the-sims-medieval?glv=p1b0e0fh"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,     "https://k4g.com/product/the-sims-medieval-ea-app-global-cd-key-AC51F906?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin, "https://www.kinguin.net/category/1816/the-sims-medieval-ea-app-cd-key?r=66716563950ad")),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"),          I.Eneba,   "https://www.eneba.com/origin-the-sims-medieval-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"),            I.G2A,     "https://www.g2a.com/the-sims-medieval-ea-app-key-global-i10000043987003?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"),         I.Gamivo,  "https://www.gamivo.com/product/the-sims-medieval?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"),            I.K4G,     "https://k4g.com/product/the-sims-medieval-ea-app-global-cd-key-AC51F906?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"),        I.Kinguin, "https://www.kinguin.net/category/1816/the-sims-medieval-ea-app-cd-key?r=66716563950ad")),
             }
         };
 
@@ -659,77 +658,76 @@ public partial class BuyTS3 : Window
      private static BuyTreeNode BuildSimsMedievalPN() =>
         new()
         {
-            Label = "The Sims Medieval: Pirates & Nobles",
+            Label = LanguageManager.Get("BuyTS3", "TSM3", "The Sims Medieval: Pirates & Nobles"),
             Icon = LoadIcon(I.SimsMedieval),
-            Message = "The Sims Medieval: Pirates & Nobles is no longer sold or produced, and therefore " +
-                      "usually comes with a hefty price tag. It may also often be out of stock.",
+            Message = LanguageManager.Get("BuyTS3", "TSM4", "The Sims Medieval: Pirates & Nobles is no longer sold or produced, and therefore usually comes with a hefty price tag. It may also often be out of stock."),
             Children =
             {
                 Partners(
-                    Leaf("Buy on Eneba (EA App)",          I.Eneba,       "https://www.eneba.com/origin-the-sims-medieval-pirates-and-nobles-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)",            I.G2A,     "https://www.g2a.com/the-sims-medieval-pirates-and-nobles-ea-app-global-i10000010786001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)",         I.Gamivo,  "https://www.gamivo.com/product/the-sims-medieval-pirates-and-nobles?glv=p1b0e0fh"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG,      "https://www.instant-gaming.com/en/129-buy-the-sims-medieval-pirates-and-nobles-pc-game-ea-app/?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)",            I.K4G,     "https://k4g.com/product/the-sims-medieval-pirates-and-nobles-ea-app-global-cd-key-7A8EC2E3?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)",        I.Kinguin, "https://www.kinguin.net/category/4245/the-sims-medieval-pirates-and-nobles-dlc-ea-app-cd-key?r=66716563950ad")),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"),          I.Eneba,       "https://www.eneba.com/origin-the-sims-medieval-pirates-and-nobles-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"),            I.G2A,     "https://www.g2a.com/the-sims-medieval-pirates-and-nobles-ea-app-global-i10000010786001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"),         I.Gamivo,  "https://www.gamivo.com/product/the-sims-medieval-pirates-and-nobles?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG,      "https://www.instant-gaming.com/en/129-buy-the-sims-medieval-pirates-and-nobles-pc-game-ea-app/?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"),            I.K4G,     "https://k4g.com/product/the-sims-medieval-pirates-and-nobles-ea-app-global-cd-key-7A8EC2E3?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"),        I.Kinguin, "https://www.kinguin.net/category/4245/the-sims-medieval-pirates-and-nobles-dlc-ea-app-cd-key?r=66716563950ad")),
             }
         };
 
     // ── The Sims: Medieval (Group) ─────────────────────────────────────────────
 
     private static BuyTreeNode BuildSimsMedievalGroup() =>
-        N("The Sims: Medieval", I.SimsMedieval,
+        N(LanguageManager.Get("BuyTS3", "TSM1", "The Sims: Medieval"), I.SimsMedieval,
             BuildSimsMedieval(),
             BuildSimsMedievalPN());
 
     // ── SimCity 2000 ──────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildSC2K() =>
-        N("SimCity 2000", I.SC2K,
+        N(LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000"), I.SC2K,
             Official(
                 ea:    "https://www.ea.com/en/games/simcity/simcity-2000",
                 steam: null,
                 gog:   "https://www.gog.com/en/game/simcity_2000_special_edition",
                 icon:  I.EA),
             Partners(
-                Leaf("Buy on Eneba (GOG)", I.Eneba, "https://www.eneba.com/origin-simcity-2000-special-edition-gog-com-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                Leaf("Buy on G2A (EA App)", I.G2A, "https://www.g2a.com/simcity-2000-special-edition-ea-app-key-global-i10000000711001?gname=ts3tools"),
-                Leaf("Buy on G2A (GOG)", I.G2A, "https://www.g2a.com/simcity-2000-special-edition-gogcom-key-global-i10000000711002?gname=ts3tools"),
-                Leaf("Buy on Gamivo (EA App)", I.Gamivo, "https://www.gamivo.com/product/simcity-2000-pc-ea-app-global-standard?glv=p1b0e0fh"),
-                Leaf("Buy on Kinguin (EA App)", I.Kinguin, "https://www.kinguin.net/category/16138/simcity-2000-special-edition-ea-app-cd-key?r=66716563950ad")));
+                Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-simcity-2000-special-edition-gog-com-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/simcity-2000-special-edition-ea-app-key-global-i10000000711001?gname=ts3tools"),
+                Leaf(LanguageManager.Get("BuyTS3", "G2A_GOG", "Buy on G2A (GOG)"), I.G2A, "https://www.g2a.com/simcity-2000-special-edition-gogcom-key-global-i10000000711002?gname=ts3tools"),
+                Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/simcity-2000-pc-ea-app-global-standard?glv=p1b0e0fh"),
+                Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), "https://www.kinguin.net/category/16138/simcity-2000-special-edition-ea-app-cd-key?r=66716563950ad")));
 
     // ── SimCity 3000 Unlimited ────────────────────────────────────────────────
 
     private static BuyTreeNode BuildSC3KU() =>
-        N("SimCity 3000 Unlimited", I.SC3KU,
+        N(LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000 Unlimited"), I.SC3KU,
             Official(
                 ea:    null,
                 steam: "https://store.steampowered.com/app/2741560/SimCity_3000_Unlimited/",
                 gog:   "https://www.gog.com/en/game/simcity_3000",
                 icon:  I.EA),
                         Partners(
-                Leaf("Buy on G2A (GOG)", I.G2A, "https://www.g2a.com/simcity-3000-unlimited-gogcom-key-global-i10000149205002?gname=ts3tools"),
-                Leaf("Buy on Kinguin (EA App)", I.Kinguin, "https://www.kinguin.net/category/63343/simcity-3000-unlimited-gog-cd-key?r=66716563950ad")));
+                Leaf(LanguageManager.Get("BuyTS3", "G2A_GOG", "Buy on G2A (GOG)"), I.G2A, "https://www.g2a.com/simcity-3000-unlimited-gogcom-key-global-i10000149205002?gname=ts3tools"),
+                Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/63343/simcity-3000-unlimited-gog-cd-key?r=66716563950ad")));
 
     // ── SimCity 4 Deluxe Edition ──────────────────────────────────────────────
 
     private static BuyTreeNode BuildSC4DE() =>
-        N("SimCity 4 Deluxe Edition", I.SC4DE,
+        N(LanguageManager.Get("BuyTS3", "SC4DE", "SimCity 4 Deluxe Edition"), I.SC4DE,
             Official(
                 ea: "https://www.ea.com/en/games/simcity/simcity-4",
                 steam: "https://store.steampowered.com/app/24780/SimCity_4_Deluxe_Edition/",
                 gog: "https://www.gog.com/en/game/simcity_4_deluxe_edition",
                 icon: I.EA),
             Partners(
-                    Leaf("Buy on Eneba (EA App)", I.Eneba, "https://www.eneba.com/ea-app-simcity-4-deluxe-edition-pc-ea-app-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on Eneba (Steam)", I.Eneba, "https://www.eneba.com/steam-simcity-4-deluxe-edition-steam-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (Steam)", I.G2A, "https://www.g2a.com/simcity-4-deluxe-edition-pc-steam-key-global-i10000005243004?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (Steam)", I.Gamivo, "https://www.gamivo.com/product/simcity-4-deluxe-edition?glv=p1b0e0fh"),
-                    Leaf("Buy on HRK (Steam)", I.HRK, "https://www.hrkgame.com/en/product/simcity-4-deluxe-edition-steam-edition#a_aid=ts3tools"),
-                    Leaf("Buy on Instant Gaming (EA App)", I.IG, "https://www.instant-gaming.com/en/2996-buy-simcity-4-deluxe-edition-deluxe-edition-pc-mac-game-steam//?igr=ts3tools"),
-                    Leaf("Buy on K4G (EA App)", I.K4G, "https://k4g.com/product/simcity-4-steam-global-cd-key-deluxe-edition-cd-key-2A724CC8?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)", I.Kinguin, "https://www.kinguin.net/category/2860/simcity-4-deluxe-edition-ea-app-cd-key/?r=66716563950ad"),
-                    Leaf("Buy on Kinguin (Steam)", I.Kinguin, "https://www.kinguin.net/category/7787/simcity-4-deluxe-edition-steam-key/?r=66716563950ad")));
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/ea-app-simcity-4-deluxe-edition-pc-ea-app-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_Steam", "Buy on Eneba (Steam)"), I.Eneba, "https://www.eneba.com/steam-simcity-4-deluxe-edition-steam-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_Steam", "Buy on G2A (Steam)"), I.G2A, "https://www.g2a.com/simcity-4-deluxe-edition-pc-steam-key-global-i10000005243004?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_Steam", "Buy on Gamivo (Steam)"), I.Gamivo, "https://www.gamivo.com/product/simcity-4-deluxe-edition?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "HRK_EA", "Buy on HRK (Steam)"), I.HRK, "https://www.hrkgame.com/en/product/simcity-4-deluxe-edition-steam-edition#a_aid=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "IG_EA", "Buy on Instant Gaming (EA App)"), I.IG, "https://www.instant-gaming.com/en/2996-buy-simcity-4-deluxe-edition-deluxe-edition-pc-mac-game-steam//?igr=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/simcity-4-steam-global-cd-key-deluxe-edition-cd-key-2A724CC8?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/2860/simcity-4-deluxe-edition-ea-app-cd-key/?r=66716563950ad"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_Steam", "Buy on Kinguin (Steam)"), I.Kinguin, "https://www.kinguin.net/category/7787/simcity-4-deluxe-edition-steam-key/?r=66716563950ad")));
 
     // ── SimCity (2013) ────────────────────────────────────────────────────────
 
@@ -741,11 +739,11 @@ public partial class BuyTS3 : Window
                 gog:   null,
                 icon:  I.EA),
             Partners(
-                    Leaf("Buy on Eneba (EA App)", I.Eneba, "https://www.eneba.com/origin-simcity-eng-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
-                    Leaf("Buy on G2A (EA App)", I.G2A, "https://www.g2a.com/simcity-standard-edition-english-only-ea-app-key-global-i10000043863001?gname=ts3tools"),
-                    Leaf("Buy on Gamivo (EA App)", I.Gamivo, "https://www.gamivo.com/product/simcity-eng?glv=p1b0e0fh"),
-                    Leaf("Buy on K4G (EA App)", I.K4G, "https://k4g.com/product/simcity-ea-app-global-complete-edition-cd-key-B4F1E98E?r=ts3tools"),
-                    Leaf("Buy on Kinguin (EA App)", I.Kinguin, "https://www.kinguin.net/category/545/simcity-en-language-only-ea-app-cd-key?r=66716563950ad")));
+                    Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-simcity-eng-origin-key-global?af_id=TS3Tools&currency=USD&region=global"),
+                    Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/simcity-standard-edition-english-only-ea-app-key-global-i10000043863001?gname=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/simcity-eng?glv=p1b0e0fh"),
+                    Leaf(LanguageManager.Get("BuyTS3", "K4G_EA", "Buy on K4G (EA App)"), I.K4G, "https://k4g.com/product/simcity-ea-app-global-complete-edition-cd-key-B4F1E98E?r=ts3tools"),
+                    Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/545/simcity-en-language-only-ea-app-cd-key?r=66716563950ad")));
 
     // ══════════════════════════════════════════════════════════════════════════
     // RETAIL TREES
@@ -753,14 +751,14 @@ public partial class BuyTS3 : Window
 
     // ── The Sims ────────────────────────────────────────────────────────────
     private static BuyTreeNode BuildSims1Retail() =>
-        N("The Sims", I.Sims1,
+        N(LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims"), I.Sims1,
             RetailVendors(
                 amazon: "https://www.amazon.com/Sims-Complete-Collection-PC/dp/B000BAVN14/ref=sr_1_1?sr=8-1",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=the+sims+1+complete+collection+pc&_sacat=0&_from=R40&_trksid=p4624852.m570.l1311"));
 
     // ── The Sims 2 ────────────────────────────────────────────────────────────
     private static BuyTreeNode BuildSims2Retail() =>
-        N("The Sims 2", I.Sims2,
+        N(LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2"), I.Sims2,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=The+Sims+2+pc",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=the+sims+2+complete+collection+pc&_sacat=0&_from=R40&_trksid=p2334524.m570.l1313&_odkw=the+sims+1+complete+collection+pc&_osacat=0"));
@@ -768,7 +766,7 @@ public partial class BuyTS3 : Window
     // ── The Sims 3 ────────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildSims3Retail() =>
-        N("The Sims 3", I.Sims3,
+        N(LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3"), I.Sims3,
             BuildBaseGameRetail(),
             BuildExpansionsRetail(),
             BuildStuffPacksRetail());
@@ -776,7 +774,7 @@ public partial class BuyTS3 : Window
     // ── Base Game (Retail) ────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildBaseGameRetail() =>
-        N("Base Game", I.Sims3,
+        N(LanguageManager.Get("BuyTS3", "Sims3BG", "Base Game"), I.Sims3,
             RetailVendors(
                 amazon: "https://www.amazon.com/NEW-Sims-WIN-MAC-Videogame-Software/dp/B004Y3C6RY?crid=24CGYTAXJCM4N&dib=eyJ2IjoiMSJ9.VIMiU1xPN1C7kpF2XTQueQfPoDfsSH8QCvUWRByfafu7jzSf28yWrAx4v1hBblva9Q_qSG2C6x6HPtX8lreKujvQqBhPJjLFHpJw8EeudPhCfcbbqo2em66igvsBnwDm92aMnixvxtvFZJWGjvmTeoOkAFmOHBHeM_OdQ3P6SPiLHmAcBzHSLapbS7odza5qE5wxh7lLkUCoqsniDcLY6pJqtmOTtwWwBHoLhqn7kRA.n_MwX1DAAzxsrHuAWALPIv9FyBPQgYa-d0TTE61KFp0&dib_tag=se&keywords=the+sims+3+base+game&qid=1718752858&sprefix=the+sims+3+base+game%2Caps%2C217&sr=8-1&linkCode=ll1&tag=ts3tools-20&linkId=bdc6cba0426c559ff1308497bab62b6a&language=en_US&ref_=as_li_ss_tl",
                 ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p4432023.m570.l1312&_nkw=sims+3+base+game+dvd&_sacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1"));
@@ -785,35 +783,34 @@ public partial class BuyTS3 : Window
 
     private static BuyTreeNode BuildExpansionsRetail() =>
         N("Expansions", I.EPs,
-            N("World Adventures",   I.EP01,   RetailVendors(amazon: "https://www.amazon.com/Sims-World-Adventures-Expansion-Pack-Mac/dp/B002NILFB0?crid=2GZLD3BJZ6UZV&dib=eyJ2IjoiMSJ9.0KHOcZHioyr2nq3I51HvZrEYw8TO_T2exIxwLN83wkKEnHMtEY5n1C13Q3IBHzdu6pE3ozzHgAXrM7Ioc2GxxDCN7w_QD6VmEDdFDaY693p8LTlXUPwg-kLji19iFJzcFPW_mdNOVpJ9C8I1A95aSwHbBp2mka48t2jnyWqUSMWfAmApeOpOeKakPdZgtCOZM-NH7FLUirHYxJM7DF0B8QW1pTqny6LhM1Qs9rF9dm8.8XCcuG1PoBVW35NQufnCLUA9Z86vYcj_Iq4DpXVCuCI&dib_tag=se&keywords=the%2Bsims%2B3%2Bworld%2Badventures&qid=1718753008&sprefix=the%2Bsims%2B3%2Bw%2Caps%2C202&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=97bf8a28a050c9eb7858ea7d04a84958&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+world+adventures+dvd&_sacat=0&_odkw=sims+3+base+game+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Ambitions",          I.EP02,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Ambitions-Mac/dp/B003AMOK9M?crid=3EH18S25QUUWI&dib=eyJ2IjoiMSJ9.6NEMNn8iNJK6iLnKxTmk3zBnhqlH1tsN7lY27ciZw5dWiA9htgeZ2kIJiPhA4Vraq82sNEspkgwBLhTdhRPuV99oGWPmQCzufiBaJVEzpstPPNXq-VWdBVgXP_os5GpeqmgGaqdNuJY6BX2FvA_vgeNfqwh6Cce6ReyEoN9Brpo.WSjNzZK5B_vdLdCEk1K2JNmsOIIegBSiJE88XCr0rSM&dib_tag=se&keywords=the+sims+3+ambitions&qid=1718753092&sprefix=the+sims+3+ambi%2Caps%2C189&sr=8-1&linkCode=ll1&tag=ts3tools-20&linkId=24f8195b19996ee030426a73b7e3b8c4&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+ambitions+dvd&_sacat=0&_odkw=sims+3+world+adventures+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Late Night",         I.EP03,   RetailVendors(amazon: "https://www.amazon.com/Sims-Late-Night-PC-Mac/dp/B003WU3CDW?crid=2VM0Y882QERML&dib=eyJ2IjoiMSJ9.8-LmIcIO4iQjOcYeR8Dcls5aXtqeLStmcUjuIdXoBckM1NAKbdm_TMP5Li6a3AMSaAKASbQh4jfi5aYZBBrgo6G0Jd9hnGCTpLBqYypodfU.fgouBhLMJuIvNGoVlkqt7fXlRM3PGNcQxKA1uwvhVjU&dib_tag=se&keywords=the%2Bsims%2B3%2Blate%2Bnight&qid=1718753165&sprefix=the%2Bsims%2B3%2Blate%2Bnight%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=83f898d28e1b66661107631d990a6c2f&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+late+night+dvd&_sacat=0&_odkw=sims+3+ambitions+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Generations",        I.EP04,   RetailVendors(amazon: "https://www.amazon.com/Sims-Generations-Expansion-Pack-PC-Mac/dp/B004UJNN5G?crid=3LY8JIX2UCLF8&dib=eyJ2IjoiMSJ9.dAbylGBfv5dew3kOeKLOlf0mbJXEw6kZdLDt_ccpWeqc1RF11NWQDXv6mUw60lSc3IuTvOxadNotj-t2sJ3O40ma4GDiM6Sy01WAlQbUUgdmxbo8TITym4kRYrJEpf6O1JJadaC7Ml-GzsyZPDeTHZ4ZN_a9E-6UAFGR57-4k4IwMsHBktI4emFaIFISYzC7Jyy0JJnXeuKbnBMBTNdp0cB3Nqx2uRHl93jB4xrgAig.FxdMlCIcBWHmQ39qCjr1eT8nd7-e90G-OVBMdXp2vm4&dib_tag=se&keywords=the%2Bsims%2B3%2Bgenerations&qid=1718753242&sprefix=the%2Bsims%2B3%2Bge%2Caps%2C198&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=04f3fd6d71e8a34dfaf289f696a9f79d&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+generations+dvd&_sacat=0&_odkw=sims+3+late+night+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Pets",               I.EP05,   RetailVendors(amazon: "https://www.amazon.com/Sims-Plus-Pets-PC-Mac/dp/B0054IV21O?crid=13W5FX86T39CR&dib=eyJ2IjoiMSJ9.jwTnouZpn7ZfChlWuZmpaxvsvlY_gI8Y7oxrT7WBr5m8tDzFbQnBTRkLaeJ9EC1p-j50D8T20yp5ix5EjI56zHDr21WmJuvxRXnDvpNDM6WvI8LhIPSJdebMR9jZHbL_blSDMt2xYDLg0x2lqKSwsDtrXXRKMdqCVNtvxALKZc9LYEh5DLM9gJ28G_Pb0OeqL8fq3t86nSrEdhghG8w5BOrJNmqSReNQv50s5c2ig50.vFG_TcdcAdrnyTBzhf-Xq5La_-XnZwEY1SxJt_dF4b4&dib_tag=se&keywords=the%2Bsims%2B3%2Bpets&qid=1718753312&sprefix=the%2Bsims%2B3%2Bpets%2Caps%2C202&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=6e8a28be123b9b5de2611c7ca2e8e3a3&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+pets+dvd&_sacat=0&_odkw=sims+3+generations+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Showtime",           I.EP06,   RetailVendors(amazon: "https://www.amazon.com/Electronic-Arts-71151-Showtime-Download/dp/B006D3JT0U?crid=ZPFE2ECYUNTA&dib=eyJ2IjoiMSJ9.HRz6RTDjiiO2KBOcSQ-n2Nx4OYV-sZiE2Fe14k17X0xxsp4vSZfIV4uZwoI8jlTr_vZ4xCvpQWGXWTjDLTAlMK1eGwCx6PCfgyx5QR5-x2VuyqKJTe3F9rURNwEtLrajWPEdxy_U0hmphayh2z9ysejQRck0peodPmC6ayopDxcdKtxhBEaiIY4qRHVwyTJvtd33tkUtv01LO3CkhBijawbuRgo6wV76bOpBl_EvCyw.c62srLR4fVHP_YYvXHVADZNC4JmVCHmtwLsS6lcc8CI&dib_tag=se&keywords=the%2Bsims%2B3%2Bshowtime&qid=1718753445&sprefix=the%2Bsims%2B3%2Bshowtime%2Caps%2C198&sr=8-4&th=1&linkCode=ll1&tag=ts3tools-20&linkId=0bfb744aff5ae1cc4f8cee6f8642fbb0&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+showtime+dvd&_sacat=0&_odkw=sims+3+pets+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "WorldAdventures", "World Adventures"),   I.EP01,   RetailVendors(amazon: "https://www.amazon.com/Sims-World-Adventures-Expansion-Pack-Mac/dp/B002NILFB0?crid=2GZLD3BJZ6UZV&dib=eyJ2IjoiMSJ9.0KHOcZHioyr2nq3I51HvZrEYw8TO_T2exIxwLN83wkKEnHMtEY5n1C13Q3IBHzdu6pE3ozzHgAXrM7Ioc2GxxDCN7w_QD6VmEDdFDaY693p8LTlXUPwg-kLji19iFJzcFPW_mdNOVpJ9C8I1A95aSwHbBp2mka48t2jnyWqUSMWfAmApeOpOeKakPdZgtCOZM-NH7FLUirHYxJM7DF0B8QW1pTqny6LhM1Qs9rF9dm8.8XCcuG1PoBVW35NQufnCLUA9Z86vYcj_Iq4DpXVCuCI&dib_tag=se&keywords=the%2Bsims%2B3%2Bworld%2Badventures&qid=1718753008&sprefix=the%2Bsims%2B3%2Bw%2Caps%2C202&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=97bf8a28a050c9eb7858ea7d04a84958&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+world+adventures+dvd&_sacat=0&_odkw=sims+3+base+game+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "Ambitions", "Ambitions"), I.EP02,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Ambitions-Mac/dp/B003AMOK9M?crid=3EH18S25QUUWI&dib=eyJ2IjoiMSJ9.6NEMNn8iNJK6iLnKxTmk3zBnhqlH1tsN7lY27ciZw5dWiA9htgeZ2kIJiPhA4Vraq82sNEspkgwBLhTdhRPuV99oGWPmQCzufiBaJVEzpstPPNXq-VWdBVgXP_os5GpeqmgGaqdNuJY6BX2FvA_vgeNfqwh6Cce6ReyEoN9Brpo.WSjNzZK5B_vdLdCEk1K2JNmsOIIegBSiJE88XCr0rSM&dib_tag=se&keywords=the+sims+3+ambitions&qid=1718753092&sprefix=the+sims+3+ambi%2Caps%2C189&sr=8-1&linkCode=ll1&tag=ts3tools-20&linkId=24f8195b19996ee030426a73b7e3b8c4&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+ambitions+dvd&_sacat=0&_odkw=sims+3+world+adventures+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "LateNight", "Late Night"), I.EP03,   RetailVendors(amazon: "https://www.amazon.com/Sims-Late-Night-PC-Mac/dp/B003WU3CDW?crid=2VM0Y882QERML&dib=eyJ2IjoiMSJ9.8-LmIcIO4iQjOcYeR8Dcls5aXtqeLStmcUjuIdXoBckM1NAKbdm_TMP5Li6a3AMSaAKASbQh4jfi5aYZBBrgo6G0Jd9hnGCTpLBqYypodfU.fgouBhLMJuIvNGoVlkqt7fXlRM3PGNcQxKA1uwvhVjU&dib_tag=se&keywords=the%2Bsims%2B3%2Blate%2Bnight&qid=1718753165&sprefix=the%2Bsims%2B3%2Blate%2Bnight%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=83f898d28e1b66661107631d990a6c2f&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+late+night+dvd&_sacat=0&_odkw=sims+3+ambitions+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "Generations", "Generations"), I.EP04,   RetailVendors(amazon: "https://www.amazon.com/Sims-Generations-Expansion-Pack-PC-Mac/dp/B004UJNN5G?crid=3LY8JIX2UCLF8&dib=eyJ2IjoiMSJ9.dAbylGBfv5dew3kOeKLOlf0mbJXEw6kZdLDt_ccpWeqc1RF11NWQDXv6mUw60lSc3IuTvOxadNotj-t2sJ3O40ma4GDiM6Sy01WAlQbUUgdmxbo8TITym4kRYrJEpf6O1JJadaC7Ml-GzsyZPDeTHZ4ZN_a9E-6UAFGR57-4k4IwMsHBktI4emFaIFISYzC7Jyy0JJnXeuKbnBMBTNdp0cB3Nqx2uRHl93jB4xrgAig.FxdMlCIcBWHmQ39qCjr1eT8nd7-e90G-OVBMdXp2vm4&dib_tag=se&keywords=the%2Bsims%2B3%2Bgenerations&qid=1718753242&sprefix=the%2Bsims%2B3%2Bge%2Caps%2C198&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=04f3fd6d71e8a34dfaf289f696a9f79d&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+generations+dvd&_sacat=0&_odkw=sims+3+late+night+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "Pets", "Pets"),               I.EP05,   RetailVendors(amazon: "https://www.amazon.com/Sims-Plus-Pets-PC-Mac/dp/B0054IV21O?crid=13W5FX86T39CR&dib=eyJ2IjoiMSJ9.jwTnouZpn7ZfChlWuZmpaxvsvlY_gI8Y7oxrT7WBr5m8tDzFbQnBTRkLaeJ9EC1p-j50D8T20yp5ix5EjI56zHDr21WmJuvxRXnDvpNDM6WvI8LhIPSJdebMR9jZHbL_blSDMt2xYDLg0x2lqKSwsDtrXXRKMdqCVNtvxALKZc9LYEh5DLM9gJ28G_Pb0OeqL8fq3t86nSrEdhghG8w5BOrJNmqSReNQv50s5c2ig50.vFG_TcdcAdrnyTBzhf-Xq5La_-XnZwEY1SxJt_dF4b4&dib_tag=se&keywords=the%2Bsims%2B3%2Bpets&qid=1718753312&sprefix=the%2Bsims%2B3%2Bpets%2Caps%2C202&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=6e8a28be123b9b5de2611c7ca2e8e3a3&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+pets+dvd&_sacat=0&_odkw=sims+3+generations+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "Showtime", "Showtime"),           I.EP06,   RetailVendors(amazon: "https://www.amazon.com/Electronic-Arts-71151-Showtime-Download/dp/B006D3JT0U?crid=ZPFE2ECYUNTA&dib=eyJ2IjoiMSJ9.HRz6RTDjiiO2KBOcSQ-n2Nx4OYV-sZiE2Fe14k17X0xxsp4vSZfIV4uZwoI8jlTr_vZ4xCvpQWGXWTjDLTAlMK1eGwCx6PCfgyx5QR5-x2VuyqKJTe3F9rURNwEtLrajWPEdxy_U0hmphayh2z9ysejQRck0peodPmC6ayopDxcdKtxhBEaiIY4qRHVwyTJvtd33tkUtv01LO3CkhBijawbuRgo6wV76bOpBl_EvCyw.c62srLR4fVHP_YYvXHVADZNC4JmVCHmtwLsS6lcc8CI&dib_tag=se&keywords=the%2Bsims%2B3%2Bshowtime&qid=1718753445&sprefix=the%2Bsims%2B3%2Bshowtime%2Caps%2C198&sr=8-4&th=1&linkCode=ll1&tag=ts3tools-20&linkId=0bfb744aff5ae1cc4f8cee6f8642fbb0&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+showtime+dvd&_sacat=0&_odkw=sims+3+pets+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
 
-            // N("Showtime: Katy Perry Collector's Edition", I.EP06CE, RetailVendors(amazon: "https://www.amazon.com/Sims-Showtime-Perry-Collectors-Download/dp/B0050SYZX0?crid=1VLYRNFYC3PRB&dib=eyJ2IjoiMSJ9.1VSz13Xfuxs2u7of8wmNLsb9wbKbdqTGNmUaXoVBPfDGjHj071QN20LucGBJIEps.f4qoa8G5K6wZpsSJYq4cq4zsHC4Bd3f_D3m86pXGlVE&dib_tag=se&keywords=Showtime%3A%2BKaty%2BPerry%2BCollector%27s%2BEdition&qid=1718753531&sprefix=showtime%2Bkaty%2Bperry%2Bcollector%27s%2Bedition%2Caps%2C172&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=ee279e4ff037f2932808c32d72b5fbe1&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Showtime%3A+Katy+Perry+Collector%27s+Edition+dvd&_sacat=0&_odkw=sims+3+showtime+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "ShowtimeCE", "Showtime: Katy Perry Collector's Edition"), I.EP06CE, RetailVendors(amazon: "https://www.amazon.com/Sims-Showtime-Perry-Collectors-Download/dp/B0050SYZX0?crid=1VLYRNFYC3PRB&dib=eyJ2IjoiMSJ9.1VSz13Xfuxs2u7of8wmNLsb9wbKbdqTGNmUaXoVBPfDGjHj071QN20LucGBJIEps.f4qoa8G5K6wZpsSJYq4cq4zsHC4Bd3f_D3m86pXGlVE&dib_tag=se&keywords=Showtime%3A%2BKaty%2BPerry%2BCollector%27s%2BEdition&qid=1718753531&sprefix=showtime%2Bkaty%2Bperry%2Bcollector%27s%2Bedition%2Caps%2C172&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=ee279e4ff037f2932808c32d72b5fbe1&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Showtime%3A+Katy+Perry+Collector%27s+Edition+dvd&_sacat=0&_odkw=sims+3+showtime+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
                         new BuyTreeNode
                         {
-                            Label = "Showtime: Katy Perry Collector's Edition",
+                            Label = LanguageManager.Get("BuyTS3", "ShowtimeCE", "Showtime: Katy Perry Collector's Edition"),
                             Icon = LoadIcon(I.EP06CE),
-                            Message = "Showtime: Katy Perry Collector's Edition is no longer sold or produced, and therefore " +
-                          "usually comes with a hefty price tag. It may also often be out of stock.",
+                            Message = LanguageManager.Get("BuyTS3", "ShowtimeCE_2", "Showtime: Katy Perry Collector's Edition is no longer sold or produced, and therefore usually comes with a hefty price tag. It may also often be out of stock."),
                             Children = { RetailVendors(amazon: "https://www.amazon.com/Sims-Showtime-Perry-Collectors-Download/dp/B0050SYZX0?crid=1VLYRNFYC3PRB&dib=eyJ2IjoiMSJ9.1VSz13Xfuxs2u7of8wmNLsb9wbKbdqTGNmUaXoVBPfDGjHj071QN20LucGBJIEps.f4qoa8G5K6wZpsSJYq4cq4zsHC4Bd3f_D3m86pXGlVE&dib_tag=se&keywords=Showtime%3A%2BKaty%2BPerry%2BCollector%27s%2BEdition&qid=1718753531&sprefix=showtime%2Bkaty%2Bperry%2Bcollector%27s%2Bedition%2Caps%2C172&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=ee279e4ff037f2932808c32d72b5fbe1&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Showtime%3A+Katy+Perry+Collector%27s+Edition+dvd&_sacat=0&_odkw=sims+3+showtime+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1") }
                         },
 
-            N("Supernatural",       I.EP07,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Supernatural-windows/dp/B008AT68UE?crid=1UZN84P0VOVYV&dib=eyJ2IjoiMSJ9.bbjiy_Ss7ZNlyartq9vipryxvnaOUwqiI6vHBk2CF7wjmF32exVHII_gSPFNcMeL98dPT5kb2VyWq6kYNy9oZbkEjB1hH5Ogitl1wggdyaCl1vWNZ9Jjpbgqsw7asXsf62m62FaUIeWbnJGfqs9NYr21K22xrKmHJ44fkvL7mgx_RnyQJ2bn-Y2sRI83SYokIPAV0mkGwCASo8yJr9lY0OTM-sZ4mDA652Fuo03gl7o.ooOv2fCHwQr34azqIsTh9jpQcekZdpDZD2Jq9UA9ajQ&dib_tag=se&keywords=sims%2B3%2Bsupernatural&qid=1718753658&sprefix=sims%2B3%2Bsuperna%2Caps%2C186&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=e73ca4de7ccfc8cdbb3124af9ff0cf11&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+supernatural+dvd&_sacat=0&_odkw=sims+3+Showtime%3A+Katy+Perry+Collector%27s+Edition+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Seasons",            I.EP08,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Seasons-windows/dp/B008QLUTHO?crid=1A1BR01EWV05S&dib=eyJ2IjoiMSJ9.LE44tkLfUqtGtULYxzrDyIM6LYb53MYfNppGEXkLPKJCeLULdwK2rp0_COz7S66-YMj0ZPbuJP7bzABLxX0sqSHPvjK3MN8xxs8Ft0lcJVU4EYqs7kPiA0tFb70bCJHRXECO53QBhcK29_oba9qTSUmGQrl3MNsa6nFFw_T_-HDTzvIrtJRCGiEGWcn6PC_ytK-qgKvyMI7aUFR0ibMuvo2Rizn55skrRvuwu2sUImg.gBdoNPJ5aq4QPuLfFektp84xTLguZZ-AqXVCinFLGBs&dib_tag=se&keywords=sims%2B3%2Bseasons&qid=1718753824&sprefix=sims%2B3%2Bseasons%2Caps%2C192&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=07ed57c375c8e92b24881d6e7aa6b380&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+seasons+dvd&_sacat=0&_odkw=sims+3+supernatural+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("University Life",    I.EP09,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-University-Life-windows/dp/B00A39IEMY?crid=1PANRVMOXTB2H&dib=eyJ2IjoiMSJ9.5RC6UHRNy05TXmgrcSfWB1oq2Im5qafm2Vcf_8pWcG9btR2lMjUCwVB4ukjH1_eupop-iOtUmLXcuX12H9g_5CyGpaunulIAyChW1uHnh5YiMkYT42t9xkS_7ZKSzymHxRS3I17uu2u5MmROinUzoTpYuHNJOnWUhMlUgWq3JwPjOpN71gRjNUp4Cgft00mtwF8ZvNvHFACc_o7hcWhduqe5adesydYZJG_mbe7PL0M.4ZhTGXcWrz1-ZspDaQaVs-g6dIwoSVSQPQj6qbJOawc&dib_tag=se&keywords=sims%2B3%2Buniversity%2Blife&qid=1718753905&sprefix=sims%2B3%2Buni%2Caps%2C187&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=56f765fc408b5e835927cf9653516d4f&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+university+life+dvd&_sacat=0&_odkw=sims+3+seasons+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Island Paradise",    I.EP10,   RetailVendors(amazon: "https://www.amazon.com/Sims-Island-Paradise-PC-Mac/dp/B00BGGIWZM?crid=JMFX8CZTTUVI&dib=eyJ2IjoiMSJ9.VnSEEI3ZRs-7oeph1FyAyK8m4ozwdU6bU_YJSUpVz-EHxctu_QvYwYzEKfbYB4eJkiMRLq9Vgn001jmkTI3-GaksWLoriS93OI7YzkbjnhP46LDIhGubDKkjtez1DEx39lLXcMlzT0ovDNudJYzzRWTblcwH5AZVTexCb-VvxS7KxiHdwvfrPVJhTiHTD8tG.mYFPES-frmqkTk5RbLIW93SeT8WuiztwQ8EVHt5l_Tk&dib_tag=se&keywords=sims%2B3%2Bisland%2Bparadise&qid=1718753975&sprefix=sims%2B3%2Bisland%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=35d2bdaa0e4a69c2acb079a98d9ee782&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+island+paradise+dvd&_sacat=0&_odkw=sims+3+university+life+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Into The Future",    I.EP11,   RetailVendors(amazon: "https://www.amazon.com/Sims-Into-Future-PC-Mac/dp/B00CTKHYEE?crid=29R829HKBIIOT&dib=eyJ2IjoiMSJ9.Uj3XbQIcTHwf_NGdVXRm2Y9HEsQ0h35KsqgQdlvjaQ9ah41gwRGqMXr1x-JA2k1m_8UoTtfr7AJh8jp7o2E4LsrJHq5DUWhEs2eb_TzTYjwv3Tlp8_PtRerh2ppwrFYAoU5mFO-WfC4xr3HJ3BQ6BZI1_HIuXfHLnQo-yvkIqlY.dEQUqp9TrHXtP2YAuqm9G1g__CZwZk3YkmhFAdc21Xs&dib_tag=se&keywords=sims%2B3%2Binto%2Bthe%2Bfuture&qid=1718754058&sprefix=sims%2B3%2Binto%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=0212e9901681e53de73944fb7c4e8266&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+into+the+future+dvd&_sacat=0&_odkw=sims+3+island+paradise+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")));
+            N(LanguageManager.Get("BuyTS3", "", "Supernatural"), I.EP07,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Supernatural-windows/dp/B008AT68UE?crid=1UZN84P0VOVYV&dib=eyJ2IjoiMSJ9.bbjiy_Ss7ZNlyartq9vipryxvnaOUwqiI6vHBk2CF7wjmF32exVHII_gSPFNcMeL98dPT5kb2VyWq6kYNy9oZbkEjB1hH5Ogitl1wggdyaCl1vWNZ9Jjpbgqsw7asXsf62m62FaUIeWbnJGfqs9NYr21K22xrKmHJ44fkvL7mgx_RnyQJ2bn-Y2sRI83SYokIPAV0mkGwCASo8yJr9lY0OTM-sZ4mDA652Fuo03gl7o.ooOv2fCHwQr34azqIsTh9jpQcekZdpDZD2Jq9UA9ajQ&dib_tag=se&keywords=sims%2B3%2Bsupernatural&qid=1718753658&sprefix=sims%2B3%2Bsuperna%2Caps%2C186&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=e73ca4de7ccfc8cdbb3124af9ff0cf11&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+supernatural+dvd&_sacat=0&_odkw=sims+3+Showtime%3A+Katy+Perry+Collector%27s+Edition+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "", "Seasons"), I.EP08,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Seasons-windows/dp/B008QLUTHO?crid=1A1BR01EWV05S&dib=eyJ2IjoiMSJ9.LE44tkLfUqtGtULYxzrDyIM6LYb53MYfNppGEXkLPKJCeLULdwK2rp0_COz7S66-YMj0ZPbuJP7bzABLxX0sqSHPvjK3MN8xxs8Ft0lcJVU4EYqs7kPiA0tFb70bCJHRXECO53QBhcK29_oba9qTSUmGQrl3MNsa6nFFw_T_-HDTzvIrtJRCGiEGWcn6PC_ytK-qgKvyMI7aUFR0ibMuvo2Rizn55skrRvuwu2sUImg.gBdoNPJ5aq4QPuLfFektp84xTLguZZ-AqXVCinFLGBs&dib_tag=se&keywords=sims%2B3%2Bseasons&qid=1718753824&sprefix=sims%2B3%2Bseasons%2Caps%2C192&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=07ed57c375c8e92b24881d6e7aa6b380&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+seasons+dvd&_sacat=0&_odkw=sims+3+supernatural+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "", "University Life"), I.EP09,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-University-Life-windows/dp/B00A39IEMY?crid=1PANRVMOXTB2H&dib=eyJ2IjoiMSJ9.5RC6UHRNy05TXmgrcSfWB1oq2Im5qafm2Vcf_8pWcG9btR2lMjUCwVB4ukjH1_eupop-iOtUmLXcuX12H9g_5CyGpaunulIAyChW1uHnh5YiMkYT42t9xkS_7ZKSzymHxRS3I17uu2u5MmROinUzoTpYuHNJOnWUhMlUgWq3JwPjOpN71gRjNUp4Cgft00mtwF8ZvNvHFACc_o7hcWhduqe5adesydYZJG_mbe7PL0M.4ZhTGXcWrz1-ZspDaQaVs-g6dIwoSVSQPQj6qbJOawc&dib_tag=se&keywords=sims%2B3%2Buniversity%2Blife&qid=1718753905&sprefix=sims%2B3%2Buni%2Caps%2C187&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=56f765fc408b5e835927cf9653516d4f&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+university+life+dvd&_sacat=0&_odkw=sims+3+seasons+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "", "Island Paradise"), I.EP10,   RetailVendors(amazon: "https://www.amazon.com/Sims-Island-Paradise-PC-Mac/dp/B00BGGIWZM?crid=JMFX8CZTTUVI&dib=eyJ2IjoiMSJ9.VnSEEI3ZRs-7oeph1FyAyK8m4ozwdU6bU_YJSUpVz-EHxctu_QvYwYzEKfbYB4eJkiMRLq9Vgn001jmkTI3-GaksWLoriS93OI7YzkbjnhP46LDIhGubDKkjtez1DEx39lLXcMlzT0ovDNudJYzzRWTblcwH5AZVTexCb-VvxS7KxiHdwvfrPVJhTiHTD8tG.mYFPES-frmqkTk5RbLIW93SeT8WuiztwQ8EVHt5l_Tk&dib_tag=se&keywords=sims%2B3%2Bisland%2Bparadise&qid=1718753975&sprefix=sims%2B3%2Bisland%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=35d2bdaa0e4a69c2acb079a98d9ee782&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+island+paradise+dvd&_sacat=0&_odkw=sims+3+university+life+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "", "Into The Future"), I.EP11,   RetailVendors(amazon: "https://www.amazon.com/Sims-Into-Future-PC-Mac/dp/B00CTKHYEE?crid=29R829HKBIIOT&dib=eyJ2IjoiMSJ9.Uj3XbQIcTHwf_NGdVXRm2Y9HEsQ0h35KsqgQdlvjaQ9ah41gwRGqMXr1x-JA2k1m_8UoTtfr7AJh8jp7o2E4LsrJHq5DUWhEs2eb_TzTYjwv3Tlp8_PtRerh2ppwrFYAoU5mFO-WfC4xr3HJ3BQ6BZI1_HIuXfHLnQo-yvkIqlY.dEQUqp9TrHXtP2YAuqm9G1g__CZwZk3YkmhFAdc21Xs&dib_tag=se&keywords=sims%2B3%2Binto%2Bthe%2Bfuture&qid=1718754058&sprefix=sims%2B3%2Binto%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=0212e9901681e53de73944fb7c4e8266&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+into+the+future+dvd&_sacat=0&_odkw=sims+3+island+paradise+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")));
 
     // ── Stuff Packs (Retail) ──────────────────────────────────────────────────
 
     private static BuyTreeNode BuildStuffPacksRetail() =>
         N("Stuff Packs", I.SPs,
-            N("High-End Loft Stuff",   I.SP01, RetailVendors(amazon: "https://www.amazon.com/Sims-High-End-Loft-Stuff-PC/dp/B002WF12XK/ref=sr_1_1?sr=8-1", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+high+end+loft+stuff+dvd&_sacat=0&_odkw=sims+3+into+the+future+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Fast Lane Stuff",       I.SP02, RetailVendors(amazon: "https://www.amazon.com/Sims-Fast-Lane-Stuff-PC-Mac/dp/B003TS6Q8A?crid=1QFU39K17AF04&dib=eyJ2IjoiMSJ9.jYylht-k6MhafIfKfv3SFQYCIoIaCZaKfMZ2BjHZeJ2gd1gzOZXB6ZkEfGGutY1s3R0wqlZal-PtPOsGNb8mxQ.8pH7D5_01IZhMngWu7XHEp3uTE8CyEJ3KBKmWqS-hps&dib_tag=se&keywords=sims%2B3%2Bfast%2Blane%2Bstuff&qid=1718754233&sprefix=sims%2B3%2BFast%2Caps%2C191&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=245cadd42a74f812a85244541be59329&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+fast+lane+stuff+dvd&_sacat=0&_odkw=sims+3+high+end+loft+stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "HELStuff", "High-End Loft Stuff"),   I.SP01, RetailVendors(amazon: "https://www.amazon.com/Sims-High-End-Loft-Stuff-PC/dp/B002WF12XK/ref=sr_1_1?sr=8-1", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+high+end+loft+stuff+dvd&_sacat=0&_odkw=sims+3+into+the+future+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "FLStuff", "Fast Lane Stuff"),       I.SP02, RetailVendors(amazon: "https://www.amazon.com/Sims-Fast-Lane-Stuff-PC-Mac/dp/B003TS6Q8A?crid=1QFU39K17AF04&dib=eyJ2IjoiMSJ9.jYylht-k6MhafIfKfv3SFQYCIoIaCZaKfMZ2BjHZeJ2gd1gzOZXB6ZkEfGGutY1s3R0wqlZal-PtPOsGNb8mxQ.8pH7D5_01IZhMngWu7XHEp3uTE8CyEJ3KBKmWqS-hps&dib_tag=se&keywords=sims%2B3%2Bfast%2Blane%2Bstuff&qid=1718754233&sprefix=sims%2B3%2BFast%2Caps%2C191&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=245cadd42a74f812a85244541be59329&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+fast+lane+stuff+dvd&_sacat=0&_odkw=sims+3+high+end+loft+stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
             N("Outdoor Living Stuff",  I.SP03, RetailVendors(amazon: "https://www.amazon.com/Sims-Outdoor-Living-Stuff-PC-Mac/dp/B004DU0XHI?crid=37EM48I9DVCHP&dib=eyJ2IjoiMSJ9.AGSFcMNRyS6DomoU9cfY7NxYyCPLOKMXuXpUK10CIadVWB_peXRGlaei9bTdG4Xnd2gAKekyGAqhc8zCP5NDDfDfcEGwm45Fes8oLiLuRRU.HtTPocs7iK21mFqOXAjCYHu2dstzYow2NMcE4y9QF3s&dib_tag=se&keywords=sims%2B3%2BOutdoor%2BLiving%2BStuff&qid=1718754324&sprefix=sims%2B3%2Boutdoor%2Bliving%2Bstuff%2Caps%2C194&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=351b605cf9f04fa9987e24c5c81b712b&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Outdoor+Living+Stuff+dvd&_sacat=0&_odkw=sims+3+fast+lane+stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
             N("Town Life Stuff",       I.SP04, RetailVendors(amazon: "https://www.amazon.com/Sims-Town-Life-Stuff-PC-Mac/dp/B0051MRVHW?crid=10A8V1U4U4DG2&dib=eyJ2IjoiMSJ9.hxPnOtRyFXxe3og72hQa7qJt2DnibFPQ_e1J_cos9IgoOfWijyw-Y47JfRhKN9jwEgdkya4fqUW5jLsS3kJLqx2lqhjIZ6vU8QHLYB8MCRHPTTdWZCAPLAoU_tzxiSrpt3FhkrK3ORQ0Q2xjrZh0TGoSsLd-0IZHQ-zW4hcUt6DDv-cPTgOSBBswOovnNlqEhg_T4XsyMQrgqEV3RxBg9peuXRV9kWORzG8FdITMPu4.RyAEGaAlXYGn8cC_1ydcWp8y3LnQzGVrtx0JW2S_XlM&dib_tag=se&keywords=sims%2B3%2BTown%2BLife%2BStuff&qid=1718754406&sprefix=sims%2B3%2Btown%2Blife%2Bstuff%2Caps%2C221&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=5076c41334af6c4c4b1e297c787792af&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Town+Life+Stuff+dvd&_sacat=0&_odkw=sims+3+Outdoor+Living+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
             N("Master Suite Stuff",    I.SP05, RetailVendors(amazon: "https://www.amazon.com/Sims-Master-Suite-Stuff-Download/dp/B006FBFNBE?crid=2MUB9WXL2CT89&dib=eyJ2IjoiMSJ9.ilzsowVEDd4pf1ILXw9KrjGoPTeWLcJZ_RzrmwWSRO_0bFaSFq1KEu1IclFG6nhHxJ2iAUNTNAJ5jZPA8gX2p8pMoP1A0RLslpRxe9NxJHE.CW5h-pw8Dg4T1fFSjYpK1mqZg_jQiFXlhPFCXp6RnAk&dib_tag=se&keywords=sims%2B3%2BMaster%2BSuite%2BStuff&qid=1718754487&sprefix=sims%2B3%2Bmaster%2Bsuite%2Bstuff%2Caps%2C196&sr=8-2&th=1&linkCode=ll1&tag=ts3tools-20&linkId=e2f6a900d131a9502fd7f61cf397f164&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Master+Suite+Stuff+dvd&_sacat=0&_odkw=sims+3+Town+Life+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
