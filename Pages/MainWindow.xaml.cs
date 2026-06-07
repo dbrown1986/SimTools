@@ -1892,11 +1892,14 @@ namespace SimTools
 
             // ── Pirated Store Warning ──────────────────────────────────────────────
             var store_piracy = new MenuItem { Header = LanguageManager.Get("Main", "StorePiracyWarning", "Store Piracy Warning") };
-            MessageBox.Show(
-                    LanguageManager.Get("Main", "StorePiracy", "A great deal has changed between versions."),
-                    LanguageManager.Get("Main", "StorePiracy_Title", "Watch the Video Guide!"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+            store_piracy.Click += (_, _) =>
+            {
+                MessageBox.Show(
+                        LanguageManager.Get("Main", "StorePiracy", "If you are using any of the complete store pirated releases (FitGirl, Phantom99, nausallien, etc etc). It is reccommended you do not install any of the store content as this may break your store or the game. As always, you're encouraged to purchase legitimately."),
+                        LanguageManager.Get("Main", "StorePiracy_Title", "Store Piracy Warning"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+            };
             contextMenu.Items.Add(store_piracy);
 
             // ── The Sims 3 Store ──────────────────────────────────────────────
