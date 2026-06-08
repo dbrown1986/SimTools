@@ -732,7 +732,7 @@ public partial class BuyTS3 : Window
     // ── SimCity (2013) ────────────────────────────────────────────────────────
 
     private static BuyTreeNode BuildSC2013() =>
-        N("SimCity 2013", I.SC2013,
+        N(LanguageManager.Get("BuyTS3", "SC2013", "SimCity 2013"), I.SC2013,
             Official(
                 ea:    "https://www.ea.com/en/games/simcity/simcity",
                 steam: null,
@@ -799,11 +799,11 @@ public partial class BuyTS3 : Window
                             Children = { RetailVendors(amazon: "https://www.amazon.com/Sims-Showtime-Perry-Collectors-Download/dp/B0050SYZX0?crid=1VLYRNFYC3PRB&dib=eyJ2IjoiMSJ9.1VSz13Xfuxs2u7of8wmNLsb9wbKbdqTGNmUaXoVBPfDGjHj071QN20LucGBJIEps.f4qoa8G5K6wZpsSJYq4cq4zsHC4Bd3f_D3m86pXGlVE&dib_tag=se&keywords=Showtime%3A%2BKaty%2BPerry%2BCollector%27s%2BEdition&qid=1718753531&sprefix=showtime%2Bkaty%2Bperry%2Bcollector%27s%2Bedition%2Caps%2C172&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=ee279e4ff037f2932808c32d72b5fbe1&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Showtime%3A+Katy+Perry+Collector%27s+Edition+dvd&_sacat=0&_odkw=sims+3+showtime+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1") }
                         },
 
-            N(LanguageManager.Get("BuyTS3", "", "Supernatural"), I.EP07,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Supernatural-windows/dp/B008AT68UE?crid=1UZN84P0VOVYV&dib=eyJ2IjoiMSJ9.bbjiy_Ss7ZNlyartq9vipryxvnaOUwqiI6vHBk2CF7wjmF32exVHII_gSPFNcMeL98dPT5kb2VyWq6kYNy9oZbkEjB1hH5Ogitl1wggdyaCl1vWNZ9Jjpbgqsw7asXsf62m62FaUIeWbnJGfqs9NYr21K22xrKmHJ44fkvL7mgx_RnyQJ2bn-Y2sRI83SYokIPAV0mkGwCASo8yJr9lY0OTM-sZ4mDA652Fuo03gl7o.ooOv2fCHwQr34azqIsTh9jpQcekZdpDZD2Jq9UA9ajQ&dib_tag=se&keywords=sims%2B3%2Bsupernatural&qid=1718753658&sprefix=sims%2B3%2Bsuperna%2Caps%2C186&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=e73ca4de7ccfc8cdbb3124af9ff0cf11&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+supernatural+dvd&_sacat=0&_odkw=sims+3+Showtime%3A+Katy+Perry+Collector%27s+Edition+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N(LanguageManager.Get("BuyTS3", "", "Seasons"), I.EP08,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Seasons-windows/dp/B008QLUTHO?crid=1A1BR01EWV05S&dib=eyJ2IjoiMSJ9.LE44tkLfUqtGtULYxzrDyIM6LYb53MYfNppGEXkLPKJCeLULdwK2rp0_COz7S66-YMj0ZPbuJP7bzABLxX0sqSHPvjK3MN8xxs8Ft0lcJVU4EYqs7kPiA0tFb70bCJHRXECO53QBhcK29_oba9qTSUmGQrl3MNsa6nFFw_T_-HDTzvIrtJRCGiEGWcn6PC_ytK-qgKvyMI7aUFR0ibMuvo2Rizn55skrRvuwu2sUImg.gBdoNPJ5aq4QPuLfFektp84xTLguZZ-AqXVCinFLGBs&dib_tag=se&keywords=sims%2B3%2Bseasons&qid=1718753824&sprefix=sims%2B3%2Bseasons%2Caps%2C192&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=07ed57c375c8e92b24881d6e7aa6b380&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+seasons+dvd&_sacat=0&_odkw=sims+3+supernatural+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N(LanguageManager.Get("BuyTS3", "", "University Life"), I.EP09,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-University-Life-windows/dp/B00A39IEMY?crid=1PANRVMOXTB2H&dib=eyJ2IjoiMSJ9.5RC6UHRNy05TXmgrcSfWB1oq2Im5qafm2Vcf_8pWcG9btR2lMjUCwVB4ukjH1_eupop-iOtUmLXcuX12H9g_5CyGpaunulIAyChW1uHnh5YiMkYT42t9xkS_7ZKSzymHxRS3I17uu2u5MmROinUzoTpYuHNJOnWUhMlUgWq3JwPjOpN71gRjNUp4Cgft00mtwF8ZvNvHFACc_o7hcWhduqe5adesydYZJG_mbe7PL0M.4ZhTGXcWrz1-ZspDaQaVs-g6dIwoSVSQPQj6qbJOawc&dib_tag=se&keywords=sims%2B3%2Buniversity%2Blife&qid=1718753905&sprefix=sims%2B3%2Buni%2Caps%2C187&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=56f765fc408b5e835927cf9653516d4f&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+university+life+dvd&_sacat=0&_odkw=sims+3+seasons+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N(LanguageManager.Get("BuyTS3", "", "Island Paradise"), I.EP10,   RetailVendors(amazon: "https://www.amazon.com/Sims-Island-Paradise-PC-Mac/dp/B00BGGIWZM?crid=JMFX8CZTTUVI&dib=eyJ2IjoiMSJ9.VnSEEI3ZRs-7oeph1FyAyK8m4ozwdU6bU_YJSUpVz-EHxctu_QvYwYzEKfbYB4eJkiMRLq9Vgn001jmkTI3-GaksWLoriS93OI7YzkbjnhP46LDIhGubDKkjtez1DEx39lLXcMlzT0ovDNudJYzzRWTblcwH5AZVTexCb-VvxS7KxiHdwvfrPVJhTiHTD8tG.mYFPES-frmqkTk5RbLIW93SeT8WuiztwQ8EVHt5l_Tk&dib_tag=se&keywords=sims%2B3%2Bisland%2Bparadise&qid=1718753975&sprefix=sims%2B3%2Bisland%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=35d2bdaa0e4a69c2acb079a98d9ee782&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+island+paradise+dvd&_sacat=0&_odkw=sims+3+university+life+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N(LanguageManager.Get("BuyTS3", "", "Into The Future"), I.EP11,   RetailVendors(amazon: "https://www.amazon.com/Sims-Into-Future-PC-Mac/dp/B00CTKHYEE?crid=29R829HKBIIOT&dib=eyJ2IjoiMSJ9.Uj3XbQIcTHwf_NGdVXRm2Y9HEsQ0h35KsqgQdlvjaQ9ah41gwRGqMXr1x-JA2k1m_8UoTtfr7AJh8jp7o2E4LsrJHq5DUWhEs2eb_TzTYjwv3Tlp8_PtRerh2ppwrFYAoU5mFO-WfC4xr3HJ3BQ6BZI1_HIuXfHLnQo-yvkIqlY.dEQUqp9TrHXtP2YAuqm9G1g__CZwZk3YkmhFAdc21Xs&dib_tag=se&keywords=sims%2B3%2Binto%2Bthe%2Bfuture&qid=1718754058&sprefix=sims%2B3%2Binto%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=0212e9901681e53de73944fb7c4e8266&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+into+the+future+dvd&_sacat=0&_odkw=sims+3+island+paradise+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")));
+            N(LanguageManager.Get("BuyTS3", "Supernatural", "Supernatural"), I.EP07,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Supernatural-windows/dp/B008AT68UE?crid=1UZN84P0VOVYV&dib=eyJ2IjoiMSJ9.bbjiy_Ss7ZNlyartq9vipryxvnaOUwqiI6vHBk2CF7wjmF32exVHII_gSPFNcMeL98dPT5kb2VyWq6kYNy9oZbkEjB1hH5Ogitl1wggdyaCl1vWNZ9Jjpbgqsw7asXsf62m62FaUIeWbnJGfqs9NYr21K22xrKmHJ44fkvL7mgx_RnyQJ2bn-Y2sRI83SYokIPAV0mkGwCASo8yJr9lY0OTM-sZ4mDA652Fuo03gl7o.ooOv2fCHwQr34azqIsTh9jpQcekZdpDZD2Jq9UA9ajQ&dib_tag=se&keywords=sims%2B3%2Bsupernatural&qid=1718753658&sprefix=sims%2B3%2Bsuperna%2Caps%2C186&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=e73ca4de7ccfc8cdbb3124af9ff0cf11&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+supernatural+dvd&_sacat=0&_odkw=sims+3+Showtime%3A+Katy+Perry+Collector%27s+Edition+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "Seasons", "Seasons"), I.EP08,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-Seasons-windows/dp/B008QLUTHO?crid=1A1BR01EWV05S&dib=eyJ2IjoiMSJ9.LE44tkLfUqtGtULYxzrDyIM6LYb53MYfNppGEXkLPKJCeLULdwK2rp0_COz7S66-YMj0ZPbuJP7bzABLxX0sqSHPvjK3MN8xxs8Ft0lcJVU4EYqs7kPiA0tFb70bCJHRXECO53QBhcK29_oba9qTSUmGQrl3MNsa6nFFw_T_-HDTzvIrtJRCGiEGWcn6PC_ytK-qgKvyMI7aUFR0ibMuvo2Rizn55skrRvuwu2sUImg.gBdoNPJ5aq4QPuLfFektp84xTLguZZ-AqXVCinFLGBs&dib_tag=se&keywords=sims%2B3%2Bseasons&qid=1718753824&sprefix=sims%2B3%2Bseasons%2Caps%2C192&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=07ed57c375c8e92b24881d6e7aa6b380&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+seasons+dvd&_sacat=0&_odkw=sims+3+supernatural+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "University", "University Life"), I.EP09,   RetailVendors(amazon: "https://www.amazon.com/Sims-3-University-Life-windows/dp/B00A39IEMY?crid=1PANRVMOXTB2H&dib=eyJ2IjoiMSJ9.5RC6UHRNy05TXmgrcSfWB1oq2Im5qafm2Vcf_8pWcG9btR2lMjUCwVB4ukjH1_eupop-iOtUmLXcuX12H9g_5CyGpaunulIAyChW1uHnh5YiMkYT42t9xkS_7ZKSzymHxRS3I17uu2u5MmROinUzoTpYuHNJOnWUhMlUgWq3JwPjOpN71gRjNUp4Cgft00mtwF8ZvNvHFACc_o7hcWhduqe5adesydYZJG_mbe7PL0M.4ZhTGXcWrz1-ZspDaQaVs-g6dIwoSVSQPQj6qbJOawc&dib_tag=se&keywords=sims%2B3%2Buniversity%2Blife&qid=1718753905&sprefix=sims%2B3%2Buni%2Caps%2C187&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=56f765fc408b5e835927cf9653516d4f&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+university+life+dvd&_sacat=0&_odkw=sims+3+seasons+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "IslandParadise", "Island Paradise"), I.EP10,   RetailVendors(amazon: "https://www.amazon.com/Sims-Island-Paradise-PC-Mac/dp/B00BGGIWZM?crid=JMFX8CZTTUVI&dib=eyJ2IjoiMSJ9.VnSEEI3ZRs-7oeph1FyAyK8m4ozwdU6bU_YJSUpVz-EHxctu_QvYwYzEKfbYB4eJkiMRLq9Vgn001jmkTI3-GaksWLoriS93OI7YzkbjnhP46LDIhGubDKkjtez1DEx39lLXcMlzT0ovDNudJYzzRWTblcwH5AZVTexCb-VvxS7KxiHdwvfrPVJhTiHTD8tG.mYFPES-frmqkTk5RbLIW93SeT8WuiztwQ8EVHt5l_Tk&dib_tag=se&keywords=sims%2B3%2Bisland%2Bparadise&qid=1718753975&sprefix=sims%2B3%2Bisland%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=35d2bdaa0e4a69c2acb079a98d9ee782&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+island+paradise+dvd&_sacat=0&_odkw=sims+3+university+life+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "ITFuture", "Into The Future"), I.EP11,   RetailVendors(amazon: "https://www.amazon.com/Sims-Into-Future-PC-Mac/dp/B00CTKHYEE?crid=29R829HKBIIOT&dib=eyJ2IjoiMSJ9.Uj3XbQIcTHwf_NGdVXRm2Y9HEsQ0h35KsqgQdlvjaQ9ah41gwRGqMXr1x-JA2k1m_8UoTtfr7AJh8jp7o2E4LsrJHq5DUWhEs2eb_TzTYjwv3Tlp8_PtRerh2ppwrFYAoU5mFO-WfC4xr3HJ3BQ6BZI1_HIuXfHLnQo-yvkIqlY.dEQUqp9TrHXtP2YAuqm9G1g__CZwZk3YkmhFAdc21Xs&dib_tag=se&keywords=sims%2B3%2Binto%2Bthe%2Bfuture&qid=1718754058&sprefix=sims%2B3%2Binto%2Caps%2C190&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=0212e9901681e53de73944fb7c4e8266&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+into+the+future+dvd&_sacat=0&_odkw=sims+3+island+paradise+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")));
 
     // ── Stuff Packs (Retail) ──────────────────────────────────────────────────
 
@@ -811,23 +811,22 @@ public partial class BuyTS3 : Window
         N("Stuff Packs", I.SPs,
             N(LanguageManager.Get("BuyTS3", "HELStuff", "High-End Loft Stuff"),   I.SP01, RetailVendors(amazon: "https://www.amazon.com/Sims-High-End-Loft-Stuff-PC/dp/B002WF12XK/ref=sr_1_1?sr=8-1", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+high+end+loft+stuff+dvd&_sacat=0&_odkw=sims+3+into+the+future+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
             N(LanguageManager.Get("BuyTS3", "FLStuff", "Fast Lane Stuff"),       I.SP02, RetailVendors(amazon: "https://www.amazon.com/Sims-Fast-Lane-Stuff-PC-Mac/dp/B003TS6Q8A?crid=1QFU39K17AF04&dib=eyJ2IjoiMSJ9.jYylht-k6MhafIfKfv3SFQYCIoIaCZaKfMZ2BjHZeJ2gd1gzOZXB6ZkEfGGutY1s3R0wqlZal-PtPOsGNb8mxQ.8pH7D5_01IZhMngWu7XHEp3uTE8CyEJ3KBKmWqS-hps&dib_tag=se&keywords=sims%2B3%2Bfast%2Blane%2Bstuff&qid=1718754233&sprefix=sims%2B3%2BFast%2Caps%2C191&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=245cadd42a74f812a85244541be59329&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+fast+lane+stuff+dvd&_sacat=0&_odkw=sims+3+high+end+loft+stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Outdoor Living Stuff",  I.SP03, RetailVendors(amazon: "https://www.amazon.com/Sims-Outdoor-Living-Stuff-PC-Mac/dp/B004DU0XHI?crid=37EM48I9DVCHP&dib=eyJ2IjoiMSJ9.AGSFcMNRyS6DomoU9cfY7NxYyCPLOKMXuXpUK10CIadVWB_peXRGlaei9bTdG4Xnd2gAKekyGAqhc8zCP5NDDfDfcEGwm45Fes8oLiLuRRU.HtTPocs7iK21mFqOXAjCYHu2dstzYow2NMcE4y9QF3s&dib_tag=se&keywords=sims%2B3%2BOutdoor%2BLiving%2BStuff&qid=1718754324&sprefix=sims%2B3%2Boutdoor%2Bliving%2Bstuff%2Caps%2C194&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=351b605cf9f04fa9987e24c5c81b712b&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Outdoor+Living+Stuff+dvd&_sacat=0&_odkw=sims+3+fast+lane+stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Town Life Stuff",       I.SP04, RetailVendors(amazon: "https://www.amazon.com/Sims-Town-Life-Stuff-PC-Mac/dp/B0051MRVHW?crid=10A8V1U4U4DG2&dib=eyJ2IjoiMSJ9.hxPnOtRyFXxe3og72hQa7qJt2DnibFPQ_e1J_cos9IgoOfWijyw-Y47JfRhKN9jwEgdkya4fqUW5jLsS3kJLqx2lqhjIZ6vU8QHLYB8MCRHPTTdWZCAPLAoU_tzxiSrpt3FhkrK3ORQ0Q2xjrZh0TGoSsLd-0IZHQ-zW4hcUt6DDv-cPTgOSBBswOovnNlqEhg_T4XsyMQrgqEV3RxBg9peuXRV9kWORzG8FdITMPu4.RyAEGaAlXYGn8cC_1ydcWp8y3LnQzGVrtx0JW2S_XlM&dib_tag=se&keywords=sims%2B3%2BTown%2BLife%2BStuff&qid=1718754406&sprefix=sims%2B3%2Btown%2Blife%2Bstuff%2Caps%2C221&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=5076c41334af6c4c4b1e297c787792af&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Town+Life+Stuff+dvd&_sacat=0&_odkw=sims+3+Outdoor+Living+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Master Suite Stuff",    I.SP05, RetailVendors(amazon: "https://www.amazon.com/Sims-Master-Suite-Stuff-Download/dp/B006FBFNBE?crid=2MUB9WXL2CT89&dib=eyJ2IjoiMSJ9.ilzsowVEDd4pf1ILXw9KrjGoPTeWLcJZ_RzrmwWSRO_0bFaSFq1KEu1IclFG6nhHxJ2iAUNTNAJ5jZPA8gX2p8pMoP1A0RLslpRxe9NxJHE.CW5h-pw8Dg4T1fFSjYpK1mqZg_jQiFXlhPFCXp6RnAk&dib_tag=se&keywords=sims%2B3%2BMaster%2BSuite%2BStuff&qid=1718754487&sprefix=sims%2B3%2Bmaster%2Bsuite%2Bstuff%2Caps%2C196&sr=8-2&th=1&linkCode=ll1&tag=ts3tools-20&linkId=e2f6a900d131a9502fd7f61cf397f164&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Master+Suite+Stuff+dvd&_sacat=0&_odkw=sims+3+Town+Life+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "OLStuff", "Outdoor Living Stuff"),  I.SP03, RetailVendors(amazon: "https://www.amazon.com/Sims-Outdoor-Living-Stuff-PC-Mac/dp/B004DU0XHI?crid=37EM48I9DVCHP&dib=eyJ2IjoiMSJ9.AGSFcMNRyS6DomoU9cfY7NxYyCPLOKMXuXpUK10CIadVWB_peXRGlaei9bTdG4Xnd2gAKekyGAqhc8zCP5NDDfDfcEGwm45Fes8oLiLuRRU.HtTPocs7iK21mFqOXAjCYHu2dstzYow2NMcE4y9QF3s&dib_tag=se&keywords=sims%2B3%2BOutdoor%2BLiving%2BStuff&qid=1718754324&sprefix=sims%2B3%2Boutdoor%2Bliving%2Bstuff%2Caps%2C194&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=351b605cf9f04fa9987e24c5c81b712b&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Outdoor+Living+Stuff+dvd&_sacat=0&_odkw=sims+3+fast+lane+stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "TLStuff", "Town Life Stuff"),       I.SP04, RetailVendors(amazon: "https://www.amazon.com/Sims-Town-Life-Stuff-PC-Mac/dp/B0051MRVHW?crid=10A8V1U4U4DG2&dib=eyJ2IjoiMSJ9.hxPnOtRyFXxe3og72hQa7qJt2DnibFPQ_e1J_cos9IgoOfWijyw-Y47JfRhKN9jwEgdkya4fqUW5jLsS3kJLqx2lqhjIZ6vU8QHLYB8MCRHPTTdWZCAPLAoU_tzxiSrpt3FhkrK3ORQ0Q2xjrZh0TGoSsLd-0IZHQ-zW4hcUt6DDv-cPTgOSBBswOovnNlqEhg_T4XsyMQrgqEV3RxBg9peuXRV9kWORzG8FdITMPu4.RyAEGaAlXYGn8cC_1ydcWp8y3LnQzGVrtx0JW2S_XlM&dib_tag=se&keywords=sims%2B3%2BTown%2BLife%2BStuff&qid=1718754406&sprefix=sims%2B3%2Btown%2Blife%2Bstuff%2Caps%2C221&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=5076c41334af6c4c4b1e297c787792af&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Town+Life+Stuff+dvd&_sacat=0&_odkw=sims+3+Outdoor+Living+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "MSStuff", "Master Suite Stuff"),    I.SP05, RetailVendors(amazon: "https://www.amazon.com/Sims-Master-Suite-Stuff-Download/dp/B006FBFNBE?crid=2MUB9WXL2CT89&dib=eyJ2IjoiMSJ9.ilzsowVEDd4pf1ILXw9KrjGoPTeWLcJZ_RzrmwWSRO_0bFaSFq1KEu1IclFG6nhHxJ2iAUNTNAJ5jZPA8gX2p8pMoP1A0RLslpRxe9NxJHE.CW5h-pw8Dg4T1fFSjYpK1mqZg_jQiFXlhPFCXp6RnAk&dib_tag=se&keywords=sims%2B3%2BMaster%2BSuite%2BStuff&qid=1718754487&sprefix=sims%2B3%2Bmaster%2Bsuite%2Bstuff%2Caps%2C196&sr=8-2&th=1&linkCode=ll1&tag=ts3tools-20&linkId=e2f6a900d131a9502fd7f61cf397f164&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Master+Suite+Stuff+dvd&_sacat=0&_odkw=sims+3+Town+Life+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
 
             // Discontinued — pops a warning when the node is selected
             new BuyTreeNode
             {
-                Label   = "Katy Perry's Sweet Treats",
+                Label   = LanguageManager.Get("BuyTS3", "KPSweetTreats", "Katy Perry's Sweet Treats"),
                 Icon    = LoadIcon(I.SP06),
-                Message = "Katy Perry's Sweet Treats is no longer sold or produced, and therefore " +
-                          "usually comes with a hefty price tag. It may also often be out of stock.",
+                Message = LanguageManager.Get("BuyTS3", "KPSTMessage", "Katy Perry's Sweet Treats is no longer sold or produced, and therefore usually comes with a hefty price tag. It may also often be out of stock."),
                 Children = { RetailVendors(amazon: "https://www.amazon.com/Sims-Katy-Perry-Sweet-Treats-windows/dp/B007NUQICE?crid=PEJNL5Y0V15Z&dib=eyJ2IjoiMSJ9.9_sl1tFKCH7pZAv1OZtT8l7F8N2vp2ZrKNiOPQeOYQHGjHj071QN20LucGBJIEps.DSTS1FvRfTVR4vGRuLEYKsi_prpxthFQ7WFzgm1jRsQ&dib_tag=se&keywords=sims+3+Katy+Perry%27s+Sweet+Treats&qid=1718754544&sprefix=sims+3+katy+perry%27s+sweet+treats%2Caps%2C188&sr=8-1&linkCode=ll1&tag=ts3tools-20&linkId=c58918ce6cab20cc3581541e5da9ff00&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Katy+Perry%27s+Sweet+Treats+dvd&_sacat=0&_odkw=sims+3+Master+Suite+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1") }
             },
 
-            N("Diesel Stuff",          I.SP07, RetailVendors(amazon: "https://www.amazon.com/Sims-3-Diesel-Stuff-windows/dp/B0081QBR7K?crid=3IM46TFYPM0F9&dib=eyJ2IjoiMSJ9.AXTpPhUDI2NLF2dLa5fTVvJh23EVkLezWxy09enK2HVa4DovD29NSvO1-KkDluYr.HW_Et6GQ19T1e_lUJAaQbkaRRuUq9MUB33m-5GCEG4w&dib_tag=se&keywords=sims+3+Diesel+Stuff&qid=1718754616&sprefix=sims+3+diesel+stuff%2Caps%2C204&sr=8-1&linkCode=ll1&tag=ts3tools-20&linkId=c8047ee3f6dfbc05e7ddf0cbeb5767d6&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Diesel+Stuff+dvd&_sacat=0&_odkw=sims+3+Katy+Perry%27s+Sweet+Treats+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("70s, 80s & 90s Stuff",  I.SP08, RetailVendors(amazon: "https://www.amazon.com/Sims-70s-80s-90s-Stuff-windows/dp/B00A39IEO2?crid=NPHFZHDEJH98&dib=eyJ2IjoiMSJ9.pAGKrn-NdS3BUC2WAIOzwcvKO48mTOEumFqFuSCYhbBVcO69y-S8SRa0LPOu6SCeJYptl6e94s-alPVx8V7ZaA.LDbgT5X88h8PDWSvIGsehCkkRBaV7al3Jln_h0UwNQk&dib_tag=se&keywords=sims%2B3%2B70s%2C%2B80s%2B%26%2B90s%2BStuff&qid=1718754696&sprefix=sims%2B3%2B70s%2C%2B80s%2B%26%2B90s%2Bstuff%2Caps%2C197&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=096c1ed2ee4e1779ea91b054d9b266c6&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+70s%2C+80s+%26+90s+Stuff+dvd&_sacat=0&_odkw=sims+3+Diesel+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
-            N("Movie Stuff",           I.SP09, RetailVendors(amazon: "https://www.amazon.com/Sims-3-Movie-Stuff-PC/dp/B00CTKHYIA?crid=173XXIH1II9WY&dib=eyJ2IjoiMSJ9.rsKZb57CnAdGNSCPbsYVI5Q4Okpzq68nRe5LO1GDHJ98SVcpZPS8ZUGOA8wXaR_PHxuiKJblh7F-kdM9gSPrOILVrE7lkdiGXUSAzGzOTHVm_rSkdmxZSBLmFrC_jIuFkKsS_vJd-iYFIeryoOFM2U8Yudq1IqxOYBYfJ7cp7PnCxhhCZDR2-p35QU4BjrzO.hVsJLbrmAAE9Z7LYRw1I1EaLhXbYIKIOAwyvbPedplw&dib_tag=se&keywords=sims+3+Movie+Stuff&qid=1718754798&sprefix=sims+3+movie+stuff%2Caps%2C198&sr=8-1&linkCode=ll1&tag=ts3tools-20&linkId=e5de8b06a57a13d5b2d69abd153493d2&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Movie+Stuff+dvd&_sacat=0&_odkw=sims+3+70s%2C+80s+%26+90s+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")));
+            N(LanguageManager.Get("BuyTS3", "DStuff", "Diesel Stuff"),          I.SP07, RetailVendors(amazon: "https://www.amazon.com/Sims-3-Diesel-Stuff-windows/dp/B0081QBR7K?crid=3IM46TFYPM0F9&dib=eyJ2IjoiMSJ9.AXTpPhUDI2NLF2dLa5fTVvJh23EVkLezWxy09enK2HVa4DovD29NSvO1-KkDluYr.HW_Et6GQ19T1e_lUJAaQbkaRRuUq9MUB33m-5GCEG4w&dib_tag=se&keywords=sims+3+Diesel+Stuff&qid=1718754616&sprefix=sims+3+diesel+stuff%2Caps%2C204&sr=8-1&linkCode=ll1&tag=ts3tools-20&linkId=c8047ee3f6dfbc05e7ddf0cbeb5767d6&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Diesel+Stuff+dvd&_sacat=0&_odkw=sims+3+Katy+Perry%27s+Sweet+Treats+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "789Stuff", "70s, 80s & 90s Stuff"),  I.SP08, RetailVendors(amazon: "https://www.amazon.com/Sims-70s-80s-90s-Stuff-windows/dp/B00A39IEO2?crid=NPHFZHDEJH98&dib=eyJ2IjoiMSJ9.pAGKrn-NdS3BUC2WAIOzwcvKO48mTOEumFqFuSCYhbBVcO69y-S8SRa0LPOu6SCeJYptl6e94s-alPVx8V7ZaA.LDbgT5X88h8PDWSvIGsehCkkRBaV7al3Jln_h0UwNQk&dib_tag=se&keywords=sims%2B3%2B70s%2C%2B80s%2B%26%2B90s%2BStuff&qid=1718754696&sprefix=sims%2B3%2B70s%2C%2B80s%2B%26%2B90s%2Bstuff%2Caps%2C197&sr=8-1&th=1&linkCode=ll1&tag=ts3tools-20&linkId=096c1ed2ee4e1779ea91b054d9b266c6&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+70s%2C+80s+%26+90s+Stuff+dvd&_sacat=0&_odkw=sims+3+Diesel+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")),
+            N(LanguageManager.Get("BuyTS3", "MStuff", "Movie Stuff"),           I.SP09, RetailVendors(amazon: "https://www.amazon.com/Sims-3-Movie-Stuff-PC/dp/B00CTKHYIA?crid=173XXIH1II9WY&dib=eyJ2IjoiMSJ9.rsKZb57CnAdGNSCPbsYVI5Q4Okpzq68nRe5LO1GDHJ98SVcpZPS8ZUGOA8wXaR_PHxuiKJblh7F-kdM9gSPrOILVrE7lkdiGXUSAzGzOTHVm_rSkdmxZSBLmFrC_jIuFkKsS_vJd-iYFIeryoOFM2U8Yudq1IqxOYBYfJ7cp7PnCxhhCZDR2-p35QU4BjrzO.hVsJLbrmAAE9Z7LYRw1I1EaLhXbYIKIOAwyvbPedplw&dib_tag=se&keywords=sims+3+Movie+Stuff&qid=1718754798&sprefix=sims+3+movie+stuff%2Caps%2C198&sr=8-1&linkCode=ll1&tag=ts3tools-20&linkId=e5de8b06a57a13d5b2d69abd153493d2&language=en_US&ref_=as_li_ss_tl", ebay: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=sims+3+Movie+Stuff+dvd&_sacat=0&_odkw=sims+3+70s%2C+80s+%26+90s+Stuff+dvd&_osacat=0&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339065309&customid=ts3tools&toolid=10001&mkevt=1")));
 
     // ── The Sims Medieval (Retail) ─────────────────────────────────────────────────
 
@@ -835,10 +834,9 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildSimsMedievalRetail() =>
         new()
         {
-            Label   = "The Sims: Medieval",
+            Label   = LanguageManager.Get("BuyTS3", "TSM1", "The Sims: Medieval"),
             Icon    = LoadIcon(I.SimsMedieval),
-            Message = "The Sims: Medieval is no longer sold or produced, and therefore " +
-                      "usually comes with a hefty price tag. It may also often be out of stock.",
+            Message = LanguageManager.Get("BuyTS3", "TSM2", "The Sims: Medieval is no longer sold or produced, and therefore usually comes with a hefty price tag. It may also often be out of stock."),
             Children =
             {
                 RetailVendors(
@@ -853,10 +851,9 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildSimsMedievalPNRetail() =>
         new()
         {
-            Label = "The Sims Medieval: Pirates & Nobles",
+            Label = LanguageManager.Get("BuyTS3", "TSM3", "The Sims Medieval: Pirates & Nobles"),
             Icon = LoadIcon(I.SimsMedieval),
-            Message = "The Sims Medieval: Pirates & Nobles is no longer sold or produced, and therefore " +
-                      "usually comes with a hefty price tag. It may also often be out of stock.",
+            Message = LanguageManager.Get("BuyTS3", "TSM4", "The Sims Medieval: Pirates & Nobles is no longer sold or produced, and therefore usually comes with a hefty price tag. It may also often be out of stock."),
             Children =
             {
                 RetailVendors(
@@ -868,7 +865,7 @@ public partial class BuyTS3 : Window
     // ── The Sims Stories (Retail Group) ──────────────────────────────────────────
 
     private static BuyTreeNode BuildTSStoriesRetail() =>
-        N("The Sims Stories", I.TSCastaway,
+        N(LanguageManager.Get("BuyTS3", "TS_Stories", "The Sims Stories"), I.TSCastaway,
             BuildTSCastawayRetail(),
             BuildTSLifeRetail(),
             BuildTSPetsRetail());
@@ -876,7 +873,7 @@ public partial class BuyTS3 : Window
     // ── Sims Castaway Stories (Retail) ─────────────────────────────────────────────────
 
     private static BuyTreeNode BuildTSCastawayRetail() =>
-        N("The Sims: Castaway Stories", I.TSCastaway,
+        N(LanguageManager.Get("BuyTS3", "TSCast", "The Sims: Castaway Stories"), I.TSCastaway,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=the+sims+castaway+stories&crid=237SI2J1FAJ7A&sprefix=the+sims+castaway+stories%2Caps%2C156&ref=nb_sb_noss_1",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=the+sims+castaway+stories&_sacat=0&_from=R40&_trksid=p4432023.m570.l1311"));
@@ -884,7 +881,7 @@ public partial class BuyTS3 : Window
     // ── Sims Life Stories (Retail) ─────────────────────────────────────────────────
 
     private static BuyTreeNode BuildTSLifeRetail() =>
-        N("The Sims: Life Stories", I.TSLife,
+        N(LanguageManager.Get("BuyTS3", "TSLife", "The Sims: Life Stories"), I.TSLife,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=the+sims+life+stories&crid=2OYOHNHXMO8UQ&sprefix=the+sims+life+stories%2Caps%2C147&ref=nb_sb_noss_1",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=the+sims+life+stories&_sacat=0&_from=R40&_trksid=p4432023.m570.l1311"));
@@ -892,7 +889,7 @@ public partial class BuyTS3 : Window
     // ── Sims Pet Stories (Retail) ─────────────────────────────────────────────────
 
     private static BuyTreeNode BuildTSPetsRetail() =>
-        N("The Sims: Pet Stories", I.TSPets,
+        N(LanguageManager.Get("BuyTS3", "TSPets", "The Sims: Pet Stories"), I.TSPets,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=the+sims+pet+stories&crid=1TYK48QKMZML8&sprefix=the+sims+pet+stories%2Caps%2C155&ref=nb_sb_noss_2",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=the+sims+pet+stories&_sacat=0&_from=R40&_trksid=p4432023.m570.l1311"));
@@ -900,14 +897,14 @@ public partial class BuyTS3 : Window
     // ── The Sims: Medieval (Retail Group) ──────────────────────────────────────
 
     private static BuyTreeNode BuildSimsMedievalGroupRetail() =>
-        N("The Sims: Medieval", I.SimsMedieval,
+        N(LanguageManager.Get("BuyTS3", "TSM1", "The Sims: Medieval"), I.SimsMedieval,
             BuildSimsMedievalRetail(),
             BuildSimsMedievalPNRetail());
 
     // ── SimCity 2000 (Retail) ─────────────────────────────────────────────────
 
     private static BuyTreeNode BuildSC2KRetail() =>
-        N("SimCity 2000", I.SC2K,
+        N(LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000"), I.SC2K,
             RetailVendors(
                 amazon: "https://www.amazon.com/SimCity-2000-Special-PC/dp/B00001NFSY/ref=sr_1_3?s=videogames&sr=1-3&tag=ts3tools-20&linkId=bdc6cba0426c559ff1308497bab62b6a&language=en_US&ref_=as_li_ss_tl",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=simcity+2000+pc&_sacat=0&_from=R40&_trksid=p4432023.m570.l1313&customid=ts3tools&toolid=10001&mkevt=1"));
@@ -915,7 +912,7 @@ public partial class BuyTS3 : Window
     // ── SimCopter (Retail) ─────────────────────────────────────────────────
 
     private static BuyTreeNode BuildCopterRetail() =>
-        N("SimCopter", I.SimCopter,
+        N(LanguageManager.Get("BuyTS3", "Copter", "SimCopter"), I.SimCopter,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=SimCopter&i=videogames",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=SimCopter+pc&_sacat=0&_from=R40&_trksid=p2334524.m570.l1313&_odkw=SimCopter&_osacat=0"));
@@ -923,7 +920,7 @@ public partial class BuyTS3 : Window
     // ── Streets of SimCity (Retail) ─────────────────────────────────────────────────
 
     private static BuyTreeNode BuildStreetsRetail() =>
-        N("Streets of SimCity", I.Streets,
+        N(LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity"), I.Streets,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=Streets+of+Simcity",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=Streets+of+Simcity&_sacat=0&_from=R40&_trksid=p4432023.m570.l1313"));
@@ -931,7 +928,7 @@ public partial class BuyTS3 : Window
     // ── SimCity 3000 Unlimited (Retail) ───────────────────────────────────────
 
     private static BuyTreeNode BuildSC3KURetail() =>
-        N("SimCity 3000 Unlimited", I.SC3KU,
+        N(LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000 Unlimited"), I.SC3KU,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=simcity+3000+unlimited",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=sim+city+3000+unlimited+pc&_sacat=0&_from=R40&_trksid=p4432023.m570.l1311"));
@@ -939,7 +936,7 @@ public partial class BuyTS3 : Window
     // ── SimCity 4 Deluxe Edition (Retail) ─────────────────────────────────────
 
     private static BuyTreeNode BuildSC4DERetail() =>
-        N("SimCity 4 Deluxe Edition", I.SC4DE,
+        N(LanguageManager.Get("BuyTS3", "SC4DE", "SimCity 4 Deluxe Edition"), I.SC4DE,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=simcity+4+deluxe",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=simcity+4+deluxe+edition+pc&_sacat=0&_from=R40&_trksid=p4432023.m570.l1311"));
@@ -947,7 +944,7 @@ public partial class BuyTS3 : Window
     // ── SimCity (2013) (Retail) ───────────────────────────────────────────────
 
     private static BuyTreeNode BuildSC2013Retail() =>
-        N("SimCity 2013", I.SC2013,
+        N(LanguageManager.Get("BuyTS3", "SC2013", "SimCity 2013"), I.SC2013,
             RetailVendors(
                 amazon: "https://www.amazon.com/s?k=Simcity+2013",
                 ebay: "https://www.ebay.com/sch/i.html?_nkw=Simcity+2013&_sacat=0&_from=R40&_trksid=p4432023.m570.l1313"));

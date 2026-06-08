@@ -13,9 +13,9 @@ namespace SimTools
 
         private void ApplyLanguage()
         {
-            TitleText.Text = LanguageManager.Get("Language", "Window_Title", TitleText.Text);
-            SubtitleText.Text = LanguageManager.Get("Language", "Window_Subtitle", SubtitleText.Text);
-            DoNotAskCheckBox.Content = LanguageManager.Get("Language", "Checkbox_DoNotAsk", "Do not ask me again");
+            TitleText.Text = LanguageManager.Get("LanguageSelectionWindow", "Window_Title", TitleText.Text);
+            SubtitleText.Text = LanguageManager.Get("LanguageSelectionWindow", "Window_Subtitle", SubtitleText.Text);
+            DoNotAskCheckBox.Content = LanguageManager.Get("LanguageSelectionWindow", "Checkbox_DoNotAsk", "Do not ask me again");
         }
 
         private void Language_Click(object sender, RoutedEventArgs e)

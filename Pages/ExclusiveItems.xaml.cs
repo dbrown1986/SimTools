@@ -16,8 +16,10 @@ namespace SimTools
         private void ApplyLanguage()
         {
             Title = LanguageManager.Get("ExclusiveItems", "Title", "SimTools — Exclusive Items");
-            ExclusiveItemsText.Text = LanguageManager.Get("ExclusiveItems", "ContentText",
+            ExclusiveItemsText.Text = LanguageManager.Get("ExclusiveItems", "ContentText1",
                 "Exclusive donor content will appear here.");
+            ExclusiveItemsText2.Text = LanguageManager.Get("ExclusiveItems", "ContentText2",
+                "Users of SimTools who have donated can share these items with family and friends, but do not upload them to any modding sites.");
         }
 
         // ── Close button ──────────────────────────────────────────────────

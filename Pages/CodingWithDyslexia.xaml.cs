@@ -22,6 +22,7 @@ namespace SimTools
         public CodingWithDyslexia()
         {
             InitializeComponent();
+            ApplyLanguage();
             PreviewKeyDown += CodingWithDyslexia_PreviewKeyDown;
         }
 
@@ -41,6 +42,23 @@ namespace SimTools
                 new KeyGeneratorWindow { Owner = this }.ShowDialog();
             }
         }
+
+        // Called on load and by SettingsWindow after a language change
+        public void ApplyLanguage()
+        {
+            // ── RTL / LTR layout direction ─────────────────────────────────────
+            var lang = IniHelper.Read("Language", "SelectedLanguage", "en");
+
+            // Add any future RTL languages to this set
+            var rtlLanguages = new HashSet<string> { "ar" };
+            FlowDirection = rtlLanguages.Contains(lang)
+            ? System.Windows.FlowDirection.RightToLeft
+            : System.Windows.FlowDirection.LeftToRight;
+
+            // ── Text strings ───────────────────────────────────────────────────
+            Coding.Text = LanguageManager.Get("EasterEgg1", "Coding", Coding.Text);
+        }
+
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {

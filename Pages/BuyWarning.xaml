@@ -17,7 +17,7 @@
     <Grid>
 
         <!-- Warning summary — red bold italic -->
-        <TextBlock HorizontalAlignment="Left" Margin="32,40,0,0"
+        <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="32,40,0,0"
                    TextWrapping="Wrap" VerticalAlignment="Top"
                    Width="465" Height="73"
                    Foreground="Red" FontWeight="Bold" FontStyle="Italic"
@@ -25,7 +25,7 @@
                    Text="With partner sites, It is recommended to buy direct from the partner whenever possible and avoid third-party sellers on their sites, as some of these sellers have used illegitimate means (Stolen CC, Chargebacks) to purchase the keys and the keys could be revoked later. Purchasing direct from EA or Steam is highly recommended. The higher the prices, the more likely the deal is legitimate."/>
 
         <!-- Detailed body -->
-        <TextBlock HorizontalAlignment="Center" Margin="0,112,0,0"
+        <TextBlock x:Name="Text2" HorizontalAlignment="Center" Margin="0,112,0,0"
                    TextWrapping="Wrap" VerticalAlignment="Top"
                    Width="465" Height="412"
                    FontFamily="Tahoma" FontSize="10" FontWeight="Bold">

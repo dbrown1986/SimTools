@@ -143,8 +143,8 @@ namespace SimTools
             catch (Exception ex)
             {
                 MessageBox.Show(
-                LanguageManager.Format("Messages", "Error_OpenLink", ex.Message),
-                LanguageManager.Get("Messages", "Error_Title", "Error"),
+                LanguageManager.Format("Main", "Error_OpenLink", ex.Message),
+                LanguageManager.Get("Main", "Error_Title", "Error"),
                 MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -183,8 +183,8 @@ namespace SimTools
             sims2_32.Click += (s, args) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("GPU", "Sims2Warning", "Do NOT apply this patch for Legacy Collection."),
-                    LanguageManager.Get("GPU", "Sims2Title", "Graphics Rules Maker — The Sims 2"),
+                    LanguageManager.Get("Main", "Sims2Warning", "Do NOT apply this patch for Legacy Collection."),
+                    LanguageManager.Get("Main", "Sims2Title", "Graphics Rules Maker — The Sims 2"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 DownloadAndOpenExe(
@@ -198,8 +198,8 @@ namespace SimTools
             sims2_64.Click += (s, args) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("GPU", "Sims2Warning", "Do NOT apply this patch for Legacy Collection."),
-                    LanguageManager.Get("GPU", "Sims2Title", "Graphics Rules Maker — The Sims 2"),
+                    LanguageManager.Get("Main", "Sims2Warning", "Do NOT apply this patch for Legacy Collection."),
+                    LanguageManager.Get("Main", "Sims2Title", "Graphics Rules Maker — The Sims 2"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 DownloadAndOpenExe(
@@ -232,13 +232,31 @@ namespace SimTools
             simsStoriesItem.Items.Add(simsStories_32);
             simsStoriesItem.Items.Add(simsStories_64);
 
-            // ── The Sims 3 (no sub-menu) ───────────────────────────────────────
-            var sims3Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = LanguageManager.Get("ContextMenu", "GPU_Sims3", "The Sims 3") };
-            sims3Item.Click += (s, args) => DownloadAndOpenExe(
+            // ── The Sims 3 (sub-menu) ─────────────────────────────────────────
+            var sims3Item = new MenuItem
+            {
+                Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"),
+                Header = LanguageManager.Get("ContextMenu", "GPU_Sims3", "The Sims 3")
+            };
+
+            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
+            sims3_gpuAddon.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
                 fileName: "TS3_GPU_Addon.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
+
+            var sims3_dxvk = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims3_DXVK", "DXVK") };
+            sims3_dxvk.Click += async (_, _) =>
+            {
+                await DownloadFileOnly(
+                    url: "%baseurl%/Sideload-Apps/x86/d3d9.dll",
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "d3d9.dll")
+                );
+            };
+
+            sims3Item.Items.Add(sims3_gpuAddon);
+            sims3Item.Items.Add(sims3_dxvk);
 
             contextMenu.Items.Add(sims2Item);
             contextMenu.Items.Add(simsStoriesItem);

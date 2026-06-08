@@ -8,7 +8,7 @@ namespace SimTools
 {
     /// <summary>
     /// Developer-only donor key generator.
-    /// Opened via Ctrl+Shift+Alt+G from the main window — not exposed in normal UI.
+    /// Opened via Ctrl+Shift+Alt+G from a hidden window — not exposed in normal UI.
     /// </summary>
     public partial class KeyGeneratorWindow : Window
     {
@@ -42,8 +42,8 @@ namespace SimTools
 
             Clipboard.SetText(key);
             MessageBox.Show(
-                LanguageManager.Get("KeyGen", "Copied", "Key copied to clipboard."),
-                LanguageManager.Get("KeyGen", "Copied_Title", "SimTools — Key Generator"),
+                "Key copied to clipboard.",
+                "SimTools — Key Generator",
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
         }

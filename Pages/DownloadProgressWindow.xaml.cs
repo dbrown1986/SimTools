@@ -1,4 +1,4 @@
-using System.Windows;
+﻿using System.Windows;
 
 namespace SimTools;
 
@@ -7,11 +7,14 @@ public partial class DownloadProgressWindow : Window
     public DownloadProgressWindow(string fileName = "")
     {
         InitializeComponent();
+        ApplyLanguage();
 
         if (!string.IsNullOrEmpty(fileName))
         {
-            Title            = $"Downloading: {fileName}";
-            StatusText.Text  = $"Downloading: {fileName}";
+            string downloadMessage = LanguageManager.Format("DownloadProgress", "DownloadingFile", fileName);
+
+            Title = downloadMessage;
+            StatusText.Text = downloadMessage;
         }
     }
 
@@ -32,7 +35,23 @@ public partial class DownloadProgressWindow : Window
         Dispatcher.Invoke(() =>
         {
             ProgressBar.IsIndeterminate = true;
-            PercentText.Text            = string.Empty;
+            PercentText.Text = string.Empty;
         });
+    }
+
+        // Called on load and by SettingsWindow after a language change
+    public void ApplyLanguage()
+    {
+        // ── RTL / LTR layout direction ─────────────────────────────────────
+        var lang = IniHelper.Read("Language", "SelectedLanguage", "en");
+
+        // Add any future RTL languages to this set
+        var rtlLanguages = new HashSet<string> { "ar" };
+        FlowDirection = rtlLanguages.Contains(lang)
+        ? System.Windows.FlowDirection.RightToLeft
+        : System.Windows.FlowDirection.LeftToRight;
+
+        // ── Text strings ───────────────────────────────────────────────────
+        StatusText.Text = LanguageManager.Get("DownloadProgress", "StatusText1", StatusText.Text);
     }
 }

@@ -52,7 +52,7 @@
         </Button>
 
         <!-- Title -->
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
+        <TextBlock x:Name="DonorItems" HorizontalAlignment="Left" VerticalAlignment="Top"
                    Margin="196,16,0,0"
                    Text="Donor / Patreon Exclusive Items"
                    Foreground="#FFD700"

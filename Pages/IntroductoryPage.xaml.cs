@@ -80,8 +80,8 @@ namespace SimTools
             if (candidates.Length == 0)
             {
                 MessageBox.Show(
-                    LanguageManager.Get("RepoSpeed", "NoMirrors", "No repository mirrors are configured."),
-                    LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
+                    LanguageManager.Get("IntroductoryPage", "NoMirrors", "No repository mirrors are configured."),
+                    LanguageManager.Get("IntroductoryPage", "RepoTitle", "SimTools — Repository Speed Test"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -110,8 +110,8 @@ namespace SimTools
             if (best.Domain == null || best.Ms == long.MaxValue)
             {
                 MessageBox.Show(
-                    LanguageManager.Get("RepoSpeed", "NoResponse", "No mirrors responded. Please check your connection."),
-                    LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
+                    LanguageManager.Get("IntroductoryPage", "NoResponse", "No mirrors responded. Please check your connection."),
+                    LanguageManager.Get("IntroductoryPage", "RepoTitle", "SimTools — Repository Speed Test"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -124,15 +124,15 @@ namespace SimTools
             if (best.Domain.Equals(currentHost, StringComparison.OrdinalIgnoreCase))
             {
                 MessageBox.Show(
-                    LanguageManager.Format("RepoSpeed", "AlreadyBest", best.Domain, best.Ms),
-                    LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
+                    LanguageManager.Format("IntroductoryPage", "AlreadyBest", best.Domain, best.Ms),
+                    LanguageManager.Get("IntroductoryPage", "RepoTitle", "SimTools — Repository Speed Test"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
             var answer = MessageBox.Show(
-                LanguageManager.Format("RepoSpeed", "Prompt", best.Domain, best.Ms, currentHost),
-                LanguageManager.Get("RepoSpeed", "Title", "SimTools — Repository Speed Test"),
+                LanguageManager.Format("IntroductoryPage", "SpeedPrompt", best.Domain, best.Ms, currentHost),
+                LanguageManager.Get("RepoSpeed", "RepoTitle", "SimTools — Repository Speed Test"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Information);
 
@@ -231,8 +231,8 @@ namespace SimTools
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
-                            LanguageManager.Get("Updates", "NoServer", "Could not reach the update server."),
-                            LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                            LanguageManager.Get("IntroductoryPage", "NoServer", "Could not reach the update server."),
+                            LanguageManager.Get("IntroductoryPage", "Title_Failed", "Update Check Failed"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Warning);
                     return;
@@ -246,8 +246,8 @@ namespace SimTools
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
-                            LanguageManager.Get("Updates", "Malformed", "The version file on the server is malformed."),
-                            LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                            LanguageManager.Get("IntroductoryPage", "Malformed", "The version file on the server is malformed."),
+                            LanguageManager.Get("IntroductoryPage", "Title_Failed", "Update Check Failed"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Warning);
                     return;
@@ -260,8 +260,8 @@ namespace SimTools
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
-                            LanguageManager.Format("Updates", "BadVersion", remoteVersionStr),
-                            LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                            LanguageManager.Format("IntroductoryPage", "BadVersion", remoteVersionStr),
+                            LanguageManager.Get("IntroductoryPage", "Title_Failed", "Update Check Failed"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Warning);
                     return;
@@ -276,8 +276,8 @@ namespace SimTools
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
-                            LanguageManager.Format("Updates", "UpToDate", localVersion.ToString(3)),
-                            LanguageManager.Get("Updates", "Title_UpToDate", "Up to Date"),
+                            LanguageManager.Format("IntroductoryPage", "UpToDate", localVersion.ToString(3)),
+                            LanguageManager.Get("IntroductoryPage", "Title_UpToDate", "Up to Date"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
                     return;
@@ -285,8 +285,8 @@ namespace SimTools
 
                 // 4. Update available — ask the user
                 var confirm = MessageBox.Show(
-                    LanguageManager.Format("Updates", "NewVersion", remoteVersionStr, localVersion.ToString(3)),
-                    LanguageManager.Get("Updates", "Title_Available", "Update Available"),
+                    LanguageManager.Format("IntroductoryPage", "NewVersion", remoteVersionStr, localVersion.ToString(3)),
+                    LanguageManager.Get("IntroductoryPage", "Title_Available", "Update Available"),
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
 
@@ -304,8 +304,8 @@ namespace SimTools
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        LanguageManager.Get("Updates", "Timeout", "The update check timed out."),
-                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                        LanguageManager.Get("IntroductoryPage", "Timeout", "The update check timed out."),
+                        LanguageManager.Get("IntroductoryPage", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
             }
@@ -313,8 +313,8 @@ namespace SimTools
             {
                 if (!isAutomatic)
                     MessageBox.Show(
-                        LanguageManager.Format("Updates", "Unexpected", ex.Message),
-                        LanguageManager.Get("Updates", "Title_Failed", "Update Check Failed"),
+                        LanguageManager.Format("IntroductoryPage", "Unexpected", ex.Message),
+                        LanguageManager.Get("IntroductoryPage", "Title_Failed", "Update Check Failed"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Error);
             }
@@ -329,8 +329,8 @@ namespace SimTools
             if (!File.Exists(updaterPath))
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Updates", "UpdaterMissing", "SimToolsUpdater.exe was not found."),
-                    LanguageManager.Get("Updates", "Title_MissingUpdater", "Updater Not Found"),
+                    LanguageManager.Get("IntroductoryPage", "UpdaterMissing", "SimToolsUpdater.exe was not found."),
+                    LanguageManager.Get("IntroductoryPage", "Title_MissingUpdater", "Updater Not Found"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return;
@@ -348,16 +348,16 @@ namespace SimTools
         private static void PromptSuppression()
         {
             var suppress = MessageBox.Show(
-                LanguageManager.Get("Updates", "Suppress_Ask", "Would you like to suppress automatic update notifications?"),
-                LanguageManager.Get("Updates", "Suppress_Title", "Suppress Update Notifications"),
+                LanguageManager.Get("IntroductoryPage", "Suppress_Ask", "Would you like to suppress automatic update notifications?"),
+                LanguageManager.Get("IntroductoryPage", "Suppress_Title", "Suppress Update Notifications"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
             if (suppress != MessageBoxResult.Yes) return;
 
             var duration = MessageBox.Show(
-                LanguageManager.Get("Updates", "Suppress_Duration", "How long would you like to suppress update notifications?"),
-                LanguageManager.Get("Updates", "Suppress_DurTitle", "Suppression Duration"),
+                LanguageManager.Get("IntroductoryPage", "Suppress_Duration", "How long would you like to suppress update notifications?"),
+                LanguageManager.Get("IntroductoryPage", "Suppress_DurTitle", "Suppression Duration"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
@@ -397,8 +397,8 @@ namespace SimTools
         private void SimToolsButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                LanguageManager.Get("Messages", "WhatIsSimTools", "SimTools (previously TS3Tools) is still the same suite of tools."),
-                LanguageManager.Get("Messages", "WhatIsSimTools_Title", "What is SimTools?"),
+                LanguageManager.Get("IntroductoryPage", "WhatIsSimTools", "SimTools (previously TS3Tools) is still the same suite of tools."),
+                LanguageManager.Get("IntroductoryPage", "WhatIsSimTools_Title", "What is SimTools?"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
         }
