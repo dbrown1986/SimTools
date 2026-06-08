@@ -86,7 +86,7 @@
             </Button.Style>
         </Button>
         <Button x:Name="RepoSpeedButton" Content="Repository Speed Test"
-        HorizontalAlignment="Left" Margin="8,296,0,0" VerticalAlignment="Top"
+        HorizontalAlignment="Left" Margin="8,252,0,0" VerticalAlignment="Top"
         Width="162" Height="34"
         FontFamily="Tahoma" FontWeight="Bold" FontSize="11"
         BorderBrush="{x:Null}"

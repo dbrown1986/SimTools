@@ -20,7 +20,6 @@ namespace SimTools
         {
             InitializeComponent();
             _skippable = skippable;
-            VersionText.Text = LanguageManager.Get("Splash", "Loading", "Loading...");
 
             // Populate version dynamically from the compiled assembly
             var ver = Assembly.GetExecutingAssembly().GetName().Version ?? new Version(4, 0, 1, 0);

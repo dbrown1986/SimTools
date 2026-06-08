@@ -22,6 +22,7 @@ namespace SimTools
         public SpecialThanks()
         {
             InitializeComponent();
+            ApplyLanguage();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -33,5 +34,22 @@ namespace SimTools
         {
             new Donors { Owner = this }.ShowDialog();
         }
+
+        // Called on load and by SettingsWindow after a language change
+        public void ApplyLanguage()
+        {
+            // ── RTL / LTR layout direction ─────────────────────────────────────
+            var lang = IniHelper.Read("Language", "SelectedLanguage", "en");
+
+            // Add any future RTL languages to this set
+            var rtlLanguages = new HashSet<string> { "ar" };
+            FlowDirection = rtlLanguages.Contains(lang)
+            ? System.Windows.FlowDirection.RightToLeft
+            : System.Windows.FlowDirection.LeftToRight;
+
+            // ── Text strings ───────────────────────────────────────────────────
+            MuchThanksText.Text = LanguageManager.Get("SpecialThanks", "ThanksMessage", MuchThanksText.Text);
+        }
+
     }
 }

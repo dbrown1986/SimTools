@@ -236,17 +236,17 @@ namespace SimTools
             var sims3Item = new MenuItem
             {
                 Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"),
-                Header = LanguageManager.Get("ContextMenu", "GPU_Sims3", "The Sims 3")
+                Header = LanguageManager.Get("Main", "GPU_Sims3", "The Sims 3")
             };
 
-            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
+            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
             sims3_gpuAddon.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
                 fileName: "TS3_GPU_Addon.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
-            var sims3_dxvk = new MenuItem { Header = LanguageManager.Get("ContextMenu", "GPU_Sims3_DXVK", "DXVK") };
+            var sims3_dxvk = new MenuItem { Header = "DXVK" };
             sims3_dxvk.Click += async (_, _) =>
             {
                 await DownloadFileOnly(
@@ -373,8 +373,8 @@ namespace SimTools
                     progressWindow.Close();
 
                     MessageBox.Show(
-                        $"{LanguageManager.Format("Messages", "Error_DownloadFailed", fileName)}\n{ex.Message}",
-                        LanguageManager.Get("Messages", "Error_DownloadTitle", "Download Error"),
+                        $"{LanguageManager.Format("Main", "Error_DownloadFailed", fileName)}\n{ex.Message}",
+                        LanguageManager.Get("Main", "Error_DownloadTitle", "Download Error"),
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
@@ -407,7 +407,7 @@ namespace SimTools
             // ── The Sims 1 ────────────────────────────────────────────────────────────
             var sims1Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = LanguageManager.Get("ContextMenu", "Tweaks_Sims1", "The Sims 1") };
 
-            var sims1_simitone = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Tweaks_Simitone", "Simitone") };
+            var sims1_simitone = new MenuItem { Header = LanguageManager.Get("Main", "Tweaks_Simitone", "Simitone") };
             sims1_simitone.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims1Game))
@@ -1921,32 +1921,32 @@ namespace SimTools
             contextMenu.Items.Add(store_piracy);
 
             // ── The Sims 3 Store ──────────────────────────────────────────────
-            var store = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Sims3Store", "The Sims 3 Store") };
+            var store = new MenuItem { Header = LanguageManager.Get("Main", "Sims3Store", "The Sims 3 Store") };
             store.Click += (_, _) => Browse("https://store.thesims3.com/");
             contextMenu.Items.Add(store);
 
             // ── Daily Deal ────────────────────────────────────────────────────
-            var dailyDeal = new MenuItem { Header = "Daily Deal" };
+            var dailyDeal = new MenuItem { Header = LanguageManager.Get("Main", "DailyDeal", "Daily Deal") };
             dailyDeal.Click += (_, _) => Browse("https://store.thesims3.com/dailyDeal.html");
             contextMenu.Items.Add(dailyDeal);
 
             // ── Daily Deal Rotation ───────────────────────────────────────────
-            var dealRotation = new MenuItem { Header = "Daily Deal Rotation" };
+            var dealRotation = new MenuItem { Header = LanguageManager.Get("Main", "DailyDealRot", "Daily Deal Rotation") };
             dealRotation.Click += (_, _) => Browse("https://docs.google.com/spreadsheets/d/1NIeS9yIMAw-fA7VhseLilqCOV5XfKoSJXwbyyKQLJP4/edit?gid=882235701#gid=882235701");
             contextMenu.Items.Add(dealRotation);
 
             // ── Free Store Items ──────────────────────────────────────────────
-            var freeItems = new MenuItem { Header = "Free Store Items" };
+            var freeItems = new MenuItem { Header = LanguageManager.Get("Main", "FreeItems", "Free Store Items") };
             freeItems.Click += (_, _) => Browse("https://docs.google.com/document/d/1Rf89z61M8Ah7a-xf15GNKVa8ZzGgz92d1oXm9XZUxso/edit?tab=t.0");
             contextMenu.Items.Add(freeItems);
 
             // ── Store Video Guide ─────────────────────────────────────────────
-            var videoGuide = new MenuItem { Header = "Store Video Guide" };
+            var videoGuide = new MenuItem { Header = LanguageManager.Get("Main", "StoreGuide", "Store Video Guide (English)") };
             videoGuide.Click += (_, _) => Browse("https://youtu.be/OPgoRiQ9Fq8");
             contextMenu.Items.Add(videoGuide);
 
             // ── Buy TS3 Games (placeholder — window not yet implemented) ──────
-            var buyGames = new MenuItem { Header = "Buy TS3 Games" };
+            var buyGames = new MenuItem { Header = LanguageManager.Get("Main", "BuyTS3Games1", "Buy TS3 Games") };
             buyGames.Click += (_, _) => new BuyTS3 { Owner = this }.ShowDialog();
             contextMenu.Items.Add(buyGames);
 
@@ -2012,8 +2012,8 @@ namespace SimTools
         {
             {
                 MessageBox.Show(
-                    LanguageManager.Get("AboutSimTools", "WarningMessage", "A great deal has changed between versions."),
-                    LanguageManager.Get("AboutSimTools", "WarningMessage_Title", "Watch the Video Guide!"),
+                    LanguageManager.Get("Main", "WarningMessage", "A great deal has changed between v3.2.4 and v4.0.1. Please take a moment to watch the new video guide by clicking the 'SimTools Video Guide' button. This and the changelog will hopefully better aclimate you to the massive changes."),
+                    LanguageManager.Get("Main", "WarningMessage_Title", "Watch the Video Guide!"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
             }
@@ -2060,24 +2060,23 @@ namespace SimTools
             string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
 
             // ── The Sims (disabled) ──────────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "The Sims", IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims"), IsEnabled = false });
 
             // ── The Sims 2 (disabled) ───────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "The Sims 2", IsEnabled = false });
-
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2"), IsEnabled = false });
             // ── The Sims 3 ───────────────────────────────────────────────────────────
-            var sims3 = new MenuItem { Header = "The Sims 3" };
+            var sims3 = new MenuItem { Header = LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3") };
 
             // Create-A-World sub-menu
-            var caw = new MenuItem { Header = "Create-A-World" };
+            var caw = new MenuItem { Header = LanguageManager.Get("Main", "CAW", "Create-A-World") };
 
-            var caw167 = new MenuItem { Header = "CAW for 1.67" };
+            var caw167 = new MenuItem { Header = LanguageManager.Get("Main", "CAW167", "CAW for 1.67") };
             caw167.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/CAW_1.67.exe",
                 fileName: "CAW_1.67.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
-            var caw169 = new MenuItem { Header = "CAW for 1.69" };
+            var caw169 = new MenuItem { Header = LanguageManager.Get("Main", "CAW169", "CAW for 1.69") };
             caw169.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/CAW_1.69.exe",
                 fileName: "CAW_1.69.exe",
@@ -2087,19 +2086,19 @@ namespace SimTools
             caw.Items.Add(caw169);
             sims3.Items.Add(caw);
 
-            var s3pe = new MenuItem { Header = "Sims 3 Package Editor" };
+            var s3pe = new MenuItem { Header = LanguageManager.Get("Main", "S3PE", "Sims 3 Package Editor") };
             s3pe.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/s3pe.exe",        // ← replace
                 fileName: "s3pe.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
-            var s3pack = new MenuItem { Header = "Sims 3 Pack Extractor" };
+            var s3pack = new MenuItem { Header = LanguageManager.Get("Main", "S3PE_2", "Sims 3 Pack Extractor") };
             s3pack.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/S3PackExtractor.exe",  // ← replace
                 fileName: "S3PackExtractor.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
-            var s3dash = new MenuItem { Header = "Sims 3 Dashboard" };
+            var s3dash = new MenuItem { Header = LanguageManager.Get("Main", "S3Dash", "Sims 3 Dashboard") };
             s3dash.Click += async (_, _) =>
             {
                 string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
@@ -2126,7 +2125,7 @@ namespace SimTools
             };
 
             // CCMagic is a standalone installer; no game-path check required.
-            var ccmagic = new MenuItem { Header = "Install CCMagic" };
+            var ccmagic = new MenuItem { Header = LanguageManager.Get("Main", "CCMagic", "Install CCMagic") };
             ccmagic.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/CCMagicSetup.exe",  // ← replace
                 fileName: "CCMagicSetup.exe",
@@ -2139,25 +2138,25 @@ namespace SimTools
             contextMenu.Items.Add(sims3);
 
             // ── The Sims 4 ───────────────────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "The Sims 4", IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "TS4", "The Sims 4"), IsEnabled = false });
 
             // ── The Sims Medieval (disabled) ──────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "The Sims Medieval", IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "TSM1", "The Sims Medieval"), IsEnabled = false });
 
             // ── The Sims Stories (disabled) ───────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "The Sims Stories", IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "TS_Stories", "The Sims Stories"), IsEnabled = false });
 
             // ── SimCity 2000 (disabled) ───────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "SimCity 2000", IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000"), IsEnabled = false });
 
             // ── SimCity 3000 (disabled) ───────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "SimCity 3000", IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000"), IsEnabled = false });
 
             // ── SimCity 4 (disabled) ──────────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "SimCity 4", IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("GenericKeysPage", "SC4", "SimCity 4"), IsEnabled = false });
 
             // ── SimCity 2013 (disabled) ───────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = "SimCity 2013", IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "SC2013", "SimCity 2013"), IsEnabled = false });
 
             // ── Assign to button ─────────────────────────────────────────────────────
             ModToolsButton.ContextMenu = contextMenu;

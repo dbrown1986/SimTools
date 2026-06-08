@@ -26,6 +26,7 @@ namespace SimTools
         public SupportSimTools()
         {
             InitializeComponent();
+            ApplyLanguage();
         }
 
         // Helper method to open URLs in the default web browser
@@ -45,8 +46,8 @@ namespace SimTools
             catch (Exception ex)
             {
                 MessageBox.Show(
-                LanguageManager.Format("Messages", "Error_OpenLink", ex.Message),
-                LanguageManager.Get("Messages", "Error_Title", "Error"),
+                LanguageManager.Format("Main", "Error_OpenLink", ex.Message),
+                LanguageManager.Get("Main", "Error_Title", "Error"),
                 MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -117,5 +118,28 @@ namespace SimTools
             var dialog = new UnlockPersonalizationDialog { Owner = this };
             dialog.ShowDialog();
         }
-    }
+
+        // Called on load and by SettingsWindow after a language change
+        public void ApplyLanguage()
+        {
+            // ── RTL / LTR layout direction ─────────────────────────────────────
+            var lang = IniHelper.Read("Language", "SelectedLanguage", "en");
+
+            // Add any future RTL languages to this set
+            var rtlLanguages = new HashSet<string> { "ar" };
+            FlowDirection = rtlLanguages.Contains(lang)
+            ? System.Windows.FlowDirection.RightToLeft
+            : System.Windows.FlowDirection.LeftToRight;
+
+            // ── Text strings ───────────────────────────────────────────────────
+            SupportText.Text = LanguageManager.Get("SupportPage", "SupportText1", SupportText.Text);
+            FiscalSupport.Text = LanguageManager.Get("SupportPage", "FiscalSupport", FiscalSupport.Text);
+            FiscalSupport2.Text = LanguageManager.Get("SupportPage", "FiscalSupport2", FiscalSupport2.Text);
+            Contribute.Text = LanguageManager.Get("SupportPage", "Contribute", Contribute.Text);
+            Contribute2.Text = LanguageManager.Get("SupportPage", "Contribute2", Contribute2.Text);
+            RepoMakerButton.Content = LanguageManager.Get("SupportPage", "RepoMaker", RepoMakerButton.Content.ToString());
+            TranslationButton.Content = LanguageManager.Get("SupportPage", "TranslationTool", TranslationButton.Content.ToString());
+            UnlockPersonalizationButton.Content = LanguageManager.Get("SupportPage", "Personalize", RepoMakerButton.Content.ToString());
+        }
+    }    
 }

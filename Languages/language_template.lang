@@ -35,12 +35,44 @@ Suppress_DurTitle=				Suppression Duration
 WhatIsSimTools=					SimTools (previously TS3Tools) is still the same suite of tools previously developed, but now includes options for a variety of Maxis' sim genre of games. SimTools includes options for Sims 1, Sims 2, Sims Stories, Sims 3, Sims 4, Simcity 2000, Simcity 3000, Simcity 3000 Unlimited, Simcity 4, Simcity 2K13, SimCopter and Streets of Simcity, with more to come in later versions.
 WhatIsSimTools_Title=			What is SimTools?
 
-[Main]
+[SpecialThanks]
+ThanksMessage=					The entire 'The Sims 3' Facebook group - Thank you for inspiring this suite of tools. So many of you had many issues over the years; and this tool aims to help in every way possible to put those issues to rest. \n\n Anime_Boom - For their comprehensive tweak and performance guide published on Steam, most of which has been incorporated into this tool. \n\n alfa1295 - For your incredible work on The Sims 3 GPU Addon software and bringing support for modern-day graphics cards. \n\n Dmitry Zhutkov - For Regul Save Cleaner. Truly amazing bit of software. Our saves are safe! \n\n LazyDuchess - Many useful modifications to the game engine. \n\n Chain_Reaction / Twallan - For nRaas and its dedicated community of TS3 modders. Several package and core mods overhauling scripts within the game. \n\n Guifrog - Guifrog is a composer on OCRemix, whose theme is featured in this suite. It features melodies from The Sims 3 and The Sims 1. His profile can be found at https://ocremix.org/artist/9047/guifrog \n\n Blocky9032 &amp; JonySimmer - New Intros to bring TS3 into the modern age! \n\n Eli Sims - For her amazing work translating SimTools to French (Bonjour!)
+PreviousMenu=					Click the 'X' to go back to the previous menu.
 
+[Splash]
+Retic=Reticulating Splines...
+
+[Settings]
+Sims3DirWarning=				Please set your Sims 3 game directory to the root directory where the expansion and stuff pack folders are, do not select the Game/Bin folder.
+Sims3DirWarning_Title=			SimTools — Sims 3 Directory
+AutoDetect_Nothing=				No game or mod directories could be detected automatically.\n\nCommon install locations were checked, including Steam, GOG, EA Games,\nElectronic Arts, and Origin Games folders.\n\nYou can set paths manually using the Browse buttons.
+AutoDetect_Nothing_Title=		Auto-Detect — Nothing Found
+AutoDetect_Found=				{0} {1}
+AutoDetect_Found_Title=			Auto-Detect Complete
+ReenabledUpdates=				Automatic update notifications have been re-enabled.\n\nSimTools will check for updates the next time it starts.
+ReenabledUpdates_Title=			Update Check Reset
+Msg_Saved=						Settings saved successfully.
+Msg_Reset=						Language selection will appear on the next launch.
+
+[Main]
 StorePiracyWarning=				Store Piracy Warning
 StorePiracy=					If you are using any of the complete store pirated releases (FitGirl, Phantom99, nausallien, etc etc). It is reccommended you do not install any of the store content as this may break your store or the game. As always, you're encouraged to purchase legitimately.
 StorePiracy_Title=				Warning About Pirated Store Files
 Sims3Store=						The Sims 3 Store
+DailyDeal=						Daily Deal
+DailyDealRot=					Daily Deal Rotation
+FreeItems=						Free Store Items
+StoreGuide=						Store Video Guide (English)
+BuyTS3Games1=					Buy TS3 Games
+WarningMessage=					A great deal has changed between v3.2.4 and v4.0.1. Please take a moment to watch the new video guide by clicking the 'SimTools Video Guide' button. This and the changelog will hopefully better aclimate you to the massive changes.
+WarningMessage_Title=			Watch the Video Guide!
+CAW=							Create-A-World
+CAW167=							CAW for 1.67
+CAW169=							CAW for 1.69
+S3PE=							Sims 3 Package Editor
+S3PE_2=							Sims 3 Package Extractor
+S3Dash=							Sims 3 Dashboard
+CCMagic=						Install CCMagic
 ButtonInfoText=					When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed.
 FrameworkInfoText=				It is strongly recommended to install the Mod Framework. If you already have the Mod Framework, please purge your 'Mods' folder and reinstall from the button below. This version of the Mod Framework is specially vetted and prepared for TS3Tools.
 ComparisonLabel=				Comparison
@@ -77,13 +109,15 @@ Sims2Title=						Graphics Rules Maker — The Sims 2
 GPU_Sims2=						The Sims 2
 GPU_SimsStories=				The Sims Stories
 GPU_Sims3=						The Sims 3
+GPU_Sims3_Addon=				The Sims 3 GPU Addon
+Error_DownloadFailed=			Download failed for {0}
+Error_DownloadTitle=			Download Error
 Bit_32=							32-Bit
 Bit_64=							64-Bit
 Tweaks_Sims1=					The Sims 1
 Tweaks_Simitone=				Simitone
 
 [AboutSimToolsPage]
-
 CulminationMessage=				SimTools is the culmination of years of work!
 SimToolsDescription=			In the beginning, SimTools started out as little more than an enhanced launcher for The Sims 3, that had a few tools built-in to it that could be ran before launching the game, in order to help ease things along. \n It has since become much more than that, morphing into a comprehensive suite of tools that hopefully even a novice can use to revolutionize their various sim games experience. \n If SimTools has helped you experience your sim-style games in newer and better ways, please be sure to show your support. If you need help, or would like to share your experiences with the community, please feel free to join the SimTools Discord Server.
 LicenseMessage=					SimTools is protected under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC) license. It is open-source software, made available to the public and open to contributions. This software, in whole or in part cannot and should never be used for commercial gain.
@@ -109,8 +143,26 @@ Suppress_Title=					Suppress Update Notifications
 Suppress_Duration=				How long would you like to suppress update notifications?
 Suppress_DurTitle=				Suppression Duration
 
-[BuyTS3]
+[SupportPage]
+SupportText1=					First off, thank you for your interest in supporting SimTools. There are various ways in which you can offer support to the SimTools Project. These include, but are not limited to the following:
+FiscalSupport=					Fiscally
+FiscalSupport2=					I designed SimTools as a hobby, but SimTools does incur monthly hosting costs and annual domain renewals ($96.10/mo). You can help offset these costs by donating to the project.
+Contribute=						Contribute
+Contribute2=					You can contribute code to the SimTools GitHub page, or host a file repository mirror. You can also use the language translation tool to help bring new languages to SimTools.
+RepoMaker=						Repo Maker
+TranslationTool=				Translation Tool
+Personalize=					Unlock Personalization
 
+[Personalization]
+EnterKey=Please enter a key.
+InvalidKey=That key is not valid. Please check it and try again.
+Unlocked=Personalisation unlocked! Welcome, {0}.
+Unlocked_Title=SimTools — Personalization
+RemoveAsk=Remove your personalisation key? The banner will no longer appear on the welcome screen.
+RemoveAsk_Title=SimTools — Remove Personalisation
+PersonalizationText=This copy of SimTools designed with care for {0} {1}.\nThank you for your support!
+
+[BuyTS3]
 BrokenLinksText=				If any of these links are broken, please submit an Issue ticket on the SimTools Github or post on the Discord, so the link can be corrected or removed.
 UseText=						You can use the following selection box to select the game(s) you would like to purchase, and it will redirect you to that games purchase page with your given selections. The sections are expandable. \n All links are affiliated and tied to SimTools, I will earn 2% - 5% of each sale if you decide to purchase through any of my links here in SimTools. Doing so supports future development of SimTools.
 WarningButton=					CLICK HERE FOR AN IMPORTANT WARNING!
@@ -174,6 +226,7 @@ TS_Stories=						The Sims Stories
 TSCast=							The Sims: Castaway Stories
 TSLife=							The Sims: Life Stories
 TSPets=							The Sims: Pet Stories
+TS4=							The Sims 4
 SC2K=							SimCity 2000
 Copter=							SimCopter
 Streets=						Streets of SimCity
@@ -348,5 +401,40 @@ KeysInfoCopy=					These keys will not work for online registration. \n They will
 GenerateButton=					Generate
 CopyButton=						Copy
 
+[Music]
+Fetching=						Fetching track list…
+Cancelled=						Download cancelled.
+Complete=						Download complete!
+NoServer=						Could not reach the music server.
+Cancelling=						Cancelling…
+FirstRun=						Would you like to download a free background music pack?\n\nYou can also drop your own songs (MP3, WAV, FLAC, M4A) into\nthe /Resources/Music folder at any time:\n{0}
+FirstRun_Title=					Background Music
+NoTrack=						No track loaded
+
+[Repo]
+Warning=						A repository trust check failed for:  {0}\n\n{1}\nThis may indicate a misconfigured repository URL, a network\ninterception attempt, or a modified hosts file.\n\nProceed with caution. Downloads from this source may not be safe.
+Warning_Title=					Untrusted Repository Source
+Domain_Untrusted=			  • Domain "{0}" is not listed as a trusted source.
+IP_Untrusted=  				  • Resolved IP address ({0}) does not match any trusted IP.
+Hosts_Tampered=  			  • Your local hosts file is redirecting "{0}" to {1}, which is not a trusted address.
+
+[Framework]
+NotInstalled=					The SimTools Mod Framework does not appear to be installed, or your Resource.cfg is missing the required SimTools package path.\n\nBefore downloading .package files, please install the Mod Framework using the 'Mod Framework' button on the main window.\n\nThis ensures the game can find and load your packages correctly.
+NotInstalled_Title=				SimTools — Mod Framework Required
+ModsNotSet_Ask=					Your Sims 3 Mods directory has not been configured in Settings.\n\nSimTools detected your Sims 3 user data folder at:\n{0}\n\nWould you like to create a 'Mods' folder there and proceed with the installation?
+ModsNotSet_Title=				SimTools — Mods Directory Not Set
+ModsNotSet_Manual=				Your Sims 3 Mods directory has not been configured in Settings.\n\nTo install the Mod Framework:\n\n1. Create a folder named 'Mods' inside:\n   Documents\Electronic Arts\The Sims 3\n\n2. Open Settings and set your Sims 3 Mods path to that folder.\n\nThen click 'Mod Framework' again.
+Installed=						The SimTools Mod Framework has been installed successfully!\n\nLocation:\n{0}\n\nFolders created:\n  • Disabled  (Overrides, Packages, Probation, Test)\n  • Overrides  •  Packages\n  • Probation  (Overrides, Packages)\n  • SimTools  (Overrides, Packages)\n  • Test  (Overrides, Packages)\n\nResource.cfg has been installed to your Mods folder.\nCore packages have been installed to SimTools\Packages.
+Installed_Title=				SimTools — Mod Framework Installed
+MissingResource=				Resource.cfg could not be found in the compiled resources.\nPlease reinstall SimTools and try again.
+MissingResource_Title=			SimTools — Missing Resource
+InstallFailed=					Failed to install the Mod Framework:\n\n{0}
+InstallFailed_Title=			SimTools — Installation Failed
+GameIntro_Ask=					Would you like to install the SimTools custom game intro?\n\nThis replaces the standard EA game intro with a SimTools branded one.
+GameIntro_Title=				SimTools — Custom Game Intro
+Splashscreen_Ask=				Would you like to install the SimTools custom splashscreen?\n\nThis replaces the standard loading splashscreen with a SimTools branded one.
+Splashscreen_Title=				SimTools — Custom Splashscreen
+ExtractFail=					Failed to extract {0}:\n{1}
+ExtractFail_Title=				Extract Error
 
 LanguageManager.Get("GameplayFix", "SlopedTerrainFix", 

@@ -34,8 +34,8 @@
                 <ImageBrush ImageSource="/Images/patreon.png"/>
             </Button.Background>
         </Button>
-        <TextBlock x:Name="FiscalSupport_Copy" HorizontalAlignment="Center" Margin="0,280,0,0" TextWrapping="Wrap" Text="Contribute" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
-        <TextBlock x:Name="FiscalSupport2_Copy" HorizontalAlignment="Center" TextWrapping="Wrap" Text="You can contribute code to the SimTools GitHub page, or host a file repository mirror. You can also use the language translation tool to help bring new languages to SimTools." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="31" Margin="0,304,0,0"/>
+        <TextBlock x:Name="Contribute" HorizontalAlignment="Center" Margin="0,280,0,0" TextWrapping="Wrap" Text="Contribute" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
+        <TextBlock x:Name="Contribute2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="You can contribute code to the SimTools GitHub page, or host a file repository mirror. You can also use the language translation tool to help bring new languages to SimTools." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="31" Margin="0,304,0,0"/>
         <Button x:Name="GitHubButton" Content="Button" HorizontalAlignment="Left" Margin="29,346,0,0" VerticalAlignment="Top" Width="150" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="GitHubButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/github.png"/>
