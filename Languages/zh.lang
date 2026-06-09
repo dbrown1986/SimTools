@@ -1,246 +1,525 @@
+[LanguageSelectionWindow]
+Window_Title=語言選擇
+Window_Subtitle=請選擇 SimTools 的語言。您隨時可以在設定中進行變更。
+Checkbox_DoNotAsk=不要再詢問
+
 [IntroductoryPage]
-IntroText1=欢迎使用 SimTools 套件
+IntroText1=歡迎使用 SimTools 工具包\n\n本程式將協助您對已安裝 management 的多款 Sim 系列遊戲進行最佳化與調整。許多舊款遊戲在推出後便被忽視，缺乏後續優化，特別是 1990 年代左右 Maxis 的早期遊戲，很難在較新的硬體上順利執行。\n\n此工具包可讓您在現代電腦上以更順暢、舒適的節奏執行新舊遊戲，它能啟用某些在發售時被停用的功能、為舊的執行檔打上補丁，或關閉不必要的機制（例如特定的硬碟快取方法，因為現代電腦大多已使用固態硬碟）。這款工具凝聚了我們大量的熱情與心血。\n\n強烈建議在全新（乾淨）安裝的 Sim 遊戲上執行此工具。請務必為您的遊戲安裝資料夾建立備份，以防在安裝此工具提供的修正或調整時出現任何問題。\n\n過程中需要使用者（您）進行一些互動。本程式會盡可能用最簡單的方式解釋一切並將部分功能自動化，但如果您不確定某項功能的作用，建議取消操作，以避免損壞您的遊戲安裝。\n\n閱讀完此訊息後，請點擊左下角的「繼續」按鈕以繼續進行，或點擊右上角的紅色「X」關閉本程式。\n\nP.S. 程式中隱藏了 5 個復活節彩蛋（秘密）。如果您找齊所有彩蛋，將會有驚喜等著您。
+UpdateButton_Text=檢查更新
+ContinueButton_Text=繼續
+SimToolsButton_Text=什麼是 SimTools？
+ExclusiveItemsButton_Text=專屬項目
+NoMirrors=未設定儲存庫鏡象。
+RepoTitle=SimTools — 儲存庫速度測試
+NoResponse=鏡象伺服器無回應。請檢查您的網路連線。
+SpeedPrompt=SimTools 已對可用的儲存庫進行了快速速度測試。\n\n適合您連線的最快伺服器為：\n  {0}  （{1} 毫秒）\n\n目前儲存庫：\n  {2}\n\n是否要切換至最快的伺服器？
+AlreadyBest={0} {1}
+PersonalizationText=本 SimTools 是專為 {0} {1} 精心打造。\n感謝您的支持！
+NoServer=無法連線至更新伺服器。\n請檢查您的網路連線並重試。
+Title_Failed=檢查更新失敗
+Malformed=伺服器上的版本檔案已損壞或格式無效。
+BadVersion=無法解析遠端版本："{0}"
+UpToDate=您已在使用最新版本（{0}）。
+Title_UpToDate=已是最新版本
+NewVersion=已有新版本 {0} 可供下載（目前版本：{1}）。\n\n是否要立即更新？\n啟動更新程式後，SimTools 將會自動關閉。
+Title_Available=有可用更新
+Timeout=檢查更新逾時。
+Unexpected=發生未預期的錯誤：\n{0}
+UpdaterMissing=找不到 SimToolsUpdater.exe。
+Title_MissingUpdater=找不到更新程式
+Suppress_Ask=是否要隱藏自動更新通知？
+Suppress_Title=隱藏更新通知
+Suppress_Duration=您希望隱藏更新通知多久？\n\n  是  —  隱藏 30 天\n  否  —  永久隱藏
+Suppress_DurTitle=隱藏期限
 
-[Main]
-ButtonInfoText=选择选项时，每个按钮在鼠标悬停时会改变颜色。这些颜色表示每个功能的重要程度。绿色为正常，黄色为推荐，红色为强烈推荐。一般来说，几乎所有的调整和错误修复都需要安装模组框架。
-FrameworkInfoText=强烈建议安装模组框架。如果您已安装模组框架，请清空"Mods"文件夹并从下方按钮重新安装。此版本的模组框架已经过专门审查，为 TS3Tools 精心准备。
-ComparisonLabel=对比
-Btn_TS3Vanilla=TS3 原版（无模组）
-Btn_TS3WithSimTools=TS3 搭配 SimTools
-Btn_VideoTutorial=SimTools 视频指南
-Btn_GPU=GPU 支持 >
-Btn_Tweaks=游戏调整 >
-GPU_Description=使用这些工具识别并安装 GPU 支持，以充分利用游戏引擎。适用于模拟人生 2、模拟人生故事和模拟人生 3。
-Tweaks_Description=此菜单包含大量调整选项，可通过多种方式帮助游戏运行得更好。仅选择您已安装的扩展包对应的修复。
+WhatIsSimTools=SimTools（先前稱為 TS3Tools）是先前開發的同款工具包，但現在包含了針對 Maxis 多款模擬遊戲的新選項。SimTools 支援的遊戲包括：《模擬市民 1》、《模擬市民 2》、《模擬市民故事》系列、《模擬市民 3》、《模擬市民 4》、《模擬城市 2000》、《模擬城市 3000》、《模擬城市 3000 無限版》、《模擬城市 4》、《模擬城市 (2013)》、《模擬直升機》以及《城市街道》，並將在未來的版本中加入更多遊戲。
+WhatIsSimTools_Title=什麼是 SimTools？
 
-[Messages]
-Error_OpenLink=无法打开链接：{0}
-Error_Title=错误
-Warn_MenuConverted=此页面已转换为菜单。请右键单击按钮以查看选项。
-Warn_Title=警告
-Error_DownloadFailed={0} 下载失败
-Error_DownloadTitle=下载错误
-Error_Sims1PathNotSet=The Sims 1 的游戏目录尚未配置。请在使用此功能前在设置中进行设置。
-
-[ContextMenu]
-GPU_Sims2=模拟人生 2
-GPU_SimsStories=模拟人生故事
-GPU_Sims3=模拟人生 3
-Bit_32=32 位
-Bit_64=64 位
-Tweaks_Sims1=模拟人生 1
-Tweaks_Simitone=Simitone
-
-[Language]
-Window_Title=选择语言
-Window_Subtitle=为 SimTools 选择语言，可随时在设置中更改。
-Checkbox_DoNotAsk=不再询问
-
-[Settings]
-Window_Title=SimTools - 设置
-Section_Language=语言
-Label_Language=语言：
-Btn_Reset=重置 - 在下次启动时显示语言选择
-Section_Directories=游戏和模组目录
-Label_GameDir=游戏目录：
-Label_ModsDir=模组目录：
-Btn_Browse=浏览...
-Btn_Save=保存
-Btn_Cancel=取消
-Msg_Saved=设置已成功保存。
-Msg_Reset=语言选择将在下次启动时显示。
-
-[Download]
-Window_Title=正在下载
-Progress_Finalising=正在完成...
+[SpecialThanks]
+ThanksMessage=感謝 The Sims 3 Facebook 社團 — 感謝你們激發了開發此工具包的靈感。多年來你們許多人都遇到了無數的問題。本工具旨在以各種可能的方式提供支援並解決這些問題。\n\n Anime_Boom — 感謝在 Steam 上提供的全面調整與效能指南。其中的大部分內容已被整合到此工具中。\n\n alfa1295 — 感謝在 "The Sims 3 GPU Addon" 軟體上的卓越貢獻，為現代顯示卡帶來了相容性。\n\n Dmitry Zhutkov — 感謝開發 "Regul Save Cleaner"。這真是一款不可思議的軟體，現在我們的遊戲存檔安全無虞了！\n\n LazyDuchess — 感謝對遊戲引擎所做的無數實用修改。\n\n Chain_Reaction / Twallan — 感謝 nRaas 以及全心投入的 TS3 模組社群。他們提供了多個重構遊戲腳本的核心模組（Core Mods）與套件。\n\n Guifrog — OCRemix 的作曲家，本工具包採用了其創作的主題曲。該曲融合了《模擬市民 3》與《模擬市民 1》的旋律。您可以前往 https://ocremix.org/artist/9047/guifrog 瀏覽他的個人檔案。\n\n Blocky9032 & JonySimmer — 感謝製作全新的片頭動畫，將 TS3帶入現代舞台！\n\n Eli Sims — 感謝將 SimTools 翻譯為法文的卓越工作（Bonjour!）
+PreviousMenu=點擊「X」返回上一個選單。
 
 [Splash]
-Loading=v 4.0.1.3868
-Retic=网状样条...
-
-
-[Updates]
-NoServer=无法连接到更新服务器。\n请检查您的网络连接后重试。
-Malformed=服务器上的版本文件已损坏。
-BadVersion=无法解析远程版本："{0}"
-UpToDate=您已经运行最新版本 ({0})。
-NewVersion=版本 {0} 已可用（您当前为 {1}）。\n\n是否立即更新？\n更新程序启动后，SimTools 将自动关闭。
-Timeout=更新检查超时。\n请稍后重试。
-Unexpected=发生意外错误：\n{0}
-UpdaterMissing=在应用程序目录中找不到 SimToolsUpdater.exe。\n请手动下载 SimTools。
-Title_Failed=更新检查失败
-Title_UpToDate=已是最新版本
-Title_Available=有可用更新
-Title_MissingUpdater=未找到更新程序
-Suppress_Ask=是否禁止自动更新通知？
-Suppress_Title=禁止更新通知
-Suppress_Duration=您希望禁止通知多长时间？\n\n  是 —  禁止 30 天\n  否 —  永久禁止
-Suppress_DurTitle=禁止时长
-
-[RepoSpeed]
-Prompt=SimTools 对可用存储库进行了快速速度测试。\n\n您网络连接最快的服务器：\n  {0}  ({1} 毫秒)\n\n您当前的存储库：\n  {2}\n\n是否切换到更快的服务器？
-Title=SimTools — 存储库速度测试
-
-[Paths]
-Title=SimTools — 路径未设置
-Sims3Game=The Sims 3 游戏目录未配置。\n请打开设置并先进行配置。
-Sims3Mods=The Sims 3 模组目录未配置。\n请打开设置并先进行配置。
-Sims2Mods=The Sims 2 模组目录未配置。\n请打开设置并先进行配置。
-SimsMedieval=The Sims Medieval 游戏目录未配置。\n请打开设置并先进行配置。
-SimCopter=SimCopter 游戏目录未配置。\n请打开设置并先进行配置。
-SimStreets=Streets of SimCity 游戏目录未配置。\n请打开设置并先进行配置。
-SimCity2000=SimCity 2000 游戏目录未配置。\n请打开设置并先进行配置。
-Generic={0} 游戏目录未配置。\n请在设置中配置后再使用此功能。
-
-[GPU]
-Sims2Warning=如果您使用的是 The Sims 2 Legacy Collection，请勿应用此补丁。如果您使用零售版或完整合集版，请应用此补丁。
-Sims2Title=图形规则制作器 — The Sims 2
-
-[Tweaks]
-AlderLake_Info1=在第12代Intel Alder Lake CPU上，The Sims 3 启动时会崩溃。此修复允许使用 Alder Lake CPU 的用户再次游玩。
-AlderLake_Info2=如果您使用 EA App 版本的 The Sims 3，自 v1.69.47.024017（2025年1月13日）起此修复不再需要。零售版和 Steam 版用户仍需此补丁。
-AlderLake_Title=Intel Alder Lake 修复 — The Sims 3
-AlderLake_ExtractFail=提取 Alder Lake 补丁失败：\n{0}
-AlderLake_NotFound=提取成功，但在 The Sims 3 目录中找不到 AlderLakePatch.exe。
-LDLauncher_Info1=适用于 EA App（版本1.69）的自定义 TS3 启动器，提供更多控制功能。支持 ASI 模组、启动器绕过、显示所有扩展包等。
-LDLauncher_Info2=仅适用于 EA App。默认情况下，安装程序提取到默认路径并替换原始启动器。如果 The Sims 3 安装在其他位置，需手动更改安装位置。
-LDLauncher_Title=LazyDuchess Launcher — The Sims 3
-LDLauncher_BackupFail=无法备份 Sims3Launcher.exe：\n{0}\n\n安装将不会继续。
-MonoPatcher_Info1=LazyDuchess 的另一个精彩模组。Mono Patcher 是一个库，允许脚本模组创建者无需创建核心模组即可替换 The Sims 3 的方法。
-MonoPatcher_Info2=当前版本：0.2.2
-MonoPatcher_Title=Mono Patcher Library — The Sims 3
-MonoPatch_Info1=Mono Patcher 是一个库，允许脚本模组创建者无需核心模组即可替换 The Sims 3 的方法。
-MonoPatch_Info2=Mono Patcher 是 SimTools 部分模组所必需的。强烈建议安装。
-MonoPatch_Title=LazyDuchess Mono Patcher — The Sims 3
-PatchDL_Info1=注意：只有在从零售光碟游玩时才需要更新到1.67。EA App 和 Steam 版本在安装时已更新到最新版本。
-PatchDL_Info2=使用以下补丁下载器为基础游戏和已安装的扩展包下载补丁。
-PatchDL_Info3=此外，强烈建议在安装每个标题后打补丁。例如：安装基础游戏，打补丁，安装 World Adventures，打补丁，依此类推。
-PatchDL_Title=补丁下载器 — The Sims 3
-Simler90_Info=Simler90 的 Gameplay Systems Core Mod 修复了基础游戏和许多扩展包中的大量问题。强烈推荐。
-Simler90_Title=Simler90 修复 — The Sims 3
-GameplayFixes_Info=正在启动 Gameplay Fixes AIO 安装程序。请仅选择您已安装扩展包的修复。
-GameplayFixes_Title=游戏玩法修复 — The Sims 3
-SimCopterX_Info=您已获准在 Windows 10 上起飞。不再需要虚拟机。修补程序包含 16:9 和 16:10 等更高分辨率选项。
-SimCopterX_Title=SimCopterX
-SimStreetsX_Info=在 Windows 10 的街道上尽情发泄吧。不再需要虚拟机。修补程序提供多种选项，支持最多七名玩家联网游戏。
-SimStreetsX_Title=SimStreetsX
-SC2kFix_Info=SC2KFix 是 SimCity 2000 Special Edition 的错误修复和模组插件。仅兼容 Windows 95 版本。
-SC2kFix_Title=SC2kFix — SimCity 2000
-SC2000X_Info=SC2000X 是 SimCity 2000（Win95）的开源安装程序和修补程序。修复了"另存为"崩溃错误。
-SC2000X_Title=SC2000X — SimCity 2000
-
-[BugFixes]
-Sims1_Info=请使用"游戏调整"中的 Simitone 来解决 The Sims 1 的游戏错误。
-Sims1_Title=The Sims 1 — 错误修复
-Sims4_Info=将在后续版本中实现。
-Sims4_Title=The Sims 4 — 错误修复
-ShadowFix_Info=使用此模组后，模拟市民和宠物的室内阴影将不再显示为黑色矩形。此问题在许多现代显卡上均有发生。
-ShadowFix_Title=模拟市民阴影修复 — The Sims 2
-BrightCAS_Info=此模组修复了在 CAS 模式中没有 Bump Map 支持的 CAS 部件发光的问题。由 LazyDuchess 创建。
-BrightCAS_Title=明亮 CAS 修复 — The Sims 2
-
-[ModResources]
-Simitone_Installed=Simitone 已安装到 The Sims 1 目录。\n\n是否创建 Simitone.Windows.exe 的桌面快捷方式？
-Simitone_Extracted=Simitone 已提取到 The Sims 1 目录。\n\n是否创建桌面快捷方式？
-Simitone_Title=SimTools — Simitone 已安装
-Simitone_ExtractFail=提取 Simitone 失败：\n{0}
-Simitone_ExtractTitle=SimTools — 提取错误
-Sims2RPC_Ask=您安装了哪个版本的 The Sims 2？\n\n• 是 —  标准版（光碟或 Origin）\n• 否 —  The Sims 2 Legacy Edition（EA App）\n\n是：安装 Sims2RPC\n否：打开 LazyDuchess Legacy Extender 页面
-Sims2RPC_Title=SimTools — Sims2RPC / Legacy Extender
-SaveCleaner_Download=是否下载 Regul Save Cleaner？
-SaveCleaner_Title=Regul Save Cleaner
-SaveCleaner_Shortcut=是否为 Regul Save Cleaner 创建桌面快捷方式？
-SaveCleaner_ShortcutTitle=创建快捷方式
-SaveCleaner_ShortcutFail=无法创建快捷方式：\n{0}
-SaveCleaner_ShortcutFailTitle=快捷方式错误
-SaveCleaner_NotFound=在以下位置未找到 RegulSaveCleaner.exe：\n{0}
-SaveCleaner_NotFoundTitle=SimTools — 找不到文件
-
-[Framework]
-NotInstalled=SimTools Mod Framework 似乎未安装，或者您的 Resource.cfg 缺少所需的 SimTools 包路径。\n\n请通过主窗口的"模组框架"按钮安装 Mod Framework。
-NotInstalled_Title=SimTools — 需要 Mod Framework
-ModsNotSet_Ask=The Sims 3 的模组目录未在设置中配置。\n\nSimTools 检测到您的 The Sims 3 用户数据文件夹位于：\n{0}\n\n是否在此处创建"Mods"文件夹并继续安装？
-ModsNotSet_Title=SimTools — 模组目录未设置
-ModsNotSet_Manual=The Sims 3 的模组目录未配置。\n\n安装 Mod Framework 的步骤：\n\n1. 在以下位置创建名为"Mods"的文件夹：\n   文档\EA Games\模拟人生3\n\n2. 打开设置并设置 Sims 3 模组路径。\n\n然后再次点击"模组框架"。
-Installed=SimTools Mod Framework 已成功安装！\n\n位置：\n{0}\n\n已创建的文件夹：\n  • Disabled  (Overrides, Packages, Probation, Test)\n  • Overrides  •  Packages\n  • Probation  (Overrides, Packages)\n  • SimTools  (Overrides, Packages)\n  • Test  (Overrides, Packages)\n\nResource.cfg 已安装到您的 Mods 文件夹。\n核心包已安装到 SimTools\Packages。
-Installed_Title=SimTools — Mod Framework 已安装
-MissingResource=在编译资源中找不到 Resource.cfg。\n请重新安装 SimTools 后再试。
-MissingResource_Title=SimTools — 缺少资源
-InstallFailed=安装 Mod Framework 失败：\n\n{0}
-InstallFailed_Title=SimTools — 安装失败
-GameIntro_Ask=是否安装 SimTools 自定义游戏介绍？\n\n这将把标准的 EA 游戏介绍替换为 SimTools 品牌版本。
-GameIntro_Title=SimTools — 自定义游戏介绍
-Splashscreen_Ask=是否安装 SimTools 自定义启动画面？\n\n这将把标准加载启动画面替换为 SimTools 品牌版本。
-Splashscreen_Title=SimTools — 自定义启动画面
-ExtractFail=提取 {0} 失败：\n{1}
-ExtractFail_Title=提取错误
-
-[GenericKeys]
-Info=此功能为旧版 Maxis/EA 游戏提供通用产品密钥。\n\n根据 EA 的要求，可能在未来版本的 SimTools 中被删除。
-Info_Title=SimTools — 通用密钥
-SelectFirst=请先选择一个游戏。
-NoKeys=此游戏目前没有可用的密钥。
-ClickToGenerate=点击"生成"以获取密钥。
-
-[Music]
-Fetching=正在获取曲目列表…
-Cancelled=下载已取消。
-Complete=下载完成！
-NoServer=无法连接到音乐服务器。
-Cancelling=正在取消…
-FirstRun=是否下载免费的背景音乐包？\n\n您也可以随时将自己的歌曲（MP3、WAV、FLAC、M4A）放入\n/Resources/Music 文件夹：\n{0}
-FirstRun_Title=背景音乐
-NoTrack=未加载曲目
-
-[UpdateDL]
-Complete=下载完成！正在启动安装程序…
-Cancelled=下载已取消。
-Cancelling=正在取消…
-
-[Personalization]
-EnterKey=请输入密钥。
-InvalidKey=该密钥无效。请检查后重试。
-Unlocked=个性化已解锁！欢迎，{0}。
-Unlocked_Title=SimTools — 个性化
-RemoveAsk=删除您的个性化密钥？欢迎屏幕上将不再显示横幅。
-RemoveAsk_Title=SimTools — 删除个性化
-PersonalizationText=此 SimTools 副本专为 {0} {1} 精心设计。\n感谢您的支持！
-
-[KeyGen]
-Copied=密钥已复制到剪贴板。
-Copied_Title=SimTools — 密钥生成器
-
-[Repo]
-Warning=存储库信任检查失败，目标：{0}\n\n{1}\n这可能表示存储库 URL 配置错误、网络拦截尝试或 hosts 文件被修改。\n\n请谨慎操作。
-Warning_Title=不受信任的存储库来源
-Domain_Untrusted=  • 域名"{0}"未被列为可信来源。
-IP_Untrusted=  • 解析的IP地址（{0}）与任何可信IP不匹配。
-Hosts_Tampered=  • 您的本地 hosts 文件将"{0}"重定向到 {1}，这不是可信地址。
-
-[AboutSimTools]
-WhatIsSimTools=SimTools（前称 TS3Tools）是与之前相同的工具套件，但现在包含了多款 Maxis 游戏的选项，包括模拟人生1、2、故事版、3、4，模拟城市2000/3000/4/2013，SimCopter 和 Streets of SimCity。
-WhatIsSimTools_Title=SimTools 是什么？
-WarningMessage=v3.2.4 到 v4.0.1 之间发生了很多变化。请点击'SimTools 视频指南'按钮观看新的视频指南。
-WarningMessage_Title=观看视频指南！
-SC2013Warning=大多数 SimCity 2013 模组只能在离线模式下运行。在在线模式下使用这些模组将会遇到断线问题。
-SC2013Warning_Title=SimCity 2013 — 警告
+Retic=正在網格化樣條線...
 
 [Settings]
-Sims3DirWarning=请将 The Sims 3 的游戏目录设置为包含扩展包和物品包文件夹的根目录，不要选择 Game/Bin 文件夹。
-Sims3DirWarning_Title=SimTools — The Sims 3 目录
-AutoDetect_Nothing=未能自动检测到任何游戏或模组目录。\n\n已检查了常见安装位置，包括 Steam、GOG、EA Games、Electronic Arts 和 Origin Games 文件夹。\n\n您可以使用浏览按钮手动设置路径。
-AutoDetect_Nothing_Title=自动检测 — 未找到任何内容
-AutoDetect_Found_Title=自动检测完成
-ReenabledUpdates=自动更新通知已重新启用。\n\nSimTools 将在下次启动时检查更新。
-ReenabledUpdates_Title=更新检查已重置
+Sims3DirWarning=《模擬市民 3》的遊戲資料夾必須設定為包含資料片（Expansion Packs）與組合（Stuff Packs）資料夾的根目錄。請勿選擇 Game/Bin 資料夾。
+Sims3DirWarning_Title=SimTools — 《模擬市民 3》目錄
+AutoDetect_Nothing=無法自動偵測到遊戲或模組（Mods）目錄。\n\n我們已檢查了常見的安裝位置，包括 Steam、GOG、EA Games、Electronic Arts 和 Origin Games 的資料夾。\n\n您可以點擊「瀏覽」按鈕手動指定路徑。
+AutoDetect_Nothing_Title=自動偵測 — 未找到
+AutoDetect_Found={0} {1}
+AutoDetect_Found_Title=自動偵測完成
+ReenabledUpdates=已重新啟用自動更新通知。\n\nSimTools 將在下次啟動時檢查更新。
+ReenabledUpdates_Title=重設更新檢查
+Msg_Saved=設定已成功儲存。
+Msg_Reset=語言選擇畫面將在下次啟動時顯示。
 
-[GameplayFixes]
-SelectAll_Ask=您即将选择所有可用的修复程序。\n\nSimTools旨在提升游戏运行性能，但安装所有软件包会增加加载时间并可能拖慢引擎。强烈建议只安装您积极使用的功能和物品的修复程序。\n\n此外，为未安装的扩展包或内容包安装修复程序可能导致崩溃或意外行为。\n\n您确定要选择所有修复程序吗？
-SelectAll_Title=SimTools — 全选警告
-NoneSelected=未选择任何修复程序。\n\n注意：灰色项目是尚未定义的占位符。
-NoneSelected_Title=没有可下载的内容
-DownloadError=下载 {0} 失败：\n{1}
-DownloadError_Title=下载错误
-Done=完成。\n\n已下载：{0}  |  已是最新：{1}  |  失败：{2}
-Done_Title=游戏修复 — 模拟人生3
+[Main]
+STInfo=SimTools — 資訊
+StorePiracyWarning=Store 盜版警告
+StorePiracy=如果您使用的是盜版的 Store 完整整合包（例如 FitGirl、Phantom99、nausallien 等釋出的版本），我們建議您「不要」透過本程式安裝 Store 內容，因為這可能會損壞 Store 或您的遊戲。一如既往，我們建議購買正版複本。
+StorePiracy_Title=盜版 Store 檔案警告
+Sims3Store=The Sims 3 Store
+DailyDeal=每日特惠
+DailyDealRot=每日特惠輪替
+FreeItems=免費 Store 物品
+StoreGuide=Store 影片教學（英文）
+BuyTS3Games1=購買 TS3 遊戲
+WarningMessage=從 v3.2.4 到 v4.0.1 之間有許多變更。請點擊「SimTools 影片教學」按鈕觀看全新的影片說明。閱讀指南和變更日誌將有助於您熟悉這些重大轉變。
+WarningMessage_Title=請觀看影片教學！
+CAW=「建立世界」工具 (CAW)
+CAW167=CAW (適用於 v1.67)
+CAW169=CAW (適用於 v1.69)
+S3PE=Sims 3 Package Editor
+S3PE_2=Sims 3 Package Extractor
+S3Dash=Sims 3 Dashboard
+CCMagic=安裝 CCMagic
+ButtonInfoText=當您選擇選項時，將滑鼠游標移至各按鈕上，其顏色會隨之改變。這些顏色代表該功能的重要程度。綠色為普通、黃色為推薦、紅色為強烈推薦。一般而言，必須先安裝 Mod Framework 才能應用幾乎所有的調整與錯誤修正。
+FrameworkInfoText=強烈建議安裝 Mod Framework。如果您已經擁有 Mod Framework，請將 "Mods" 資料夾清理一次，然後使用下方的按鈕重新安裝。此版本的 Mod Framework 經過特別驗證，專為 SimTools 準備。
+ComparisonLabel=比較
+Btn_TS3Vanilla=TS3 原版（無模組）
+Btn_TS3WithSimTools=TS3（使用 SimTools）
+Btn_VideoTutorial=SimTools 影片教學
+Btn_GPU=顯示卡支援 >
+Btn_Tweaks=遊戲調整 >
+Bugfix_Description=針對遊戲核心與全域變數的多項修正，以解決《模擬市民 3》多年來累積的多種錯誤（Bugs）。
+SaveCleaner_Description=《模擬市民 3》的存檔檔案可能會隨著時間膨脹至數個 GB 並發生損壞。請定期使用此工具進行清理。
+Mods_Description=在此您可以找到由我和社群推薦的模組，這些模組不會大幅修改遊戲引擎，也不屬於錯誤修正（需要安裝《模擬市民 3》Mod Framework）。
+Store_Description=如果您有興趣收集 《模擬市民 3》Store 的物品，這裡就是您要找的地方。您需要的一切都在此區塊中。
+BuyGame_Description=這裡包含購買《模擬市民 3》及其各式資料片與組合的連結。若透過 SimTools 購買，部分銷售額將作為佣金支付給我。
+ModTools_Description=一系列用於建立世界、物件、外觀、衣服、腳本、封裝包等的實用工具。請謹慎使用。您可以在 YouTube 上找到許多教學影片。
+GenKeys_Description=遺失了您的遊戲外盒？購買了沒有序號的二手遊戲？此選單顯示了可於從實體媒介（零售光碟）安裝時使用的通用序號。
+GPU_Description=使用這些工具來識別您的顯示卡並安裝支援，以允許遊戲引擎充分發揮您顯示卡的效能。適用於《模擬市民 2》、《模擬市民故事》和《模擬市民 3》。
+Tweaks_Description=此選單包含大量的調整項目，能從多方面改善遊戲的運作方式。請僅選擇您已安裝之資料片的修正程式。
+Bugfix_Button=錯誤修正中心 >
+SaveCleaner_Button=存檔清理器
+Mods_Button=推薦模組 >
+Store_Button=The Sims 3 Store >
+BuyGame_Button=購買 Sims 遊戲
+ModTools_Button=模組開發工具 >
+GenKeys_Button=通用遊戲序號
+ModFramework_Button=Mod Framework
+Donate_Button=支持本工具開發！
+Thanks_Button=特別鳴謝
+Warning_Button=重要警告！
+SimPort_Button=在 SimPort 中新增好友
+Error_OpenLink=無法開啟連結：{0}
+Error_Title=錯誤
+Sims2Warning=如果您執行的是《模擬市民 2》Legacy Collection，請「不要」應用此補丁，因為在較新版本中已不再需要它。如果您執行的是實體（零售）版本或 Ultimate Collection，請應用此補丁。
+Sims2Title=Graphics Rules Maker — 《模擬市民 2》
+GPU_Sims2=《模擬市民 2》
+GPU_SimsStories=《模擬市民故事》
+GPU_Sims3=《模擬市民 3》
+GPU_Sims3_Addon=The Sims 3 GPU Addon
+Error_DownloadFailed=下載失敗 {0}
+Error_DownloadTitle=下載錯誤
+Bit_32=32 位元
+Bit_64=64 位元
+Tweaks_Sims1=《模擬市民 1》
+Sims2Mods=未設定《模擬市民 2》的模組（Mods）目錄。
+Tweaks_Simitone=Simitone
+Error_Sims1PathNotSet=未設定《模擬市民 1》的遊戲目錄。\n在使用此功能前，請先在設定中指定目錄。
+Sims1PathNotSet_Title=SimTools — 未設定路域
+Simitone_ExtractFail={0}
+Simitone_ExtractTitle=SimTools — 解壓縮錯誤
+Simitone_Installed=Simitone 已安裝。
+Simitone_Extracted=Simitone 已解壓縮。
+Simitone_Title=SimTools — Simitone 安裝完成
+Sims2RPC=Sims2RPC
+Sims2RPC_Ask=您安裝了哪一個版本的《模擬市民 2》？
+Sims2RPC_Title=SimTools — Sims2RPC / Legacy Extender
+BestSettingsDeprecated_Message=由於採用了 Sims 3 Settings Setter，「最佳設定」文章已被淘汰。此文章暫時保留，以防使用者在使用 S3SS 時遇到問題，但可能會在未來的 SimTools 版本中移除。
+BestSettingsDeprecated_Title=最佳設定文章已淘汰 — 《模擬市民 3》
+IniTweaks_DeprecatedWarning=由於採用了 Sims 3 Settings Setter，遊戲 INI 調整文章已被淘汰。此文章暫時保留，以防使用者在使用 S3SS 時遇到問題，但可能會在未來的 SimTools 版本中移除。
+AlderLake_Info1=針對《模擬市民 3》中 Intel Alder Lake 處理器的錯誤修正。Ultimate ASI Loader 或 Sims 3 Settings Setter 亦可解決此問題。
+AlderLake_Title=Intel Alder Lake 修正 — 《模擬市民 3》
+AlderLake_Info2=如果您是透過 EA App 安裝《模擬市民 3》，則不需要此補丁，因為該問題已在最新的 1.69 版本中修正。
+AlderLake_ExtractFail=解壓縮失敗：{0}
+Sims3Game=未設定《模擬市民 3》的遊戲目錄。
+NoGamePath_Title=SimTools — 未設定路徑
+LDLauncher_Title=LazyDuchess 啟動器 — 《模擬市民 3》
+LDLauncher_Info1=LazyDuchess 啟動器僅與 EA App 上的《模擬市民 3》1.69 版本相容。如果您使用的是光碟版或 Steam 版，請使用 Ultimate ASI Loader。
+LDLauncher_Info2=將 LazyDuchess 啟動器安裝至《模擬市民 3》目錄中。
+AlderLake_NotFound=找不到 AlderLakePatch.exe。
+BackupFailedMessage={0}
+BackupFailedTitle=SimTools — 備份失敗
+MonoPatcher_Title=Mono Patcher 函式庫 — 《模擬市民 3》
+MonoPatcher_Info1=Mono Patcher 是一個函式庫，允許腳本模組製作者覆寫《模擬市民 3》的方法，同時保持最高的相容性。這消除了僅為了替換遊戲功能而開發核心模組（Core Mods）的需要。
+MonoPatcher_Info2=目前版本：0.3.0
+STCG=KP Sweet Treats 轉換指南
+nRaas_Mods=nRaas 核心模組
+TSM_SmoothPatch=LazyDuchess Smooth Patch（適用於中世紀）
+TSM_Path=未設定《模擬市民中世紀》的遊戲目錄。
+KeysInfoBox=通用產品序號僅可用於安裝實體媒介（光碟）。本功能不保證一定有效，且可能會在未來的版本中移除。
+KeysInfo_Title=SimTools — 通用序號
 
+[BugFixes]
+ShadowFix_Info=修正《模擬市民 2》中模擬市民腳下的影子顯示為黑色矩形的錯誤。
+ShadowFix_Title=模擬市民影子修正 — 《模擬市民 2》
+ShadowFix_Menu=模擬市民影子修正
+BrightCAS_Info=修正「建立模擬市民」（CAS）畫面上過度明亮照明的模組，將亮度降低至更舒適的水平。
+BrightCAS_Title=CAS 亮度修正 — 《模擬市民 2》
+BrightCAS_Menu=CAS 亮度修正
+Sims4_Info=將於未來的更新中實現。
+Sims4_Title=《模擬市民 4》— 錯誤修正
+
+[Tweaks]
+PatchDL_Info1=協助下載《模擬市民 3》實體零售（光碟）版本的更新補丁。
+PatchDL_Title=補丁下載器 — 《模擬市民 3》
+PatchDL_Info2=數位分發版本（如 EA App 或 Steam）會自動更新，因此不需要此工具。
+PatchDL_Info3=建議在安裝每部資料片後立即應用補丁。例如：主遊戲 > 應用補丁 > 世界冒險 > 應用補丁... 依此類推。
+TPD=補丁下載器
+Simler90_Info=由使用者 Simler90 製作的模組，修正了大量與遊戲玩法和繪圖引擎相關的錯誤。
+Simler90_Title=Simler90 修正補丁 — 《模擬市民 3》
+GameplayFixes_Info=啟動多合一（AIO）遊戲玩法修正安裝程式。請僅選擇您已安裝之資料片的修正項目，以及您經常使用的項目。
+GameplayFixes_Title=遊戲玩法修正 — 《模擬市民 3》
+CopterX=SimCopterX
+SimCopterX_Info=中央控制台緊急通知：允許在 Windows 10 上起飛。您不再需要虛擬機器或 CPU 限制器（減速工具）。您唯一需要的就是鋼鐵般的意志。此外，此補丁包含高解析度選項，包括 16:9 和 16:10 的螢幕比例，讓您可以全螢幕遊玩，從空中直接體驗拯救危難中模擬市民的沉浸感。
+SimCopterX_Title=SimCopterX
+SimCopter_GameDir=未設定 SimCopter 的遊戲目錄。
+StreetsX=SimStreetsX
+SimStreetsX_Info=準備好扮演瘋狂的模擬市民司機，在 Windows 10 的街道上宣洩您的憤怒。不再需要虛擬機器和 CPU 限制器，只需踩下油門即可。此更新配備多種選項，讓您可以享受輕鬆的駕駛，或與多達 7 名玩家進行網路對戰。
+SimStreetsX_Title=SimStreetsX
+SimStreets=未設定 Streets of SimCity 的遊戲目錄。
+SC2kFix_Info=sc2kfix 是一個對 Windows 版《模擬城市 2000》特別版進行逆向工程的專案，旨在修正核心與相容性錯誤，並開發可實現新遊戲功能與生活品質（QOL）改善的修正程式與插件。
+SC2kFix_Title=SC2kFix 修正插件 — 《模擬城市 2000》
+SimCity2000=未設定《模擬城市 2000》的遊戲目錄。
+SC2KFix=SC2kFix
+SC2KX=SC2000X
+SC2000X_Info=SC2000X 是一款針對《模擬城市 2000》（Win95 版本）的開放原始碼安裝與更新程式。它不僅是一個多合一的解決方案，而且完全開源並支援多種遊戲版本。修正了使用「另存新檔」時發生的當機錯誤（這實際上是一個常見的對話方塊錯誤，也會影響「載入圖塊集」）。
+SC2000X_Title=SC2000X — 《模擬城市 2000》
+
+[ModResources]
+SaveCleaner_Download=是否要下載 "Regul Save Cleaner"？
+SaveCleaner_Title=Regul Save Cleaner
+SaveCleaner_Shortcut=是否要在桌面上建立 "Regul Save Cleaner" 的捷徑？
+SaveCleaner_ShortcutTitle=建立捷徑
+SaveCleaner_ShortcutFail={0}
+SaveCleaner_ShortcutFailTitle=建立捷徑錯誤
+SaveCleaner_NotFound={0}
+SaveCleaner_NotFoundTitle=SimTools — 找不到檔案
+
+[AboutSimToolsPage]
+CulminationMessage=SimTools 是多年辛勤工作的結晶！
+SimToolsDescription=剛開始，SimTools 只是《模擬市民 3》的增強版啟動器，內建了一些在啟動遊戲前執行的工具，好讓一切運作得更順暢。\n從那時起，它已演變成遠不止是一個簡單的啟動器，而是一個完整的工具包，甚至能讓初學者大幅翻轉他們的 Sim 遊戲體驗。\n如果 SimTools 曾協助您以全新且更好的方式體驗 Sim 遊戲，請考慮支持我們。如果您需要支援或想與社群分享您的經驗，歡迎加入 SimTools 的 Discord 伺服器。
+LicenseMessage=SimTools 受到創用 CC 姓名標示-非商業性 4.0 國際授權條款 (CC BY-NC) 的保護。這是一款公開發布並接受參與貢獻的開放原始碼軟體。本軟體不論是整體或部分，絕不能且永遠不得用於營利或商業用途。
+SimToolsDev=SimTools 創作者，David Brown。\n自 2000 年第一代《模擬市民》起便是忠實玩家。
+FaithDedication=獻給 Faith，是她給了我最終完成這個程式的靈感。
+PreviousMenu=點擊「X」返回上一個選單。
+UpdateButton=檢查更新
+ChangelogButton=變更日誌
+NoServer=無法連線至更新伺服器。
+Title_Failed=檢查更新失敗
+Malformed=伺服器上的版本檔案已損壞或格式無效。
+BadVersion=無法解析遠端版本："{0}"
+UpToDate=您已在使用最新版本（{0}）
+Title_UpToDate=已是最新版本
+NewVersion=已有新版本 {0} 可供下載（目前版本：{1}）。\n\n是否要立即更新？\nSimTools 將會關閉。
+Title_Available=有可用更新
+Timeout=檢查更新逾時。
+Unexpected=發生未預期的錯誤：\n{0}
+UpdaterMissing=在應用程式目錄中找不到 SimToolsUpdater.exe。
+Title_MissingUpdater=找不到更新程式
+Suppress_Ask=是否要隱藏自動更新通知？
+Suppress_Title=隱藏更新通知
+Suppress_Duration=您希望隱藏更新通知多久？
+Suppress_DurTitle=隱藏期限
+
+[SupportPage]
+SupportText1=首先，感謝您有興趣支持 SimTools。有許多方式可以支持 SimTools 專案。其中包括但不限於：
+FiscalSupport=財務支持
+FiscalSupport2=我將 SimTools 當作興趣來設計，但 SimTools 每月會產生主機代管費用，以及年度網域續約費用（每月約 $96.10 ）。透過向專案捐款，您可以協助分攤這些開銷。
+Contribute=貢獻
+Contribute2=您可以為 SimTools 的 GitHub 頁面貢獻程式碼，或為檔案儲存庫架設鏡象。您也可以使用語言翻譯工具，協助我們為 SimTools 新增更多語言。
+RepoMaker=儲存庫建立工具
+TranslationTool=翻譯工具
+Personalize=啟用個人化
+
+[Personalization]
+EnterKey=請輸入金鑰。
+InvalidKey=此金鑰無效。請檢查並重試。
+Unlocked=個人化已啟用！歡迎，{0}。
+Unlocked_Title=SimTools — 個人化
+RemoveAsk=是否要移除個人化金鑰？歡迎畫面上將不再顯示橫幅。
+RemoveAsk_Title=SimTools — 移除個人化
+PersonalizationText=本 SimTools 是專為 {0} {1} 精心打造。\n感謝您的支持！
+
+[BuyTS3]
+BrokenLinksText=如果您發現任何失效的連結，請在 SimTools 的 GitHub 上提交問題（Issue）報告，或在 Discord 發文，以便我們予以修正或移除。
+UseText=請使用下方的核取方塊選擇您想購買的遊戲，您將被重新導向至所選遊戲的購買頁面。每個部分皆可展開。\n所有連結均為 SimTools 的聯盟行銷連結。如果透過 SimTools 中的連結購買，每筆銷售額的 2% 到 5% 左右將會支付給我。這有助於支持 SimTools 的未來開發。
+WarningButton=點擊此處檢視重要警告！
+BuyOnSteam=如果您在 Steam 上購買《模擬市民 3》遊戲，您可以檢視您的遊戲序號並將其註冊在 EA App / Origin 中。這僅支援單向操作（從 Steam 到 EA）。您無法在 Steam 上註冊來自 EA 的《模擬市民 3》序號。此外，數位序號無法用於實體光碟，但未使用的實體光碟代碼可以在 EA 註冊（無法在 Steam 註冊）。購買全新未拆封的實體光碟或 Steam 版本是最安全的選擇！
+VendorTip=並非所有商店隨時都提供最低價格，因此請多加留意並做好功課。某些商店的價格可能比直接在 Steam 或 EA 購買還要高，請對比所有優惠以確保您獲得最佳交易。此外，如果將它們加入您在 Steam 或 EA 的願望清單中，您可以利用促銷活動，屆時資料片與組合可享高達 25 折的優惠（每款約 $5）！
+BuyDigital=數位分發
+BuyRetail=實體媒介（光碟）
+AffiliateText=標有星號（*）的商店尚未批准 SimTools 的合作申請，或未提供聯盟行銷計畫。SimTools 將無法從未簽約合作之商店的購買中獲得佣金。
+BackButton=返回主選單
+Sims1_Legacy=《模擬市民》：Legacy Collection
+Sims1_Disc=《模擬市民》
+Sims2_Legacy=《模擬市民 2》：Legacy Collection
+Sims2_Disc=《模擬市民 2》
+Sims3=《模擬市民 3》
+Sims3_Store=Store 物品
+Sims3BG=《模擬市民 3》主遊戲
+Expansions=資料片
+WorldAdventures=《模擬市民 3：世界冒險》
+Ambitions=《模擬市民 3：世界才藝》
+LateNight=《模擬市民 3：夜店人生》
+Generations=《模擬市民 3：花樣年華》
+Pets=《模擬市民 3：玩打交》
+Showtime=《模擬市民 3：華麗舞台》
+ShowtimeCE=《模擬市民 3：華麗舞台》凱蒂·佩芮珍藏版
+ShowtimeCE_2=《華麗舞台：凱蒂·佩芮珍藏版》現已停產並終止製造，因此價格通常非常高昂，或經常處於缺貨狀態。
+Supernatural=《模擬市民 3：異能新世紀》
+Seasons=《模擬市民 3：春夏秋冬》
+University=《模擬市民 3：大學生活》
+IslandParadise=《模擬市民 3：島嶼天堂》
+ITFuture=《模擬市民 3：前進未來》
+StuffPacks=組合
+HELStuff=《模擬市民 3：頂級奢華組合》
+FLStuff=《模擬市民 3：休閒生活組合》
+OLStuff=《模擬市民 3：戶外生活組合》
+TLStuff=《模擬市民 3：城鎮活力組合》
+MSStuff=《模擬市民 3：摩登臥室組合》
+KPSweetTreats=《模擬市民 3：凱蒂·佩芮甜心物件組合》
+KPSTMessage=《凱蒂·佩芮甜心物件組合》現已停產並終止製造，因此價格通常非常高昂，或經常處於缺貨狀態。
+DStuff=《模擬市民 3：Diesel 組合》
+789Stuff=《模擬市民 3：70、80及90年代組合》
+MStuff=《模擬市民 3：電影組合》
+PremWorlds=高級世界
+Aurora=極光天空鎮 (Aurora Skies)
+Barnacle=藤壺灣 (Barnacle Bay)
+DVGold=龍之谷 (Dragon Valley)：黃金版
+DVStandard=龍之谷 (Dragon Valley)：標準版
+HidSpring=世外桃源 (Hidden Springs)
+LuckyPalms=幸運棕櫚 (Lucky Palms)
+LunarLakes=月亮湖 (Lunar Lakes)
+MidnightHollow=午夜山谷 (Midnight Hollow)
+MonteVista=蒙特維斯塔 (Monte Vista)
+Riverview=河景鎮 (Riverview)
+RHGold=咆哮時光 (Roaring Heights)：黃金版
+RHStandard=咆哮時光 (Roaring Heights)：標準版
+HidMonteBundle=世外桃源與蒙特維斯塔組合包
+TSM1=《模擬市民中世紀》
+TSM2=《模擬市民中世紀》現已停產並終止製造，因此價格通常非常高昂，或經常處於缺貨狀態。
+TSM3=《模擬市民中世紀：海盜與貴族》
+TSM4=《模擬市民中世紀：海盜與貴族》現已停產並終止製造，因此價格通常非常高昂，或經常處於缺貨狀態。
+TS_Stories=《模擬市民故事》系列
+TSCast=《模擬市民孤島故事》
+TSLife=《模擬市民生活故事》
+TSPets=《模擬市民寵物故事》
+TS4=《模擬市民 4》
+SC2K=《模擬城市 2000》
+Copter=《模擬直升機》
+Streets=《城市街道》
+SC3K=《模擬城市 3000 無限版》
+SC4DE=《模擬城市 4 豪華版》
+SC2013=《模擬城市 (2013)》
+Eneba_EA=在 Eneba 購買 (EA App)
+Eneba_Steam=在 Eneba 購買 (Steam)
+GVG_EA=在 GVG Mall 購買 (EA App)
+G2A_EA=在 G2A 購買 (EA App)
+G2A_Steam=在 G2A 購買 (Steam)
+G2A_GOG=在 G2A 購買 (GOG)
+Gamivo_EA=在 Gamivo 購買 (EA App)
+Gamivo_Steam=在 Gamivo 購買 (Steam)
+GO_EA=在 Gamer's Outlet 購買 (EA App)
+HRK_EA=在 HRK 購買 (EA App)
+HRK_Steam=在 HRK 購買 (Steam)
+IG_EA=在 Instant Gaming 購買 (EA App)
+K4G_EA=在 K4G 購買 (EA App)
+Kinguin_EA=在 Kinguin 購買 (EA App)
+Kinguin_Steam=在 Kinguin 購買 (Steam)
+MMOGA_EA=在 MMOGA 購買 (EA App)
+Official=* 官方
+Buy_EA=在 EA App 購買
+Buy_Steam=在 Steam 購買
+Buy_GOG=在 GOG 購買
+Buy_Amazon=在 Amazon 購買
+Buy_eBay=在 eBay 購買
+BuyFromPartners=聯盟夥伴
+BuyFromRetail=* 實體媒介
+
+[SC2013Warnings]
+SC2013Warning=絕大多數適用於《模擬城市 (2013)》的模組（Mods）僅能在單機離線模式下運作。
+SC2013Warning_Title=《模擬城市 (2013)》— 警告
+
+[BuyWarning]
+BWText1=如果您選擇使用金鑰二手交易網站，我們建議您盡可能「直接」向該平台自營方購買，並避免購買該網站內其他第三方賣家的商品。部分賣家可能會使用詐騙手段（使用盜刷信用卡、惡意退款）來取得金鑰，這可能會導致該金鑰隨後被註銷。我們強烈建議直接在 EA 或 Steam 購買。價格越高，交易合法的可能性就越大。
+BWText2=許多此類第三方網站規模龐大且合法，擁有許多良好的交易與值得信賴的商家。然而，依然存在不良行為的案例。請提防過低的價格或好到令人難以置信的優惠。通常這背後隱藏著風險。\n\n為什麼購買最便宜的選項可能帶來風險：\n• 踩到賣家透過欺詐手段取得金鑰的機率會大幅增加。這包括使用盜刷信用卡購買金鑰的情況。當真正的持卡人發現時，他們會向銀行申請拒付（Chargeback）。遊戲發行商被迫將錢退還給銀行，隨後會追蹤與該金鑰關聯的交易並將其停用。\n• 此外，惡意賣家本身也可能在透過欺詐性銷售快速獲利後，故意對自己的信用卡申請拒付。發行商同樣會追蹤並停用該金鑰。\n• 即使您沒有過錯，每當金鑰因拒付而被註銷時，您的遊戲帳號都可能會收到一次違規紀錄。如果紀錄累積，發行商保留限制或完全封鎖您存取該平台的權利。\n\n如果您仍決定向第三方零售商購買，請參考以下建議：\n• 盡可能「直接」向平台自營方購買，而非向其內部的第三方賣家購買。\n• 尋找合理的價格。例如，如果一款《模擬市民 3》資料片平時售價為 $19.99，那麼價格在 $7 到 $10 之間的商品通常是最安全的。低於此範圍的價格具有較高的潛在風險。\n• 檢查賣家的評價與交易紀錄。查看他們在該遊戲上的銷量是否龐大以及買家是否滿意，並特別注意購買與留下評價之間的時間間隔。經營歷史越久，賣家越可靠。\n\n如果您對上述幾點感到任何不安，請將您的購買限制在官方管道或您完全信任的網站。在大多數情況下，Steam 會提供《模擬市民 3》25 折到 5 折的優惠（每款資料片約 $5.00 到 $10.00），這是購買資料片與組合最安全的時機。此外，在 Steam 購買的項目通常也可以在 EA App 中註冊。
+
+[EasterEgg1]
+Coding=以閱讀障礙模式編寫程式碼
+
+[DonorPage]
+DonorText1=以下人士透過單次或持續捐款（財務或其他形式）對 SimTools 作出貢獻：
+
+[DownloadProgress]
+DownloadingFile=正在下載 {0}
+StatusText1=正在準備...
+
+[ExclusiveItems]
+Title=SimTools — 專屬項目
+ContentText1=專屬捐款者的內容將在此處顯示。目前暫無可用內容。然而，一旦有新內容製作完成，我們將會更新此選單。
+ContentText2=進行過捐款的 SimTools 使用者可以與家人和朋友分享這些項目，但我們懇請您不要將它們上傳到模組分發網站。
+
+[GameplayFix]
+DownloadError=下載失敗 {0}：\n{1}
+DownloadError_Title=下載錯誤
+GlobalSelectAll=全選
+MonoPatcherWarning=此模組需要安裝由 LazyDuchess 開發的 "Mono Patcher"。請確保已從「錯誤修正」（Bugfix）選單中安裝它。
+NoCommLots=Bluegenjutsu 製作的「禁止自動放置社區用地」模組
+NoCommLotsWarning=警告：「禁止自動放置社區用地」模組會停用自動放置消防局、美容沙龍和自助洗衣店等用地的腳本。如果您需要自動放置這些用地，請勿安裝此封裝包。此外，此模組至少需要以下資料片之一：《夢想起飛》、《華麗舞台》、《異能新世紀》或《春夏秋冬》。如果您未擁有其中任何一款，可以放心跳過此模組。
+PerfumeFix=Gamefreak130 製作的「愛神香水心情指數修正」
+Done=完成。\n\n已下載：{0}  |  已是最新：{1}  |  失敗：{2}
+Done_Title=遊戲玩法修正 — 《模擬市民 3》
+LessSpaceMod=OhRudi 製作的「模擬市民需要更少空間」
+PetsLessSpaceMod=OhRudi 製作的「寵物需要更少空間」
+ImpMemories=VelocityGrass 製作的「僅保留重要記憶」
+TISFix=Simsi45 製作的「可平鋪物品著色器修正」
+SlopedTerrainFix=Nikel23 製作的「斜坡地形互動修正」
+HalfWallFix=Simsi45 製作的「半牆修正」
+EyeballUVFix=S-Club 製作的「眼球 UV 修正」
+EyeshadowFix=Lavsm 製作的「EA 眼影修正」
+MuscleSliderFix=Nysha 製作的「肌肉滑桿修正」
+GTKFix=SimBouquet 製作的「結識互動修正」
+GTKUtils=SimBouquet 製作的「結識修正工具」
+WelcomeMattFix=CeltySims 製作的「無光澤歡迎踏墊」
+ClapboardFix=CircusWolf 製作的「水平外牆護板修正」
+AtomicStairFix=EnableLlamas 製作的「原子時代樓梯修正」
+TSMFaceExpressions=SimBouquet 製作的「中世紀面部表情」
+RandomSimFixes=LazyDuchess 製作的「隨機模擬市民修正」
+SimBinGeneticsMale=Anime_Boom 製作的「模擬市民庫基因（男性預設）」
+SimBinGeneticsFemale=Anime_Boom 製作的「模擬市民庫基因（女性預設）」
+PickUpToddlerFix=TheSweetSimmer 製作的「抱起幼兒動作修正」
+HiddenStencils=Simsi45 製作的「隱藏噴漆解鎖與修正」
+FishingBoxFix=NanaBx3 與 caoride 製作的「釣魚箱修正」
+CrossEyeFix=LazyDuchess 製作的「鬥雞眼修正」
+PigtailsFix=Phantom99 製作的「雙馬尾錯誤修正」
+WateryGraveFix=fantuanss12 製作的「水之墓修正」
+GroceryFixes=Swiffy 製作的「雜貨店修正」
+DisTerrainFix=PotatoBalladSims 製作的「香榭麗舍模擬市民遠景樹木修正」
+SteamTrainFix=PotatoBalladSims 製作的「歐洲蒸汽火車修正」
+AsianWindowFix=OhRudi 製作的「亞洲窗戶光線反射修正」
+HarvesterFix=Fantuanss12 製作的「收割機修正」
+NoMagicClothesFix=Gamefreak130 製作的「取消魔法曬衣繩」
+InvestigatorFix=jm2k 製作的「消除調查員無用案件」
+CelebFridgeFix=EnableLlamas 製作的「名人冰箱紋理修正」
+CraneMed=Armiel 製作的「在 buydebug 模式中啟用中型起重機」
+CraneLg=Armiel 製作的「在 buydebug 模式中啟用大型起重機」
+LNPlantFix=Robodl95 製作的「《夜店人生》植物修正」
+BPWorkbenchFix=DividingByZero 製作的「橋港工作臺修正」
+LNElevatorFix=Vesko 製作的「電梯井放置修正」
+GenShirtFix=sweetdevil 製作的「《花樣年華》襯衫與毛衣色彩通道修正」
+GenPaintingFix1=ThomasRiordan 製作的「青少年服裝繪畫修正」
+GenPaintingFix2=ThomasRiordan 製作的「尷尬全家福照修正」
+RTSFix=Danjaley 製作的「陪幼兒讀書入睡修正」
+GallopFasterFix=Shimrod101 製作的「更快奔馳動畫修正」
+PetTombstoneFix=MenaceMan44 製作的「寵物墓碑影子修正」
+HorseTailFix=Simsi45 製作的「馬尾修正」
+NoNPCTips=Spicsshane 製作的「禁止 NPC 僅為小費表演」
+ProperTraitFix=SpotlessLeopard 製作的「針對『端莊』特徵的適當修正」
+RestoSpellFix=Arsil 製作的「恢復法術修正」
+MoneyTreeFix=Chicken0895 製作的「搖錢樹錯誤修正」
+ByeByeZombies=PersonCalledJoy 製作的「停用滿月時殭屍生成」
+LLAMASoundFix=ProtectusCZ 製作的「L.L.A.M.A. 聲音修正」
+MotiveMobileFix=YamiTheDragon 製作的「行動生活車替代方案」
+MotiveMobileMsg=此修正大幅降低了行動生活車的效果，使其僅填補「娛樂」與「社交」需求以避免潛在問題。這可防止轉變為超自然生物的模擬市民之需求遭到損壞。作為替代方案，您可以選擇單純不購買或不使用行動生活車。
+nR_Tempest=Chain_Reaction 製作的 nRaas Tempest
+FasterRaking=Mikey 製作的「更快耙樹葉」
+ForecastTweaks=Gamefreak130 製作的「天氣預報調整」
+EclipsingFog=Gamefreak130 製作的「遮擋視線的真實迷霧」
+AppleBobbingFix=Hundefreund 製作的「兒童咬蘋果修正」
+NoUglySnowprints=Lyralei 製作的「修正雪地上不自然腳印」
+ADUniShellEntry=AussomeDays 製作的「University - 新增建築入口 (Shell Entries)」
+ADUniShellReplace=AussomeDays 製作的「University - 替換用建築外殼 (Replacement Shells)」
+UniVisFix=SimBouquet 製作的「《大學生活》視覺效果修正」
+UniNoProtests=Don Babilon 製作的「停用大學抗議活動」
+UniDoorFix=CeltySims 製作的「阿爾法與歐米茄門修正」
+HangingLanternFix=Heaven 製作的「吊燈修正」
+HouseboatLagFix=MaryDeHoyos 製作的「減少船屋造成的延遲」
+PITO_Fix=Phantom99 製作的「自主『在海中玩耍』動作修正」
+LaserRhythmFix=SimsAddict777 製作的「觀看雷射節奏豎琴動作修正」
+ITFPlanterFix=Heaven 製作的「近地點植物盆栽修正」
+StorePiracyWarning2=在安裝 Store 修正檔案之前，請確保您沒有使用相關的修改版或盜版 Store 物品。
+BanquetFanFix=OmegaStarr82 製作的「宴會風扇路徑修正」
+EfficientUpgradeNameFix=Buzzler 製作的「『最高效率』升級名稱修正」
+HaciendaFireplaceFix=Qahne 製作的「Haute Hacienda 壁爐修正」
+NTStairFix=Simsi45 製作的「『過去與現在』樓梯修正」
+ProbationMods=暫定模組（處於測試階段）
+
+[GenericKeysPage]
+TS1LL=《模擬市民：美麗新世界》
+TS1HP=《模擬市民：派對總動員》
+TS1HD=《模擬市民：非常男女》
+TS1V=《模擬市民：歡樂假期》
+TS1U=《模擬市民：寵物世代》
+TS1S=《模擬市民：超級巨星》
+TS1MM=《模擬市民：魔法世界》
+TS1DE=《模擬市民：豪華版》
+TS1CC=《模擬市民：完整典藏版》
+TS2D=《模擬市民 2：豪華版》
+TS2DD=《模擬市民 2：雙重豪華版》
+TS2U=《模擬市民 2：大學生活》
+TS2NL=《模擬市民 2：美麗夜未眠》
+TS2OFB=《模擬市民 2：創業大作戰》
+TS2P=《模擬市民 2：玩偶家族》
+TS2S=《模擬市民 2：春夏秋冬》
+TS2BV=《模擬市民 2：環遊世界》
+TS2FT=《模擬市民 2：休閒時光》
+TS2AL=《模擬市民 2：公寓生活》
+TS2FFS=《模擬市民 2：家庭娛樂組合》
+TS2GLS=《模擬市民 2：時尚節日組合》
+TS2CS=《模擬市民 2：華麗聖誕組合》
+TS2HMFS=《模擬市民 2：H&M 時尚組合》
+TS2TSS=《模擬市民 2：青少年風尚組合》
+TS2KBIS=《模擬市民 2：廚房與衛浴設計組合》
+TS2IHS=《模擬市民 2：IKEA 家居設計組合》
+TS2MGS=《模擬市民 2：花園別墅組合》
+SC4=《模擬城市 4》
+SC4RH=《模擬城市 4：尖峰時刻》
+ClickToGen=點擊以產生序號...
+SelectFirst=請先選擇一款遊戲。
+NoKeys=此遊戲目前暫無序號可用。
+GenKeysButton1=選擇遊戲 ▸
+KeysInfo=請使用上方按鈕選擇一款遊戲。\r\n\r\n如果某個特定序號或整組序號皆無法運作，請在 Discord 中告知我們，以便我們在下一版本中予以修正。\r\n\r\n若收到 EA 的要求，此功能及所有相關項目隨時可能從 SimTools 中移除。
+KeysInfoCopy=這些序號無法用於線上註冊。\n它們僅適用於從實體媒介（光碟）進行安裝。
+GenerateButton=產生
+CopyButton=複製
+
+[Music]
+Fetching=正在獲取清單...
+Cancelled=下載已取消。
+Complete=下載完成！
+NoServer=無法連線至音樂伺服器。
+Cancelling=正在取消...
+FirstRun=是否要下載免費的背景音樂包？\n\n您也可以隨時將自己的音樂（MP3, WAV, FLAC, M4A）放入以下資料夾中：\n/Resources/Music\n路徑：{0}
+FirstRun_Title=背景音樂
+NoTrack=未載入曲目
+
+[Repo]
+RepoSpeedTest=儲存庫速度測試
+Warning=以下儲存庫未通過安全性檢查：  {0}\n\n{1}\n這可能代表儲存庫網址設定錯誤、遭到惡意網路攔截或本地 hosts 檔案被篡改。\n\n請極度謹慎地操作。來自此來源的下載內容可能不安全。
+Warning_Title=不可信的儲存庫來源
+Domain_Untrusted=網域 "{0}" 未被註冊為可信來源。
+IP_Untrusted=解析出的 IP 位址 ({0}) 與可信 IP 不符。
+Hosts_Tampered=本地 hosts 檔案正將 "{0}" 重新導向至不可信的位址 {1}。
+
+[Framework]
+NotInstalled=未安裝 SimTools Mod Framework，或 Resource.cfg 檔案不包含所需的 SimTools 套件路徑。\n\n在下載 .package 檔案之前，請點擊主視窗中的 "Mod Framework" 按鈕進行安裝。\n\n這將使遊戲能正確偵測並載入套件。
+NotInstalled_Title=SimTools — 需要 Mod Framework
+ModsNotSet_Ask=設定中未配置《模擬市民 3》的模組（Mods）目錄。\n\nSimTools 在以下位置偵測到《模擬市民 3》的使用者數據資料夾：\n{0}\n\n是否要在這裡建立 "Mods" 資料夾並繼續安裝？
+ModsNotSet_Title=SimTools — 未配置模組目錄
+ModsNotSet_Manual=設定中未配置《模擬市民 3》的模組（Mods）目錄。\n\n若要安裝 Mod Framework：\n\n1. 請在以下目錄中建立名為 "Mods" 的資料夾：\n   文件\Electronic Arts\The Sims 3\n\n2. 開啟 SimTools 設定，並將《模擬市民 3》的模組路徑指向該資料夾。\n\n完成後，再次點擊 "Mod Framework"。
+Installed=SimTools Mod Framework 已成功安裝！\n\n位置：\n{0}\n\n已建立的資料夾：\n  • Disabled  (Overrides, Packages, Probation, Test)\n  • Overrides  •  Packages\n  • Probation  (Overrides, Packages)\n  • SimTools  (Overrides, Packages)\n  • Test  (Overrides, Packages)\n\nResource.cfg 檔案已安裝至 Mods 資料夾中。\n核心套件已安裝至 SimTools\Packages 中。
+Installed_Title=SimTools — Mod Framework 安裝完成
+MissingResource=在編譯的資源中找不到 Resource.cfg。\n請重新安裝 SimTools 並重試。
+MissingResource_Title=SimTools — 找不到資源
+InstallFailed=無法安裝 Mod Framework：\n\n{0}
+InstallFailed_Title=SimTools — 安裝失敗
+GameIntro_Ask=是否要安裝 SimTools 特製的遊戲片頭動畫？\n\n這將用 SimTools 風格的版本取代 EA 預設的片頭。
+GameIntro_Title=SimTools — 特製片頭動畫
+Splashscreen_Ask=是否要安裝 SimTools 特製的載入畫面（Splashscreen）？\n\n預設的開發商載入畫面將被取代為 SimTools 風格的版本。
+Splashscreen_Title=SimTools — 特製載入畫面
+ExtractFail=解壓縮失敗 {0}：\n{1}
+ExtractFail_Title=解壓縮錯誤

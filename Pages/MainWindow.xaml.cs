@@ -74,7 +74,7 @@ namespace SimTools
             BugfixText.Text = LanguageManager.Get("Main", "Bugfix_Description", BugfixText.Text);
             SaveCleanerText.Text = LanguageManager.Get("Main", "SaveCleaner_Description", SaveCleanerText.Text);
             ModsText.Text = LanguageManager.Get("Main", "Mods_Description", ModsText.Text);
-            TS3StoreText.Text = LanguageManager.Get("Main", "Store_Description=", TS3StoreText.Text);
+            TS3StoreText.Text = LanguageManager.Get("Main", "Store_Description", TS3StoreText.Text);
             BuyTS3Text.Text = LanguageManager.Get("Main", "BuyGame_Description", BuyTS3Text.Text);
             ModToolsText.Text = LanguageManager.Get("Main", "ModTools_Description", ModToolsText.Text);
             GenKeysText.Text = LanguageManager.Get("Main", "GenKeys_Description", GenKeysText.Text);
@@ -177,9 +177,9 @@ namespace SimTools
             var contextMenu = new ContextMenu();
 
             // ── The Sims 2 (sub-menu) ──────────────────────────────────────────
-            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("ContextMenu", "GPU_Sims2", "The Sims 2") };
+            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("Main", "GPU_Sims2", "The Sims 2") };
 
-            var sims2_32 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_32", "32-Bit") };
+            var sims2_32 = new MenuItem { Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
             sims2_32.Click += (s, args) =>
             {
                 MessageBox.Show(
@@ -194,7 +194,7 @@ namespace SimTools
                 );
             };
 
-            var sims2_64 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_64", "64-Bit") };
+            var sims2_64 = new MenuItem { Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
             sims2_64.Click += (s, args) =>
             {
                 MessageBox.Show(
@@ -215,14 +215,14 @@ namespace SimTools
             // ── The Sims Stories (sub-menu) ────────────────────────────────────
             var simsStoriesItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSLife.ico"), Header = LanguageManager.Get("ContextMenu", "GPU_SimsStories", "The Sims Stories") };
 
-            var simsStories_32 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_32", "32-Bit") };
+            var simsStories_32 = new MenuItem { Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
             simsStories_32.Click += (s, args) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
                 fileName: "graphicsrulesmaker-32bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
-            var simsStories_64 = new MenuItem { Header = LanguageManager.Get("ContextMenu", "Bit_64", "64-Bit") };
+            var simsStories_64 = new MenuItem { Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
             simsStories_64.Click += (s, args) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
                 fileName: "graphicsrulesmaker-64bit.exe",
@@ -251,8 +251,7 @@ namespace SimTools
             {
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/d3d9.dll",
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "d3d9.dll")
-                );
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "d3d9.dll"));
             };
 
             sims3Item.Items.Add(sims3_gpuAddon);
@@ -405,7 +404,7 @@ namespace SimTools
             string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
 
             // ── The Sims 1 ────────────────────────────────────────────────────────────
-            var sims1Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = LanguageManager.Get("ContextMenu", "Tweaks_Sims1", "The Sims 1") };
+            var sims1Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = LanguageManager.Get("Main", "Tweaks_Sims1", "The Sims 1") };
 
             var sims1_simitone = new MenuItem { Header = LanguageManager.Get("Main", "Tweaks_Simitone", "Simitone") };
             sims1_simitone.Click += async (_, _) =>
@@ -413,9 +412,9 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims1Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Messages", "Error_Sims1PathNotSet",
+                        LanguageManager.Get("Main", "Error_Sims1PathNotSet",
                             "The Sims 1 game directory has not been configured.\nPlease set it in Settings before using this feature."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"),
+                        LanguageManager.Get("Main", "Sims1PathNotSet_Title", "SimTools — Path Not Set"),
                         MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
@@ -436,19 +435,19 @@ namespace SimTools
                 catch (Exception ex)
                 {
                     MessageBox.Show(
-                        LanguageManager.Format("ModResources", "Simitone_ExtractFail", ex.Message),
-                        LanguageManager.Get("ModResources", "Simitone_ExtractTitle", "SimTools — Extraction Error"),
+                        LanguageManager.Format("Main", "Simitone_ExtractFail", ex.Message),
+                        LanguageManager.Get("Main", "Simitone_ExtractTitle", "SimTools — Extraction Error"),
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
                 string simitoneExe = Path.Combine(gameDir, "Simitone.Windows.exe");
                 string message = File.Exists(simitoneExe)
-                    ? LanguageManager.Get("ModResources", "Simitone_Installed", "Simitone has been installed.")
-                    : LanguageManager.Get("ModResources", "Simitone_Extracted", "Simitone has been extracted.");
+                    ? LanguageManager.Get("Main", "Simitone_Installed", "Simitone has been installed.")
+                    : LanguageManager.Get("Main", "Simitone_Extracted", "Simitone has been extracted.");
 
                 var result = MessageBox.Show(message,
-                    LanguageManager.Get("ModResources", "Simitone_Title", "SimTools — Simitone Installed"),
+                    LanguageManager.Get("Main", "Simitone_Title", "SimTools — Simitone Installed"),
                     MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
@@ -462,16 +461,16 @@ namespace SimTools
             contextMenu.Items.Add(sims1Item);
 
             // ── The Sims 2 ────────────────────────────────────────────────────────────
-            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = "The Sims 2" };
+            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("Main", "GPU_Sims2", "The Sims 2") };
 
         
 
-            var sims2_rpc = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2RPC.ico"), Header = "Sims2RPC" };
+            var sims2_rpc = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2RPC.ico"), Header = LanguageManager.Get("Main", "Sims2RPC", "Sims2RPC") };
             sims2_rpc.Click += (_, _) =>
             {
                 var result = MessageBox.Show(
-                    LanguageManager.Get("ModResources", "Sims2RPC_Ask", "Which version of The Sims 2 do you have installed?"),
-                    LanguageManager.Get("ModResources", "Sims2RPC_Title", "SimTools — Sims2RPC / Legacy Extender"),
+                    LanguageManager.Get("Main", "Sims2RPC_Ask", "Which version of The Sims 2 do you have installed?"),
+                    LanguageManager.Get("Main", "Sims2RPC_Title", "SimTools — Sims2RPC / Legacy Extender"),
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
 
@@ -497,7 +496,7 @@ namespace SimTools
             contextMenu.Items.Add(sims2Item);
 
             // ── The Sims: Castaway Stories ────────────────────────────────────────────
-            var castawayItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSCastaway.ico"), Header = "The Sims: Castaway Stories" };
+            var castawayItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSCastaway.ico"), Header = LanguageManager.Get("BuyTS3", "TSCast", "The Sims: Castaway Stories") };
             castawayItem.Click += (_, _) => OpenUrl("https://modthesims.info/t/513463");
             contextMenu.Items.Add(castawayItem);
 
@@ -509,8 +508,8 @@ namespace SimTools
             ts3_bestSettings.Click += (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Messages", "BestSettingsDeprecated_Message", "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."),
-                    LanguageManager.Get("Messages", "BestSettingsDeprecated_Title", "Best Settings Article Deprecated — The Sims 3"),
+                    LanguageManager.Get("Main", "BestSettingsDeprecated_Message", "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."),
+                    LanguageManager.Get("Main", "BestSettingsDeprecated_Title", "Best Settings Article Deprecated — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 {
                     OpenUrl("https://simtools-app.com/best-in-game-settings-ts3");
@@ -524,10 +523,10 @@ namespace SimTools
 
             var iniItems = new[]
             {
-                ("Limit Game FPS", LanguageManager.Get("Tweaks", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/limit-game-fps-ts3"),
-                ("Allow More CPU Usage", LanguageManager.Get("Tweaks", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/allow-more-cpu-usage-ts3"),
-                ("Allow More GPU Usage", LanguageManager.Get("Tweaks", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/allow-more-gpu-usage-ts3"),
-                ("Clean DCBackup Cache", LanguageManager.Get("Tweaks", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/clean-dcbackup-ts3"),
+                ("Limit Game FPS", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/limit-game-fps-ts3"),
+                ("Allow More CPU Usage", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/allow-more-cpu-usage-ts3"),
+                ("Allow More GPU Usage", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/allow-more-gpu-usage-ts3"),
+                ("Clean DCBackup Cache", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/clean-dcbackup-ts3"),
             };
 
             foreach (var (label, warning, url) in iniItems)
@@ -551,20 +550,20 @@ namespace SimTools
             ts3_alderLake.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "AlderLake_Info1", "Intel Alder Lake Fix for The Sims 3."),
-                    LanguageManager.Get("Tweaks", "AlderLake_Title", "Intel Alder Lake Fix — The Sims 3"),
+                    LanguageManager.Get("Main", "AlderLake_Info1", "Intel Alder Lake Fix for The Sims 3. Ultimate ASI Loader and Sims 3 Settings Setter fix this as well."),
+                    LanguageManager.Get("Main", "AlderLake_Title", "Intel Alder Lake Fix — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "AlderLake_Info2", "EA App version info for Alder Lake."),
-                    LanguageManager.Get("Tweaks", "AlderLake_Title", "Intel Alder Lake Fix — The Sims 3"),
+                    LanguageManager.Get("Main", "AlderLake_Info2", "If you have Sims 3 installed through the EA App, the latest version of Sims 3 1.69 already addresses this issue and thus this patch is unnecessary."),
+                    LanguageManager.Get("Main", "AlderLake_Title", "Intel Alder Lake Fix — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -580,8 +579,8 @@ namespace SimTools
                 try { ZipFile.ExtractToDirectory(tempZip, gameDir, overwriteFiles: true); }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(LanguageManager.Format("Tweaks", "AlderLake_ExtractFail", ex.Message),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(LanguageManager.Format("Main", "AlderLake_ExtractFail", ex.Message),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -590,8 +589,8 @@ namespace SimTools
                 if (!File.Exists(patchExe))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Tweaks", "AlderLake_NotFound", "AlderLakePatch.exe could not be found."),
-                        LanguageManager.Get("Messages", "Error_Title", "Error"), MessageBoxButton.OK, MessageBoxImage.Error);
+                        LanguageManager.Get("Main", "AlderLake_NotFound", "AlderLakePatch.exe could not be found."),
+                        LanguageManager.Get("Main", "Error_Title", "Error"), MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -611,8 +610,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -629,8 +628,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -647,8 +646,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -663,20 +662,20 @@ namespace SimTools
             ts3_ldLauncher.Click += (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "LDLauncher_Info1", "LazyDuchess Launcher info."),
-                    LanguageManager.Get("Tweaks", "LDLauncher_Title", "LazyDuchess Launcher — The Sims 3"),
+                    LanguageManager.Get("Main", "LDLauncher_Info1", "LazyDuchess Launcher is only compatible with the 1.69 EA release of The Sims 3. For Retail or Steam, use Ultimate ASI Loader instead."),
+                    LanguageManager.Get("Main", "LDLauncher_Title", "LazyDuchess Launcher — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "LDLauncher_Info2", "LazyDuchess Launcher install info."),
-                    LanguageManager.Get("Tweaks", "LDLauncher_Title", "LazyDuchess Launcher — The Sims 3"),
+                    LanguageManager.Get("Main", "LDLauncher_Info2", "LazyDuchess Launcher will now be installed to Sims 3 directory."),
+                    LanguageManager.Get("Main", "LDLauncher_Title", "LazyDuchess Launcher — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -694,10 +693,13 @@ namespace SimTools
                     }
                     catch (Exception ex)
                     {
+                        // Fetch the localized strings
+                        string errorMessage = LanguageManager.Format("Main", "BackupFailedMessage", ex.Message);
+                        string errorTitle = LanguageManager.Get("Main", "BackupFailedTitle", "SimTools — Backup Failed");
+
                         MessageBox.Show(
-                            $"Could not back up the existing Sims3Launcher.exe:\n{ex.Message}\n\n" +
-                            "The installation will not proceed.",
-                            "SimTools — Backup Failed",
+                            errorMessage,
+                            errorTitle,
                             MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
@@ -716,20 +718,20 @@ namespace SimTools
             ts3_monoPatcher.Click += (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "MonoPatcher_Info1", "Mono Patcher info."),
-                    LanguageManager.Get("Tweaks", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
+                    LanguageManager.Get("Main", "MonoPatcher_Info1", "Mono Patcher is a library that allows Script Modders to replace Sims 3 methods with as much compatibility as possible - No need to create core mods anymore to replace game functions."),
+                    LanguageManager.Get("Main", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "MonoPatcher_Info2", "Current Version: 0.2.2"),
-                    LanguageManager.Get("Tweaks", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
+                    LanguageManager.Get("Main", "MonoPatcher_Info2", "Current Version: 0.3.0"),
+                    LanguageManager.Get("Main", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -748,8 +750,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 DownloadAndOpenExe(
@@ -761,12 +763,12 @@ namespace SimTools
             sims3Item.Items.Add(ts3_tinyUI);
 
             // ── Sweet Treats Conversion Guide ─────────────────────────────────────────
-            var ts3_sweetTreats = new MenuItem { Header = "Sweet Treats Conversion Guide" };
+            var ts3_sweetTreats = new MenuItem { Header = LanguageManager.Get("Main","STCG","Sweet Treats Conversion Guide") };
             ts3_sweetTreats.Click += (_, _) => OpenUrl("%baseurl%/guides/sweet-treats");  // ← replace with actual URL
             sims3Item.Items.Add(ts3_sweetTreats);
 
             // ── nRaas Core Mods (sub-menu) ────────────────────────────────────────────
-            var ts3_nraas = new MenuItem { Header = "nRaas Core Mods" };
+            var ts3_nraas = new MenuItem { Header = LanguageManager.Get("Main","nRaas_Mods","nRaas Core Mods") };
 
             // Local helper — creates a package download item targeting Sims3Mods/SimTools/Packages
             MenuItem NRaasPackageItem(string header, string fileName)
@@ -777,8 +779,8 @@ namespace SimTools
                     if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                     {
                         MessageBox.Show(
-                            LanguageManager.Get("Paths", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
-                            LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                            LanguageManager.Get("Main", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                            LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
                     if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
@@ -807,16 +809,16 @@ namespace SimTools
             contextMenu.Items.Add(sims3Item);
 
             // ── The Sims Medieval ─────────────────────────────────────────────────────
-            var medievalItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSM.ico"), Header = "The Sims Medieval" };
+            var medievalItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSM.ico"), Header = LanguageManager.Get("BuyTS3","TSM1","The Sims: Medieval") };
 
-            var medieval_smoothPatch = new MenuItem { Header = "LazyDuchess Smooth Patch" };
+            var medieval_smoothPatch = new MenuItem { Header = LanguageManager.Get("Main","TSM_SmoothPatch","LazyDuchess Smooth Patch") };
             medieval_smoothPatch.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.SimsMedievalGame))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "SimsMedieval", "Your Sims Medieval Game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"),
+                        LanguageManager.Get("Main", "TSM_Path", "Your Sims Medieval Game directory is not configured."),
+                        LanguageManager.Get("Paths", "NoGamePath_Title", "SimTools — Path Not Set"),
                         MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
@@ -997,8 +999,8 @@ namespace SimTools
         private void GenericKeysButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                LanguageManager.Get("GenericKeys", "Info", "Generic product keys info."),
-                LanguageManager.Get("GenericKeys", "Info_Title", "SimTools — Generic Keys"),
+                LanguageManager.Get("Main", "KeysInfoBox", "Generic product keys can only be used for retail discs. This feature is not guarenteed and may be removed in a future version."),
+                LanguageManager.Get("Main", "KeysInfo_Title", "SimTools — Generic Keys"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
 
@@ -1066,22 +1068,22 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // The Sims 2
             // ─────────────────────────────────────────────────────────────────
-            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = "The Sims 2" };
+            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("BuyTS3","Sims2_Disc","The Sims 2") };
 
             // ── Sim Shadow Fix ────────────────────────────────────────────────
-            var sims2_shadowFix = new MenuItem { Header = "Sim Shadow Fix" };
+            var sims2_shadowFix = new MenuItem { Header = LanguageManager.Get("BugFixes", "ShadowFix_Menu", "Sim Shadow Fix") };
             sims2_shadowFix.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("BugFixes", "ShadowFix_Info", "Sim Shadow Fix info."),
+                    LanguageManager.Get("BugFixes", "ShadowFix_Info", "Fixes an issue in The Sims 2 where the shadow appears as a black square."),
                     LanguageManager.Get("BugFixes", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1096,15 +1098,15 @@ namespace SimTools
             sims2_brightCas.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("BugFixes", "BrightCAS_Info", "Bright CAS Fix info."),
+                    LanguageManager.Get("BugFixes", "BrightCAS_Info", "This mod fixes the bright Create-A-Sim by toning down the lights a bit."),
                     LanguageManager.Get("BugFixes", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1119,26 +1121,26 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // The Sims 3
             // ─────────────────────────────────────────────────────────────────
-            var sims3Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = "The Sims 3" };
+            var sims3Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3") };
 
             // ── Patch Downloader ──────────────────────────────────────────────
             // Shows two info messages, downloads TS3Lib.dll + TS3PD.exe to /Install,
             // then launches TS3PD.exe.  Both files use HEAD-check / skip-if-same logic.
-            var ts3_patchDl = new MenuItem { Header = "Patch Downloader" };
+            var ts3_patchDl = new MenuItem { Header = LanguageManager.Get("Tweaks", "TPD", "Patch Downloader") };
             ts3_patchDl.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "PatchDL_Info1", "Patch Downloader info."),
+                    LanguageManager.Get("Tweaks", "PatchDL_Info1", "Assists in downloading patches for the retail disc copies of Sims 3."),
                     LanguageManager.Get("Tweaks", "PatchDL_Title", "Patch Downloader — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "PatchDL_Info2", "Patch Downloader usage info."),
+                    LanguageManager.Get("Tweaks", "PatchDL_Info2", "Not necessary if you are running EA or Steam versions as digital releases update on their own."),
                     LanguageManager.Get("Tweaks", "PatchDL_Title", "Patch Downloader — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "PatchDL_Info3", "Patch each title recommendation."),
+                    LanguageManager.Get("Tweaks", "PatchDL_Info3", "It is recommended that you patch each game directly after install. Ex: Base Game > Patch > World Adventures > Patch; and so on and so forth."),
                     LanguageManager.Get("Tweaks", "PatchDL_Title", "Patch Downloader — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -1172,8 +1174,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
@@ -1189,20 +1191,20 @@ namespace SimTools
             ts3_mono_patcher.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "MonoPatch_Info1", "Mono Patcher info."),
-                    LanguageManager.Get("Tweaks", "MonoPatch_Title", "LazyDuchess Mono Patcher — The Sims 3"),
+                    LanguageManager.Get("Main", "MonoPatcher_Info1", "Mono Patcher is a library that allows Script Modders to replace Sims 3 methods with as much compatibility as possible - No need to create core mods anymore to replace game functions."),
+                    LanguageManager.Get("Main", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "MonoPatch_Info2", "Mono Patcher is required for some SimTools mods."),
-                    LanguageManager.Get("Tweaks", "MonoPatch_Title", "LazyDuchess Mono Patcher — The Sims 3"),
+                    LanguageManager.Get("Main", "MonoPatcher_Info2", "Mono Patcher is required for some SimTools mods."),
+                    LanguageManager.Get("Tweaks", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
@@ -1225,15 +1227,15 @@ namespace SimTools
             ts3_gameplayFixes.Click += (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "GameplayFixes_Info", "Gameplay Fixes info."),
+                    LanguageManager.Get("Tweaks", "GameplayFixes_Info", "Launching Gameplay Fixes AIO installer. Please only select fixes for games that you have installed and only for items you frequently use."),
                     LanguageManager.Get("Tweaks", "GameplayFixes_Title", "Gameplay Fixes — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1246,7 +1248,7 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // The Sims 4 — placeholder
             // ─────────────────────────────────────────────────────────────────
-            var sims4Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = "The Sims 4" };
+            var sims4Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = LanguageManager.Get("BuyTS3","TS4","The Sims 4") };
             sims4Item.Click += (_, _) =>
                 MessageBox.Show(
                     LanguageManager.Get("BugFixes", "Sims4_Info", "To be implemented at a later time."),
@@ -1257,20 +1259,20 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // SimCopter → SimCopterX
             // ─────────────────────────────────────────────────────────────────
-            var simCopterItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = "SimCopter" };
-            var simCopterX = new MenuItem { Header = "SimCopterX" };
+            var simCopterItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = LanguageManager.Get("BuyTS3","Copter", "SimCopter") };
+            var simCopterX = new MenuItem { Header = LanguageManager.Get("Tweaks","CopterX","SimCopterX") };
             simCopterX.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "SimCopterX_Info", "SimCopterX info."),
+                    LanguageManager.Get("Tweaks", "SimCopterX_Info", "This is an alert from central dispatch - you're cleared for takeoff on Windows 10. You no longer need to use a virtual machine or CPU Killer, just nerves of steel. Additionally the patcher has optional higher-resolutions modes to choose from including 16:9 and 16:10 aspect ratios so you can fill up your screen; you'll feel like you're actually up in the sky saving shipwrecked Sims."),
                     LanguageManager.Get("Tweaks", "SimCopterX_Title", "SimCopterX"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.SimCopterGame))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "SimCopter", "Your SimCopter game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Tweaks", "SimCopter_GameDir", "Your SimCopter game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1287,8 +1289,8 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // Streets of SimCity → SimStreetsX
             // ─────────────────────────────────────────────────────────────────
-            var streetsItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Streets.ico"), Header = "Streets of SimCity" };
-            var simStreetsX = new MenuItem { Header = "SimStreetsX" };
+            var streetsItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Streets.ico"), Header = LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity") };
+            var simStreetsX = new MenuItem { Header = LanguageManager.Get("Tweaks","StreetsX","SimStreetsX") };
             simStreetsX.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -1299,8 +1301,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.StreetsOfSimCityGame))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "SimStreets", "Your Streets of SimCity game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Tweaks", "SimStreets", "Your Streets of SimCity game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1317,22 +1319,22 @@ namespace SimTools
             // ─────────────────────────────────────────────────────────────────
             // SimCity 2000 → SC2kFix + SC2000X
             // ─────────────────────────────────────────────────────────────────
-            var sc2000Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2K.ico"), Header = "SimCity 2000" };
+            var sc2000Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2K.ico"), Header = LanguageManager.Get("BuyTS3","SC2K","SimCity 2000") };
 
             // ── SC2kFix (ZIP download + extract) ──────────────────────────────
-            var sc2kFix = new MenuItem { Header = "SC2kFix" };
+            var sc2kFix = new MenuItem { Header = LanguageManager.Get("Tweaks","SC2KFix","SC2kFix") };
             sc2kFix.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "SC2kFix_Info", "SC2kFix info."),
+                    LanguageManager.Get("Tweaks", "SC2kFix_Info", "sc2kfix is a project reverse engineering SimCity 2000 Special Edition for Windows and developing a bugfix and modding plugin to patch core game and compatibility bugs as well as enabling the development of new quality of life and gameplay features."),
                     LanguageManager.Get("Tweaks", "SC2kFix_Title", "SC2kFix — SimCity 2000"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (!GamePaths.IsConfigured(GamePaths.SimCity2000Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "SimCity2000", "Your SimCity 2000 game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Tweaks", "SimCity2000", "Your SimCity 2000 game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1344,7 +1346,7 @@ namespace SimTools
             sc2000Item.Items.Add(sc2kFix);
 
             // ── SC2000X (EXE download + run) ──────────────────────────────────
-            var sc2000X = new MenuItem { Header = "SC2000X" };
+            var sc2000X = new MenuItem { Header = LanguageManager.Get("Tweaks", "SC2KX", "SC2000X") };
             sc2000X.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -1355,8 +1357,8 @@ namespace SimTools
                 if (!GamePaths.IsConfigured(GamePaths.SimCity2000Game))
                 {
                     MessageBox.Show(
-                        LanguageManager.Get("Paths", "SimCity2000", "Your SimCity 2000 game directory is not configured."),
-                        LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Tweaks", "SimCity2000", "Your SimCity 2000 game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -1489,8 +1491,8 @@ namespace SimTools
                 if (File.Exists(destFilePath)) File.Delete(destFilePath);
 
                 MessageBox.Show(
-                    LanguageManager.Format("Messages", "Error_DownloadFailed", fileName) + "\n" + ex.Message,
-                    LanguageManager.Get("Messages", "Error_DownloadTitle", "Download Error"),
+                    LanguageManager.Format("Main", "Error_DownloadFailed", fileName) + "\n" + ex.Message,
+                    LanguageManager.Get("Main", "Error_DownloadTitle", "Download Error"),
                     MessageBoxButton.OK, MessageBoxImage.Error);
 
                 return (false, false);
@@ -1594,8 +1596,8 @@ namespace SimTools
             if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Paths", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                    LanguageManager.Get("Paths", "Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                    LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                    LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -1687,7 +1689,7 @@ namespace SimTools
 
             void InfoThenBrowse(string message, string url)
             {
-                MessageBox.Show(message, "SimTools — Information",
+                MessageBox.Show(message, LanguageManager.Get("Main","STInfo","SimTools — Information"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 Browse(url);
             }
@@ -1701,7 +1703,7 @@ namespace SimTools
             }
 
             // ── The Sims 1 ────────────────────────────────────────────────────
-            var sims1 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = "The Sims 1" };
+            var sims1 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims") };
             var s1_corylea = new MenuItem { Header = "Corylea Sims 1 Mods" };
             var s1_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 1 on TSR" };
             var s1_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 1 on MTS" };
@@ -1714,7 +1716,7 @@ namespace SimTools
             contextMenu.Items.Add(sims1);
 
             // ── The Sims 2 ────────────────────────────────────────────────────
-            var sims2 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = "The Sims 2" };
+            var sims2 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2") };
             var s2_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 2 on TSR" };
             var s2_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 2 on MTS" };
             s2_tsr.Click += (_, _) => Browse("https://www.thesimsresource.com/downloads/browse/category/sims2/skipsetitems/1/");
@@ -1724,7 +1726,7 @@ namespace SimTools
             contextMenu.Items.Add(sims2);
 
             // ── The Sims 3 ────────────────────────────────────────────────────
-            var sims3 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = "The Sims 3" };
+            var sims3 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3") };
 
             var s3_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 3 on TSR" };
             var s3_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 3 on MTS" };
@@ -1818,7 +1820,7 @@ namespace SimTools
             contextMenu.Items.Add(sims3);
 
             // ── The Sims 4 ────────────────────────────────────────────────────
-            var sims4 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = "The Sims 4" };
+            var sims4 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = LanguageManager.Get("BuyTS3","TS4","The Sims 4") };
             var s4_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 4 on TSR" };
             var s4_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 4 on MTS" };
             s4_tsr.Click += (_, _) => Browse("https://www.thesimsresource.com/downloads/browse/category/sims4/skipsetitems/1/");
@@ -1828,29 +1830,29 @@ namespace SimTools
             contextMenu.Items.Add(sims4);
 
             // ── SimCity 2000 ──────────────────────────────────────────────────
-            var sc2000 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "SimCity 2000" };
+            var sc2000 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000") };
             sc2000.Click += (_, _) => Browse("https://community.simtropolis.com/clubs/30-simcity-2000-resource-page/");
             contextMenu.Items.Add(sc2000);
 
             // ── SimCity 3000 ──────────────────────────────────────────────────
-            var sc3000 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "SimCity 3000" };
+            var sc3000 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000 Unlimited") };
             sc3000.Click += (_, _) => Browse("https://community.simtropolis.com/files/category/41-simcity-3000-files/");
             contextMenu.Items.Add(sc3000);
 
             // ── SimCity 4 ─────────────────────────────────────────────────────
-            var sc4 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "SimCity 4" };
+            var sc4 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = LanguageManager.Get("GenericKeysPage", "SC4", "SimCity 4") };
             sc4.Click += (_, _) => Browse("https://community.simtropolis.com/forums/topic/762126-the-ultimate-guide-to-simcity-4-mods-for-new-players/");
             contextMenu.Items.Add(sc4);
 
             // ── SimCity 2013 ──────────────────────────────────────────────────
-            var sc2013 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2013.ico"), Header = "SimCity 2013" };
-            string sc2013Warning = LanguageManager.Get("AboutSimTools", "SC2013Warning", "A majority of SimCity 2013 mods will only work in Offline Mode.");
+            var sc2013 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2013.ico"), Header = LanguageManager.Get("BuyTS3","SC2013","SimCity 2013") };
+            string sc2013Warning = LanguageManager.Get("SC2013Warnings", "SC2013Warning", "A majority of SimCity 2013 mods will only work in Offline Mode.");
 
             var sc2013_twinzens = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "Mod Collection by Twinzens" };
             sc2013_twinzens.Click += (_, _) =>
             {
                 MessageBox.Show(sc2013Warning,
-                    LanguageManager.Get("AboutSimTools", "SC2013Warning_Title", "SimCity 2013 — Warning"), MessageBoxButton.OK, MessageBoxImage.Information);
+                    LanguageManager.Get("SC2013Warnings", "SC2013Warning_Title", "SimCity 2013 — Warning"), MessageBoxButton.OK, MessageBoxImage.Information);
                 InfoThenBrowse(
                     "Let me introduce you to the most up-to-date and tested mod collection covering the whole ST exchange for SC13k!",
                     "https://community.simtropolis.com/files/file/33611-sc13-2020-mod-collection-by-twinzens/");
@@ -1863,9 +1865,9 @@ namespace SimTools
             sc2013.Items.Add(sc2013_twinzens);
             sc2013.Items.Add(sc2013_more);
             contextMenu.Items.Add(sc2013);
-
+            
             // ── SimCopter ─────────────────────────────────────────────────────
-            var simCopter = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = "SimCopter" };
+            var simCopter = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = LanguageManager.Get("BuyTS3", "Copter", "SimCopter") };
             var simCopter_maxis = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/github.ico"), Header = "Maxis Mods" };
             simCopter_maxis.Click += (_, _) => InfoThenBrowse(
                 "Silly little mods for SimCopter.",
@@ -1874,7 +1876,7 @@ namespace SimTools
             contextMenu.Items.Add(simCopter);
 
             // ── Streets of SimCity ────────────────────────────────────────────
-            var streets = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Streets.ico"), Header = "Streets of SimCity" };
+            var streets = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Streets.ico"), Header = LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity") };
             var streets_maxis = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/github.ico"), Header = "Maxis Mods" };
             streets_maxis.Click += (_, _) => InfoThenBrowse(
                 "Silly little mods for Streets of SimCity.",

@@ -168,6 +168,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\Dev\010.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Page Remove="Pages\UpdateDownloadWindow.xaml" />
 	</ItemGroup>
 
@@ -178,6 +182,10 @@
 		<PackageReference Include="SharpCompress" Version="0.38.0">
 			<NoWarn>NU1902</NoWarn>
 		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Images\Dev\010.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

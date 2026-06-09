@@ -307,15 +307,16 @@ public partial class AboutSimTools : Window
 
     private static readonly string[] _slides =
     [
-    "pack://application:,,,/Images/Dev/009.png",
+    "pack://application:,,,/Images/Dev/010.jpg",
+    "pack://application:,,,/Images/Dev/009.jpg",
     "pack://application:,,,/Images/Dev/008.jpg",
-    "pack://application:,,,/Images/Dev/007.png",
+    "pack://application:,,,/Images/Dev/007.jpg",
     "pack://application:,,,/Images/Dev/006.jpg",
     "pack://application:,,,/Images/Dev/005.jpg",
     "pack://application:,,,/Images/Dev/004.jpg",
-    "pack://application:,,,/Images/Dev/003.jpg",
+    "pack://application:,,,/Images/Dev/003.png",
     "pack://application:,,,/Images/Dev/002.jpg",
-    "pack://application:,,,/Images/Dev/001.jpg",
+    "pack://application:,,,/Images/Dev/001.png",
 ];
 
     private int _slideIndex = 0;

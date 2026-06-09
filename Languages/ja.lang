@@ -1,246 +1,524 @@
+[LanguageSelectionWindow]
+Window_Title=言語の選択
+Window_Subtitle=SimToolsの言語を選択してください。これは設定からいつでも変更できます。
+Checkbox_DoNotAsk=次回から確認しない
+
 [IntroductoryPage]
-IntroText1=SimTools スイートへようこそ
+IntroText1=SimToolsスイートへようこそ\n\nこのプログラムは、さまざまなシム系ゲームのインストール環境に最適な調整（微調整）を適用するお手伝いをします。古いゲームの多くは最適化されないまま放置されており、特に1990年代頃の初期のMaxisゲームは、新しいハードウェアで動作させるのが困難です。\n\nこのツールスイートを使用すると、リリース時に無効化されていた特定の機能を有効にしたり、古い実行ファイルにパッチを適用したり、不要な機能（大半の現代のPCがソリッドステートドライブを搭載している現在では、特定のハードディスクキャッシュ方法など）を無効にしたりすることで、新旧問わずPC上でゲームをより快適なペースで動作させることができます。このツールには多大なこだわりが込められています。\n\nシム系ゲームをクリーンインストール（新規インストール）した状態でこのツールを実行することを強くお勧めします。このツールで提供される修正や調整をインストールする際に問題が発生した場合に備え、ゲームのインストール環境のバックアップを必ず作成してください。\n\nエンドユーザー（あなた）によるいくつかの入力が必要です。このプログラムはすべてを可能な限り分かりやすく説明し、一部の機能を自動化しようとしますが、ある機能が何をするのか不確かな場合は、ゲームのインストール環境の破損を防ぐためにキャンセルすることをお勧めします。\n\nこのメッセージを読み終えたら、左下の「続行」ボタンをクリックして進むか、右上の赤い「X」をクリックしてプログラムを終了してください。\n\n追伸：プログラム内に5つのイースターエッグ（隠し要素）があります。すべて見つけると、サプライズが待っています。
+UpdateButton_Text=アップデートを確認
+ContinueButton_Text=続行
+SimToolsButton_Text=SimToolsとは？
+ExclusiveItemsButton_Text=限定アイテム
+NoMirrors=リポジトリのミラーが設定されていません。
+RepoTitle=SimTools — リポジトリ速度テスト
+NoResponse=ミラーから応答がありません。接続を確認してください。
+SpeedPrompt=SimToolsは利用可能なリポジトリに対して簡単な速度テストを実行しました。\n\nお使いの接続環境で最も高速なサーバーは以下です：\n  {0}  ({1} ms)\n\n現在のリポジトリ：\n  {2}\n\nより高速なサーバーに切り替えますか？
+AlreadyBest={0} {1}
+PersonalizationText=このSimToolsは、{0} {1}のために心を込めて設計されました。\nサポートに感謝いたします！
+NoServer=アップデートサーバーに接続できませんでした。\n接続を確認して、もう一度お試しください。
+Title_Failed=アップデート確認失敗
+Malformed=サーバー上のバージョンファイルが破損しているか、形式が正しくありません。
+BadVersion=リモートバージョンを解析できませんでした："{0}"
+UpToDate=すでに最新バージョン（{0}）を使用しています。
+Title_UpToDate=最新状態
+NewVersion=バージョン {0} が利用可能です（現在のバージョン：{1}）。\n\n今すぐアップデートしますか？\nアップデーターが起動すると、SimToolsは自動的に終了します。
+Title_Available=アップデートが利用可能
+Timeout=アップデート確認がタイムアウトしました。
+Unexpected=予期しないエラーが発生しました：\n{0}
+UpdaterMissing=SimToolsUpdater.exeが見つかりませんでした。
+Title_MissingUpdater=アップデーターが見つかりません
+Suppress_Ask=自動アップデート通知を非表示にしますか？
+Suppress_Title=アップデート通知の非表示
+Suppress_Duration=アップデート通知をどのくらいの期間非表示にしますか？\n\n  はい  —  30日間非表示にする\n  いいえ  —  無期限に非表示にする
+Suppress_DurTitle=非表示期間
+WhatIsSimTools=SimTools（旧名：TS3Tools）は、以前開発されたツールスイートと同じものですが、新しくMaxisの様々なシム系ジャンルのゲーム向けのオプションが含まれるようになりました。SimToolsには、ザ・シムズ1、ザ・シムズ2、シムズ・ストーリーズ、ザ・シムズ3、ザ・シムズ4、シムシティ2000、シムシティ3000、シムシティ3000 Unlimited、シムシティ4、シムシティ2K13、シムコプター、ストリーツ・オブ・シムシティのオプションが含まれており、今後のバージョンでさらに追加される予定です。
+WhatIsSimTools_Title=SimToolsとは？
 
-[Main]
-ButtonInfoText=オプションを選択すると、マウスを重ねたときにボタンの色が変わります。この色は各機能の重要度を示しています。緑は通常、黄色は推奨、赤は強く推奨を意味します。ほとんどの調整やバグ修正には、モッドフレームワークのインストールが必要です。
-FrameworkInfoText=モッドフレームワークのインストールを強くお勧めします。すでにモッドフレームワークをお持ちの場合は、「Mods」フォルダーを削除し、下のボタンから再インストールしてください。このバージョンのモッドフレームワークは、TS3Tools向けに特別に検証・準備されています。
-ComparisonLabel=比較
-Btn_TS3Vanilla=TS3 バニラ（MODなし）
-Btn_TS3WithSimTools=TS3 + SimTools
-Btn_VideoTutorial=SimTools ビデオガイド
-Btn_GPU=GPU サポート >
-Btn_Tweaks=ゲーム調整 >
-GPU_Description=これらのツールを使用して、ゲームエンジンを最大限に活用するためのGPUサポートを識別・インストールします。シムズ2、シムズストーリーズ、シムズ3に対応しています。
-Tweaks_Description=このメニューには、さまざまな方法でゲームの動作を改善する多くの調整が含まれています。インストール済みの拡張パックに対応する修正のみを選択してください。
-
-[Messages]
-Error_OpenLink=リンクを開けません：{0}
-Error_Title=エラー
-Warn_MenuConverted=このページはメニューに変換されました。ボタンを右クリックしてオプションを表示してください。
-Warn_Title=警告
-Error_DownloadFailed={0} のダウンロードに失敗しました
-Error_DownloadTitle=ダウンロードエラー
-Error_Sims1PathNotSet=The Sims 1 のゲームディレクトリが設定されていません。この機能を使用する前に、設定で指定してください。
-
-[ContextMenu]
-GPU_Sims2=ザ・シムズ 2
-GPU_SimsStories=ザ・シムズ ストーリーズ
-GPU_Sims3=ザ・シムズ 3
-Bit_32=32ビット
-Bit_64=64ビット
-Tweaks_Sims1=ザ・シムズ 1
-Tweaks_Simitone=Simitone
-
-[Language]
-Window_Title=言語を選択
-Window_Subtitle=SimTools の言語を選択してください。設定からいつでも変更できます。
-Checkbox_DoNotAsk=次回から表示しない
-
-[Settings]
-Window_Title=SimTools - 設定
-Section_Language=言語
-Label_Language=言語：
-Btn_Reset=リセット - 次回起動時に言語選択を表示
-Section_Directories=ゲームと MOD のディレクトリ
-Label_GameDir=ゲームディレクトリ：
-Label_ModsDir=MOD ディレクトリ：
-Btn_Browse=参照...
-Btn_Save=保存
-Btn_Cancel=キャンセル
-Msg_Saved=設定が正常に保存されました。
-Msg_Reset=次回起動時に言語選択が表示されます。
-
-[Download]
-Window_Title=ダウンロード中
-Progress_Finalising=完了処理中...
+[SpecialThanks]
+ThanksMessage=「ザ・シムズ3」Facebookグループの皆さんへ - このツールスイートの開発にインスピレーションを与えてくれてありがとうございます。長年にわたり多くの方が無数の問題に直面してきました。このツールは、それらの問題を解決するためにあらゆる手段でサポートすることを目指しています。 \n\n Anime_Boom - Steamで公開されている、包括的な調整およびパフォーマンスガイドに対して。その大部分がこのツールに組み込まれています。 \n\n alfa1295 - 「ザ・シムズ3 GPU Addon」ソフトウェアに関する素晴らしい仕事と、現代のグラフィックカードへの対応を実現してくれたことに対して。 \n\n Dmitry Zhutkov - 「Regul Save Cleaner」に対して。本当に素晴らしいソフトウェアです。これで私たちのセーブデータは安全です！ \n\n LazyDuchess - ゲームエンジンへの数多くの有用な改造に対して。 \n\n Chain_Reaction / Twallan - nRaasと、熱心なTS3モッダーコミュニティに対して。ゲーム内のスクリプトをオーバーホールするいくつかのパッケージおよびコアModを提供してくれました。 \n\n Guifrog - OCRemixのコンポーザーであり、彼のテーマ曲がこのスイートに採用されています。「ザ・シムズ3」と「ザ・シムズ1」のメロディが特徴です。彼のプロフィールは https://ocremix.org/artist/9047/guifrog でご覧いただけます。 \n\n Blocky9032 & JonySimmer - TS3を現代に蘇らせる新しいイントロに対して！ \n\n Eli Sims - SimToolsをフランス語に翻訳するという素晴らしい仕事に対して（Bonjour!）
+PreviousMenu=前のメニューに戻るには「X」をクリックしてください。
 
 [Splash]
-Loading=v 4.0.1.3868
-Retic=網状スプライン...
+Retic=スプラインを網状化中...
 
+[Settings]
+Sims3DirWarning=『ザ・シムズ3』のゲームディレクトリは、データセットや追加パックのフォルダがあるルートディレクトリに設定してください。Game/Binフォルダは選択しないでください。
+Sims3DirWarning_Title=SimTools — 『ザ・シムズ3』ディレクトリ
+AutoDetect_Nothing=ゲームまたはModのディレクトリを自動検出できませんでした。\n\nSteam、GOG、EA Games、Electronic Arts、Origin Gamesフォルダを含む一般的なインストール先を確認しました。\n\n「参照」ボタンを使用して手動でパスを設定できます。
+AutoDetect_Nothing_Title=自動検出 — 見つかりませんでした
+AutoDetect_Found={0} {1}
+AutoDetect_Found_Title=自動検出完了
+ReenabledUpdates=自動アップデート通知が再有効化されました。\n\n次回起動時にSimToolsがアップデートを確認します。
+ReenabledUpdates_Title=アップデート確認のリセット
+Msg_Saved=設定が正常に保存されました。
+Msg_Reset=次回の起動時、言語選択画面が表示されます。
 
-[Updates]
-NoServer=更新サーバーに接続できませんでした。\n接続を確認して、もう一度お試しください。
-Malformed=サーバー上のバージョンファイルが壊れています。
-BadVersion=リモートバージョンを解析できませんでした: "{0}"
-UpToDate=最新バージョン ({0}) をご使用中です。
-NewVersion=バージョン {0} が利用可能です（現在は {1}）。\n\n今すぐ更新しますか？\nアップデーターが起動するとSimToolsは自動的に閉じます。
-Timeout=更新確認がタイムアウトしました。\n後でもう一度お試しください。
-Unexpected=予期しないエラーが発生しました:\n{0}
-UpdaterMissing=SimToolsUpdater.exeがアプリケーションフォルダーに見つかりませんでした。\nSimToolsを手動でダウンロードしてください。
-Title_Failed=更新確認に失敗しました
-Title_UpToDate=最新版
-Title_Available=更新あり
-Title_MissingUpdater=アップデーターが見つかりません
-Suppress_Ask=自動更新通知を無効にしますか？
-Suppress_Title=更新通知を無効にする
-Suppress_Duration=通知を無効にする期間を選択してください:\n\n  はい —  30日間無効\n  いいえ —  無期限に無効
-Suppress_DurTitle=無効化期間
-
-[RepoSpeed]
-Prompt=SimToolsが利用可能なリポジトリの速度テストを実施しました。\n\nあなたの接続に最も速いサーバー:\n  {0}  ({1} ms)\n\n現在のリポジトリ:\n  {2}\n\n高速サーバーに切り替えますか？
-Title=SimTools — リポジトリ速度テスト
-
-[Paths]
-Title=SimTools — パスが未設定
-Sims3Game=The Sims 3のゲームフォルダーが設定されていません。\n設定を開いて先に設定してください。
-Sims3Mods=The Sims 3のModフォルダーが設定されていません。\n設定を開いて先に設定してください。
-Sims2Mods=The Sims 2のModフォルダーが設定されていません。\n設定を開いて先に設定してください。
-SimsMedieval=The Sims Medievalのゲームフォルダーが設定されていません。\n設定を開いて先に設定してください。
-SimCopter=SimCopterのゲームフォルダーが設定されていません。\n設定を開いて先に設定してください。
-SimStreets=Streets of SimCityのゲームフォルダーが設定されていません。\n設定を開いて先に設定してください。
-SimCity2000=SimCity 2000のゲームフォルダーが設定されていません。\n設定を開いて先に設定してください。
-Generic={0}のゲームフォルダーが設定されていません。\nこの機能を使用する前に設定で設定してください。
-
-[GPU]
-Sims2Warning=The Sims 2のLegacy Collectionをお使いの場合、このパッチを適用しないでください。Retail版またはComplete Collection版の場合は適用してください。
-Sims2Title=Graphics Rules Maker — The Sims 2
-
-[Tweaks]
-AlderLake_Info1=第12世代Intel Alder Lake CPU搭載PCでThe Sims 3が起動時にクラッシュします。このフィックスにより再びゲームをプレイできるようになります。
-AlderLake_Info2=EA App版のThe Sims 3をお使いの場合、v1.69.47.024017（2025年1月13日）以降このフィックスは不要です。Retail版またはSteam版のユーザーには引き続き必要です。
-AlderLake_Title=Intel Alder Lake Fix — The Sims 3
-AlderLake_ExtractFail=Alder Lakeパッチの展開に失敗しました:\n{0}
-AlderLake_NotFound=展開は成功しましたが、The Sims 3フォルダーにAlderLakePatch.exeが見つかりませんでした。
-LDLauncher_Info1=EA App（バージョン1.69）向けのカスタムTS3ランチャーで、より多くの制御が可能です。ASI Modサポート、ランチャーバイパス、全EPの表示、SimPortログイン改善、CC全無効化機能を搭載。
-LDLauncher_Info2=EA Appのみ対応です。デフォルトではデフォルトパスに展開され、ゲームのオリジナルランチャーを置き換えます。別の場所にインストールした場合は、インストール場所を手動で変更してください。
-LDLauncher_Title=LazyDuchess Launcher — The Sims 3
-LDLauncher_BackupFail=Sims3Launcher.exeのバックアップに失敗しました:\n{0}\n\nインストールを続行しません。
-MonoPatcher_Info1=LazyDuchessによるもう一つの素晴らしいMod。Mono PatcherはScriptモッダーがCore Modなしにthe Sims 3のメソッドを置き換えられるライブラリです。
-MonoPatcher_Info2=現在のバージョン: 0.2.2
-MonoPatcher_Title=Mono Patcher Library — The Sims 3
-MonoPatch_Info1=Mono PatcherはThe Sims 3のメソッドをCore Modなしに置き換えられるライブラリです。
-MonoPatch_Info2=Mono PatcherはSimToolsの一部のModに必要です。インストールを強くお勧めします。
-MonoPatch_Title=LazyDuchess Mono Patcher — The Sims 3
-PatchDL_Info1=注意: Retail版のディスクからゲームをプレイしている場合のみ1.67へのアップデートが必要です。EA App版とSteam版はインストール時に最新版に更新されています。
-PatchDL_Info2=以下のパッチダウンローダーを使用して、ベースゲームとインストール済み拡張パックのパッチをダウンロードしてください。
-PatchDL_Info3=また、各タイトルをインストールした後にパッチを適用することを強くお勧めします。例えば、ベースゲームをインストールしてパッチを当て、World Adventuresをインストールしてパッチを当て、という順番で行ってください。
-PatchDL_Title=パッチダウンローダー — The Sims 3
-Simler90_Info=Simler90のGameplay Systems Core Modはベースゲームと多くの拡張パックの長いバグリストを修正します。強くお勧めします。
-Simler90_Title=Simler90のフィックス — The Sims 3
-GameplayFixes_Info=Gameplay Fixes AIOインストーラーを起動します。インストール済みの拡張パックのフィックスのみを選択してください。
-GameplayFixes_Title=ゲームプレイフィックス — The Sims 3
-SimCopterX_Info=Windows 10での離陸が許可されました。仮想マシンやCPU Killerは不要になりました。パッチャーには16:9や16:10などの高解像度オプションが含まれています。
-SimCopterX_Title=SimCopterX
-SimStreetsX_Info=Windows 10の道路で怒りをぶつけよう。仮想マシン不要。パッチャーは様々なオプションとネットワーク対戦（最大7名）をサポートしています。
-SimStreetsX_Title=SimStreetsX
-SC2kFix_Info=SC2KFixはSimCity 2000 Special EditionのバグフィックスおよびModdingプラグインです。Windows 95版のみ対応。
-SC2kFix_Title=SC2kFix — SimCity 2000
-SC2000X_Info=SC2000XはSimCity 2000（Win95）向けのオープンソースのインストーラーとパッチャーです。「名前を付けて保存」のクラッシュバグを修正します。
-SC2000X_Title=SC2000X — SimCity 2000
+[Main]
+STInfo=SimTools — 情報
+StorePiracyWarning=ストアの海賊版に関する警告
+StorePiracy=コンプリートストアの海賊版リリース（FitGirl、Phantom99、nausallienなど）を使用している場合、ストアやゲームが破損する可能性があるため、ストアコンテンツをインストールしないことをお勧めします。いつものように、正規版の購入をお勧めします。
+StorePiracy_Title=海賊版ストアファイルに関する警告
+Sims3Store=ザ・シムズ3 ストア
+DailyDeal=日替わりセール
+DailyDealRot=日替わりセールのローテーション
+FreeItems=無料のストアアイテム
+StoreGuide=ストアビデオガイド（英語）
+BuyTS3Games1=TS3ゲームを購入
+WarningMessage=v3.2.4からv4.0.1の間で多くの変更がありました。「SimToolsビデオガイド」ボタンをクリックして、新しいビデオガイドをぜひご覧ください。これと変更履歴を確認することで、大規模な変更に慣れていただけると思います。
+WarningMessage_Title=ビデオガイドをご覧ください！
+CAW=ワールド作成ツール（CAW）
+CAW167=CAW (1.67用)
+CAW169=CAW (1.69用)
+S3PE=Sims 3 Package Editor
+S3PE_2=Sims 3 Package Extractor
+S3Dash=Sims 3 Dashboard
+CCMagic=CCMagicをインストール
+ButtonInfoText=オプションを選択する際、マウスを上に乗せると各ボタンの色が変わります。これらの色は各機能の重要度を示しています。緑は通常、黄は推奨、赤は強く推奨です。基本的なルールとして、ほぼすべての調整やバグ修正の適用には、Mod Frameworkのインストールが必要です。
+FrameworkInfoText=Mod Frameworkをインストールすることを強くお勧めします。すでにMod Frameworkをお持ちの場合は、一度「Mods」フォルダをクリアしてから、下のボタンから再インストールしてください。このバージョンのMod Frameworkは、SimTools用に特別に検証・用意されたものです。
+ComparisonLabel=比較
+Btn_TS3Vanilla=TS3 バニラ（Modなし）
+Btn_TS3WithSimTools=TS3（SimTools適用済み）
+Btn_VideoTutorial=SimTools ビデオガイド
+Btn_GPU=GPUサポート >
+Btn_Tweaks=ゲーム調整 >
+Bugfix_Description=『ザ・シムズ3』が長年にわたって蓄積してきた多くのバグに対処するための、コアおよびグローバルなゲーム変数へのさまざまな修正です。
+SaveCleaner_Description=『ザ・シムズ3』のセーブファイルは時間の経過とともに肥大化し、数ギガバイトに達して破損することがあります。このツールを使用して定期的にクリーンアップしてください。
+Mods_Description=ここでは、私やコミュニティが推奨する、エンジンを大幅に変更したりバグを修正したりしないModを紹介しています（『ザ・シムズ3』Mod Frameworkが必要です）。
+Store_Description=『ザ・シムズ3』のストアアイテムを集めることに興味があるなら、ここが最適です。必要なものはすべてこのセクションにあります。
+BuyGame_Description=ここでは、『ザ・シムズ3』およびその各種データセットや追加パックを購入するためのリンクを見つけることができます。SimTools経由で購入された場合、売り上げの一部がコミッションとして私に支払われます。
+ModTools_Description=ワールド、オブジェクト、スキン、衣服、スクリプト、パッケージなどの作成に役立つツールのコレクションです。注意して使用してください。YouTubeでさまざまなチュートリアルが見つかります。
+GenKeys_Description=ゲームのケースを紛失しましたか？ケースなしの中古ゲームを購入しましたか？このメニューには、パッケージ版ディスク（Retail）からインストールする際に使用できるジェネリックキーが表示されます。
+GPU_Description=これらのツールを使用して、お使い of GPUを特定してサポートをインストールし、ゲームエンジンの性能を最大限に引き出します。『ザ・シムズ2』『シムズ・ストーリーズ』『ザ・シムズ3』で利用可能です。
+Tweaks_Description=このメニューには、さまざまな方法でゲームの動作を向上させる大量の調整（微調整）が含まれています。インストールされている拡張パック用の修正のみを選択してください。
+Bugfix_Button=バグ修正センター >
+SaveCleaner_Button=セーブクリーナー
+Mods_Button=推奨Mod >
+Store_Button=ザ・シムズ3 ストア >
+BuyGame_Button=シムズのゲームを購入
+ModTools_Button=Modツール >
+GenKeys_Button=ジェネリックゲームキー
+ModFramework_Button=Mod Framework
+Donate_Button=開発を支援する！
+Thanks_Button=スペシャルサンクス
+Warning_Button=重要なお知らせ！
+SimPort_Button=SimPortでフレンドに追加
+Error_OpenLink=リンクを開けません: {0}
+Error_Title=エラー
+Sims2Warning=『ザ・シムズ2』のレガシーコレクション（Legacy Collection）を実行している場合は、最新リリースで不要になったため、このパッチを適用しないでください。パッケージ版（Retail）またはコンプリートコレクション版を実行している場合は、パッチを適用してください。
+Sims2Title=Graphics Rules Maker — ザ・シムズ2
+GPU_Sims2=ザ・シムズ2
+GPU_SimsStories=シムズ・ストーリーズ
+GPU_Sims3=ザ・シムズ3
+GPU_Sims3_Addon=ザ・シムズ3 GPUアドオン
+Error_DownloadFailed={0} のダウンロードに失敗しました
+Error_DownloadTitle=ダウンロードエラー
+Bit_32=32ビット
+Bit_64=64ビット
+Tweaks_Sims1=ザ・シムズ1
+Sims2Mods=『ザ・シムズ2』のModsディレクトリが構成されていません。
+Tweaks_Simitone=Simitone
+Error_Sims1PathNotSet=『ザ・シムズ1』のゲームディレクトリが構成されていません。\nこの機能を使用する前に設定でディレクトリを指定してください。
+Sims1PathNotSet_Title=SimTools — パス未設定
+Simitone_ExtractFail={0}
+Simitone_ExtractTitle=SimTools — 展開エラー
+Simitone_Installed=Simitoneがインストールされました。
+Simitone_Extracted=Simitoneが展開されました。
+Simitone_Title=SimTools — Simitoneインストール完了
+Sims2RPC=Sims2RPC
+Sims2RPC_Ask=どのバージョンの『ザ・シムズ2』がインストールされていますか？
+Sims2RPC_Title=SimTools — Sims2RPC / レガシーエクステンダー
+BestSettingsDeprecated_Message=「最適な設定」の記事は、Sims 3 Settings Setterの採用に伴い廃止されました。ユーザーがS3SSで問題を起こした場合に備えて念のため残されていますが、今後のSimToolsのバージョンで削除される可能性があります。
+BestSettingsDeprecated_Title=最適な設定の記事は廃止されました — ザ・シムズ3
+IniTweaks_DeprecatedWarning=ゲームINI調整に関する記事は、Sims 3 Settings Setterの採用に伴い廃止されました。ユーザーがS3SSで問題を起こした場合に備えて念のため残されていますが、今後のSimToolsのバージョンで削除される可能性があります。
+AlderLake_Info1=『ザ・シムズ3』のIntel Alder Lake向けバグ修正です。Ultimate ASI LoaderやSims 3 Settings Setterでもこの問題は解消されます。
+AlderLake_Title=Intel Alder Lake修正 — ザ・シムズ3
+AlderLake_Info2=EA App経由で『ザ・シムズ3』をインストールしている場合、最新のバージョン1.69にて既にこの問題が修正されているため、このパッチは不要です。
+AlderLake_ExtractFail=展開に失敗しました: {0}
+Sims3Game=『ザ・シムズ3』のゲームディレクトリが構成されていません。
+NoGamePath_Title=SimTools — パス未設定
+LDLauncher_Title=LazyDuchessランチャー — ザ・シムズ3
+LDLauncher_Info1=LazyDuchessランチャーはEA App版の『ザ・シムズ3』バージョン1.69にのみ互換性があります。パッケージ版やSteam版をご利用の場合は、代わりにUltimate ASI Loaderを使用してください。
+LDLauncher_Info2=LazyDuchessランチャーをシムズ3のディレクトリにインストールします。
+AlderLake_NotFound=AlderLakePatch.exeが見つかりませんでした。
+BackupFailedMessage={0}
+BackupFailedTitle=SimTools — バックアップ失敗
+MonoPatcher_Title=Mono Patcher ライブラリ — ザ・シムズ3
+MonoPatcher_Info1=Mono Patcherは、スクリプトモッダーが可能な限り高い互換性を保ちながら『ザ・シムズ3』のメソッドを置き換えることを可能にするライブラリです。ゲームの機能を置き換えるために、コアMod（Core Mods）を開発する必要がなくなります。
+MonoPatcher_Info2=現在のバージョン: 0.3.0
+STCG=「ケイティ・ペリーのスイート・トリート」コンバージョンガイド
+nRaas_Mods=nRaas コアMod
+TSM_SmoothPatch=LazyDuchess Smooth Patch (中世用)
+TSM_Path=『The Sims: Medieval』のゲームディレクトリが構成されていません。
+KeysInfoBox=ジェネリック製品キーは、パッケージ版ディスク（Retail）のインストールにのみ使用できます。この機能の動作は保証されておらず、将来のバージョンで削除される可能性があります。
+KeysInfo_Title=SimTools — ジェネリックキー
 
 [BugFixes]
-Sims1_Info=The Sims 1のバグに対処するには、ゲームの調整のSimitoneをご利用ください。
-Sims1_Title=The Sims 1 — バグ修正
-Sims4_Info=後のバージョンで実装予定です。
-Sims4_Title=The Sims 4 — バグ修正
-ShadowFix_Info=このModを使用すると、シムズとペットの室内の影が黒い長方形として表示されなくなります。この問題は多くの最新グラフィックカードで発生します。
-ShadowFix_Title=Sim Shadow Fix — The Sims 2
-BrightCAS_Info=このModはBump Mapサポートなしで作成されたCASパーツがCASモードで光って見える問題を修正します。LazyDuchess作。
-BrightCAS_Title=Bright CAS Fix — The Sims 2
+ShadowFix_Info=『ザ・シムズ2』にて、シムの足元の影が黒い四角形になってしまうバグを修正します。
+ShadowFix_Title=シムの影の修正 — ザ・シムズ2
+ShadowFix_Menu=シムの影の修正
+BrightCAS_Info=Create-A-Sim（シム作成画面）の照明が眩しすぎる問題を、明るさを少し抑えることで修正するModです。
+BrightCAS_Title=眩しいCAS画面の修正 — ザ・シムズ2
+BrightCAS_Menu=眩しいCAS画面の修正
+Sims4_Info=今後のアップデートで実装予定です。
+Sims4_Title=ザ・シムズ4 — バグ修正
+
+[Tweaks]
+PatchDL_Info1=『ザ・シムズ3』のパッケージ版ディスク（Retail）向けのアップデートパッチのダウンロードを支援します。
+PatchDL_Title=パッチダウンローダー — ザ・シムズ3
+PatchDL_Info2=EA App版やSteam版などのデジタル配信版は自動的に更新されるため、このツールは不要です。
+PatchDL_Info3=ゲームのインストール直後に拡張パックごとにパッチを適用することをお勧めします。例: ベースゲーム > パッチ適用 > ワールドアドベンチャーズ > パッチ適用…の順に進めます。
+TPD=パッチダウンローダー
+Simler90_Info=Simler90氏がパッケージ化したModで、ゲームやエンジンに起因する多数のバグに対処します。
+Simler90_Title=Simler90の修正パッチ — ザ・シムズ3
+GameplayFixes_Info=ゲームプレイ修正オールインワン（AIO）インストーラーを起動します。ご自身がインストールしている拡張パック、および頻繁に使用する項目用の修正のみを選択してください。
+GameplayFixes_Title=ゲームプレイ修正 — ザ・シムズ3
+CopterX=SimCopterX
+SimCopterX_Info=中央管制室からの緊急連絡：Windows 10での離陸が許可されました。もう仮想マシンやCPUキラー（減速ツール）を使う必要はありません。必要なのは鋼の精神だけです。さらに、このパッチには16:9や16:10のアスペクト比を含む高解像度モードの選択肢が含まれているため、画面いっぱいに表示させて、実際に空から難破したシムたちを救助しているような没入感を味わえます。
+SimCopterX_Title=SimCopterX
+SimCopter_GameDir=『SimCopter』のゲームディレクトリが構成されていません。
+StreetsX=SimStreetsX
+SimStreetsX_Info=Windows 10のストリートを舞台に、狂ったシムドライバーとなって怒りを爆発させましょう。仮想マシンやCPUキラーはもう不要、アクセルを踏み込むだけです。パッチャーには様々なオプションが用意されており、のんびりドライブを楽しむことも、ネットワーク経由で最大7人のプレイヤーとバトルすることも可能です。
+SimStreetsX_Title=SimStreetsX
+SimStreets=『Streets of SimCity』のゲームディレクトリが構成されていません。
+SC2kFix_Info=sc2kfixは、Windows版『シムシティ2000 スペシャルエディション』をリバースエンジニアリングし、ゲームコアや互換性のバグを修正するとともに、新しい快適機能（QOL）やゲームプレイ要素の開発を可能にするバグ修正・Modプラグインを開発するプロジェクトです。
+SC2kFix_Title=SC2kFix修正プラグイン — シムシティ2000
+SimCity2000=『シムシティ2000』のゲームディレクトリが構成されていません。
+SC2KFix=SC2kFix
+SC2KX=SC2000X
+SC2000X_Info=SC2000Xは、『シムシティ2000 (Win95版)』向けのオープンソースのインストーラー兼パッチャーです。オールインワンの解決策であるだけでなく、完全にオープンソースで複数のゲームバージョンをサポートしています。「名前を付けて保存」時のクラッシュバグを修正します（これは実際には「タイルセットの読み込み」にも影響する共通のダイアログバグです）。
+SC2000X_Title=SC2000X — シムシティ2000
 
 [ModResources]
-Simitone_Installed=SimitoneがThe Sims 1のフォルダーにインストールされました。\n\nSimitone.Windows.exeへのデスクトップショートカットを作成しますか？
-Simitone_Extracted=SimitoneがThe Sims 1のフォルダーに展開されました。\n\nデスクトップショートカットを作成しますか？
-Simitone_Title=SimTools — Simitoneがインストールされました
-Simitone_ExtractFail=Simitoneの展開に失敗しました:\n{0}
-Simitone_ExtractTitle=SimTools — 展開エラー
-Sims2RPC_Ask=インストールしているThe Sims 2のバージョンは？\n\n• はい —  標準版（ディスクまたはOrigin）\n• いいえ —  The Sims 2 Legacy Edition（EA App）\n\nはい: Sims2RPCをインストール\nいいえ: LazyDuchess Legacy Extenderページを開く
-Sims2RPC_Title=SimTools — Sims2RPC / Legacy Extender
-SaveCleaner_Download=Regul Save Cleanerをダウンロードしますか？
+SaveCleaner_Download=「Regul Save Cleaner」をダウンロードしますか？
 SaveCleaner_Title=Regul Save Cleaner
-SaveCleaner_Shortcut=Regul Save Cleanerのデスクトップショートカットを作成しますか？
-SaveCleaner_ShortcutTitle=ショートカットを作成
-SaveCleaner_ShortcutFail=ショートカットを作成できませんでした:\n{0}
+SaveCleaner_Shortcut=デスクトップに「Regul Save Cleaner」のショートカットを作成しますか？
+SaveCleaner_ShortcutTitle=ショートカットの作成
+SaveCleaner_ShortcutFail={0}
 SaveCleaner_ShortcutFailTitle=ショートカットエラー
-SaveCleaner_NotFound=RegulSaveCleaner.exeが見つかりませんでした:\n{0}
+SaveCleaner_NotFound={0}
 SaveCleaner_NotFoundTitle=SimTools — ファイルが見つかりません
 
-[Framework]
-NotInstalled=SimTools Mod Frameworkがインストールされていないようです。またはResource.cfgに必要なSimToolsパッケージパスが含まれていません。\n\nメインウィンドウの「Mod Framework」ボタンからMod Frameworkをインストールしてください。
-NotInstalled_Title=SimTools — Mod Frameworkが必要です
-ModsNotSet_Ask=The Sims 3のModフォルダーが設定されていません。\n\nSimToolsがThe Sims 3のユーザーデータフォルダーを検出しました:\n{0}\n\nそこに「Mods」フォルダーを作成してインストールを続行しますか？
-ModsNotSet_Title=SimTools — Modフォルダーが未設定
-ModsNotSet_Manual=The Sims 3のModフォルダーが設定されていません。\n\nMod Frameworkをインストールするには:\n\n1. 以下の場所に「Mods」フォルダーを作成:\n   ドキュメント\Electronic Arts\The Sims 3\n\n2. 設定を開いてSims 3 Modsのパスを設定。\n\n「Mod Framework」ボタンを再度クリックしてください。
-Installed=SimTools Mod Frameworkが正常にインストールされました！\n\n場所:\n{0}\n\n作成されたフォルダー:\n  • Disabled  (Overrides, Packages, Probation, Test)\n  • Overrides  •  Packages\n  • Probation  (Overrides, Packages)\n  • SimTools  (Overrides, Packages)\n  • Test  (Overrides, Packages)\n\nResource.cfgがModsフォルダーにインストールされました。\nコアパッケージがSimTools\Packagesにインストールされました。
-Installed_Title=SimTools — Mod Frameworkがインストールされました
-MissingResource=Resource.cfgがコンパイルされたリソースに見つかりませんでした。\nSimToolsを再インストールしてもう一度試してください。
-MissingResource_Title=SimTools — リソースが見つかりません
-InstallFailed=Mod Frameworkのインストールに失敗しました:\n\n{0}
-InstallFailed_Title=SimTools — インストールに失敗
-GameIntro_Ask=SimToolsのカスタムゲームイントロをインストールしますか？\n\nこれによりEAの標準ゲームイントロがSimToolsブランドのものに置き換えられます。
-GameIntro_Title=SimTools — カスタムゲームイントロ
-Splashscreen_Ask=SimToolsのカスタムスプラッシュスクリーンをインストールしますか？\n\nこれにより標準のローディングスプラッシュスクリーンがSimToolsブランドのものに置き換えられます。
-Splashscreen_Title=SimTools — カスタムスプラッシュスクリーン
-ExtractFail={0}の展開に失敗しました:\n{1}
-ExtractFail_Title=展開エラー
+[AboutSimToolsPage]
+CulminationMessage=SimToolsは長年の努力の集大成です！
+SimToolsDescription=最初、SimToolsは『ザ・シムズ3』用の強化されたランチャーに過ぎず、ゲームを起動する前に実行して処理を円滑にするいくつかのツールが組み込まれているだけでした。 \n それ以来、それは単なるランチャーを遥かに超え、初心者でもシム系ゲームの体験を劇的に変えることができる包括的なツールスイートへと進化しました。 \n もしSimToolsが新しい、より良い方法でシム系ゲームを体験する手助けとなったなら、ぜひご支援をお願いいたします。サポートが必要な場合や、コミュニティと体験を共有したい場合は、お気軽にSimTools Discordサーバーにご参加ください。
+LicenseMessage=SimToolsは、クリエイティブ・コモンズ 表示-非営利 4.0 国際（CC BY-NC）ライセンスのもとで保護されています。これはパブリックに公開され、貢献を歓迎しているオープンソースソフトウェアです。本ソフトウェアは、その全部または一部を問わず、商業的利益のために使用することはできず、また決して使用されるべきではありません。
+SimToolsDev=SimToolsの制作者、David Brown。 \n 2000年の初代シムズからプレイしています。
+FaithDedication=このプログラムを遂に完成させるインスピレーションをくれたFaithへ。
+PreviousMenu=前のメニューに戻るには「X」をクリックしてください。
+UpdateButton=アップデートを確認
+ChangelogButton=変更履歴
+NoServer=アップデートサーバーに接続できませんでした。
+Title_Failed=アップデート確認失敗
+Malformed=サーバー上のバージョンファイルが破損しているか、形式が正しくありません。
+BadVersion=リモートバージョンを解析できませんでした："{0}"
+UpToDate=すでに最新バージョン（{0}）を使用しています
+Title_UpToDate=最新状態
+NewVersion=バージョン {0} が利用可能です（現在のバージョン：{1}）。\n\n今すぐアップデートしますか？\nSimToolsは終了します。
+Title_Available=アップデートが利用可能
+Timeout=アップデート確認がタイムアウトしました。
+Unexpected=予期しないエラーが発生しました：\n{0}
+UpdaterMissing=アプリケーションディレクトリ内にSimToolsUpdater.exeが見つかりませんでした。
+Title_MissingUpdater=アップデーターが見つかりません
+Suppress_Ask=自動アップデート通知を非表示にしますか？
+Suppress_Title=アップデート通知の非表示
+Suppress_Duration=アップデート通知をどのくらいの期間非表示にしますか？
+Suppress_DurTitle=非表示期間
 
-[GenericKeys]
-Info=この機能は旧Maxis/EAタイトルの汎用プロダクトキーを提供します。\n\nEAの要請により将来のバージョンで削除される可能性があります。
-Info_Title=SimTools — 汎用キー
-SelectFirst=最初にゲームを選択してください。
-NoKeys=このタイトルのキーはまだ利用できません。
-ClickToGenerate=「生成」をクリックしてキーを取得してください。
-
-[Music]
-Fetching=トラックリストを取得中…
-Cancelled=ダウンロードがキャンセルされました。
-Complete=ダウンロード完了！
-NoServer=音楽サーバーに接続できませんでした。
-Cancelling=キャンセル中…
-FirstRun=無料のバックグラウンドミュージックパックをダウンロードしますか？\n\n独自の曲（MP3、WAV、FLAC、M4A）を\n/Resources/Musicフォルダーに追加することもできます:\n{0}
-FirstRun_Title=バックグラウンドミュージック
-NoTrack=トラックが読み込まれていません
-
-[UpdateDL]
-Complete=ダウンロード完了！インストーラーを起動中…
-Cancelled=ダウンロードがキャンセルされました。
-Cancelling=キャンセル中…
+[SupportPage]
+SupportText1=まずはじめに、SimToolsへのご支援に関心をお寄せいただきありがとうございます。SimToolsプロジェクトをサポートする方法はいくつかあります。これらには以下が含まれますが、これらに限定されません：
+FiscalSupport=金銭的な支援
+FiscalSupport2=I 趣味としてSimToolsを設計しましたが、SimToolsには毎月のホスティング費用と毎年のドメイン更新費用（月額96.10ドル）が発生しています。プロジェクトに寄付をすることで、これらの費用を相殺する手助けをしていただけます。
+Contribute=貢献する
+Contribute2=SimToolsのGitHubページにコードを提供したり、ファイルリポジトリのミラーをホストしたりできます。また、言語翻訳ツールを使用して、SimToolsに新しい言語を追加するのを手伝うこともできます。
+RepoMaker=リポジトリ作成ツール
+TranslationTool=翻訳ツール
+Personalize=パーソナライズを有効化
 
 [Personalization]
 EnterKey=キーを入力してください。
-InvalidKey=このキーは無効です。確認して再度試してください。
-Unlocked=パーソナライゼーションが解除されました！ようこそ、{0}さん。
-Unlocked_Title=SimTools — パーソナライゼーション
-RemoveAsk=パーソナライゼーションキーを削除しますか？ウェルカム画面のバナーは表示されなくなります。
-RemoveAsk_Title=SimTools — パーソナライゼーションの削除
-PersonalizationText=このSimToolsは{0} {1}さんのために心を込めて設計されました。\nご支援ありがとうございます！
+InvalidKey=そのキーは無効です。確認してもう一度お試しください。
+Unlocked=パーソナライズが有効化されました！ようこそ、{0}さん。
+Unlocked_Title=SimTools — パーソナライズ
+RemoveAsk=パーソナライズキーを削除しますか？ウェルカム画面にバナーが表示されなくなります。
+RemoveAsk_Title=SimTools — パーソナライズの削除
+PersonalizationText=このSimToolsは、{0} {1}のために心を込めて設計されました。\nサポートに感謝いたします！
 
-[KeyGen]
-Copied=キーがクリップボードにコピーされました。
-Copied_Title=SimTools — キー生成ツール
+[BuyTS3]
+BrokenLinksText=リンク切れを見つけた場合は、修正または削除できるよう、SimToolsのGitHubでIssueチケットを送信するか、Discordに投稿してください。
+UseText=以下の選択ボックスを使用して購入したいゲームを選択すると、選択したゲームの購入ページにリダイレクトされます。各セクションは展開可能です。\nすべてのリンクはSimToolsのアフィリエイトリンクであり、SimTools内のリンクを経由して購入された場合、各売り上げの2%～5%が私に支払われます。これにより、SimToolsの今後の開発がサポートされます。
+WarningButton=重要な警告についてはここをクリックしてください！
+BuyOnSteam=Steamで『ザ・シムズ3』のゲームを購入すると、ゲームキーを確認し、EA App / Originでクロス登録することができます。これは一方向のみで、Steam版でのみ機能します。EAの『ザ・シムズ3』のキーをSteamでクロス登録することはできません。また、デジタルキーはパッケージ版には使用できませんが、未使用のパッケージ版コードはEAに登録できます（Steamは不可）。未開封のパッケージ版かSteam版を購入するのが一番確実です！
+VendorTip=すべての販売店が常に最安値を提供しているわけではないため、注意して色々と探してみてください。一部の販売店では、SteamやEAで購入するよりも高い価格が設定されている場合があるため、すべての取引を比較して、可能な限り最良のオファーを得ているか確認してください。また、SteamやEAでウィッシュリストに追加しておくと、データセットや追加パックが75%オフ（1つ5ドル）になるセールが開催されることがあります！
+BuyDigital=デジタル配信
+BuyRetail=パッケージ版ディスク
+AffiliateText=アスタリスク（*）が付いている加盟店は、SimToolsの提携リクエストをまだ承認していないか、アフィリエイトプログラムを提供していません。提携契約を結んでいない加盟店からの購入に対して、SimToolsはコミッションを受け取りません。
+BackButton=メインメニューに戻る
+Sims1_Legacy=ザ・シムズ: レガシーコレクション
+Sims1_Disc=ザ・シムズ
+Sims2_Legacy=ザ・シムズ2: レガシーコレクション
+Sims2_Disc=ザ・シムズ2
+Sims3=ザ・シズ3
+Sims3_Store=ストアアイテム
+Sims3BG=ザ・シムズ3
+Expansions=拡張データセット
+WorldAdventures=ザ・シムズ3 ワールドアドベンチャーズ
+Ambitions=ザ・シムズ3 アンビション
+LateNight=ザ・シムズ3 レイトナイト
+Generations=ザ・シムズ3 ジェネレーションズ
+Pets=ザ・シムズ3 ペット
+Showtime=ザ・シムズ3 ショータイム
+ShowtimeCE=ザ・シムズ3 ショータイム：ケイティ・ペリー コレクターズエディション
+ShowtimeCE_2=『ショータイム：ケイティ・ペリー コレクターズエディション』はすでに販売・生産が終了しているため、通常はかなりの高値が付いています。また、在庫切れになっていることもよくあります。
+Supernatural=ザ・シムズ3 スーパーナチュラル
+Seasons=ザ・シムズ3 シーズンズ
+University=ザ・シムズ3 ユニバーシティライフ
+IslandParadise=ザ・シムズ3 アイランドパラダイス
+ITFuture=ザ・シムズ3 イントゥ・ザ・フューチャー
+StuffPacks=追加パック（アイテム系）
+HELStuff=ザ・シムズ3 ハイエンドロフト
+FLStuff=ザ・シムズ3 ファストレーン
+OLStuff=ザ・シムズ3 アウトドアリビング
+TLStuff=ザ・シムズ3 タウンライフ
+MSStuff=ザ・シムズ3 マスタースイート
+KPSweetTreats=ザ・シムズ3 ケイティ・ペリーのスイート・トリート
+KPSTMessage=『ケイティ・ペリーのスイート・トリート』はすでに販売・生産が終了しているため、通常はかなりの高値が付いています。また、在庫切れになっていることもよくあります。
+DStuff=ザ・シムズ3 Diesel
+789Stuff=ザ・シムズ3 70s, 80s & 90s Stuff
+MStuff=ザ・シムズ3 ムービースタッフ
+PremWorlds=プレミアムワールド
+Aurora=Aurora Skies
+Barnacle=Barnacle Bay
+DVGold=Dragon Valley: ゴールドエディション
+DVStandard=Dragon Valley: スタンダードエディション
+HidSpring=Hidden Springs
+LuckyPalms=Lucky Palms
+LunarLakes=Lunar Lakes
+MidnightHollow=Midnight Hollow
+MonteVista=Monte Vista
+Riverview=Riverview
+RHGold=Roaring Heights: ゴールドエディション
+RHStandard=Roaring Heights: スタンダードエディション
+HidMonteBundle=Hidden Springs ＆ Monte Vista バンドル
+TSM1=The Sims: Medieval
+TSM2=『The Sims: Medieval』はすでに販売・生産が終了しているため、通常はかなりの高値が付いています。また、在庫切れになっていることもよくあります。
+TSM3=The Sims Medieval: Pirates & Nobles
+TSM4=『The Sims Medieval: Pirates & Nobles』はすでに販売・生産が終了しているため、通常はかなりの高値が付いています。また、在庫切れになっていることもよくあります。
+TS_Stories=シムズ・ストーリーズ
+TSCast=ザ・シムズ サバイバル ストーリーズ
+TSLife=ザ・シムズ ライフ ストーリーズ
+TSPets=ザ・シムズ ペット ストーリーズ
+TS4=ザ・シムズ4
+SC2K=SimCity 2000
+Copter=SimCopter
+Streets=ストリーツ・オブ・シムシティ
+SC3K=SimCity 3000 Unlimited
+SC4DE=SimCity 4 デラックスエディション
+SC2013=SimCity (2013)
+Eneba_EA=Enebaで購入 (EA App)
+Eneba_Steam=Enebaで購入 (Steam)
+GVG_EA=GVG Mallで購入 (EA App)
+G2A_EA=G2Aで購入 (EA App)
+G2A_Steam=G2Aで購入 (Steam)
+G2A_GOG=G2Aで購入 (GOG)
+Gamivo_EA=Gamivoで購入 (EA App)
+Gamivo_Steam=Gamivoで購入 (Steam)
+GO_EA=Gamer's Outletで購入 (EA App)
+HRK_EA=HRKで購入 (EA App)
+HRK_Steam=HRKで購入 (Steam)
+IG_EA=Instant Gamingで購入 (EA App)
+K4G_EA=K4Gで購入 (EA App)
+Kinguin_EA=Kinguinで購入 (EA App)
+Kinguin_Steam=Kinguinで購入 (Steam)
+MMOGA_EA=MMOGAで購入 (EA App)
+Official=* 公式
+Buy_EA=EA Appで購入
+Buy_Steam=Steamで購入
+Buy_GOG=GOGで購入
+Buy_Amazon=Amazonで購入
+Buy_eBay=eBayで購入
+BuyFromPartners=提携パートナー
+BuyFromRetail=* パッケージ版
+
+[SC2013Warnings]
+SC2013Warning=『シムシティ(2013)』のModの大部分は、オフラインモードでのみ動作します。
+SC2013Warning_Title=シムシティ(2013) — 警告
+
+[BuyWarning]
+BWText1=提携サイトを利用する場合は、可能な限りパートナーから直接購入し、そのサイト内のサードパーティの売り手は避けることをお勧めします。一部の売り手は不正な手段（盗難クレジットカード、チャージバック）を使用してキーを購入している場合があり、その場合キーが後で無効化される可能性があります。EAまたはSteamから直接購入することを強くお勧めします。価格が高いほど、その取引が合法である可能性が高くなります。
+BWText2=これらのサードパーティサイトの多くは規模が大きく合法であり、良い取引や信頼できる商人が多いのも事実です。しかし、中には悪質なケースも存在します。安すぎる価格や、うますぎる話には注意してください。通常、それらには裏があります。\n\n最安値のオプションを購入することがリスクになる理由：\n• 不正な手段でキーを調達した商人に遭遇する可能性が格段に高くなります。これには、盗んだクレジットカード情報でゲームキーを購入するケースが含まれます。この場合、本来のカード所有者が気づいた時点で銀行にチャージバック（返金）を要求します。ゲームパブリッシャーは銀行に返金せざるを得なくなり、そのゲームキーに関連付けられた取引を追跡して、該当するゲームキーを無効化します。\n• 上記に加えて、商人自身が不正な取引から手早く利益を得た後、意図的に自らのカードでチャージバックを申請することもあります。同様にパブリッシャーは追跡を行い、キーを無効化します。\n• あなた自身に落ち度がなくても、チャージバック取引によってキーが無効化されるたびに、あなたのゲームアカウントにペナルティ（ブラックマーク）がつく可能性があります。これが累積すると、パブリッシャーはそのプラットフォームへのアクセスを制限、または完全に拒否する権利を留保しています。\n\nサードパーティの販売店から購入する場合は、以下の提案に従ってください：\n• 可能な限りプラットフォーム上のサードパーティ商人からではなく、パートナーから「直接」購入するようにしてください。\n• 相応の価格設定のものを探してください。例えば『ザ・シムズ3』のデータセットが通常19.99ドルである場合、7〜10ドルあたりの取引が最も無難です。それより低い価格のものは潜在的なリスクを伴います。\n• 商人のレビューや取引履歴を調査してください。そのタイトルの販売実績が多いか、多くの購入者が満足しているかを確認し、特に「購入からレビューが投稿されるまでの期間」に注目してください。期間が長いほど信頼性が高くなります。\n\nもし上記のポイントに少しでも不安を感じる場合は、公式のチャンネルや自分が信頼できると感じるサイトでの購入にとどめてください。多くの場合、Steamでは『ザ・シムズ3』が50%〜75%オフ（データセットあたり10.00〜5.00ドル）でセールされることがあり、これらが最も安全に拡張パックや追加パックを購入できるタイミングです。また、Steamで購入したものは通常、EA Appでも登録が可能です。
+
+[EasterEgg1]
+Coding=失読症（ディスレクシア）と共にコードを書くこと
+
+[DonorPage]
+DonorText1=単発または継続的な寄付（金銭的またはその他の形式）を通じて、以下の方々がSimToolsに貢献してくださいました：
+
+[DownloadProgress]
+DownloadingFile={0} をダウンロード中
+StatusText1=準備中...
+
+[ExclusiveItems]
+Title=SimTools — 限定アイテム
+ContentText1=寄付者限定のコンテンツがここに表示されます。現時点では、まだ利用可能なコンテンツはありません。しかし、制作が進み次第、このセクションを更新していく予定です。
+ContentText2=寄付をしてくださったSimToolsユーザーの方は、これらのアイテムを家族や友人と共有することができますが、Mod配布サイトなどへのアップロードはご遠慮ください。
+
+[GameplayFix]
+DownloadError={0} のダウンロードに失敗しました：\n{1}
+DownloadError_Title=ダウンロードエラー
+GlobalSelectAll=すべて選択
+MonoPatcherWarning=このModはLazyDuchess氏による「Mono Patcher」のインストールが必要です。あらかじめバグ修正（Bugfix）メニューからインストールされていることを確認してください。
+NoCommLots=Bluegenjutsu氏による「公共区画の自動配置なし（No Auto Placing Community Lots）」
+NoCommLotsWarning=注意：「No Auto Placing Community Lots」は、消防署、美容サロン、コインランドリーなどの区画を自動配置するスクリプトを無効にします。これらの区画が必要な場合は、このパッケージをインストールしないでください。また、このModの動作には、アンビション、ショータイム、スーパーナチュラル、シーズンズの拡張パックのうち、少なくとも1つが必要です。これらの拡張パックを1つも所有していない場合は、このModを安全にスキップできます。
+PerfumeFix=Gamefreak130氏による「Armoure Perfume ムードレット修正」
+Done=完了しました。\n\nダウンロード済み: {0}  |  すでに最新状態: {1}  |  失敗: {2}
+Done_Title=ゲームプレイ修正 — ザ・シムズ3
+LessSpaceMod=OhRudi氏による「シムの必要スペース縮小（Sims Need Less Space）」
+PetsLessSpaceMod=OhRudi氏による「ペットの必要スペース縮小（Pets Need Less Space）」
+ImpMemories=VelocityGrass氏による「重要な思い出のみ（Only Important Memories）」
+TISFix=Simsi45氏による「リピート配置アイテム（Tileable Items）のシェーダー修正」
+SlopedTerrainFix=Nikel23氏による「傾斜地でのインタラクト（Interact on Sloped Terrain）」
+HalfWallFix=Simsi45氏による「ハーフウォールの修正」
+EyeballUVFix=S-Club氏による「眼球UVの修正」
+EyeshadowFix=Lavsm氏による「EAアイシャドウの修正」
+MuscleSliderFix=Nysha氏による「筋肉スライダーの修正」
+GTKFix=SimBouquet氏による「『相手を知る（Get To Know）』の修正」
+GTKUtils=SimBouquet氏による「『相手を知る（Get To Know）』修正ユーティリティ」
+WelcomeMattFix=CeltySims氏による「ウェルカムマットのテカリ除去（Welcome Matt De-Shined）」
+ClapboardFix=CircusWolf氏による「横張りの下見板（Horizontal Clapboard）の修正」
+AtomicStairFix=EnableLlamas氏による「アトミック・エイジの階段の修正」
+TSMFaceExpressions=SimBouquet氏による「中世風の表情（Medieval Facial Expressions）」
+RandomSimFixes=LazyDuchess氏による「ランダムなシムの修正」
+SimBinGeneticsMale=Anime_Boom氏による「シムの保管箱の遺伝子（男性プリセット）」
+SimBinGeneticsFemale=Anime_Boom氏による「シムの保管箱の遺伝子（女性プリセット）」
+PickUpToddlerFix=TheSweetSimmer氏による「よちよち歩きの幼児を抱き上げる動作の修正」
+HiddenStencils=Simsi45氏による「隠されたステンシルのアンロック＆修正」
+FishingBoxFix=NanaBx3氏＆caoride氏による「釣りボックスの修正」
+CrossEyeFix=LazyDuchess氏による「より目の修正」
+PigtailsFix=Phantom99氏による「ツインテールのバグ修正」
+WateryGraveFix=fantuanss12氏による「水死の記念碑の修正」
+GroceryFixes=Swiffy氏による「食料品店の修正」
+DisTerrainFix=PotatoBalladSims氏による「シャン・レ・シムの遠景の木々の修正」
+SteamTrainFix=PotatoBalladSims氏による「ヨーロッパ風蒸気機関車の修正」
+AsianWindowFix=OhRudi氏による「アジア風窓の光反射の修正」
+HarvesterFix=Fantuanss12氏による「収穫マシンの修正」
+NoMagicClothesFix=Gamefreak130氏による「魔法の物干しロープの修正（No Magic Clothesline）」
+InvestigatorFix=jm2k氏による「捜査官の無駄な事件の排除」
+CelebFridgeFix=EnableLlamas氏による「セレブ冷蔵庫のテクスチャ修正」
+CraneMed=Armiel氏による「buydebugモードでのクレーン（中）の有効化」
+CraneLg=Armiel氏による「buydebugモードでのクレーン（大）の有効化」
+LNPlantFix=Robodl95氏による「レイトナイトの植物の修正」
+BPWorkbenchFix=DividingByZero氏による「ブリッジポートの工作台の修正」
+LNElevatorFix=Vesko氏による「エレベーターシャフト配置の修正」
+GenShirtFix=sweetdevil氏による「ジェネレーションズのシャツ＆セーターのカラーチャンネル修正」
+GenPaintingFix1=ThomasRiordan氏による「ティーン向けファンタジー絵画の修正」
+GenPaintingFix2=ThomasRiordan氏による「気まずい家族写真の修正」
+RTSFix=Danjaley氏による「幼児への読み聞かせ寝かしつけの修正」
+GallopFasterFix=Shimrod101氏による「より速い駆け足のアニメーション修正」
+PetTombstoneFix=MenaceMan44氏による「ペットの墓石の影の修正」
+HorseTailFix=Simsi45氏による「馬の尻尾の修正」
+NoNPCTips=Spicsshane氏による「NPCのチップ目的のパフォーマンスの禁止」
+ProperTraitFix=SpotlessLeopard氏による「特質『生真面目（Proper）』の適切な修正」
+RestoSpellFix=Arsil氏による「修復呪文の修正」
+MoneyTreeFix=Chicken0895氏による「お金のなる木のバグ修正」
+ByeByeZombies=PersonCalledJoy氏による「満月の夜のゾンビ発生の停止」
+LLAMASoundFix=ProtectusCZ氏による「L.L.A.M.A.のサウンド修正」
+MotiveMobileFix=YamiTheDragon氏による「テレ・モティーブ（Motive Mobile）の回避策」
+MotiveMobileMsg=この修正は、テレ・モティーブの効果を大幅に弱め、「楽しさ」と「社交」のみを満たすようにすることで、潜在的な問題を回避します。これにより、シムが超自然的な存在になった際に、固定されるはずの欲求が破損するのを防ぎます。あるいは、単にテレ・モティーブを購入または使用しないことでも回避できます。
+nR_Tempest=Chain_Reaction氏による「nRaas Tempest」
+FasterRaking=Mikey氏による「落ち葉集めの高速化」
+ForecastTweaks=Gamefreak130氏による「天気予報の微調整」
+EclipsingFog=Gamefreak130氏による「視界を遮る真の霧（Truly Eclipsing Fog）」
+AppleBobbingFix=Hundefreund氏による「リンゴ食い競争用タンクの子供向け修正」
+NoUglySnowprints=Lyralei氏による「雪の上の不自然な足跡の修正」
+ADUniShellEntry=AussomeDays氏による「University - 建物の入り口（Shell Entries）の追加」
+ADUniShellReplace=AussomeDays氏による「University - 置き換え用建物構造（Replacement Shells）」
+UniVisFix=SimBouquet氏による「University Lifeの視覚効果の修正」
+UniNoProtests=Don Babilon氏による「大学での抗議活動の停止」
+UniDoorFix=CeltySims氏による「アルファ＆オメガのドアの修正」
+HangingLanternFix=Heaven氏による「吊り下げランタンの修正」
+HouseboatLagFix=MaryDeHoyos氏による「ハウスボートによるラグの軽減」
+PITO_Fix=Phantom99氏による「自律的な『海で遊ぶ』動作の修正」
+LaserRhythmFix=SimsAddict777氏による「『リズム・オー・レーザーを見る』動作の修正」
+ITFPlanterFix=Heaven氏による「ペリジー・プランターの修正」
+StorePiracyWarning2=ストアの修正ファイルをインストールする前に、関連する改造・海賊版のストアアイテムを使用していないことを確認してください。
+BanquetFanFix=OmegaStarr82氏による「バンケット用扇風機のルーティング修正」
+EfficientUpgradeNameFix=Buzzler氏によるアップグレード名「さらに効率的」の修正
+HaciendaFireplaceFix=Qahne氏による「オート・ハシエンダの暖炉の修正」
+NTStairFix=Simsi45氏による「『過去と現在』の階段の修正」
+ProbationMods=Mods probatoires (En cours de test)
+
+[GenericKeysPage]
+TS1LL=Les Sims : Ça vous change la vie
+TS1HP=Les Sims : Surprise-partie
+TS1HD=Les Sims : Et plus si affinités
+TS1V=Les Sims : En vacances
+TS1U=Les Sims : Entre chiens et chats
+TS1S=Les Sims : Superstar
+TS1MM=Les Sims : Abracadabra
+TS1DE=Les Sims : Édition Deluxe
+TS1CC=Les Sims : L'intégrale
+TS2D=Les Sims : Deluxe
+TS2DD=Les Sims : Megaluxe
+TS2U=Les Sims 2 : Académie
+TS2NL=Les Sims 2 : Nuits de folie
+TS2OFB=Les Sims 2 : La Bonne Affaire
+TS2P=Les Sims 2 : Animaux & Cie
+TS2S=Les Sims 2 : Au fil des saisons
+TS2BV=Les Sims 2 : Bon Voyage
+TS2FT=Les Sims 2 : Quartier Libre
+TS2AL=Les Sims 2 : La Vie en Appartement
+TS2FFS=Les Sims 2 : Kit Fun en Famille
+TS2GLS=Les Sims 2 : Kit Tout Glamour
+TS2CS=Les Sims 2 : Kit Joyeux Anniversaire
+TS2HMFS=Les Sims 2 : Kit Mode H&M
+TS2TSS=Les Sims 2 : Kit Teen Styles
+TS2KBIS=Les Sims 2 : Kit Cuisines et Salles de Bains Design
+TS2IHS=Les Sims 2 : Kit IKEA Home Design
+TS2MGS=Les Sims 2 : Kit Demeures de Rêve et Jardins
+SC4=SimCity 4
+SC4RH=SimCity 4: Rush Hour
+ClickToGen=クリックしてジェネレートキーを生成...
+SelectFirst=最初にゲームを選択してください。
+NoKeys=このタイトルで利用可能なキーはまだありません。
+GenKeysButton1=ゲームを選択 ▸
+KeysInfo=上のボタンを使ってゲームを選択してください。\r\n\r\nもし特定のキー、またはキーのセット全体が機能しない場合は、次のバージョンで修正できるようDiscordでお知らせください。\r\n\r\nこの機能およびそれに関連するすべての機能は、EAの要請により、将来のバージョンのSimToolsからいつでも削除される可能性があります。
+KeysInfoCopy=これらのキーはオンライン登録には使用できません。 \n パッケージ版ディスクからのインストール時のみ使用可能です。
+GenerateButton=生成
+CopyButton=コピー
+
+[Music]
+Fetching=リストを取得中…
+Cancelled=ダウンロードがキャンセルされました。
+Complete=ダウンロード完了！
+NoServer=ミュージックサーバーに接続できませんでした。
+Cancelling=キャンセル中…
+FirstRun=無料のバックグラウンドミュージックパックをダウンロードしますか？\n\nご自身の楽曲（MP3、WAV、FLAC、M4A）をいつでも以下の\n/Resources/Music フォルダに入れることもできます：\n{0}
+FirstRun_Title=BGM
+NoTrack=トラックが読み込まれていません
 
 [Repo]
-Warning=リポジトリの信頼チェックが失敗しました:  {0}\n\n{1}\nこれは、リポジトリURLの設定ミス、ネットワーク傍受の試み、またはhostsファイルの改ざんを示す可能性があります。\n\n注意して進めてください。
-Warning_Title=信頼できないリポジトリソース
-Domain_Untrusted=  • ドメイン「{0}」は信頼できるソースとして登録されていません。
-IP_Untrusted=  • 解決されたIPアドレス（{0}）は信頼できるIPと一致しません。
-Hosts_Tampered=  • ローカルのhostsファイルが「{0}」を{1}にリダイレクトしています。これは信頼できるアドレスではありません。
+RepoSpeedTest=リポジトリ速度テスト
+Warning=以下のリポジトリの信頼性チェックに失敗しました：  {0}\n\n{1}\nこれは、リポジトリのURL設定の誤り、ネットワークへの\n不正傍受の試み、またはhostsファイルの改ざんを示している可能性があります。\n\n十分注意して進めてください。このソースからのダウンロードは安全ではない可能性があります。
+Warning_Title=信頼されていないリポジトリソース
+Domain_Untrusted=ドメイン "{0}" は信頼されたソースとして登録されていません。
+IP_Untrusted=解決されたIPアドレス（{0}）は、信頼されたIPと一致しません。
+Hosts_Tampered=ローカルのhostsファイルが "{0}" を信頼されていないアドレスである {1} にリダイレクトしています。
 
-[AboutSimTools]
-WhatIsSimTools=SimTools（旧TS3Tools）は以前と同じツールスイートですが、The Sims 1、2、Stories、3、4、SimCity 2000/3000/4/2013、SimCopter、Streets of SimCityなど多様なMaxisゲームのオプションが追加されました。
-WhatIsSimTools_Title=SimToolsとは？
-WarningMessage=v3.2.4からv4.0.1にかけて多くの変更がありました。「SimToolsビデオガイド」ボタンをクリックして新しいビデオガイドをご覧ください。
-WarningMessage_Title=ビデオガイドを見てください！
-SC2013Warning=SimCity 2013のModのほとんどはオフラインモードでのみ動作します。これらのModでオンラインプレイを試みると切断が発生します。
-SC2013Warning_Title=SimCity 2013 — 警告
-
-[Settings]
-Sims3DirWarning=The Sims 3のゲームフォルダーは、拡張パックとスタッフパックのフォルダーがあるルートディレクトリに設定してください。Game/Binフォルダーは選択しないでください。
-Sims3DirWarning_Title=SimTools — The Sims 3フォルダー
-AutoDetect_Nothing=ゲームまたはModのフォルダーが自動的に検出されませんでした。\n\nSteam、GOG、EA Games、Electronic Arts、Origin Gamesなどの一般的なインストール場所を確認しました。\n\n参照ボタンを使用してパスを手動で設定することができます。
-AutoDetect_Nothing_Title=自動検出 — 何も見つかりませんでした
-AutoDetect_Found_Title=自動検出が完了しました
-ReenabledUpdates=自動更新通知が再び有効になりました。\n\nSimToolsは次回起動時に更新を確認します。
-ReenabledUpdates_Title=更新確認がリセットされました
-
-[GameplayFixes]
-SelectAll_Ask=利用可能なすべての修正を選択しようとしています。\n\nSimToolsはゲームのパフォーマンスを向上させるために設計されていますが、すべてのパッケージをインストールするとロード時間が増加し、エンジンに負荷がかかる可能性があります。積極的に使用している機能やオブジェクトの修正のみをインストールすることを強くお勧めします。\n\nまた、システムにインストールされていない拡張パックやスタッフパックの修正をインストールすると、クラッシュや予期しない動作が発生する可能性があります。\n\nそれでもすべての修正を選択しますか？
-SelectAll_Title=SimTools — すべて選択 警告
-NoneSelected=修正が選択されていません。\n\n注意: グレーアウトされたアイテムはまだ定義されていないプレースホルダーです。
-NoneSelected_Title=ダウンロードするものがありません
-DownloadError={0}のダウンロードに失敗しました:\n{1}
-DownloadError_Title=ダウンロードエラー
-Done=完了。\n\nダウンロード済み: {0}  |  最新: {1}  |  失敗: {2}
-Done_Title=ゲームプレイ修正 — The Sims 3
-
+[Framework]
+NotInstalled=SimTools Mod Frameworkがインストールされていないか、Resource.cfgに必要なSimToolsのパッケージパスが記述されていません。\n\n.packageファイルをダウンロードする前に、メインウィンドウの「Mod Framework」ボタンを押してMod Frameworkをインストールしてください。\n\nこれにより、ゲームがパッケージを正しく検出して読み込めるようになります。
+NotInstalled_Title=SimTools — Mod Frameworkが必要です
+ModsNotSet_Ask=設定で『ザ・シムズ3』のModsディレクトリが構成されていません。\n\nSimToolsは、以下の場所に『ザ・シムズ3』のユーザーデータフォルダを検出しました：\n{0}\n\nここに「Mods」フォルダを作成し、インストールを続行しますか？
+ModsNotSet_Title=SimTools — Modsディレクトリ未設定
+ModsNotSet_Manual=設定で『ザ・シムズ3』のModsディレクトリが構成されていません。\n\nMod Frameworkをインストールするには：\n\n1. 以下のフォルダ内に「Mods」という名前のフォルダを作成してください：\n   Documents\Electronic Arts\The Sims 3\n\n2. 設定を開き、『ザ・シムズ3』のModsパスをそのフォルダに指定します。\n\nその後、もう一度「Mod Framework」をクリックしてください。
+Installed=SimTools Mod Frameworkのインストールが成功しました！\n\n場所：\n{0}\n\n作成されたフォルダ：\n  • Disabled  (Overrides, Packages, Probation, Test)\n  • Overrides  •  Packages\n  • Probation  (Overrides, Packages)\n  • SimTools  (Overrides, Packages)\n  • Test  (Overrides, Packages)\n\nResource.cfgがModsフォルダにインストールされました。\nコアパッケージがSimTools\Packagesにインストールされました。
+Installed_Title=SimTools — Mod Frameworkインストール完了
+MissingResource=コンパイルされたリソース内にResource.cfgが見つかりませんでした。\nSimToolsを再インストールして、もう一度お試しください。
+MissingResource_Title=SimTools — リソースが見つかりません
+InstallFailed=Mod Frameworkのインストールに失敗しました：\n\n{0}
+InstallFailed_Title=SimTools — インストール失敗
+GameIntro_Ask=SimToolsカスタムゲームイントロをインストールしますか？\n\nこれは、通常のEAゲームイントロをSimTools仕様のものに置き換えます。
+GameIntro_Title=SimTools — カスタムゲームイントロ
+Splashscreen_Ask=SimToolsカスタムスプラッシュスクリーンをインストールしますか？\n\nメーカー標準のロード画面が、SimTools仕様の画面に置き換わります。
+Splashscreen_Title=SimTools — カスタムスプラッシュスクリーン
+ExtractFail={0}の展開に失敗しました：\n{1}
+ExtractFail_Title=展開エラー

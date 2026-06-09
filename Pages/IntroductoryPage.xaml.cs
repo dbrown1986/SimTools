@@ -170,6 +170,7 @@ namespace SimTools
             UpdateButton.Content = LanguageManager.Get("IntroductoryPage", "UpdateButton_Text", "Check for Updates");
             ContinueButton.Content = LanguageManager.Get("IntroductoryPage", "ContinueButton_Text", "Continue");
             SimToolsButton.Content = LanguageManager.Get("IntroductoryPage", "SimToolsButton_Text", "What is SimTools?");
+            RepoSpeedButton.Content = LanguageManager.Get("Repo", "RepoSpeedTest", "Repository Speed Test");
             ExclusiveItemsButton.Content = LanguageManager.Get("IntroductoryPage", "ExclusiveItemsButton_Text", "Exclusive Items");
         }
 

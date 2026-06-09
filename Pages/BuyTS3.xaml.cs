@@ -685,16 +685,16 @@ public partial class BuyTS3 : Window
     private static BuyTreeNode BuildSC2K() =>
         N(LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000"), I.SC2K,
             Official(
-                ea:    "https://www.ea.com/en/games/simcity/simcity-2000",
+                ea: "https://www.ea.com/en/games/simcity/simcity-2000",
                 steam: null,
-                gog:   "https://www.gog.com/en/game/simcity_2000_special_edition",
-                icon:  I.EA),
+                gog: "https://www.gog.com/en/game/simcity_2000_special_edition",
+                icon: I.EA),
             Partners(
                 Leaf(LanguageManager.Get("BuyTS3", "Eneba_EA", "Buy on Eneba (EA App)"), I.Eneba, "https://www.eneba.com/origin-simcity-2000-special-edition-gog-com-key-global?af_id=TS3Tools&currency=USD&region=global"),
                 Leaf(LanguageManager.Get("BuyTS3", "G2A_EA", "Buy on G2A (EA App)"), I.G2A, "https://www.g2a.com/simcity-2000-special-edition-ea-app-key-global-i10000000711001?gname=ts3tools"),
                 Leaf(LanguageManager.Get("BuyTS3", "G2A_GOG", "Buy on G2A (GOG)"), I.G2A, "https://www.g2a.com/simcity-2000-special-edition-gogcom-key-global-i10000000711002?gname=ts3tools"),
                 Leaf(LanguageManager.Get("BuyTS3", "Gamivo_EA", "Buy on Gamivo (EA App)"), I.Gamivo, "https://www.gamivo.com/product/simcity-2000-pc-ea-app-global-standard?glv=p1b0e0fh"),
-                Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), "https://www.kinguin.net/category/16138/simcity-2000-special-edition-ea-app-cd-key?r=66716563950ad")));
+                Leaf(LanguageManager.Get("BuyTS3", "Kinguin_EA", "Buy on Kinguin (EA App)"), I.Kinguin, "https://www.kinguin.net/category/16138/simcity-2000-special-edition-ea-app-cd-key?r=66716563950ad")));
 
     // ── SimCity 3000 Unlimited ────────────────────────────────────────────────
 
