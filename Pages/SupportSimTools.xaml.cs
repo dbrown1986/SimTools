@@ -137,9 +137,9 @@ namespace SimTools
             FiscalSupport2.Text = LanguageManager.Get("SupportPage", "FiscalSupport2", FiscalSupport2.Text);
             Contribute.Text = LanguageManager.Get("SupportPage", "Contribute", Contribute.Text);
             Contribute2.Text = LanguageManager.Get("SupportPage", "Contribute2", Contribute2.Text);
-            RepoMakerButton.Content = LanguageManager.Get("SupportPage", "RepoMaker", RepoMakerButton.Content.ToString());
-            TranslationButton.Content = LanguageManager.Get("SupportPage", "TranslationTool", TranslationButton.Content.ToString());
-            UnlockPersonalizationButton.Content = LanguageManager.Get("SupportPage", "Personalize", RepoMakerButton.Content.ToString());
+            RepoMakerButton.Content = LanguageManager.Get("SupportPage", "RepoMaker", "Repo Maker");
+            TranslationButton.Content = LanguageManager.Get("SupportPage", "TranslationTool", "Translation Tool");
+            UnlockPersonalizationButton.Content = LanguageManager.Get("SupportPage", "Personalize", "Unlock Personalization");
         }
     }    
 }

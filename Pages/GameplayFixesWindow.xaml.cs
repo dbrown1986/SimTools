@@ -62,7 +62,7 @@ public partial class GameplayFixesWindow : Window
         {
             var result = WpfMessageBox.Show(
                 LanguageManager.Get("GameplayFixes", "SelectAll_Ask",
-                    "You are about to select every available fix."),
+                    "You are about to select every available fix. You need to be sure about this. This could potentially slow your game. Furthermore, if there are packs that are not installed, your game may crash. "),
                 LanguageManager.Get("GameplayFixes", "SelectAll_Title",
                     "SimTools — Select All Warning"),
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);

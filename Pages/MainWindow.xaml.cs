@@ -383,7 +383,22 @@ namespace SimTools
                 }
             }
 
-            Process.Start(new ProcessStartInfo(exePath) { UseShellExecute = true });
+            // ── Launch the file with the corrected working directory ──────────────────
+            try
+            {
+                Process.Start(new ProcessStartInfo(exePath)
+                {
+                    UseShellExecute = true,
+                    WorkingDirectory = downloadDirectory // <--- HERE IS THE FIX
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"{LanguageManager.Format("Main", "Error_LaunchFailed", fileName)}\n{ex.Message}",
+                    LanguageManager.Get("Main", "Error_LaunchTitle", "Execution Error"),
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Tweaks button left-click context menu.
@@ -469,7 +484,7 @@ namespace SimTools
             sims2_rpc.Click += (_, _) =>
             {
                 var result = MessageBox.Show(
-                    LanguageManager.Get("Main", "Sims2RPC_Ask", "Which version of The Sims 2 do you have installed?"),
+                    LanguageManager.Get("Main", "Sims2RPC_Ask", "Which version of The Sims 2 do you have installed?\nSelect Yes for Retail/Complete Collection.\nSelect No if Legacy Collection."),
                     LanguageManager.Get("Main", "Sims2RPC_Title", "SimTools — Sims2RPC / Legacy Extender"),
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
@@ -617,7 +632,7 @@ namespace SimTools
 
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/wininet.dll",  // ← replace
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "wininet.dll"));
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "wininet.dll"));
             };
             sims3Item.Items.Add(ts3_uasil);
 
@@ -635,7 +650,7 @@ namespace SimTools
 
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/S3SS/Sims3SettingsSetter.asi",  // ← replace
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Sims3SettingsSetter.asi"));
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "Sims3SettingsSetter.asi"));
             };
             sims3Item.Items.Add(ts3_s3ss);
 
@@ -653,7 +668,7 @@ namespace SimTools
 
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/d3d9.dll",  // ← replace
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "d3d9.dll"));
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "d3d9.dll"));
             };
             sims3Item.Items.Add(ts3_dxvk);
 
@@ -715,7 +730,7 @@ namespace SimTools
 
             // ── Mono Patcher Library ──────────────────────────────────────────────────
             var ts3_monoPatcher = new MenuItem { Header = "Mono Patcher Library" };
-            ts3_monoPatcher.Click += (_, _) =>
+            ts3_monoPatcher.Click += async (_, _) =>
             {
                 MessageBox.Show(
                     LanguageManager.Get("Main", "MonoPatcher_Info1", "Mono Patcher is a library that allows Script Modders to replace Sims 3 methods with as much compatibility as possible - No need to create core mods anymore to replace game functions."),
@@ -735,11 +750,9 @@ namespace SimTools
                     return;
                 }
 
-                DownloadAndOpenExe(
-                    url: "%baseurl%/Sideload-Apps/x86/ld_mpl.exe",
-                    fileName: "ld_mpl.exe",
-                    downloadDirectory: GamePaths.Sims3Game
-                );
+                await DownloadFileOnly(
+                    url: "%baseurl%/Sideload-Apps/x86/MonoPatcher.asi",  // ← replace
+                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "MonoPatcher.asi"));
             };
             sims3Item.Items.Add(ts3_monoPatcher);
 
@@ -764,7 +777,7 @@ namespace SimTools
 
             // ── Sweet Treats Conversion Guide ─────────────────────────────────────────
             var ts3_sweetTreats = new MenuItem { Header = LanguageManager.Get("Main","STCG","Sweet Treats Conversion Guide") };
-            ts3_sweetTreats.Click += (_, _) => OpenUrl("%baseurl%/guides/sweet-treats");  // ← replace with actual URL
+            ts3_sweetTreats.Click += (_, _) => MessageBox.Show("Coming Soon...", "Sweet Treats");  // ← replace with actual URL
             sims3Item.Items.Add(ts3_sweetTreats);
 
             // ── nRaas Core Mods (sub-menu) ────────────────────────────────────────────
@@ -1167,7 +1180,7 @@ namespace SimTools
             ts3_simler90.Click += async (_, _) =>
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "Simler90_Info", "Simler90 fixes info."),
+                    LanguageManager.Get("Tweaks", "Simler90_Info", "Simler90's mod package fixes many bugs in the game and the internal engine."),
                     LanguageManager.Get("Tweaks", "Simler90_Title", "Simler90's Fixes — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -1182,7 +1195,7 @@ namespace SimTools
 
                 await DownloadFileOnly(
                     "%baseurl%/Mods/Sims3/Fixes/Packages/simler90GameplayCoreMod.package",
-                    Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/simler90GameplayCoreMod-UPDATE206.package"));
+                    Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/simler90GameplayCoreMod.package"));
             };
             sims3Item.Items.Add(ts3_simler90);
 
@@ -1210,14 +1223,11 @@ namespace SimTools
                 if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
 
                 await DownloadFileOnly(
-                    "%baseurl%/Mods/Sims3/Packages/Fixes/base/ld_MonoPatcher.package",
+                    "%baseurl%/Mods/Sims3/Fixes/Packages/ld_MonoPatcher.package",
                     Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/ld_MonoPatcher.package"));
                 await DownloadFileOnly(
                     "%baseurl%/Sideload-Apps/x86/MonoPatcher.asi",
-                    Path.Combine(GamePaths.Sims3Game, "Game/Bin/MonoPatcher.asi"));
-                await DownloadFileOnly(
-                    "%baseurl%/Sideload-Apps/x86/wininet.dll",
-                    Path.Combine(GamePaths.Sims3Game, "Game/Bin/wininet.dll"));
+                    Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "MonoPatcher.asi"));
             };
             sims3Item.Items.Add(ts3_mono_patcher);
 
@@ -1602,7 +1612,7 @@ namespace SimTools
             }
 
             const string zipName = "RegulSaveCleaner-v4.0.2-win.zip";
-            const string url = "https://github.com/Onebeld/RegulSaveCleaner/releases/download/v4.0.2/RegulSaveCleaner-v4.0.2-win.zip";
+            const string url = "%baseurl%/Sideload-Apps/x64/RegulSaveCleaner-v4.0.2-win.zip";
             var destDir = GamePaths.Sims3Game;
             var exePath = Path.Combine(destDir, "RegulSaveCleaner-v4.0.2-win", "RegulSaveCleaner.exe");
 

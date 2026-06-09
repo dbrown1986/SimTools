@@ -12,6 +12,8 @@
 		<AssemblyName>SimTools</AssemblyName>
 		<!-- Custom entry point — lets us register AssemblyResolve before WPF loads -->
 		<StartupObject>SimTools.Program</StartupObject>
+		<Platforms>AnyCPU;x86;x64</Platforms>
+		<Configurations>Debug;Release;x64</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup>
