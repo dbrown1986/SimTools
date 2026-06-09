@@ -896,6 +896,7 @@ namespace SimTools
             if (!InstallModFramework(modsPath)) return;
 
             string simtoolsPkgDir = Path.Combine(modsPath, "SimTools", "Packages");
+            string simtoolsOvrDir = Path.Combine(modsPath, "SimTools", "Overrides");
 
             // ── Silent: nobuildsparkles.package ───────────────────────────────────
             var (ok1, _) = await DownloadFileOnly(
@@ -917,7 +918,7 @@ namespace SimTools
             {
                 var (okIntro, _) = await DownloadFileOnly(
                     url: "%baseurl%/Framework/SimToolsIntro.package",        // ← replace
-                    destFilePath: Path.Combine(simtoolsPkgDir, "SimToolsIntro.package"));
+                    destFilePath: Path.Combine(simtoolsOvrDir, "SimToolsIntro.package"));
                 if (!okIntro) return;
             }
 
