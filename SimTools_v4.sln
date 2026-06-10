@@ -7,35 +7,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimTools_v4", "SimTools_v4.
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		x64|Any CPU = x64|Any CPU
-		x64|x64 = x64|x64
-		x64|x86 = x64|x86
-		x86|Any CPU = x86|Any CPU
-		x86|x64 = x86|x64
-		x86|x86 = x86|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Debug|x64.ActiveCfg = Debug|x64
 		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Debug|x64.Build.0 = Debug|x64
 		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Debug|x86.ActiveCfg = Debug|x86
 		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Debug|x86.Build.0 = Debug|x86
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x64|Any CPU.ActiveCfg = x64|Any CPU
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x64|Any CPU.Build.0 = x64|Any CPU
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x64|x64.ActiveCfg = x64|x64
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x64|x64.Build.0 = x64|x64
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x64|x86.ActiveCfg = x64|x86
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x64|x86.Build.0 = x64|x86
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x86|Any CPU.ActiveCfg = Release|Any CPU
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x86|Any CPU.Build.0 = Release|Any CPU
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x86|x64.ActiveCfg = Release|x86
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x86|x64.Build.0 = Release|x86
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x86|x86.ActiveCfg = Release|x86
-		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.x86|x86.Build.0 = Release|x86
+		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Release|x64.ActiveCfg = Release|x64
+		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Release|x64.Build.0 = Release|x64
+		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Release|x86.ActiveCfg = Release|x86
+		{1B471CAE-2F4D-405A-AE9F-417F14DCEF27}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
