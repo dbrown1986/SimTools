@@ -151,6 +151,9 @@ TSM_SmoothPatch=ميزة التحسين السلس (Smooth Patch) لـ LazyDuche
 TSM_Path=دليل لعبة The Sims Medieval الخاصة بك غير مهيأ.
 KeysInfoBox=يمكن استخدام مفاتيح المنتجات العامة فقط للأقراص المدمجة المخصصة للبيع بالتجزئة. هذه الميزة غير مضمونة وقد يتم إزالتها في إصدار مستقبلي.
 KeysInfo_Title=SimTools — مفاتيح عامة
+Sims2Game=لم يتم تكوين دليل لعبة Sims 2 الخاص بك.
+Sims2Repository_Complete=تم تنزيل جميع ملفات Sims 2 Legacy Edition Extender بنجاح.
+Sims2Repository_Title=SimTools - اكتملت التنزيلات
 
 [BugFixes]
 ShadowFix_Info=يصلح مشكلة في لعبة The Sims 2 حيث يظهر الظل على شكل مربع أسود.

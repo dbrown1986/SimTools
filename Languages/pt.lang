@@ -151,6 +151,9 @@ TSM_SmoothPatch=Smooth Patch do LazyDuchess (para Medieval)
 TSM_Path=O diretório do jogo The Sims Medieval não está configurado.
 KeysInfoBox=As chaves de produto genéricas só podem ser usadas para instalar mídias físicas (Discos). O funcionamento deste recurso não é garantido e ele poderá ser removido em versões futuras.
 KeysInfo_Title=SimTools — Chaves Genéricas
+Sims2Game=O diretório do jogo The Sims 2 não está configurado.
+Sims2Repository_Complete=Todos os arquivos do Sims 2 Legacy Edition Extender foram baixados com sucesso.
+Sims2Repository_Title=SimTools – Downloads concluídos
 
 [BugFixes]
 ShadowFix_Info=Corrige o bug no The Sims 2 onde as sombras sob os Sims aparecem como retângulos pretos.

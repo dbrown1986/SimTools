@@ -118,6 +118,11 @@ Bit_32=32-Bit
 Bit_64=64-Bit
 Tweaks_Sims1=The Sims 1
 Tweaks_Simitone=Simitone
+Sims2Game=Your Sims 2 Game directory is not configured.
+NoGamePath_Title=SimTools — Path Not Set
+Sims2Mods=Your Sims 2 Mods directory is not configured.
+Sims2Repository_Complete=All Sims 2 Legacy Edition Extender files have been downloaded successfully.
+Sims2Repository_Title=SimTools — Downloads Complete
 
 [AboutSimToolsPage]
 CulminationMessage=SimTools is the culmination of years of work!

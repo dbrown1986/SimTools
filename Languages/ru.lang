@@ -152,6 +152,9 @@ TSM_SmoothPatch=Smooth Patch от LazyDuchess (для Medieval)
 TSM_Path=Каталог игры The Sims Medieval не настроен.
 KeysInfoBox=Общие ключи продукта можно использовать только для установки с физических носителей (дисков). Работа этой функции не гарантируется, и она может быть удалена в будущих версиях.
 KeysInfo_Title=SimTools — Общие ключи
+Sims2Game=Каталог игры Sims 2 не настроен.
+Sims2Repository_Complete=Все файлы Sims 2 Legacy Edition Extender успешно загружены.
+Sims2Repository_Title=SimTools — Загрузка завершена
 
 [BugFixes]
 ShadowFix_Info=Исправляет ошибку в The Sims 2, из-за которой тени под персонажами отображались в виде черных прямоугольников.

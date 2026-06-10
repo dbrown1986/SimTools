@@ -152,6 +152,9 @@ TSM_SmoothPatch=LazyDuchess Smooth Patch（適用於中世紀）
 TSM_Path=未設定《模擬市民中世紀》的遊戲目錄。
 KeysInfoBox=通用產品序號僅可用於安裝實體媒介（光碟）。本功能不保證一定有效，且可能會在未來的版本中移除。
 KeysInfo_Title=SimTools — 通用序號
+Sims2Game=您的《模擬市民 2》遊戲目錄尚未配置。
+Sims2Repository_Complete=所有 Sims 2 Legacy Edition Extender 檔案均已成功下載。
+Sims2Repository_Title=SimTools — 下載完成
 
 [BugFixes]
 ShadowFix_Info=修正《模擬市民 2》中模擬市民腳下的影子顯示為黑色矩形的錯誤。

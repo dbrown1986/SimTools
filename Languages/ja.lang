@@ -151,6 +151,9 @@ TSM_SmoothPatch=LazyDuchess Smooth Patch (中世用)
 TSM_Path=『The Sims: Medieval』のゲームディレクトリが構成されていません。
 KeysInfoBox=ジェネリック製品キーは、パッケージ版ディスク（Retail）のインストールにのみ使用できます。この機能の動作は保証されておらず、将来のバージョンで削除される可能性があります。
 KeysInfo_Title=SimTools — ジェネリックキー
+Sims2Game=Sims 2 ゲームのディレクトリが設定されていません。
+Sims2Repository_Complete=すべての Sims 2 Legacy Edition Extender ファイルが正常にダウンロードされました。
+Sims2Repository_Title=SimTools — ダウンロードが完了しました
 
 [BugFixes]
 ShadowFix_Info=『ザ・シムズ2』にて、シムの足元の影が黒い四角形になってしまうバグを修正します。

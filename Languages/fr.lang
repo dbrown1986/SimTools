@@ -151,6 +151,9 @@ TSM_SmoothPatch=Smooth Patch pour Les Sims Médiéval par LazyDuchess
 TSM_Path=Le répertoire de votre jeu Les Sims Médiéval n'est pas configuré.
 KeysInfoBox=Les clés de produit génériques peuvent uniquement être utilisées pour les disques physiques (CD/DVD de magasins). Cette fonctionnalité n'est pas garantie et peut être supprimée dans une version future.
 KeysInfo_Title=SimTools — Clèges génériques
+Sims2Game=Votre répertoire de jeux Sims 2 n'est pas configuré.
+Sims2Repository_Complete=Tous les fichiers Sims 2 Legacy Edition Extender ont été téléchargés avec succès.
+Sims2Repository_Title=SimTools — Téléchargements terminés
 
 [BugFixes]
 ShadowFix_Info=Corrige un problème dans Les Sims 2 où les ombres s'affichent sous forme de blocs ou carrés noirs.

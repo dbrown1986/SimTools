@@ -249,9 +249,20 @@ namespace SimTools
             var sims3_dxvk = new MenuItem { Header = "DXVK" };
             sims3_dxvk.Click += async (_, _) =>
             {
+                string dxvkPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "d3d9.dll");
+    
+                if (File.Exists(dxvkPath))
+    {
+        MessageBox.Show(
+            LanguageManager.Get("Main", "DXVK_AlreadyInstalled", "DXVK (d3d9.dll) is already installed."),
+            LanguageManager.Get("Main", "DXVK_Title", "DXVK — The Sims 3"),
+            MessageBoxButton.OK, MessageBoxImage.Information);
+        return;
+    }
+    
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/d3d9.dll",
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "d3d9.dll"));
+                    destFilePath: dxvkPath);
             };
 
             sims3Item.Items.Add(sims3_gpuAddon);
@@ -499,16 +510,15 @@ namespace SimTools
                 }
                 else
                 {
-                    // Legacy Edition — open LazyDuchess Legacy Extender GitHub page
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = "https://github.com/LazyDuchess/TS2-Extender",
-                        UseShellExecute = true
-                    });
+                    // Legacy Collection — download all 10 files silently
+                    DownloadSims2RepositoryFiles();
                 }
+
             };
             sims2Item.Items.Add(sims2_rpc);
             contextMenu.Items.Add(sims2Item);
+
+
 
             // ── The Sims: Castaway Stories ────────────────────────────────────────────
             var castawayItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSCastaway.ico"), Header = LanguageManager.Get("BuyTS3", "TSCast", "The Sims: Castaway Stories") };
@@ -653,24 +663,6 @@ namespace SimTools
                     destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "Sims3SettingsSetter.asi"));
             };
             sims3Item.Items.Add(ts3_s3ss);
-
-            // ── DXVK for Sims 3───────────────────────────────────
-            var ts3_dxvk = new MenuItem { Header = "DXVK for Sims 3" };
-            ts3_dxvk.Click += async (_, _) =>
-            {
-                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
-                {
-                    MessageBox.Show(
-                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                await DownloadFileOnly(
-                    url: "%baseurl%/Sideload-Apps/x86/d3d9.dll",  // ← replace
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "d3d9.dll"));
-            };
-            sims3Item.Items.Add(ts3_dxvk);
 
             // ── LazyDuchess Launcher ──────────────────────────────────────────────────
             var ts3_ldLauncher = new MenuItem { Header = "LazyDuchess Launcher" };
@@ -1541,7 +1533,8 @@ namespace SimTools
             {
                 MessageBox.Show(
                     LanguageManager.Format("Framework", "ExtractFail", zipName, ex.Message),
-                    LanguageManager.Get("Framework", "ExtractFail_Title", "Extract Error"), MessageBoxButton.OK, MessageBoxImage.Error);
+                    LanguageManager.Get("Framework", "ExtractFail_Title", "Extract Error"),
+                    MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
         }
@@ -2173,6 +2166,85 @@ namespace SimTools
 
             // ── Assign to button ─────────────────────────────────────────────────────
             ModToolsButton.ContextMenu = contextMenu;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────
+        // Sims 2 Extender Downloads — Silent Mode
+        // ─────────────────────────────────────────────────────────────────────
+        private async void DownloadSims2RepositoryFiles()
+        {
+            // ── TSData Files (1 files to Sims2Game/TSData) ──────────────────
+            if (!GamePaths.IsConfigured(GamePaths.Sims2Game))
+            {
+                MessageBox.Show(
+                    LanguageManager.Get("Main", "Sims2Game", "Your Sims 2 Game directory is not configured."),
+                    LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"),
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var (ok1, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSData/Res/ObjectScripts/ObjectScripts.package",
+                destFilePath: Path.Combine(GamePaths.Sims2Game, "TSData", "Res", "ObjectScripts", "ObjectScripts.package"));
+            if (!ok1) return;
+
+            // ── TSBin Files (3 files to Sims2Game/TSBin) ───────────────────
+            var (ok2, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/wininet.dll",
+                destFilePath: Path.Combine(GamePaths.Sims2Game, "TSBin", "wininet.dll"));
+            if (!ok2) return;
+
+            var (ok3, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/TS2Extender.ini",
+                destFilePath: Path.Combine(GamePaths.Sims2Game, "TSBin", "TS2Extender.ini"));
+            if (!ok3) return;
+
+            var (ok4, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/TS2Extender.asi",
+                destFilePath: Path.Combine(GamePaths.Sims2Game, "TSBin", "TS2Extender.asi"));
+            if (!ok4) return;
+
+            // ── Mods Downloads (4 files to Sims2Mods/Downloads) ────────────
+            if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
+            {
+                MessageBox.Show(
+                    LanguageManager.Get("Main", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
+                    LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"),
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var (ok5, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/Downloads/ld_WallTopFix.package",
+                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_WallTopFix.package"));
+            if (!ok5) return;
+
+            var (ok6, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/Downloads/ld_TS2Extender_uniformFix.package",
+                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_TS2Extender_uniformFix.package"));
+            if (!ok6) return;
+
+            var (ok7, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/Downloads/ld_timingFix.package",
+                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_timingFix.package"));
+            if (!ok7) return;
+
+            var (ok9, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/Downloads/ld_dateStoodUpFix.package",
+                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_dateStoodUpFix.package"));
+            if (!ok9) return;
+
+            // ── Mods Lua (1 files to Sims2Mods/Lua) ──────────────────────
+            var (ok8, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/Lua/TS2Extender.lua",
+                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Lua", "TS2Extender.lua"));
+            if (!ok8) return;
+
+            // ── All downloads complete ─────────────────────────────────────
+            MessageBox.Show(
+                LanguageManager.Get("Main", "Sims2Repository_Complete", "All Sims 2 Legacy Edition Extender files have been downloaded successfully."),
+                LanguageManager.Get("Main", "Sims2Repository_Title", "SimTools — Downloads Complete"),
+                MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void ModToolsButton_Click(object sender, RoutedEventArgs e)

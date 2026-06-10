@@ -151,6 +151,9 @@ TSM_SmoothPatch=Smooth Patch für Die Sims Mittelalter von LazyDuchess
 TSM_Path=Dein Die Sims Mittelalter-Spielverzeichnis ist nicht konfiguriert.
 KeysInfoBox=Generische Produkt-Schlüssel können nur für Retail-CDs verwendet werden. Diese Funktion wird nicht garantiert und kann in einer zukünftigen Version entfernt werden.
 KeysInfo_Title=SimTools — Generische Schlüssel
+Sims2Game=Dein Sims 2-Spielverzeichnis ist nicht konfiguriert.
+Sims2Repository_Complete=Alle Sims 2 Legacy Edition Extender-Dateien wurden erfolgreich heruntergeladen.
+Sims2Repository_Title=SimTools – Downloads abgeschlossen
 
 [BugFixes]
 ShadowFix_Info=Behebt ein Problem in Die Sims 2, bei dem Schatten als schwarze Quadrate angezeigt werden.
