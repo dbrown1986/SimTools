@@ -6,7 +6,7 @@
         SizeToContent="Height"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
-        ShowInTaskbar="False" WindowStyle="None" Height="170">
+        ShowInTaskbar="False" WindowStyle="None" Height="170" AllowsTransparency="True">
     <Window.Background>
         <ImageBrush ImageSource="/Images/TS3_Box3.png"/>
     </Window.Background>

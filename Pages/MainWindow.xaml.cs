@@ -239,12 +239,12 @@ namespace SimTools
                 Header = LanguageManager.Get("Main", "GPU_Sims3", "The Sims 3")
             };
 
-            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
-            sims3_gpuAddon.Click += (_, _) => DownloadAndOpenExe(
-                url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
-                fileName: "TS3_GPU_Addon.exe",
-                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
-            );
+//            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
+//            sims3_gpuAddon.Click += (_, _) => DownloadAndOpenExe(
+//                url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
+//                fileName: "TS3_GPU_Addon.exe",
+//                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
+//            );
 
             var sims3_dxvk = new MenuItem { Header = "DXVK" };
             sims3_dxvk.Click += async (_, _) =>
@@ -265,7 +265,7 @@ namespace SimTools
                     destFilePath: dxvkPath);
             };
 
-            sims3Item.Items.Add(sims3_gpuAddon);
+//            sims3Item.Items.Add(sims3_gpuAddon);
             sims3Item.Items.Add(sims3_dxvk);
 
             contextMenu.Items.Add(sims2Item);
@@ -474,7 +474,7 @@ namespace SimTools
 
                 var result = MessageBox.Show(message,
                     LanguageManager.Get("Main", "Simitone_Title", "SimTools — Simitone Installed"),
-                    MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (result == MessageBoxResult.Yes)
                     if (OperatingSystem.IsWindows())
@@ -528,46 +528,60 @@ namespace SimTools
             // ── The Sims 3 ────────────────────────────────────────────────────────────
             var sims3Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = "The Sims 3" };
 
+            // ── Anime_Boom's Sims 3 Performance Guide ─────────────────────────────────────────
+
+            var ts3_perf_guide = new MenuItem { Header = "Anime_Boom's Sims 3 Performance Guide" };
+            ts3_perf_guide.Click += (_, _) =>
+            {
+                OpenUrl("https://steamcommunity.com/sharedfiles/filedetails/?id=1131162350");
+            };
+            sims3Item.Items.Add(ts3_perf_guide);
+
+            // ── Anime_Boom's Sims 3 Guides ─────────────────────────────────────────
+
+            var ts3_guides = new MenuItem { Header = "MORE Anime_Boom Sims 3 Guides" };
+            ts3_guides.Click += (_, _) =>
+            {
+                OpenUrl("https://steamcommunity.com/profiles/76561198115872149/myworkshopfiles/?section=guides&appid=47890");
+            };
+            sims3Item.Items.Add(ts3_guides);
+
             // ── Best In-Game Settings for TS3 ─────────────────────────────────────────
             var ts3_bestSettings = new MenuItem { Header = "Best In-Game Settings" };
             ts3_bestSettings.Click += (_, _) =>
             {
-                MessageBox.Show(
-                    LanguageManager.Get("Main", "BestSettingsDeprecated_Message", "The best settings article has been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."),
-                    LanguageManager.Get("Main", "BestSettingsDeprecated_Title", "Best Settings Article Deprecated — The Sims 3"),
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                {
-                    OpenUrl("https://simtools-app.com/best-in-game-settings-ts3");
-                };
+                OpenUrl("https://simtools-app.com/best-in-game-settings-ts3");
             };
-            
-            sims3Item.Items.Add(ts3_bestSettings);
+//            };
+//
+//            sims3Item.Items.Add(ts3_bestSettings);
 
             // ── Game INI Tweaks ─────────────────────────────────────────────────
             var ts3_iniTweaks = new MenuItem { Header = "Game INI Tweaks" };
 
             var iniItems = new[]
             {
-                ("Limit Game FPS", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/limit-game-fps-ts3"),
-                ("Allow More CPU Usage", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/allow-more-cpu-usage-ts3"),
-                ("Allow More GPU Usage", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/allow-more-gpu-usage-ts3"),
-                ("Clean DCBackup Cache", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning", "The Game INI Tweak articles have been deprecated in favor of the use of Sims 3 Settings Setter. It has been included for posterity in the event users are having issues with S3SS. It may be removed in a future version of SimTools."), "https://simtools-app.com/clean-dcbackup-ts3"),
+                ("Limit Game FPS", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning"), "https://simtools-app.com/limit-game-fps-ts3"),
+                ("Allow More CPU Usage", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning"), "https://simtools-app.com/allow-more-cpu-usage-ts3"),
+                ("Allow More GPU Usage", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning"), "https://simtools-app.com/allow-more-gpu-usage-ts3"),
+                ("Clean DCBackup Cache", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning"), "https://simtools-app.com/clean-dcbackup-ts3"),
             };
 
-            foreach (var (label, warning, url) in iniItems)
-            {
-                var item = new MenuItem { Header = label };
-                item.Click += (_, _) =>
-                {
-                    var result = MessageBox.Show(warning, "SimTools — Warning",
-                        MessageBoxButton.OK, MessageBoxImage.Warning);
+            //            foreach (var (label, warning, url) in iniItems)
+            //            {
+            //                var item = new MenuItem { Header = label };
+            //                item.Click += (_, _) =>
+            //                {
+            //                    var result = MessageBox.Show(warning, "SimTools — Warning",
+            //                        MessageBoxButton.OK, MessageBoxImage.Warning);
+            //
+            //                    if (result == MessageBoxResult.OK)
+            //                        Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            //                };
+            //                ts3_iniTweaks.Items.Add(item);
+            //            }
 
-                    if (result == MessageBoxResult.OK)
-                        Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-                };
-                ts3_iniTweaks.Items.Add(item);
-            }
-
+            sims3Item.Items.Add(iniItems);
             sims3Item.Items.Add(ts3_iniTweaks);
 
             // ── Intel Alder Lake Fix ──────────────────────────────────────────────────
