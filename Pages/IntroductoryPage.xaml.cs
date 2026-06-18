@@ -37,30 +37,35 @@ namespace SimTools
             ExclusiveItemsButton.Visibility = System.Windows.Visibility.Visible;
         }
 
-        // ── Music startup + automatic update check ────────────────────────
+        // ── Music startup + ad dock + automatic update check ─────────────
         private void OnContentRendered(object? sender, EventArgs e)
         {
+            // ── Music player (may be null if disabled in Settings) ────────
             var player = App.MusicPlayer;
-            if (player == null) return;
+            if (player != null)
+            {
+                player.AttachTo(this);
+                player.Show();
 
-            // Attach and show the player alongside this window
-            player.AttachTo(this);
-            player.Show();
+                string musicFolder = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory, "Resources", "Music");
 
-            string musicFolder = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory, "Resources", "Music");
+                // Show the first-run download prompt (synchronous — just a MessageBox).
+                // If the user says YES the download runs in the background and reloads
+                // the playlist automatically when complete.
+                player.ShowFirstRunPrompt(musicFolder, this);
 
-            // Show the first-run download prompt (synchronous — just a MessageBox).
-            // If the user says YES the download runs in the background and reloads
-            // the playlist automatically when complete.
-            player.ShowFirstRunPrompt(musicFolder, this);
+                // Load whatever songs are already in /Resources/Music and start playing.
+                // (If the folder is empty the player waits quietly until the download
+                // callback populates it.)
+                MusicPlayerService.LoadPlaylist(musicFolder);
+                if (MusicPlayerService.Playlist.Count > 0)
+                    MusicPlayerService.Play();
+            }
 
-            // Load whatever songs are already in /Resources/Music and start playing.
-            // (If the folder is empty the player waits quietly until the download
-            // callback populates it.)
-            MusicPlayerService.LoadPlaylist(musicFolder);
-            if (MusicPlayerService.Playlist.Count > 0)
-                MusicPlayerService.Play();
+            // ── Ad dock (null if user is a verified donor) ────────────────
+            App.AdDock?.AttachTo(this);
+            App.AdDock?.Show();
 
             // Automatic update check — runs silently if suppressed
             _ = CheckForUpdateOnStartupAsync();

@@ -18,6 +18,12 @@ namespace SimTools
         /// <summary>Global music player window — null if music is disabled in Settings.</summary>
         public static MusicPlayerWindow? MusicPlayer { get; private set; }
 
+        /// <summary>
+        /// Bottom-centre advertisement dock — null when the user is a verified donor.
+        /// Donors have already supported the project and should not see advertisements.
+        /// </summary>
+        public static AdDockWindow? AdDock { get; private set; }
+
         // ── EasterEgg5: type "rosebud" from any window ───────────────────────
         private static string _ee5Buffer = string.Empty;
         private const  string _ee5Cheat  = "rosebud";
@@ -70,6 +76,19 @@ namespace SimTools
             if (musicEnabled)
                 MusicPlayer = new MusicPlayerWindow();
 
+            // ── Create ad dock (suppressed for verified donors) ───────────
+            //
+            //  Read the donor key written by UnlockPersonalizationDialog.
+            //  If it decodes successfully the user is a donor and should not
+            //  see advertisements — AdDock stays null for the lifetime of the
+            //  session.
+            //
+            string donorKey = IniHelper.Read("Personalization", "DonorKey", "");
+            bool isDonor = !string.IsNullOrWhiteSpace(donorKey)
+                        && DonorKeyHelper.TryDecodeKey(donorKey, out _, out _);
+            if (!isDonor)
+                AdDock = new AdDockWindow();
+
             // ── Introductory page ─────────────────────────────────────────
             var intro = new IntroductoryPage();
             intro.ShowDialog();
@@ -83,10 +102,16 @@ namespace SimTools
             // Reattach music player to main window and keep it visible
             MusicPlayer?.AttachTo(main);
 
+            // Reattach ad dock to main window (null if donor — no-op)
+            AdDock?.AttachTo(main);
+
             main.Closed += (_, _) =>
             {
                 MusicPlayer?.AppClose();
                 MusicPlayer = null;
+
+                AdDock?.AppClose();
+                AdDock = null;
             };
 
             main.Show();
