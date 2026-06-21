@@ -92,7 +92,7 @@ Installing every tweak and bugfix SimTools has to offer results in a noticeably 
 
 | Tool | Description |
 |---|---|
-| **GPU Addon** | Allows users to add support for newer graphics cards to the game engine, ensuring the game correctly identifies and uses modern hardware. |
+| **DXVK** | DXVK operates as a translation layer that intercepts Direct3D API calls from Windows applications and converts them to their Vulkan equivalents in real-time. Replaces the TS3 GPU Addon Tool. |
 | **Regul Save Cleaner** | Keeps saves in check by scanning for and removing save bloat that accumulates over time, helping maintain game performance in long-running saves. |
 | **Mod Framework** | A vetted and prepared version of the TS3 Mod Framework, specifically configured for use with SimTools to ensure maximum compatibility. |
 
@@ -103,6 +103,10 @@ Installing every tweak and bugfix SimTools has to offer results in a noticeably 
 | Tweak | Description |
 |---|---|
 | **Alder Lake Patcher** | Patches the game executable to run on Intel Alder Lake CPUs, which otherwise cause immediate crashes to desktop due to the game's incompatibility with hybrid core scheduling. |
+| **Simitone** | Alternative C# Windows Frontend for The Sims 1, based off of FreeSO. Works with Complete Collection and Legacy Edition. |
+| **Sims2RPC / Sims 2 Extender** | Sims2RPC and Extender are included for Retail/Ultimate Collection and Legacy Edition. |
+| **AnimeBoom's Performance Guide** | An extensive guide on how to make The Sims 3 run smoother. |
+| **Mono Patcher Library** | Includes a library of scripts so that mod authors don't have to include them in their mods. Some SimTools mods require MPL. |
 | **Sims 3 Settings Setter** | An all-inclusive real-time settings adjuster that runs within the game. Includes its own smooth patch and patches Alder Lake CPU issues in sideload. |
 | **nRaas Core Mods** | A set of nRaas mods included to give users greater control over debugging and engine behaviour, as well as catching and handling script errors before they cause crashes. |
 | **Smooth Patch** | Engine-level tweaks by Lazy Duchess that enable faster loading into CAS and smooth out a number of other lag-inducing elements throughout the game. |
@@ -130,7 +134,10 @@ SimTools ships with two categories of fixes:
 ### Simler90's Engine Tweaks
 A collection of low-level engine tweaks and fixes authored by community member Simler90, targeting a range of known issues, performance regressions, and instabilities in the base game engine.
 
-### 58 Gameplay Fix Mods
+### The Sims 2 Fixes
+At the present moment, there are only 2 fixes included for The Sims 2, but more are on the way.
+
+### 58 Gameplay Fix Mods for The Sims 3
 A curated set of **58 individual fix mods** (with more coming in future versions) addressing:
 
 - Broken or bugged items in the Base Game, Expansion Packs, and Store content
@@ -139,6 +146,9 @@ A curated set of **58 individual fix mods** (with more coming in future versions
 - Compatibility issues between specific content items
 
 Each fix mod is listed individually in the included CC tab within the application, so you can review exactly what each one addresses before installing. Only install fixes for Expansion Packs and Store content you actually have installed.
+
+### SimStreetsX, SimCopterX & SC2000X
+Built by Krimsky, these are compatibility layers for the older maxis games that ensure they run more stable on modern systems and operating systems. No more setting affinity manually or throttling the CPU!
 
 ---
 
@@ -188,7 +198,11 @@ You can run SimTools regardless of which Expansion Packs or Stuff Packs you have
 - **Operating System:** Windows 10 or later (64-bit recommended)
 - **Runtime:** [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) — required to run the application
 - **Internet Connection:** Required for first-time tool and patch downloads; not needed after files are cached locally
+- **Administrative Rights:** Required due to write access for Program Files and game directories.
 - **Visual Studio 2022 or later:** Required only if building from source
+
+- WindoVista/7/8/8.1 compatibility planned for a later release.
+- I *may* dawdle with the possibility of porting to MacOS on my own, but it is not actively planned.
 
 ---
 
@@ -196,10 +210,10 @@ You can run SimTools regardless of which Expansion Packs or Stuff Packs you have
 
 **Installer**
 
-1. Download the latest release installer exe from the [Releases](https://github.com/dbrown1986/SimTools/releases) page or from the SimTools site
-2. Run `SimtoolsInstaller.exe` to a folder of your choice (e.g. `C:\Program Files\SimTools`)
+1. Download the latest release installer exe from the [Releases](https://github.com/dbrown1986/SimTools/releases) page or from the SimTools site.
+2. Run `SimtoolsInstaller.exe` and install to a folder of your choice (e.g. `C:\Program Files\SimTools`)
 3. Run `SimTools.exe` after install
-4. On first launch, select your preferred language and regional repository
+4. On first launch, select your preferred language and test for best regional repository.
 5. Read through the introductory page and click **Continue**
 6. Open **Settings** (⚙ button, top-right) to configure your game directories
 
@@ -235,9 +249,10 @@ Output is placed in `bin/Release/net8.0-windows/`.
 
 ### Build with Visual Studio
 
-1. Open `SimTools_v4.sln` in Visual Studio 2022 or later
-2. Select the **Release** configuration from the toolbar
-3. Press **Ctrl+Shift+B** to build, or **F5** to build and run
+1. Ensure your Visual Studio has .NET 8 / .NET Core 8 modules installed.
+2. Open `SimTools_v4.sln` in Visual Studio 2022 or later.
+3. Select the **Release** configuration from the toolbar.
+4. Press **Ctrl+Shift+B** to build, or **F5** to build and run.
 
 ### NuGet Dependencies
 
@@ -434,12 +449,6 @@ The GPU and Tweaks context menus are built once in `ApplyLanguage()` rather than
 ### Download Caching
 Downloaded files are stored in the `Binaries/` subfolder relative to the executable. If a file already exists at the target path, the remote file header is checked to see if it is newer, if it is not, the download step is skipped and the file is launched directly. To force a re-download, delete the file from `Binaries/`.
 
-### Transparent Splash Screen
-`AllowsTransparency="True"` must be combined with `WindowStyle="None"` for a WPF window to render with a transparent background. Without it, `Background="{x:Null}"` still produces a solid black window.
-
-### Shutdown Lifecycle
-During the splash → language → intro → main window transition, `ShutdownMode` is set to `OnExplicitShutdown` to prevent WPF from exiting prematurely when intermediate windows close. After each window, `Dispatcher.HasShutdownStarted` is checked so that clicking the exit button on any window stops the chain cleanly without exceptions.
-
 ---
 
 ## Contributing
@@ -472,8 +481,7 @@ Hint: Four of them are clickables, so play around in the app and click on things
 ## AI Usage
 
 Claude has been used in an effort to check code for warnings and errors, clean up the code and assist with certain features.
-
-AI and translation tools have also been used to create the initial translations for the software. Bilingual individuals are encouraged to submit corrections or use the translation tool (coming soon) to prepare a corrected .lang file.
+Google Gemini has been used for translation localization. So far, all of the translated text within the lang files and app is AI generated.
 
 ---
 
