@@ -212,7 +212,7 @@ You can run SimTools regardless of which Expansion Packs or Stuff Packs you have
 5. Read through the introductory page and click **Continue**
 6. Open **Settings** (⚙ button, top-right) to configure your game directories
 
-For the portable version, no installer is required. The ZIP version of SimTools is fully portable — all settings are written to `settings.ini` in the same folder as the executable.
+For the portable version, no installer is required. The ZIP version of SimTools is fully portable — all settings are written to `SimTools.ini` in the same folder as the executable.
 
 ---
 
@@ -383,7 +383,7 @@ SimTools/
 
 ## Configuration File
 
-SimTools stores all user settings in `settings.ini`, located in the same directory as `SimTools.exe`. The file is created automatically on first run and can be edited manually in any text editor.
+SimTools stores all user settings in `SimTools.ini`, located in the same directory as `SimTools.exe`. The file is created automatically on first run and can be edited manually in any text editor.
 
 ```ini
 [Language]

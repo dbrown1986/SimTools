@@ -6,7 +6,7 @@ namespace SimTools
     ///
     /// Currently exposes:
     ///   BaseUrl  — the root URL used for all %baseurl% download placeholders.
-    ///              Reads live from settings.ini so changes in Settings take
+    ///              Reads live from SimTools.ini so changes in Settings take
     ///              effect on the next download without restarting.
     ///
     /// Usage in a download URL:
@@ -19,7 +19,7 @@ namespace SimTools
         public const string DefaultBaseUrl = "us1-repo.simtools-app.com";
 
         /// <summary>
-        /// The configured base URL, read live from settings.ini.
+        /// The configured base URL, read live from SimTools.ini.
         /// Always returns a value with an https:// prefix and no trailing slash.
         /// </summary>
         public static string BaseUrl

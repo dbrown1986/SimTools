@@ -5,13 +5,13 @@ using System.IO;
 namespace SimTools
 {
     /// <summary>
-    /// Lightweight INI reader/writer. Stored at: {AppDirectory}\settings.ini
+    /// Lightweight INI reader/writer. Stored at: {AppDirectory}\SimTools.ini
     /// Supports [Section] / Key=Value format. Lines starting with ; or # are comments.
     /// </summary>
     public static class IniHelper
     {
         public static readonly string IniPath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.ini");
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SimTools.ini");
 
         // ── Internal: load entire file into nested dictionary ──────────────────
         private static Dictionary<string, Dictionary<string, string>> LoadAll()

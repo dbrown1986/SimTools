@@ -9,7 +9,7 @@ namespace SimTools
         private static Dictionary<string, Dictionary<string, string>> _data
             = new(StringComparer.OrdinalIgnoreCase);
 
-        // ── Load from the language code stored in settings.ini ─────────────────
+        // ── Load from the language code stored in SimTools.ini ─────────────────
         public static void Load()
         {
             var code = IniHelper.Read("Language", "SelectedLanguage", "en");

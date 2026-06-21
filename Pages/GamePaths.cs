@@ -5,7 +5,7 @@ namespace SimTools
     /// <summary>
     /// Centralised, project-wide access to every game and mods directory
     /// configured by the user in Settings. All properties read live from
-    /// settings.ini via IniHelper — no caching, always up to date.
+    /// SimTools.ini via IniHelper — no caching, always up to date.
     ///
     /// Usage:
     ///   string modsFolder = GamePaths.Sims3Mods;
