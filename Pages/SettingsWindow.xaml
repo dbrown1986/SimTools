@@ -211,9 +211,8 @@
                         <DataTemplate>
                             <StackPanel>
                                 <TextBlock Text="{Binding Name}"
-                                           Style="{StaticResource GameNameText}"/>
+                           Style="{StaticResource GameNameText}"/>
 
-                                <!-- Game directory row -->
                                 <Grid Margin="0 2 0 2">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="110"/>
@@ -221,37 +220,56 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0"
-                                               Style="{StaticResource RowLabelText}"
-                                               Text="Game Directory:"/>
+                               Style="{StaticResource RowLabelText}"
+                               Text="Game Directory:"/>
                                     <TextBox Grid.Column="1"
-                                             Style="{StaticResource DarkTextBox}"
-                                             Text="{Binding GameDir, UpdateSourceTrigger=PropertyChanged}"
-                                             Margin="4 0"/>
+                             Style="{StaticResource DarkTextBox}"
+                             Text="{Binding GameDir, UpdateSourceTrigger=PropertyChanged}"
+                             Margin="4 0"/>
                                     <Button Grid.Column="2"
-                                            Style="{StaticResource BrowseButton}"
-                                            Content="Browse..."
-                                            Command="{Binding BrowseGameCommand}"/>
+                            Style="{StaticResource BrowseButton}"
+                            Content="Browse..."
+                            Command="{Binding BrowseGameCommand}"/>
                                 </Grid>
 
-                                <!-- Mods directory row (hidden when HasMods = false) -->
                                 <Grid Margin="0 2 0 2"
-                                      Visibility="{Binding HasMods, Converter={StaticResource BoolToVis}}">
+                      Visibility="{Binding HasMods, Converter={StaticResource BoolToVis}}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="110"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0"
-                                               Style="{StaticResource RowLabelText}"
-                                               Text="Mods Directory:"/>
+                               Style="{StaticResource RowLabelText}"
+                               Text="Mods Directory:"/>
                                     <TextBox Grid.Column="1"
-                                             Style="{StaticResource DarkTextBox}"
-                                             Text="{Binding ModDir, UpdateSourceTrigger=PropertyChanged}"
-                                             Margin="4 0"/>
+                             Style="{StaticResource DarkTextBox}"
+                             Text="{Binding ModDir, UpdateSourceTrigger=PropertyChanged}"
+                             Margin="4 0"/>
                                     <Button Grid.Column="2"
-                                            Style="{StaticResource BrowseButton}"
-                                            Content="Browse..."
-                                            Command="{Binding BrowseModCommand}"/>
+                            Style="{StaticResource BrowseButton}"
+                            Content="Browse..."
+                            Command="{Binding BrowseModCommand}"/>
+                                </Grid>
+
+                                <Grid Margin="0 2 0 2"
+                      Visibility="{Binding HasUserData, Converter={StaticResource BoolToVis}}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
+                               Style="{StaticResource RowLabelText}"
+                               Text="User Data:"/>
+                                    <TextBox Grid.Column="1"
+                             Style="{StaticResource DarkTextBox}"
+                             Text="{Binding UserDataDir, UpdateSourceTrigger=PropertyChanged}"
+                             Margin="4 0"/>
+                                    <Button Grid.Column="2"
+                            Style="{StaticResource BrowseButton}"
+                            Content="Browse..."
+                            Command="{Binding BrowseUserDataCommand}"/>
                                 </Grid>
 
                                 <Separator Style="{StaticResource DividerLine}"/>

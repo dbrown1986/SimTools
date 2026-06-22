@@ -18,6 +18,7 @@ public sealed class GameSettingViewModel : INotifyPropertyChanged
     public string Key { get; }
     public string Name { get; }
     public bool HasMods { get; }
+    public bool HasUserData { get; }
 
     private string _gameDir = string.Empty;
     public string GameDir
@@ -33,15 +34,24 @@ public sealed class GameSettingViewModel : INotifyPropertyChanged
         set { if (_modDir == value) return; _modDir = value; OnPropertyChanged(); }
     }
 
+    private string _UserDataDir = string.Empty;
+    public string UserDataDir
+    {
+        get => _UserDataDir;
+        set { if (_UserDataDir == value) return; _UserDataDir = value; OnPropertyChanged(); }
+    }
+
     public ICommand BrowseGameCommand { get; }
     public ICommand BrowseModCommand { get; }
+    public ICommand BrowseUserDataCommand { get; }
 
     [SupportedOSPlatform("windows")]
-    public GameSettingViewModel(string key, string name, bool hasMods)
+    public GameSettingViewModel(string key, string name, bool hasMods, bool hasUserData)
     {
         Key = key;
         Name = name;
         HasMods = hasMods;
+        HasUserData = hasUserData;
 
         BrowseGameCommand = new RelayCommand(_ =>
         {
@@ -77,6 +87,20 @@ public sealed class GameSettingViewModel : INotifyPropertyChanged
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 ModDir = dlg.SelectedPath;
         }, _ => HasMods);
+
+        BrowseUserDataCommand = new RelayCommand(_ =>
+        {
+            using var dlg = new System.Windows.Forms.FolderBrowserDialog
+            {
+                ShowNewFolderButton = true
+            };
+            if (!string.IsNullOrWhiteSpace(UserDataDir) &&
+                System.IO.Directory.Exists(UserDataDir))
+                dlg.SelectedPath = UserDataDir;
+
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                UserDataDir = dlg.SelectedPath;
+        }, _ => HasUserData);
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -114,6 +138,12 @@ public partial class SettingsWindow : Window
         "SimsCastawayStories", "Sims3", "Sims4", "SimsMedieval"
     ];
 
+    private static readonly System.Collections.Generic.HashSet<string> HasUserData =
+    [
+        // Replace these with the actual game keys that require User Data
+        "Sims1", "Sims2", "Sims3", "Sims4", "SimsLifeStories", "SimsPetStories", "SimsCastawayStories", "SimsMedieval", "SimCity4"
+    ];
+
     private static readonly (string Code, string Name)[] Languages =
     [
         ("ar", "عربي"),    ("zh", "中国人"),  ("de", "Deutsch"),
@@ -147,7 +177,7 @@ public partial class SettingsWindow : Window
         // Build one ViewModel per game entry
         _gameViewModels = new List<GameSettingViewModel>(Games.Length);
         foreach (var (key, name) in Games)
-            _gameViewModels.Add(new GameSettingViewModel(key, name, HasMods.Contains(key)));
+            _gameViewModels.Add(new GameSettingViewModel(key, name, HasMods.Contains(key), HasUserData.Contains(key)));
 
         GameDirsControl.ItemsSource = _gameViewModels;
 
@@ -176,12 +206,16 @@ public partial class SettingsWindow : Window
         // Music
         MusicEnabledCheck.IsChecked = IniHelper.ReadBool("Music", "Enabled", true);
 
-        // Game & Mod directories
+        // Game, Mod, & User Data directories
         foreach (var vm in _gameViewModels)
         {
             vm.GameDir = IniHelper.Read("Directories", $"{vm.Key}_Game", string.Empty);
             if (vm.HasMods)
                 vm.ModDir = IniHelper.Read("Directories", $"{vm.Key}_Mods", string.Empty);
+
+            // FIX: Ensure previously saved User Data directory values are loaded into the UI on startup
+            if (vm.HasUserData)
+                vm.UserDataDir = IniHelper.Read("Directories", $"{vm.Key}_UserData", string.Empty);
         }
     }
 
@@ -210,6 +244,8 @@ public partial class SettingsWindow : Window
             IniHelper.Write("Directories", $"{vm.Key}_Game", vm.GameDir.Trim());
             if (vm.HasMods)
                 IniHelper.Write("Directories", $"{vm.Key}_Mods", vm.ModDir.Trim());
+            if (vm.HasUserData)
+                IniHelper.Write("Directories", $"{vm.Key}_UserData", vm.UserDataDir.Trim());
         }
 
         // Refresh MainWindow text in the new language

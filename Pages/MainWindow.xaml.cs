@@ -239,33 +239,67 @@ namespace SimTools
                 Header = LanguageManager.Get("Main", "GPU_Sims3", "The Sims 3")
             };
 
-//            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
-//            sims3_gpuAddon.Click += (_, _) => DownloadAndOpenExe(
-//                url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
-//                fileName: "TS3_GPU_Addon.exe",
-//                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
-//            );
+            //            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
+            //            sims3_gpuAddon.Click += (_, _) => DownloadAndOpenExe(
+            //                url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
+            //                fileName: "TS3_GPU_Addon.exe",
+            //                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
+            //            );
 
             var sims3_dxvk = new MenuItem { Header = "DXVK" };
             sims3_dxvk.Click += async (_, _) =>
             {
-                string dxvkPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "d3d9.dll");
-    
-                if (File.Exists(dxvkPath))
-    {
-        MessageBox.Show(
-            LanguageManager.Get("Main", "DXVK_AlreadyInstalled", "DXVK (d3d9.dll) is already installed."),
-            LanguageManager.Get("Main", "DXVK_Title", "DXVK — The Sims 3"),
-            MessageBoxButton.OK, MessageBoxImage.Information);
-        return;
-    }
-    
+                // Define paths for both files
+                string dxvkDllPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "d3d9.dll");
+                string dxvkConfPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "dxvk.conf");
+
+                // Check if EITHER file exists to handle partial installations safely
+                if (File.Exists(dxvkDllPath) || File.Exists(dxvkConfPath))
+                {
+                    var result = MessageBox.Show(
+                        LanguageManager.Get("Main", "DXVK_AlreadyInstalled_Remove", "DXVK is already installed. Do you want to remove it?"),
+                        LanguageManager.Get("Main", "DXVK_Title", "DXVK — The Sims 3"),
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            // Delete files individually if they exist
+                            if (File.Exists(dxvkDllPath)) File.Delete(dxvkDllPath);
+                            if (File.Exists(dxvkConfPath)) File.Delete(dxvkConfPath);
+
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "DXVK_RemovedSuccess", "DXVK has been successfully removed."),
+                                LanguageManager.Get("Main", "DXVK_Title", "DXVK — The Sims 3"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "DXVK_RemoveError", $"Failed to remove DXVK. Ensure the game is closed.\n\nError: {ex.Message}"),
+                                LanguageManager.Get("Main", "Error_Title", "Error"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                        }
+                    }
+
+                    return;
+                }
+
+                // Proceeds to download both files only if neither existed
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/d3d9.dll",
-                    destFilePath: dxvkPath);
+                    destFilePath: dxvkDllPath);
+
+                await DownloadFileOnly(
+                    url: "%baseurl%/Sideload-Apps/x86/dxvk.conf",
+                    destFilePath: dxvkConfPath);
             };
 
-//            sims3Item.Items.Add(sims3_gpuAddon);
+            //            sims3Item.Items.Add(sims3_gpuAddon);
             sims3Item.Items.Add(sims3_dxvk);
 
             contextMenu.Items.Add(sims2Item);
@@ -552,9 +586,8 @@ namespace SimTools
             {
                 OpenUrl("https://simtools-app.com/best-in-game-settings-ts3");
             };
-//            };
-//
-//            sims3Item.Items.Add(ts3_bestSettings);
+
+            sims3Item.Items.Add(ts3_bestSettings);
 
             // ── Game INI Tweaks ─────────────────────────────────────────────────
             var ts3_iniTweaks = new MenuItem { Header = "Game INI Tweaks" };
@@ -2187,7 +2220,7 @@ namespace SimTools
         // ─────────────────────────────────────────────────────────────────────
         private async void DownloadSims2RepositoryFiles()
         {
-            // ── TSData Files (1 files to Sims2Game/TSData) ──────────────────
+            // 1. Validate both paths first before checking or downloading
             if (!GamePaths.IsConfigured(GamePaths.Sims2Game))
             {
                 MessageBox.Show(
@@ -2197,28 +2230,6 @@ namespace SimTools
                 return;
             }
 
-            var (ok1, _) = await DownloadFileOnly(
-                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSData/Res/ObjectScripts/ObjectScripts.package",
-                destFilePath: Path.Combine(GamePaths.Sims2Game, "TSData", "Res", "ObjectScripts", "ObjectScripts.package"));
-            if (!ok1) return;
-
-            // ── TSBin Files (3 files to Sims2Game/TSBin) ───────────────────
-            var (ok2, _) = await DownloadFileOnly(
-                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/wininet.dll",
-                destFilePath: Path.Combine(GamePaths.Sims2Game, "TSBin", "wininet.dll"));
-            if (!ok2) return;
-
-            var (ok3, _) = await DownloadFileOnly(
-                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/TS2Extender.ini",
-                destFilePath: Path.Combine(GamePaths.Sims2Game, "TSBin", "TS2Extender.ini"));
-            if (!ok3) return;
-
-            var (ok4, _) = await DownloadFileOnly(
-                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/TS2Extender.asi",
-                destFilePath: Path.Combine(GamePaths.Sims2Game, "TSBin", "TS2Extender.asi"));
-            if (!ok4) return;
-
-            // ── Mods Downloads (4 files to Sims2Mods/Downloads) ────────────
             if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
             {
                 MessageBox.Show(
@@ -2228,30 +2239,110 @@ namespace SimTools
                 return;
             }
 
+            // 2. Define all target file paths
+            var targetFiles = new List<string>
+    {
+        Path.Combine(GamePaths.Sims2Game, "TSData", "Res", "ObjectScripts", "ObjectScripts.package"),
+        Path.Combine(GamePaths.Sims2Game, "TSBin", "wininet.dll"),
+        Path.Combine(GamePaths.Sims2Game, "TSBin", "TS2Extender.ini"),
+        Path.Combine(GamePaths.Sims2Game, "TSBin", "TS2Extender.asi"),
+        Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_WallTopFix.package"),
+        Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_TS2Extender_uniformFix.package"),
+        Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_timingFix.package"),
+        Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_dateStoodUpFix.package"),
+        Path.Combine(GamePaths.Sims2Mods, "Lua", "TS2Extender.lua")
+    };
+
+            // 3. Check if files are already installed (checks if ANY exist to allow cleanup of partial installs)
+            if (targetFiles.Any(File.Exists))
+            {
+                var result = MessageBox.Show(
+                    LanguageManager.Get("Main", "Sims2Repo_AlreadyInstalled", "The Sims 2 Legacy Edition Extender files are already installed. Do you want to remove them?"),
+                    LanguageManager.Get("Main", "Sims2Repo_Title", "SimTools — The Sims 2"),
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        foreach (var file in targetFiles)
+                        {
+                            if (File.Exists(file))
+                            {
+                                File.Delete(file);
+                            }
+                        }
+
+                        MessageBox.Show(
+                            LanguageManager.Get("Main", "Sims2Repo_RemovedSuccess", "The files have been successfully removed."),
+                            LanguageManager.Get("Main", "Sims2Repo_Title", "SimTools — The Sims 2"),
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            LanguageManager.Get("Main", "Sims2Repo_RemoveError", $"Failed to remove some files. Ensure the game is closed.\n\nError: {ex.Message}"),
+                            LanguageManager.Get("Main", "Error_Title", "Error"),
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+                }
+
+                // Stop execution here whether they clicked Yes or No
+                return;
+            }
+
+            // 4. Proceed with downloads if files were not installed
+
+            // ── TSData Files (1 files to Sims2Game/TSData) ──────────────────
+            var (ok1, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSData/Res/ObjectScripts/ObjectScripts.package",
+                destFilePath: targetFiles[0]);
+            if (!ok1) return;
+
+            // ── TSBin Files (3 files to Sims2Game/TSBin) ───────────────────
+            var (ok2, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/wininet.dll",
+                destFilePath: targetFiles[1]);
+            if (!ok2) return;
+
+            var (ok3, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/TS2Extender.ini",
+                destFilePath: targetFiles[2]);
+            if (!ok3) return;
+
+            var (ok4, _) = await DownloadFileOnly(
+                url: "%baseurl%/Mods/Sims2/TS2_Extender/TSBin/TS2Extender.asi",
+                destFilePath: targetFiles[3]);
+            if (!ok4) return;
+
+            // ── Mods Downloads (4 files to Sims2Mods/Downloads) ────────────
             var (ok5, _) = await DownloadFileOnly(
                 url: "%baseurl%/Mods/Sims2/TS2_Extender/Downloads/ld_WallTopFix.package",
-                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_WallTopFix.package"));
+                destFilePath: targetFiles[4]);
             if (!ok5) return;
 
             var (ok6, _) = await DownloadFileOnly(
                 url: "%baseurl%/Mods/Sims2/TS2_Extender/Downloads/ld_TS2Extender_uniformFix.package",
-                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_TS2Extender_uniformFix.package"));
+                destFilePath: targetFiles[5]);
             if (!ok6) return;
 
             var (ok7, _) = await DownloadFileOnly(
                 url: "%baseurl%/Mods/Sims2/TS2_Extender/Downloads/ld_timingFix.package",
-                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_timingFix.package"));
+                destFilePath: targetFiles[6]);
             if (!ok7) return;
 
             var (ok9, _) = await DownloadFileOnly(
                 url: "%baseurl%/Mods/Sims2/TS2_Extender/Downloads/ld_dateStoodUpFix.package",
-                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Downloads", "ld_dateStoodUpFix.package"));
+                destFilePath: targetFiles[7]);
             if (!ok9) return;
 
             // ── Mods Lua (1 files to Sims2Mods/Lua) ──────────────────────
             var (ok8, _) = await DownloadFileOnly(
                 url: "%baseurl%/Mods/Sims2/TS2_Extender/Lua/TS2Extender.lua",
-                destFilePath: Path.Combine(GamePaths.Sims2Mods, "Lua", "TS2Extender.lua"));
+                destFilePath: targetFiles[8]);
             if (!ok8) return;
 
             // ── All downloads complete ─────────────────────────────────────

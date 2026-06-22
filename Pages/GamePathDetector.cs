@@ -16,7 +16,8 @@ namespace SimTools
     internal static class GamePathDetector
     {
         // ── Result type ──────────────────────────────────────────────────────────
-        public sealed record DetectionResult(string? GamePath, string? ModPath);
+        // UPDATED: Added UserDataPath to the record
+        public sealed record DetectionResult(string? GamePath, string? ModPath, string? UserDataPath);
 
         // ── Well-known root paths ────────────────────────────────────────────────
         private static readonly string PF86 =
@@ -83,15 +84,14 @@ namespace SimTools
         }
 
         // ── EA / Origin root directories ─────────────────────────────────────────
-        //   Yields every vendor subfolder that actually exists on this machine.
         private static IEnumerable<string> EaRoots()
         {
             foreach (var pf in new[] { PF86, PF })
-            foreach (var vendor in new[] { "EA Games", "Electronic Arts", "Origin Games" })
-            {
-                var p = Path.Combine(pf, vendor);
-                if (Directory.Exists(p)) yield return p;
-            }
+                foreach (var vendor in new[] { "EA Games", "Electronic Arts", "Origin Games" })
+                {
+                    var p = Path.Combine(pf, vendor);
+                    if (Directory.Exists(p)) yield return p;
+                }
         }
 
         // ── Maxis root directories ────────────────────────────────────────────────
@@ -110,11 +110,17 @@ namespace SimTools
 
         // ── Game detectors ────────────────────────────────────────────────────────
 
-        private static DetectionResult DetectSims1() => new(
-            GamePath: FindFirst(
+        private static DetectionResult DetectSims1()
+        {
+            var game = FindFirst(
                 MaxisRoots().Select(r => Path.Combine(r, "The Sims"))
-                .Concat(EaRoots().Select(r => Path.Combine(r, "The Sims")))),
-            ModPath: null);
+                .Concat(EaRoots().Select(r => Path.Combine(r, "The Sims"))));
+
+            // Sims 1 saves user data directly into its own installation directory natively
+            var userData = FindFirst(new[] { Path.Combine(Docs, "The Sims") }) ?? game;
+
+            return new DetectionResult(game, null, userData);
+        }
 
         private static DetectionResult DetectSims2()
         {
@@ -126,36 +132,42 @@ namespace SimTools
                     Path.Combine(r, "The Sims 2 Ultimate Collection"),
                 }));
 
-            var mods = FindFirst(new[]
+            var userDataCandidates = new[]
             {
-                Path.Combine(Docs, "EA Games", "The Sims 2", "Downloads"),
-                Path.Combine(Docs, "EA Games", "The Sims 2 Legacy Collection", "Downloads"),
-                Path.Combine(Docs, "EA Games", "The Sims 2 Ultimate Collection", "Downloads"),
-            });
+                Path.Combine(Docs, "EA Games", "The Sims 2"),
+                Path.Combine(Docs, "EA Games", "The Sims 2 Legacy Collection"),
+                Path.Combine(Docs, "EA Games", "The Sims 2 Ultimate Collection"),
+            };
 
-            return new DetectionResult(game, mods);
+            var userData = FindFirst(userDataCandidates);
+            var mods = FindFirst(userDataCandidates.Select(p => Path.Combine(p, "Downloads")));
+
+            return new DetectionResult(game, mods, userData);
         }
 
-        private static DetectionResult DetectSimsLifeStories() => new(
-            GamePath: FindFirst(EaRoots().Select(r => Path.Combine(r, "The Sims Life Stories"))),
-            ModPath:  FindFirst(new[]
-            {
-                Path.Combine(Docs, "EA Games", "The Sims Life Stories", "Collections"),
-            }));
+        private static DetectionResult DetectSimsLifeStories()
+        {
+            var game = FindFirst(EaRoots().Select(r => Path.Combine(r, "The Sims Life Stories")));
+            var userData = FindFirst(new[] { Path.Combine(Docs, "EA Games", "The Sims Life Stories") });
+            var mods = FindFirst(new[] { Path.Combine(Docs, "EA Games", "The Sims Life Stories", "Collections") });
+            return new DetectionResult(game, mods, userData);
+        }
 
-        private static DetectionResult DetectSimsPetStories() => new(
-            GamePath: FindFirst(EaRoots().Select(r => Path.Combine(r, "The Sims Pet Stories"))),
-            ModPath:  FindFirst(new[]
-            {
-                Path.Combine(Docs, "EA Games", "The Sims Pet Stories", "Collections"),
-            }));
+        private static DetectionResult DetectSimsPetStories()
+        {
+            var game = FindFirst(EaRoots().Select(r => Path.Combine(r, "The Sims Pet Stories")));
+            var userData = FindFirst(new[] { Path.Combine(Docs, "EA Games", "The Sims Pet Stories") });
+            var mods = FindFirst(new[] { Path.Combine(Docs, "EA Games", "The Sims Pet Stories", "Collections") });
+            return new DetectionResult(game, mods, userData);
+        }
 
-        private static DetectionResult DetectSimsCastawayStories() => new(
-            GamePath: FindFirst(EaRoots().Select(r => Path.Combine(r, "The Sims Castaway Stories"))),
-            ModPath:  FindFirst(new[]
-            {
-                Path.Combine(Docs, "EA Games", "The Sims Castaway Stories", "Collections"),
-            }));
+        private static DetectionResult DetectSimsCastawayStories()
+        {
+            var game = FindFirst(EaRoots().Select(r => Path.Combine(r, "The Sims Castaway Stories")));
+            var userData = FindFirst(new[] { Path.Combine(Docs, "EA Games", "The Sims Castaway Stories") });
+            var mods = FindFirst(new[] { Path.Combine(Docs, "EA Games", "The Sims Castaway Stories", "Collections") });
+            return new DetectionResult(game, mods, userData);
+        }
 
         private static DetectionResult DetectSims3()
         {
@@ -164,12 +176,10 @@ namespace SimTools
             if (sc is not null)
                 candidates = candidates.Append(Path.Combine(sc, "The Sims 3"));
 
-            return new DetectionResult(
-                GamePath: FindFirst(candidates),
-                ModPath:  FindFirst(new[]
-                {
-                    Path.Combine(Docs, "Electronic Arts", "The Sims 3", "Mods"),
-                }));
+            var userData = FindFirst(new[] { Path.Combine(Docs, "Electronic Arts", "The Sims 3") });
+            var mods = FindFirst(new[] { Path.Combine(Docs, "Electronic Arts", "The Sims 3", "Mods") });
+
+            return new DetectionResult(FindFirst(candidates), mods, userData);
         }
 
         private static DetectionResult DetectSims4()
@@ -179,12 +189,10 @@ namespace SimTools
             if (sc is not null)
                 candidates = candidates.Append(Path.Combine(sc, "The Sims 4"));
 
-            return new DetectionResult(
-                GamePath: FindFirst(candidates),
-                ModPath:  FindFirst(new[]
-                {
-                    Path.Combine(Docs, "Electronic Arts", "The Sims 4", "Mods"),
-                }));
+            var userData = FindFirst(new[] { Path.Combine(Docs, "Electronic Arts", "The Sims 4") });
+            var mods = FindFirst(new[] { Path.Combine(Docs, "Electronic Arts", "The Sims 4", "Mods") });
+
+            return new DetectionResult(FindFirst(candidates), mods, userData);
         }
 
         private static DetectionResult DetectSimsMedieval()
@@ -194,25 +202,23 @@ namespace SimTools
             if (sc is not null)
                 candidates = candidates.Append(Path.Combine(sc, "The Sims Medieval"));
 
-            return new DetectionResult(
-                GamePath: FindFirst(candidates),
-                ModPath:  FindFirst(new[]
-                {
-                    Path.Combine(Docs, "Electronic Arts", "The Sims Medieval", "Mods"),
-                }));
+            var userData = FindFirst(new[] { Path.Combine(Docs, "Electronic Arts", "The Sims Medieval") });
+            var mods = FindFirst(new[] { Path.Combine(Docs, "Electronic Arts", "The Sims Medieval", "Mods") });
+
+            return new DetectionResult(FindFirst(candidates), mods, userData);
         }
 
         private static DetectionResult DetectSimCopter() => new(
             GamePath: FindFirst(
                 MaxisRoots().Select(r => Path.Combine(r, "SimCopter"))
                 .Concat(EaRoots().Select(r => Path.Combine(r, "SimCopter")))),
-            ModPath: null);
+            ModPath: null, UserDataPath: null);
 
         private static DetectionResult DetectStreetsOfSimCity() => new(
             GamePath: FindFirst(
                 MaxisRoots().Select(r => Path.Combine(r, "Streets of SimCity"))
                 .Concat(EaRoots().Select(r => Path.Combine(r, "Streets of SimCity")))),
-            ModPath: null);
+            ModPath: null, UserDataPath: null);
 
         private static DetectionResult DetectSimCity2000()
         {
@@ -227,7 +233,7 @@ namespace SimTools
             if (gog is not null)
                 candidates = candidates.Append(Path.Combine(gog, "SimCity 2000 Special Edition"));
 
-            return new DetectionResult(FindFirst(candidates), null);
+            return new DetectionResult(FindFirst(candidates), null, null);
         }
 
         private static DetectionResult DetectSimCity3000() => new(
@@ -237,7 +243,7 @@ namespace SimTools
                     Path.Combine(r, "SimCity 3000 Unlimited"),
                     Path.Combine(r, "SimCity 3000"),
                 })),
-            ModPath: null);
+            ModPath: null, UserDataPath: null);
 
         private static DetectionResult DetectSimCity4()
         {
@@ -257,7 +263,9 @@ namespace SimTools
             if (gog is not null)
                 candidates = candidates.Append(Path.Combine(gog, "SimCity 4 Deluxe Edition"));
 
-            return new DetectionResult(FindFirst(candidates), null);
+            var userData = FindFirst(new[] { Path.Combine(Docs, "SimCity 4") });
+
+            return new DetectionResult(FindFirst(candidates), null, userData);
         }
 
         private static DetectionResult DetectSimCity2013()
@@ -269,31 +277,27 @@ namespace SimTools
                     Path.Combine(PF,   "Origin Games", "SimCity"),
                 });
 
-            return new DetectionResult(FindFirst(candidates), null);
+            return new DetectionResult(FindFirst(candidates), null, null);
         }
 
         // ── Public entry point ───────────────────────────────────────────────────
-        /// <summary>
-        /// Probes all supported games and returns the best match found for each.
-        /// Null values mean the path could not be determined automatically.
-        /// </summary>
         [SupportedOSPlatform("windows")]
         public static Dictionary<string, DetectionResult> DetectAll() => new()
         {
-            ["Sims1"]               = DetectSims1(),
-            ["Sims2"]               = DetectSims2(),
-            ["SimsLifeStories"]     = DetectSimsLifeStories(),
-            ["SimsPetStories"]      = DetectSimsPetStories(),
+            ["Sims1"] = DetectSims1(),
+            ["Sims2"] = DetectSims2(),
+            ["SimsLifeStories"] = DetectSimsLifeStories(),
+            ["SimsPetStories"] = DetectSimsPetStories(),
             ["SimsCastawayStories"] = DetectSimsCastawayStories(),
-            ["Sims3"]               = DetectSims3(),
-            ["Sims4"]               = DetectSims4(),
-            ["SimsMedieval"]        = DetectSimsMedieval(),
-            ["SimCopter"]           = DetectSimCopter(),
-            ["StreetsOfSimCity"]     = DetectStreetsOfSimCity(),
-            ["SimCity2000"]         = DetectSimCity2000(),
-            ["SimCity3000"]         = DetectSimCity3000(),
-            ["SimCity4"]            = DetectSimCity4(),
-            ["SimCity2013"]         = DetectSimCity2013(),
+            ["Sims3"] = DetectSims3(),
+            ["Sims4"] = DetectSims4(),
+            ["SimsMedieval"] = DetectSimsMedieval(),
+            ["SimCopter"] = DetectSimCopter(),
+            ["StreetsOfSimCity"] = DetectStreetsOfSimCity(),
+            ["SimCity2000"] = DetectSimCity2000(),
+            ["SimCity3000"] = DetectSimCity3000(),
+            ["SimCity4"] = DetectSimCity4(),
+            ["SimCity2013"] = DetectSimCity2013(),
         };
     }
 }

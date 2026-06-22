@@ -23,6 +23,9 @@ namespace SimTools
         private static string Mods(string key) =>
             IniHelper.Read("Directories", $"{key}_Mods", "");
 
+        private static string UserData(string key) =>
+            IniHelper.Read("Directories", $"{key}_UserData", "");
+
         // ── The Sims 1 ────────────────────────────────────────────────────────
         public static string Sims1Game               => Game("Sims1");
 
@@ -44,6 +47,7 @@ namespace SimTools
 
         // ── The Sims 3 ────────────────────────────────────────────────────────
         public static string Sims3Game               => Game("Sims3");
+        public static string Sims3UserData           => UserData("Sims3");
         public static string Sims3Mods               => Mods("Sims3");
 
         // ── The Sims 4 ────────────────────────────────────────────────────────
