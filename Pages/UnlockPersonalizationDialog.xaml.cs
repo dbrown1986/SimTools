@@ -146,8 +146,8 @@ namespace SimTools
             Close();
         }
 
-        // ── Remove existing key ───────────────────────────────────────────────
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        // ── Remove existing key (Updated to notify online database) ──────────────────
+        private async void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show(
                 LanguageManager.Get("Personalization", "RemoveAsk",
@@ -159,6 +159,39 @@ namespace SimTools
 
             if (result != MessageBoxResult.Yes) return;
 
+            // Get the unique identifier for this computer
+            string machineGuid = MachineIdentity.GetMachineGuid();
+
+            if (!string.IsNullOrWhiteSpace(machineGuid))
+            {
+                // Change button status temporarily so they know it is communicating
+                ClearButton.IsEnabled = false;
+                ShowStatus("Deactivating device registration online...");
+
+                try
+                {
+                    using (var http = new HttpClient { Timeout = TimeSpan.FromSeconds(7) })
+                    {
+                        var payload = new { machine_guid = machineGuid };
+                        string json = JsonSerializer.Serialize(payload);
+                        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                        // Ping your new deactivation file (Be sure to check your live domain here)
+                        await http.PostAsync("https://simtools-app.com/api/deactivate.php", content);
+                    }
+                }
+                catch
+                {
+                    // If they are offline or the web connection fails, we catch the exception silently 
+                    // so they aren't blocked from resetting their local app state.
+                }
+                finally
+                {
+                    ClearButton.IsEnabled = true;
+                }
+            }
+
+            // Always wipe the local token files out regardless of network state
             DonorKeyHelper.ClearPersonalization();
             KeyChanged = true;
             Close();
