@@ -1,7 +1,11 @@
+using System;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
-using MessageBox   = System.Windows.MessageBox;
+using MessageBox = System.Windows.MessageBox;
 
 namespace SimTools
 {
@@ -26,7 +30,8 @@ namespace SimTools
         }
 
         // ── Unlock ────────────────────────────────────────────────────────────
-        private void UnlockButton_Click(object sender, RoutedEventArgs e)
+        // Note the addition of "async" here so that network requests can run on a background thread.
+        private async void UnlockButton_Click(object sender, RoutedEventArgs e)
         {
             string key = KeyTextBox.Text.Trim();
 
@@ -44,9 +49,74 @@ namespace SimTools
                 return;
             }
 
-            // Write the machine-locked token file.
-            // The key itself is NOT written anywhere — only the decoded names
-            // are stored, encrypted and bound to this machine's GUID.
+            // Get the local hardware identifier unique to this Windows installation
+            string machineGuid = MachineIdentity.GetMachineGuid();
+            if (string.IsNullOrWhiteSpace(machineGuid))
+            {
+                ShowStatus("Could not verify hardware identity.");
+                return;
+            }
+
+            // Disable UI inputs so the user doesn't double-click while waiting on the server
+            UnlockButton.IsEnabled = false;
+            ShowStatus("Verifying activation online...");
+
+            try
+            {
+                using (var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) })
+                {
+                    // Compile the registration text data packet
+                    var payload = new
+                    {
+                        donor_key = key,
+                        machine_guid = machineGuid,
+                        machine_name = Environment.MachineName
+                    };
+
+                    string json = JsonSerializer.Serialize(payload);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    // Send to your online API Clerk (Be sure to replace with your live domain)
+                    var response = await http.PostAsync("https://simtools-app.com/api/activate.php", content);
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                    {
+                        // 409 Conflict = Server database says 2 machines are already registered
+                        MessageBox.Show(
+                            "This donor key has already reached its maximum activation limit (2 machines).\n\n" +
+                            "Please revoke one of your existing active setups via your donor portal before activating this machine.",
+                            "Activation Limit Reached",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Warning);
+
+                        ShowStatus("Activation limit exceeded.");
+                        return;
+                    }
+                    else if (!response.IsSuccessStatusCode)
+                    {
+                        // Any unexpected server error like a 500, 404, or 400
+                        ShowStatus("Server rejected the activation or database is offline.");
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Network error during online activation: {ex.Message}\n\nPlease check your internet connection and try again.",
+                    "Connection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                ShowStatus("Connection failed.");
+                return;
+            }
+            finally
+            {
+                // Always re-enable the button if an execution thread stops early
+                UnlockButton.IsEnabled = true;
+            }
+
+            // ── Online check succeeded; proceed with writing the local token ──
             try
             {
                 DonorKeyHelper.WriteTokenFile(key);
@@ -104,7 +174,7 @@ namespace SimTools
 
         private void ShowStatus(string message)
         {
-            StatusText.Text       = message;
+            StatusText.Text = message;
             StatusText.Visibility = Visibility.Visible;
         }
     }
