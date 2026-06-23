@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
-        Opacity="0" Background="{x:Null}" Foreground="{x:Null}">
+        Opacity="0" Background="Black" Foreground="White">
 
     <Grid Width="480" Height="320">
         <!-- Background image fills the window -->

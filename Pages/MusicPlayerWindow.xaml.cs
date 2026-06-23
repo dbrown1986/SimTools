@@ -138,10 +138,6 @@ namespace SimTools
             new MusicDownloadWindow(musicFolder) { Owner = owner }.ShowDialog();
         }
 
-        // ── Drag bar ──────────────────────────────────────────────────────
-        private void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-            => DragMove();
-
         // ── Button handlers ───────────────────────────────────────────────
         private void SkipBack_Click(object sender, RoutedEventArgs e)
         {

@@ -1,0 +1,3 @@
+The API files and SQL database are being provided for the purpose of
+mirroring donor activations in the event of server outages. The URL's
+will need to be updated in the source code before the API will function.

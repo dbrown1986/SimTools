@@ -142,6 +142,9 @@
 		<Resource Include="Images\musicon.png" />
 		<Resource Include="Images\patreon.png" />
 		<Resource Include="Images\paypal.png" />
+		<Resource Include="Images\plumbob-green.gif" />
+		<Resource Include="Images\plumbob-red.gif" />
+		<Resource Include="Images\plumbob-yellow.gif" />
 		<Resource Include="Images\plumbob.gif" />
 		<Resource Include="Images\plumbob_shatter.gif" />
 		<Resource Include="Images\Settings.png" />
@@ -174,6 +177,12 @@
 
 	<ItemGroup>
 	  <Compile Remove="Pages\UpdateDownloadWindow.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Images\plumbob-green.gif" />
+	  <None Remove="Images\plumbob-red.gif" />
+	  <None Remove="Images\plumbob-yellow.gif" />
 	</ItemGroup>
 
 	<ItemGroup>
