@@ -25,11 +25,35 @@ namespace SimTools
         // ── Donor personalisation banner ──────────────────────────────────
         private void LoadPersonalization()
         {
-            string key = IniHelper.Read("Personalization", "DonorKey", "");
-            if (string.IsNullOrWhiteSpace(key)) return;
+            // Check whether there is any evidence of a previously configured
+            // donor account (legacy INI key or a token file on disk).  Used to
+            // decide whether to show the re-entry prompt if validation fails.
+            bool hadLegacyKey = !string.IsNullOrWhiteSpace(
+                IniHelper.Read("Personalization", "DonorKey", ""));
+            bool hadTokenFile = DonorKeyHelper.TokenFileExists();
 
-            if (!DonorKeyHelper.TryDecodeKey(key, out string firstName, out string lastName))
+            // Attempt to read the machine-locked token file.
+            // The donor key is never read from disk — names come from the token.
+            if (!DonorKeyHelper.TryReadTokenFile(out string firstName, out string lastName))
+            {
+                // Wipe any leftover data (token file, legacy INI keys).
+                DonorKeyHelper.ClearPersonalization();
+
+                // Only prompt the user if they had previously set up personalisation.
+                // A brand-new install with no key entered should stay silent.
+                if (hadLegacyKey || hadTokenFile)
+                {
+                    MessageBox.Show(
+                        LanguageManager.Get("Personalization", "MachineChanged",
+                            "Your donor personalisation could not be verified on this machine. " +
+                            "Please go to Support SimTools and re-enter your key."),
+                        LanguageManager.Get("Personalization", "MachineChanged_Title",
+                            "SimTools — Personalization"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
                 return;
+            }
 
             PersonalizationText.Text =
                 LanguageManager.Format("Personalization", "PersonalizationText", firstName, lastName, "");

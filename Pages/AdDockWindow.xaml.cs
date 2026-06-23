@@ -107,18 +107,8 @@ namespace SimTools
         // ── Click / drag handler ──────────────────────────────────────────
         private void Dock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Snapshot position before DragMove() so we can detect a real drag
-            double leftBefore = Left;
-            double topBefore  = Top;
-
-            DragMove();
-
-            // DragMove() returns after mouse-up.
-            // If the window barely moved it was a click, not a drag.
-            bool wasDrag = Math.Abs(Left - leftBefore) > DragThreshold
-                        || Math.Abs(Top  - topBefore)  > DragThreshold;
-
-            if (!wasDrag && _adUrl != null)
+            // Since DragMove() is removed, any left-click is guaranteed to be a real click
+            if (_adUrl != null)
             {
                 try
                 {

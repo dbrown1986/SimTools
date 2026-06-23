@@ -15,8 +15,8 @@
         Short press with no movement = click → open ad URL.
         Press + drag                 = move the dock window.
     -->
-    <Border CornerRadius="6"
-            MouseLeftButtonDown="Dock_MouseLeftButtonDown">
+    <!--- <Border CornerRadius="6"
+            
         <Border.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                 <GradientStop Color="#DD101018" Offset="0"/>
@@ -24,26 +24,24 @@
             </LinearGradientBrush>
         </Border.Background>
         <Border.Effect>
-            <DropShadowEffect BlurRadius="12" ShadowDepth="3"
-                              Color="Black" Opacity="0.65"/>
-        </Border.Effect>
+            <DropShadowEffect BlurRadius="12" ShadowDepth="3"></DropShadowEffect>
+            Color="Black" Opacity="0.65"/> 
+        </Border.Effect> -->
 
-        <Grid>
-            <!-- Ad image — filled at runtime from the ad endpoint -->
-            <Image x:Name="AdImage"
-                   Stretch="UniformToFill"
-                   HorizontalAlignment="Stretch"
-                   VerticalAlignment="Stretch"
-                   Visibility="Collapsed"/>
+    <Grid Background="Transparent" MouseLeftButtonDown="Dock_MouseLeftButtonDown">
 
-            <!-- Placeholder shown while no ad is available -->
-            <TextBlock x:Name="AdPlaceholder"
-                       Text="Advertisement"
-                       Foreground="#33FFFFFF"
-                       FontSize="12"
-                       FontStyle="Italic"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
-        </Grid>
-    </Border>
+        <Image x:Name="AdImage"
+               Stretch="UniformToFill"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
+               Visibility="Collapsed"/>
+
+        <TextBlock x:Name="AdPlaceholder"
+                   Text="Advertisement"
+                   Foreground="#33FFFFFF"
+                   FontSize="12"
+                   FontStyle="Italic"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+    </Grid>
 </Window>

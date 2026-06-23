@@ -141,5 +141,13 @@ namespace SimTools
             TranslationButton.Content = LanguageManager.Get("SupportPage", "TranslationTool", "Translation Tool");
             UnlockPersonalizationButton.Content = LanguageManager.Get("SupportPage", "Personalize", "Unlock Personalization");
         }
+
+        private void AdvertiseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Name == "AdvertiseButton")
+            {
+                OpenUrl("https://simtools-app.com/advertise-through-simtools");
+            }
+        }
     }    
 }

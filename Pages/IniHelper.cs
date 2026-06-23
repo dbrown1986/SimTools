@@ -80,5 +80,31 @@ namespace SimTools
 
         public static void WriteBool(string section, string key, bool value) =>
             Write(section, key, value ? "true" : "false");
+
+        /// <summary>
+        /// Removes a single key from the specified section.
+        /// If the section becomes empty it is also removed.
+        /// Does nothing if the section or key does not exist.
+        /// </summary>
+        public static void DeleteKey(string section, string key)
+        {
+            var data = LoadAll();
+            if (!data.TryGetValue(section, out var sec)) return;
+            sec.Remove(key);
+            if (sec.Count == 0) data.Remove(section);
+            SaveAll(data);
+        }
+
+        /// <summary>
+        /// Removes an entire section and all its keys.
+        /// Does nothing if the section does not exist.
+        /// </summary>
+        public static void DeleteSection(string section)
+        {
+            var data = LoadAll();
+            if (!data.ContainsKey(section)) return;
+            data.Remove(section);
+            SaveAll(data);
+        }
     }
 }

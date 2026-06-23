@@ -12,41 +12,41 @@
     <Grid>
         <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Left" Margin="456,480,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="24" Height="33" Click="CloseButton_Click" Opacity="0"/>
         <TextBlock x:Name="SupportText" HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="First off, thank you for your interest in supporting SimTools. There are various ways in which you can offer support to the SimTools Project. These include, but are not limited to the following:" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="44"/>
-        <TextBlock x:Name="FiscalSupport" HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" Text="Fiscally" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
-        <TextBlock x:Name="FiscalSupport2" HorizontalAlignment="Center" Margin="0,125,0,0" TextWrapping="Wrap" Text="I designed SimTools as a hobby, but SimTools does incur monthly hosting costs and annual domain renewals ($96.10/mo). You can help offset these costs by donating to the project." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="44"/>
-        <Button x:Name="PayPalButton" Content="Button" HorizontalAlignment="Left" Margin="89,176,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="PayPalButton_Click">
+        <TextBlock x:Name="FiscalSupport" HorizontalAlignment="Center" Margin="0,90,0,0" TextWrapping="Wrap" Text="Fiscally" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
+        <TextBlock x:Name="FiscalSupport2" HorizontalAlignment="Center" Margin="0,115,0,0" TextWrapping="Wrap" Text="I designed SimTools as a hobby, but SimTools does incur monthly hosting costs and annual domain renewals ($96.10/mo). You can help offset these costs by donating to the project or advertising through SimTools for $2.99/mo." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="44"/>
+        <Button x:Name="PayPalButton" Content="Button" HorizontalAlignment="Left" Margin="89,166,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="PayPalButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/paypal.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="CashAppButton" Content="Button" HorizontalAlignment="Left" Margin="279,176,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="CashAppButton_Click">
+        <Button x:Name="CashAppButton" Content="Button" HorizontalAlignment="Left" Margin="279,166,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="CashAppButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/cashapp.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BMACButton" Content="Button" HorizontalAlignment="Left" Margin="89,226,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BMACButton_Click">
+        <Button x:Name="BMACButton" Content="Button" HorizontalAlignment="Left" Margin="89,216,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="BMACButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/bmac.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="PatreonButton" Content="Button" HorizontalAlignment="Left" Margin="279,226,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="PatreonButton_Click">
+        <Button x:Name="PatreonButton" Content="Button" HorizontalAlignment="Left" Margin="279,216,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="PatreonButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/patreon.png"/>
             </Button.Background>
         </Button>
-        <TextBlock x:Name="Contribute" HorizontalAlignment="Center" Margin="0,280,0,0" TextWrapping="Wrap" Text="Contribute" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
-        <TextBlock x:Name="Contribute2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="You can contribute code to the SimTools GitHub page, or host a file repository mirror. You can also use the language translation tool to help bring new languages to SimTools." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="31" Margin="0,304,0,0"/>
-        <Button x:Name="GitHubButton" Content="Button" HorizontalAlignment="Left" Margin="29,346,0,0" VerticalAlignment="Top" Width="150" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="GitHubButton_Click">
+        <TextBlock x:Name="Contribute" HorizontalAlignment="Center" Margin="0,307,0,0" TextWrapping="Wrap" Text="Contribute" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Tahoma" Width="474" Height="27" FontSize="18"/>
+        <TextBlock x:Name="Contribute2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="You can contribute code to the SimTools GitHub page, or host a file repository mirror. You can also use the language translation tool to help bring new languages to SimTools." VerticalAlignment="Top" FontFamily="Tahoma" Width="474" Height="31" Margin="0,331,0,0"/>
+        <Button x:Name="GitHubButton" Content="Button" HorizontalAlignment="Left" Margin="29,373,0,0" VerticalAlignment="Top" Width="150" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="GitHubButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/github.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="RepoMakerButton" Content="📁 Repo Maker" HorizontalAlignment="Left" Margin="188,346,0,0" VerticalAlignment="Top" Width="151" Height="35" BorderBrush="{x:Null}" Click="RepoMakerButton_Click" Foreground="Black" FontWeight="Bold" FontFamily="Tahoma" FontSize="10">
+        <Button x:Name="RepoMakerButton" Content="📁 Repo Maker" HorizontalAlignment="Left" Margin="188,373,0,0" VerticalAlignment="Top" Width="151" Height="35" BorderBrush="{x:Null}" Click="RepoMakerButton_Click" Foreground="Black" FontWeight="Bold" FontFamily="Tahoma" FontSize="10">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_green.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="TranslationButton" Content="🌐 Translation Tool" HorizontalAlignment="Left" Margin="348,346,0,0" VerticalAlignment="Top" Width="150" Height="35" BorderBrush="{x:Null}" Click="TranslationButton_Click" Foreground="Black" FontFamily="Tahoma" FontSize="10" FontWeight="Bold">
+        <Button x:Name="TranslationButton" Content="🌐 Translation Tool" HorizontalAlignment="Left" Margin="348,373,0,0" VerticalAlignment="Top" Width="150" Height="35" BorderBrush="{x:Null}" Click="TranslationButton_Click" Foreground="Black" FontFamily="Tahoma" FontSize="10" FontWeight="Bold">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_green.png"/>
             </Button.Background>
@@ -56,7 +56,7 @@
         <Button x:Name="UnlockPersonalizationButton"
                 Content="🔑 Unlock Personalisation"
                 HorizontalAlignment="Left"
-                Margin="348,396,0,0"
+                Margin="348,423,0,0"
                 VerticalAlignment="Top"
                 Width="150" Height="35"
                 BorderBrush="{x:Null}"
@@ -65,6 +65,11 @@
                 Click="UnlockPersonalizationButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/button_yellow.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="AdvertiseButton" Content="Button" HorizontalAlignment="Left" Margin="183,266,0,0" VerticalAlignment="Top" Width="160" Height="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="AdvertiseButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/advertise.png"/>
             </Button.Background>
         </Button>
 

@@ -83,9 +83,10 @@ namespace SimTools
             //  see advertisements — AdDock stays null for the lifetime of the
             //  session.
             //
-            string donorKey = IniHelper.Read("Personalization", "DonorKey", "");
-            bool isDonor = !string.IsNullOrWhiteSpace(donorKey)
-                        && DonorKeyHelper.TryDecodeKey(donorKey, out _, out _);
+            // Donor check: read names directly from the machine-locked token file.
+            // The donor key is never stored on disk — TryReadTokenFile is the
+            // sole gate for granting donor status.
+            bool isDonor = DonorKeyHelper.TryReadTokenFile(out _, out _);
             if (!isDonor)
                 AdDock = new AdDockWindow();
 

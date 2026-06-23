@@ -1,15 +1,16 @@
 using System.Windows;
 using System.Windows.Input;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
-
-using MessageBox = System.Windows.MessageBox;
+using MessageBox   = System.Windows.MessageBox;
 
 namespace SimTools
 {
     /// <summary>
     /// Allows a donor to enter their personalisation key.
-    /// The key is validated, decoded, and if correct the name is persisted to
-    /// the INI file so that IntroductoryPage can display it on next load.
+    ///
+    /// On success the key is validated in memory, the decoded names are written
+    /// to the machine-locked token file (SimTools.token), and the key is then
+    /// discarded — it is never stored to disk in any form.
     /// </summary>
     public partial class UnlockPersonalizationDialog : Window
     {
@@ -20,11 +21,8 @@ namespace SimTools
         public UnlockPersonalizationDialog()
         {
             InitializeComponent();
-
-            // Pre-populate with any existing key so the user can see / replace it
-            string existingKey = IniHelper.Read("Personalization", "DonorKey", "");
-            if (!string.IsNullOrWhiteSpace(existingKey))
-                KeyTextBox.Text = existingKey;
+            // Do NOT pre-populate the text box — the key is no longer stored
+            // anywhere on disk, so there is nothing to show.
         }
 
         // ── Unlock ────────────────────────────────────────────────────────────
@@ -34,26 +32,44 @@ namespace SimTools
 
             if (string.IsNullOrWhiteSpace(key))
             {
-                ShowStatus(LanguageManager.Get("Personalization", "EnterKey", "Please enter a key."));
+                ShowStatus(LanguageManager.Get("Personalization", "EnterKey",
+                    "Please enter a key."));
                 return;
             }
 
-            if (!DonorKeyHelper.TryDecodeKey(key, out string firstName, out string lastName))
+            if (!DonorKeyHelper.TryDecodeKey(key, out string firstName, out _))
             {
-                ShowStatus(LanguageManager.Get("Personalization", "InvalidKey", "That key is not valid. Please check it and try again."));
+                ShowStatus(LanguageManager.Get("Personalization", "InvalidKey",
+                    "That key is not valid. Please check it and try again."));
                 return;
             }
 
-            // Persist key and decoded names
-            IniHelper.Write("Personalization", "DonorKey",   key);
-            IniHelper.Write("Personalization", "FirstName",  firstName);
-            IniHelper.Write("Personalization", "LastName",   lastName);
+            // Write the machine-locked token file.
+            // The key itself is NOT written anywhere — only the decoded names
+            // are stored, encrypted and bound to this machine's GUID.
+            try
+            {
+                DonorKeyHelper.WriteTokenFile(key);
+            }
+            catch
+            {
+                MessageBox.Show(
+                    LanguageManager.Get("Personalization", "TokenWriteFailed",
+                        "Your key was accepted, but the machine-lock file could not be " +
+                        "written. You may be prompted to re-enter your key on the next launch."),
+                    LanguageManager.Get("Personalization", "Unlocked_Title",
+                        "SimTools — Personalization"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
 
             KeyChanged = true;
 
             MessageBox.Show(
                 LanguageManager.Format("Personalization", "Unlocked", firstName),
-                LanguageManager.Get("Personalization", "Unlocked_Title", "SimTools — Personalization"),
+                LanguageManager.Get("Personalization", "Unlocked_Title",
+                    "SimTools — Personalization"),
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
 
@@ -64,17 +80,16 @@ namespace SimTools
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show(
-                LanguageManager.Get("Personalization", "RemoveAsk", "Remove your personalisation key?"),
-                LanguageManager.Get("Personalization", "RemoveAsk_Title", "SimTools — Remove Personalisation"),
+                LanguageManager.Get("Personalization", "RemoveAsk",
+                    "Remove your personalisation key?"),
+                LanguageManager.Get("Personalization", "RemoveAsk_Title",
+                    "SimTools — Remove Personalisation"),
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question);
 
             if (result != MessageBoxResult.Yes) return;
 
-            IniHelper.Write("Personalization", "DonorKey",  "");
-            IniHelper.Write("Personalization", "FirstName", "");
-            IniHelper.Write("Personalization", "LastName",  "");
-
+            DonorKeyHelper.ClearPersonalization();
             KeyChanged = true;
             Close();
         }
@@ -82,13 +97,11 @@ namespace SimTools
         // ── Cancel ────────────────────────────────────────────────────────────
         private void CancelButton_Click(object sender, RoutedEventArgs e) => Close();
 
-        // Allow pressing Enter in the text box to trigger Unlock
         private void KeyTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) UnlockButton_Click(sender, e);
         }
 
-        // ── Helper ────────────────────────────────────────────────────────────
         private void ShowStatus(string message)
         {
             StatusText.Text       = message;
