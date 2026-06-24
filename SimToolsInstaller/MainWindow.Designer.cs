@@ -173,12 +173,11 @@
             // 
             // lblWelcomeTitle
             // 
-            lblWelcomeTitle.AutoSize = true;
             lblWelcomeTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             lblWelcomeTitle.ForeColor = System.Drawing.Color.FloralWhite;
             lblWelcomeTitle.Location = new System.Drawing.Point(146, 20);
             lblWelcomeTitle.Name = "lblWelcomeTitle";
-            lblWelcomeTitle.Size = new System.Drawing.Size(421, 30);
+            lblWelcomeTitle.Size = new System.Drawing.Size(421, 73);
             lblWelcomeTitle.TabIndex = 0;
             lblWelcomeTitle.Text = "Welcome to the SimTools Setup Wizard";
             // 
@@ -696,7 +695,6 @@
             pnlBottom.ResumeLayout(false);
             wizardTabs.ResumeLayout(false);
             tabWelcome.ResumeLayout(false);
-            tabWelcome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PlumbobPictureBox).EndInit();
             tabLicense.ResumeLayout(false);
             tabLicense.PerformLayout();

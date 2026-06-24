@@ -15,13 +15,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="app.manifest" />
-    <None Remove="Installer.ico" />
-    <None Remove="plumbob.gif" />
-    <None Remove="SimTools_Logo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>0</VersionMinor>
@@ -41,6 +34,14 @@
     <EmbeddedResource Include="app.manifest" />
     <EmbeddedResource Include="Installer.ico" />
 	<EmbeddedResource Include="legal.txt" />
+	<EmbeddedResource Include="legal_ar.txt" />
+	<EmbeddedResource Include="legal_de.txt" />
+	<EmbeddedResource Include="legal_es.txt" />
+	<EmbeddedResource Include="legal_fr.txt" />
+	<EmbeddedResource Include="legal_ja.txt" />
+	<EmbeddedResource Include="legal_pt.txt" />
+	<EmbeddedResource Include="legal_ru.txt" />
+	<EmbeddedResource Include="legal_zh.txt" />
 	<EmbeddedResource Include="plumbob.gif" />
 	<EmbeddedResource Include="SimTools_Logo.png" />
   </ItemGroup>
