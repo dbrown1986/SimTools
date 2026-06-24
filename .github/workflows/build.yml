@@ -19,8 +19,13 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      # Adds full MSBuild capability to the runner environment
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
       - name: Restore dependencies
         run: dotnet restore SimTools_v4.sln
 
+      # Uses MSBuild instead of 'dotnet build' to support ResolveComReference
       - name: Build
-        run: dotnet build SimTools_v4.sln --configuration Release --no-restore
+        run: msbuild SimTools_v4.sln /p:Configuration=Release /p:NoRestore=true
