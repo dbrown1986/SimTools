@@ -26,6 +26,10 @@ namespace SimToolsInstaller
         private CancellationTokenSource? _cancelTokenSource;
         private List<string> _installedFiles = new List<string>();
 
+        // Simplifies tracking: tracks if the user explicitly clicked Browse or customized the text box
+        private bool _userManuallyChangedDirectory = false;
+        private bool _isInitializing = true; // Initialization gate
+
         // Central Language State Backing Field
         private LanguageStrings _currentLanguage = new LanguageStrings();
 
@@ -52,8 +56,8 @@ namespace SimToolsInstaller
 
             // 3. Complete the rest of the setup configuration
             HookUpEvents();
-            DetectArchitecture();
             LoadLicenseText();
+            DetectArchitecture();
 
             // Hides tabs at runtime so it looks like a wizard
             wizardTabs.Appearance = TabAppearance.FlatButtons;
@@ -62,6 +66,8 @@ namespace SimToolsInstaller
 
             // 4. Draw the current layout step text safely
             UpdateUI();
+
+            _isInitializing = false; // Clears the gate here so events can safely listen now.
         }
 
         private void LoadLicenseText()
@@ -109,14 +115,43 @@ namespace SimToolsInstaller
 
         private void HookUpEvents()
         {
-            btnCancelExit.Click += BtnCancelExit_Click;
+            // Navigation Controls
             btnNext.Click += BtnNext_Click;
             btnPrev.Click += BtnPrev_Click;
+            btnCancelExit.Click += BtnCancelExit_Click;
             btnBrowse.Click += BtnBrowse_Click;
 
+            // License Agreement Handlers
             radAgree.CheckedChanged += (s, e) => UpdateUI();
-            rad64Bit.CheckedChanged += (s, e) => UpdateUI();
-            txtInstallPath.TextChanged += (s, e) => ValidateDirectory();
+            radDisagree.CheckedChanged += (s, e) => UpdateUI();
+
+            // Architecture Selection Toggles
+            rad32Bit.CheckedChanged += Architecture_CheckedChanged;
+            rad64Bit.CheckedChanged += Architecture_CheckedChanged;
+
+            // Directory Selection Changes
+            txtInstallPath.TextChanged += TxtFolder_TextChanged;
+        }
+
+        private void TxtFolder_TextChanged(object? sender, EventArgs e)
+        {
+            // Ignore automatic changes during form generation
+            if (_isInitializing) return;
+
+            string path = txtInstallPath.Text;
+            string default64 = Path.Combine(Environment.GetEnvironmentVariable("ProgramW6432") ?? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "SimTools");
+            string default32 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "SimTools");
+
+            // It is ONLY a manual user override if it doesn't match either of the system calculated options
+            if (path != default64 && path != default32 && !string.IsNullOrEmpty(path))
+            {
+                _userManuallyChangedDirectory = true;
+            }
+            else if (path == default64 || path == default32)
+            {
+                // If they toggle back to a default option, unlock dynamic updates
+                _userManuallyChangedDirectory = false;
+            }
         }
 
         private void DetectArchitecture()
@@ -129,6 +164,31 @@ namespace SimToolsInstaller
             {
                 rad32Bit.Checked = true;
                 rad64Bit.Enabled = false;
+            }
+        }
+
+        private void Architecture_CheckedChanged(object? sender, EventArgs e)
+        {
+            // Ignore layout string changes during initial app boot up
+            if (_isInitializing) return;
+
+            if (sender is RadioButton radio && radio.Checked)
+            {
+                // Don't overwrite if the user typed or browsed to a custom location
+                if (_userManuallyChangedDirectory) return;
+
+                string progFiles;
+                if (rad64Bit.Checked)
+                {
+                    progFiles = Environment.GetEnvironmentVariable("ProgramW6432")
+                                ?? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                }
+                else
+                {
+                    progFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+                }
+
+                txtInstallPath.Text = Path.Combine(progFiles, "SimTools");
             }
         }
 
@@ -150,12 +210,22 @@ namespace SimToolsInstaller
                 case 2:
                     btnNext.Enabled = rad32Bit.Checked || rad64Bit.Checked;
                     break;
-                case 3:
-                    if (string.IsNullOrEmpty(txtInstallPath.Text))
+                case 3: // Installation Directory Screen
+                    if (!_userManuallyChangedDirectory)
                     {
-                        string progFiles = rad64Bit.Checked
-                            ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
-                            : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+                        string progFiles;
+
+                        if (rad64Bit.Checked)
+                        {
+                            // Direct environment lookup bypasses 32-bit WOW64 redirection safely
+                            progFiles = Environment.GetEnvironmentVariable("ProgramW6432")
+                                        ?? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                        }
+                        else
+                        {
+                            progFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+                        }
+
                         txtInstallPath.Text = Path.Combine(progFiles, "SimTools");
                     }
                     ValidateDirectory();
@@ -208,10 +278,14 @@ namespace SimToolsInstaller
 
         private void BtnBrowse_Click(object? sender, EventArgs e)
         {
-            using (var dialog = new FolderBrowserDialog { Description = "Select Install Folder" })
+            using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
+                dialog.SelectedPath = txtInstallPath.Text;
                 if (dialog.ShowDialog() == DialogResult.OK)
-                    txtInstallPath.Text = Path.Combine(dialog.SelectedPath, "SimTools");
+                {
+                    txtInstallPath.Text = dialog.SelectedPath;
+                    _userManuallyChangedDirectory = true;
+                }
             }
         }
 
