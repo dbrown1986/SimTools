@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<BaseVersion>4.0.1</BaseVersion>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net8.0-windows7.0</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 		<Company>Archeon Industries, LLC.</Company>
 		<Authors>David Brown</Authors>
 		<Copyright>Copyright © 2026</Copyright>
