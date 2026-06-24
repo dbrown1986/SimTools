@@ -29,7 +29,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="Updater.ico" />
+	  <Resource Include="Updater.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -37,7 +37,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<RuntimeHostConfigurationOption Include="System.Globalization.Invariant" Value="true" />
+		<RuntimeHostConfigurationOption Include="System.Globalization.Invariant" Value="false" />
 	</ItemGroup>
 
 	<ItemGroup>

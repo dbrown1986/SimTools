@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Installer.ico" />
+    <Resource Include="Installer.ico" />
   </ItemGroup>
 
   <ItemGroup>
