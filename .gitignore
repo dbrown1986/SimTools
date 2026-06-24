@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+SimTools_v4.sln.bak
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
