@@ -17,7 +17,7 @@
             <ImageBrush ImageSource="/Images/Menu_Main.png"/>
         </Grid.Background>
         <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
-        
+
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="194" Margin="8,8,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
         <Button x:Name="UpdateButton" Content="Check for Updates" HorizontalAlignment="Left" Margin="8,216,0,0" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="UpdateButton_Click">
             <Button.Style>
@@ -228,6 +228,7 @@
                    Foreground="#FFD700"
                    TextAlignment="Center"
                    ToolTip="This copy of SimTools was personalised just for you."/>
+        <Image x:Name="SantaHat" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
 
     </Grid>
 </Window>

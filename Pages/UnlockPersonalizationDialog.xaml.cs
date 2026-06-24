@@ -83,7 +83,7 @@ namespace SimTools
                     {
                         // 409 Conflict = Server database says 2 machines are already registered
                         MessageBox.Show(
-                            "This donor key has already reached its maximum activation limit (2 machines).\n\n" +
+                            "This donor key has already reached its maximum activation limit (5 machines).\n\n" +
                             "Please revoke one of your existing active setups via your donor portal before activating this machine.",
                             "Activation Limit Reached",
                             MessageBoxButton.OK,

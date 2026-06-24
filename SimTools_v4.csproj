@@ -60,6 +60,9 @@
 		<Resource Include="Images\github.png" />
 		<Resource Include="Images\gradient.png" />
 		<Resource Include="Images\gradient_hi.png" />
+		<Resource Include="Images\Holidays\indpday_nye.gif" />
+		<Resource Include="Images\Holidays\stpd.png" />
+		<Resource Include="Images\Holidays\xmas.png" />
 		<Resource Include="Images\Icons\AuroraSkies.ico" />
 		<Resource Include="Images\Icons\BarnacleBay.ico" />
 		<Resource Include="Images\Icons\caw.ico" />
@@ -176,17 +179,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Pages\UpdateDownloadWindow.xaml.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Images\plumbob-green.gif" />
-	  <None Remove="Images\plumbob-red.gif" />
-	  <None Remove="Images\plumbob-yellow.gif" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Page Remove="Pages\UpdateDownloadWindow.xaml" />
+	  <None Remove="Images\Holidays\indpday_nye.gif" />
+	  <None Remove="Images\Holidays\stpd.png" />
+	  <None Remove="Images\Holidays\xmas.png" />
 	</ItemGroup>
 
 	<ItemGroup>

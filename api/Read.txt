@@ -1,3 +1,7 @@
 The API files and SQL database are being provided for the purpose of
 mirroring donor activations in the event of server outages. The URL's
 will need to be updated in the source code before the API will function.
+
+At the moment, I hold the only cipher for decrypting donor keys, but 
+should something happen to me, I will see to it that the cipher is
+passed along to another for safe-keeping.

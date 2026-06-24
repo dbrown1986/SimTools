@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +41,47 @@ namespace SimTools
                     | System.Windows.Input.ModifierKeys.Alt))
             {
                 e.Handled = true;
-                new KeyGeneratorWindow { Owner = this }.ShowDialog();
+
+                // 1. Define the local key file path alongside your application executable
+                string keyFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "developer.key");
+
+                if (!File.Exists(keyFilePath))
+                {
+                    // Fail silently so a curious user doesn't know a secret window exists here
+                    return;
+                }
+
+                try
+                {
+                    // 2. Read the password from your secret local file
+                    string fileContent = File.ReadAllText(keyFilePath).Trim();
+
+                    // 3. Compute the SHA-256 hash of what was found inside your file
+                    using (SHA256 sha256 = SHA256.Create())
+                    {
+                        byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(fileContent));
+                        StringBuilder builder = new StringBuilder();
+                        foreach (byte b in bytes)
+                        {
+                            builder.Append(b.ToString("x2"));
+                        }
+                        string computedHash = builder.ToString();
+
+                        // 4. THE SECURITY GATE: Paste your pre-computed 64-character hash here.
+                        // This is a dummy example. You must generate your own hash (see Step 3).
+                        string masterDeveloperHash = "a5f63f429490c977313871e35c1122987347491fec6256ea132be3a3d3b9f766";
+
+                        // Cryptographic comparison
+                        if (string.Equals(computedHash, masterDeveloperHash, StringComparison.OrdinalIgnoreCase))
+                        {
+                            new KeyGeneratorWindow { Owner = this }.ShowDialog();
+                        }
+                    }
+                }
+                catch
+                {
+                    // Fail completely silently on file read or format errors
+                }
             }
         }
 

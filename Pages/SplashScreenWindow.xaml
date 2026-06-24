@@ -8,8 +8,7 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        ShowInTaskbar="False"
-        Opacity="0" Background="Black" Foreground="White">
+        ShowInTaskbar="False" Background="{x:Null}">
 
     <Grid Width="480" Height="320">
         <!-- Background image fills the window -->
