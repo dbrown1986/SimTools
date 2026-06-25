@@ -13,7 +13,7 @@
 
     </Window.Background>
     <Grid>
-        <TextBlock x:Name="Text3" HorizontalAlignment="Left" Margin="32,40,0,0" TextWrapping="Wrap" Text="SimTools is the culmination of years of work!" VerticalAlignment="Top" Width="265" Height="17" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
+        <TextBlock x:Name="Text3" HorizontalAlignment="Left" Margin="32,27,0,0" TextWrapping="Wrap" Text="SimTools is the culmination of years of work!" VerticalAlignment="Top" Width="265" Height="30" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -21,7 +21,7 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>
-        <TextBlock x:Name="Text2" HorizontalAlignment="Left" Margin="32,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" Height="201" FontFamily="Tahoma" FontSize="10.5">
+        <TextBlock x:Name="Text2" HorizontalAlignment="Left" Margin="32,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" Height="205" FontFamily="Tahoma" FontSize="10.5">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -38,13 +38,13 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="304,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
+        <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="304,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Height="48" FontFamily="Tahoma" FontSize="10" FontStyle="Italic" FontWeight="Bold">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
-            </TextBlock.Foreground><Run Text="David Brown, creator of SimTools."/><LineBreak/><Run Text="Playing since OG Sims in 2000."/></TextBlock>
+            </TextBlock.Foreground><Run Text="David Brown, creator of SimTools."/> <Run Text="Playing since OG Sims in 2000."/></TextBlock>
         <TextBlock x:Name="Text4" HorizontalAlignment="Left" Margin="32,272,0,0" TextWrapping="Wrap" Text="SimTools is protected under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC) license. It is open-source software, made available to the public and open to contributions. This software, in whole or in part cannot and should never be used for commercial gain." VerticalAlignment="Top" Width="473" Height="58" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic" TextAlignment="Center">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -53,14 +53,14 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>
-        <TextBlock x:Name="Text5" HorizontalAlignment="Left" Margin="32,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" Height="57" FontFamily="Tahoma" FontSize="10.5" TextAlignment="Center">
+        <TextBlock x:Name="Text5" HorizontalAlignment="Left" Margin="32,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="57" FontFamily="Tahoma" FontSize="10.5" TextAlignment="Center">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </TextBlock.Foreground><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="Text6" HorizontalAlignment="Left" Margin="32,432,0,0" TextWrapping="Wrap" Text="For Faith, who inspired me to finally finish this program." VerticalAlignment="Top" Width="169" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
+        <TextBlock x:Name="Text6" HorizontalAlignment="Left" Margin="32,432,0,0" TextWrapping="Wrap" Text="For Faith, who inspired me to finally finish this program." VerticalAlignment="Top" Width="200" Height="46" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" FontStyle="Italic">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -68,7 +68,7 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>
-        <Button x:Name="UpdateButton" Content="Check for Updates" Click="UpdateButton_Click" HorizontalAlignment="Left" Margin="376,346,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
+        <Button x:Name="UpdateButton" Content="Check for Updates" Click="UpdateButton_Click" HorizontalAlignment="Left" Margin="345,346,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="161" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -98,7 +98,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="ChangelogButton" Content="Changelog" Click="ChangelogButton_Click" HorizontalAlignment="Left" Margin="376,380,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
+        <Button x:Name="ChangelogButton" Content="Changelog" Click="ChangelogButton_Click" HorizontalAlignment="Left" Margin="345,380,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="161" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">

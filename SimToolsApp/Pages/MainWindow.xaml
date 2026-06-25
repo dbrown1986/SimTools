@@ -15,7 +15,14 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Menu_Main.png"/>
         </Grid.Background>
+        <Image x:Name="Clover" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="-1,0,0,0"/>
+        <Image x:Name="Clover2" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="203,0,0,0"/>
+        <Image x:Name="Clover3" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="407,0,0,0"/>
+        <Image x:Name="Clover4" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="611,0,0,0"/>
+        <Image x:Name="Clover5" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="815,0,0,0"/>
+        <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
         <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
+        <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
         <!-- <Image HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Source="/plumbob.gif" Stretch="Fill"/> -->
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
         <TextBlock x:Name="ButtonInfoText" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="91" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200"><Run Text="When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed."/><LineBreak/><Run/></TextBlock>

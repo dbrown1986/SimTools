@@ -17,6 +17,16 @@
             <ImageBrush ImageSource="/Images/Menu_Main.png"/>
         </Grid.Background>
 
+        <Image x:Name="Clover" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="-1,0,0,0"/>
+        <Image x:Name="Clover2" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="203,0,0,0"/>
+        <Image x:Name="Clover3" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="407,0,0,0"/>
+        <Image x:Name="Clover4" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="611,0,0,0"/>
+        <Image x:Name="Clover5" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="815,0,0,0"/>
+        <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
+        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
+        <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
+        <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="194" Margin="8,8,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
+
         <!-- Close button -->
         <Button x:Name="ExitApp" Content="" HorizontalAlignment="Left"
                 Margin="801,8,0,0" VerticalAlignment="Top"
@@ -54,16 +64,16 @@
 
         <!-- Title -->
         <TextBlock x:Name="DonorItems" HorizontalAlignment="Left" VerticalAlignment="Top"
-                   Margin="196,16,0,0"
+                   Margin="196,105,0,0"
                    Text="Donor / Patreon Exclusive Items"
                    Foreground="#FFD700"
                    FontFamily="Tahoma"
                    FontWeight="Bold"
-                   FontSize="20"/>
+                   FontSize="20" Height="26"/>
 
         <!-- Content area -->
         <ScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top"
-                      Margin="196,56,0,0" Width="621" Height="564"
+                      Margin="196,148,0,0" Width="621" Height="470"
                       VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <TextBlock x:Name="ExclusiveItemsText"
@@ -111,7 +121,5 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
-        <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="194" Margin="8,8,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
     </Grid>
 </Window>
