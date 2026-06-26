@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Project-wide (Global) App Settings
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.    
+
 namespace SimTools
 {
     /// <summary>

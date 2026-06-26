@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Main Window Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using SharpCompress.Archives;
 using SharpCompress.Archives.SevenZip;
 using SharpCompress.Common;

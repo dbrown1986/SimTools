@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Donor Key System Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -15,8 +20,8 @@ namespace SimTools
     /// The key itself is NEVER written to disk after validation — it exists only
     /// in memory for the duration of the unlock dialog.
     ///
-    /// ── Machine-locked token file (SimTools.token) ───────────────────────────
-    /// When a donor enters their key, WriteTokenFile() creates SimTools.token
+    /// ── Machine-locked token file (donor.token) ───────────────────────────
+    /// When a donor enters their key, WriteTokenFile() creates donor.token
     /// alongside SimTools.exe.  The token stores:
     ///
     ///     {MachineGuid}|{FirstName}|{LastName}
@@ -52,7 +57,7 @@ namespace SimTools
 
         // ── Token file path ───────────────────────────────────────────────────
         private static string TokenPath =>
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SimTools.token");
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "donor.token");
 
         // ─────────────────────────────────────────────────────────────────────
         //  DONOR KEY — Generate / Validate (in-memory only; never stored)
@@ -132,7 +137,7 @@ namespace SimTools
             return (keyHash[..16], ivHash[..16]);
         }
 
-        /// <returns><c>true</c> if SimTools.token exists on disk.</returns>
+        /// returns true if donor.token exists on disk.
         public static bool TokenFileExists() => File.Exists(TokenPath);
 
         /// <summary>

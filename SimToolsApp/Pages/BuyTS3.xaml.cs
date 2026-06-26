@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Buy Sims Games Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.    
+
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Drawing;

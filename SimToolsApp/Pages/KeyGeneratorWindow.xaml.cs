@@ -1,3 +1,10 @@
+// SimTools
+// Main Application
+// Donor Key Generator Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+// Theoretically, this page should not be accessible unless under certain conditions.
+
 using System.Windows;
 using System.Windows.Controls;
 

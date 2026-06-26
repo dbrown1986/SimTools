@@ -9,7 +9,7 @@ namespace SimTools
     /// The MachineGuid is written to the registry by Windows Setup and does not
     /// change unless the OS is reinstalled.  It is used to bind the donor token
     /// file to this specific machine so that copying both SimTools.ini and
-    /// SimTools.token to another PC fails the machine-identity check.
+    /// donor.token to another PC fails the machine-identity check.
     /// </summary>
     internal static class MachineIdentity
     {

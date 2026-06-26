@@ -1,4 +1,9 @@
-﻿using System;
+﻿// SimTools
+// Main Application
+// SimTools Easter Egg (Coding With Dyslexia) Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Collections.Generic;

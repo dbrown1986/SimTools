@@ -1,3 +1,10 @@
+// SimTools
+// Main Application
+// SimTools Gameplay Fixes Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+// 'ERE'S THE BEEF! This is where the meat is. The bulkiest bit of fixes for The Sims 3, all in one place.
+
 using NAudio.SoundFont;
 using System;
 using System.Collections.Generic;

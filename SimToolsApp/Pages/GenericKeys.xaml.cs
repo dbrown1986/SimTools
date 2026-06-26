@@ -1,3 +1,10 @@
+// SimTools
+// Main Application
+// SimTools Games Key Generator Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+// Risky business, this. Could be removed in future vesions of SimTools.
+
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;

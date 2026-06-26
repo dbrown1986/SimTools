@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// SimTools Game Path Configuration Variables
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using System.IO;
 
 namespace SimTools

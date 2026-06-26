@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿// SimTools
+// Main Application
+// Download Helper Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+using System.Windows;
 
 namespace SimTools;
 

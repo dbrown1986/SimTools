@@ -13,7 +13,7 @@ namespace SimTools
     /// Allows a donor to enter their personalisation key.
     ///
     /// On success the key is validated in memory, the decoded names are written
-    /// to the machine-locked token file (SimTools.token), and the key is then
+    /// to the machine-locked token file (donor.token), and the key is then
     /// discarded — it is never stored to disk in any form.
     /// </summary>
     public partial class UnlockPersonalizationDialog : Window
