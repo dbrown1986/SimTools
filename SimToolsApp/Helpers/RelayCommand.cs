@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Lambda Delegation
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using System;
 using System.Windows.Input;
 

@@ -1,3 +1,8 @@
+// SimTools
+// Installer
+// Main Program Definition File
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using System;
 using System.Windows.Forms; // This fixes the 'Application' error
 

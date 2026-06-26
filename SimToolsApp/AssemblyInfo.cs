@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Main Application Assembly Info File
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using System.Windows;
 
 [assembly: ThemeInfo(

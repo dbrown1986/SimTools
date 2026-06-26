@@ -1,4 +1,9 @@
-﻿using System;
+﻿// SimTools
+// Main Application
+// Main Application Definition File
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Loader;

@@ -1,4 +1,9 @@
-﻿namespace SimToolsInstaller
+﻿// SimTools
+// Installer
+// Main Window Designer Code
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+namespace SimToolsInstaller
 {
     partial class MainWindow
     {
@@ -232,7 +237,7 @@
             lblLicenseDesc.Location = new System.Drawing.Point(138, 59);
             lblLicenseDesc.MaximumSize = new System.Drawing.Size(540, 0);
             lblLicenseDesc.Name = "lblLicenseDesc";
-            lblLicenseDesc.Size = new System.Drawing.Size(306, 15);
+            lblLicenseDesc.Size = new System.Drawing.Size(310, 15);
             lblLicenseDesc.TabIndex = 1;
             lblLicenseDesc.Text = "Please review the license terms before installing SimTools.";
             // 
@@ -251,7 +256,7 @@
             radAgree.AutoSize = true;
             radAgree.Location = new System.Drawing.Point(138, 312);
             radAgree.Name = "radAgree";
-            radAgree.Size = new System.Drawing.Size(126, 19);
+            radAgree.Size = new System.Drawing.Size(127, 19);
             radAgree.TabIndex = 3;
             radAgree.Text = "I agree to the terms";
             // 
@@ -321,7 +326,7 @@
             lblArchTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             lblArchTitle.Location = new System.Drawing.Point(144, 20);
             lblArchTitle.Name = "lblArchTitle";
-            lblArchTitle.Size = new System.Drawing.Size(206, 30);
+            lblArchTitle.Size = new System.Drawing.Size(210, 30);
             lblArchTitle.TabIndex = 0;
             lblArchTitle.Text = "Select Architecture";
             // 
@@ -331,7 +336,7 @@
             lblArchDesc.Location = new System.Drawing.Point(144, 60);
             lblArchDesc.MaximumSize = new System.Drawing.Size(540, 0);
             lblArchDesc.Name = "lblArchDesc";
-            lblArchDesc.Size = new System.Drawing.Size(392, 15);
+            lblArchDesc.Size = new System.Drawing.Size(395, 15);
             lblArchDesc.TabIndex = 1;
             lblArchDesc.Text = "Please select the version of SimTools you wish to install based on your OS.";
             // 
@@ -340,7 +345,7 @@
             rad64Bit.AutoSize = true;
             rad64Bit.Location = new System.Drawing.Point(144, 197);
             rad64Bit.Name = "rad64Bit";
-            rad64Bit.Size = new System.Drawing.Size(86, 19);
+            rad64Bit.Size = new System.Drawing.Size(85, 19);
             rad64Bit.TabIndex = 2;
             rad64Bit.Text = "64-Bit (x64)";
             // 
@@ -349,7 +354,7 @@
             rad32Bit.AutoSize = true;
             rad32Bit.Location = new System.Drawing.Point(144, 98);
             rad32Bit.Name = "rad32Bit";
-            rad32Bit.Size = new System.Drawing.Size(84, 19);
+            rad32Bit.Size = new System.Drawing.Size(85, 19);
             rad32Bit.TabIndex = 3;
             rad32Bit.Text = "32-Bit (x86)";
             // 
@@ -492,7 +497,7 @@
             lblReadyTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             lblReadyTitle.Location = new System.Drawing.Point(146, 20);
             lblReadyTitle.Name = "lblReadyTitle";
-            lblReadyTitle.Size = new System.Drawing.Size(172, 30);
+            lblReadyTitle.Size = new System.Drawing.Size(173, 30);
             lblReadyTitle.TabIndex = 0;
             lblReadyTitle.Text = "Ready to Install";
             // 
@@ -546,7 +551,7 @@
             lblCurrentFile.AutoSize = true;
             lblCurrentFile.Location = new System.Drawing.Point(149, 93);
             lblCurrentFile.Name = "lblCurrentFile";
-            lblCurrentFile.Size = new System.Drawing.Size(136, 15);
+            lblCurrentFile.Size = new System.Drawing.Size(137, 15);
             lblCurrentFile.TabIndex = 1;
             lblCurrentFile.Text = "Preparing to download...";
             // 
@@ -613,7 +618,7 @@
             lblInterruptTitle.ForeColor = System.Drawing.Color.Red;
             lblInterruptTitle.Location = new System.Drawing.Point(147, 20);
             lblInterruptTitle.Name = "lblInterruptTitle";
-            lblInterruptTitle.Size = new System.Drawing.Size(250, 30);
+            lblInterruptTitle.Size = new System.Drawing.Size(256, 30);
             lblInterruptTitle.TabIndex = 0;
             lblInterruptTitle.Text = "Installation Interrupted";
             // 
@@ -667,7 +672,7 @@
             lblCompleteDesc.Location = new System.Drawing.Point(156, 93);
             lblCompleteDesc.MaximumSize = new System.Drawing.Size(540, 0);
             lblCompleteDesc.Name = "lblCompleteDesc";
-            lblCompleteDesc.Size = new System.Drawing.Size(300, 15);
+            lblCompleteDesc.Size = new System.Drawing.Size(304, 15);
             lblCompleteDesc.TabIndex = 1;
             lblCompleteDesc.Text = "SimTools has been successfully installed on your system.";
             // 
@@ -676,7 +681,7 @@
             chkRun.AutoSize = true;
             chkRun.Location = new System.Drawing.Point(156, 248);
             chkRun.Name = "chkRun";
-            chkRun.Size = new System.Drawing.Size(121, 19);
+            chkRun.Size = new System.Drawing.Size(123, 19);
             chkRun.TabIndex = 2;
             chkRun.Text = "Run SimTools now";
             // 

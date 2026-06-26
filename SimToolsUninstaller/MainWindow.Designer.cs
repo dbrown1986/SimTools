@@ -1,4 +1,9 @@
-﻿namespace SimToolsUninstaller
+﻿// SimTools
+// Uninstaller
+// Main Window Designer Code
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+namespace SimToolsUninstaller
 {
     partial class MainWindow
     {

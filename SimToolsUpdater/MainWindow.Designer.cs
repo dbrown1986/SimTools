@@ -1,4 +1,9 @@
-﻿using System.Windows.Forms;
+﻿// SimTools
+// Uninstaller
+// Main Window Designer Code
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using Font = System.Drawing.Font;

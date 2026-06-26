@@ -11,7 +11,10 @@ using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+
 // Add these two aliases to resolve the ambiguity:
 using Button = System.Windows.Controls.Button;
 using Image = System.Windows.Controls.Image;
@@ -100,7 +103,7 @@ namespace SimTools
 
             return false;
         }
-
+                
         // Populates the VersionInfo TextBlock with dynamic copyright year and build version
         private void PopulateVersionInfo()
         {
@@ -653,9 +656,207 @@ namespace SimTools
 
             // ── Best In-Game Settings for TS3 ─────────────────────────────────────────
             var ts3_bestSettings = new MenuItem { Header = "Best In-Game Settings" };
-            ts3_bestSettings.Click += (_, _) =>
+            ts3_bestSettings.Click += (sender, e) =>
             {
-                OpenUrl("https://simtools-app.com/best-in-game-settings-ts3");
+                // 1. Prompt the user with a Yes/No option
+                MessageBoxResult result = MessageBox.Show(
+                    "Would you like SimTools to automatically apply the optimal performance and stability settings directly to your configuration?\n\n" +
+                    "Click 'Yes' to automatically tweak options (Disables interactive loading screens, memories bloat, tutorial notifications, and the in-game store).\n" +
+                    "Click 'No' to open the online manual guide instead.",
+                    "Apply Optimal Settings Automatically?",
+                    MessageBoxButton.YesNoCancel,
+                    MessageBoxImage.Question
+                );
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        // Use GamePaths to pull the user's custom directory safely
+                        string baseDir;
+
+                        // Adjust this property name if your GamePaths class names it differently (e.g., Sims3User)
+                        if (GamePaths.IsConfigured(GamePaths.Sims3UserData))
+                        {
+                            baseDir = GamePaths.Sims3UserData;
+                        }
+                        else
+                        {
+                            // Clean fallback to standard Electronic Arts location if not tracked/configured in SimTools.ini yet
+                            baseDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Electronic Arts", "The Sims 3");
+                        }
+
+                        string filePath = Path.Combine(baseDir, "Options.ini");
+
+                        // 2. If the file does not exist, initialize it safely using your folder creator utility
+                        if (!File.Exists(filePath))
+                        {
+                            // GamePaths.Resolve automatically runs Directory.CreateDirectory under the hood
+                            GamePaths.Resolve(baseDir, "Options.ini");
+
+                            string originalDefaults = @"[options]
+edgescrolling = 0
+winterenabled = 1
+videocapturesound = 0
+agingstagelengthyoungadult = 21
+agingstagelengthdogelder = 0
+springlength = 7
+terrainquality = 1
+enableintrotutorial = 1
+hailenabled = 1
+voicelevel = 255
+edgescrollingwarning = 1
+soundfxlevel = 255
+agingstagelengthtoddler = 7
+edgesmoothing = 0
+twelvehourclock = 1
+agingstagelengthadult = 21
+winterlength = 7
+agingstagelengthhorseadult = 0
+petautonomylevel = 2
+showplacementgrid = 0
+agingstagelengthkitten = 0
+enabletutorial = 1
+agingstagelengthpuppy = 0
+falllength = 7
+disableautonomyforselectedsim = 0
+visualeffects = 2
+suppressopportunitydialogswarningproducts = 0
+ambientlevel = 255
+receiveddevgift = 0
+lunarcyclelength = 3
+nummaxactivelotoptions = 6
+enablepets = 1
+snowenabled = 1
+agingstagelengthdogadult = 0
+musiclevel = 255
+springenabled = 1
+enableaging = 1
+audioquality = 1
+focusmute = 1
+agingstagelengthcatadult = 0
+iscelcius = 0
+maxactivelots = 1
+objecthiding = 1
+resolution = 1024 768 60
+receiveconnecttns = 1
+requireloginbeforeload = 0
+simquality = 2
+inverthorizontalrotation = 0
+autonomylevel = 2
+fallenabled = 1
+invertverticalrotation = 0
+lightingquality = 2
+agingstagelengthhorseelder = 0
+enabletombresets = 1
+videocapturehideui = 1
+soundfxmute = 0
+enablelunarcycle = 1
+enablefairies = 1
+rainenabled = 1
+videocapturesize = 1
+fullscreen = 1
+enablevampires = 1
+agingstagelengthelder = 17
+agingstagelengthfoal = 0
+enableinteractiveloading = 1
+aspectratio = 0
+enablelunarphase = 0
+aginginterval = 2
+supressopportunitydialogs = 0
+agingstagelengthbaby = 3
+videocapturequality = 2
+enablewitches = 1
+videocapturetime = 60
+treequality = 1
+lastdevice = 0;10de;0a75;4174
+musicmute = 0
+lunarphaselength = 0
+agingstagelengthchild = 7
+enablememories = 1
+advancedrendering = 1
+pseudoresolution = 0,0
+enableingamestore = 1
+audiooutputmode = 1
+enablestoryprogression = 1
+summerlength = 7
+drawdistance = 2
+summerenabled = 1
+postfilterflags = 0
+fogenabled = 1
+forcesquarepixels = 1
+enablewerewolves = 1
+simwhileminimized = 0
+enableoptoutceleb = 0
+agingstagelengthcatelder = 0
+agingstagelengthteen = 14
+generalreflections = 1
+enabletelemetry = 1
+enablehorses = 1
+ambientmute = 0
+voicemute = 0
+enablecelebrities = 1
+texturequality = 2
+animationsmoothing = 0";
+
+                            File.WriteAllText(filePath, originalDefaults);
+                        }
+
+                        // 3. Process existing file line-by-line to apply changes while preserving custom settings
+                        var targetKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "enabletutorial", "0" },
+                { "receiveconnecttns", "0" },
+                { "enableinteractiveloading", "0" },
+                { "enablememories", "3" },
+                { "enableingamestore", "0" }
+            };
+
+                        var processedLines = new List<string>();
+                        var modifiedKeysTracked = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                        string[] currentLines = File.ReadAllLines(filePath);
+                        foreach (var line in currentLines)
+                        {
+                            string cleanLine = line.Trim();
+                            if (!cleanLine.StartsWith(";") && cleanLine.Contains('='))
+                            {
+                                int index = cleanLine.IndexOf('=');
+                                string key = cleanLine.Substring(0, index).Trim();
+
+                                if (targetKeys.ContainsKey(key))
+                                {
+                                    processedLines.Add($"{key} = {targetKeys[key]}");
+                                    modifiedKeysTracked.Add(key);
+                                    continue;
+                                }
+                            }
+                            processedLines.Add(line);
+                        }
+
+                        // Append modifications if keys are entirely missing from a custom config
+                        foreach (var kvp in targetKeys)
+                        {
+                            if (!modifiedKeysTracked.Contains(kvp.Key))
+                            {
+                                processedLines.Add($"{kvp.Key} = {kvp.Value}");
+                            }
+                        }
+
+                        File.WriteAllLines(filePath, processedLines);
+
+                        MessageBox.Show("Performance improvements applied successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to modify options file: {ex.Message}", "Configuration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    // 4. Fallback to open the original guide if they declined automatic utility injection
+                    OpenUrl("https://simtools-app.com/best-in-game-settings-ts3");
+                }
             };
 
             sims3Item.Items.Add(ts3_bestSettings);
@@ -665,27 +866,149 @@ namespace SimTools
 
             var iniItems = new[]
             {
-                ("Limit Game FPS", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning"), "https://simtools-app.com/limit-game-fps-ts3"),
-                ("Allow More CPU Usage", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning"), "https://simtools-app.com/allow-more-cpu-usage-ts3"),
-                ("Allow More GPU Usage", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning"), "https://simtools-app.com/allow-more-gpu-usage-ts3"),
-                ("Clean DCBackup Cache", LanguageManager.Get("Main", "IniTweaks_DeprecatedWarning"), "https://simtools-app.com/clean-dcbackup-ts3"),
-            };
+    ("Limit Game FPS", "https://simtools-app.com/limit-game-fps-ts3"),
+    ("Allow More CPU Usage", "https://simtools-app.com/allow-more-cpu-usage-ts3"),
+    ("Allow More GPU Usage", "https://simtools-app.com/allow-more-gpu-usage-ts3"),
+    ("Clean DCBackup Cache", "https://simtools-app.com/clean-dcbackup-ts3"),
+};
 
-            //            foreach (var (label, warning, url) in iniItems)
-            //            {
-            //                var item = new MenuItem { Header = label };
-            //                item.Click += (_, _) =>
-            //                {
-            //                    var result = MessageBox.Show(warning, "SimTools — Warning",
-            //                        MessageBoxButton.OK, MessageBoxImage.Warning);
-            //
-            //                    if (result == MessageBoxResult.OK)
-            //                        Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-            //                };
-            //                ts3_iniTweaks.Items.Add(item);
-            //            }
+            foreach (var (header, url) in iniItems)
+            {
+                var subItem = new MenuItem { Header = header };
 
-            sims3Item.Items.Add(iniItems);
+                subItem.Click += (sender, e) =>
+                {
+                    // 1. Handle "Clean DCBackup Cache" separately as requested
+                    if (header == "Clean DCBackup Cache")
+                    {
+                        MessageBoxResult result = MessageBox.Show(
+                            "This can be easily and safely accomplished by using the 'Regul Save Cleaner' utility.\n\n" +
+                            "Would you like to open the online guide to read more about cleaning your cache folders?",
+                            "Clean DCBackup Cache",
+                            MessageBoxButton.YesNo,
+                            MessageBoxImage.Information
+                        );
+
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            OpenUrl(url);
+                        }
+                        return;
+                    }
+
+                    // 2. Prompt the user for the other tweaks
+                    string messagePrompt = $"Would you like SimTools to automatically apply the settings for '{header}'?\n\n" +
+                                           "Note: Using the 'Sims3SettingsSetter' mod can also accomplish most of this directly in-game.\n\n" +
+                                           "Click 'Yes' to automatically modify your configuration.\n" +
+                                           "Click 'No' to view the manual optimization guide instead.";
+
+                    MessageBoxResult choice = MessageBox.Show(
+                        messagePrompt,
+                        $"{header} Optimization",
+                        MessageBoxButton.YesNoCancel,
+                        MessageBoxImage.Question
+                    );
+
+                    if (choice == MessageBoxResult.No)
+                    {
+                        OpenUrl(url);
+                        return;
+                    }
+                    else if (choice == MessageBoxResult.Cancel)
+                    {
+                        return;
+                    }
+
+                    // 3. Apply the automated adjustments if user clicked 'Yes'
+                    try
+                    {
+                        // Resolve game path using your centralized GamePaths class
+                        string gameDir = GamePaths.IsConfigured(GamePaths.Sims3Game) ? GamePaths.Sims3Game : "";
+
+                        if (string.IsNullOrWhiteSpace(gameDir))
+                        {
+                            MessageBox.Show(
+                                "The Sims 3 Game Directory path has not been configured in your settings yet. Please set it up in the configuration file first.",
+                                "Path Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+
+                        // Handle "Limit Game FPS" which typically requires driver-level intervention
+                        if (header == "Limit Game FPS")
+                        {
+                            MessageBox.Show(
+                                "Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner) or via DXVK.\n\n" +
+                                "SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware.",
+                                "Driver-Level Configuration Required", MessageBoxButton.OK, MessageBoxImage.Information);
+                            OpenUrl(url);
+                            return;
+                        }
+
+                        // Target the sgr settings layout file inside the main game directory
+                        string sgrPath = Path.Combine(gameDir, "Game", "Bin", "GraphicsRules.sgr");
+                        if (!File.Exists(sgrPath))
+                        {
+                            MessageBox.Show(
+                                "Could not locate 'GraphicsRules.sgr' inside your installation folder.\n\n" +
+                                "Please verify your path selection, or run the game at least once to ensure all game files are fully generated on your disk.",
+                                "File Missing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+
+                        string[] lines = File.ReadAllLines(sgrPath);
+                        bool modified = false;
+
+                        if (header == "Allow More CPU Usage")
+                        {
+                            for (int i = 0; i < lines.Length; i++)
+                            {
+                                string trimLine = lines[i].Trim();
+                                if (trimLine.StartsWith("seti cpuLevelUber")) { lines[i] = "    seti cpuLevelUber 4"; modified = true; }
+                                else if (trimLine.StartsWith("seti cpuLevelHigh")) { lines[i] = "    seti cpuLevelHigh 3"; modified = true; }
+                                else if (trimLine.StartsWith("seti cpuLevelMedium")) { lines[i] = "    seti cpuLevelMedium 3"; modified = true; }
+                                else if (trimLine.StartsWith("seti cpuLevelLow")) { lines[i] = "    seti cpuLevelLow 3"; modified = true; }
+                            }
+                        }
+                        else if (header == "Allow More GPU Usage")
+                        {
+                            for (int i = 0; i < lines.Length; i++)
+                            {
+                                string trimLine = lines[i].Trim();
+                                if (trimLine.StartsWith("seti textureMemory"))
+                                {
+                                    lines[i] = "    seti textureMemory 4096";
+                                    modified = true;
+                                }
+                            }
+                        }
+
+                        if (modified)
+                        {
+                            // Backup original file structure before editing
+                            string backupPath = sgrPath + ".bak";
+                            if (!File.Exists(backupPath))
+                            {
+                                File.Copy(sgrPath, backupPath);
+                            }
+
+                            File.WriteAllLines(sgrPath, lines);
+                            MessageBox.Show($"Successfully updated 'GraphicsRules.sgr' with optimal settings for {header}!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Could not find the target variables inside GraphicsRules.sgr to change. Your file may already be optimized or modified.", "No Changes Made", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An unexpected error occurred while modifying game configuration files:\n{ex.Message}", "Tweak Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                };
+
+                ts3_iniTweaks.Items.Add(subItem);
+            }
+
+            // Add ONLY the main cascading sub-menu item to the parent menu container
             sims3Item.Items.Add(ts3_iniTweaks);
 
             // ── Intel Alder Lake Fix ──────────────────────────────────────────────────

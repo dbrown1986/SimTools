@@ -1,4 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<!--
+SimTools
+Main Application
+Project File
+(C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+-->
+
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<BaseVersion>4.0.1</BaseVersion>
@@ -164,12 +171,11 @@
 		<Resource Include="Images\facebook.png" />
 		<Resource Include="Resources\Fonts\simsun.ttc" />
 		<Resource Include="Resources\Fonts\STENCIL.TTF" />
-		<Resource Include="Resources\Resource.cfg" />
+		<Resource Include="Resources\Resource.cfg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
 		<!-- Generic key lists — one .txt per title, populated separately -->
 		<Resource Include="Resources\Keys\*.txt" />
-		<Resource Include="Resources\sfx01.mp3">
-		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</Resource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -179,9 +185,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Images\Holidays\indpday_nye.gif" />
-	  <None Remove="Images\Holidays\stpd.png" />
-	  <None Remove="Images\Holidays\xmas.png" />
+		<None Remove="Images\Holidays\indpday_nye.gif" />
+		<None Remove="Images\Holidays\stpd.png" />
+		<None Remove="Images\Holidays\xmas.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -194,23 +200,26 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Properties\Settings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Settings.settings</DependentUpon>
-	  </Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="Properties\Settings.settings">
-		  <Generator>SettingsSingleFileGenerator</Generator>
-		  <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
 		<None Update="Resources\Music\Guifrog - Musicolours %28Sims 3%29.m4a">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="Resources\Music\README.txt">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\sfx01.mp3">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 
