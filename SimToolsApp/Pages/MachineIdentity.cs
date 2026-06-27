@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Machine GUID retrieval utility
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using System;
 using Microsoft.Win32;
 

@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Settings Menu Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using System.Collections.Generic;
 using System.Runtime.Versioning;
 using System.Linq;

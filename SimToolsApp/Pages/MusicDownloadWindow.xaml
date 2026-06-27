@@ -1,4 +1,10 @@
-<Window x:Class="SimTools.MusicDownloadWindow"
+<!--
+// SimTools
+// Main Application
+// Music Downloader XAML Design
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.    
+-->
+    <Window x:Class="SimTools.MusicDownloadWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStyle="None"

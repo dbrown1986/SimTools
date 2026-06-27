@@ -1,4 +1,9 @@
-﻿
+﻿// SimTools
+// Main Application
+// Language System Selection Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+// TEST YOUR MIGHT!
 
 using System.Windows;
 using WpfButton = System.Windows.Controls.Button;

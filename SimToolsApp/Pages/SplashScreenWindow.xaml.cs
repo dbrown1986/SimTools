@@ -1,4 +1,9 @@
-﻿using System;
+﻿// SimTools
+// Main Application
+// Splash Screen Window Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;

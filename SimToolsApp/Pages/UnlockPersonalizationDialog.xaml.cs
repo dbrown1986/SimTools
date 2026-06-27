@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Unlock Personalization Dialog Code-Behind
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 using System;
 using System.Net.Http;
 using System.Text;

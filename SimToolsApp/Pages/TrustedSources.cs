@@ -1,3 +1,8 @@
+// SimTools
+// Main Application
+// Trusted Sources for RepoValidator
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
 namespace SimTools
 {
     /// <summary>
