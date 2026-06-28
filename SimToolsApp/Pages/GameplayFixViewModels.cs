@@ -29,13 +29,53 @@ public sealed record GameplayFixItem(
 // ══════════════════════════════════════════════════════════════════════════════
 public sealed class GameplayFixViewModel : INotifyPropertyChanged
 {
-    public string DisplayName      { get; }
-    public string FileName         { get; }
-    public string Url              { get; }
+    public string DisplayName { get; }
+    public string FileName { get; }
+    public string Url { get; }
     public string OnCheckedMessage { get; }
 
     /// <summary>True for real items; false for TBD placeholders (empty FileName).</summary>
     public bool IsActive => !string.IsNullOrEmpty(FileName);
+
+    private bool _isInstalled;
+    public bool IsInstalled
+    {
+        get => _isInstalled;
+        set
+        {
+            if (_isInstalled == value) return;
+            _isInstalled = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(CanCheck));
+            OnPropertyChanged(nameof(DisplayText));
+        }
+    }
+
+    private bool _updateAvailable;
+    public bool UpdateAvailable
+    {
+        get => _updateAvailable;
+        set
+        {
+            if (_updateAvailable == value) return;
+            _updateAvailable = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(CanCheck));
+            OnPropertyChanged(nameof(DisplayText));
+        }
+    }
+
+    public string DisplayText
+    {
+        get
+        {
+            if (UpdateAvailable) return $"{DisplayName} (Update Available)";
+            if (IsInstalled) return $"{DisplayName} (Installed)";
+            return DisplayName;
+        }
+    }
+
+    public bool CanCheck => IsActive && (!IsInstalled || UpdateAvailable);
 
     private bool _isChecked;
     public bool IsChecked
@@ -53,13 +93,18 @@ public sealed class GameplayFixViewModel : INotifyPropertyChanged
     }
 
     public event EventHandler<string>? CheckedMessageRequested;
+    public event EventHandler? RemoveRequested;
+
+    public ICommand RemoveCommand { get; }
 
     public GameplayFixViewModel(GameplayFixItem item)
     {
-        DisplayName      = item.DisplayName;
-        FileName         = item.FileName;
-        Url              = item.Url;
+        DisplayName = item.DisplayName;
+        FileName = item.FileName;
+        Url = item.Url;
         OnCheckedMessage = item.OnCheckedMessage;
+
+        RemoveCommand = new RelayCommand(_ => RemoveRequested?.Invoke(this, EventArgs.Empty));
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -72,9 +117,9 @@ public sealed class GameplayFixViewModel : INotifyPropertyChanged
 // ══════════════════════════════════════════════════════════════════════════════
 public sealed class GameplaySectionViewModel : INotifyPropertyChanged
 {
-    public string                                     Header { get; }
-    public ObservableCollection<GameplayFixViewModel> Items  { get; }
-    public ICommand                                   ToggleAllCommand { get; }
+    public string Header { get; }
+    public ObservableCollection<GameplayFixViewModel> Items { get; }
+    public ICommand ToggleAllCommand { get; }
 
     /// <summary>
     /// Drives the section-header three-state checkbox (OneWay binding).
@@ -95,7 +140,7 @@ public sealed class GameplaySectionViewModel : INotifyPropertyChanged
     public GameplaySectionViewModel(string header, IEnumerable<GameplayFixViewModel> items)
     {
         Header = header;
-        Items  = new ObservableCollection<GameplayFixViewModel>(items);
+        Items = new ObservableCollection<GameplayFixViewModel>(items);
 
         ToggleAllCommand = new RelayCommand(_ =>
         {

@@ -23,7 +23,7 @@ namespace SimTools;
 public partial class GameplayFixesWindow : Window
 {
     // ── State ─────────────────────────────────────────────────────────────────
-    private readonly string                         _sims3Mods;
+    private readonly string _sims3Mods;
     private readonly List<GameplaySectionViewModel> _sections;
 
     // ── Constructor ───────────────────────────────────────────────────────────
@@ -39,16 +39,60 @@ public partial class GameplayFixesWindow : Window
                 var vmItems = s.Items.Select(item =>
                 {
                     var vm = new GameplayFixViewModel(item);
+
+                    // ── Initial scan to see if the mod is already installed ──
+                    if (vm.IsActive && GamePaths.IsConfigured(_sims3Mods))
+                    {
+                        var destPath = Path.Combine(_sims3Mods, vm.FileName);
+                        if (File.Exists(destPath))
+                        {
+                            vm.IsInstalled = true;
+                            // Silently check for newer version on the server
+                            CheckUpdateAsync(vm, destPath, AppSettings.ResolveUrl(vm.Url));
+                        }
+                    }
+
                     if (!string.IsNullOrEmpty(item.OnCheckedMessage))
                     {
-                        var msg   = item.OnCheckedMessage;
+                        var msg = item.OnCheckedMessage;
                         var title = item.DisplayName;
                         vm.CheckedMessageRequested += (_, _) =>
                             WpfMessageBox.Show(msg, title,
                                 MessageBoxButton.OK, MessageBoxImage.Information);
                     }
+
+                    // ── Handle Mod Removal Request ──
+                    vm.RemoveRequested += (sender, args) =>
+                    {
+                        var result = WpfMessageBox.Show(
+                            LanguageManager.Format("GameplayFix", "RemoveConfirm", $"Are you sure you want to remove the mod '{vm.DisplayName}'?"),
+                            LanguageManager.Get("GameplayFix", "RemoveTitle", "Confirm Removal"),
+                            MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            var destPath = Path.Combine(_sims3Mods, vm.FileName);
+                            if (File.Exists(destPath))
+                            {
+                                try
+                                {
+                                    File.Delete(destPath);
+                                    vm.IsInstalled = false;
+                                    vm.UpdateAvailable = false;
+                                }
+                                catch (Exception ex)
+                                {
+                                    WpfMessageBox.Show(
+                                        LanguageManager.Format("GameplayFix", "RemoveError", $"Failed to delete file: {ex.Message}"),
+                                        LanguageManager.Get("GameplayFix", "ErrorTitle", "Error"),
+                                        MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+                        }
+                    };
+
                     return vm;
-                });
+                }).ToList();
                 return new GameplaySectionViewModel(s.Header, vmItems);
             })
             .ToList();
@@ -58,7 +102,33 @@ public partial class GameplayFixesWindow : Window
 
     // ── Helpers ───────────────────────────────────────────────────────────────
     private IEnumerable<GameplayFixViewModel> AllActiveItems()
-        => _sections.SelectMany(s => s.Items).Where(i => i.IsActive);
+        => _sections.SelectMany(s => s.Items).Where(i => i.CanCheck);
+
+    private async void CheckUpdateAsync(GameplayFixViewModel vm, string localPath, string url)
+    {
+        try
+        {
+            using var hc = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+            using var hr = await hc.SendAsync(new HttpRequestMessage(HttpMethod.Head, url));
+
+            if (hr.IsSuccessStatusCode)
+            {
+                var remoteDate = hr.Content.Headers.LastModified;
+                if (remoteDate.HasValue)
+                {
+                    var localDate = File.GetLastWriteTimeUtc(localPath);
+                    if (remoteDate.Value.UtcDateTime > localDate.AddSeconds(5))
+                    {
+                        Dispatcher.Invoke(() => vm.UpdateAvailable = true);
+                    }
+                }
+            }
+        }
+        catch
+        {
+            // Silent failure for background checks (e.g. no internet)
+        }
+    }
 
     // ── Global Select All ─────────────────────────────────────────────────────
     private void GlobalSelectAll_Click(object sender, RoutedEventArgs e)
@@ -107,7 +177,7 @@ public partial class GameplayFixesWindow : Window
 
         var toDownload = _sections
             .SelectMany(s => s.Items)
-            .Where(i => i.IsChecked && !string.IsNullOrEmpty(i.FileName))
+            .Where(i => i.IsChecked && i.CanCheck && !string.IsNullOrEmpty(i.FileName))
             .ToList();
 
         if (toDownload.Count == 0)
@@ -129,7 +199,7 @@ public partial class GameplayFixesWindow : Window
         {
             foreach (var item in toDownload)
             {
-                var url      = AppSettings.ResolveUrl(item.Url);
+                var url = AppSettings.ResolveUrl(item.Url);
                 var destPath = Path.Combine(_sims3Mods, item.FileName);
 
                 var dir = Path.GetDirectoryName(destPath);
@@ -160,7 +230,13 @@ public partial class GameplayFixesWindow : Window
                     catch { /* HEAD unavailable — keep local copy */ }
                 }
 
-                if (!needsDownload) { skipped++; continue; }
+                if (!needsDownload)
+                {
+                    skipped++;
+                    item.IsInstalled = true;
+                    item.UpdateAvailable = false;
+                    continue;
+                }
 
                 // ── Download ──────────────────────────────────────────────────
                 var progressWindow = new DownloadProgressWindow(item.FileName) { Owner = this };
@@ -168,20 +244,20 @@ public partial class GameplayFixesWindow : Window
 
                 try
                 {
-                    using var http     = new HttpClient();
+                    using var http = new HttpClient();
                     using var response = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
                     response.EnsureSuccessStatusCode();
 
-                    var   remoteLastModified = response.Content.Headers.LastModified;
-                    long? totalBytes         = response.Content.Headers.ContentLength;
+                    var remoteLastModified = response.Content.Headers.LastModified;
+                    long? totalBytes = response.Content.Headers.ContentLength;
 
                     await using var contentStream = await response.Content.ReadAsStreamAsync();
-                    await using var fileStream    = new FileStream(
+                    await using var fileStream = new FileStream(
                         destPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
 
-                    var  buffer      = new byte[8192];
-                    long bytesRead   = 0;
-                    int  lastPercent = 0, chunk;
+                    var buffer = new byte[8192];
+                    long bytesRead = 0;
+                    int lastPercent = 0, chunk;
 
                     while ((chunk = await contentStream.ReadAsync(buffer)) > 0)
                     {
@@ -207,6 +283,9 @@ public partial class GameplayFixesWindow : Window
                         File.SetLastWriteTimeUtc(destPath, remoteLastModified.Value.UtcDateTime);
 
                     downloaded++;
+                    item.IsInstalled = true;
+                    item.UpdateAvailable = false;
+                    item.IsChecked = false;
                 }
                 catch (Exception ex)
                 {
@@ -452,7 +531,7 @@ public partial class GameplayFixesWindow : Window
         });
     }
 
-        // Called on load and by SettingsWindow after a language change
+    // Called on load and by SettingsWindow after a language change
     public void ApplyLanguage()
     {
         // ── RTL / LTR layout direction ─────────────────────────────────────
@@ -468,4 +547,3 @@ public partial class GameplayFixesWindow : Window
         GlobalSelectAll.Content = LanguageManager.Get("GameplayFix", "GlobalSelectAll", "Select All");
     }
 }
-
