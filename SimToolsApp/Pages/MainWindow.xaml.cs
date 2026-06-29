@@ -318,12 +318,24 @@ namespace SimTools
                 Header = LanguageManager.Get("Main", "GPU_Sims3", "The Sims 3")
             };
 
-            //            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
-            //            sims3_gpuAddon.Click += (_, _) => DownloadAndOpenExe(
-            //                url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
-            //                fileName: "TS3_GPU_Addon.exe",
-            //                downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
-            //            );
+            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
+            sims3_gpuAddon.Click += (_, _) =>
+            {
+                var result = MessageBox.Show(
+                    LanguageManager.Get("Main", "DXVK_GPU_Warning", "DXVK has replaced the GPU Addon, however; DXVK does not support all GPU's. The GPU Addon has been included in the event that you experience issues with DXVK."),
+                    LanguageManager.Get("Main", "DXVK_GPU_Warning_Title", "SimTools — GPU Addon Warning"),
+                    MessageBoxButton.OKCancel,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    DownloadAndOpenExe(
+                        url: "%baseurl%/Sideload-Apps/x86/TS3_GPU_Addon.exe",
+                        fileName: "TS3_GPU_Addon.exe",
+                        downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
+                    );
+                }
+            };
 
             var sims3_dxvk = new MenuItem { Header = "DXVK" };
             sims3_dxvk.Click += async (_, _) =>
@@ -378,7 +390,7 @@ namespace SimTools
                     destFilePath: dxvkConfPath);
             };
 
-            //            sims3Item.Items.Add(sims3_gpuAddon);
+            sims3Item.Items.Add(sims3_gpuAddon);
             sims3Item.Items.Add(sims3_dxvk);
 
             contextMenu.Items.Add(sims2Item);
