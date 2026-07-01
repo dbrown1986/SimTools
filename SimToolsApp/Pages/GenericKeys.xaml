@@ -154,10 +154,15 @@
             </Button.Style>
         </Button>
         <TextBlock x:Name="KeysInfoText_Copy"
-            HorizontalAlignment="Center" Margin="0,332,0,0"
+            HorizontalAlignment="Center" Margin="0,325,0,0"
             TextWrapping="Wrap" VerticalAlignment="Top"
             Width="352" Height="32"
             FontFamily="Tahoma" FontWeight="Bold" TextAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"><Run Text="These keys will not work for online registration."/><LineBreak/><Run Text="They will only allow for installation from retail discs."/></TextBlock>
+        <TextBlock x:Name="CopyWarning"
+            HorizontalAlignment="Center" Margin="0,360,0,0"
+            TextWrapping="Wrap" VerticalAlignment="Top"
+            Width="352" Height="58"
+            FontFamily="Tahoma" FontWeight="Bold" TextAlignment="Center" Foreground="#FFAF3D3D" Text="If you are running software that captures the screen or screenshots in the background, using the COPY button may crash SimTools. If such is the case, select the key manually and copy and paste it manually."/>
 
     </Grid>
 </Window>

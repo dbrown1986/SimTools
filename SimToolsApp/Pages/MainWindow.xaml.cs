@@ -108,7 +108,7 @@ namespace SimTools
 
             return false;
         }
-                
+
         // Populates the VersionInfo TextBlock with dynamic copyright year and build version
         private void PopulateVersionInfo()
         {
@@ -169,7 +169,7 @@ namespace SimTools
             ThanksButton.Content = LanguageManager.Get("Main", "Thanks_Button", "Acknowledgements");
             WarningButton.Content = LanguageManager.Get("Main", "Warning_Button", "IMPORTANT NOTICE!");
             SimPortButton.Content = LanguageManager.Get("Main", "SimPort_Button", "Add Me on SimPort");
-            
+
             // ── Rebuild context menus with localised headers ────────────────────
             SetupGPUContextMenu();
             SetupTweakContextMenu();
@@ -614,7 +614,7 @@ namespace SimTools
             // ── The Sims 2 ────────────────────────────────────────────────────────────
             var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("Main", "GPU_Sims2", "The Sims 2") };
 
-        
+
 
             var sims2_rpc = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2RPC.ico"), Header = LanguageManager.Get("Main", "Sims2RPC", "Sims2RPC") };
             sims2_rpc.Click += (_, _) =>
@@ -958,7 +958,7 @@ animationsmoothing = 0";
                         if (header == LanguageManager.Get("Main", "LimitFPSHeader", "Limit Game FPS"))
                         {
                             MessageBox.Show(
-                                LanguageManager.Get("Main","LimitFPSTip", "Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner) or via DXVK.\n\n SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware."),
+                                LanguageManager.Get("Main", "LimitFPSTip", "Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner) or via DXVK.\n\n SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware."),
                                 LanguageManager.Get("Main", "LimitFPSTip_Title", "Driver-Level Configuration Required"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
@@ -1097,9 +1097,9 @@ animationsmoothing = 0";
 
                 Process.Start(new ProcessStartInfo
                 {
-                    FileName         = patchExe,
+                    FileName = patchExe,
                     WorkingDirectory = gameDir,
-                    UseShellExecute  = true
+                    UseShellExecute = true
                 });
             };
             sims3Item.Items.Add(ts3_alderLake);
@@ -1372,12 +1372,12 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_tinyUI);
 
             // ── Sweet Treats Conversion Guide ─────────────────────────────────────────
-            var ts3_sweetTreats = new MenuItem { Header = LanguageManager.Get("Main","STCG","Sweet Treats Conversion Guide") };
+            var ts3_sweetTreats = new MenuItem { Header = LanguageManager.Get("Main", "STCG", "Sweet Treats Conversion Guide") };
             ts3_sweetTreats.Click += (_, _) => MessageBox.Show(LanguageManager.Get("Main", "STCG_Msg", "Coming Soon..."), LanguageManager.Get("Main", "STCG_Title", "Sweet Treats"));  // ← replace with actual URL
             sims3Item.Items.Add(ts3_sweetTreats);
 
             // ── nRaas Core Mods (sub-menu) ────────────────────────────────────────────
-            var ts3_nraas = new MenuItem { Header = LanguageManager.Get("Main","nRaas_Mods","nRaas Core Mods") };
+            var ts3_nraas = new MenuItem { Header = LanguageManager.Get("Main", "nRaas_Mods", "nRaas Core Mods") };
 
             // Local helper — creates a package download item targeting Sims3Mods/SimTools/Packages
             MenuItem NRaasPackageItem(string header, string fileName)
@@ -1544,7 +1544,7 @@ animationsmoothing = 0";
             if (!GamePaths.IsConfigured(modsPath))
             {
                 // ── Auto-detect: Documents\Electronic Arts\The Sims 3 ────────────
-                string docs    = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 string ts3Root = Path.Combine(docs, "Electronic Arts", "The Sims 3");
                 string candidate = Path.Combine(ts3Root, "Mods");
 
@@ -1635,7 +1635,7 @@ animationsmoothing = 0";
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
-                using (var inStream  = sri.Stream)
+                using (var inStream = sri.Stream)
                 using (var outStream = File.Create(destCfg))
                     inStream.CopyTo(outStream);
 
@@ -1760,17 +1760,12 @@ animationsmoothing = 0";
             // ─────────────────────────────────────────────────────────────────
             // The Sims 2
             // ─────────────────────────────────────────────────────────────────
-            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("BuyTS3","Sims2_Disc","The Sims 2") };
+            var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2") };
 
             // ── Sim Shadow Fix ────────────────────────────────────────────────
-            var sims2_shadowFix = new MenuItem { Header = LanguageManager.Get("BugFixes", "ShadowFix_Menu", "Sim Shadow Fix") };
+            var sims2_shadowFix = new MenuItem { Header = LanguageManager.Get("Main", "ShadowFix_Menu", "Sim Shadow Fix") };
             sims2_shadowFix.Click += async (_, _) =>
             {
-                MessageBox.Show(
-                    LanguageManager.Get("BugFixes", "ShadowFix_Info", "Fixes an issue in The Sims 2 where the shadow appears as a black square."),
-                    LanguageManager.Get("BugFixes", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-
                 if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
                 {
                     MessageBox.Show(
@@ -1779,9 +1774,51 @@ animationsmoothing = 0";
                     return;
                 }
 
+                string shadowFixPath = Path.Combine(GamePaths.Sims2Mods, "simNopke-simShadowFix-maxisMatch.package");
+
+                // Already installed — offer to remove instead of reinstalling
+                if (File.Exists(shadowFixPath))
+                {
+                    var removeResult = MessageBox.Show(
+                        LanguageManager.Get("Main", "ShadowFix_AlreadyInstalled_Remove", "Sim Shadow Fix is already installed. Do you want to remove it?"),
+                        LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (removeResult == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            File.Delete(shadowFixPath);
+
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "ShadowFix_RemovedSuccess", "Sim Shadow Fix has been successfully removed."),
+                                LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "ShadowFix_RemoveError", $"Failed to remove Sim Shadow Fix. Ensure the game is closed.\n\nError: {ex.Message}"),
+                                LanguageManager.Get("Main", "Error_Title", "Error"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                        }
+                    }
+
+                    return;
+                }
+
+                // Not installed — show info and proceed with download
+                MessageBox.Show(
+                    LanguageManager.Get("Main", "ShadowFix_Info", "Fixes an issue in The Sims 2 where the shadow appears as a black square."),
+                    LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
                 await DownloadFileOnly(
                     "%baseurl%/Mods/Sims2/Downloads/simNopke-simShadowFix-maxisMatch.package",
-                    Path.Combine(GamePaths.Sims2Mods, "simNopke-simShadowFix-maxisMatch.package"));
+                    shadowFixPath);
             };
             sims2Item.Items.Add(sims2_shadowFix);
 
@@ -1789,11 +1826,6 @@ animationsmoothing = 0";
             var sims2_brightCas = new MenuItem { Header = "Bright CAS Fix" };
             sims2_brightCas.Click += async (_, _) =>
             {
-                MessageBox.Show(
-                    LanguageManager.Get("BugFixes", "BrightCAS_Info", "This mod fixes the bright Create-A-Sim by toning down the lights a bit."),
-                    LanguageManager.Get("BugFixes", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-
                 if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
                 {
                     MessageBox.Show(
@@ -1802,9 +1834,51 @@ animationsmoothing = 0";
                     return;
                 }
 
+                string brightCasPath = Path.Combine(GamePaths.Sims2Mods, "ld_BrightCASFix.package");
+
+                // Already installed — offer to remove instead of reinstalling
+                if (File.Exists(brightCasPath))
+                {
+                    var removeResult = MessageBox.Show(
+                        LanguageManager.Get("Main", "BrightCAS_AlreadyInstalled_Remove", "Bright CAS Fix is already installed. Do you want to remove it?"),
+                        LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (removeResult == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            File.Delete(brightCasPath);
+
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "BrightCAS_RemovedSuccess", "Bright CAS Fix has been successfully removed."),
+                                LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "BrightCAS_RemoveError", $"Failed to remove Bright CAS Fix. Ensure the game is closed.\n\nError: {ex.Message}"),
+                                LanguageManager.Get("Main", "Error_Title", "Error"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                        }
+                    }
+
+                    return;
+                }
+
+                // Not installed — show info and proceed with download
+                MessageBox.Show(
+                    LanguageManager.Get("Main", "BrightCAS_Info", "This mod fixes the bright Create-A-Sim by toning down the lights a bit."),
+                    LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
                 await DownloadFileOnly(
                     "%baseurl%/Mods/Sims2/Downloads/ld_BrightCASFix.package",
-                    Path.Combine(GamePaths.Sims2Mods, "ld_BrightCASFix.package"));
+                    brightCasPath);
             };
             sims2Item.Items.Add(sims2_brightCas);
 
@@ -1905,7 +1979,7 @@ animationsmoothing = 0";
             // ─────────────────────────────────────────────────────────────────
             // The Sims 4 — placeholder
             // ─────────────────────────────────────────────────────────────────
-            var sims4Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = LanguageManager.Get("BuyTS3","TS4","The Sims 4") };
+            var sims4Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = LanguageManager.Get("BuyTS3", "TS4", "The Sims 4") };
             sims4Item.Click += (_, _) =>
                 MessageBox.Show(
                     LanguageManager.Get("BugFixes", "Sims4_Info", "To be implemented at a later time."),
@@ -1916,8 +1990,8 @@ animationsmoothing = 0";
             // ─────────────────────────────────────────────────────────────────
             // SimCopter → SimCopterX
             // ─────────────────────────────────────────────────────────────────
-            var simCopterItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = LanguageManager.Get("BuyTS3","Copter", "SimCopter") };
-            var simCopterX = new MenuItem { Header = LanguageManager.Get("Tweaks","CopterX","SimCopterX") };
+            var simCopterItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = LanguageManager.Get("BuyTS3", "Copter", "SimCopter") };
+            var simCopterX = new MenuItem { Header = LanguageManager.Get("Tweaks", "CopterX", "SimCopterX") };
             simCopterX.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -1947,7 +2021,7 @@ animationsmoothing = 0";
             // Streets of SimCity → SimStreetsX
             // ─────────────────────────────────────────────────────────────────
             var streetsItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Streets.ico"), Header = LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity") };
-            var simStreetsX = new MenuItem { Header = LanguageManager.Get("Tweaks","StreetsX","SimStreetsX") };
+            var simStreetsX = new MenuItem { Header = LanguageManager.Get("Tweaks", "StreetsX", "SimStreetsX") };
             simStreetsX.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -1976,10 +2050,10 @@ animationsmoothing = 0";
             // ─────────────────────────────────────────────────────────────────
             // SimCity 2000 → SC2kFix + SC2000X
             // ─────────────────────────────────────────────────────────────────
-            var sc2000Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2K.ico"), Header = LanguageManager.Get("BuyTS3","SC2K","SimCity 2000") };
+            var sc2000Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2K.ico"), Header = LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000") };
 
             // ── SC2kFix (ZIP download + extract) ──────────────────────────────
-            var sc2kFix = new MenuItem { Header = LanguageManager.Get("Tweaks","SC2KFix","SC2kFix") };
+            var sc2kFix = new MenuItem { Header = LanguageManager.Get("Tweaks", "SC2KFix", "SC2kFix") };
             sc2kFix.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -2347,7 +2421,7 @@ animationsmoothing = 0";
 
             void InfoThenBrowse(string message, string url)
             {
-                MessageBox.Show(message, LanguageManager.Get("Main","STInfo","SimTools — Information"),
+                MessageBox.Show(message, LanguageManager.Get("Main", "STInfo", "SimTools — Information"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 Browse(url);
             }
@@ -2478,7 +2552,7 @@ animationsmoothing = 0";
             contextMenu.Items.Add(sims3);
 
             // ── The Sims 4 ────────────────────────────────────────────────────
-            var sims4 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = LanguageManager.Get("BuyTS3","TS4","The Sims 4") };
+            var sims4 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = LanguageManager.Get("BuyTS3", "TS4", "The Sims 4") };
             var s4_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 4 on TSR" };
             var s4_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 4 on MTS" };
             s4_tsr.Click += (_, _) => Browse("https://www.thesimsresource.com/downloads/browse/category/sims4/skipsetitems/1/");
@@ -2503,7 +2577,7 @@ animationsmoothing = 0";
             contextMenu.Items.Add(sc4);
 
             // ── SimCity 2013 ──────────────────────────────────────────────────
-            var sc2013 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2013.ico"), Header = LanguageManager.Get("BuyTS3","SC2013","SimCity 2013") };
+            var sc2013 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2013.ico"), Header = LanguageManager.Get("BuyTS3", "SC2013", "SimCity 2013") };
             string sc2013Warning = LanguageManager.Get("SC2013Warnings", "SC2013Warning", "A majority of SimCity 2013 mods will only work in Offline Mode.");
 
             var sc2013_twinzens = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simtropolis.ico"), Header = "Mod Collection by Twinzens" };
@@ -2523,7 +2597,7 @@ animationsmoothing = 0";
             sc2013.Items.Add(sc2013_twinzens);
             sc2013.Items.Add(sc2013_more);
             contextMenu.Items.Add(sc2013);
-            
+
             // ── SimCopter ─────────────────────────────────────────────────────
             var simCopter = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = LanguageManager.Get("BuyTS3", "Copter", "SimCopter") };
             var simCopter_maxis = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/github.ico"), Header = "Maxis Mods" };
@@ -2695,17 +2769,17 @@ animationsmoothing = 0";
         [System.Runtime.Versioning.SupportedOSPlatform("windows")]
         private static void CreateDesktopShortcut(string targetExe, string shortcutName, string description = "")
         {
-            string desktop     = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string shortcutPath = Path.Combine(desktop, shortcutName + ".lnk");
 
-            Type   shellType = Type.GetTypeFromProgID("WScript.Shell")
+            Type shellType = Type.GetTypeFromProgID("WScript.Shell")
                                ?? throw new InvalidOperationException("WScript.Shell is not available.");
-            dynamic shell    = Activator.CreateInstance(shellType)!;
+            dynamic shell = Activator.CreateInstance(shellType)!;
             dynamic shortcut = shell.CreateShortcut(shortcutPath);
 
-            shortcut.TargetPath       = targetExe;
+            shortcut.TargetPath = targetExe;
             shortcut.WorkingDirectory = Path.GetDirectoryName(targetExe) ?? string.Empty;
-            shortcut.Description      = description;
+            shortcut.Description = description;
             shortcut.Save();
         }
 
@@ -2792,8 +2866,8 @@ animationsmoothing = 0";
                 downloadDirectory: binDir);
 
             foreach (var item in new[] { s3pe, s3pack, s3dash, ccmagic })
-            // foreach (var item in new[] { s3pe, s3pack, s3dash, showtime, ccmagic })
-                    sims3.Items.Add(item);
+                // foreach (var item in new[] { s3pe, s3pack, s3dash, showtime, ccmagic })
+                sims3.Items.Add(item);
 
             contextMenu.Items.Add(sims3);
 
