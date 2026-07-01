@@ -1607,7 +1607,7 @@ animationsmoothing = 0";
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var (okSplash, _) = await DownloadFileOnly(
-                    url: "%baseurl%/Mod-Framework/SimToolsSplashscreen.package",    // ← replace
+                    url: "%baseurl%/Framework/SimToolsSplashscreen.package",    // ← replace
                     destFilePath: Path.Combine(simtoolsPkgDir, "SimToolsSplashscreen.package"));
                 if (!okSplash) return;
             }

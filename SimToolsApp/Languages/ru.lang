@@ -53,6 +53,12 @@ ReenabledUpdates=Уведомления об автоматическом обн
 ReenabledUpdates_Title=Сброс проверки обновлений
 Msg_Saved=Настройки успешно сохранены.
 Msg_Reset=Экран выбора языка будет отображен при следующем запуске.
+Btn_Cancel=Отмена
+Btn_Reset=Сбросить — показать выбор языка при следующем запуске
+Btn_Save=Сохранить
+Section_Directories=Каталоги игры и модов
+Section_Language=Язык
+Window_Title=SimTools - Настройки
 
 [Main]
 STInfo=SimTools — Информация
@@ -155,6 +161,91 @@ KeysInfo_Title=SimTools — Общие ключи
 Sims2Game=Каталог игры Sims 2 не настроен.
 Sims2Repository_Complete=Все файлы Sims 2 Legacy Edition Extender успешно загружены.
 Sims2Repository_Title=SimTools — Загрузка завершена
+AllowCPU_01=Разрешить большую нагрузку на ЦП
+AllowGPU_01=Разрешить большую нагрузку на видеокарту
+BIGS_Auto=Хотите, чтобы SimTools автоматически применил оптимальные настройки производительности и стабильности к вашей конфигурации?\n\n Нажмите «Да», чтобы автоматически настроить параметры (отключает интерактивные экраны загрузки, переполнение воспоминаний, обучающие уведомления и внутриигровой магазин).\n Нажмите «Нет», чтобы вместо этого открыть онлайн-руководство.
+BIGS_Auto_Title=Автоматически применить оптимальные настройки?
+BSCleanDC=Очистить кэш DCBackup
+BSLimitFPS=Ограничить FPS игры
+BSMoreCPU=Разрешить большую нагрузку на ЦП
+BSMoreGPU=Разрешить большую нагрузку на видеокарту
+BrightCAS_AlreadyInstalled_Remove=Bright CAS Fix уже установлен. Хотите удалить его?
+BrightCAS_Info=Этот мод исправляет слишком яркий экран создания персонажа, немного приглушая освещение.
+BrightCAS_RemoveError=Не удалось удалить Bright CAS Fix. Убедитесь, что игра закрыта.\n\nОшибка: {0}
+BrightCAS_RemovedSuccess=Bright CAS Fix успешно удалён.
+BrightCAS_Title=Bright CAS Fix — The Sims 2
+CleanDC_01=Очистить кэш DCBackup
+CleanDC_02=Это можно легко и безопасно сделать с помощью утилиты 'Regul Save Cleaner'.\n\n Хотите открыть онлайн-руководство, чтобы узнать больше об очистке папок кэша?
+CleanDC_02_Title=Очистить кэш DCBackup
+DXVK_AlreadyInstalled_Remove=DXVK уже установлен. Хотите удалить его?
+DXVK_GPU_Warning=DXVK заменил GPU-дополнение, однако DXVK поддерживает не все видеокарты. GPU-дополнение оставлено на случай проблем с DXVK.
+DXVK_GPU_Warning_Title=SimTools — Предупреждение о GPU-дополнении
+DXVK_RemoveError=Не удалось удалить DXVK. Убедитесь, что игра закрыта.\n\nОшибка: {0}
+DXVK_RemovedSuccess=DXVK успешно удалён.
+DXVK_Title=DXVK — The Sims 3
+Error_LaunchFailed=Не удалось запустить {0}.
+Error_LaunchTitle=Ошибка выполнения
+GraphicsRulesNotFound=Не удалось найти файл 'GraphicsRules.sgr' в папке установки.\n\n Проверьте выбранный путь или запустите игру хотя бы один раз, чтобы все файлы игры были полностью созданы на диске.
+GraphicsRulesNotFound_Title=Файл отсутствует
+INITweaks=Настройки INI игры
+LDLInstalled=LazyDuchess Launcher уже установлен. Хотите удалить его и восстановить оригинальный лаунчер?
+LDLInstalled_Title=SimTools — Удаление лаунчера
+LauncherRestoreFailure=Не удалось восстановить оригинальный лаунчер: {0}
+LauncherRestoreFailure_Title=Ошибка
+LauncherRestored=Оригинальный лаунчер успешно восстановлен.
+LauncherRestored_Title=Оригинальный лаунчер восстановлен
+LimitFPSHeader=Ограничить FPS игры
+LimitFPSTip=Ограничения частоты кадров должны применяться на уровне драйвера (например, панель управления NVIDIA или RivaTuner) или через DXVK.\n\n Сейчас SimTools откроет подробное руководство о том, как настроить это для вашего графического оборудования.
+LimitFPSTip_Title=Требуется настройка на уровне драйвера
+ModFileFailed=Не удалось изменить файл настроек: {0}
+ModFileFailed_Title=Ошибка конфигурации
+MonoPatcher_AlreadyInstalled=Mono Patcher уже установлен. Хотите удалить его?
+MonoPatcher_RemoveError=Не удалось удалить файл: {0}
+MonoPatcher_Removed=Mono Patcher успешно удалён.
+OtherTweaks=Хотите, чтобы SimTools автоматически применил настройки для «{0}»?\n\n Примечание: мод 'Sims3SettingsSetter' также может выполнить большую часть этого прямо в игре.\n\n Нажмите «Да», чтобы автоматически изменить конфигурацию.\n Нажмите «Нет», чтобы вместо этого посмотреть руководство по ручной оптимизации.
+PerfAutoSuccess=Улучшения производительности успешно применены!
+S3SS_Installed=Sims 3 Settings Setter уже установлен. Хотите удалить его?
+S3SS_Installed_Title=SimTools — Уже установлено
+S3SS_Removal_Failed=Не удалось удалить файл: {0}
+S3SS_Removal_Failed_Title=Ошибка
+S3SS_Removed=Sims 3 Settings Setter удалён.
+S3SS_Removed_Title=SimTools
+STCG_Msg=Скоро…
+STCG_Title=Sweet Treats
+ShadowFix_AlreadyInstalled_Remove=Sim Shadow Fix уже установлен. Хотите удалить его?
+ShadowFix_Info=Исправляет проблему в The Sims 2, из-за которой тень отображается в виде чёрного квадрата.
+ShadowFix_Menu=Исправление тени Sim
+ShadowFix_RemoveError=Не удалось удалить Sim Shadow Fix. Убедитесь, что игра закрыта.\n\nОшибка: {0}
+ShadowFix_RemovedSuccess=Sim Shadow Fix успешно удалён.
+ShadowFix_Title=Исправление тени Sim — The Sims 2
+Sims2Repo_AlreadyInstalled=Файлы The Sims 2 Legacy Edition Extender уже установлены. Хотите удалить их?
+Sims2Repo_RemoveError=Не удалось удалить некоторые файлы. Убедитесь, что игра закрыта.\n\nОшибка: {0}
+Sims2Repo_RemovedSuccess=Файлы успешно удалены.
+Sims2Repo_Title=SimTools — The Sims 2
+Sims3Mods=Каталог модов The Sims 3 не настроен.
+Success_Title=SimTools
+TS3NoDir=Путь к каталогу игры The Sims 3 ещё не настроен. Пожалуйста, настройте его сначала в файле конфигурации.
+TS3NoDir_Title=Ошибка пути
+TSM_SmoothPatch_AlreadyInstalled=LazyDuchess Smooth Patch уже установлен. Хотите удалить его?
+TSM_SmoothPatch_RemoveError=Не удалось удалить файлы патча: {0}
+TSM_SmoothPatch_RemoveTitle=SimTools — Удаление патча
+TSM_SmoothPatch_RemovedSuccess=LazyDuchess Smooth Patch успешно удалён.
+UASI_Exception=Не удалось удалить файл: {0}
+UASI_Exception_Title=SimTools — Ошибка удаления
+UASI_Installed=Ultimate ASI Loader уже установлен. Хотите удалить его?
+UASI_Installed_Title=SimTools — Уже установлено
+UASI_Removed=Ultimate ASI Loader удалён.
+UASI_Removed_Title=SimTools — Ultimate ASI Loader удалён
+nRaas_AlreadyInstalled=Мод «{0}» уже установлен. Хотите удалить его?
+nRaas_RemoveError=Не удалось удалить «{0}»: {1}
+nRaas_RemoveTitle=SimTools — Удаление мода
+nRaas_RemovedSuccess=«{0}» успешно удалён.
+sgrException=Произошла непредвиденная ошибка при изменении файлов конфигурации игры:\n{0}
+sgrException_Title=Ошибка настройки
+sgrFail=Не удалось найти целевые переменные в GraphicsRules.sgr для изменения. Возможно, файл уже оптимизирован или изменён.
+sgrFail_Title=Изменения не внесены
+sgrSuccess=Файл 'GraphicsRules.sgr' успешно обновлён с оптимальными настройками для {0}!
+sgrSuccess_Title=Успешно
 
 [BugFixes]
 ShadowFix_Info=Исправляет ошибку в The Sims 2, из-за которой тени под персонажами отображались в виде черных прямоугольников.
@@ -165,6 +256,8 @@ BrightCAS_Title=Исправление яркости в CAS — The Sims 2
 BrightCAS_Menu=Исправление яркости в CAS
 Sims4_Info=Будет реализовано в будущих обновлениях.
 Sims4_Title=The Sims 4 — Исправления ошибок
+Sims1_Info=Пожалуйста, используйте Simitone в разделе «Настройки игры» для устранения ошибок The Sims 1.
+Sims1_Title=The Sims 1 — Исправление ошибок
 
 [Tweaks]
 PatchDL_Info1=Помогает в загрузке патчей обновлений для физической (дисковой) версии The Sims 3.
@@ -246,6 +339,7 @@ Unlocked_Title=SimTools — Персонализация
 RemoveAsk=Хотите удалить ключ персонализации? Баннер больше не будет отображаться на приветственном экране.
 RemoveAsk_Title=SimTools — Удалить персонализацию
 PersonalizationText=Этот SimTools разработан с любовью для {0} {1}.\nСпасибо за вашу поддержку!
+MachineChanged_Title=SimTools — Персонализация
 
 [BuyTS3]
 BrokenLinksText=Если вы обнаружите неработающие ссылки, отправьте отчет о проблеме (Issue) на GitHub проекта SimTools или напишите в Discord, чтобы мы могли исправить или удалить их.
@@ -450,6 +544,13 @@ EfficientUpgradeNameFix=Исправление названия улучшени
 HaciendaFireplaceFix=Исправление камина «Старая Хасиенда» от Qahne
 NTStairFix=Исправление лестницы «Прошлое и настоящее» от Simsi45
 ProbationMods=Моды на испытательном сроке (в фазе тестирования)
+ErrorTitle=Ошибка
+PaintingStencilsMerged=Исправления трафаретов и картин объединены SimTools
+ProperTraitMoneyTreeFix=Исправление черт характера и денежного дерева объединено SimTools
+RemoveConfirm=Вы уверены, что хотите удалить мод «{0}»?
+RemoveError=Не удалось удалить файл: {0}
+RemoveTitle=Подтвердите удаление
+WalkCycleFix=Правки цикла ходьбы от SimBouquet
 
 [GenericKeysPage]
 TS1LL=The Sims: Ливэн Лардж
@@ -489,6 +590,9 @@ KeysInfo=Используйте кнопку выше, чтобы выбрать
 KeysInfoCopy=Эти ключи не могут быть использованы для онлайн-регистрации. \n Они подходят только для установки с физических носителей (дисков).
 GenerateButton=Генерировать
 CopyButton=Копировать
+CopyWarning=Если у вас работает программа, записывающая экран или делающая скриншоты в фоновом режиме, использование кнопки КОПИРОВАТЬ может привести к сбою SimTools. В этом случае выделите ключ вручную и скопируйте его самостоятельно.
+KeysInfoText_Copy=Эти ключи не подходят для онлайн-регистрации.\n Они позволяют только установку с розничных дисков.
+Sims2_Disc=The Sims 2
 
 [Music]
 Fetching=Получение списка...
@@ -526,3 +630,23 @@ Splashscreen_Ask=Хотите установить кастомный экран
 Splashscreen_Title=SimTools — Кастомный экран загрузки
 ExtractFail=Не удалось извлечь {0}:\n{1}
 ExtractFail_Title=Ошибка извлечения
+[ContextMenu]
+GPU_SimsStories=The Sims Stories
+
+[GameplayFixes]
+NoneSelected=Не выбрано ни одного исправления.
+NoneSelected_Title=Нечего скачивать
+
+[Paths]
+NoGamePath_Title=SimTools — Путь не задан
+Sims3Mods=Каталог модов The Sims 3 не настроен.\nПожалуйста, откройте Настройки и укажите его сначала.
+Title=SimTools — Путь не задан
+
+[RepoSpeed]
+RepoTitle=SimTools — Тест скорости репозитория
+
+[UpdateDL]
+Cancelled=Загрузка отменена.
+Cancelling=Отмена…
+Complete=Загрузка завершена! Запуск установщика…
+

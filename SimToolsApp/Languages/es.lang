@@ -52,6 +52,12 @@ ReenabledUpdates=Se han vuelto a habilitar las notificaciones de actualización 
 ReenabledUpdates_Title=Búsqueda de actualizaciones restablecida
 Msg_Saved=Configuración guardada correctamente.
 Msg_Reset=La pantalla de selección de idioma se mostrará en el próximo inicio.
+Btn_Cancel=Cancelar
+Btn_Reset=Restablecer - Mostrar selección de idioma en el próximo inicio
+Btn_Save=Guardar
+Section_Directories=Directorios de juego y mods
+Section_Language=Idioma
+Window_Title=SimTools - Configuración
 
 [Main]
 STInfo=SimTools — Información
@@ -154,6 +160,91 @@ KeysInfo_Title=SimTools — Claves genéricas
 Sims2Game=Tu directorio del juego Sims 2 no está configurado.
 Sims2Repository_Complete=Todos los archivos de Sims 2 Legacy Edition Extender se han descargado correctamente.
 Sims2Repository_Title=SimTools: descargas completas
+AllowCPU_01=Permitir más uso de CPU
+AllowGPU_01=Permitir más uso de GPU
+BIGS_Auto=¿Deseas que SimTools aplique automáticamente la configuración óptima de rendimiento y estabilidad directamente en tu configuración?\n\n Haz clic en 'Sí' para ajustar automáticamente las opciones (Desactiva las pantallas de carga interactivas, el exceso de recuerdos, las notificaciones del tutorial y la tienda del juego).\n Haz clic en 'No' para abrir la guía en línea en su lugar.
+BIGS_Auto_Title=¿Aplicar configuración óptima automáticamente?
+BSCleanDC=Limpiar caché de DCBackup
+BSLimitFPS=Limitar FPS del juego
+BSMoreCPU=Permitir más uso de CPU
+BSMoreGPU=Permitir más uso de GPU
+BrightCAS_AlreadyInstalled_Remove=Bright CAS Fix ya está instalado. ¿Deseas eliminarlo?
+BrightCAS_Info=Este mod corrige el Crea Un Sim demasiado brillante atenuando un poco las luces.
+BrightCAS_RemoveError=No se pudo eliminar Bright CAS Fix. Asegúrate de que el juego esté cerrado.\n\nError: {0}
+BrightCAS_RemovedSuccess=Bright CAS Fix se ha eliminado correctamente.
+BrightCAS_Title=Bright CAS Fix — Los Sims 2
+CleanDC_01=Limpiar caché de DCBackup
+CleanDC_02=Esto se puede hacer de forma fácil y segura utilizando la utilidad 'Regul Save Cleaner'.\n\n ¿Deseas abrir la guía en línea para saber más sobre cómo limpiar tus carpetas de caché?
+CleanDC_02_Title=Limpiar caché de DCBackup
+DXVK_AlreadyInstalled_Remove=DXVK ya está instalado. ¿Deseas eliminarlo?
+DXVK_GPU_Warning=DXVK ha reemplazado al complemento de GPU; sin embargo, DXVK no es compatible con todas las GPU. Se ha incluido el complemento de GPU por si tienes problemas con DXVK.
+DXVK_GPU_Warning_Title=SimTools — Advertencia del complemento de GPU
+DXVK_RemoveError=No se pudo eliminar DXVK. Asegúrate de que el juego esté cerrado.\n\nError: {0}
+DXVK_RemovedSuccess=DXVK se ha eliminado correctamente.
+DXVK_Title=DXVK — Los Sims 3
+Error_LaunchFailed=No se pudo iniciar {0}.
+Error_LaunchTitle=Error de ejecución
+GraphicsRulesNotFound=No se pudo localizar 'GraphicsRules.sgr' dentro de tu carpeta de instalación.\n\n Verifica tu selección de ruta, o ejecuta el juego al menos una vez para asegurarte de que todos los archivos del juego se generen completamente en tu disco.
+GraphicsRulesNotFound_Title=Archivo faltante
+INITweaks=Ajustes del INI del juego
+LDLInstalled=El LazyDuchess Launcher está actualmente instalado. ¿Deseas eliminarlo y restaurar el lanzador original?
+LDLInstalled_Title=SimTools — Eliminar lanzador
+LauncherRestoreFailure=No se pudo restaurar el lanzador original: {0}
+LauncherRestoreFailure_Title=Error
+LauncherRestored=Lanzador original restaurado correctamente.
+LauncherRestored_Title=Lanzador original restaurado
+LimitFPSHeader=Limitar FPS del juego
+LimitFPSTip=Los límites de fotogramas deben aplicarse a nivel del controlador (por ejemplo, el Panel de control de NVIDIA o RivaTuner) o mediante DXVK.\n\n SimTools abrirá ahora la guía manual que detalla exactamente cómo configurar esto para tu hardware gráfico específico.
+LimitFPSTip_Title=Se requiere configuración a nivel del controlador
+ModFileFailed=No se pudo modificar el archivo de opciones: {0}
+ModFileFailed_Title=Error de configuración
+MonoPatcher_AlreadyInstalled=Mono Patcher ya está instalado. ¿Deseas eliminarlo?
+MonoPatcher_RemoveError=No se pudo eliminar el archivo: {0}
+MonoPatcher_Removed=Mono Patcher se ha eliminado correctamente.
+OtherTweaks=¿Deseas que SimTools aplique automáticamente la configuración de '{0}'?\n\n Nota: El mod 'Sims3SettingsSetter' también puede realizar la mayor parte de esto directamente en el juego.\n\n Haz clic en 'Sí' para modificar automáticamente tu configuración.\n Haz clic en 'No' para ver en su lugar la guía de optimización manual.
+PerfAutoSuccess=¡Mejoras de rendimiento aplicadas con éxito!
+S3SS_Installed=El Sims 3 Settings Setter ya está instalado. ¿Deseas eliminarlo?
+S3SS_Installed_Title=SimTools — Ya instalado
+S3SS_Removal_Failed=No se pudo eliminar el archivo: {0}
+S3SS_Removal_Failed_Title=Error
+S3SS_Removed=Sims 3 Settings Setter ha sido eliminado.
+S3SS_Removed_Title=SimTools
+STCG_Msg=Próximamente…
+STCG_Title=Sweet Treats
+ShadowFix_AlreadyInstalled_Remove=Sim Shadow Fix ya está instalado. ¿Deseas eliminarlo?
+ShadowFix_Info=Corrige un problema en Los Sims 2 donde la sombra aparece como un cuadrado negro.
+ShadowFix_Menu=Corrección de sombra del Sim
+ShadowFix_RemoveError=No se pudo eliminar Sim Shadow Fix. Asegúrate de que el juego esté cerrado.\n\nError: {0}
+ShadowFix_RemovedSuccess=Sim Shadow Fix se ha eliminado correctamente.
+ShadowFix_Title=Corrección de sombra del Sim — Los Sims 2
+Sims2Repo_AlreadyInstalled=Los archivos de The Sims 2 Legacy Edition Extender ya están instalados. ¿Deseas eliminarlos?
+Sims2Repo_RemoveError=No se pudieron eliminar algunos archivos. Asegúrate de que el juego esté cerrado.\n\nError: {0}
+Sims2Repo_RemovedSuccess=Los archivos se han eliminado correctamente.
+Sims2Repo_Title=SimTools — Los Sims 2
+Sims3Mods=Tu directorio de mods de Los Sims 3 no está configurado.
+Success_Title=SimTools
+TS3NoDir=La ruta del directorio del juego Los Sims 3 aún no se ha configurado en tus ajustes. Por favor, configúrala primero en el archivo de configuración.
+TS3NoDir_Title=Error de ruta
+TSM_SmoothPatch_AlreadyInstalled=LazyDuchess Smooth Patch ya está instalado. ¿Deseas eliminarlo?
+TSM_SmoothPatch_RemoveError=No se pudieron eliminar los archivos del parche: {0}
+TSM_SmoothPatch_RemoveTitle=SimTools — Eliminar parche
+TSM_SmoothPatch_RemovedSuccess=LazyDuchess Smooth Patch se ha eliminado correctamente.
+UASI_Exception=No se pudo eliminar el archivo: {0}
+UASI_Exception_Title=SimTools - Error de eliminación
+UASI_Installed=El Ultimate ASI Loader ya está instalado. ¿Deseas eliminarlo?
+UASI_Installed_Title=SimTools — Ya instalado
+UASI_Removed=Ultimate ASI Loader ha sido eliminado.
+UASI_Removed_Title=SimTools - Ultimate ASI Loader eliminado
+nRaas_AlreadyInstalled=El mod '{0}' ya está instalado. ¿Deseas eliminarlo?
+nRaas_RemoveError=No se pudo eliminar '{0}': {1}
+nRaas_RemoveTitle=SimTools — Eliminar mod
+nRaas_RemovedSuccess='{0}' se ha eliminado correctamente.
+sgrException=Se produjo un error inesperado al modificar los archivos de configuración del juego:\n{0}
+sgrException_Title=Error de ajuste
+sgrFail=No se pudieron encontrar las variables de destino dentro de GraphicsRules.sgr para cambiar. Es posible que tu archivo ya esté optimizado o modificado.
+sgrFail_Title=No se realizaron cambios
+sgrSuccess=¡Se actualizó correctamente 'GraphicsRules.sgr' con la configuración óptima para {0}!
+sgrSuccess_Title=Éxito
 
 [BugFixes]
 ShadowFix_Info=Corrige un problema en Los Sims 2 donde las sombras se muestran como bloques o cuadrados negros.
@@ -164,6 +255,8 @@ BrightCAS_Title=Corrección de brillo en el CAS — Los Sims 2
 BrightCAS_Menu=Corrección de brillo en el CAS
 Sims4_Info=Se implementará en una fecha posterior.
 Sims4_Title=Los Sims 4 — Corrección de errores
+Sims1_Info=Por favor, utiliza Simitone en Ajustes del Juego para los errores de Los Sims 1.
+Sims1_Title=Los Sims 1 — Corrección de errores
 
 [Tweaks]
 PatchDL_Info1=Ayuda a descargar parches para las versiones en disco físico de Los Sims 3.
@@ -245,6 +338,7 @@ Unlocked_Title=SimTools — Personalización
 RemoveAsk=¿Deseas eliminar tu clave de personalización? El banner de bienvenida ya no se mostrará en la pantalla principal.
 RemoveAsk_Title=SimTools — Eliminar personalización
 PersonalizationText=Esta versión de SimTools ha sido cuidadosamente personalizada para {0} {1}.\n¡Muchas gracias por tu apoyo!
+MachineChanged_Title=SimTools — Personalización
 
 [BuyTS3]
 BrokenLinksText=Si alguno de estos enlaces está roto, por favor abre un reporte de problema (issue) en el GitHub de SimTools o publica en el Discord para que podamos corregirlo o eliminarlo.
@@ -449,6 +543,13 @@ EfficientUpgradeNameFix=Corrección del nombre de mejora más eficiente por Buzz
 HaciendaFireplaceFix=Corrección de la chimenea Haute Hacienda por Qahne
 NTStairFix=Corrección de escaleras clásicas y modernas por Simsi45
 ProbationMods=Mods en período de prueba (En fase de pruebas)
+ErrorTitle=Error
+PaintingStencilsMerged=Correcciones de plantillas y pinturas fusionadas por SimTools
+ProperTraitMoneyTreeFix=Corrección de rasgos y árbol del dinero fusionada por SimTools
+RemoveConfirm=¿Seguro que deseas eliminar el mod '{0}'?
+RemoveError=No se pudo eliminar el archivo: {0}
+RemoveTitle=Confirmar eliminación
+WalkCycleFix=Ediciones del ciclo de caminata por SimBouquet
 
 [GenericKeysPage]
 TS1LL=Los Sims: Más vivos que nunca
@@ -488,6 +589,9 @@ KeysInfo=Por favor, selecciona un juego usando el botón de arriba.\r\n\r\nSi un
 KeysInfoCopy=Estas claves no funcionarán para el registro en línea.\nSolo permitirán la instalación desde discos físicos de tiendas.
 GenerateButton=Generar
 CopyButton=Copiar
+CopyWarning=Si estás ejecutando software que captura la pantalla o toma capturas en segundo plano, usar el botón COPIAR puede provocar que SimTools se bloquee. En ese caso, selecciona la clave manualmente y cópiala tú mismo.
+KeysInfoText_Copy=Estas claves no funcionarán para el registro en línea.\n Solo permitirán la instalación desde discos de venta minorista.
+Sims2_Disc=Los Sims 2
 
 [Music]
 Fetching=Obteniendo lista de canciones...
@@ -525,3 +629,23 @@ Splashscreen_Ask=¿Te gustaría instalar la pantalla de carga personalizada de S
 Splashscreen_Title=SimTools — Pantalla de carga personalizada
 ExtractFail=Error al extraer {0}:\n{1}
 ExtractFail_Title=Error de extracción
+[ContextMenu]
+GPU_SimsStories=Los Sims Historias
+
+[GameplayFixes]
+NoneSelected=No se ha seleccionado ninguna corrección.
+NoneSelected_Title=Nada para descargar
+
+[Paths]
+NoGamePath_Title=SimTools — Ruta no establecida
+Sims3Mods=Tu directorio de mods de Los Sims 3 no está configurado.\nPor favor, abre Configuración y establécelo primero.
+Title=SimTools — Ruta no establecida
+
+[RepoSpeed]
+RepoTitle=SimTools — Prueba de velocidad del repositorio
+
+[UpdateDL]
+Cancelled=Descarga cancelada.
+Cancelling=Cancelando…
+Complete=¡Descarga completa! Iniciando el instalador…
+

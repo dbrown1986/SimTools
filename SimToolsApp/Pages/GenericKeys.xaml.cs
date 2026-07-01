@@ -254,7 +254,6 @@ public partial class GenericKeys : Window
         GenKeysButton.Content = LanguageManager.Get("GenericKeysPage", "GenKeysButton1", "Select Game ▸");
         KeysInfoText.Text = LanguageManager.Get("GenericKeysPage", "KeysInfo", "Please select a game using the button above.\n If a key is not working, or if an entire set of keys is not working. Please let me know in the Discord, so I can remedy it in the next version.\n This feature, and all features related to it, may be removed in a future version of SimTools, at any time, at the behest of EA.");
         KeysInfoText_Copy.Text = LanguageManager.Get("GenericKeysPage", "KeysInfoText_Copy", "These keys will not work for online registration.\n They will only allow for installation from retail discs.");
-        KeysInfoText_Copy.Text = LanguageManager.Get("GenericKeysPage", "KeysInfoCopy", KeysInfoText_Copy.Text);
         GenerateButton.Content = LanguageManager.Get("GenericKeysPage", "GenerateButton", "Generate");
         CopyButton.Content = LanguageManager.Get("GenericKeysPage", "CopyButton", "Copy");
         CopyWarning.Text = LanguageManager.Get("GenericKeysPage", "CopyWarning", "If you are running software that captures the screen or screenshots in the background, using the COPY button may crash SimTools. If such is the case, select the key manually and copy and paste it manually.");

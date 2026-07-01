@@ -53,6 +53,12 @@ ReenabledUpdates=Automatic update notifications have been re-enabled.\n\nSimTool
 ReenabledUpdates_Title=Update Check Reset
 Msg_Saved=Settings saved successfully.
 Msg_Reset=Language selection will appear on the next launch.
+Window_Title=SimTools - Settings
+Section_Language=Language
+Section_Directories=Game & Mod Directories
+Btn_Reset=Reset - Show Language Selection on Next Launch
+Btn_Save=Save
+Btn_Cancel=Cancel
 
 [Main]
 StorePiracyWarning=Store Piracy Warning
@@ -123,6 +129,119 @@ NoGamePath_Title=SimTools — Path Not Set
 Sims2Mods=Your Sims 2 Mods directory is not configured.
 Sims2Repository_Complete=All Sims 2 Legacy Edition Extender files have been downloaded successfully.
 Sims2Repository_Title=SimTools — Downloads Complete
+DXVK_GPU_Warning=DXVK has replaced the GPU Addon, however; DXVK does not support all GPU's. The GPU Addon has been included in the event that you experience issues with DXVK.
+DXVK_GPU_Warning_Title=SimTools — GPU Addon Warning
+DXVK_AlreadyInstalled_Remove=DXVK is already installed. Do you want to remove it?
+DXVK_Title=DXVK — The Sims 3
+DXVK_RemovedSuccess=DXVK has been successfully removed.
+DXVK_RemoveError=Failed to remove DXVK. Ensure the game is closed.\n\nError: {0}
+Error_LaunchTitle=Execution Error
+Error_Sims1PathNotSet=The Sims 1 game directory has not been configured.\nPlease set it in Settings before using this feature.
+Sims1PathNotSet_Title=SimTools — Path Not Set
+Simitone_ExtractTitle=SimTools — Extraction Error
+Simitone_Installed=Simitone has been installed.
+Simitone_Extracted=Simitone has been extracted.
+Simitone_Title=SimTools — Simitone Installed
+Sims2RPC=Sims2RPC
+BIGS_Auto=Would you like SimTools to automatically apply the optimal performance and stability settings directly to your configuration?\n\n Click 'Yes' to automatically tweak options (Disables interactive loading screens, memories bloat, tutorial notifications, and the in-game store).\n Click 'No' to open the online manual guide instead.
+BIGS_Auto_Title=Apply Optimal Settings Automatically?
+PerfAutoSuccess=Performance improvements applied successfully!
+ModFileFailed=Failed to modify options file: {0}
+ModFileFailed_Title=Configuration Error
+INITweaks=Game INI Tweaks
+BSLimitFPS=Limit Game FPS
+BSMoreCPU=Allow More CPU Usage
+BSMoreGPU=Allow More GPU Usage
+BSCleanDC=Clean DCBackup Cache
+CleanDC_01=Clean DCBackup Cache
+CleanDC_02=This can be easily and safely accomplished by using the 'Regul Save Cleaner' utility.\n\n Would you like to open the online guide to read more about cleaning your cache folders?
+CleanDC_02_Title=Clean DCBackup Cache
+OtherTweaks=Would you like SimTools to automatically apply the settings for '{0}'?\n\n Note: Using the 'Sims3SettingsSetter' mod can also accomplish most of this directly in-game.\n\n Click 'Yes' to automatically modify your configuration.\n Click 'No' to view the manual optimization guide instead.
+TS3NoDir=The Sims 3 Game Directory path has not been configured in your settings yet. Please set it up in the configuration file first.
+TS3NoDir_Title=Path Error
+LimitFPSHeader=Limit Game FPS
+LimitFPSTip=Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner) or via DXVK.\n\n SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware.
+LimitFPSTip_Title=Driver-Level Configuration Required
+GraphicsRulesNotFound=Could not locate 'GraphicsRules.sgr' inside your installation folder.\n\n Please verify your path selection, or run the game at least once to ensure all game files are fully generated on your disk.
+GraphicsRulesNotFound_Title=File Missing
+AllowCPU_01=Allow More CPU Usage
+AllowGPU_01=Allow More GPU Usage
+sgrSuccess=Successfully updated 'GraphicsRules.sgr' with optimal settings for {0}!
+sgrSuccess_Title=Success
+sgrFail=Could not find the target variables inside GraphicsRules.sgr to change. Your file may already be optimized or modified.
+sgrFail_Title=No Changes Made
+sgrException=An unexpected error occurred while modifying game configuration files:\n{0}
+sgrException_Title=Tweak Error
+AlderLake_Info1=Intel Alder Lake Fix for The Sims 3. Ultimate ASI Loader and Sims 3 Settings Setter fix this as well.
+AlderLake_Title=Intel Alder Lake Fix — The Sims 3
+AlderLake_Info2=If you have Sims 3 installed through the EA App, the latest version of Sims 3 1.69 already addresses this issue and thus this patch is unnecessary.
+Sims3Game=Your Sims 3 Game directory is not configured.
+AlderLake_NotFound=AlderLakePatch.exe could not be found.
+UASI_Installed=The Ultimate ASI Loader is already installed. Would you like to remove it?
+UASI_Installed_Title=SimTools — Already Installed
+UASI_Removed=Ultimate ASI Loader has been removed.
+UASI_Removed_Title=SimTools - Ultimate ASI Loader Removed
+UASI_Exception=Failed to remove file: {0}
+UASI_Exception_Title=SimTools - Removal Error
+S3SS_Installed=The Sims 3 Settings Setter is already installed. Would you like to remove it?
+S3SS_Installed_Title=SimTools — Already Installed
+S3SS_Removed=Sims 3 Settings Setter has been removed.
+S3SS_Removed_Title=SimTools
+S3SS_Removal_Failed=Failed to remove file: {0}
+S3SS_Removal_Failed_Title=Error
+LDLInstalled=LazyDuchess Launcher is currently installed. Would you like to remove it and restore the original launcher?
+LDLInstalled_Title=SimTools — Remove Launcher
+LauncherRestored=Original launcher restored successfully.
+LauncherRestored_Title=Original Launcher Restored
+LauncherRestoreFailure=Failed to restore original launcher: {0}
+LauncherRestoreFailure_Title=Error
+LDLauncher_Info1=LazyDuchess Launcher is only compatible with the 1.69 EA release of The Sims 3. For Retail or Steam, use Ultimate ASI Loader instead.
+LDLauncher_Title=LazyDuchess Launcher — The Sims 3
+BackupFailedTitle=SimTools — Backup Failed
+MonoPatcher_AlreadyInstalled=Mono Patcher is already installed. Would you like to remove it?
+MonoPatcher_Title=SimTools — Already Installed
+MonoPatcher_Removed=Mono Patcher has been successfully removed.
+MonoPatcher_Info1=Mono Patcher is a library that allows Script Modders to replace Sims 3 methods with as much compatibility as possible - No need to create core mods anymore to replace game functions.
+MonoPatcher_Info2=Current Version: 0.3.0
+STCG=Sweet Treats Conversion Guide
+STCG_Msg=Coming Soon...
+STCG_Title=Sweet Treats
+nRaas_Mods=nRaas Core Mods
+Sims3Mods=Your Sims 3 Mods directory is not configured.
+nRaas_RemoveTitle=SimTools — Remove Mod
+Success_Title=SimTools
+TSM_SmoothPatch=LazyDuchess Smooth Patch
+TSM_Path=Your Sims Medieval Game directory is not configured.
+TSM_SmoothPatch_AlreadyInstalled=LazyDuchess Smooth Patch is already installed. Would you like to remove it?
+TSM_SmoothPatch_RemoveTitle=SimTools — Remove Patch
+TSM_SmoothPatch_RemovedSuccess=LazyDuchess Smooth Patch has been successfully removed.
+KeysInfoBox=Generic product keys can only be used for retail discs. This feature is not guarenteed and may be removed in a future version.
+KeysInfo_Title=SimTools — Generic Keys
+ShadowFix_Menu=Sim Shadow Fix
+ShadowFix_AlreadyInstalled_Remove=Sim Shadow Fix is already installed. Do you want to remove it?
+ShadowFix_Title=Sim Shadow Fix — The Sims 2
+ShadowFix_RemovedSuccess=Sim Shadow Fix has been successfully removed.
+ShadowFix_RemoveError=Failed to remove Sim Shadow Fix. Ensure the game is closed.\n\nError: {0}
+ShadowFix_Info=Fixes an issue in The Sims 2 where the shadow appears as a black square.
+BrightCAS_AlreadyInstalled_Remove=Bright CAS Fix is already installed. Do you want to remove it?
+BrightCAS_Title=Bright CAS Fix — The Sims 2
+BrightCAS_RemovedSuccess=Bright CAS Fix has been successfully removed.
+BrightCAS_RemoveError=Failed to remove Bright CAS Fix. Ensure the game is closed.\n\nError: {0}
+BrightCAS_Info=This mod fixes the bright Create-A-Sim by toning down the lights a bit.
+STInfo=SimTools — Information
+Sims2Repo_AlreadyInstalled=The Sims 2 Legacy Edition Extender files are already installed. Do you want to remove them?
+Sims2Repo_Title=SimTools — The Sims 2
+Sims2Repo_RemovedSuccess=The files have been successfully removed.
+Sims2Repo_RemoveError=Failed to remove some files. Ensure the game is closed.\n\nError: {0}
+AlderLake_ExtractFail=Failed to extract the Alder Lake patch: {0}
+BackupFailedMessage=Failed to create a backup: {0}
+Error_LaunchFailed=Failed to launch {0}.
+MonoPatcher_RemoveError=Failed to remove file: {0}
+Simitone_ExtractFail=Failed to extract Simitone: {0}
+TSM_SmoothPatch_RemoveError=Failed to remove patch files: {0}
+nRaas_AlreadyInstalled=The mod '{0}' is already installed. Would you like to remove it?
+nRaas_RemoveError=Failed to remove '{0}': {1}
+nRaas_RemovedSuccess='{0}' has been successfully removed.
 
 [AboutSimToolsPage]
 CulminationMessage=SimTools is the culmination of years of work!
@@ -168,6 +287,7 @@ Unlocked_Title=SimTools — Personalization
 RemoveAsk=Remove your personalisation key? The banner will no longer appear on the welcome screen.
 RemoveAsk_Title=SimTools — Remove Personalisation
 PersonalizationText=This copy of SimTools designed with care for {0} {1}.\nThank you for your support!
+MachineChanged_Title=SimTools — Personalization
 
 [BuyTS3]
 BrokenLinksText=If any of these links are broken, please submit an Issue ticket on the SimTools Github or post on the Discord, so the link can be corrected or removed.
@@ -368,6 +488,13 @@ EfficientUpgradeNameFix=More Efficient Upgrade Name Fix by Buzzler
 HaciendaFireplaceFix=Haute Hacienda Fireplace Fix by Qahne
 NTStairFix=Now & Then Staircase Fix by Simsi45
 ProbationMods=Probationary Mods (In Testing)
+RemoveTitle=Confirm Removal
+ErrorTitle=Error
+WalkCycleFix=Walk Cycle Edits by SimBouquet
+PaintingStencilsMerged=Stencils & Paintings Fixes Merged by SimTools
+ProperTraitMoneyTreeFix=Proper Trait & Money Tree Bug Fix Merged by SimTools
+RemoveConfirm=Are you sure you want to remove the mod '{0}'?
+RemoveError=Failed to delete file: {0}
 
 [GenericKeysPage]
 TS1LL=The Sims: Livin' Large
@@ -407,6 +534,9 @@ KeysInfo=Please select a game using the button above.\n\nIf a key is not working
 KeysInfoCopy=These keys will not work for online registration. \n They will only allow for installation from retail discs.
 GenerateButton=Generate
 CopyButton=Copy
+Sims2_Disc=The Sims 2
+KeysInfoText_Copy=These keys will not work for online registration.\n They will only allow for installation from retail discs.
+CopyWarning=If you are running software that captures the screen or screenshots in the background, using the COPY button may crash SimTools. If such is the case, select the key manually and copy and paste it manually.
 
 [Music]
 Fetching=Fetching track list…
@@ -444,3 +574,70 @@ Splashscreen_Ask=Would you like to install the SimTools custom splashscreen?\n\n
 Splashscreen_Title=SimTools — Custom Splashscreen
 ExtractFail=Failed to extract {0}:\n{1}
 ExtractFail_Title=Extract Error
+
+[Paths]
+Sims3Mods=Your Sims 3 Mods directory is not configured.\nPlease open Settings and set it first.
+Title=SimTools — Path Not Set
+NoGamePath_Title=SimTools — Path Not Set
+
+[GameplayFixes]
+NoneSelected=No fixes are selected.
+NoneSelected_Title=Nothing to Download
+
+[RepoSpeed]
+RepoTitle=SimTools — Repository Speed Test
+
+[ContextMenu]
+GPU_SimsStories=The Sims Stories
+
+[BugFixes]
+Sims1_Info=Please use Simitone under Game Tweaks for Sims 1 bugs.
+Sims1_Title=The Sims 1 — Bug Fixes
+Sims4_Info=To be implemented at a later time.
+Sims4_Title=The Sims 4 — Bug Fixes
+
+[Tweaks]
+TPD=Patch Downloader
+PatchDL_Info1=Assists in downloading patches for the retail disc copies of Sims 3.
+PatchDL_Title=Patch Downloader — The Sims 3
+PatchDL_Info2=Not necessary if you are running EA or Steam versions as digital releases update on their own.
+PatchDL_Info3=It is recommended that you patch each game directly after install. Ex: Base Game > Patch > World Adventures > Patch; and so on and so forth.
+Simler90_Info=Simler90's mod package fixes many bugs in the game and the internal engine.
+Simler90_Title=Simler90's Fixes — The Sims 3
+GameplayFixes_Info=Launching Gameplay Fixes AIO installer. Please only select fixes for games that you have installed and only for items you frequently use.
+GameplayFixes_Title=Gameplay Fixes — The Sims 3
+CopterX=SimCopterX
+SimCopterX_Info=This is an alert from central dispatch - you're cleared for takeoff on Windows 10. You no longer need to use a virtual machine or CPU Killer, just nerves of steel. Additionally the patcher has optional higher-resolutions modes to choose from including 16:9 and 16:10 aspect ratios so you can fill up your screen; you'll feel like you're actually up in the sky saving shipwrecked Sims.
+SimCopterX_Title=SimCopterX
+SimCopter_GameDir=Your SimCopter game directory is not configured.
+StreetsX=SimStreetsX
+SimStreetsX_Info=SimStreetsX info.
+SimStreetsX_Title=SimStreetsX
+SimStreets=Your Streets of SimCity game directory is not configured.
+SC2KFix=SC2kFix
+SC2kFix_Info=sc2kfix is a project reverse engineering SimCity 2000 Special Edition for Windows and developing a bugfix and modding plugin to patch core game and compatibility bugs as well as enabling the development of new quality of life and gameplay features.
+SC2kFix_Title=SC2kFix — SimCity 2000
+SimCity2000=Your SimCity 2000 game directory is not configured.
+SC2KX=SC2000X
+SC2000X_Info=SC2000X info.
+SC2000X_Title=SC2000X — SimCity 2000
+
+[ModResources]
+SaveCleaner_Download=Do you want to download the Regul Save Cleaner?
+SaveCleaner_Title=Regul Save Cleaner
+SaveCleaner_Shortcut=Would you like to create a desktop shortcut to Regul Save Cleaner?
+SaveCleaner_ShortcutTitle=Create Shortcut
+SaveCleaner_ShortcutFailTitle=Shortcut Error
+SaveCleaner_NotFoundTitle=SimTools — File Not Found
+SaveCleaner_NotFound=Could not find Regul Save Cleaner at: {0}
+SaveCleaner_ShortcutFail=Failed to create the shortcut: {0}
+
+[SC2013Warnings]
+SC2013Warning=A majority of SimCity 2013 mods will only work in Offline Mode.
+SC2013Warning_Title=SimCity 2013 — Warning
+
+[UpdateDL]
+Complete=Download complete! Launching installer…
+Cancelled=Download cancelled.
+Cancelling=Cancelling…
+
