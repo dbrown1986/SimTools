@@ -1,10 +1,8 @@
-![](Images/SimTools_Logo.png)
+![](SimToolsApp/Images/SimTools_Logo.png)
 
 [![Build](https://github.com/dbrown1986/SimTools/actions/workflows/build.yml/badge.svg)](https://github.com/dbrown1986/SimTools/actions/workflows/build.yml)
 
 > A desktop utility for fans of The Sims and SimCity series. SimTools brings together GPU configuration tools, game tweaks, mod framework setup, and directory management into a single, easy-to-use application — available in 9 languages.
-
-> ⚠️ **This project is in early development.** Features and structure are actively evolving. Contributions and feedback are welcome.
 
 ---
 
@@ -17,10 +15,14 @@
 - [Tweaks](#tweaks)
 - [Modding Tools](#modding-tools)
 - [Bug Fixes](#bug-fixes)
+- [Donor Personalization](#donor-personalization)
+- [Advertisement Dock](#advertisement-dock)
+- [Seasonal Theming](#seasonal-theming)
 - [Supported Games](#supported-games)
 - [Compatibility](#compatibility)
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Companion Applications](#companion-applications)
 - [Building from Source](#building-from-source)
 - [Localisation](#localisation)
   - [Supported Languages](#supported-languages)
@@ -45,6 +47,8 @@ Due to the use of WPF, support is limited to Windows. At this time, no plans exi
 
 SimTools was previously known as **TS3Tools**, and while its roots are firmly in The Sims 3, the scope has since expanded to cover a wide range of Maxis titles across both The Sims and SimCity franchises. The application is fully localised, supports right-to-left layouts for Arabic, and stores all user preferences in a plain-text INI file that sits alongside the executable.
 
+The project has grown beyond a single application: SimTools now ships alongside a dedicated **Installer**, **Uninstaller**, and **Updater**, each a standalone WinForms executable with its own multilingual wizard interface.
+
 ---
 
 ## Features
@@ -55,16 +59,19 @@ SimTools offers a comprehensive set of tools, fixes, and guides for getting the 
 - **nRaas Tweaks** — Install nRaas core mods to mitigate in-game script errors and provide greater debugging control over the game engine.
 - **Ultimate ASI Loader** — A packaged DLL file that will allow loading ASI's into Retail, Steam or EA App copies of The Sims 3
 - **Sims 3 Settings Setter (S3SS)**  — An ASI file that allows for manipulating engine settings from within the game in real-time. S3SS also solves the Alder Lake CPU issue, as well as including its own Smooth Patch.
+- **DXVK** — A Direct3D-to-Vulkan translation layer that replaces the legacy GPU Addon tool, with the GPU Addon still offered as a fallback for unsupported graphics cards.
 - **UI Resolution Scaling** — Stretch the in-game UI to fit FHD (1440p) and UHD (2160p) resolutions using the TinyUI Fix PowerShell utility.
 - **Katy Perry Sweet Treats Migration** — Migrate Katy Perry's Sweet Treats from EA to Steam or Retail without losing your content.
 - **Expansion & Stuff Pack Deals** — Find various exclusive deals on expansions and stuff packs.
 - **Official Patches** — Install patches for the Base Game through to Outdoor Living Stuff (Retail installations only).
 - **Simler90's Engine Tweaks** — Install a curated set of engine-level tweaks and fixes authored by Simler90 to reduce lag and resolve long-standing issues.
-- **58 Gameplay Fix Mods** — Install a growing collection of individual gameplay fixes for the Base Game, Expansion Packs, and Store items — with more fixes added in future versions.
+- **108 Gameplay Fix Mods** — Install a growing collection of individual gameplay fixes across the Base Game, every Expansion Pack, every Stuff Pack, Store items, and a Probationary section for fixes still in testing — with more added in future versions.
 - **Regul's Save Cleaner** — Install and run Regul's Save Cleaner to debloat saves and keep your game running smoothly over long playthroughs.
 - **Curated Mod Browser** — View and download various curated and recommended mods from within the application.
 - **Daily Deal Guide** — In-depth guide to obtaining Store items at the best price using the Daily Deal rotation spreadsheet.
 - **Fixes & Tweaks for SimCity titles** — SimTools now includes fixes and tweaks for the SimCity titles, Streets of SimCity & SimCopter!
+- **Background Music Player** — An optional in-app music player docked beside the main window, with playlist support, skip controls, and an automatic first-run download prompt.
+- **Donor Personalization** — Encrypted, machine-locked donor recognition with a dedicated Exclusive Items window. See [Donor Personalization](#donor-personalization) below.
 
 The following features/tools have been deprecated, but are still included for posterity, or as alternatives in the event users experience issues with newer innovations:
 
@@ -92,9 +99,12 @@ Installing every tweak and bugfix SimTools has to offer results in a noticeably 
 
 | Tool | Description |
 |---|---|
-| **DXVK** | DXVK operates as a translation layer that intercepts Direct3D API calls from Windows applications and converts them to their Vulkan equivalents in real-time. Replaces the TS3 GPU Addon Tool. |
+| **DXVK** | DXVK operates as a translation layer that intercepts Direct3D API calls from Windows applications and converts them to their Vulkan equivalents in real-time. Replaces the TS3 GPU Addon Tool (kept installed alongside it as a fallback for unsupported GPUs). |
 | **Regul Save Cleaner** | Keeps saves in check by scanning for and removing save bloat that accumulates over time, helping maintain game performance in long-running saves. |
 | **Mod Framework** | A vetted and prepared version of the TS3 Mod Framework, specifically configured for use with SimTools to ensure maximum compatibility. |
+| **7-Zip Extraction (S3Dash)** | S3Dash is distributed as a `.7z` archive; SimTools downloads and extracts it in-app using SharpCompress before launching it directly from the Binaries folder. |
+
+Every install/download-based tool in SimTools now supports **in-place removal** — if a tool is already installed, clicking its menu entry again offers to cleanly uninstall it instead of re-downloading.
 
 ---
 
@@ -112,6 +122,10 @@ Installing every tweak and bugfix SimTools has to offer results in a noticeably 
 | **Smooth Patch** | Engine-level tweaks by Lazy Duchess that enable faster loading into CAS and smooth out a number of other lag-inducing elements throughout the game. |
 | **TinyUI Fix** | A PowerShell utility that stretches and enhances the in-game UI to properly fit FHD (1440p) and UHD (2160p) display resolutions. |
 | **LazyDuchess Launcher** | An enhanced replacement launcher for EA 1.69 installations of The Sims 3, featuring ASI Loading support and the ability to disable CC directly from the launcher. |
+| **Bright CAS Fix** | Tones down the overexposed lighting in the Create-A-Sim screen for The Sims 2. |
+| **Sim Shadow Fix** | Fixes shadows rendering as solid black squares in The Sims 2. |
+| **The Sims 2 Legacy Edition Extender** | A set of files that restore/extend functionality for the Legacy Edition release of The Sims 2. |
+| **SimStreetsX, SimCopterX & SC2000X** | Compatibility layers by Krimsky for the older Maxis titles, keeping them stable on modern systems without manual CPU affinity or throttling tricks. |
 
 ---
 
@@ -122,33 +136,72 @@ Installing every tweak and bugfix SimTools has to offer results in a noticeably 
 | **Create-a-World Tool 1.67 / 1.69** | EA's official Create-A-World tool for The Sims 3, used for creating and editing custom neighbourhoods and worlds. |
 | **S3PE** | A package editing utility for reading, editing, and extracting resources from Sims 3 `.package` files. |
 | **Sims3Pack Multi Installer** | A utility for extracting `.Sims3Pack` files down to their base elements for editing, staging, or repacking. |
-| **S3Dash** | A tool for detecting conflicts and errors between installed mods, helping diagnose issues caused by incompatible packages. |
+| **S3Dash** | A tool for detecting conflicts and errors between installed mods, helping diagnose issues caused by incompatible packages. Downloaded as a `.7z` archive and auto-extracted by SimTools. |
 | **ShowtimeCE** | A conversion utility for converting the Showtime Collector's Edition content (a guide for now, but will be fleshed out). |
 
 ---
 
 ## Bug Fixes
 
-SimTools ships with two categories of fixes:
+SimTools ships with several categories of fixes:
 
 ### Simler90's Engine Tweaks
 A collection of low-level engine tweaks and fixes authored by community member Simler90, targeting a range of known issues, performance regressions, and instabilities in the base game engine.
 
 ### The Sims 2 Fixes
-At the present moment, there are only 2 fixes included for The Sims 2, but more are on the way.
+Includes the Bright CAS Fix, the Sim Shadow Fix, and Legacy Edition Extender files — with more on the way.
 
-### 58 Gameplay Fix Mods for The Sims 3
-A curated set of **58 individual fix mods** (with more coming in future versions) addressing:
+### 108 Gameplay Fix Mods for The Sims 3
+A curated set of **108 individual fix mods** spread across **18 categories** (with more coming in future versions), addressing:
 
-- Broken or bugged items in the Base Game, Expansion Packs, and Store content
+- Broken or bugged items in the Base Game, every Expansion Pack, and every Stuff Pack
+- Store-exclusive content issues
 - Developer oversights that were never officially patched
 - Broken interactions between Sims or between Sims and objects
 - Compatibility issues between specific content items
 
-Each fix mod is listed individually in the included CC tab within the application, so you can review exactly what each one addresses before installing. Only install fixes for Expansion Packs and Store content you actually have installed.
+Categories include the Base Game, all 11 Expansion Packs (World Adventures through Into the Future), all 9 Stuff Packs (High-End Loft through 70s, 80s & 90s), Store Fixes, and a **Probationary** section for fixes still being validated by the community before graduating to their permanent category.
+
+Each fix mod is listed individually in the included Gameplay Fixes window, so you can review exactly what each one addresses before installing — and can just as easily remove any fix that no longer suits your setup. Only install fixes for Expansion Packs and Store content you actually have installed.
 
 ### SimStreetsX, SimCopterX & SC2000X
 Built by Krimsky, these are compatibility layers for the older maxis games that ensure they run more stable on modern systems and operating systems. No more setting affinity manually or throttling the CPU!
+
+---
+
+## Donor Personalization
+
+Users who support the project through Patreon can unlock a personalised experience:
+
+- A welcome banner on the introductory page addressed to the donor by name
+- Access to a dedicated **Exclusive Items** window
+- Removal of the [Advertisement Dock](#advertisement-dock)
+
+### How it works
+
+Donor keys are AES-128 encrypted payloads generated by a separate key-generation tool and encode the donor's first and last name. When a key is entered:
+
+1. The key is validated and decrypted **in memory only** — it is never written to the INI file or anywhere else on disk.
+2. A `donor.token` file is created alongside `SimTools.exe`, containing the decoded name encrypted with an AES key **derived from the machine's Windows `MachineGuid`**.
+3. On every launch, SimTools decrypts `donor.token` using the current machine's GUID. If the file was copied from another PC, the derived AES key won't match and decryption fails — personalization is reset and the user is prompted to re-enter their key on that machine.
+
+This means donor status cannot be shared simply by copying `SimTools.ini` or `donor.token` to a friend's computer — both files together are still bound to the original machine.
+
+### Server-side activation mirroring
+
+An optional PHP + MySQL backend (`SimToolsApp/api/`) is included for mirroring donor activations server-side, capping each donor key to a limited number of registered machines and allowing donors to view or deactivate their own registered devices. Database credentials and the encryption cipher must be configured before use — see `SimToolsApp/api/Read.txt` for details.
+
+---
+
+## Advertisement Dock
+
+Non-donor users see a small advertisement dock, anchored to the bottom-centre of the active window, that rotates through banner images fetched from the configured repository. Entering a valid donor key removes the dock immediately; it never reappears until/unless personalization is reset.
+
+---
+
+## Seasonal Theming
+
+SimTools quietly decorates its main windows around a few notable dates — a four-leaf clover border around St. Patrick's Day, a Santa hat near Christmas, and animated fireworks spanning Independence Day through New Year's Eve. No configuration needed; the app checks the system date on launch and shows or hides each decoration automatically.
 
 ---
 
@@ -198,7 +251,7 @@ You can run SimTools regardless of which Expansion Packs or Stuff Packs you have
 - **Operating System:** Windows 10 or later (64-bit recommended)
 - **Runtime:** [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) — required to run the application
 - **Internet Connection:** Required for first-time tool and patch downloads; not needed after files are cached locally
-- **Administrative Rights:** Required due to write access for Program Files and game directories.
+- **Administrative Rights:** Required — the application manifest requests elevation on launch for write access to Program Files and game directories.
 - **Visual Studio 2022 or later:** Required only if building from source
 
 - WindoVista/7/8/8.1 compatibility planned for a later release.
@@ -211,7 +264,7 @@ You can run SimTools regardless of which Expansion Packs or Stuff Packs you have
 **Installer**
 
 1. Download the latest release installer exe from the [Releases](https://github.com/dbrown1986/SimTools/releases) page or from the SimTools site.
-2. Run `SimtoolsInstaller.exe` and install to a folder of your choice (e.g. `C:\Program Files\SimTools`)
+2. Run `SimToolsInstaller.exe` and step through the multilingual installation wizard — choose your language, accept the license, and select an install folder (e.g. `C:\Program Files\SimTools`)
 3. Run `SimTools.exe` after install
 4. On first launch, select your preferred language and test for best regional repository.
 5. Read through the introductory page and click **Continue**
@@ -228,6 +281,24 @@ You can run SimTools regardless of which Expansion Packs or Stuff Packs you have
 
 For the portable version, no installer is required. The ZIP version of SimTools is fully portable — all settings are written to `SimTools.ini` in the same folder as the executable.
 
+**Uninstalling**
+
+Run `SimToolsUninstaller.exe` from the install directory. It reads `uninstall_manifest.json` (generated during installation) to remove exactly what was installed, and presents its confirmation and status dialogs in your selected language.
+
+---
+
+## Companion Applications
+
+SimTools is distributed alongside three standalone WinForms utilities, each with its own project and its own multilingual wizard UI:
+
+| Project | Purpose |
+|---|---|
+| **SimToolsInstaller** | Step-by-step install wizard — license agreement, install path selection, manifest-driven file download and placement. |
+| **SimToolsUninstaller** | Reads `uninstall_manifest.json` and cleanly removes every file SimTools placed on the system, with a confirmation prompt before proceeding. |
+| **SimToolsUpdater** | Downloads and applies the latest release over an existing install, then optionally relaunches `SimTools.exe` when finished. |
+
+All three share the same general design language as the main app and independently implement their own translated string tables for supported languages.
+
 ---
 
 ## Building from Source
@@ -239,28 +310,45 @@ git clone https://github.com/dbrown1986/SimTools.git
 cd SimTools
 ```
 
+### Solution layout
+
+`SimTools_v4.sln` contains four projects:
+
+| Project | Path | Output |
+|---|---|---|
+| `SimTools_v4` (main app) | `SimToolsApp/` | `SimTools.exe` |
+| `SimToolsInstaller` | `SimToolsInstaller/` | `SimToolsInstaller.exe` |
+| `SimToolsUninstaller` | `SimToolsUninstaller/` | `SimToolsUninstaller.exe` |
+| `SimToolsUpdater` | `SimToolsUpdater/` | `SimToolsUpdater.exe` |
+
 ### Build with the .NET CLI
 
 ```bash
 dotnet build SimTools_v4.sln --configuration Release
 ```
 
-Output is placed in `bin/Release/net8.0-windows/`.
+Each project's output is placed in its own `bin/Release/net8.0-windows/` folder.
 
 ### Build with Visual Studio
 
 1. Ensure your Visual Studio has .NET 8 / .NET Core 8 modules installed.
 2. Open `SimTools_v4.sln` in Visual Studio 2022 or later.
 3. Select the **Release** configuration from the toolbar.
-4. Press **Ctrl+Shift+B** to build, or **F5** to build and run.
+4. Set `SimTools_v4` as the Startup Project to build and run the main application, or select another project to build the installer/uninstaller/updater independently.
+5. Press **Ctrl+Shift+B** to build, or **F5** to build and run.
 
-### NuGet Dependencies
+### NuGet Dependencies (SimTools_v4 / main app)
 
 | Package | Version | Purpose |
 |---|---|---|
-| `WpfAnimatedGif` | 2.0.2 | Renders the animated plumbob GIF on the splash screen |
+| `WpfAnimatedGif` | 2.0.2 | Renders the animated plumbob GIF on the splash screen and holiday fireworks |
 | `NAudio` | 2.2.1 | Audio playback engine (MP3, WAV, FLAC, M4A) |
 | `TagLibSharp` | 2.3.0 | ID3/metadata tag reading (artist, title, album art)|
+| `SharpCompress` | 0.38.0 | 7-Zip archive extraction (used for the S3Dash tool download) |
+
+A post-build MSBuild target (`OrganiseDependencies`) copies `NAudio*.dll`, `SharpCompress.dll`, and `ZstdSharp.dll` into a `Dependencies/` subfolder alongside the built executable, keeping the main output directory tidy.
+
+The Installer, Uninstaller, and Updater projects use only the .NET base class library and `System.Windows.Forms` — no third-party NuGet packages.
 
 ---
 
@@ -271,7 +359,7 @@ Output is placed in `bin/Release/net8.0-windows/`.
 | Code | Language | Script | Direction |
 |---|---|---|---|
 | `ar` | عربي (Arabic) | Arabic | Right-to-left |
-| `zh` | 中国人 (Chinese Simplified) | Han | Left-to-right |
+| `zh` | 中文 (Chinese, Traditional) | Han | Left-to-right |
 | `de` | Deutsch (German) | Latin | Left-to-right |
 | `en` | English | Latin | Left-to-right |
 | `es` | Español (Spanish) | Latin | Left-to-right |
@@ -281,6 +369,8 @@ Output is placed in `bin/Release/net8.0-windows/`.
 | `ru` | Русский (Russian) | Cyrillic | Left-to-right |
 
 Arabic is the only currently supported RTL language. When Arabic is selected, the entire main window layout flips to a right-to-left flow direction automatically.
+
+Each `.lang` file currently defines just under 600 localised strings across roughly 30 sections, covering every window, dialog, context menu, and error message in the application.
 
 ### Language File Format
 
@@ -302,26 +392,29 @@ Loading=v 4.0.1.3868
 Retic=Reticulating Splines...
 ```
 
-Placeholders like `{0}` are replaced at runtime using `string.Format()`. Do not change or remove them when translating.
+Placeholders like `{0}` are replaced at runtime using `string.Format()`. Do not change or remove them when translating. Literal `\n` sequences (backslash followed by the letter n) are converted to real line breaks by `LanguageManager` when the string is displayed — write `\n` in your translated value wherever the English source uses one.
 
 The following sections must be present in every language file:
 
 | Section | Purpose |
 |---|---|
-| `[Main]` | Main window button labels and description text |
-| `[Messages]` | Error dialogs, warning dialogs |
+| `[Main]` | Main window button labels, tweak/tool dialogs, and description text |
+| `[GameplayFix]` / `[GameplayFixes]` | Gameplay Fixes window labels and the 108 individual fix descriptions |
+| `[BuyTS3]` | Store/purchase link tree labels for The Sims 3 |
 | `[ContextMenu]` | Right-click context menu item labels |
-| `[Language]` | Language selection window text |
 | `[Settings]` | Settings window labels and buttons |
-| `[Download]` | Download progress window title and status text |
+| `[Personalization]` / `[ExclusiveItems]` | Donor unlock dialog and Exclusive Items window |
+| `[Paths]` / `[Tweaks]` / `[ModResources]` | Game directory prompts and tweak/tool dialogs |
+| `[LanguageSelectionWindow]` | Language selection window text |
+| `[DownloadProgress]` / `[UpdateDL]` | Download progress window title and status text |
 | `[Splash]` | Splash screen version label and typing animation text |
 
 ### Adding a New Language
 
 1. Copy `Languages/en.lang` to `Languages/xx.lang`, where `xx` is the [ISO 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `it` for Italian)
 2. Translate every value on the right-hand side of each `=`. **Do not change the keys or section names.**
-3. Preserve all `{0}`, `{1}`, etc. placeholders — they are replaced at runtime
-4. Add the language to the `Languages` array in `SettingsWindow.cs`:
+3. Preserve all `{0}`, `{1}`, etc. placeholders and any `\n` sequences — they are substituted/converted at runtime
+4. Add the language to the `Languages` array in `SettingsWindow.xaml.cs`:
    ```csharp
    ("it", "Italiano"),
    ```
@@ -334,7 +427,7 @@ The following sections must be present in every language file:
        </Button.Background>
    </Button>
    ```
-6. If the language reads right-to-left, add its code to the `rtlLanguages` HashSet in `MainWindow.xaml.cs`:
+6. If the language reads right-to-left, add its code to the `rtlLanguages` HashSet in `IntroductoryPage.xaml.cs` and `MainWindow.xaml.cs`:
    ```csharp
    var rtlLanguages = new HashSet<string> { "ar", "xx" };
    ```
@@ -347,51 +440,71 @@ The following sections must be present in every language file:
 ```
 SimTools/
 │
-├── Images/                               # Compiled into the assembly as WPF resources
-│   ├── button_normal.png                 # Default button background (grey)
-│   ├── button_yellow.png                 # Recommended action button background
-│   ├── button_green.png                  # Normal action button background
-│   ├── button_red.png                    # Highly recommended / warning button background
-│   ├── close-button.png                  # Custom close button (top-right of main window)
-│   ├── Menu_Main.png                     # Main window background image
-│   ├── plumbob.gif                       # Animated plumbob (splash screen + main window)
-│   ├── SimTools_Logo.png                 # Application logo
-│   ├── sulsul.png                        # Sul Sul character image (introductory page)
-│   ├── TS3_Box2.png                      # Language selection window background
-│   └── gradient_hi.png                     # White gradient overlay (introductory page text area)
+├── SimToolsApp/                          # Main application project
+│   ├── Images/                           # Compiled into the assembly as WPF resources
+│   │   ├── button_normal.png             # Default button background (grey)
+│   │   ├── button_yellow.png             # Recommended action button background
+│   │   ├── button_green.png              # Normal action button background
+│   │   ├── button_red.png                # Highly recommended / warning button background
+│   │   ├── close-button.png              # Custom close button (top-right of main window)
+│   │   ├── Menu_Main.png                 # Main window background image
+│   │   ├── plumbob.gif / plumbob-*.gif   # Animated plumbob (splash screen + easter eggs)
+│   │   ├── advertise.png                 # Placeholder art for the Advertisement Dock
+│   │   ├── SimTools_Logo.png             # Application logo
+│   │   ├── Holidays/                     # St. Patrick's, Independence Day/NYE, Christmas art
+│   │   ├── Icons/                        # Per-game, per-expansion, and vendor icons
+│   │   └── Flags/                        # Language selection flag thumbnails
+│   │
+│   ├── Languages/                        # Copied to output directory alongside the .exe
+│   │   ├── en.lang                       # English (base / fallback language)
+│   │   ├── ar.lang                       # Arabic (RTL)
+│   │   ├── zh.lang                       # Chinese (Traditional)
+│   │   ├── de.lang                       # German
+│   │   ├── es.lang                       # Spanish
+│   │   ├── fr.lang                       # French
+│   │   ├── ja.lang                       # Japanese
+│   │   ├── pt.lang                       # Portuguese
+│   │   └── ru.lang                       # Russian
+│   │
+│   ├── Pages/                            # UI windows and supporting classes
+│   │   ├── IntroductoryPage.xaml(.cs)    # Welcome page, donor banner, update check, repo speed test
+│   │   ├── LanguageSelectionWindow.xaml(.cs)  # 3×3 grid language picker layout
+│   │   ├── MainWindow.xaml(.cs)          # Main UI layout, button handlers, context menus, download logic
+│   │   ├── SplashScreenWindow.xaml(.cs)  # Transparent borderless splash screen layout
+│   │   ├── GameplayFixesWindow.xaml(.cs) # 108-item, 18-category gameplay fix installer/remover
+│   │   ├── GameplayFixViewModels.cs      # GameplayFixItem record + GameplayFixViewModel
+│   │   ├── BuyTS3.xaml(.cs)              # Store/purchase link tree for The Sims 3
+│   │   ├── BuyTreeViewModels.cs          # BuyTreeNode model used by BuyTS3
+│   │   ├── MusicPlayerWindow.xaml(.cs)   # Optional docked background music player
+│   │   ├── MusicPlayerService.cs         # Playback engine (NAudio) + playlist management
+│   │   ├── MusicDownloadWindow.xaml(.cs) # First-run background music download prompt
+│   │   ├── AdDockWindow.xaml(.cs)        # Bottom-centre rotating advertisement dock (non-donors)
+│   │   ├── ExclusiveItems.xaml(.cs)      # Donor-only exclusive content window
+│   │   ├── UnlockPersonalizationDialog.xaml(.cs) # Donor key entry dialog
+│   │   ├── DonorKeyHelper.cs             # AES key validation + machine-locked token file logic
+│   │   ├── MachineIdentity.cs            # Reads the Windows MachineGuid from the registry
+│   │   ├── KeyGeneratorWindow.xaml(.cs)  # Donor key generation tool
+│   │   ├── GenericKeys.xaml(.cs)         # Generic retail product key lookup
+│   │   ├── SettingsWindow.xaml(.cs)      # Directory paths, language, base URL configuration
+│   │   ├── GamePaths.cs / GamePathDetector.cs  # Directory variables + auto-detection logic
+│   │   ├── AppSettings.cs                # Repository base URL resolution (%baseurl%)
+│   │   ├── TrustedSources.cs             # Trusted domains + repository mirror list
+│   │   ├── RepoValidator.cs              # Warns on untrusted/tampered repository sources
+│   │   ├── ModFrameworkHelper.cs         # TS3 Mod Framework installation helper
+│   │   ├── IniHelper.cs                  # Static INI reader/writer using nested Dictionary
+│   │   └── LanguageManager.cs            # Static .lang file loader; Get() and Format() accessors
+│   │
+│   ├── Resources/                        # Fonts, product keys, music, sound effects
+│   ├── api/                              # Optional PHP + MySQL donor activation mirror backend
+│   ├── App.xaml / App.xaml.cs            # Startup: splash → language → intro → main window
+│   ├── app.manifest                      # Requests administrator elevation on launch
+│   └── SimTools_v4.csproj                # Project file (.NET 8.0-windows, UseWPF + UseWindowsForms)
 │
-├── Languages/                            # Copied to output directory alongside the .exe
-│   ├── en.lang                           # English (base / fallback language)
-│   ├── ar.lang                           # Arabic (RTL)
-│   ├── zh.lang                           # Chinese Simplified
-│   ├── de.lang                           # German
-│   ├── es.lang                           # Spanish
-│   ├── fr.lang                           # French
-│   ├── ja.lang                           # Japanese
-│   ├── pt.lang                           # Portuguese
-│   └── ru.lang                           # Russian
+├── SimToolsInstaller/                    # Standalone install wizard (WinForms)
+├── SimToolsUninstaller/                  # Standalone uninstall wizard (WinForms)
+├── SimToolsUpdater/                      # Standalone update wizard (WinForms)
 │
-├── Pages/                                # UI windows and supporting classes
-│   ├── IntroductoryPage.xaml             # Welcome / introduction page shown before main window
-│   ├── IntroductoryPage.xaml.cs          # Continue, What is SimTools? dialog, exit handler
-│   ├── LanguageSelectionWindow.xaml      # 3×3 grid language picker layout
-│   ├── LanguageSelectionWindow.xaml.cs   # Language click handler, DoNotAskAgain, INI write
-│   ├── MainWindow.xaml                   # Main UI layout (840×720, WindowStyle=None)
-│   ├── MainWindow.xaml.cs                # Button handlers, context menus, download logic
-│   ├── SplashScreenWindow.xaml           # Transparent borderless splash screen layout
-│   ├── SplashScreenWindow.xaml.cs        # Fade animations, looping typing animation
-│   ├── IniHelper.cs                      # Static INI reader/writer using nested Dictionary
-│   └── SettingsWindow.cs                 # Code-only settings window
-│
-├── App.xaml                              # Application definition (no StartupUri)
-├── App.xaml.cs                           # Startup: splash → language → intro → main window
-├── AssemblyInfo.cs                       # Assembly-level attributes
-├── DownloadProgressWindow.cs             # Code-only download progress window
-├── LanguageManager.cs                    # Static .lang file loader; Get() and Format() accessors
-│
-├── SimTools.ico                          # Application icon
-├── SimTools_v4.csproj                    # Project file (.NET 8.0-windows, UseWPF + UseWindowsForms)
-└── SimTools_v4.sln                       # Visual Studio solution file
+└── SimTools_v4.sln                       # Visual Studio solution — all four projects
 ```
 
 ---
@@ -431,16 +544,19 @@ SimCity2013_Game=
 
 > **Tip:** You do not need to fill in directories for games you do not own. Empty values are simply ignored. At first run, directories may not show in the INI file until set in configuration section.
 
+Donor personalization data is **not** stored in `SimTools.ini` — see [Donor Personalization](#donor-personalization) for why it lives in a separate, machine-locked `donor.token` file instead.
+
 ---
 
 ## Technical Notes
 
 ### WPF + WinForms Interop
-SimTools uses both `UseWPF` and `UseWindowsForms` in the project file. This is necessary for the folder browser dialog (`System.Windows.Forms.FolderBrowserDialog`). Because both frameworks define types with the same names (`Button`, `MessageBox`, `Application`, etc.), every affected file uses explicit `using` aliases to resolve ambiguity:
+SimTools uses both `UseWPF` and `UseWindowsForms` in the project file. This is necessary for the folder browser dialog (`System.Windows.Forms.FolderBrowserDialog`). Because both frameworks define types with the same names (`Button`, `MessageBox`, `Application`, `Point`, `Cursors`, `MouseEventArgs`, etc.), every affected file uses explicit `using` aliases to resolve ambiguity:
 
 ```csharp
-using Button     = System.Windows.Controls.Button;
-using MessageBox = System.Windows.MessageBox;
+using Button      = System.Windows.Controls.Button;
+using MessageBox   = System.Windows.MessageBox;
+using WpfCursors   = System.Windows.Input.Cursors;
 ```
 
 ### Context Menu Timing
@@ -448,6 +564,12 @@ The GPU and Tweaks context menus are built once in `ApplyLanguage()` rather than
 
 ### Download Caching
 Downloaded files are stored in the `Binaries/` subfolder relative to the executable. If a file already exists at the target path, the remote file header is checked to see if it is newer, if it is not, the download step is skipped and the file is launched directly. To force a re-download, delete the file from `Binaries/`.
+
+### Install / Remove Toggling
+Most tool and mod entries in the context menus check for an existing installation before doing anything. If the target file is already present, the user is prompted to remove it instead of re-downloading — this pattern is used consistently across DXVK, Mono Patcher, nRaas mods, the Ultimate ASI Loader, Sims 3 Settings Setter, LazyDuchess Launcher/Smooth Patch, and the individual Gameplay Fix mods.
+
+### Donor Token Machine Binding
+`donor.token` is encrypted with an AES-128 key *derived from* the machine's `MachineGuid` (via SHA-256), rather than a fixed key. This means the encryption key itself changes per machine, so the same token file cannot be decrypted anywhere else — copying `SimTools.ini` and `donor.token` together to another PC is not sufficient to transfer donor status.
 
 ---
 
@@ -480,7 +602,7 @@ Hint: Four of them are clickables, so play around in the app and click on things
 
 ## AI Usage
 
-Claude has been used in an effort to check code for warnings and errors, clean up the code and assist with certain features.
+Claude has been used in an effort to check code for warnings and errors, clean up the code, assist with new features (including the Advertisement Dock, the machine-locked donor personalization system, and localisation upkeep), and keep this README in sync with the codebase.
 Google Gemini has been used for translation localization. So far, all of the translated text within the lang files and app is AI generated.
 
 ---
