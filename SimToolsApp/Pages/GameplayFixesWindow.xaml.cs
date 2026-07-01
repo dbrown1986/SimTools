@@ -131,30 +131,29 @@ public partial class GameplayFixesWindow : Window
     }
 
     // ── Global Select All ─────────────────────────────────────────────────────
-    private void GlobalSelectAll_Click(object sender, RoutedEventArgs e)
-    {
-        bool check = GlobalSelectAll.IsChecked == true;
-
-        if (check)
-        {
-            var result = WpfMessageBox.Show(
-                LanguageManager.Get("GameplayFixes", "SelectAll_Ask",
-                    "You are about to select every available fix. You need to be sure about this. This could potentially slow your game. Furthermore, if there are packs that are not installed, your game may crash. "),
-                LanguageManager.Get("GameplayFixes", "SelectAll_Title",
-                    "SimTools — Select All Warning"),
-                MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-            if (result != MessageBoxResult.Yes)
-            {
-                GlobalSelectAll.IsChecked = false;
-                return;
-            }
-        }
-
-        foreach (var item in AllActiveItems())
-            item.IsChecked = check;
-    }
-
+    //    private void GlobalSelectAll_Click(object sender, RoutedEventArgs e)
+    //{
+    //bool check = GlobalSelectAll.IsChecked == true;
+    //
+    //if (check)
+    //{
+    //var result = WpfMessageBox.Show(
+    //LanguageManager.Get("GameplayFixes", "SelectAll_Ask",
+    //"You are about to select every available fix. You need to be sure about this. This could potentially slow your game. Furthermore, if there are packs that are not installed, your game may crash. "),
+    //LanguageManager.Get("GameplayFixes", "SelectAll_Title",
+    //"SimTools — Select All Warning"),
+    //MessageBoxButton.YesNo, MessageBoxImage.Warning);
+    //
+    //if (result != MessageBoxResult.Yes)
+    //{
+    //GlobalSelectAll.IsChecked = false;
+    //return;
+    //}
+    //}
+    //foreach (var item in AllActiveItems())
+    //item.IsChecked = check;
+    //}
+    ////
     // ── Cancel ────────────────────────────────────────────────────────────────
     private void Cancel_Click(object sender, RoutedEventArgs e) => Close();
 
@@ -342,7 +341,7 @@ public partial class GameplayFixesWindow : Window
             new(LanguageManager.Get("GameplayFix", "NoCommLots", "No Auto Placing Community Lots by Bluegenjutsu"),   "SimTools/Packages/bluegenjutsu_NoAutoPlacingCommunityLots.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/base/bluegenjutsu_NoAutoPlacingCommunityLots.package",
                 LanguageManager.Get("GameplayFix", "NoCommLotsWarning", "CAUTION: No Auto Placing Community Lots will disable the script which places lots such as the Fire Station, Salon, Laundromat, etc etc. If you like these lots, do not install this package. This mod will also require at least one of these EP's: Ambitions, Showtime, Supernatural or Seasons. If you do not have any of these EP's, you can safely skip this mod.")),
             new(LanguageManager.Get("GameplayFix", "AtomicStairFix", "Atomic Age Stair Fix by EnableLlamas"),             "SimTools/Packages/enablellamasAtomicAgeStairsFixDR.package",                               "%baseurl%/Mods/Sims3/Fixes/Packages/base/enablellamasAtomicAgeStairsFixDR.package"),
-            new(LanguageManager.Get("GameplayFix", "AtomicStairFix", "Walk Cycle Edits by SimBouquet"),                   "SimTools/Overrides/simbouquet_OVERRIDE_WalkCycleEdits.package",                            "%baseurl%/Mods/Sims3/Fixes/Overrides/base/simbouquet_OVERRIDE_WalkCycleEdits.package"),
+            new(LanguageManager.Get("GameplayFix", "WalkCycleFix", "Walk Cycle Edits by SimBouquet"),                   "SimTools/Overrides/simbouquet_OVERRIDE_WalkCycleEdits.package",                            "%baseurl%/Mods/Sims3/Fixes/Overrides/base/simbouquet_OVERRIDE_WalkCycleEdits.package"),
             new(LanguageManager.Get("GameplayFix", "TSMFaceExpressions", "Medieval Facial Expressions by SimBouquet"),        "SimTools/Overrides/simbouquet_OVERRIDE_TSMtoTS3_FacialExpressions.package",                "%baseurl%/Mods/Sims3/Fixes/Overrides/base/simbouquet_OVERRIDE_TSMtoTS3_FacialExpressions.package"),
             new(LanguageManager.Get("GameplayFix", "RandomSimFixes", "Random Sim Fixes by LazyDuchess"),                  "SimTools/Packages/ld_RandomSimFixes.package",                                              "%baseurl%/Mods/Sims3/Fixes/Packages/base/ld_RandomSimFixes.package"),
             new(LanguageManager.Get("GameplayFix", "SimBinGeneticsMale", "Sim Bin Genetics Male Presets by Anime_Boom"),      "SimTools/Packages/SimBinYAAMPresets.package",                                              "%baseurl%/Mods/Sims3/Fixes/Packages/base/SimBinYAAMPresets.package"),
@@ -544,6 +543,6 @@ public partial class GameplayFixesWindow : Window
         : System.Windows.FlowDirection.LeftToRight;
 
         // ── Text strings ───────────────────────────────────────────────────
-        GlobalSelectAll.Content = LanguageManager.Get("GameplayFix", "GlobalSelectAll", "Select All");
+        // GlobalSelectAll.Content = LanguageManager.Get("GameplayFix", "GlobalSelectAll", "Select All");
     }
 }

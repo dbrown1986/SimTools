@@ -677,10 +677,8 @@ namespace SimTools
             {
                 // 1. Prompt the user with a Yes/No option
                 MessageBoxResult result = MessageBox.Show(
-                    "Would you like SimTools to automatically apply the optimal performance and stability settings directly to your configuration?\n\n" +
-                    "Click 'Yes' to automatically tweak options (Disables interactive loading screens, memories bloat, tutorial notifications, and the in-game store).\n" +
-                    "Click 'No' to open the online manual guide instead.",
-                    "Apply Optimal Settings Automatically?",
+                    LanguageManager.Get("Main", "BIGS_Auto", "Would you like SimTools to automatically apply the optimal performance and stability settings directly to your configuration?\n\n Click 'Yes' to automatically tweak options (Disables interactive loading screens, memories bloat, tutorial notifications, and the in-game store).\n Click 'No' to open the online manual guide instead."),
+                    LanguageManager.Get("Main", "BIGS_Auto_Title", "Apply Optimal Settings Automatically?"),
                     MessageBoxButton.YesNoCancel,
                     MessageBoxImage.Question
                 );
@@ -862,11 +860,19 @@ animationsmoothing = 0";
 
                         File.WriteAllLines(filePath, processedLines);
 
-                        MessageBox.Show("Performance improvements applied successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(
+                            LanguageManager.Get("Main", "PerfAutoSuccess", "Performance improvements applied successfully!"),
+                            LanguageManager.Get("Main", "PerfAutoSuccess", "Success"),
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Failed to modify options file: {ex.Message}", "Configuration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(
+                            LanguageManager.Get("Main", "ModFileFailed", $"Failed to modify options file: {ex.Message}"),
+                            LanguageManager.Get("Main", "ModFileFailed_Title", "Configuration Error"),
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
                     }
                 }
                 else if (result == MessageBoxResult.No)
@@ -879,14 +885,14 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_bestSettings);
 
             // ── Game INI Tweaks ─────────────────────────────────────────────────
-            var ts3_iniTweaks = new MenuItem { Header = "Game INI Tweaks" };
+            var ts3_iniTweaks = new MenuItem { Header = LanguageManager.Get("Main", "INITweaks", "Game INI Tweaks") };
 
             var iniItems = new[]
             {
-    ("Limit Game FPS", "https://simtools-app.com/limit-game-fps-ts3"),
-    ("Allow More CPU Usage", "https://simtools-app.com/allow-more-cpu-usage-ts3"),
-    ("Allow More GPU Usage", "https://simtools-app.com/allow-more-gpu-usage-ts3"),
-    ("Clean DCBackup Cache", "https://simtools-app.com/clean-dcbackup-ts3"),
+    (LanguageManager.Get("Main", "BSLimitFPS", "Limit Game FPS"), "https://simtools-app.com/limit-game-fps-ts3"),
+    (LanguageManager.Get("Main", "BSMoreCPU", "Allow More CPU Usage"), "https://simtools-app.com/allow-more-cpu-usage-ts3"),
+    (LanguageManager.Get("Main", "BSMoreGPU", "Allow More GPU Usage"), "https://simtools-app.com/allow-more-gpu-usage-ts3"),
+    (LanguageManager.Get("Main", "BSCleanDC", "Clean DCBackup Cache"), "https://simtools-app.com/clean-dcbackup-ts3"),
 };
 
             foreach (var (header, url) in iniItems)
@@ -896,12 +902,11 @@ animationsmoothing = 0";
                 subItem.Click += (sender, e) =>
                 {
                     // 1. Handle "Clean DCBackup Cache" separately as requested
-                    if (header == "Clean DCBackup Cache")
+                    if (header == LanguageManager.Get("Main", "CleanDC_01", "Clean DCBackup Cache"))
                     {
                         MessageBoxResult result = MessageBox.Show(
-                            "This can be easily and safely accomplished by using the 'Regul Save Cleaner' utility.\n\n" +
-                            "Would you like to open the online guide to read more about cleaning your cache folders?",
-                            "Clean DCBackup Cache",
+                            LanguageManager.Get("Main", "CleanDC_02", "This can be easily and safely accomplished by using the 'Regul Save Cleaner' utility.\n\n Would you like to open the online guide to read more about cleaning your cache folders?"),
+                            LanguageManager.Get("Main", "CleanDC_02_Title", "Clean DCBackup Cache"),
                             MessageBoxButton.YesNo,
                             MessageBoxImage.Information
                         );
@@ -914,10 +919,7 @@ animationsmoothing = 0";
                     }
 
                     // 2. Prompt the user for the other tweaks
-                    string messagePrompt = $"Would you like SimTools to automatically apply the settings for '{header}'?\n\n" +
-                                           "Note: Using the 'Sims3SettingsSetter' mod can also accomplish most of this directly in-game.\n\n" +
-                                           "Click 'Yes' to automatically modify your configuration.\n" +
-                                           "Click 'No' to view the manual optimization guide instead.";
+                    string messagePrompt = LanguageManager.Get("Main", "OtherTweaks", $"Would you like SimTools to automatically apply the settings for '{header}'?\n\n Note: Using the 'Sims3SettingsSetter' mod can also accomplish most of this directly in-game.\n\n Click 'Yes' to automatically modify your configuration.\n Click 'No' to view the manual optimization guide instead.");
 
                     MessageBoxResult choice = MessageBox.Show(
                         messagePrompt,
@@ -945,18 +947,21 @@ animationsmoothing = 0";
                         if (string.IsNullOrWhiteSpace(gameDir))
                         {
                             MessageBox.Show(
-                                "The Sims 3 Game Directory path has not been configured in your settings yet. Please set it up in the configuration file first.",
-                                "Path Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                LanguageManager.Get("Main", "TS3NoDir", "The Sims 3 Game Directory path has not been configured in your settings yet. Please set it up in the configuration file first."),
+                                LanguageManager.Get("Main", "TS3NoDir_Title", "Path Error"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
                             return;
                         }
 
                         // Handle "Limit Game FPS" which typically requires driver-level intervention
-                        if (header == "Limit Game FPS")
+                        if (header == LanguageManager.Get("Main", "LimitFPSHeader", "Limit Game FPS"))
                         {
                             MessageBox.Show(
-                                "Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner) or via DXVK.\n\n" +
-                                "SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware.",
-                                "Driver-Level Configuration Required", MessageBoxButton.OK, MessageBoxImage.Information);
+                                LanguageManager.Get("Main","LimitFPSTip", "Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner) or via DXVK.\n\n SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware."),
+                                LanguageManager.Get("Main", "LimitFPSTip_Title", "Driver-Level Configuration Required"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
                             OpenUrl(url);
                             return;
                         }
@@ -966,16 +971,17 @@ animationsmoothing = 0";
                         if (!File.Exists(sgrPath))
                         {
                             MessageBox.Show(
-                                "Could not locate 'GraphicsRules.sgr' inside your installation folder.\n\n" +
-                                "Please verify your path selection, or run the game at least once to ensure all game files are fully generated on your disk.",
-                                "File Missing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                LanguageManager.Get("Main", "GraphicsRulesNotFound", "Could not locate 'GraphicsRules.sgr' inside your installation folder.\n\n Please verify your path selection, or run the game at least once to ensure all game files are fully generated on your disk."),
+                                LanguageManager.Get("Main", "GraphicsRulesNotFound_Title", "File Missing"),
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Warning);
                             return;
                         }
 
                         string[] lines = File.ReadAllLines(sgrPath);
                         bool modified = false;
 
-                        if (header == "Allow More CPU Usage")
+                        if (header == LanguageManager.Get("Main", "AllowCPU_01", "Allow More CPU Usage"))
                         {
                             for (int i = 0; i < lines.Length; i++)
                             {
@@ -986,7 +992,7 @@ animationsmoothing = 0";
                                 else if (trimLine.StartsWith("seti cpuLevelLow")) { lines[i] = "    seti cpuLevelLow 3"; modified = true; }
                             }
                         }
-                        else if (header == "Allow More GPU Usage")
+                        else if (header == LanguageManager.Get("Main", "AllowGPU_01", "Allow More GPU Usage"))
                         {
                             for (int i = 0; i < lines.Length; i++)
                             {
@@ -1009,16 +1015,28 @@ animationsmoothing = 0";
                             }
 
                             File.WriteAllLines(sgrPath, lines);
-                            MessageBox.Show($"Successfully updated 'GraphicsRules.sgr' with optimal settings for {header}!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "sgrSuccess", $"Successfully updated 'GraphicsRules.sgr' with optimal settings for {header}!"),
+                                LanguageManager.Get("Main", "sgrSuccess_Title", "Success"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Could not find the target variables inside GraphicsRules.sgr to change. Your file may already be optimized or modified.", "No Changes Made", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "sgrFail", "Could not find the target variables inside GraphicsRules.sgr to change. Your file may already be optimized or modified."),
+                                LanguageManager.Get("Main", "sgrFail_Title", "No Changes Made"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"An unexpected error occurred while modifying game configuration files:\n{ex.Message}", "Tweak Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(
+                            LanguageManager.Get("Main", "sgrException", $"An unexpected error occurred while modifying game configuration files:\n{ex.Message}"),
+                            LanguageManager.Get("Main", "sgrException_Title", "Tweak Error"),
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
                     }
                 };
 
@@ -1094,13 +1112,50 @@ animationsmoothing = 0";
                 {
                     MessageBox.Show(
                         LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
                     return;
                 }
 
+                string destPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "wininet.dll");
+
+                // Check if the file is already installed
+                if (File.Exists(destPath))
+                {
+                    var result = MessageBox.Show(
+                        LanguageManager.Get("Main", "UASI_Installed", "The Ultimate ASI Loader is already installed. Would you like to remove it?"),
+                        LanguageManager.Get("Main", "UASI_Installed_Title", "SimTools — Already Installed"),
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            File.Delete(destPath);
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "UASI_Removed", "Ultimate ASI Loader has been removed."),
+                                LanguageManager.Get("Main", "UASI_Removed_Title", "SimTools - Ultimate ASI Loader Removed"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "UASI_Exception", $"Failed to remove file: {ex.Message}"),
+                                LanguageManager.Get("Main", "UASI_Exception_Title", "SimTools - Removal Error"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                        }
+                    }
+                    return; // Exit after handling the installed state
+                }
+
+                // Proceed with download if not installed
                 await DownloadFileOnly(
-                    url: "%baseurl%/Sideload-Apps/x86/wininet.dll",  // ← replace
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "wininet.dll"));
+                    url: "%baseurl%/Sideload-Apps/x86/wininet.dll",
+                    destFilePath: destPath);
             };
             sims3Item.Items.Add(ts3_uasil);
 
@@ -1112,13 +1167,50 @@ animationsmoothing = 0";
                 {
                     MessageBox.Show(
                         LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
                     return;
                 }
 
+                string destPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "Sims3SettingsSetter.asi");
+
+                // Check if the file is already installed
+                if (File.Exists(destPath))
+                {
+                    var result = MessageBox.Show(
+                        LanguageManager.Get("Main", "S3SS_Installed", "The Sims 3 Settings Setter is already installed. Would you like to remove it?"),
+                        LanguageManager.Get("Main", "S3SS_Installed_Title", "SimTools — Already Installed"),
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            File.Delete(destPath);
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "S3SS_Removed", "Sims 3 Settings Setter has been removed."),
+                                LanguageManager.Get("Main", "S3SS_Removed_Title", "SimTools"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "S3SS_Removal_Failed", $"Failed to remove file: {ex.Message}"),
+                                LanguageManager.Get("Main", "S3SS_Removal_Failed_Title", "Error"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                        }
+                    }
+                    return; // Exit here regardless of whether the user said Yes or No
+                }
+
+                // Proceed with download if not installed
                 await DownloadFileOnly(
-                    url: "%baseurl%/Sideload-Apps/x86/S3SS/Sims3SettingsSetter.asi",  // ← replace
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "Sims3SettingsSetter.asi"));
+                    url: "%baseurl%/Sideload-Apps/x86/S3SS/Sims3SettingsSetter.asi",
+                    destFilePath: destPath);
             };
             sims3Item.Items.Add(ts3_s3ss);
 
@@ -1126,55 +1218,76 @@ animationsmoothing = 0";
             var ts3_ldLauncher = new MenuItem { Header = "LazyDuchess Launcher" };
             ts3_ldLauncher.Click += (_, _) =>
             {
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"),
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                string launcherPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "Sims3Launcher.exe");
+                string backupPath = launcherPath + ".bak";
+
+                // ── Removal Mechanic ──────────────────────────────────────────────────────────
+                if (File.Exists(backupPath))
+                {
+                    var result = MessageBox.Show(
+                        LanguageManager.Get("Main", "LDLInstalled", "LazyDuchess Launcher is currently installed. Would you like to remove it and restore the original launcher?"),
+                        LanguageManager.Get("Main", "LDLInstalled_Title", "SimTools — Remove Launcher"),
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            if (File.Exists(launcherPath)) File.Delete(launcherPath);
+                            File.Move(backupPath, launcherPath);
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "LauncherRestored", "Original launcher restored successfully."),
+                                LanguageManager.Get("Main", "LauncherRestored_Title", "Original Launcher Restored"), MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "LauncherRestoreFailure", $"Failed to restore original launcher: {ex.Message}"),
+                                LanguageManager.Get("Main", "LauncherRestoreFailure_Title", "Error"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                        }
+                    }
+                    return;
+                }
+
+                // ── Installation Logic ───────────────────────────────────────────────────────
                 MessageBox.Show(
                     LanguageManager.Get("Main", "LDLauncher_Info1", "LazyDuchess Launcher is only compatible with the 1.69 EA release of The Sims 3. For Retail or Steam, use Ultimate ASI Loader instead."),
                     LanguageManager.Get("Main", "LDLauncher_Title", "LazyDuchess Launcher — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
-                MessageBox.Show(
-                    LanguageManager.Get("Main", "LDLauncher_Info2", "LazyDuchess Launcher will now be installed to Sims 3 directory."),
-                    LanguageManager.Get("Main", "LDLauncher_Title", "LazyDuchess Launcher — The Sims 3"),
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-
-                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                try
                 {
-                    MessageBox.Show(
-                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                // ── Silently back up the existing launcher before overwriting ─────────
-                string launcherPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "Sims3Launcher.exe");
-                string backupPath = launcherPath + ".bak";
-
-                if (File.Exists(launcherPath))
-                {
-                    try
+                    // Backup existing launcher
+                    if (File.Exists(launcherPath))
                     {
-                        if (File.Exists(backupPath))
-                            File.Delete(backupPath);
+                        if (File.Exists(backupPath)) File.Delete(backupPath);
                         File.Move(launcherPath, backupPath);
                     }
-                    catch (Exception ex)
-                    {
-                        // Fetch the localized strings
-                        string errorMessage = LanguageManager.Format("Main", "BackupFailedMessage", ex.Message);
-                        string errorTitle = LanguageManager.Get("Main", "BackupFailedTitle", "SimTools — Backup Failed");
 
-                        MessageBox.Show(
-                            errorMessage,
-                            errorTitle,
-                            MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
+                    DownloadAndOpenExe(
+                        url: "%baseurl%/Sideload-Apps/x86/Sims3Launcher.exe",
+                        fileName: "Game/Bin/Sims3Launcher.exe",
+                        downloadDirectory: GamePaths.Sims3Game
+                    );
                 }
-
-                DownloadAndOpenExe(
-                    url: "%baseurl%/Sideload-Apps/x86/Sims3Launcher.exe",
-                    fileName: "Game/Bin/Sims3Launcher.exe",
-                    downloadDirectory: GamePaths.Sims3Game
-                );
+                catch (Exception ex)
+                {
+                    string errorMessage = LanguageManager.Format("Main", "BackupFailedMessage", ex.Message);
+                    string errorTitle = LanguageManager.Get("Main", "BackupFailedTitle", "SimTools — Backup Failed");
+                    MessageBox.Show(errorMessage, errorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             };
             sims3Item.Items.Add(ts3_ldLauncher);
 
@@ -1182,6 +1295,47 @@ animationsmoothing = 0";
             var ts3_monoPatcher = new MenuItem { Header = "Mono Patcher Library" };
             ts3_monoPatcher.Click += async (_, _) =>
             {
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"),
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                string destPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "MonoPatcher.asi");
+
+                // Check if the file is already installed
+                if (File.Exists(destPath))
+                {
+                    var result = MessageBox.Show(
+                        LanguageManager.Get("Main", "MonoPatcher_AlreadyInstalled", "Mono Patcher is already installed. Would you like to remove it?"),
+                        LanguageManager.Get("Main", "MonoPatcher_Title", "SimTools — Already Installed"),
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            File.Delete(destPath);
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "MonoPatcher_Removed", "Mono Patcher has been successfully removed."),
+                                "SimTools", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                LanguageManager.Format("Main", "MonoPatcher_RemoveError", $"Failed to remove file: {ex.Message}"),
+                                LanguageManager.Get("Main", "Error_Title", "Error"),
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                    return; // Exit after handling the installed state so the install logic doesn't trigger
+                }
+
+                // Proceed with installation messages and download if not installed
                 MessageBox.Show(
                     LanguageManager.Get("Main", "MonoPatcher_Info1", "Mono Patcher is a library that allows Script Modders to replace Sims 3 methods with as much compatibility as possible - No need to create core mods anymore to replace game functions."),
                     LanguageManager.Get("Main", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
@@ -1192,17 +1346,9 @@ animationsmoothing = 0";
                     LanguageManager.Get("Main", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
-                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
-                {
-                    MessageBox.Show(
-                        LanguageManager.Get("Main", "Sims3Game", "Your Sims 3 Game directory is not configured."),
-                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
                 await DownloadFileOnly(
-                    url: "%baseurl%/Sideload-Apps/x86/MonoPatcher.asi",  // ← replace
-                    destFilePath: Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "MonoPatcher.asi"));
+                    url: "%baseurl%/Sideload-Apps/x86/MonoPatcher.asi",
+                    destFilePath: destPath);
             };
             sims3Item.Items.Add(ts3_monoPatcher);
 
@@ -1227,7 +1373,7 @@ animationsmoothing = 0";
 
             // ── Sweet Treats Conversion Guide ─────────────────────────────────────────
             var ts3_sweetTreats = new MenuItem { Header = LanguageManager.Get("Main","STCG","Sweet Treats Conversion Guide") };
-            ts3_sweetTreats.Click += (_, _) => MessageBox.Show("Coming Soon...", "Sweet Treats");  // ← replace with actual URL
+            ts3_sweetTreats.Click += (_, _) => MessageBox.Show(LanguageManager.Get("Main", "STCG_Msg", "Coming Soon..."), LanguageManager.Get("Main", "STCG_Title", "Sweet Treats"));  // ← replace with actual URL
             sims3Item.Items.Add(ts3_sweetTreats);
 
             // ── nRaas Core Mods (sub-menu) ────────────────────────────────────────────
@@ -1246,10 +1392,47 @@ animationsmoothing = 0";
                             LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
+
+                    string destPath = Path.Combine(GamePaths.Sims3Mods, "SimTools", "Packages", fileName);
+
+                    // ── Removal Mechanic ──────────────────────────────────────────────────────────
+                    if (File.Exists(destPath))
+                    {
+                        var result = MessageBox.Show(
+                            LanguageManager.Format("Main", "nRaas_AlreadyInstalled", "The mod '{0}' is already installed. Would you like to remove it?", header),
+                            LanguageManager.Get("Main", "nRaas_RemoveTitle", "SimTools — Remove Mod"),
+                            MessageBoxButton.YesNo,
+                            MessageBoxImage.Question);
+
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            try
+                            {
+                                File.Delete(destPath);
+                                MessageBox.Show(
+                                    LanguageManager.Format("Main", "nRaas_RemovedSuccess", "'{0}' has been successfully removed.", header),
+                                    LanguageManager.Get("Main", "Success_Title", "SimTools"),
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(
+                                    LanguageManager.Format("Main", "nRaas_RemoveError", "Failed to remove '{0}': {1}", header, ex.Message),
+                                    LanguageManager.Get("Main", "Error_Title", "Error"),
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+                            }
+                        }
+                        return; // Exit here regardless of Yes/No choice to prevent triggering the download
+                    }
+
+                    // ── Installation Logic ───────────────────────────────────────────────────────
                     if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
+
                     await DownloadFileOnly(
                         $"%baseurl%/Mods/Sims3/nRaas/{fileName}",
-                        Path.Combine(GamePaths.Sims3Mods, "SimTools", "Packages", fileName));
+                        destPath);
                 };
                 return item;
             }
@@ -1272,9 +1455,9 @@ animationsmoothing = 0";
             contextMenu.Items.Add(sims3Item);
 
             // ── The Sims Medieval ─────────────────────────────────────────────────────
-            var medievalItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSM.ico"), Header = LanguageManager.Get("BuyTS3","TSM1","The Sims: Medieval") };
+            var medievalItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSM.ico"), Header = LanguageManager.Get("BuyTS3", "TSM1", "The Sims: Medieval") };
 
-            var medieval_smoothPatch = new MenuItem { Header = LanguageManager.Get("Main","TSM_SmoothPatch","LazyDuchess Smooth Patch") };
+            var medieval_smoothPatch = new MenuItem { Header = LanguageManager.Get("Main", "TSM_SmoothPatch", "LazyDuchess Smooth Patch") };
             medieval_smoothPatch.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.SimsMedievalGame))
@@ -1285,15 +1468,60 @@ animationsmoothing = 0";
                         MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
+
+                // Define the file paths so they can be reused for checking, deleting, and downloading
+                string destAsi = Path.Combine(GamePaths.SimsMedievalGame, "Game", "Bin", "TS3Patch.asi");
+                string destTxt = Path.Combine(GamePaths.SimsMedievalGame, "Game", "Bin", "TS3Patch.txt");
+                string destDll = Path.Combine(GamePaths.SimsMedievalGame, "Game", "Bin", "wininet.dll");
+
+                // ── Removal Mechanic ──────────────────────────────────────────────────────────
+                // We use || (OR) so that even if a file was accidentally deleted by the user, 
+                // the app will still offer to clean up the remaining partial installation.
+                if (File.Exists(destAsi) || File.Exists(destTxt) || File.Exists(destDll))
+                {
+                    var result = MessageBox.Show(
+                        LanguageManager.Get("Main", "TSM_SmoothPatch_AlreadyInstalled", "LazyDuchess Smooth Patch is already installed. Would you like to remove it?"),
+                        LanguageManager.Get("Main", "TSM_SmoothPatch_RemoveTitle", "SimTools — Remove Patch"),
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            // Delete files individually if they exist
+                            if (File.Exists(destAsi)) File.Delete(destAsi);
+                            if (File.Exists(destTxt)) File.Delete(destTxt);
+                            if (File.Exists(destDll)) File.Delete(destDll);
+
+                            MessageBox.Show(
+                                LanguageManager.Get("Main", "TSM_SmoothPatch_RemovedSuccess", "LazyDuchess Smooth Patch has been successfully removed."),
+                                LanguageManager.Get("Main", "Success_Title", "SimTools"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                LanguageManager.Format("Main", "TSM_SmoothPatch_RemoveError", "Failed to remove patch files: {0}", ex.Message),
+                                LanguageManager.Get("Main", "Error_Title", "Error"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                        }
+                    }
+                    return; // Exit after handling the installed state to avoid immediately downloading again
+                }
+
+                // ── Installation Logic ───────────────────────────────────────────────────────
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/TSM_SP/TS3Patch.asi",
-                    destFilePath: Path.Combine(GamePaths.SimsMedievalGame, "TS3Patch.asi"));
+                    destFilePath: destAsi);
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/TSM_SP/TS3Patch.txt",
-                    destFilePath: Path.Combine(GamePaths.SimsMedievalGame, "TS3Patch.txt"));
+                    destFilePath: destTxt);
                 await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/TSM_SP/wininet.dll",
-                    destFilePath: Path.Combine(GamePaths.SimsMedievalGame, "wininet.dll"));
+                    destFilePath: destDll);
             };
             medievalItem.Items.Add(medieval_smoothPatch);
 
@@ -1649,38 +1877,6 @@ animationsmoothing = 0";
                     Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/simler90GameplayCoreMod.package"));
             };
             sims3Item.Items.Add(ts3_simler90);
-
-            // ── LazyDuchess' Mono Patcher ──────────────────────────────────────────────
-            var ts3_mono_patcher = new MenuItem { Header = "Mono Patch" };
-            ts3_mono_patcher.Click += async (_, _) =>
-            {
-                MessageBox.Show(
-                    LanguageManager.Get("Main", "MonoPatcher_Info1", "Mono Patcher is a library that allows Script Modders to replace Sims 3 methods with as much compatibility as possible - No need to create core mods anymore to replace game functions."),
-                    LanguageManager.Get("Main", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-
-                MessageBox.Show(
-                    LanguageManager.Get("Main", "MonoPatcher_Info2", "Mono Patcher is required for some SimTools mods."),
-                    LanguageManager.Get("Tweaks", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-
-                if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
-                {
-                    MessageBox.Show(
-                        LanguageManager.Get("Main", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
-                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-                if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
-
-                await DownloadFileOnly(
-                    "%baseurl%/Mods/Sims3/Fixes/Packages/ld_MonoPatcher.package",
-                    Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/ld_MonoPatcher.package"));
-                await DownloadFileOnly(
-                    "%baseurl%/Sideload-Apps/x86/MonoPatcher.asi",
-                    Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "MonoPatcher.asi"));
-            };
-            sims3Item.Items.Add(ts3_mono_patcher);
 
             // ── Gameplay Fixes ────────────────────────────────────────────────
             // Opens the multi-section AIO checkbox installer window.

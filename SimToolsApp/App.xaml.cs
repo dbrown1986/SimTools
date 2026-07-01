@@ -263,7 +263,7 @@ namespace SimTools
             _ee5Buffer = string.Empty;
             Process.Start(new ProcessStartInfo
             {
-                FileName        = "https://archive.org/details/turner_video_390885",
+                FileName        = "https://www.youtube.com/watch?v=zzwPuJklv4w",
                 UseShellExecute = true
             });
             NotifyEasterEggFound(5);

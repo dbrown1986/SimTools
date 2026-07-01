@@ -148,7 +148,7 @@
             <Button x:Name="DownloadBtn" Content="Download Selected" Width="53" Height="63" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{x:Null}" FontFamily="Tahoma" FontWeight="Bold" Click="DownloadSelected_Click" Margin="648,-23,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Grid.ColumnSpan="2" OpacityMask="White" Opacity="0"/>
         </Grid>
 
-        <CheckBox x:Name="GlobalSelectAll" DockPanel.Dock="Top" Content="Select All" Foreground="#ffffff" FontWeight="Bold" FontFamily="Tahoma" Margin="15,34,12,4" Click="GlobalSelectAll_Click" Height="15" Width="660"/>
+        <!-- <CheckBox x:Name="GlobalSelectAll" DockPanel.Dock="Top" Content="Select All" Foreground="#ffffff" FontWeight="Bold" FontFamily="Tahoma" Margin="15,34,12,4" Click="GlobalSelectAll_Click" Height="15" Width="660"/> -->
 
         <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Padding="8 4 8 4" Margin="16 0 16 0" MaxHeight="476">
 
