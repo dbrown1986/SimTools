@@ -239,9 +239,17 @@ public partial class SettingsWindow : Window
         IniHelper.Write("Network", "BaseUrl", BaseUrlBox.Text.Trim());
 
         // Music
+        bool wasMusicEnabled = IniHelper.ReadBool("Music", "Enabled", true);
         bool musicEnabled = MusicEnabledCheck.IsChecked == true;
+
         IniHelper.WriteBool("Music", "Enabled", musicEnabled);
-        App.MusicPlayer?.SetEnabled(musicEnabled);
+
+        // Only command the music player to change states if the setting was actually toggled.
+        // This leaves the player in its current paused/stopped state if the user didn't disable it.
+        if (musicEnabled != wasMusicEnabled)
+        {
+            App.MusicPlayer?.SetEnabled(musicEnabled);
+        }
 
         // Game & Mod directories
         foreach (var vm in _gameViewModels)

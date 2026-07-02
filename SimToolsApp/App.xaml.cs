@@ -261,6 +261,7 @@ namespace SimTools
 
             // Sequence matched — clear buffer, open the link, and log the egg
             _ee5Buffer = string.Empty;
+            MusicPlayerService.Pause();
             Process.Start(new ProcessStartInfo
             {
                 FileName        = "https://www.youtube.com/watch?v=zzwPuJklv4w",

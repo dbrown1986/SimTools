@@ -39,11 +39,12 @@ namespace SimTools
         private async void UnlockButton_Click(object sender, RoutedEventArgs e)
         {
             string key = KeyTextBox.Text.Trim();
+            string email = EmailTextBox.Text.Trim(); // <-- Grab the new email input
 
-            if (string.IsNullOrWhiteSpace(key))
+            if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(email))
             {
-                ShowStatus(LanguageManager.Get("Personalization", "EnterKey",
-                    "Please enter a key."));
+                ShowStatus(LanguageManager.Get("Personalization", "EnterKeyAndEmail",
+                    "Please enter both your email address and key."));
                 return;
             }
 
@@ -54,7 +55,6 @@ namespace SimTools
                 return;
             }
 
-            // Get the local hardware identifier unique to this Windows installation
             string machineGuid = MachineIdentity.GetMachineGuid();
             if (string.IsNullOrWhiteSpace(machineGuid))
             {
@@ -62,7 +62,6 @@ namespace SimTools
                 return;
             }
 
-            // Disable UI inputs so the user doesn't double-click while waiting on the server
             UnlockButton.IsEnabled = false;
             ShowStatus("Verifying activation online...");
 
@@ -70,10 +69,11 @@ namespace SimTools
             {
                 using (var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) })
                 {
-                    // Compile the registration text data packet
+                    // Add the email to the payload
                     var payload = new
                     {
                         donor_key = key,
+                        email = email, // <-- Pass the email here
                         machine_guid = machineGuid,
                         machine_name = Environment.MachineName
                     };
@@ -81,8 +81,9 @@ namespace SimTools
                     string json = JsonSerializer.Serialize(payload);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    // Send to your online API Clerk (Be sure to replace with your live domain)
                     var response = await http.PostAsync("https://simtools-app.com/api/activate.php", content);
+
+                    // ... [Rest of the file remains unchanged] ...
 
                     if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                     {

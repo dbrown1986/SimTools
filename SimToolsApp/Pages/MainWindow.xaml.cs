@@ -192,6 +192,7 @@ namespace SimTools
         {
             if (sender is Button btn && btn.Name == "TS3Vanilla")
             {
+                MusicPlayerService.Pause();
                 OpenUrl("https://youtu.be/Ax4NcTucwXE");
             }
         }
@@ -201,6 +202,7 @@ namespace SimTools
         {
             if (sender is Button btn && btn.Name == "TS3WithSimTools")
             {
+                MusicPlayerService.Pause();
                 OpenUrl("https://youtu.be/Ax4NcTucwXE?t=334");
             }
         }
@@ -233,6 +235,7 @@ namespace SimTools
         {
             if (sender is Button btn && btn.Name == "VideoTutorial")
             {
+                MusicPlayerService.Pause();
                 OpenUrl("https://www.youtube.com/watch?v=O2kfSV9VcMY");
             }
         }
@@ -2737,6 +2740,7 @@ animationsmoothing = 0";
 
         private void EasterEgg1_Click(object sender, RoutedEventArgs e)
         {
+            MusicPlayerService.Pause();
             OpenUrl("https://archive.org/details/the-minds-eye-raw-dv-captures/The+Mind's+Eye+(1990%2C+original%2C+LaserDisc).avi");
             App.NotifyEasterEggFound(1);
         }

@@ -1,73 +1,6 @@
-<?php
-header("Content-Type: application/json");
-
-// 1. CHOOSE YOUR DATABASE CREDENTIALS
-$db_host = "localhost";$db_user = "YOUR_DATABASE_USERNAME";$db_pass = "YOUR_DATABASE_PASSWORD";$db_name = "YOUR_DATABASE_NAME";
-
-// Connect to the database
-$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-if ($conn->connect_error) {
-    http_response_code(500);
-    echo json_encode(["error" => "Database connection failed"]);
-    exit;
-}
-
-// 2. READ THE INCOMING ENVELOPE FROM THE WPF APP
-$inputData = file_get_contents("php://input");
-$request = json_decode($inputData, true);
-
-$donor_key    = $request['donor_key'] ?? '';
-$machine_guid = $request['machine_guid'] ?? '';
-$machine_name = $request['machine_name'] ?? '';
-
-// Make sure the app didn't send blank data
-if (empty($donor_key) || empty($machine_guid)) {
-    http_response_code(400);
-    echo json_encode(["error" => "Missing key or machine identification."]);
-    exit;
-}
-
-// 3. CHECK IF THIS MACHINE IS ALREADY ACTIVATED
-$stmt = $conn->prepare("SELECT id FROM simtools_activations WHERE donor_key = ? AND machine_guid = ?");
-$stmt->bind_param("ss", $donor_key, $machine_guid);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_num_rows > 0) {
-    // Already registered! Let them through without consuming a slot.
-    http_response_code(200);
-    echo json_encode(["status" => "success", "message" => "Machine already registered."]);
-    exit;
-}
-$stmt->close();
-
-// 4. COUNT HOW MANY MACHINES ARE ALREADY USING THIS KEY
-$stmt = $conn->prepare("SELECT COUNT(*) as active_count FROM simtools_activations WHERE donor_key = ?");
-$stmt->bind_param("s", $donor_key);
-$stmt->execute();
-$result = $stmt->get_result()->fetch_assoc();
-$current_activations = $result['active_count'];
-$stmt->close();
-
-if ($current_activations >= 5) {
-    // Limit reached! Send back a 409 Conflict status code
-    http_response_code(409);
-    echo json_encode(["status" => "limit_reached", "message" => "This key is already active on 2 machines."]);
-    exit;
-}
-
-// 5. SUCCESS: REGISTER THE NEW MACHINE
-$stmt = $conn->prepare("INSERT INTO simtools_activations (donor_key, machine_guid, machine_name) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $donor_key, $machine_guid, $machine_name);
-
-if ($stmt->execute()) {
-    http_response_code(200);
-    echo json_encode(["status" => "success", "message" => "Activation successful!"]);
-} else {
-    http_response_code(500);
-    echo json_encode(["error" => "Failed to write activation to database."]);
-}
-
-$stmt->close();
-$conn->close();
-?>
+<?phpheader("Content-Type: application/json");// 1. CHOOSE YOUR DATABASE CREDENTIALS$db_host = "localhost";$db_user = "YOUR_DATABASE_USERNAME";$db_pass = "YOUR_DATABASE_PASSWORD";$db_name = "YOUR_DATABASE_NAME";
+// Connect to the database$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);if ($conn->connect_error) {    http_response_code(500);    echo json_encode(["error" => "Database connection failed"]);    exit;}// 2. READ THE INCOMING ENVELOPE FROM THE WPF APP$inputData = file_get_contents("php://input");$request = json_decode($inputData, true);$donor_key    = $request['donor_key'] ?? '';$email        = $request['email'] ?? ''; // NEW: Read the email$machine_guid = $request['machine_guid'] ?? '';$machine_name = $request['machine_name'] ?? '';// Make sure the app didn't send blank dataif (empty($donor_key) || empty($machine_guid) || empty($email)) {    http_response_code(400);    echo json_encode(["error" => "Missing key, email, or machine identification."]);    exit;}
+// 3. CHECK IF THIS MACHINE IS ALREADY ACTIVATED$stmt = $conn->prepare("SELECT id FROM simtools_activations WHERE donor_key = ? AND machine_guid = ?");$stmt->bind_param("ss", $donor_key, $machine_guid);$stmt->execute();$result = $stmt->get_result();
+if ($result->num_num_rows > 0) {    // Already registered! Let them through without consuming a slot.    http_response_code(200);    echo json_encode(["status" => "success", "message" => "Machine already registered."]);    exit;}$stmt->close();
+// 4. COUNT HOW MANY MACHINES ARE ALREADY USING THIS KEY$stmt = $conn->prepare("SELECT COUNT(*) as active_count FROM simtools_activations WHERE donor_key = ?");$stmt->bind_param("s", $donor_key);$stmt->execute();$result = $stmt->get_result()->fetch_assoc();$current_activations = $result['active_count'];$stmt->close();if ($current_activations >= 5) {    // Limit reached! Send back a 409 Conflict status code    http_response_code(409);    echo json_encode(["status" => "limit_reached", "message" => "This key is already active on 2 machines."]);    exit;}
+// 5. SUCCESS: REGISTER THE NEW MACHINE$stmt = $conn->prepare("INSERT INTO simtools_activations (donor_key, machine_guid, machine_name, email) VALUES (?, ?, ?, ?)");$stmt->bind_param("ssss", $donor_key, $machine_guid, $machine_name, $email);if ($stmt->execute()) {    http_response_code(200);    echo json_encode(["status" => "success", "message" => "Activation successful!"]);} else {    http_response_code(500);    echo json_encode(["error" => "Failed to write activation to database."]);}$stmt->close();$conn->close();?>

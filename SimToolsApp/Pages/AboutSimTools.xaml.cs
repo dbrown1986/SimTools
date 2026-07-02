@@ -359,6 +359,7 @@ public partial class AboutSimTools : Window
 
     private void EasterEgg2_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
+        MusicPlayerService.Pause();
         Process.Start(new ProcessStartInfo(
             "https://youtu.be/Ea-gho4cjhI")
         {
@@ -369,6 +370,7 @@ public partial class AboutSimTools : Window
 
     private void EasterEgg4_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
+        MusicPlayerService.Pause();
         Process.Start(new ProcessStartInfo(
             "https://archive.org/details/the-tune-1992")
         {

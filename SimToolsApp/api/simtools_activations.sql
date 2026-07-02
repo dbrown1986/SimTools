@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS simtools_activations (
     donor_key VARCHAR(255) NOT NULL,
     machine_guid VARCHAR(255) NOT NULL,
     machine_name VARCHAR(100),
+    email VARCHAR(255) NOT NULL,
     activated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE KEY unique_activation (donor_key, machine_guid)
 );
