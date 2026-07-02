@@ -192,7 +192,7 @@ namespace SimTools
         {
             if (sender is Button btn && btn.Name == "TS3Vanilla")
             {
-                OpenUrl("https://www.youtube.com/watch?v=WvsPzENc8Ps");
+                OpenUrl("https://youtu.be/Ax4NcTucwXE");
             }
         }
 
@@ -201,7 +201,7 @@ namespace SimTools
         {
             if (sender is Button btn && btn.Name == "TS3WithSimTools")
             {
-                OpenUrl("https://www.youtube.com/watch?v=hLXq3eVV1Eo");
+                OpenUrl("https://youtu.be/Ax4NcTucwXE?t=334");
             }
         }
 
@@ -233,7 +233,7 @@ namespace SimTools
         {
             if (sender is Button btn && btn.Name == "VideoTutorial")
             {
-                OpenUrl("https://www.youtube.com/watch?v=IkewLXsy-CA");
+                OpenUrl("https://www.youtube.com/watch?v=O2kfSV9VcMY");
             }
         }
 
@@ -1930,26 +1930,73 @@ animationsmoothing = 0";
 
             // ── Simler90's Fixes ──────────────────────────────────────────────
             var ts3_simler90 = new MenuItem { Header = "Simler90's Fixes" };
-            ts3_simler90.Click += async (_, _) =>
+
+            MenuItem Simler90PackageItem(string header, string fileName)
             {
-                MessageBox.Show(
-                    LanguageManager.Get("Tweaks", "Simler90_Info", "Simler90's mod package fixes many bugs in the game and the internal engine."),
-                    LanguageManager.Get("Tweaks", "Simler90_Title", "Simler90's Fixes — The Sims 3"),
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-
-                if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
+                var item = new MenuItem { Header = header };
+                item.Click += async (_, _) =>
                 {
-                    MessageBox.Show(
-                        LanguageManager.Get("Main", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
-                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-                if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
+                    if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
+                    {
+                        MessageBox.Show(
+                            LanguageManager.Get("Main", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
+                            LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
 
-                await DownloadFileOnly(
-                    "%baseurl%/Mods/Sims3/Fixes/Packages/simler90GameplayCoreMod.package",
-                    Path.Combine(GamePaths.Sims3Mods, "SimTools/Packages/simler90GameplayCoreMod.package"));
-            };
+                    string destPath = Path.Combine(GamePaths.Sims3Mods, "SimTools", "Packages", fileName);
+
+                    // ── Removal Mechanic ──────────────────────────────────────────────────────────
+                    if (File.Exists(destPath))
+                    {
+                        var result = MessageBox.Show(
+                            LanguageManager.Format("Tweaks", "Simler90_AlreadyInstalled", "The mod '{0}' is already installed. Would you like to remove it?", header),
+                            LanguageManager.Get("Tweaks", "Simler90_RemoveTitle", "SimTools — Remove Mod"),
+                            MessageBoxButton.YesNo,
+                            MessageBoxImage.Question);
+
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            try
+                            {
+                                File.Delete(destPath);
+                                MessageBox.Show(
+                                    LanguageManager.Format("Tweaks", "Simler90_RemovedSuccess", "'{0}' has been successfully removed.", header),
+                                    LanguageManager.Get("Main", "Success_Title", "SimTools"),
+                                    MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(
+                                    LanguageManager.Format("Tweaks", "Simler90_RemoveError", "Failed to remove '{0}': {1}", header, ex.Message),
+                                    LanguageManager.Get("Main", "Error_Title", "Error"),
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                        return; // Exit here to prevent triggering the download
+                    }
+
+                    // ── Installation Logic ───────────────────────────────────────────────────────
+                    MessageBox.Show(
+                        LanguageManager.Get("Tweaks", "Simler90_Info", "Simler90's mod package fixes many bugs in the game and the internal engine."),
+                        LanguageManager.Get("Tweaks", "Simler90_Title", "Simler90's Fixes — The Sims 3"),
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
+
+                    await DownloadFileOnly(
+                        $"%baseurl%/Mods/Sims3/Fixes/Packages/{fileName}",
+                        destPath);
+                };
+                return item;
+            }
+
+            // Add the child items to the new parent menu
+            // NOTE: Make sure these filenames match exactly what is hosted on your server
+            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for EA (1.69)", "simler90GameplayCoreMod-EA.package"));
+            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for Steam (1.67)", "simler90GameplayCoreMod-Steam.package"));
+            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for Retail (1.67)", "simler90GameplayCoreMod-Retail.package"));
+
             sims3Item.Items.Add(ts3_simler90);
 
             // ── Gameplay Fixes ────────────────────────────────────────────────
