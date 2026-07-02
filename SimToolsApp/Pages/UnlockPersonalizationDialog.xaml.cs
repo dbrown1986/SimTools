@@ -39,12 +39,13 @@ namespace SimTools
         private async void UnlockButton_Click(object sender, RoutedEventArgs e)
         {
             string key = KeyTextBox.Text.Trim();
-            string email = EmailTextBox.Text.Trim(); // <-- Grab the new email input
+            string email = EmailTextBox.Text.Trim(); // Grab the email input from the new text box
 
+            // Validate that BOTH fields are filled in
             if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(email))
             {
                 ShowStatus(LanguageManager.Get("Personalization", "EnterKeyAndEmail",
-                    "Please enter both your email address and key."));
+                    "Please enter both your email address and donor key."));
                 return;
             }
 
@@ -55,6 +56,7 @@ namespace SimTools
                 return;
             }
 
+            // Get the local hardware identifier unique to this Windows installation
             string machineGuid = MachineIdentity.GetMachineGuid();
             if (string.IsNullOrWhiteSpace(machineGuid))
             {
@@ -62,6 +64,7 @@ namespace SimTools
                 return;
             }
 
+            // Disable UI inputs so the user doesn't double-click while waiting on the server
             UnlockButton.IsEnabled = false;
             ShowStatus("Verifying activation online...");
 
@@ -69,11 +72,11 @@ namespace SimTools
             {
                 using (var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) })
                 {
-                    // Add the email to the payload
+                    // Compile the registration text data packet, now including the email property
                     var payload = new
                     {
                         donor_key = key,
-                        email = email, // <-- Pass the email here
+                        email = email,
                         machine_guid = machineGuid,
                         machine_name = Environment.MachineName
                     };
@@ -81,13 +84,12 @@ namespace SimTools
                     string json = JsonSerializer.Serialize(payload);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+                    // Send to your online API Clerk (Be sure to replace with your live domain)
                     var response = await http.PostAsync("https://simtools-app.com/api/activate.php", content);
-
-                    // ... [Rest of the file remains unchanged] ...
 
                     if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                     {
-                        // 409 Conflict = Server database says 2 machines are already registered
+                        // 409 Conflict = Server database says 5 machines are already registered
                         MessageBox.Show(
                             "This donor key has already reached its maximum activation limit (5 machines).\n\n" +
                             "Please revoke one of your existing active setups via your donor portal before activating this machine.",
@@ -100,8 +102,8 @@ namespace SimTools
                     }
                     else if (!response.IsSuccessStatusCode)
                     {
-                        // Any unexpected server error like a 500, 404, or 400
-                        ShowStatus("Server rejected the activation or database is offline.");
+                        // Any unexpected server error like a 500, 404, or 400 (e.g. key email checks failed)
+                        ShowStatus("Server rejected the activation. Check that your key and email match.");
                         return;
                     }
                 }
