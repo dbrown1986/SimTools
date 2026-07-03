@@ -42,6 +42,13 @@ PreviousMenu=「X」をクリックすると前のメニューに戻ります。
 Retic=スプラインを計算中...
 
 [Settings]
+Change_Language=言語を変更
+ResetRepoURL=デフォルトにリセット ({AppSettings.DefaultBaseUrl})
+MusicPlayerText=ミュージックプレイヤー
+MusicEnabledCheck=ミュージックプレイヤーを有効にする
+BYOM_Text=独自の楽曲 (MP3 / WAV / FLAC / M4A) を /Resources/Music フォルダーに入れてください。
+UpdateText=アップデート
+ResetAutoUpdateBtn=自動アップデート確認をリセット
 Sims3DirWarning=The Sims 3のゲームディレクトリは、拡張パックやスタッフパックのフォルダがあるルートディレクトリを指定してください。「Game/Bin」フォルダを選択しないでください。
 Sims3DirWarning_Title=SimTools — Sims 3 ディレクトリ
 AutoDetect_Nothing=ゲームまたはMODのディレクトリを自動検出できませんでした。\n\nSteam、GOG、EA Games、Electronic Arts、Origin Gamesフォルダなど、一般的なインストール場所を確認しました。\n\n「参照」ボタンを使用して手動でパスを設定できます。

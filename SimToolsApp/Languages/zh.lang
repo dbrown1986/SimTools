@@ -42,6 +42,13 @@ PreviousMenu=點擊「X」返回上一個選單。
 Retic=正在編織樣條曲線 (Reticulating Splines)...
 
 [Settings]
+Change_Language=更改语言
+ResetRepoURL=重置为默认值 ({AppSettings.DefaultBaseUrl})
+MusicPlayerText=音乐播放器
+MusicEnabledCheck=启用音乐播放器
+BYOM_Text=将您自己的歌曲 (MP3 / WAV / FLAC / M4A) 放入 /Resources/Music 文件夹中。
+UpdateText=更新
+ResetAutoUpdateBtn=重置自动更新检查
 Sims3DirWarning=請將《模擬市民 3》遊戲目錄設定為包含資料片與組合包資料夾的根目錄，請勿選擇 Game/Bin 資料夾。
 Sims3DirWarning_Title=SimTools — 《模擬市民 3》目錄
 AutoDetect_Nothing=無法自動偵測到任何遊戲或模組目錄。\n\n已檢查常見的安裝位置，包括 Steam、GOG、EA Games、Electronic Arts 和 Origin Games 資料夾。\n\n您可以使用「瀏覽」按鈕手動設定路徑。

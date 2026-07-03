@@ -42,6 +42,13 @@ PreviousMenu=Cliquez sur le 'X' pour revenir au menu précédent.
 Retic=Reticulation des splines...
 
 [Settings]
+Change_Language=Changer la langue
+ResetRepoURL=Réinitialiser par défaut ({AppSettings.DefaultBaseUrl})
+MusicPlayerText=Lecteur de musique
+MusicEnabledCheck=Activer le lecteur de musique
+BYOM_Text=Placez vos propres chansons (MP3 / WAV / FLAC / M4A) dans le dossier /Resources/Music.
+UpdateText=Mises à jour
+ResetAutoUpdateBtn=Réinitialiser la vérification des mises à jour automatiques
 Sims3DirWarning=Veuillez définir votre répertoire de jeu The Sims 3 sur le répertoire racine où se trouvent les dossiers des extensions et des kits, ne sélectionnez pas le dossier Game/Bin.
 Sims3DirWarning_Title=SimTools — Répertoire The Sims 3
 AutoDetect_Nothing=Aucun répertoire de jeu ou de mod n'a pu être détecté automatiquement.\n\nLes emplacements d'installation courants ont été vérifiés, notamment les dossiers Steam, GOG, EA Games,\nElectronic Arts et Origin Games.\n\nVous pouvez définir les chemins manuellement en utilisant les boutons Parcourir.

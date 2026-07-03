@@ -42,6 +42,13 @@ PreviousMenu=Нажмите 'X', чтобы вернуться в предыду
 Retic=Плетение сплайнов...
 
 [Settings]
+Change_Language=Изменить язык
+ResetRepoURL=Сбросить до стандартного ({AppSettings.DefaultBaseUrl})
+MusicPlayerText=Музыкальный проигрыватель
+MusicEnabledCheck=Включить музыкальный проигрыватель
+BYOM_Text=Поместите свои собственные песни (MP3 / WAV / FLAC / M4A) в папку /Resources/Music.
+UpdateText=Обновления
+ResetAutoUpdateBtn=Сбросить проверку автообновлений
 Sims3DirWarning=Пожалуйста, укажите корневую папку игры The Sims 3, где находятся папки дополнений и каталогов, а не папку Game/Bin.
 Sims3DirWarning_Title=SimTools — Директория The Sims 3
 AutoDetect_Nothing=Не удалось автоматически обнаружить директории игры или модов.\n\nБыли проверены стандартные пути установки, включая папки Steam, GOG, EA Games,\nElectronic Arts и Origin Games.\n\nВы можете указать пути вручную с помощью кнопок «Обзор».

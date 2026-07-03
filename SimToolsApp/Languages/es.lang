@@ -42,6 +42,13 @@ PreviousMenu=Haz clic en la 'X' para volver al menú anterior.
 Retic=Reticulando splines...
 
 [Settings]
+Change_Language=Cambiar idioma
+ResetRepoURL=Restablecer al valor predeterminado ({AppSettings.DefaultBaseUrl})
+MusicPlayerText=Reproductor de música
+MusicEnabledCheck=Habilitar reproductor de música
+BYOM_Text=Coloca tus propias canciones (MP3 / WAV / FLAC / M4A) en la carpeta /Resources/Music.
+UpdateText=Actualizaciones
+ResetAutoUpdateBtn=Restablecer la verificación de actualización automática
 Sims3DirWarning=Por favor, configura tu directorio del juego Los Sims 3 en el directorio raíz donde se encuentran las carpetas de expansiones y accesorios; no selecciones la carpeta Game/Bin.
 Sims3DirWarning_Title=SimTools — Directorio de Los Sims 3
 AutoDetect_Nothing=No se pudieron detectar automáticamente los directorios del juego o de los mods.\n\nSe revisaron las ubicaciones de instalación comunes, incluyendo las carpetas de Steam, GOG, EA Games, Electronic Arts y Origin Games.\n\nPuedes configurar las rutas manualmente usando los botones de Explorar.

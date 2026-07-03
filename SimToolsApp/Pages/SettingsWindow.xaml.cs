@@ -121,20 +121,20 @@ public partial class SettingsWindow : Window
     // ── Static data (identical to original) ──────────────────────────────────
     private static readonly (string Key, string Name)[] Games =
     [
-        ("Sims1",                "The Sims"),
-        ("Sims2",                "The Sims 2"),
-        ("SimsLifeStories",      "The Sims Life Stories"),
-        ("SimsPetStories",       "The Sims Pet Stories"),
-        ("SimsCastawayStories",  "The Sims Castaway Stories"),
-        ("Sims3",                "The Sims 3"),
-        ("Sims4",                "The Sims 4"),
-        ("SimsMedieval",         "The Sims Medieval"),
-        ("SimCopter",            "SimCopter"),
-        ("StreetsOfSimCity",     "Streets of SimCity"),
-        ("SimCity2000",          "SimCity 2000"),
-        ("SimCity3000",          "SimCity 3000 Unlimited"),
-        ("SimCity4",             "SimCity 4 Deluxe"),
-        ("SimCity2013",          "SimCity (2013)"),
+        ("Sims1",                LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims")),
+        ("Sims2",                LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2")),
+        ("SimsLifeStories",      LanguageManager.Get("BuyTS3", "TSLife", "The Sims Life Stories")),
+        ("SimsPetStories",       LanguageManager.Get("BuyTS3", "TSPets", "The Sims Pet Stories")),
+        ("SimsCastawayStories",  LanguageManager.Get("BuyTS3", "TSCast", "The Sims Castaway Stories")),
+        ("Sims3",                LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3")),
+        ("Sims4",                LanguageManager.Get("BuyTS3", "TS4", "The Sims 4")),
+        ("SimsMedieval",         LanguageManager.Get("BuyTS3", "TSM1", "The Sims Medieval")),
+        ("SimCopter",            LanguageManager.Get("BuyTS3", "Copter", "SimCopter")),
+        ("StreetsOfSimCity",     LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity")),
+        ("SimCity2000",          LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000")),
+        ("SimCity3000",          LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000 Unlimited")),
+        ("SimCity4",             LanguageManager.Get("BuyTS3", "SC4DE", "SimCity 4 Deluxe")),
+        ("SimCity2013",          LanguageManager.Get("BuyTS3", "SC2013", "SimCity (2013)")),
     ];
 
     private static readonly System.Collections.Generic.HashSet<string> HasMods =
@@ -168,12 +168,19 @@ public partial class SettingsWindow : Window
         // Apply localised text to named elements
         Title = LanguageManager.Get("Settings", "Window_Title", "SimTools - Settings");
         SectionLangHeader.Text = LanguageManager.Get("Settings", "Section_Language", "Language");
+        ChangeLang.Text = LanguageManager.Get("Settings", "Change_Language", "Change Language");
         SectionDirsHeader.Text = LanguageManager.Get("Settings", "Section_Directories", "Game & Mod Directories");
-        ResetLangBtn.Content = LanguageManager.Get("Settings", "Btn_Reset",
-            "Reset - Show Language Selection on Next Launch");
-        ResetUrlBtn.Content = $"Reset to Default  ({AppSettings.DefaultBaseUrl})";
+        ResetLangBtn.Content = LanguageManager.Get("Settings", "ResetLangBtn", "Reset - Show Language Selection on Next Launch");
+        ResetUrlBtn.Content = LanguageManager.Get("Settings", "ResetRepoURL", $"Reset to Default  ({AppSettings.DefaultBaseUrl})");
+        MusicPlayerText.Text = LanguageManager.Get("Settings", "MusicPlayerText", "Music Player");
+        MusicEnabledCheck.Content = LanguageManager.Get("Settings", "MusicEnabledCheck", "Enable Music Player");
+        BYOM.Text = LanguageManager.Get("Settings", "BYOM_Text", "Place your own songs (MP3 / WAV / FLAC / M4A) in the /Resources/Music folder.");
+        UpdateText.Text = LanguageManager.Get("Settings", "UpdateText", "Updates");
+        UpdatesSupressed.Text = LanguageManager.Get("Settings", "UpdatesSupressed", "If you previously suppressed automatic update notifications (either for 30 days or indefinitely), use the button below to re-enable them.");
+        ResetAutoUpdateBtn.Content = LanguageManager.Get("Settings", "ResetAutoUpdateBtn", "Reset Auto-Update Check");
         SaveBtn.Content = LanguageManager.Get("Settings", "Btn_Save", "Save");
         CancelBtn.Content = LanguageManager.Get("Settings", "Btn_Cancel", "Cancel");
+        RepoLocationURL.Text = LanguageManager.Get("Settings", "RepoLocationURL", "SimTools Repo Location");
 
         // Populate language combo
         foreach (var (code, display) in Languages)
@@ -206,7 +213,7 @@ public partial class SettingsWindow : Window
             LangCombo.SelectedIndex = 0;
 
         // Network
-        BaseUrlBox.Text = IniHelper.Read("Network", "BaseUrl", AppSettings.DefaultBaseUrl);
+        BaseUrlBox.Text = IniHelper.Read("Settings", "BaseUrl", AppSettings.DefaultBaseUrl);
 
         // Music
         MusicEnabledCheck.IsChecked = IniHelper.ReadBool("Music", "Enabled", true);

@@ -42,6 +42,13 @@ PreviousMenu=Klicke auf das 'X', um zum vorherigen Menü zurückzukehren.
 Retic=Splines werden vernetzt...
 
 [Settings]
+Change_Language=Sprache ändern
+ResetRepoURL=Auf Standard zurücksetzen ({AppSettings.DefaultBaseUrl})
+MusicPlayerText=Musik-Player
+MusicEnabledCheck=Musik-Player aktivieren
+BYOM_Text=Lege deine eigenen Songs (MP3 / WAV / FLAC / M4A) in den Ordner /Resources/Music.
+UpdateText=Updates
+ResetAutoUpdateBtn=Auto-Update-Überprüfung zurücksetzen
 Sims3DirWarning=Bitte wähle als Sims 3-Spielverzeichnis das Stammverzeichnis, in dem sich die Erweiterungs- und Accessoires-Pack-Ordner befinden; wähle nicht den Game/Bin-Ordner aus.
 Sims3DirWarning_Title=SimTools — Sims 3-Verzeichnis
 AutoDetect_Nothing=Es konnten keine Spiel- oder Mod-Verzeichnisse automatisch erkannt werden.\n\nEs wurden gängige Installationsorte überprüft, einschließlich der Ordner Steam, GOG, EA Games,\nElectronic Arts und Origin Games.\n\nDu kannst die Pfade manuell über die Durchsuchen-Schaltflächen festlegen.

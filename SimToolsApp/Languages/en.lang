@@ -43,6 +43,13 @@ PreviousMenu=Click the 'X' to go back to the previous menu.
 Retic=Reticulating Splines...
 
 [Settings]
+Change_Language=Change Language
+ResetRepoURL=Reset to Default  ({AppSettings.DefaultBaseUrl})
+MusicPlayerText=Music Player
+MusicEnabledCheck=Enable Music Player
+BYOM_Text=Place your own songs (MP3 / WAV / FLAC / M4A) in the /Resources/Music folder.
+UpdateText=Updates
+ResetAutoUpdateBtn=Reset Auto-Update Check
 Sims3DirWarning=Please set your Sims 3 game directory to the root directory where the expansion and stuff pack folders are, do not select the Game/Bin folder.
 Sims3DirWarning_Title=SimTools — Sims 3 Directory
 AutoDetect_Nothing=No game or mod directories could be detected automatically.\n\nCommon install locations were checked, including Steam, GOG, EA Games,\nElectronic Arts, and Origin Games folders.\n\nYou can set paths manually using the Browse buttons.
@@ -56,7 +63,7 @@ Msg_Reset=Language selection will appear on the next launch.
 Window_Title=SimTools - Settings
 Section_Language=Language
 Section_Directories=Game & Mod Directories
-Btn_Reset=Reset - Show Language Selection on Next Launch
+ResetLangBtn=Reset - Show Language Selection on Next Launch
 Btn_Save=Save
 Btn_Cancel=Cancel
 

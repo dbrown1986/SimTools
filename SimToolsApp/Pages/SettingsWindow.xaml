@@ -106,7 +106,7 @@
                            Text="Languages"/>
 
                 <DockPanel Margin="0 0 0 6">
-                    <TextBlock Style="{StaticResource RowLabelText}"
+                    <TextBlock x:Name="ChangeLang" Style="{StaticResource RowLabelText}"
                                Text="Change Language:"
                                Foreground="White"/>
                     <ComboBox x:Name="LangCombo"
@@ -124,7 +124,7 @@
                         Click="ResetLanguage_Click"/>
 
                 <!-- ── Network ───────────────────────────────────────── -->
-                <TextBlock Style="{StaticResource SectionHeaderText}"
+                <TextBlock x:Name="RepoLocationURL" Style="{StaticResource SectionHeaderText}"
                            Text="SimTools Repo Location"/>
 
                 <Grid Margin="0 0 0 4">
@@ -151,7 +151,7 @@
                         Click="ResetUrl_Click"/>
 
                 <!-- ── Music ─────────────────────────────────────────── -->
-                <TextBlock Style="{StaticResource SectionHeaderText}"
+                <TextBlock x:Name="MusicPlayerText" Style="{StaticResource SectionHeaderText}"
                            Text="Music Player"/>
 
                 <CheckBox x:Name="MusicEnabledCheck"
@@ -161,17 +161,17 @@
                           Margin="0 0 0 4"
                           IsChecked="True"/>
 
-                <TextBlock Foreground="White"
+                <TextBlock x:Name="BYOM" Foreground="White"
                            FontFamily="Tahoma" FontSize="11"
                            TextWrapping="Wrap"
                            Margin="0 0 0 20"
                            Text="Place your own songs (MP3 / WAV / FLAC / M4A) in the /Resources/Music folder."/>
 
                 <!-- ── Updates ───────────────────────────────────────── -->
-                <TextBlock Style="{StaticResource SectionHeaderText}"
+                <TextBlock x:Name="UpdateText" Style="{StaticResource SectionHeaderText}"
                            Text="Updates"/>
 
-                <TextBlock Foreground="#DCDCDC"
+                <TextBlock x:Name="UpdatesSupressed" Foreground="#DCDCDC"
                            FontFamily="Tahoma" FontSize="11"
                            TextWrapping="Wrap"
                            Margin="0 0 0 8"
