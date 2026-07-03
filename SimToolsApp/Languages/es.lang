@@ -536,6 +536,7 @@ CopyButton=Copiar
 Sims2_Disc=Los Sims 2
 KeysInfoText_Copy=Estas claves no funcionarán para el registro en línea.\n Solo permitirán la instalación desde discos minoristas (Retail).
 CopyWarning=Si estás ejecutando software que captura la pantalla o hace capturas en segundo plano, usar el botón COPIAR puede hacer que SimTools se bloquee. Si este es el caso, selecciona la clave manualmente y cópiala y pégala manualmente.
+CopyFailed=No se pudo copiar la clave al portapapeles. Por favor, copie la clave manualmente.
 
 [Music]
 Fetching=Obteniendo lista de pistas...

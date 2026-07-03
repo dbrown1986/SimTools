@@ -537,6 +537,7 @@ CopyButton=Copy
 Sims2_Disc=The Sims 2
 KeysInfoText_Copy=These keys will not work for online registration.\n They will only allow for installation from retail discs.
 CopyWarning=If you are running software that captures the screen or screenshots in the background, using the COPY button may crash SimTools. If such is the case, select the key manually and copy and paste it manually.
+CopyFailed=Failed to copy key to clipboard. Please copy the key manually.
 
 [Music]
 Fetching=Fetching track list…

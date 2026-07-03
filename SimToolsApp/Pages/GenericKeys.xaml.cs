@@ -235,7 +235,16 @@ public partial class GenericKeys : Window
     private void CopyButton_Click(object sender, RoutedEventArgs e)
     {
         if (!string.IsNullOrWhiteSpace(KeyField.Text))
-            Clipboard.SetText(KeyField.Text);
+        {
+            try
+            {
+                Clipboard.SetText(KeyField.Text);
+            }
+            catch
+            {
+                KeyField.Text = LanguageManager.Get("GenericKeysPage", "CopyFailed", "Failed to copy key to clipboard. Please copy the key manually.");
+            }
+        }
     }
 
     // Called on load and by SettingsWindow after a language change

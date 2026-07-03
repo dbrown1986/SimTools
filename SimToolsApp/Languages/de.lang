@@ -536,6 +536,7 @@ CopyButton=Kopieren
 Sims2_Disc=The Sims 2
 KeysInfoText_Copy=Diese Schlüssel funktionieren nicht für die Online-Registrierung.\n Sie ermöglichen lediglich die Installation von Retail-Discs.
 CopyWarning=Wenn du Software ausführst, die im Hintergrund den Bildschirm oder Screenshots aufnimmt, kann die Verwendung der KOPIEREN-Schaltfläche zum Absturz von SimTools führen. Wähle in diesem Fall den Schlüssel manuell aus und kopiere ihn von Hand.
+CopyFailed=Kopieren des Schlüssels in die Zwischenablage fehlgeschlagen. Bitte kopieren Sie den Schlüssel manuell.
 
 [Music]
 Fetching=Titel-Liste wird abgerufen…
