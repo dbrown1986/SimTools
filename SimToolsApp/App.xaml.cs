@@ -20,6 +20,15 @@ namespace SimTools
 {
     public partial class App : System.Windows.Application
     {
+        public App()
+        {
+            // Add this line to force Windows to allow WinForms Comctl32.dll elements like TaskDialog
+            System.Windows.Forms.Application.EnableVisualStyles();
+        }
+    }
+    public partial class App : System.Windows.Application
+    {
+        
         /// <summary>Global music player window — null if music is disabled in Settings.</summary>
         public static MusicPlayerWindow? MusicPlayer { get; private set; }
 

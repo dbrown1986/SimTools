@@ -29,7 +29,9 @@ UpdaterMissing=SimToolsUpdater.exe não foi encontrado.
 Title_MissingUpdater=Atualizador não encontrado
 Suppress_Ask=Gostaria de suprimir as notificações de atualização automática?
 Suppress_Title=Suprimir notificações de atualização
-Suppress_Duration=Por quanto tempo deseja suprimir as notificações de atualização?\n\n  Sim — Suprimir por 30 dias\n  Não — Suprimir indefinidamente
+Suppress_Duration=Por quanto tempo você deseja suprimir as notificações de atualização?
+Btn_Suppress_30d=30 dias
+Btn_Suppress_Inf=Indefinidamente
 Suppress_DurTitle=Duração da supressão
 WhatIsSimTools=O SimTools (anteriormente TS3Tools) ainda é o mesmo conjunto de ferramentas desenvolvido anteriormente, mas agora inclui opções para uma variedade de jogos de simulação da Maxis. O SimTools inclui opções para Sims 1, Sims 2, Sims Stories, Sims 3, Sims 4, Simcity 2000, Simcity 3000, Simcity 3000 Unlimited, Simcity 4, Simcity 2K13, SimCopter e Streets of Simcity, com mais por vir em versões futuras.
 WhatIsSimTools_Title=O que é o SimTools?
@@ -67,6 +69,7 @@ Btn_Save=Salvar
 Btn_Cancel=Cancelar
 
 [Main]
+Sims3Mods_NotConfigured=O seu diretório de Mods do The Sims 3 não está configurado.
 StorePiracyWarning=Aviso de Pirataria da Loja
 StorePiracy=Se você estiver usando qualquer uma das versões piratas completas da loja (FitGirl, Phantom99, nausallien, etc.), é recomendado não instalar nenhum conteúdo da loja, pois isso pode corromper sua loja ou o jogo. Como sempre, encorajamos que adquira os produtos legalmente.
 StorePiracy_Title=Aviso sobre arquivos piratas da loja

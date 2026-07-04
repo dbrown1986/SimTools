@@ -1298,6 +1298,7 @@ animationsmoothing = 0";
             var ts3_monoPatcher = new MenuItem { Header = "Mono Patcher Library" };
             ts3_monoPatcher.Click += async (_, _) =>
             {
+                // 1. Verify that both required paths are fully configured
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
                 {
                     MessageBox.Show(
@@ -1307,10 +1308,25 @@ animationsmoothing = 0";
                     return;
                 }
 
-                string destPath = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "MonoPatcher.asi");
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
+                {
+                    MessageBox.Show(
+                        LanguageManager.Get("Main", "Sims3Mods_NotConfigured", "Your Sims 3 Mods directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"),
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
-                // Check if the file is already installed
-                if (File.Exists(destPath))
+                // 2. Resolve all three target destinations using your built-in path utilities
+                // File 1 & 2 go to Game\Bin
+                string destPathAsi = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "MonoPatcher.asi");
+                string destPathConfig = Path.Combine(GamePaths.Sims3Game, "Game", "Bin", "wininet.dll"); // Or matching bin file name
+
+                // File 3 goes to the Sims 3 Mods folder (automatically ensures directory existence)
+                string destPathMod = GamePaths.Resolve(GamePaths.Sims3Mods, "Packages", "ld_MonoPatcher.package");
+
+                // 3. Uninstallation Loop: If the main component exists, offer clean removal for all three files
+                if (File.Exists(destPathAsi))
                 {
                     var result = MessageBox.Show(
                         LanguageManager.Get("Main", "MonoPatcher_AlreadyInstalled", "Mono Patcher is already installed. Would you like to remove it?"),
@@ -1322,7 +1338,10 @@ animationsmoothing = 0";
                     {
                         try
                         {
-                            File.Delete(destPath);
+                            if (File.Exists(destPathAsi)) File.Delete(destPathAsi);
+                            if (File.Exists(destPathConfig)) File.Delete(destPathConfig);
+                            if (File.Exists(destPathMod)) File.Delete(destPathMod);
+
                             MessageBox.Show(
                                 LanguageManager.Get("Main", "MonoPatcher_Removed", "Mono Patcher has been successfully removed."),
                                 "SimTools", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -1335,23 +1354,31 @@ animationsmoothing = 0";
                                 MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
-                    return; // Exit after handling the installed state so the install logic doesn't trigger
+                    return; // Exit out safely so installation does not run immediately after removal
                 }
 
-                // Proceed with installation messages and download if not installed
-                MessageBox.Show(
-                    LanguageManager.Get("Main", "MonoPatcher_Info1", "Mono Patcher is a library that allows Script Modders to replace Sims 3 methods with as much compatibility as possible - No need to create core mods anymore to replace game functions."),
-                    LanguageManager.Get("Main", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-
-                MessageBox.Show(
-                    LanguageManager.Get("Main", "MonoPatcher_Info2", "Current Version: 0.3.0"),
-                    LanguageManager.Get("Main", "MonoPatcher_Title", "Mono Patcher Library — The Sims 3"),
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-
-                await DownloadFileOnly(
+                // 4. Installation Loop: Sequentially download the three files using your native network layer
+                // (Note: Replace the URLs below with the exact server filenames if they differ)
+                var (ok1, _) = await DownloadFileOnly(
                     url: "%baseurl%/Sideload-Apps/x86/MonoPatcher.asi",
-                    destFilePath: destPath);
+                    destFilePath: destPathAsi);
+                if (!ok1) return; // DownloadFileOnly internally handles displaying errors upon failure
+
+                var (ok2, _) = await DownloadFileOnly(
+                    url: "%baseurl%/Sideload-Apps/x86/wininet.dll",
+                    destFilePath: destPathConfig);
+                if (!ok2) return;
+
+                var (ok3, _) = await DownloadFileOnly(
+                    url: "%baseurl%/Mods/Sims3/Fixes/Packages/ld_MonoPatcher.package",
+                    destFilePath: destPathMod);
+                if (!ok3) return;
+
+                // 5. Success Confirmation
+                MessageBox.Show(
+                    LanguageManager.Get("Main", "MonoPatcher_Complete", "All Mono Patcher Library components have been installed successfully."),
+                    LanguageManager.Get("Main", "MonoPatcher_Title", "SimTools — Installation Complete"),
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             };
             sims3Item.Items.Add(ts3_monoPatcher);
 

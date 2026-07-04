@@ -29,7 +29,9 @@ UpdaterMissing=找不到 SimToolsUpdater.exe。
 Title_MissingUpdater=找不到更新程式
 Suppress_Ask=您想要抑制自動更新通知嗎？
 Suppress_Title=抑制更新通知
-Suppress_Duration=您想要抑制更新通知多久？\n\n  是 — 抑制 30 天\n  否 — 無限期抑制
+Suppress_Duration=您希望隱藏更新通知多久？
+Btn_Suppress_30d=30 天
+Btn_Suppress_Inf=無限期
 Suppress_DurTitle=抑制時長
 WhatIsSimTools=SimTools（前身為 TS3Tools）仍是之前開發的同一套工具，但現在包含了針對 Maxis 各種模擬類型遊戲的選項。SimTools 包含針對《模擬市民 1》、《模擬市民 2》、《模擬市民：故事系列》、《模擬市民 3》、《模擬市民 4》、《模擬城市 2000》、《模擬城市 3000》、《模擬城市 3000 Unlimited》、《模擬城市 4》、《模擬城市 2013》、《直升機救難 (SimCopter)》以及《模擬城市街頭 (Streets of SimCity)》的選項，未來版本將陸續增加更多內容。
 WhatIsSimTools_Title=什麼是 SimTools？
@@ -67,6 +69,7 @@ Btn_Save=儲存
 Btn_Cancel=取消
 
 [Main]
+Sims3Mods_NotConfigured=您的《模擬市民 3》模組目錄尚未配置。
 StorePiracyWarning=Store 盜版警告
 StorePiracy=如果您正在使用任何完整的 Store 盜版發行版本（FitGirl、Phantom99、nausallien 等等），建議您不要安裝任何 Store 內容，因為這可能會破壞您的 Store 功能或遊戲。一如既往，我們鼓勵您透過合法管道購買。
 StorePiracy_Title=關於盜版 Store 檔案的警告

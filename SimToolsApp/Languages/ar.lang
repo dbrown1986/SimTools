@@ -30,7 +30,9 @@ UpdaterMissing=لم يتم العثور على SimToolsUpdater.exe.
 Title_MissingUpdater=لم يتم العثور على المحدّث
 Suppress_Ask=هل ترغب في كتم إشعارات التحديث التلقائي؟
 Suppress_Title=كتم إشعارات التحديث
-Suppress_Duration=ما هي المدة التي ترغب في كتم إشعارات التحديث خلالها؟\n\n  نعم  —  الكتم لمدة 30 يومًا\n  لا   —  الكتم إلى أجل غير مسمى
+Suppress_Duration=ما المدة التي تود فيها إيقاف إشعارات التحديث؟
+Btn_Suppress_30d=30 يوماً
+Btn_Suppress_Inf=إلى أجل غير مسمى
 Suppress_DurTitle=مدة الكتم
 WhatIsSimTools=لا يزال SimTools (المعروف سابقًا باسم TS3Tools) هو نفس حزمة الأدوات التي تم تطويرها سابقًا، ولكنه يتضمن الآن خيارات لمجموعة متنوعة من ألعاب المحاكاة الخاصة بـ Maxis. يتضمن SimTools خيارات لألعاب Sims 1 و Sims 2 و Sims Stories و Sims 3 و Sims 4 و Simcity 2000 و Simcity 3000 و Simcity 3000 Unlimited و Simcity 4 و Simcity 2K13 و SimCopter و Streets of Simcity، مع المزيد في الإصدارات القادمة.
 WhatIsSimTools_Title=ما هو SimTools؟
@@ -68,6 +70,7 @@ Btn_Save=حفظ
 Btn_Cancel=إلغاء
 
 [Main]
+Sims3Mods_NotConfigured=مجلد تعديلات (Mods) الخاص بـ The Sims 3 غير مُعد.
 StorePiracyWarning=تحذير من قرصنة المتجر
 StorePiracy=إذا كنت تستخدم أيًا من إصدارات المتجر المقرصنة الكاملة (FitGirl، Phantom99، nausallien، إلخ). يوصى بعدم تثبيت أي من محتوى المتجر لأن ذلك قد يؤدي إلى تعطل المتجر أو اللعبة. كما هو الحال دائمًا، نشجعك على الشراء بشكل قانوني.
 StorePiracy_Title=تحذير حول ملفات المتجر المقرصنة

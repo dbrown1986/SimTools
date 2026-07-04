@@ -29,7 +29,9 @@ UpdaterMissing=SimToolsUpdater.exeが見つかりませんでした。
 Title_MissingUpdater=アップデーターが見つかりません
 Suppress_Ask=自動更新通知を抑制しますか？
 Suppress_Title=更新通知の抑制
-Suppress_Duration=更新通知をどのくらいの期間抑制しますか？\n\n  はい  —  30日間抑制\n  いいえ  —  無期限に抑制
+Suppress_Duration=アップデート通知をどのくらいの期間非表示にしますか？
+Btn_Suppress_30d=30日間
+Btn_Suppress_Inf=無期限
 Suppress_DurTitle=抑制期間
 WhatIsSimTools=SimTools（以前のTS3Tools）は、以前開発されたツールスイートと同じものですが、Maxisの様々なシミュレーションゲームに対応したオプションが含まれるようになりました。SimToolsには、Sims 1、Sims 2、Sims Stories、Sims 3、Sims 4、Simcity 2000、Simcity 3000、Simcity 3000 Unlimited、Simcity 4、Simcity 2K13、SimCopter、Streets of Simcityのオプションが含まれており、今後のバージョンでさらに追加予定です。
 WhatIsSimTools_Title=SimToolsとは？
@@ -67,6 +69,7 @@ Btn_Save=保存
 Btn_Cancel=キャンセル
 
 [Main]
+Sims3Mods_NotConfigured=「The Sims 3」のModsフォルダーが設定されていません。
 StorePiracyWarning=ストアの海賊版に関する警告
 StorePiracy=「The Sims 3」のストアコンテンツの海賊版（FitGirl、Phantom99、nausallienなど）を使用している場合、ストアコンテンツをインストールしないことを強く推奨します。ストアやゲーム本体が破損する可能性があります。常に正規版を購入することを強くお勧めします。
 StorePiracy_Title=海賊版ストアファイルに関する警告

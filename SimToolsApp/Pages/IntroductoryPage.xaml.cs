@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms; // Required for TaskDialog
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
@@ -454,7 +455,7 @@ namespace SimTools
         //  First dialog:  Yes/No — do you want to suppress at all?
         //  Second dialog: Yes = 30 days / No = indefinitely
         //
-        private static void PromptSuppression()
+        private void PromptSuppression()
         {
             var suppress = MessageBox.Show(
                 LanguageManager.Get("IntroductoryPage", "Suppress_Ask", "Would you like to suppress automatic update notifications?"),
@@ -464,17 +465,43 @@ namespace SimTools
 
             if (suppress != MessageBoxResult.Yes) return;
 
-            var duration = MessageBox.Show(
-                LanguageManager.Get("IntroductoryPage", "Suppress_Duration", "How long would you like to suppress update notifications?"),
-                LanguageManager.Get("IntroductoryPage", "Suppress_DurTitle", "Suppression Duration"),
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question);
+            // Run directly via dispatcher to ensure a clean window layer focus
+            System.Windows.Application.Current.Dispatcher.Invoke(() =>
+            {
+                // 1. Create the custom buttons
+                var button30Days = new TaskDialogButton(LanguageManager.Get("IntroductoryPage", "Btn_Suppress_30d", "30 Days"));
+                var buttonIndefinite = new TaskDialogButton(LanguageManager.Get("IntroductoryPage", "Btn_Suppress_Inf", "Indefinitely"));
+                var buttonCancel = TaskDialogButton.Cancel;
 
-            string until = duration == MessageBoxResult.Yes
-                ? DateTime.UtcNow.AddDays(30).ToString("yyyy-MM-dd")
-                : "indefinite";
+                // 2. Set up the dialog page
+                var page = new TaskDialogPage()
+                {
+                    Heading = LanguageManager.Get("IntroductoryPage", "Suppress_DurTitle", "Suppression Duration"),
+                    Text = LanguageManager.Get("IntroductoryPage", "Suppress_Duration", "How long would you like to suppress update notifications?"),
+                    Icon = TaskDialogIcon.Information,
+                    AllowCancel = true,
+                    Buttons = { button30Days, buttonIndefinite, buttonCancel }
+                };
 
-            IniHelper.Write("Updates", "SuppressAutoCheckUntil", until);
+                // 3. Set the owner directly using the Page's Window handle
+                var helper = new System.Windows.Interop.WindowInteropHelper(this);
+                var nativeWindow = new System.Windows.Forms.NativeWindow();
+                nativeWindow.AssignHandle(helper.Handle);
+
+                // 4. Show the dialog safely on the UI thread
+                TaskDialogButton result = TaskDialog.ShowDialog(nativeWindow, page);
+
+                // 5. Handle the logic
+                if (result == button30Days)
+                {
+                    string until = DateTime.UtcNow.AddDays(30).ToString("yyyy-MM-dd");
+                    IniHelper.Write("Updates", "SuppressAutoCheckUntil", until);
+                }
+                else if (result == buttonIndefinite)
+                {
+                    IniHelper.Write("Updates", "SuppressAutoCheckUntil", "indefinite");
+                }
+            });
         }
 
         // ── Suppression state reader ───────────────────────────────────────
