@@ -69,6 +69,13 @@ Btn_Save=Enregistrer
 Btn_Cancel=Annuler
 
 [Main]
+ReportBugUpdate_Btn=Signaler un bug / Mise à jour
+ReportBug=Signaler un bug
+SuggestUpdate=Suggérer une mise à jour de Mod
+ReportMenu_Title=SimTools - Signalement de bugs et mises à jour de Mods
+ReportMenu_Message=Que souhaitez-vous faire ? Choisissez une option ci-dessous pour accéder à la page de soumission appropriée.
+Browser_Error=Impossible d'ouvrir la page Web : {ex.Message}
+Error_Title=Erreur
 Sims3Mods_NotConfigured=Votre répertoire de mods pour The Sims 3 n'est pas configuré.
 StorePiracyWarning=Avertissement sur le piratage du Store
 StorePiracy=Si vous utilisez l'une des versions piratées complètes du Store (FitGirl, Phantom99, nausallien, etc.), il est recommandé de ne pas installer de contenu du Store, car cela pourrait endommager votre Store ou votre jeu. Comme toujours, nous vous encourageons à acheter légitimement.

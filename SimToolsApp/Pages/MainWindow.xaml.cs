@@ -140,6 +140,7 @@ namespace SimTools
             : System.Windows.FlowDirection.LeftToRight;
 
             // ── Text strings ───────────────────────────────────────────────────
+            ReportBugUpdate.Content = LanguageManager.Get("Main", "ReportBugUpdate_Btn", "Report Bug / Update");
             ButtonInfoText.Text = LanguageManager.Get("Main", "ButtonInfoText", ButtonInfoText.Text);
             FrameworkInfoText.Text = LanguageManager.Get("Main", "FrameworkInfoText", FrameworkInfoText.Text);
             ComparisonText.Text = LanguageManager.Get("Main", "ComparisonLabel", ComparisonText.Text);
@@ -3118,6 +3119,70 @@ animationsmoothing = 0";
                 btn.ContextMenu.PlacementTarget = btn;
                 btn.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
                 btn.ContextMenu.IsOpen = true;
+            }
+        }
+
+        private void ReportBugUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            // Force WinForms visual styles to be enabled on this thread execution block 
+            // to ensure the TaskDialog renders correctly without crashing.
+            System.Windows.Forms.Application.EnableVisualStyles();
+
+            // 1. Define custom action buttons
+            var buttonReportBug = new System.Windows.Forms.TaskDialogButton(LanguageManager.Get("Main", "ReportBug", "Report a Bug"));
+            var buttonModUpdate = new System.Windows.Forms.TaskDialogButton(LanguageManager.Get("Main", "SuggestUpdate", "Suggest Mod Update"));
+            var buttonCancel = System.Windows.Forms.TaskDialogButton.Cancel;
+
+            // 2. Set up the custom dialog details
+            var page = new System.Windows.Forms.TaskDialogPage()
+            {
+                Heading = LanguageManager.Get("Main", "ReportMenu_Title", "SimTools - Bug Report & Mod Updates"),
+                Text = LanguageManager.Get("Main", "ReportMenu_Message", "What would you like to do? Choose an option below to visit the appropriate submission page."),
+                Icon = System.Windows.Forms.TaskDialogIcon.Information,
+                AllowCancel = true,
+                Buttons = { buttonReportBug, buttonModUpdate, buttonCancel }
+            };
+
+            // 3. Bind the TaskDialog window handle focus to the WPF MainWindow
+            var helper = new System.Windows.Interop.WindowInteropHelper(this);
+            var nativeWindow = new System.Windows.Forms.NativeWindow();
+            nativeWindow.AssignHandle(helper.Handle);
+
+            // 4. Show the dialog
+            System.Windows.Forms.TaskDialogButton result = System.Windows.Forms.TaskDialog.ShowDialog(nativeWindow, page);
+
+            // 5. URL Redirection Logic based on selection
+            string targetUrl = string.Empty;
+
+            if (result == buttonReportBug)
+            {
+                // Replace with your actual Bug Reporting URL
+                targetUrl = "https://github.com/dbrown1986/SimTools/issues";
+            }
+            else if (result == buttonModUpdate)
+            {
+                // Replace with your actual Mod Update / Request URL
+                targetUrl = "https://forms.gle/LVxXHJRnaAYrjxfs7";
+            }
+
+            // Launch the default system browser if a valid button choice was selected
+            if (!string.IsNullOrEmpty(targetUrl))
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = targetUrl,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        LanguageManager.Format("Main", "Browser_Error", $"Could not open the webpage: {ex.Message}"),
+                        LanguageManager.Get("Main", "Error_Title", "Error"),
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

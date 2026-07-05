@@ -69,6 +69,13 @@ Btn_Save=保存
 Btn_Cancel=キャンセル
 
 [Main]
+ReportBugUpdate_Btn=バグ報告 / アップデート
+ReportBug=バグを報告
+SuggestUpdate=Modのアップデートを提案
+ReportMenu_Title=SimTools - バグ報告とModアップデート
+ReportMenu_Message=何を行いますか？以下のオプションから選択して、該当する送信ページへアクセスしてください。
+Browser_Error=ウェブページを開けませんでした: {ex.Message}
+Error_Title=エラー
 Sims3Mods_NotConfigured=「The Sims 3」のModsフォルダーが設定されていません。
 StorePiracyWarning=ストアの海賊版に関する警告
 StorePiracy=「The Sims 3」のストアコンテンツの海賊版（FitGirl、Phantom99、nausallienなど）を使用している場合、ストアコンテンツをインストールしないことを強く推奨します。ストアやゲーム本体が破損する可能性があります。常に正規版を購入することを強くお勧めします。

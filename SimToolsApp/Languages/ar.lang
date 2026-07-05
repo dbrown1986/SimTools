@@ -70,6 +70,13 @@ Btn_Save=حفظ
 Btn_Cancel=إلغاء
 
 [Main]
+ReportBugUpdate_Btn=إبلاغ عن خطأ / تحديث
+ReportBug=الإبلاغ عن خطأ
+SuggestUpdate=اقتراح تحديث للمعدل (Mod)
+ReportMenu_Title=SimTools - الإبلاغ عن الأخطاء وتحديثات المعدلات
+ReportMenu_Message=ما الذي تود القيام به؟ اختر خياراً من أدناه لزيارة صفحة الإرسال المناسبة.
+Browser_Error=تعذر فتح صفحة الويب: {ex.Message}
+Error_Title=خطأ
 Sims3Mods_NotConfigured=مجلد تعديلات (Mods) الخاص بـ The Sims 3 غير مُعد.
 StorePiracyWarning=تحذير من قرصنة المتجر
 StorePiracy=إذا كنت تستخدم أيًا من إصدارات المتجر المقرصنة الكاملة (FitGirl، Phantom99، nausallien، إلخ). يوصى بعدم تثبيت أي من محتوى المتجر لأن ذلك قد يؤدي إلى تعطل المتجر أو اللعبة. كما هو الحال دائمًا، نشجعك على الشراء بشكل قانوني.
