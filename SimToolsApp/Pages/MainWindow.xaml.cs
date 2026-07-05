@@ -2620,6 +2620,11 @@ animationsmoothing = 0";
                 "Originally posted by Buhudain on his blog. The blog has since been removed. This is a mirror of the last release of his mesh and skins.\n\nWould you like to visit this mod's download page?",
                 "You Are Real Skins", "https://simfileshare.net/folder/146836/");
 
+            var s3_sketchbook = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/sbp.ico"), Header = "Sketchbook Pixels Skins" };
+            s3_skins.Click += (_, _) => AskThenBrowse(
+                "Sketchbook Pixels started in 2016 as a site for kids clothing run by Frankie (simplyimaginarypeople/Gruesim) & Mimi (Mimisapje). It later evolved to include objects, hairs, skintones, worlds and much more!\n\nWould you like to visit Sketchbook Pixels website?",
+                "Sketchbook Pixels", "https://sketchbookpixels.wixsite.com/pixels");
+
             foreach (var item in new[] {
         s3_autoTC, s3_bbi, s3_cso, s3_carpool, s3_cotm, s3_skills, s3_upgrades,
         s3_gardener, s3_grow, s3_banking, s3_party, s3_study, s3_washburn,
