@@ -70,6 +70,13 @@ Btn_Save=Save
 Btn_Cancel=Cancel
 
 [Main]
+ReportBugUpdate_Btn=Report Bug / Update
+ReportBug=Report a Bug
+SuggestUpdate=Suggest Mod Update
+ReportMenu_Title=SimTools - Bug Report & Mod Updates
+ReportMenu_Message=What would you like to do? Choose an option below to visit the appropriate submission page.
+Browser_Error=Could not open the webpage: {ex.Message}
+Error_Title=Error
 StorePiracyWarning=Store Piracy Warning
 StorePiracy=If you are using any of the complete store pirated releases (FitGirl, Phantom99, nausallien, etc etc). It is reccommended you do not install any of the store content as this may break your store or the game. As always, you're encouraged to purchase legitimately.
 StorePiracy_Title=Warning About Pirated Store Files

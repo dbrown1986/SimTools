@@ -69,6 +69,13 @@ Btn_Save=儲存
 Btn_Cancel=取消
 
 [Main]
+ReportBugUpdate_Btn=回報錯誤 / 更新
+ReportBug=回報錯誤
+SuggestUpdate=建議模組更新
+ReportMenu_Title=SimTools - 錯誤回報與模組更新
+ReportMenu_Message=您想做什麼？選擇下方選項以前往對應的提交頁面。
+Browser_Error=無法開啟網頁：{ex.Message}
+Error_Title=錯誤
 Sims3Mods_NotConfigured=您的《模擬市民 3》模組目錄尚未配置。
 StorePiracyWarning=Store 盜版警告
 StorePiracy=如果您正在使用任何完整的 Store 盜版發行版本（FitGirl、Phantom99、nausallien 等等），建議您不要安裝任何 Store 內容，因為這可能會破壞您的 Store 功能或遊戲。一如既往，我們鼓勵您透過合法管道購買。

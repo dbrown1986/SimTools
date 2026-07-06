@@ -69,6 +69,13 @@ Btn_Save=Сохранить
 Btn_Cancel=Отмена
 
 [Main]
+ReportBugUpdate_Btn=Сообщить об ошибке / Обновление
+ReportBug=Сообщить об ошибке
+SuggestUpdate=Предложить обновление мода
+ReportMenu_Title=SimTools - Сообщение об ошибках и обновления модов
+ReportMenu_Message=Что вы хотите сделать? Выберите вариант ниже, чтобы перейти на соответствующую страницу отправки.
+Browser_Error=Не удалось открыть веб-страницу: {ex.Message}
+Error_Title=Ошибка
 Sims3Mods_NotConfigured=Ваша папка с модами (Mods) для The Sims 3 не настроена.
 StorePiracyWarning=Предупреждение о пиратстве Store
 StorePiracy=Если вы используете полные пиратские сборки Store (FitGirl, Phantom99, nausallien и т.д.), рекомендуется не устанавливать контент из Store, так как это может привести к повреждению Store или самой игры. Мы призываем вас приобретать лицензионный контент.

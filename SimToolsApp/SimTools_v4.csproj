@@ -70,21 +70,31 @@ Project File
 		<Resource Include="Images\Holidays\indpday_nye.gif" />
 		<Resource Include="Images\Holidays\stpd.png" />
 		<Resource Include="Images\Holidays\xmas.png" />
+		<Resource Include="Images\Icons\alp.ico" />
 		<Resource Include="Images\Icons\AuroraSkies.ico" />
 		<Resource Include="Images\Icons\BarnacleBay.ico" />
 		<Resource Include="Images\Icons\caw.ico" />
+		<Resource Include="Images\Icons\cmd.ico" />
 		<Resource Include="Images\Icons\Copter.ico" />
 		<Resource Include="Images\Icons\DragonValley.ico" />
+		<Resource Include="Images\Icons\dxvk.ico" />
+		<Resource Include="Images\Icons\fix.ico" />
 		<Resource Include="Images\Icons\github.ico" />
+		<Resource Include="Images\Icons\grm.ico" />
+		<Resource Include="Images\Icons\ld.ico" />
 		<Resource Include="Images\Icons\MTS.ico" />
-		<Resource Include="Images\Icons\sbp.ico" />
+		<Resource Include="Images\Icons\nraas.ico" />
+		<Resource Include="Images\Icons\s3ss.ico" />
 		<Resource Include="Images\Icons\SC4DE.ico" />
 		<Resource Include="Images\Icons\sfs.ico" />
 		<Resource Include="Images\Icons\sheets.ico" />
+		<Resource Include="Images\Icons\simitone.ico" />
 		<Resource Include="Images\Icons\Sims2RPC.ico" />
 		<Resource Include="Images\Icons\Sims4.ico" />
 		<Resource Include="Images\Icons\simtropolis.ico" />
+		<Resource Include="Images\Icons\ts3gpua.ico" />
 		<Resource Include="Images\Icons\TSR.ico" />
+		<Resource Include="Images\Icons\uasi.ico" />
 		<Resource Include="Images\Icons\vendors\gog.ico" />
 		<Resource Include="Images\Icons\HiddenSprings.ico" />
 		<Resource Include="Images\Icons\HSMVBundle.ico" />
@@ -189,7 +199,17 @@ Project File
 		<None Remove="Images\Holidays\indpday_nye.gif" />
 		<None Remove="Images\Holidays\stpd.png" />
 		<None Remove="Images\Holidays\xmas.png" />
-		<None Remove="Images\Icons\sbp.ico" />
+		<None Remove="Images\Icons\alp.ico" />
+		<None Remove="Images\Icons\cmd.ico" />
+		<None Remove="Images\Icons\dxvk.ico" />
+		<None Remove="Images\Icons\fix.ico" />
+		<None Remove="Images\Icons\grm.ico" />
+		<None Remove="Images\Icons\ld.ico" />
+		<None Remove="Images\Icons\nraas.ico" />
+		<None Remove="Images\Icons\s3ss.ico" />
+		<None Remove="Images\Icons\simitone.ico" />
+		<None Remove="Images\Icons\ts3gpua.ico" />
+		<None Remove="Images\Icons\uasi.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
