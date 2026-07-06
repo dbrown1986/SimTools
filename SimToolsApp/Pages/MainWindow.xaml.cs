@@ -262,7 +262,7 @@ namespace SimTools
             // ── The Sims 2 (sub-menu) ──────────────────────────────────────────
             var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("Main", "GPU_Sims2", "The Sims 2") };
 
-            var sims2_32 = new MenuItem { Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
+            var sims2_32 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
             sims2_32.Click += (s, args) =>
             {
                 MessageBox.Show(
@@ -277,7 +277,7 @@ namespace SimTools
                 );
             };
 
-            var sims2_64 = new MenuItem { Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
+            var sims2_64 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
             sims2_64.Click += (s, args) =>
             {
                 MessageBox.Show(
@@ -298,14 +298,14 @@ namespace SimTools
             // ── The Sims Stories (sub-menu) ────────────────────────────────────
             var simsStoriesItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSLife.ico"), Header = LanguageManager.Get("ContextMenu", "GPU_SimsStories", "The Sims Stories") };
 
-            var simsStories_32 = new MenuItem { Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
+            var simsStories_32 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
             simsStories_32.Click += (s, args) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
                 fileName: "graphicsrulesmaker-32bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
 
-            var simsStories_64 = new MenuItem { Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
+            var simsStories_64 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
             simsStories_64.Click += (s, args) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
                 fileName: "graphicsrulesmaker-64bit.exe",
@@ -322,7 +322,7 @@ namespace SimTools
                 Header = LanguageManager.Get("Main", "GPU_Sims3", "The Sims 3")
             };
 
-            var sims3_gpuAddon = new MenuItem { Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
+            var sims3_gpuAddon = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/ts3gpua.ico"), Header = LanguageManager.Get("Main", "GPU_Sims3_Addon", "The Sims 3 GPU Addon") };
             sims3_gpuAddon.Click += (_, _) =>
             {
                 var result = MessageBox.Show(
@@ -341,7 +341,7 @@ namespace SimTools
                 }
             };
 
-            var sims3_dxvk = new MenuItem { Header = "DXVK" };
+            var sims3_dxvk = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/dxvk.ico"), Header = "DXVK" };
             sims3_dxvk.Click += async (_, _) =>
             {
                 // Define paths for both files
@@ -561,7 +561,7 @@ namespace SimTools
             // ── The Sims 1 ────────────────────────────────────────────────────────────
             var sims1Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = LanguageManager.Get("Main", "Tweaks_Sims1", "The Sims 1") };
 
-            var sims1_simitone = new MenuItem { Header = LanguageManager.Get("Main", "Tweaks_Simitone", "Simitone") };
+            var sims1_simitone = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/simitone.ico"), Header = LanguageManager.Get("Main", "Tweaks_Simitone", "Simitone") };
             sims1_simitone.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims1Game))
@@ -659,7 +659,7 @@ namespace SimTools
 
             // ── Anime_Boom's Sims 3 Performance Guide ─────────────────────────────────────────
 
-            var ts3_perf_guide = new MenuItem { Header = "Anime_Boom's Sims 3 Performance Guide" };
+            var ts3_perf_guide = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/vendors/steam.ico"), Header = "Anime_Boom's Sims 3 Performance Guide" };
             ts3_perf_guide.Click += (_, _) =>
             {
                 OpenUrl("https://steamcommunity.com/sharedfiles/filedetails/?id=1131162350");
@@ -668,7 +668,7 @@ namespace SimTools
 
             // ── Anime_Boom's Sims 3 Guides ─────────────────────────────────────────
 
-            var ts3_guides = new MenuItem { Header = "MORE Anime_Boom Sims 3 Guides" };
+            var ts3_guides = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/vendors/steam.ico"), Header = "MORE Anime_Boom Sims 3 Guides" };
             ts3_guides.Click += (_, _) =>
             {
                 OpenUrl("https://steamcommunity.com/profiles/76561198115872149/myworkshopfiles/?section=guides&appid=47890");
@@ -676,7 +676,7 @@ namespace SimTools
             sims3Item.Items.Add(ts3_guides);
 
             // ── Best In-Game Settings for TS3 ─────────────────────────────────────────
-            var ts3_bestSettings = new MenuItem { Header = "Best In-Game Settings" };
+            var ts3_bestSettings = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SimTools.ico"), Header = "Best In-Game Settings" };
             ts3_bestSettings.Click += (sender, e) =>
             {
                 // 1. Prompt the user with a Yes/No option
@@ -889,7 +889,7 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_bestSettings);
 
             // ── Game INI Tweaks ─────────────────────────────────────────────────
-            var ts3_iniTweaks = new MenuItem { Header = LanguageManager.Get("Main", "INITweaks", "Game INI Tweaks") };
+            var ts3_iniTweaks = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SimTools.ico"), Header = LanguageManager.Get("Main", "INITweaks", "Game INI Tweaks") };
 
             var iniItems = new[]
             {
@@ -1051,7 +1051,7 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_iniTweaks);
 
             // ── Intel Alder Lake Fix ──────────────────────────────────────────────────
-            var ts3_alderLake = new MenuItem { Header = "Intel Alder Lake Fix" };
+            var ts3_alderLake = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/alp.ico"), Header = "Intel Alder Lake Fix" };
             ts3_alderLake.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -1109,7 +1109,7 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_alderLake);
 
             // ── Ultimate ASI Loader ───────────────────────────────────
-            var ts3_uasil = new MenuItem { Header = "Ultimate ASI Loader" };
+            var ts3_uasil = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/uasi.ico"), Header = "Ultimate ASI Loader" };
             ts3_uasil.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
@@ -1164,7 +1164,7 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_uasil);
 
             // ── Sims 3 Settings Setter ───────────────────────────────────
-            var ts3_s3ss = new MenuItem { Header = "Sims 3 Settings Setter" };
+            var ts3_s3ss = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/s3ss.ico"), Header = "Sims 3 Settings Setter" };
             ts3_s3ss.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
@@ -1219,7 +1219,7 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_s3ss);
 
             // ── LazyDuchess Launcher ──────────────────────────────────────────────────
-            var ts3_ldLauncher = new MenuItem { Header = "LazyDuchess Launcher" };
+            var ts3_ldLauncher = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/ld.ico"), Header = "LazyDuchess Launcher" };
             ts3_ldLauncher.Click += (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
@@ -1296,7 +1296,7 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_ldLauncher);
 
             // ── Mono Patcher Library ──────────────────────────────────────────────────
-            var ts3_monoPatcher = new MenuItem { Header = "Mono Patcher Library" };
+            var ts3_monoPatcher = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/ld.ico"), Header = "Mono Patcher Library" };
             ts3_monoPatcher.Click += async (_, _) =>
             {
                 // 1. Verify that both required paths are fully configured
@@ -1384,7 +1384,7 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_monoPatcher);
 
             // ── TinyUI Fix ────────────────────────────────────────────────────────────
-            var ts3_tinyUI = new MenuItem { Header = "TinyUI Fix" };
+            var ts3_tinyUI = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/cmd.ico"), Header = "TinyUI Fix" };
             ts3_tinyUI.Click += (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
@@ -1403,82 +1403,93 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_tinyUI);
 
             // ── Sweet Treats Conversion Guide ─────────────────────────────────────────
-            var ts3_sweetTreats = new MenuItem { Header = LanguageManager.Get("Main", "STCG", "Sweet Treats Conversion Guide") };
+            var ts3_sweetTreats = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3SP06.ico"), Header = LanguageManager.Get("Main", "STCG", "Sweet Treats Conversion Guide") };
             ts3_sweetTreats.Click += (_, _) => MessageBox.Show(LanguageManager.Get("Main", "STCG_Msg", "Coming Soon..."), LanguageManager.Get("Main", "STCG_Title", "Sweet Treats"));  // ← replace with actual URL
             sims3Item.Items.Add(ts3_sweetTreats);
 
             // ── nRaas Core Mods (sub-menu) ────────────────────────────────────────────
-            var ts3_nraas = new MenuItem { Header = LanguageManager.Get("Main", "nRaas_Mods", "nRaas Core Mods") };
+            var ts3_nraas = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/nraas.ico"), Header = LanguageManager.Get("Main", "nRaas_Mods", "nRaas Core Mods") };
 
             // Local helper — creates a package download item targeting Sims3Mods/SimTools/Packages
-            MenuItem NRaasPackageItem(string header, string fileName)
+            MenuItem NRaasPackageItem(string header, string filename, string? iconPath = null)
             {
-                var item = new MenuItem { Header = header };
+                var item = new MenuItem
+                {
+                    Header = header
+                };
+
+                // If an icon path is supplied, build the image component and assign it
+                if (!string.IsNullOrEmpty(iconPath))
+                {
+                    item.Icon = new Image
+                    {
+                        Source = new BitmapImage(new Uri(iconPath)),
+                        Width = 16,  // Optional standard sizing for menu icons
+                        Height = 16
+                    };
+                }
+
                 item.Click += async (_, _) =>
                 {
                     if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
                     {
                         MessageBox.Show(
-                            LanguageManager.Get("Main", "Sims3Mods", "Your Sims 3 Mods directory is not configured."),
-                            LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                            LanguageManager.Get("Main", "Sims3Mods_NotConfigured", "Your Sims 3 Mods directory is not configured."),
+                            LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"),
+                            MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
 
-                    string destPath = Path.Combine(GamePaths.Sims3Mods, "SimTools", "Packages", fileName);
+                    string dest = GamePaths.Resolve(GamePaths.Sims3Mods, "Packages", filename);
 
-                    // ── Removal Mechanic ──────────────────────────────────────────────────────────
-                    if (File.Exists(destPath))
+                    if (File.Exists(dest))
                     {
                         var result = MessageBox.Show(
-                            LanguageManager.Format("Main", "nRaas_AlreadyInstalled", "The mod '{0}' is already installed. Would you like to remove it?", header),
-                            LanguageManager.Get("Main", "nRaas_RemoveTitle", "SimTools — Remove Mod"),
-                            MessageBoxButton.YesNo,
-                            MessageBoxImage.Question);
+                            LanguageManager.Format("Main", "NRaas_AlreadyInstalled", $"{header} is already installed. Would you like to remove it?"),
+                            "SimTools", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                         if (result == MessageBoxResult.Yes)
                         {
                             try
                             {
-                                File.Delete(destPath);
+                                File.Delete(dest);
                                 MessageBox.Show(
-                                    LanguageManager.Format("Main", "nRaas_RemovedSuccess", "'{0}' has been successfully removed.", header),
-                                    LanguageManager.Get("Main", "Success_Title", "SimTools"),
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Information);
+                                    LanguageManager.Format("Main", "NRaas_Removed", $"{header} has been successfully removed."),
+                                    "SimTools", MessageBoxButton.OK, MessageBoxImage.Information);
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(
-                                    LanguageManager.Format("Main", "nRaas_RemoveError", "Failed to remove '{0}': {1}", header, ex.Message),
+                                    LanguageManager.Format("Main", "NRaas_RemoveError", $"Failed to remove file: {ex.Message}"),
                                     LanguageManager.Get("Main", "Error_Title", "Error"),
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
-                        return; // Exit here regardless of Yes/No choice to prevent triggering the download
+                        return;
                     }
 
-                    // ── Installation Logic ───────────────────────────────────────────────────────
-                    if (!ModFrameworkHelper.EnsureInstalled(GamePaths.Sims3Mods)) return;
+                    var (ok, _) = await DownloadFileOnly($"%baseurl%/Mods/Sims3/NRaas/{filename}", dest);
+                    if (!ok) return;
 
-                    await DownloadFileOnly(
-                        $"%baseurl%/Mods/Sims3/nRaas/{fileName}",
-                        destPath);
+                    MessageBox.Show(
+                        LanguageManager.Format("Main", "NRaas_Installed", $"{header} has been successfully installed."),
+                        "SimTools", MessageBoxButton.OK, MessageBoxImage.Information);
                 };
+
                 return item;
             }
+             
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for EA (1.69)", "NRaas_ErrorTrap_EA.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Steam (1.67)", "NRaas_ErrorTrap_Steam.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Retail (1.67)", "NRaas_ErrorTrap_Retail.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Overwatch", "NRaas_Overwatch.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Master Controller", "NRaas_MasterController.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Register", "NRaas_Register.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Saver", "NRaas_Saver.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("Debug Enabler", "NRaas_DebugEnabler.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("nRaas No-CD", "NRaas_NoCD.package", "pack://application:,,,/Images/Icons/nraas.ico"));
 
-            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for EA (1.69)", "NRaas_ErrorTrap_EA.package"));
-            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Steam (1.67)", "NRaas_ErrorTrap_Steam.package"));
-            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Retail (1.67)", "NRaas_ErrorTrap_Retail.package"));
-            ts3_nraas.Items.Add(NRaasPackageItem("Overwatch", "NRaas_Overwatch.package"));
-            ts3_nraas.Items.Add(NRaasPackageItem("Master Controller", "NRaas_MasterController.package"));
-            ts3_nraas.Items.Add(NRaasPackageItem("Register", "NRaas_Register.package"));
-            ts3_nraas.Items.Add(NRaasPackageItem("Saver", "NRaas_Saver.package"));
-            ts3_nraas.Items.Add(NRaasPackageItem("Debug Enabler", "NRaas_DebugEnabler.package"));
-            ts3_nraas.Items.Add(NRaasPackageItem("nRaas No-CD", "NRaas_NoCD.package"));
-
-            var nraas_more = new MenuItem { Header = "More nRaas Mods" };
+            var nraas_more = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/nraas.ico"), Header = "More nRaas Mods" };
             nraas_more.Click += (_, _) => OpenUrl("https://www.nraas.net/community/Mods-List");
             ts3_nraas.Items.Add(nraas_more);
 
@@ -1488,7 +1499,7 @@ animationsmoothing = 0";
             // ── The Sims Medieval ─────────────────────────────────────────────────────
             var medievalItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSM.ico"), Header = LanguageManager.Get("BuyTS3", "TSM1", "The Sims: Medieval") };
 
-            var medieval_smoothPatch = new MenuItem { Header = LanguageManager.Get("Main", "TSM_SmoothPatch", "LazyDuchess Smooth Patch") };
+            var medieval_smoothPatch = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/ld.ico"), Header = LanguageManager.Get("Main", "TSM_SmoothPatch", "LazyDuchess Smooth Patch") };
             medieval_smoothPatch.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.SimsMedievalGame))
@@ -1794,7 +1805,7 @@ animationsmoothing = 0";
             var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2") };
 
             // ── Sim Shadow Fix ────────────────────────────────────────────────
-            var sims2_shadowFix = new MenuItem { Header = LanguageManager.Get("Main", "ShadowFix_Menu", "Sim Shadow Fix") };
+            var sims2_shadowFix = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = LanguageManager.Get("Main", "ShadowFix_Menu", "Sim Shadow Fix") };
             sims2_shadowFix.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
@@ -1854,7 +1865,7 @@ animationsmoothing = 0";
             sims2Item.Items.Add(sims2_shadowFix);
 
             // ── Bright CAS Fix ────────────────────────────────────────────────
-            var sims2_brightCas = new MenuItem { Header = "Bright CAS Fix" };
+            var sims2_brightCas = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = "Bright CAS Fix" };
             sims2_brightCas.Click += async (_, _) =>
             {
                 if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
@@ -1923,7 +1934,7 @@ animationsmoothing = 0";
             // ── Patch Downloader ──────────────────────────────────────────────
             // Shows two info messages, downloads TS3Lib.dll + TS3PD.exe to /Install,
             // then launches TS3PD.exe.  Both files use HEAD-check / skip-if-same logic.
-            var ts3_patchDl = new MenuItem { Header = LanguageManager.Get("Tweaks", "TPD", "Patch Downloader") };
+            var ts3_patchDl = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/ts3pd.ico"), Header = LanguageManager.Get("Tweaks", "TPD", "Patch Downloader") };
             ts3_patchDl.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -1960,7 +1971,7 @@ animationsmoothing = 0";
             sims3Item.Items.Add(ts3_patchDl);
 
             // ── Simler90's Fixes ──────────────────────────────────────────────
-            var ts3_simler90 = new MenuItem { Header = "Simler90's Fixes" };
+            var ts3_simler90 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = "Simler90's Fixes" };
 
             MenuItem Simler90PackageItem(string header, string fileName)
             {
@@ -2032,7 +2043,7 @@ animationsmoothing = 0";
 
             // ── Gameplay Fixes ────────────────────────────────────────────────
             // Opens the multi-section AIO checkbox installer window.
-            var ts3_gameplayFixes = new MenuItem { Header = "Gameplay Fixes" };
+            var ts3_gameplayFixes = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = "Gameplay Fixes" };
             ts3_gameplayFixes.Click += (_, _) =>
             {
                 MessageBox.Show(
