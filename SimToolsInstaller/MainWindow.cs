@@ -409,13 +409,38 @@ namespace SimToolsInstaller
             }
             if (chkStartMenu.Checked)
             {
+                // 1. Create the shared SimTools programs folder
                 string menuPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "SimTools");
                 Directory.CreateDirectory(menuPath);
-                string path = Path.Combine(menuPath, "SimTools.lnk");
-                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(path);
-                shortcut.TargetPath = targetExe; shortcut.WorkingDirectory = installDir; shortcut.Save();
-                _installedFiles.Add(path);
+
+                // Track the folder itself for cleanup (only added once)
                 _installedFiles.Add(menuPath);
+
+                // 2. Main Application Shortcut (SimTools.exe)
+                string mainShortcutPath = Path.Combine(menuPath, "SimTools.lnk");
+                IWshShortcut mainShortcut = (IWshShortcut)shell.CreateShortcut(mainShortcutPath);
+                mainShortcut.TargetPath = targetExe;
+                mainShortcut.WorkingDirectory = installDir;
+                mainShortcut.Save();
+                _installedFiles.Add(mainShortcutPath);
+
+                // 3. Updater Shortcut (SimToolsUpdater.exe)
+                string updaterExe = Path.Combine(installDir, "SimToolsUpdater.exe");
+                string updaterShortcutPath = Path.Combine(menuPath, "Update SimTools.lnk");
+                IWshShortcut updaterShortcut = (IWshShortcut)shell.CreateShortcut(updaterShortcutPath);
+                updaterShortcut.TargetPath = updaterExe;
+                updaterShortcut.WorkingDirectory = installDir;
+                updaterShortcut.Save();
+                _installedFiles.Add(updaterShortcutPath);
+
+                // 4. Uninstaller Shortcut (SimToolsUninstaller.exe)
+                string uninstallerExe = Path.Combine(installDir, "SimToolsUninstaller.exe");
+                string uninstallerShortcutPath = Path.Combine(menuPath, "Uninstall SimTools.lnk");
+                IWshShortcut uninstallerShortcut = (IWshShortcut)shell.CreateShortcut(uninstallerShortcutPath);
+                uninstallerShortcut.TargetPath = uninstallerExe;
+                uninstallerShortcut.WorkingDirectory = installDir;
+                uninstallerShortcut.Save();
+                _installedFiles.Add(uninstallerShortcutPath);
             }
         }
 

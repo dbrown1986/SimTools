@@ -11,12 +11,6 @@
     <None Update="recursive_list.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="wget.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-	  <None Update="7z.exe">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
 	  <None Update="apache-win.zip">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
