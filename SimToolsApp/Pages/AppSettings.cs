@@ -38,10 +38,19 @@ namespace SimTools
                 if (string.IsNullOrWhiteSpace(raw))
                     raw = DefaultBaseUrl;
 
-                // Auto-prepend https:// if the user omitted the protocol
-                if (!raw.StartsWith("http://",  StringComparison.OrdinalIgnoreCase) &&
+                // If explicitly pointing to a local instance, default to http:// if no scheme is specified
+                if (!raw.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
                     !raw.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-                    raw = "https://" + raw;
+                {
+                    if (raw.Equals("127.0.0.1") || raw.Equals("localhost", StringComparison.OrdinalIgnoreCase))
+                    {
+                        raw = "http://" + raw;
+                    }
+                    else
+                    {
+                        raw = "https://" + raw;
+                    }
+                }
 
                 return raw;
             }

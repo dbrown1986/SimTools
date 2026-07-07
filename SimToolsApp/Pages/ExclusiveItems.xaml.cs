@@ -136,7 +136,7 @@ namespace SimTools
 
             // 3. Hand off the transfer to your native download worker
             // This handles the %baseurl% translation, repository validation, HEAD checks, and progress bar UI
-            var (success, isNew) = await DownloadFileOnly("%baseurl%/Exclusives/Sims 3/SimTools_Slim_Livin.package", destPath);
+            var (success, isNew) = await DownloadFileOnly("https://us1-repo.simtools-app.com/Exclusives/Sims 3/SimTools_Slim_Livin.package", destPath);
 
             // 4. Report back to the user based on the operation outcome
             if (success)
