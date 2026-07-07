@@ -66,6 +66,9 @@ namespace SimTools
         // ── SimCopter ─────────────────────────────────────────────────────────
         public static string SimCopterGame           => Game("SimCopter");
 
+        // ── SimTower ────────────────────────────────────────────────
+        public static string SimTowerGame => Game("SimTower");
+
         // ── Streets of SimCity ────────────────────────────────────────────────
         public static string StreetsOfSimCityGame    => Game("StreetsOfSimCity");
 

@@ -69,6 +69,13 @@ Btn_Save=保存
 Btn_Cancel=キャンセル
 
 [Main]
+Install_otvdm=16ビット互換性 (otvdm) をインストール
+Error_SimTowerPathNotSet=SimTowerのゲームディレクトリが設定されていません。\nこの機能を使用する前に「設定」で指定してください。
+SimTowerPathNotSet_Title=SimTools — パス未設定
+Otvdm_ExtractFail=展開に失敗しました: {ex.Message}
+Otvdm_ExtractTitle=SimTools — 展開エラー
+SimTower_InstalledShortcutPrompt=otvdm互換性ファイルがSimTowerディレクトリに正常に展開されました。\n\nこの互換レイヤーを使用してSimTowerを起動するためのデスクトップショートカットを作成しますか？
+SimTower_Title=SimTools — インストール完了
 ReportBugUpdate_Btn=バグ報告 / アップデート
 ReportBug=バグを報告
 SuggestUpdate=Modのアップデートを提案
@@ -306,6 +313,7 @@ PersonalizationText=このSimToolsは{0} {1}のために丁寧に設計されま
 MachineChanged_Title=SimTools — パーソナライズ
 
 [BuyTS3]
+SimTower=シムタワー (SimTower)
 BrokenLinksText=リンクが切れている場合は、SimToolsのGitHubでIssueチケットを作成するか、Discordに投稿してください。リンクの修正または削除を行います。
 UseText=以下の選択ボックスから購入したいゲームを選択すると、指定したゲームの購入ページへリダイレクトされます。各セクションは展開可能です。\n すべてのリンクはSimToolsのアフィリエイトリンクであり、ここから購入されると販売価格の2%〜5%が私に還元されます。これらはSimToolsの今後の開発資金として役立てられます。
 WarningButton=ここをクリックして重要な警告を確認してください！

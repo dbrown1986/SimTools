@@ -893,20 +893,25 @@ animationsmoothing = 0";
 
             var iniItems = new[]
             {
-    (LanguageManager.Get("Main", "BSLimitFPS", "Limit Game FPS"), "https://simtools-app.com/limit-game-fps-ts3"),
-    (LanguageManager.Get("Main", "BSMoreCPU", "Allow More CPU Usage"), "https://simtools-app.com/allow-more-cpu-usage-ts3"),
-    (LanguageManager.Get("Main", "BSMoreGPU", "Allow More GPU Usage"), "https://simtools-app.com/allow-more-gpu-usage-ts3"),
-    (LanguageManager.Get("Main", "BSCleanDC", "Clean DCBackup Cache"), "https://simtools-app.com/clean-dcbackup-ts3"),
-};
+                (LanguageManager.Get("Main", "BSLimitFPS", "Limit Game FPS"), "https://simtools-app.com/limit-game-fps-ts3", "pack://application:,,,/Images/Icons/fix.ico"),
+                (LanguageManager.Get("Main", "BSMoreCPU", "Allow More CPU Usage"), "https://simtools-app.com/allow-more-cpu-usage-ts3", "pack://application:,,,/Images/Icons/fix.ico"),
+                (LanguageManager.Get("Main", "BSMoreGPU", "Allow More GPU Usage"), "https://simtools-app.com/allow-more-gpu-usage-ts3", "pack://application:,,,/Images/Icons/fix.ico"),
+                (LanguageManager.Get("Main", "BSCleanDC", "Clean DCBackup Cache"), "https://simtools-app.com/clean-dcbackup-ts3", "pack://application:,,,/Images/Icons/fix.ico"),
+            };
 
-            foreach (var (header, url) in iniItems)
+            foreach (var (header, url, iconPath) in iniItems)
             {
-                var subItem = new MenuItem { Header = header };
+                // Instantiate the sub-item and apply its matching icon from the array
+                var subItem = new MenuItem
+                {
+                    Header = header,
+                    Icon = MenuIcon(iconPath)
+                };
 
                 subItem.Click += (sender, e) =>
                 {
                     // 1. Handle "Clean DCBackup Cache" separately as requested
-                    if (header == LanguageManager.Get("Main", "CleanDC_01", "Clean DCBackup Cache"))
+                    if (header == LanguageManager.Get("Main", "BSCleanDC", "Clean DCBackup Cache"))
                     {
                         MessageBoxResult result = MessageBox.Show(
                             LanguageManager.Get("Main", "CleanDC_02", "This can be easily and safely accomplished by using the 'Regul Save Cleaner' utility.\n\n Would you like to open the online guide to read more about cleaning your cache folders?"),
@@ -959,7 +964,7 @@ animationsmoothing = 0";
                         }
 
                         // Handle "Limit Game FPS" which typically requires driver-level intervention
-                        if (header == LanguageManager.Get("Main", "LimitFPSHeader", "Limit Game FPS"))
+                        if (header == LanguageManager.Get("Main", "BSLimitFPS", "Limit Game FPS"))
                         {
                             MessageBox.Show(
                                 LanguageManager.Get("Main", "LimitFPSTip", "Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner) or via DXVK.\n\n SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware."),
@@ -977,15 +982,15 @@ animationsmoothing = 0";
                             MessageBox.Show(
                                 LanguageManager.Get("Main", "GraphicsRulesNotFound", "Could not locate 'GraphicsRules.sgr' inside your installation folder.\n\n Please verify your path selection, or run the game at least once to ensure all game files are fully generated on your disk."),
                                 LanguageManager.Get("Main", "GraphicsRulesNotFound_Title", "File Missing"),
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Warning);
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
                             return;
                         }
 
                         string[] lines = File.ReadAllLines(sgrPath);
                         bool modified = false;
 
-                        if (header == LanguageManager.Get("Main", "AllowCPU_01", "Allow More CPU Usage"))
+                        if (header == LanguageManager.Get("Main", "BSMoreCPU", "Allow More CPU Usage"))
                         {
                             for (int i = 0; i < lines.Length; i++)
                             {
@@ -996,7 +1001,7 @@ animationsmoothing = 0";
                                 else if (trimLine.StartsWith("seti cpuLevelLow")) { lines[i] = "    seti cpuLevelLow 3"; modified = true; }
                             }
                         }
-                        else if (header == LanguageManager.Get("Main", "AllowGPU_01", "Allow More GPU Usage"))
+                        else if (header == LanguageManager.Get("Main", "BSMoreGPU", "Allow More GPU Usage"))
                         {
                             for (int i = 0; i < lines.Length; i++)
                             {
@@ -1020,7 +1025,7 @@ animationsmoothing = 0";
 
                             File.WriteAllLines(sgrPath, lines);
                             MessageBox.Show(
-                                LanguageManager.Get("Main", "sgrSuccess", $"Successfully updated 'GraphicsRules.sgr' with optimal settings for {header}!"),
+                                LanguageManager.Format("Main", "sgrSuccess", $"Successfully updated 'GraphicsRules.sgr' with optimal settings for {header}!"),
                                 LanguageManager.Get("Main", "sgrSuccess_Title", "Success"),
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
@@ -1973,9 +1978,15 @@ animationsmoothing = 0";
             // ── Simler90's Fixes ──────────────────────────────────────────────
             var ts3_simler90 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = "Simler90's Fixes" };
 
-            MenuItem Simler90PackageItem(string header, string fileName)
+            // Expanded local function signature to accept the icon resource path
+            MenuItem Simler90PackageItem(string header, string fileName, string iconPath)
             {
-                var item = new MenuItem { Header = header };
+                var item = new MenuItem
+                {
+                    Header = header,
+                    Icon = MenuIcon(iconPath) // <-- Dynamically maps the icon to the item
+                };
+
                 item.Click += async (_, _) =>
                 {
                     if (!GamePaths.IsConfigured(GamePaths.Sims3Mods))
@@ -2033,11 +2044,11 @@ animationsmoothing = 0";
                 return item;
             }
 
-            // Add the child items to the new parent menu
-            // NOTE: Make sure these filenames match exactly what is hosted on your server
-            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for EA (1.69)", "simler90GameplayCoreMod-EA.package"));
-            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for Steam (1.67)", "simler90GameplayCoreMod-Steam.package"));
-            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for Retail (1.67)", "simler90GameplayCoreMod-Retail.package"));
+            // Add the child items to the new parent menu with their distinct icons
+            // (Feel free to adjust the specific asset filenames like origin.ico / steam.ico / retail.ico as needed)
+            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for EA (1.69)", "simler90GameplayCoreMod-EA.package", "pack://application:,,,/Images/Icons/vendors/ea.ico"));
+            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for Steam (1.67)", "simler90GameplayCoreMod-Steam.package", "pack://application:,,,/Images/Icons/vendors/steam.ico"));
+            ts3_simler90.Items.Add(Simler90PackageItem("Simler90's Fixes for Retail (1.67)", "simler90GameplayCoreMod-Retail.package", "pack://application:,,,/Images/Icons/Sims3.ico"));
 
             sims3Item.Items.Add(ts3_simler90);
 
@@ -2080,7 +2091,7 @@ animationsmoothing = 0";
             // SimCopter → SimCopterX
             // ─────────────────────────────────────────────────────────────────
             var simCopterItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Copter.ico"), Header = LanguageManager.Get("BuyTS3", "Copter", "SimCopter") };
-            var simCopterX = new MenuItem { Header = LanguageManager.Get("Tweaks", "CopterX", "SimCopterX") };
+            var simCopterX = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SimCopterX.ico"), Header = LanguageManager.Get("Tweaks", "CopterX", "SimCopterX") };
             simCopterX.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -2110,7 +2121,7 @@ animationsmoothing = 0";
             // Streets of SimCity → SimStreetsX
             // ─────────────────────────────────────────────────────────────────
             var streetsItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Streets.ico"), Header = LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity") };
-            var simStreetsX = new MenuItem { Header = LanguageManager.Get("Tweaks", "StreetsX", "SimStreetsX") };
+            var simStreetsX = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SimStreetsX.ico"), Header = LanguageManager.Get("Tweaks", "StreetsX", "SimStreetsX") };
             simStreetsX.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -2137,12 +2148,132 @@ animationsmoothing = 0";
             contextMenu.Items.Add(streetsItem);
 
             // ─────────────────────────────────────────────────────────────────
+            // SimTower
+            // ─────────────────────────────────────────────────────────────────
+
+            var simtowerItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SimTower.ico"), Header = "SimTower" };
+
+            var simtower_otvdm = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/otvdm.ico"), Header = "Install 16-bit Compatibility (otvdm)" };
+            simtower_otvdm.Click += async (_, _) =>
+            {
+                // 1. Verify path configuration
+                if (!GamePaths.IsConfigured(GamePaths.SimTowerGame))
+                {
+                    MessageBox.Show(
+                        LanguageManager.Get("Main", "Error_SimTowerPathNotSet", "The SimTower game directory has not been configured.\nPlease set it in Settings before using this feature."),
+                        LanguageManager.Get("Main", "SimTowerPathNotSet_Title", "SimTools — Path Not Set"),
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                string gameDir = GamePaths.SimTowerGame;
+                string targetOtvdmDir = @"C:\otvdm-v0.9.0";
+                string tempZip = Path.Combine(Path.GetTempPath(), "otvdm.zip");
+
+                // 2. Download via your native download layer
+                var (ok, _) = await DownloadFileOnly(
+                    url: "https://github.com/otya128/winevdm/releases/download/v0.9.0/otvdm-v0.9.0.zip",
+                    destFilePath: tempZip);
+
+                if (!ok) return;
+
+                // 3. Extract contents to C:\otvdm while stripping the "otvdm-v0.9.0/" tier
+                try
+                {
+                    using (var archive = ZipFile.OpenRead(tempZip))
+                    {
+                        foreach (var entry in archive.Entries)
+                        {
+                            if (string.IsNullOrEmpty(entry.Name)) continue;
+
+                            string relativePath = entry.FullName;
+
+                            if (relativePath.StartsWith("otvdm-v0.9.0/", StringComparison.OrdinalIgnoreCase))
+                            {
+                                relativePath = relativePath.Substring("otvdm-v0.9.0/".Length);
+                            }
+
+                            if (string.IsNullOrEmpty(relativePath)) continue;
+
+                            string destinationPath = Path.GetFullPath(Path.Combine(targetOtvdmDir, relativePath));
+
+                            // Guard against zip-slip traversal bugs out of C:\otvdm
+                            if (!destinationPath.StartsWith(Path.GetFullPath(targetOtvdmDir), StringComparison.OrdinalIgnoreCase))
+                            {
+                                continue;
+                            }
+
+                            string? parentFolder = Path.GetDirectoryName(destinationPath);
+                            if (parentFolder != null && !Directory.Exists(parentFolder))
+                            {
+                                Directory.CreateDirectory(parentFolder);
+                            }
+
+                            entry.ExtractToFile(destinationPath, overwrite: true);
+                        }
+                    }
+
+                    // 4. Run install.lnk from C:\otvdm to register the system compatibility extensions
+                    string installLnkPath = Path.Combine(targetOtvdmDir, "install.lnk");
+                    if (File.Exists(installLnkPath))
+                    {
+                        using (Process installProc = new Process())
+                        {
+                            installProc.StartInfo = new ProcessStartInfo
+                            {
+                                FileName = installLnkPath,
+                                UseShellExecute = true,
+                                WorkingDirectory = targetOtvdmDir
+                            };
+                            installProc.Start();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        LanguageManager.Format("Main", "Otvdm_ExtractFail", $"Installation failed: {ex.Message}"),
+                        LanguageManager.Get("Main", "Otvdm_ExtractTitle", "SimTools — Extraction Error"),
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                finally
+                {
+                    if (File.Exists(tempZip)) File.Delete(tempZip);
+                }
+
+                // 5. Offer to build the Desktop Shortcut pointing directly to SimTower.exe
+                string simTowerExe = Path.Combine(gameDir, "SimTower.exe");
+
+                var shortcutPrompt = MessageBox.Show(
+                    LanguageManager.Get("Main", "SimTower_InstalledShortcutPrompt", "otvdm components have been successfully deployed to C:\\otvdm and registered.\n\nWould you like to generate a desktop shortcut directly to SimTower?"),
+                    LanguageManager.Get("Main", "SimTower_Title", "SimTools — Installation Complete"),
+                    MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+                if (shortcutPrompt == MessageBoxResult.Yes)
+                {
+                    if (OperatingSystem.IsWindows())
+                    {
+                        // Simply map the clean SimTower executable location without chaining otvdm
+                        CreateDesktopShortcut(
+                            targetExe: simTowerExe,
+                            shortcutName: "Launch SimTower with otvdm",
+                            description: "Launches SimTower");
+                    }
+                }
+            };
+
+            // 6. Bind into the context menu tree
+            simtowerItem.Items.Add(simtower_otvdm);
+            contextMenu.Items.Add(simtowerItem);
+
+            // ─────────────────────────────────────────────────────────────────
             // SimCity 2000 → SC2kFix + SC2000X
             // ─────────────────────────────────────────────────────────────────
             var sc2000Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2K.ico"), Header = LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000") };
 
             // ── SC2kFix (ZIP download + extract) ──────────────────────────────
-            var sc2kFix = new MenuItem { Header = LanguageManager.Get("Tweaks", "SC2KFix", "SC2kFix") };
+            var sc2kFix = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = LanguageManager.Get("Tweaks", "SC2KFix", "SC2kFix") };
             sc2kFix.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -2166,7 +2297,7 @@ animationsmoothing = 0";
             sc2000Item.Items.Add(sc2kFix);
 
             // ── SC2000X (EXE download + run) ──────────────────────────────────
-            var sc2000X = new MenuItem { Header = LanguageManager.Get("Tweaks", "SC2KX", "SC2000X") };
+            var sc2000X = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/sc2000x.ico"), Header = LanguageManager.Get("Tweaks", "SC2KX", "SC2000X") };
             sc2000X.Click += async (_, _) =>
             {
                 MessageBox.Show(
@@ -2525,7 +2656,7 @@ animationsmoothing = 0";
 
             // ── The Sims 1 ────────────────────────────────────────────────────
             var sims1 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims") };
-            var s1_corylea = new MenuItem { Header = "Corylea Sims 1 Mods" };
+            var s1_corylea = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/corylea.ico"), Header = "Corylea Sims 1 Mods" };
             var s1_tsr = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSR.ico"), Header = "The Sims 1 on TSR" };
             var s1_mts = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/MTS.ico"), Header = "The Sims 1 on MTS" };
             s1_corylea.Click += (_, _) => Browse("http://corylea.com/Sims1ModsByCorylea.html");
@@ -2737,7 +2868,7 @@ animationsmoothing = 0";
                 => Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
 
             // ── Pirated Store Warning ──────────────────────────────────────────────
-            var store_piracy = new MenuItem { Header = LanguageManager.Get("Main", "StorePiracyWarning", "Store Piracy Warning") };
+            var store_piracy = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/piracy.ico"), Header = LanguageManager.Get("Main", "StorePiracyWarning", "Store Piracy Warning") };
             store_piracy.Click += (_, _) =>
             {
                 MessageBox.Show(
@@ -2749,32 +2880,32 @@ animationsmoothing = 0";
             contextMenu.Items.Add(store_piracy);
 
             // ── The Sims 3 Store ──────────────────────────────────────────────
-            var store = new MenuItem { Header = LanguageManager.Get("Main", "Sims3Store", "The Sims 3 Store") };
+            var store = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Store.ico"), Header = LanguageManager.Get("Main", "Sims3Store", "The Sims 3 Store") };
             store.Click += (_, _) => Browse("https://store.thesims3.com/");
             contextMenu.Items.Add(store);
 
             // ── Daily Deal ────────────────────────────────────────────────────
-            var dailyDeal = new MenuItem { Header = LanguageManager.Get("Main", "DailyDeal", "Daily Deal") };
+            var dailyDeal = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/ts3store.ico"), Header = LanguageManager.Get("Main", "DailyDeal", "Daily Deal") };
             dailyDeal.Click += (_, _) => Browse("https://store.thesims3.com/dailyDeal.html");
             contextMenu.Items.Add(dailyDeal);
 
             // ── Daily Deal Rotation ───────────────────────────────────────────
-            var dealRotation = new MenuItem { Header = LanguageManager.Get("Main", "DailyDealRot", "Daily Deal Rotation") };
+            var dealRotation = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/sheets.ico"), Header = LanguageManager.Get("Main", "DailyDealRot", "Daily Deal Rotation") };
             dealRotation.Click += (_, _) => Browse("https://docs.google.com/spreadsheets/d/1NIeS9yIMAw-fA7VhseLilqCOV5XfKoSJXwbyyKQLJP4/edit?gid=882235701#gid=882235701");
             contextMenu.Items.Add(dealRotation);
 
             // ── Free Store Items ──────────────────────────────────────────────
-            var freeItems = new MenuItem { Header = LanguageManager.Get("Main", "FreeItems", "Free Store Items") };
+            var freeItems = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/docs.ico"), Header = LanguageManager.Get("Main", "FreeItems", "Free Store Items") };
             freeItems.Click += (_, _) => Browse("https://docs.google.com/document/d/1Rf89z61M8Ah7a-xf15GNKVa8ZzGgz92d1oXm9XZUxso/edit?tab=t.0");
             contextMenu.Items.Add(freeItems);
 
             // ── Store Video Guide ─────────────────────────────────────────────
-            var videoGuide = new MenuItem { Header = LanguageManager.Get("Main", "StoreGuide", "Store Video Guide (English)") };
+            var videoGuide = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/youtube.ico"), Header = LanguageManager.Get("Main", "StoreGuide", "Store Video Guide (English)") };
             videoGuide.Click += (_, _) => Browse("https://youtu.be/OPgoRiQ9Fq8");
             contextMenu.Items.Add(videoGuide);
 
-            // ── Buy TS3 Games (placeholder — window not yet implemented) ──────
-            var buyGames = new MenuItem { Header = LanguageManager.Get("Main", "BuyTS3Games1", "Buy TS3 Games") };
+            // ── Buy TS3 Games ──────
+            var buyGames = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = LanguageManager.Get("Main", "BuyTS3Games1", "Buy TS3 Games") };
             buyGames.Click += (_, _) => new BuyTS3 { Owner = this }.ShowDialog();
             contextMenu.Items.Add(buyGames);
 
@@ -2862,20 +2993,35 @@ animationsmoothing = 0";
         /// Creates a .lnk shortcut on the user's Desktop using WScript.Shell COM.
         /// </summary>
         [System.Runtime.Versioning.SupportedOSPlatform("windows")]
-        private static void CreateDesktopShortcut(string targetExe, string shortcutName, string description = "")
+        private void CreateDesktopShortcut(string targetExe, string shortcutName, string description, string arguments = "")
         {
-            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string shortcutPath = Path.Combine(desktop, shortcutName + ".lnk");
+            try
+            {
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                string shortcutLocation = Path.Combine(desktopPath, shortcutName + ".lnk");
 
-            Type shellType = Type.GetTypeFromProgID("WScript.Shell")
-                               ?? throw new InvalidOperationException("WScript.Shell is not available.");
-            dynamic shell = Activator.CreateInstance(shellType)!;
-            dynamic shortcut = shell.CreateShortcut(shortcutPath);
+                Type shellType = Type.GetTypeFromProgID("WScript.Shell")!;
+                dynamic shell = Activator.CreateInstance(shellType)!;
+                dynamic shortcut = shell.CreateShortcut(shortcutLocation);
 
-            shortcut.TargetPath = targetExe;
-            shortcut.WorkingDirectory = Path.GetDirectoryName(targetExe) ?? string.Empty;
-            shortcut.Description = description;
-            shortcut.Save();
+                shortcut.TargetPath = targetExe;
+                shortcut.Description = description;
+                shortcut.WorkingDirectory = Path.GetDirectoryName(targetExe);
+
+                if (!string.IsNullOrEmpty(arguments))
+                {
+                    shortcut.Arguments = arguments;
+                }
+
+                shortcut.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    LanguageManager.Format("Main", "Shortcut_Error", $"Could not create shortcut: {ex.Message}"),
+                    LanguageManager.Get("Main", "Error_Title", "Error"),
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
 
@@ -2889,23 +3035,23 @@ animationsmoothing = 0";
             string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
 
             // ── The Sims (disabled) ──────────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims1.ico"), Header = LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims"), IsEnabled = false });
 
             // ── The Sims 2 (disabled) ───────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2"), IsEnabled = false });
             // ── The Sims 3 ───────────────────────────────────────────────────────────
-            var sims3 = new MenuItem { Header = LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3") };
+            var sims3 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3") };
 
             // Create-A-World sub-menu
-            var caw = new MenuItem { Header = LanguageManager.Get("Main", "CAW", "Create-A-World") };
+            var caw = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/caw.ico"), Header = LanguageManager.Get("Main", "CAW", "Create-A-World") };
 
-            var caw167 = new MenuItem { Header = LanguageManager.Get("Main", "CAW167", "CAW for 1.67") };
+            var caw167 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/caw.ico"), Header = LanguageManager.Get("Main", "CAW167", "CAW for 1.67") };
             caw167.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/CAW_1.67.exe",
                 fileName: "CAW_1.67.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
-            var caw169 = new MenuItem { Header = LanguageManager.Get("Main", "CAW169", "CAW for 1.69") };
+            var caw169 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/caw.ico"), Header = LanguageManager.Get("Main", "CAW169", "CAW for 1.69") };
             caw169.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/CAW_1.69.exe",
                 fileName: "CAW_1.69.exe",
@@ -2915,19 +3061,19 @@ animationsmoothing = 0";
             caw.Items.Add(caw169);
             sims3.Items.Add(caw);
 
-            var s3pe = new MenuItem { Header = LanguageManager.Get("Main", "S3PE", "Sims 3 Package Editor") };
+            var s3pe = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = LanguageManager.Get("Main", "S3PE", "Sims 3 Package Editor") };
             s3pe.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/s3pe.exe",        // ← replace
                 fileName: "s3pe.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
-            var s3pack = new MenuItem { Header = LanguageManager.Get("Main", "S3PE_2", "Sims 3 Pack Extractor") };
+            var s3pack = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/s3pe.ico"), Header = LanguageManager.Get("Main", "S3PE_2", "Sims 3 Pack Extractor") };
             s3pack.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/S3PackExtractor.exe",  // ← replace
                 fileName: "S3PackExtractor.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
-            var s3dash = new MenuItem { Header = LanguageManager.Get("Main", "S3Dash", "Sims 3 Dashboard") };
+            var s3dash = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = LanguageManager.Get("Main", "S3Dash", "Sims 3 Dashboard") };
             s3dash.Click += async (_, _) =>
             {
                 string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
@@ -2954,7 +3100,7 @@ animationsmoothing = 0";
             };
 
             // CCMagic is a standalone installer; no game-path check required.
-            var ccmagic = new MenuItem { Header = LanguageManager.Get("Main", "CCMagic", "Install CCMagic") };
+            var ccmagic = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/ccmagic.ico"), Header = LanguageManager.Get("Main", "CCMagic", "Install CCMagic") };
             ccmagic.Click += (_, _) => DownloadAndOpenExe(
                 url: "%baseurl%/Sideload-Apps/x86/CCMagicSetup.exe",  // ← replace
                 fileName: "CCMagicSetup.exe",
@@ -2967,25 +3113,25 @@ animationsmoothing = 0";
             contextMenu.Items.Add(sims3);
 
             // ── The Sims 4 ───────────────────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "TS4", "The Sims 4"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims4.ico"), Header = LanguageManager.Get("BuyTS3", "TS4", "The Sims 4"), IsEnabled = false });
 
             // ── The Sims Medieval (disabled) ──────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "TSM1", "The Sims Medieval"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSM.ico"), Header = LanguageManager.Get("BuyTS3", "TSM1", "The Sims Medieval"), IsEnabled = false });
 
             // ── The Sims Stories (disabled) ───────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "TS_Stories", "The Sims Stories"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSLife.ico"), Header = LanguageManager.Get("BuyTS3", "TS_Stories", "The Sims Stories"), IsEnabled = false });
 
             // ── SimCity 2000 (disabled) ───────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2K.ico"), Header = LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000"), IsEnabled = false });
 
             // ── SimCity 3000 (disabled) ───────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC3KU.ico"), Header = LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000"), IsEnabled = false });
 
             // ── SimCity 4 (disabled) ──────────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("GenericKeysPage", "SC4", "SimCity 4"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC4DE.ico"), Header = LanguageManager.Get("GenericKeysPage", "SC4", "SimCity 4"), IsEnabled = false });
 
             // ── SimCity 2013 (disabled) ───────────────────────────────────────────────
-            contextMenu.Items.Add(new MenuItem { Header = LanguageManager.Get("BuyTS3", "SC2013", "SimCity 2013"), IsEnabled = false });
+            contextMenu.Items.Add(new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC2013.ico"), Header = LanguageManager.Get("BuyTS3", "SC2013", "SimCity 2013"), IsEnabled = false });
 
             // ── Assign to button ─────────────────────────────────────────────────────
             ModToolsButton.ContextMenu = contextMenu;

@@ -70,6 +70,13 @@ Btn_Save=Save
 Btn_Cancel=Cancel
 
 [Main]
+Install_otvdm=Install 16-bit Compatibility (otvdm)
+Error_SimTowerPathNotSet=The SimTower game directory has not been configured.\nPlease set it in Settings before using this feature.
+SimTowerPathNotSet_Title=SimTools — Path Not Set
+Otvdm_ExtractFail=Extraction failed: {ex.Message}
+Otvdm_ExtractTitle=SimTools — Extraction Error
+SimTower_InstalledShortcutPrompt=otvdm compatibility files have been successfully extracted directly to your SimTower directory.\n\nWould you like to generate a desktop shortcut to launch SimTower using this compatibility layer?
+SimTower_Title=SimTools — Installation Complete
 ReportBugUpdate_Btn=Report Bug / Update
 ReportBug=Report a Bug
 SuggestUpdate=Suggest Mod Update
@@ -307,6 +314,7 @@ PersonalizationText=This copy of SimTools designed with care for {0} {1}.\nThank
 MachineChanged_Title=SimTools — Personalization
 
 [BuyTS3]
+SimTower=SimTower
 BrokenLinksText=If any of these links are broken, please submit an Issue ticket on the SimTools Github or post on the Discord, so the link can be corrected or removed.
 UseText=You can use the following selection box to select the game(s) you would like to purchase, and it will redirect you to that games purchase page with your given selections. The sections are expandable. \n All links are affiliated and tied to SimTools, I will earn 2% - 5% of each sale if you decide to purchase through any of my links here in SimTools. Doing so supports future development of SimTools.
 WarningButton=CLICK HERE FOR AN IMPORTANT WARNING!

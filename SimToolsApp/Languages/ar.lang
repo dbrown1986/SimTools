@@ -70,6 +70,13 @@ Btn_Save=حفظ
 Btn_Cancel=إلغاء
 
 [Main]
+Install_otvdm=تثبيت توافق 16-بت (otvdm)
+Error_SimTowerPathNotSet=لم يتم تهيئة مجلد لعبة SimTower.\nيرجى تعيينه في الإعدادات قبل استخدام هذه الميزة.
+SimTowerPathNotSet_Title=SimTools — المسار غير محدد
+Otvdm_ExtractFail=فشل الاستخراج: {ex.Message}
+Otvdm_ExtractTitle=SimTools — خطأ في الاستخراج
+SimTower_InstalledShortcutPrompt=تم استخراج ملفات توافق otvdm بنجاح مباشرة إلى مجلد SimTower الخاص بك.\n\nهل ترغب في إنشاء اختصار على سطح المكتب لتشغيل SimTower باستخدام طبقة التوافق هذه؟
+SimTower_Title=SimTools — التثبيت مكتمل
 ReportBugUpdate_Btn=إبلاغ عن خطأ / تحديث
 ReportBug=الإبلاغ عن خطأ
 SuggestUpdate=اقتراح تحديث للمعدل (Mod)
@@ -307,6 +314,7 @@ PersonalizationText=صُممت هذه النسخة من SimTools بعناية م
 MachineChanged_Title=SimTools — التخصيص
 
 [BuyTS3]
+SimTower=برج سيم (SimTower)
 BrokenLinksText=إذا كان أي من هذه الروابط معطلاً، يرجى تقديم تذكرة مشكلة (Issue) على Github الخاص بـ SimTools أو النشر على Discord، حتى يمكن تصحيح الرابط أو إزالته.
 UseText=يمكنك استخدام مربع التحديد التالي لتحديد اللعبة (الألعاب) التي ترغب في شرائها، وسيعيد توجيهك إلى صفحة شراء تلك الألعاب باختياراتك المحددة. الأقسام قابلة للتوسيع. \n جميع الروابط تابعة ومرتبطة بـ SimTools، وسأكسب 2% - 5% من كل عملية بيع إذا قررت الشراء من خلال أي من روابطي هنا في SimTools. القيام بذلك يدعم التطوير المستقبلي لبرنامج SimTools.
 WarningButton=انقر هنا للحصول على تحذير هام!

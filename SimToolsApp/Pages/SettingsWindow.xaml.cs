@@ -129,6 +129,7 @@ public partial class SettingsWindow : Window
         ("Sims3",                LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3")),
         ("Sims4",                LanguageManager.Get("BuyTS3", "TS4", "The Sims 4")),
         ("SimsMedieval",         LanguageManager.Get("BuyTS3", "TSM1", "The Sims Medieval")),
+        ("SimTower",             LanguageManager.Get("BuyTS3", "SimTower", "SimTower")),
         ("SimCopter",            LanguageManager.Get("BuyTS3", "Copter", "SimCopter")),
         ("StreetsOfSimCity",     LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity")),
         ("SimCity2000",          LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000")),
@@ -146,7 +147,7 @@ public partial class SettingsWindow : Window
     private static readonly System.Collections.Generic.HashSet<string> HasUserData =
     [
         // Replace these with the actual game keys that require User Data
-        "Sims1", "Sims2", "Sims3", "Sims4", "SimsLifeStories", "SimsPetStories", "SimsCastawayStories", "SimsMedieval", "SimCity4"
+        "Sims2", "Sims3", "Sims4", "SimsLifeStories", "SimsPetStories", "SimsCastawayStories", "SimsMedieval", "SimCity4"
     ];
 
     private static readonly (string Code, string Name)[] Languages =

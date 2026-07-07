@@ -69,6 +69,13 @@ Btn_Save=Salvar
 Btn_Cancel=Cancelar
 
 [Main]
+Install_otvdm=Instalar compatibilidade de 16 bits (otvdm)
+Error_SimTowerPathNotSet=O diretório do jogo SimTower não foi configurado.\nPor favor, configure-o nas Configurações antes de usar este recurso.
+SimTowerPathNotSet_Title=SimTools — Caminho não definido
+Otvdm_ExtractFail=Falha na extração: {ex.Message}
+Otvdm_ExtractTitle=SimTools — Erro de extração
+SimTower_InstalledShortcutPrompt=Os arquivos de compatibilidade do otvdm foram extraídos com sucesso diretamente para o seu diretório SimTower.\n\nVocê gostaria de criar um atalho na área de trabalho para iniciar o SimTower usando esta camada de compatibilidade?
+SimTower_Title=SimTools — Instalação concluída
 ReportBugUpdate_Btn=Relatar Bug / Atualizar
 ReportBug=Relatar um erro
 SuggestUpdate=Sugerir atualização de Mod
@@ -306,6 +313,7 @@ PersonalizationText=Esta cópia do SimTools foi projetada com carinho para {0} {
 MachineChanged_Title=SimTools — Personalização
 
 [BuyTS3]
+SimTower=SimTower
 BrokenLinksText=Se algum destes links estiver quebrado, envie um tíquete de Issue no Github do SimTools ou poste no Discord, para que o link possa ser corrigido ou removido.
 UseText=Você pode usar a caixa de seleção abaixo para escolher o(s) jogo(s) que deseja comprar, e você será redirecionado para a página de compra desse jogo com suas seleções. As seções são expansíveis. \n Todos os links são afiliados e vinculados ao SimTools; ganharei de 2% a 5% de cada venda se você decidir comprar através de qualquer um dos meus links aqui no SimTools. Isso apoia o desenvolvimento futuro do SimTools.
 WarningButton=CLIQUE AQUI PARA UM AVISO IMPORTANTE!

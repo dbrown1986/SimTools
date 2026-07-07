@@ -69,6 +69,13 @@ Btn_Save=儲存
 Btn_Cancel=取消
 
 [Main]
+Install_otvdm=安裝 16 位元相容性 (otvdm)
+Error_SimTowerPathNotSet=尚未設定 SimTower 遊戲目錄。\n請在使用此功能前於「設定」中進行設定。
+SimTowerPathNotSet_Title=SimTools — 路徑未設定
+Otvdm_ExtractFail=解壓縮失敗：{ex.Message}
+Otvdm_ExtractTitle=SimTools — 解壓縮錯誤
+SimTower_InstalledShortcutPrompt=otvdm 相容性檔案已成功解壓縮至您的 SimTower 目錄中。\n\n您是否要建立一個桌面捷徑，以使用此相容層來啟動 SimTower？
+SimTower_Title=SimTools — 安裝完成
 ReportBugUpdate_Btn=回報錯誤 / 更新
 ReportBug=回報錯誤
 SuggestUpdate=建議模組更新
@@ -306,6 +313,7 @@ PersonalizationText=這份 SimTools 副本是專為 {0} {1} 精心設計的。\n
 MachineChanged_Title=SimTools — 個人化
 
 [BuyTS3]
+SimTower=模擬大樓 (SimTower)
 BrokenLinksText=若這些連結有任何無法使用的情況，請在 SimTools GitHub 的「Issues」頁面提交工單，或在 Discord 上留言，以便我們更正或移除該連結。
 UseText=您可以使用下方的選擇框選擇您想要購買的遊戲，程式將會把您重新導向至該遊戲的購買頁面。各分類皆可展開。\n 所有連結皆為聯盟行銷連結並與 SimTools 綁定。如果您決定透過 SimTools 內的任何連結購買，我將會獲得 2% - 5% 的銷售佣金。您的支持將有助於 SimTools 的持續開發。
 WarningButton=點擊此處查看重要警告！
