@@ -1473,7 +1473,7 @@ animationsmoothing = 0";
                         return;
                     }
 
-                    var (ok, _) = await DownloadFileOnly($"%baseurl%/Mods/Sims3/NRaas/{filename}", dest);
+                    var (ok, _) = await DownloadFileOnly($"%baseurl%/Mods/Sims3/nRaas/{filename}", dest);
                     if (!ok) return;
 
                     MessageBox.Show(
@@ -1484,9 +1484,9 @@ animationsmoothing = 0";
                 return item;
             }
              
-            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for EA (1.69)", "NRaas_ErrorTrap_EA.package", "pack://application:,,,/Images/Icons/nraas.ico"));
-            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Steam (1.67)", "NRaas_ErrorTrap_Steam.package", "pack://application:,,,/Images/Icons/nraas.ico"));
-            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Retail (1.67)", "NRaas_ErrorTrap_Retail.package", "pack://application:,,,/Images/Icons/nraas.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for EA (1.69)", "NRaas_ErrorTrap_EA.package", "pack://application:,,,/Images/Icons/vendors/ea.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Steam (1.67)", "NRaas_ErrorTrap_Steam.package", "pack://application:,,,/Images/Icons/vendors/steam.ico"));
+            ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Retail (1.67)", "NRaas_ErrorTrap_Retail.package", "pack://application:,,,/Images/Icons/Sims3.ico"));
             ts3_nraas.Items.Add(NRaasPackageItem("Overwatch", "NRaas_Overwatch.package", "pack://application:,,,/Images/Icons/nraas.ico"));
             ts3_nraas.Items.Add(NRaasPackageItem("Master Controller", "NRaas_MasterController.package", "pack://application:,,,/Images/Icons/nraas.ico"));
             ts3_nraas.Items.Add(NRaasPackageItem("Register", "NRaas_Register.package", "pack://application:,,,/Images/Icons/nraas.ico"));
