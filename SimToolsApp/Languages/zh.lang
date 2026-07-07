@@ -1,3 +1,8 @@
+[ExclusiveItems]
+Download_Success=此 SimTools 套件已成功下載並放入您的媒體庫中！
+Download_Current=您的獨家套件已是最新版本。
+Download_Title=成功
+
 [LanguageSelectionWindow]
 Window_Title=選擇語言
 Window_Subtitle=請為 SimTools 選擇一種語言。您可以隨時透過「設定」更改此選項。

@@ -54,6 +54,7 @@ Project File
 		<Resource Include="Images\discord.png" />
 		<Resource Include="Images\DownloadProgress1.png" />
 		<Resource Include="Images\DownloadProgress2.png" />
+		<Resource Include="Images\Exclusives\SlimLivin.jpg" />
 		<Resource Include="Images\facebook-hover.png" />
 		<Resource Include="Images\Flags\ar.jpg" />
 		<Resource Include="Images\Flags\de.jpg" />

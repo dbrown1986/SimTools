@@ -1,3 +1,8 @@
+[ExclusiveItems]
+Download_Success=Dieses SimTools-Paket wurde erfolgreich heruntergeladen und in deine Bibliothek verschoben!
+Download_Current=Dein exklusives Paket ist bereits auf dem neuesten Stand.
+Download_Title=Erfolg
+
 [LanguageSelectionWindow]
 Window_Title=Sprache auswählen
 Window_Subtitle=Wähle eine Sprache für SimTools. Dies kann jederzeit über die Einstellungen geändert werden.

@@ -1,3 +1,8 @@
+[ExclusiveItems]
+Download_Success=このSimToolsパッケージは正常にダウンロードされ、ライブラリに追加されました！
+Download_Current=あなたの限定パッケージはすでに最新の状態です。
+Download_Title=成功
+
 [LanguageSelectionWindow]
 Window_Title=言語を選択
 Window_Subtitle=SimToolsの言語を選択してください。設定からいつでも変更可能です。

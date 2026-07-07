@@ -64,7 +64,7 @@
 
         <!-- Title -->
         <TextBlock x:Name="DonorItems" HorizontalAlignment="Left" VerticalAlignment="Top"
-                   Margin="196,105,0,0"
+                   Margin="196,15,0,0"
                    Text="Donor / Patreon Exclusive Items"
                    Foreground="#FFD700"
                    FontFamily="Tahoma"
@@ -73,7 +73,7 @@
 
         <!-- Content area -->
         <ScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top"
-                      Margin="196,148,0,0" Width="621" Height="470"
+                      Margin="196,58,0,0" Width="621" Height="78"
                       VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <TextBlock x:Name="ExclusiveItemsText"
@@ -112,6 +112,45 @@
                                         <Border Background="{TemplateBinding Background}">
                                             <ContentPresenter HorizontalAlignment="Center"
                                   VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Image x:Name="SlimLivin" HorizontalAlignment="Left" Height="128" Margin="196,159,0,0" VerticalAlignment="Top" Width="128" Source="/Images/Exclusives/SlimLivin.jpg"/>
+        <TextBlock x:Name="SlimLivinHeader" HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="336,160,0,0"
+            Text="Slim Livin (Sims 3)"
+            Foreground="#FFD700"
+            FontFamily="Tahoma"
+            FontWeight="Bold"
+            FontSize="20" Height="26"/>
+        <TextBlock HorizontalAlignment="Left" Margin="336,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FF13FF00" Height="40" Width="481" FontWeight="Bold"><Run FontFamily="Courier New" FontSize="11.333333333333332" Text="A quaint, but luxurious abode. Small and compact at 10x10. A generous starter for any sim with 2 bedrooms and 1 bathroom. Base game items only."/></TextBlock>
+        <Button x:Name="SlimLivinDownloadButton" Content="Download Now" HorizontalAlignment="Left" Margin="336,253,0,0" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SlimLivinDownloadButton_Click" BorderBrush="{x:Null}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                      VerticalAlignment="Center"/>
                                         </Border>
                                     </ControlTemplate>
                                 </Setter.Value>
