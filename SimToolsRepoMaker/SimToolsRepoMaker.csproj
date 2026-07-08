@@ -5,15 +5,33 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+	<PublishSingleFile>true</PublishSingleFile>
+	<ApplicationIcon>icon.ico</ApplicationIcon>
+	<ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="app.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Program.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="apache-win.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="recursive_list.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	  <None Update="apache-win.zip">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
   </ItemGroup>
 
 </Project>

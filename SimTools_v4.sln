@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimToolsUpdater", "SimTools
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimToolsRepoMaker", "SimToolsRepoMaker\SimToolsRepoMaker.csproj", "{0E683814-6E27-4029-9208-CF3F83E32A51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimToolsLanguageTool", "SimToolsLanguageTool\SimToolsLanguageTool.csproj", "{29D83AEE-47D2-43B2-839C-ED93864A0AE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{0E683814-6E27-4029-9208-CF3F83E32A51}.Release|x64.Build.0 = Release|Any CPU
 		{0E683814-6E27-4029-9208-CF3F83E32A51}.Release|x86.ActiveCfg = Release|Any CPU
 		{0E683814-6E27-4029-9208-CF3F83E32A51}.Release|x86.Build.0 = Release|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Debug|x64.Build.0 = Debug|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Debug|x86.Build.0 = Debug|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Release|x64.ActiveCfg = Release|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Release|x64.Build.0 = Release|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Release|x86.ActiveCfg = Release|Any CPU
+		{29D83AEE-47D2-43B2-839C-ED93864A0AE5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

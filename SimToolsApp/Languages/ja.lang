@@ -298,6 +298,12 @@ Suppress_Duration=更新通知をどのくらいの期間抑制しますか？
 Suppress_DurTitle=抑制期間
 
 [SupportPage]
+RepoMakerNotFound=インストールディレクトリにRepo Makerユーティリティが見つかりませんでした。\n\nSimToolsインストーラーを再実行し、「Repo Makerユーティリティもインストールする」オプションがオンになっていることを確認してください。
+ToolNotFound_Title=ツールが見つかりません
+UnableToLaunchRM=Repo Makerを起動できませんでした: {ex.Message}
+UnableToLaunchRM_Title=実行エラー
+LanguageToolNotFound=インストールディレクトリにLanguage Toolが見つかりませんでした。\n\nSimToolsインストーラーを再実行し、「Language Toolもインストールする」オプションがオンになっていることを確認してください。
+UnableToLaunchLT=Language Toolを起動できませんでした: {ex.Message}
 SupportText1=まずはじめに、SimToolsの支援にご興味を持っていただきありがとうございます。SimToolsプロジェクトを支援する方法はいくつかあります。以下はその一例ですが、これらに限定されるものではありません：
 FiscalSupport=金銭的な支援
 FiscalSupport2=SimToolsは趣味として設計しましたが、月々のホスティング費用と年間のドメイン更新費用（月額$96.10）が発生します。プロジェクトへの寄付を通じて、これらの費用を補う手助けをしていただけます。

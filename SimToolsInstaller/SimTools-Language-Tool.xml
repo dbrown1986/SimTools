@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 32-Bit Binaries for SimTools -->
+<!-- This manifest is used for installing and updating -->
+<Manifest>
+  <File name="SimToolsLanguageTool.exe" hash="B9CF716F9B53183D4FD7A5329DC1F52F" url="https://us1-repo.simtools-app.com/App/SimToolsLanguageTool.exe" />
+</Manifest>

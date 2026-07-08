@@ -298,6 +298,12 @@ Suppress_Duration=您想要抑制更新通知多久？
 Suppress_DurTitle=抑制時長
 
 [SupportPage]
+RepoMakerNotFound=在您的安裝目錄中找不到 Repo Maker 公用程式。\n\n請重新執行 SimTools 安裝程式，並確認已勾選「同時安裝 Repo Maker 公用程式」選項。
+ToolNotFound_Title=找不到工具
+UnableToLaunchRM=無法啟動 Repo Maker：{ex.Message}
+UnableToLaunchRM_Title=執行錯誤
+LanguageToolNotFound=在您的安裝目錄中找不到語言工具 (Language Tool)。\n\n請重新執行 SimTools 安裝程式，並確認已勾選「同時安裝語言工具」選項。
+UnableToLaunchLT=無法啟動語言工具：{ex.Message}
 SupportText1=首先，感謝您對支持 SimTools 的興趣。您可以透過多種方式為 SimTools 專案提供支持。這些方式包括但不限於以下項目：
 FiscalSupport=財務支持
 FiscalSupport2=我將 SimTools 設計為一種愛好，但 SimTools 確實會產生每月的託管費用與每年的網域續費（每月 $96.10 美元）。您可以透過捐款給本專案來幫助分擔這些成本。

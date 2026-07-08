@@ -298,6 +298,12 @@ Suppress_Duration=Por quanto tempo deseja suprimir as notificações de atualiza
 Suppress_DurTitle=Duração da supressão
 
 [SupportPage]
+RepoMakerNotFound=O utilitário Repo Maker não foi encontrado no seu diretório de instalação.\n\nPor favor, execute o instalador do SimTools novamente e verifique se a opção "Instalar também o utilitário Repo Maker" está marcada.
+ToolNotFound_Title=Ferramenta não encontrada
+UnableToLaunchRM=Não foi possível iniciar o Repo Maker: {ex.Message}
+UnableToLaunchRM_Title=Erro de execução
+LanguageToolNotFound=A Ferramenta de Idioma não foi encontrada no seu diretório de instalação.\n\nPor favor, execute o instalador do SimTools novamente e verifique se a opção "Instalar também a Ferramenta de Idioma" está marcada.
+UnableToLaunchLT=Não foi possível iniciar a Ferramenta de Idioma: {ex.Message}
 SupportText1=Primeiramente, obrigado pelo seu interesse em apoiar o SimTools. Existem várias maneiras de oferecer suporte ao Projeto SimTools. Estas incluem, mas não estão limitadas ao seguinte:
 FiscalSupport=Apoio financeiro
 FiscalSupport2=Projetei o SimTools como um hobby, mas ele incorre em custos mensais de hospedagem e renovações anuais de domínio ($96,10/mês). Você pode ajudar a compensar esses custos doando para o projeto.

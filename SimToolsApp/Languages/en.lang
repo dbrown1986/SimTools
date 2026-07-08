@@ -299,6 +299,12 @@ Suppress_Duration=How long would you like to suppress update notifications?
 Suppress_DurTitle=Suppression Duration
 
 [SupportPage]
+RepoMakerNotFound=The Repo Maker Utility was not found in your installation directory.\n\nPlease re-run the SimTools installer and verify that the 'Also Install Repo Maker Utility' option is checked.
+ToolNotFound_Title=Tool Not Found
+UnableToLaunchRM=Could not launch Repo Maker: {ex.Message}
+UnableToLaunchRM_Title=Execution Error
+LanguageToolNotFound=The Language Tool was not found in your installation directory.\n\nPlease re-run the SimTools installer and verify that the 'Also Install Language Tool' option is checked.
+UnableToLaunchLT=Could not launch Language Tool: {ex.Message}
 SupportText1=First off, thank you for your interest in supporting SimTools. There are various ways in which you can offer support to the SimTools Project. These include, but are not limited to the following:
 FiscalSupport=Fiscally
 FiscalSupport2=I designed SimTools as a hobby, but SimTools does incur monthly hosting costs and annual domain renewals ($96.10/mo). You can help offset these costs by donating to the project.

@@ -298,6 +298,12 @@ Suppress_Duration=Wie lange möchtest du Update-Benachrichtigungen unterdrücken
 Suppress_DurTitle=Dauer der Unterdrückung
 
 [SupportPage]
+RepoMakerNotFound=Das Repo-Maker-Dienstprogramm wurde in deinem Installationsverzeichnis nicht gefunden.\n\nBitte führe das SimTools-Installationsprogramm erneut aus und stelle sicher, dass die Option „Repo Maker Utility mitinstallieren“ aktiviert ist.
+ToolNotFound_Title=Tool nicht gefunden
+UnableToLaunchRM=Repo Maker konnte nicht gestartet werden: {ex.Message}
+UnableToLaunchRM_Title=Ausführungsfehler
+LanguageToolNotFound=Das Sprach-Tool wurde in deinem Installationsverzeichnis nicht gefunden.\n\nBitte führe das SimTools-Installationsprogramm erneut aus und stelle sicher, dass die Option „Sprach-Tool mitinstallieren“ aktiviert ist.
+UnableToLaunchLT=Sprach-Tool konnte nicht gestartet werden: {ex.Message}
 SupportText1=Zunächst einmal vielen Dank für dein Interesse, SimTools zu unterstützen. Es gibt verschiedene Möglichkeiten, wie du das SimTools-Projekt unterstützen kannst. Dazu gehören unter anderem folgende:
 FiscalSupport=Finanziell
 FiscalSupport2=Ich habe SimTools als Hobby entwickelt, aber SimTools verursacht monatliche Hosting-Kosten und jährliche Gebühren für die Domainverlängerung (96,10 $/Monat). Du kannst helfen, diese Kosten auszugleichen, indem du für das Projekt spendest.

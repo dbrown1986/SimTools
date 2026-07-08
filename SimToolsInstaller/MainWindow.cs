@@ -64,6 +64,10 @@ namespace SimToolsInstaller
             LoadLicenseText();
             DetectArchitecture();
 
+            // Enable optional utility checkboxes now that tools are ready
+            checkBox1.Enabled = true;
+            checkBox2.Enabled = true;
+
             // Hides tabs at runtime so it looks like a wizard
             wizardTabs.Appearance = TabAppearance.FlatButtons;
             wizardTabs.ItemSize = new Size(0, 1);
@@ -299,37 +303,56 @@ namespace SimToolsInstaller
             _cancelTokenSource = new CancellationTokenSource();
             string installDir = txtInstallPath.Text;
             bool is64Bit = rad64Bit.Checked;
-            string xmlUrl = is64Bit
-                ? "https://us1-repo.simtools-app.com/App/SimTools-x64.xml"
-                : "https://us1-repo.simtools-app.com/App/SimTools-x86.xml";
 
-            //      These are left intentionally disabled. They will be designed as
-            //      side-by-side checkboxes to accompany the radio buttons for the
-            //      installation of additional SimTools utilities. These utilities
-            //      have not yet been designed fully at the time of this release.
-            //    : "https://us1-repo.simtools-app.com/App/SimTools-Repo-Maker.xml";
-            //    : "https://us1-repo.simtools-app.com/App/SimTools-Language-Tool.xml";
+            // Build targets dynamically based on layout toggles
+            List<string> xmlUrls = new List<string>();
+
+            if (is64Bit)
+            {
+                xmlUrls.Add("https://us1-repo.simtools-app.com/App/SimTools-x64.xml");
+            }
+            else
+            {
+                xmlUrls.Add("https://us1-repo.simtools-app.com/App/SimTools-x86.xml");
+            }
+
+            if (checkBox1.Checked)
+            {
+                xmlUrls.Add("https://us1-repo.simtools-app.com/App/SimTools-Repo-Maker.xml");
+            }
+
+            if (checkBox2.Checked)
+            {
+                xmlUrls.Add("https://us1-repo.simtools-app.com/App/SimTools-Language-Tool.xml");
+            }
 
             try
             {
                 if (!Directory.Exists(installDir)) Directory.CreateDirectory(installDir);
 
                 using HttpClient client = new HttpClient();
-                lblCurrentFile.Text = "Fetching manifest...";
+                lblCurrentFile.Text = "Fetching manifests...";
 
-                string xmlContent = await client.GetStringAsync(xmlUrl, _cancelTokenSource.Token);
-                XDocument doc = XDocument.Parse(xmlContent);
+                List<XElement> allFilesToDownload = new List<XElement>();
 
-                if (doc.Root == null) throw new InvalidDataException("Manifest missing root element.");
+                // Parse manifests across all required installation components
+                foreach (var xmlUrl in xmlUrls)
+                {
+                    string xmlContent = await client.GetStringAsync(xmlUrl, _cancelTokenSource.Token);
+                    XDocument doc = XDocument.Parse(xmlContent);
 
-                var files = doc.Root.Elements("File");
-                int totalFiles = System.Linq.Enumerable.Count(files);
+                    if (doc.Root == null) throw new InvalidDataException($"Manifest at {xmlUrl} is missing its root element.");
+
+                    allFilesToDownload.AddRange(doc.Root.Elements("File"));
+                }
+
+                int totalFiles = allFilesToDownload.Count;
                 int currentFileCount = 0;
 
                 progOverall.Maximum = totalFiles;
                 progOverall.Value = 0;
 
-                foreach (var file in files)
+                foreach (var file in allFilesToDownload)
                 {
                     _cancelTokenSource.Token.ThrowIfCancellationRequested();
 
@@ -549,8 +572,8 @@ namespace SimToolsInstaller
             public string DirLabel1 { get; set; } = "Setup will install SimTools into the following folder. To continue, click Next. If you would like to select a different folder, click Browse.";
             public string ChkDesktop { get; set; } = "Create a desktop shortcut";
             public string ChkStartMenu { get; set; } = "Create a Start Menu shortcut";
-            public string ChkRepoUtility { get; set; } = "Also Install Repo Maker Utility (In Development)";
-            public string ChkLangTool { get; set; } = "Also Install Language Tool (In Development)";
+            public string ChkRepoUtility { get; set; } = "Also Install Repo Maker Utility";
+            public string ChkLangTool { get; set; } = "Also Install Language Tool";
 
             public string ReadyTitle { get; set; } = "Ready to Install";
             public string ReadyDesc { get; set; } = "Setup is now ready to begin installing SimTools on your computer.";
@@ -601,8 +624,8 @@ namespace SimToolsInstaller
                     DirLabel1 = "سيقوم البرنامج بتثبيت SimTools في المجلد التالي. للمتابعة انقر فوق التالي. إذا كنت ترغب في اختيار مجلد آخر انقر فوق استعراض.",
                     ChkDesktop = "إنشاء اختصار على سطح المكتب",
                     ChkStartMenu = "إنشاء اختصار في قائمة ابدأ",
-                    ChkRepoUtility = "تثبيت أداة Repo Maker أيضًا (قيد التطوير)",
-                    ChkLangTool = "تثبيت أداة اللغة أيضًا (قيد التطوير)",
+                    ChkRepoUtility = "تثبيت أداة Repo Maker أيضًا",
+                    ChkLangTool = "تثبيت أداة اللغة أيضًا",
                     ReadyTitle = "جاهز للتثبيت",
                     ReadyDesc = "برنامج الإعداد جاهز الآن لبدء تثبيت SimTools على جهاز الكمبيوتر الخاص بك.",
                     InstallTitle = "جاري التثبيت...",
@@ -635,15 +658,15 @@ namespace SimToolsInstaller
                     ArchDesc = "Bitte wählen Sie die Version von SimTools, die Sie installieren möchten, basierend auf Ihrem Betriebssystem.",
                     Rad32Bit = "32-Bit (x86)",
                     Rad64Bit = "64-Bit (x64)",
-                    RichText32 = "Die 32-Bit-Version von SimTools ist ideal für ältere Systeme mit einem Quad-Core-Prozessor oder darunter und 4 GB - 8 GB Arbeitsspeicher.",
+                    RichText32 = "Die 32-Bit-Version von SimTools ist ideal for ältere Systeme mit einem Quad-Core-Prozessor oder darunter und 4 GB - 8 GB Arbeitsspeicher.",
                     RichText64 = "Die 64-Bit-Version von SimTools ist für moderne Hochleistungs-Gaming-PCs mit mehr als 16 GB Arbeitsspeicher und Multi-Core-Prozessoren optimiert.",
                     DirTitle = "Installationsordner wählen",
                     DirDesc = "Wählen Sie den Ordner, in dem SimTools installiert werden soll.",
                     DirLabel1 = "Das Setup installiert SimTools in den folgenden Ordner. Klicken Sie auf Weiter, um fortzufahren. Klicken Sie auf Durchsuchen, um einen anderen Ordner auszuwählen.",
                     ChkDesktop = "Desktop-Verknüpfung erstellen",
                     ChkStartMenu = "Startmenü-Verknüpfung erstellen",
-                    ChkRepoUtility = "Auch Repo Maker Utility installieren (In Entwicklung)",
-                    ChkLangTool = "Auch Language Tool installieren (In Entwicklung)",
+                    ChkRepoUtility = "Auch Repo Maker Utility installieren",
+                    ChkLangTool = "Auch Language Tool installieren",
                     ReadyTitle = "Bereit zur Installation",
                     ReadyDesc = "Das Setup ist nun bereit, SimTools auf Ihrem Computer zu installieren.",
                     InstallTitle = "Installation läuft...",
@@ -683,8 +706,8 @@ namespace SimToolsInstaller
                     DirLabel1 = "El programa instalará SimTools en la siguiente carpeta. Para continuar, haga clic en Siguiente. Si desea seleccionar una carpeta diferente, haga clic en Examinar.",
                     ChkDesktop = "Crear un acceso directo en el escritorio",
                     ChkStartMenu = "Crear un acceso directo en el menú de inicio",
-                    ChkRepoUtility = "Instalar también la utilidad Repo Maker (En desarrollo)",
-                    ChkLangTool = "Instalar también la herramienta de idioma (En desarrollo)",
+                    ChkRepoUtility = "Instalar también la utilidad Repo Maker",
+                    ChkLangTool = "Instalar también la herramienta de idioma",
                     ReadyTitle = "Listo para Instalar",
                     ReadyDesc = "El asistente ya está listo para comenzar la instalación de SimTools en su computadora.",
                     InstallTitle = "Instalando...",
@@ -724,8 +747,8 @@ namespace SimToolsInstaller
                     DirLabel1 = "Le programme installera SimTools dans le dossier suivant. Pour continuer, cliquez sur Suivant. Pour choisir un autre dossier, cliquez sur Parcourir.",
                     ChkDesktop = "Créer un raccourci sur le bureau",
                     ChkStartMenu = "Créer un raccourci dans le menu Démarrer",
-                    ChkRepoUtility = "Installer également l'utilitaire Repo Maker (En développement)",
-                    ChkLangTool = "Installer également l'outil de langue (En développement)",
+                    ChkRepoUtility = "Installer également l'utilitaire Repo Maker",
+                    ChkLangTool = "Installer également l'outil de langue",
                     ReadyTitle = "Prêt à Installer",
                     ReadyDesc = "Le programme est prêt à commencer l'installation de SimTools sur votre ordinateur.",
                     InstallTitle = "Installation en cours...",
@@ -765,8 +788,8 @@ namespace SimToolsInstaller
                     DirLabel1 = "セットアップは次のフォルダに SimTools をインストールします。続行するには「次へ」をクリック、別のフォルダを選択する場合は「参照」をクリックしてください。",
                     ChkDesktop = "デスクトップにショートカットを作成する",
                     ChkStartMenu = "スタートメニューにショートカットを作成する",
-                    ChkRepoUtility = "Repo Maker ユーティリティもインストールする (開発中)",
-                    ChkLangTool = "言語ツールもインストールする (開発中)",
+                    ChkRepoUtility = "Repo Maker ユーティリティもインストールする",
+                    ChkLangTool = "言語ツールもインストールする",
                     ReadyTitle = "インストールの準備完了",
                     ReadyDesc = "セットアップは、コンピューターへの SimTools のインストールを開始する準備ができました。",
                     InstallTitle = "インストール中...",
@@ -806,14 +829,14 @@ namespace SimToolsInstaller
                     DirLabel1 = "O assistente vai instalar o SimTools na seguinte pasta. Para continuar, clique em Avançar. Se quiser selecionar uma pasta diferente, clique em Procurar.",
                     ChkDesktop = "Criar um atalho na área de trabalho",
                     ChkStartMenu = "Criar um atalho no menu Iniciar",
-                    ChkRepoUtility = "Instalar também o utilitário Repo Maker (Em desenvolvimento)",
-                    ChkLangTool = "Instalar também a ferramenta de idioma (Em desenvolvimento)",
+                    ChkRepoUtility = "Instalar também o utilitário Repo Maker",
+                    ChkLangTool = "Instalar também a ferramenta de idioma",
                     ReadyTitle = "Pronto para Instalar",
                     ReadyDesc = "O assistente está pronto para iniciar a instalação do SimTools no seu computador.",
                     InstallTitle = "Instalando...",
                     LblOverallProgress = "Progresso Geral:",
-                    InterruptTitle = "Instalação Interrompida",
-                    InterruptDesc = "A instalação foi cancelada ou interrompida.",
+                    InterruptTitle = "Instalación Interrumpida",
+                    InterruptDesc = "La instalación fue cancelada o interrumpida.",
                     CompleteTitle = "Concluindo o Assistente de Instalação do SimTools",
                     CompleteDesc = "O assistente terminou de instalar o SimTools no seu computador. O aplicativo pode ser iniciado pelos atalhos criados.",
                     ChkRun = "Iniciar o SimTools agora",
@@ -847,8 +870,8 @@ namespace SimToolsInstaller
                     DirLabel1 = "Программа установит SimTools в следующую папку. Для продолжения нажмите «Далее». Если вы хотите выбрать другую папку, нажмите «Обзор».",
                     ChkDesktop = "Создать ярлык на рабочем столе",
                     ChkStartMenu = "Создать ярлык в меню «Пуск»",
-                    ChkRepoUtility = "Также установить утилиту Repo Maker (В разработке)",
-                    ChkLangTool = "Также установить языковой инструмент (В разработке)",
+                    ChkRepoUtility = "Также установить утилиту Repo Maker",
+                    ChkLangTool = "Также установить языковой инструмент",
                     ReadyTitle = "Все готово к установке",
                     ReadyDesc = "Программа установки готова начать копирование файлов SimTools на ваш компьютер.",
                     InstallTitle = "Установка...",
@@ -888,8 +911,8 @@ namespace SimToolsInstaller
                     DirLabel1 = "安装程序会将 SimTools 安装到以下文件夹。要继续请点击“下一步”，如需选择其他文件夹请点击“浏览”。",
                     ChkDesktop = "创建桌面快捷方式",
                     ChkStartMenu = "创建 Plank/开始菜单快捷方式",
-                    ChkRepoUtility = "同时安装 Repo Maker 工具 (正在开发中)",
-                    ChkLangTool = "同时安装语言管理工具 (正在开发中)",
+                    ChkRepoUtility = "同时安装 Repo Maker 工具",
+                    ChkLangTool = "同时安装语言管理工具",
                     ReadyTitle = "准备安装",
                     ReadyDesc = "向导现在准备好开始在您的电脑上安装 SimTools。",
                     InstallTitle = "正在安装...",
