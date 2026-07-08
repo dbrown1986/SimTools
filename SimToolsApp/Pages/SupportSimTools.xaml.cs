@@ -19,7 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-// Resolve type ambiguities between WPF UI elements and Backend namespaces
+// Resolve type ambiguities between WPF UI elements and Backend namespaces cleanly
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
 using Path = System.IO.Path;
@@ -37,7 +37,7 @@ namespace SimTools
             ApplyLanguage();
         }
 
-        // Helper method to open URLs in the default web browser
+        // Helper method to open URLs safely in the default system browser
         private static void OpenUrl(string url)
         {
             try
@@ -55,7 +55,7 @@ namespace SimTools
             }
         }
 
-        // ── XAML Expected Event Handlers ─────────────────────────────────────
+        // ── XAML Click Events & Handlers ─────────────────────────────────────
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -64,34 +64,35 @@ namespace SimTools
 
         private void PayPalButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenUrl("https://simtools-app.com/donate");
+            OpenUrl("https://www.paypal.com/donate/?hosted_button_id=VJZMHREBUFSC4");
         }
 
         private void CashAppButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenUrl("https://simtools-app.com/donate"); // Replace with specific CashApp URL if necessary
+            OpenUrl("https://cash.app/f/POOL?id=mu2otu1w");
         }
 
         private void BMACButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenUrl("https://simtools-app.com/donate"); // Replace with specific BuyMeACoffee URL if necessary
+            OpenUrl("https://buymeacoffee.com/dbrown1986");
         }
 
         private void PatreonButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenUrl("https://www.patreon.com/SimTools");
+            OpenUrl("https://www.patreon.com/cw/SimTools");
         }
 
         private void GitHubButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenUrl("https://github.com/Archeon-Industries"); // Replace with specific repository/sponsor URL if necessary
+            OpenUrl("https://github.com/dbrown1986/SimTools");
         }
-
-        // ── Original Utility Feature Handlers ────────────────────────────────
 
         private void UnlockPersonalizationButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenUrl("https://simtools-app.com/unlock-personalization");
+            // Restored original behavior: Open the dialog as a standard blocking modal
+            var dialog = new UnlockPersonalizationDialog();
+            dialog.Owner = this;
+            dialog.ShowDialog();
         }
 
         private void RepoMakerButton_Click(object sender, RoutedEventArgs e)
@@ -168,10 +169,10 @@ namespace SimTools
 
         private void ApplyLanguage()
         {
-            // Read active configuration key directly from initialization structure matching LanguageManager
+            // Safely verify configuration layer without using broken LanguageManager.CurrentLanguage keys
             string lang = IniHelper.Read("Language", "SelectedLanguage", "en").ToLowerInvariant();
 
-            // Handle Right-to-Left layout updates dynamically if Arabic language profiles are selected
+            // Support Right-to-Left orientation formatting for localized Arabic strings
             var rtlLanguages = new HashSet<string> { "ar" };
             FlowDirection = rtlLanguages.Contains(lang)
                 ? System.Windows.FlowDirection.RightToLeft
