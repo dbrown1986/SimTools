@@ -19,8 +19,10 @@ namespace SimTools
     public partial class MusicDownloadWindow : Window
     {
         private readonly string _musicFolder;
+        private readonly List<string>? _explicitUrls; // <-- Added to hold direct URLs
         private readonly CancellationTokenSource _cts = new();
 
+        // Original constructor for manifest files
         public MusicDownloadWindow(string musicFolder)
         {
             _musicFolder = musicFolder;
@@ -28,66 +30,81 @@ namespace SimTools
             ContentRendered += async (_, _) => await RunDownloadAsync();
         }
 
-        // ── Download logic ───────────────────────────────��────────────────
+        // New constructor for direct URL arrays (used by MusicPacks)
+        public MusicDownloadWindow(string musicFolder, IEnumerable<string> explicitUrls)
+        {
+            _musicFolder = musicFolder;
+            _explicitUrls = explicitUrls?.ToList();
+            InitializeComponent();
+            ContentRendered += async (_, _) => await RunDownloadAsync();
+        }
+
+        // ── Download logic ────────────────────────────────────────────────
         private async System.Threading.Tasks.Task RunDownloadAsync()
         {
             try
             {
                 Directory.CreateDirectory(_musicFolder);
-
-                string manifestUrl = AppSettings.ResolveUrl("%baseurl%/Resources/Music/manifest.txt");
                 using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
+                List<string>? tracks = _explicitUrls;
 
-                // Fetch manifest
-                StatusLabel.Text = LanguageManager.Get("Music", "Fetching", "Fetching track list…");
-                using var manifestResp = await http.GetAsync(manifestUrl, _cts.Token);
-                if (!manifestResp.IsSuccessStatusCode)
+                // If no hardcoded URLs were provided, fall back to downloading the manifest file
+                if (tracks == null)
                 {
-                    Close();
+                    StatusLabel.Text = LanguageManager.Get("Music", "Fetching", "Fetching track list…");
+                    string manifestUrl = AppSettings.ResolveUrl("%baseurl%/Resources/Music/manifest.txt");
+
+                    using var manifestResp = await http.GetAsync(manifestUrl, _cts.Token);
+                    if (!manifestResp.IsSuccessStatusCode)
+                    {
+                        StatusLabel.Text = LanguageManager.Get("Music", "NoServer", "Could not reach the music server.");
+                        return;
+                    }
+
+                    string manifestText = await manifestResp.Content.ReadAsStringAsync();
+                    tracks = manifestText.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                                         .Select(line => line.Trim())
+                                         .Where(line => !string.IsNullOrEmpty(line))
+                                         .ToList();
+                }
+
+                if (tracks == null || tracks.Count == 0)
+                {
+                    StatusLabel.Text = LanguageManager.Get("Music", "NoTracks", "No tracks available to download.");
                     return;
                 }
 
-                string manifest = await manifestResp.Content.ReadAsStringAsync(_cts.Token);
-
-                List<string> tracks = manifest
-                    .Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(l => l.Trim())
-                    .Where(l => !string.IsNullOrEmpty(l) &&
-                                !l.StartsWith('<') &&
-                                !l.StartsWith('#'))
-                    .ToList();
-
-                if (tracks.Count == 0) { Close(); return; }
-
+                // Setup the Progress Bar metrics exactly as before
+                TrackProgressBar.Minimum = 0;
                 TrackProgressBar.Maximum = tracks.Count;
+                TrackProgressBar.Value = 0;
+                CountLabel.Text = $"0 of {tracks.Count} tracks";
+
                 int completed = 0;
 
-                foreach (string name in tracks)
+                foreach (string trackUrl in tracks)
                 {
-                    if (_cts.Token.IsCancellationRequested) break;
+                    _cts.Token.ThrowIfCancellationRequested();
 
-                    // Update UI
-                    StatusLabel.Text = name;
-                    CountLabel.Text = $"{completed} of {tracks.Count} tracks";
+                    // Convert any relative paths or base percentages safely if using the manifest framework
+                    string absoluteUrl = _explicitUrls != null ? trackUrl : AppSettings.ResolveUrl(trackUrl);
+                    string fileName = System.IO.Path.GetFileName(new Uri(absoluteUrl).LocalPath);
+                    string destinationPath = System.IO.Path.Combine(_musicFolder, fileName);
 
-                    string dest = Path.Combine(_musicFolder, name);
-
-                    if (!File.Exists(dest))
+                    if (!File.Exists(destinationPath))
                     {
                         try
                         {
-                            string fileUrl = AppSettings.ResolveUrl(
-                                $"%baseurl%/Resources/Music/{Uri.EscapeDataString(name)}");
+                            StatusLabel.Text = string.Format(LanguageManager.Get("Music", "DownloadingTrack", "Downloading: {0}"), fileName);
 
-                            using var resp = await http.GetAsync(fileUrl, _cts.Token);
-                            if (resp.IsSuccessStatusCode)
+                            using var response = await http.GetAsync(absoluteUrl, HttpCompletionOption.ResponseHeadersRead, _cts.Token);
+                            if (response.IsSuccessStatusCode)
                             {
-                                await using var fs = new FileStream(
-                                    dest, FileMode.Create, FileAccess.Write);
-                                await resp.Content.CopyToAsync(fs, _cts.Token);
+                                using var streamToReadFrom = await response.Content.ReadAsStreamAsync(_cts.Token);
+                                using var streamToWriteTo = File.Create(destinationPath);
+                                await streamToReadFrom.CopyToAsync(streamToWriteTo, _cts.Token);
                             }
                         }
-                        catch (OperationCanceledException) { break; }
                         catch { /* skip unreadable/missing track */ }
                     }
 
@@ -111,8 +128,7 @@ namespace SimTools
             finally
             {
                 // Brief pause so the user can see the final status before close
-                await System.Threading.Tasks.Task.Delay(
-                    _cts.Token.IsCancellationRequested ? 0 : 800);
+                await System.Threading.Tasks.Task.Delay(_cts.Token.IsCancellationRequested ? 0 : 800);
                 Close();
             }
         }

@@ -4,7 +4,7 @@
 // Main Window XAML Design
 // (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.    
 -->
-    <Window
+<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -29,7 +29,7 @@
         <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
         <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
         <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
-        <Image x:Name="UserSlideShow" Stretch="Fill" Width="662" Height="640" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="178,0,0,0"/>
+        <Image x:Name="UserSlideShow" Stretch="Fill" Width="662" Height="640" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="138,0,0,0"/>
         <!-- <Image HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Source="/plumbob.gif" Stretch="Fill"/> -->
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
         <TextBlock x:Name="ButtonInfoText" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="91" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200"><Run Text="When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed."/><LineBreak/><Run/></TextBlock>
@@ -630,7 +630,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="DiscordButton" Content="" HorizontalAlignment="Left" Margin="640,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="DiscordButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="DiscordButton" Content="" HorizontalAlignment="Left" Margin="600,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="DiscordButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -660,7 +660,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="FacebookButton" Content="" HorizontalAlignment="Left" Margin="680,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="FacebookButton_Click">
+        <Button x:Name="FacebookButton" Content="" HorizontalAlignment="Left" Margin="640,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="FacebookButton_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -690,7 +690,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="YoutubeButton" Content="" HorizontalAlignment="Left" Margin="720,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="YoutubeButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="YoutubeButton" Content="" HorizontalAlignment="Left" Margin="680,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="YoutubeButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -720,7 +720,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="SteamButton" Content="" HorizontalAlignment="Left" Margin="760,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="SteamButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="SteamButton" Content="" HorizontalAlignment="Left" Margin="720,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="SteamButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -750,7 +750,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="InfoButton" Content="" HorizontalAlignment="Left" Margin="800,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="InfoButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="InfoButton" Content="" HorizontalAlignment="Left" Margin="760,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="InfoButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -798,6 +798,39 @@
                             <Setter Property="Background">
                                 <Setter.Value>
                                     <ImageBrush ImageSource="/Images/button_red.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="MusicButton" Content="" HorizontalAlignment="Left" Margin="800,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="MusicButton_Click" FontSize="11" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/musicon.png"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/info.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/info-hover.png"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Template">

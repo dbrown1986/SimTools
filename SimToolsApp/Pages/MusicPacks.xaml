@@ -1,0 +1,143 @@
+﻿<Window x:Class="SimTools.MusicPacks"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimTools"
+        mc:Ignorable="d"
+        Title="Music Packs" Height="640" Width="840" WindowStyle="None" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Menu_Main.png"/>
+        </Grid.Background>
+
+        <Button x:Name="BackButton" 
+                Content="Back to Main Menu" 
+                HorizontalAlignment="Left" 
+                Margin="8,596,0,0" 
+                VerticalAlignment="Top" 
+                Width="159" 
+                Height="34" 
+                FontFamily="Tahoma" 
+                FontWeight="Bold" 
+                FontSize="11" 
+                Foreground="Black"
+                Click="BackButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBlock x:Name="MusicPacksInfoText" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="182" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200"><Run Text="The music system in SimTools has been vastly overhauled. Rather than a single song playing in the background, the software now presents a fully fleshed-out media player."/><LineBreak/><Run/><LineBreak/><Run Text="Aside from this addition, SimTools actively scans its music directory on start and shuffles the playlist each time."/><LineBreak/><Run/><LineBreak/><Run Text="You may now place your own MP3, M4A, FLAC or WAV files within SimTools' music directory, and they will play on next start."/><LineBreak/><Run/><LineBreak/><Run Text="If you want to expand your library, I have provided music packs for each individual game for automatic download and play on next start."/></TextBlock>
+        <Button x:Name="MusicFolderButton" 
+            Content="Open Music Folder" 
+            HorizontalAlignment="Left" 
+            Margin="658,94,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="MusicFolderButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="MusicSims1Button" 
+            Content="The Sims" 
+            HorizontalAlignment="Left" 
+            Margin="184,221,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="MusicSims1Button_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>

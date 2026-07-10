@@ -3,12 +3,17 @@ SimTools
 Main Application
 Project File
 (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
+
+** Ongoing Projects **
+
+> Music Packs for the various games.
+
 -->
 
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<BaseVersion>4.0.5</BaseVersion>
+		<BaseVersion>4.0.3</BaseVersion>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<Company>Archeon Industries, LLC.</Company>
@@ -54,7 +59,6 @@ Project File
 		<Resource Include="Images\discord.png" />
 		<Resource Include="Images\DownloadProgress1.png" />
 		<Resource Include="Images\DownloadProgress2.png" />
-		<Resource Include="Images\Exclusives\SlimLivin.jpg" />
 		<Resource Include="Images\facebook-hover.png" />
 		<Resource Include="Images\Flags\ar.jpg" />
 		<Resource Include="Images\Flags\de.jpg" />
@@ -86,15 +90,12 @@ Project File
 		<Resource Include="Images\Icons\MTS.ico" />
 		<Resource Include="Images\Icons\nraas.ico" />
 		<Resource Include="Images\Icons\s3ss.ico" />
-		<Resource Include="Images\Icons\sbp.ico" />
 		<Resource Include="Images\Icons\SC4DE.ico" />
 		<Resource Include="Images\Icons\sfs.ico" />
+		<Resource Include="Images\Icons\sheets.ico" />
 		<Resource Include="Images\Icons\simitone.ico" />
 		<Resource Include="Images\Icons\Sims2RPC.ico" />
 		<Resource Include="Images\Icons\Sims4.ico" />
-		<Resource Include="Images\Icons\SimCopterX.ico" />
-		<Resource Include="Images\Icons\SimStreetsX.ico" />
-		<Resource Include="Images\Icons\SimTower.ico" />
 		<Resource Include="Images\Icons\simtropolis.ico" />
 		<Resource Include="Images\Icons\ts3gpua.ico" />
 		<Resource Include="Images\Icons\TSR.ico" />
@@ -109,7 +110,6 @@ Project File
 		<Resource Include="Images\Icons\Riverview.ico" />
 		<Resource Include="Images\Icons\RoaringHeights.ico" />
 		<Resource Include="Images\Icons\SC2013.ico" />
-		<Resource Include="Images\Icons\sc2000x.ico" />
 		<Resource Include="Images\Icons\SC2K.ico" />
 		<Resource Include="Images\Icons\SC3KU.ico" />
 		<Resource Include="Images\Icons\Sims1.ico" />
@@ -147,15 +147,6 @@ Project File
 		<Resource Include="Images\Icons\TSLife.ico" />
 		<Resource Include="Images\Icons\TSM.ico" />
 		<Resource Include="Images\Icons\TSPets.ico" />
-		<Resource Include="Images\Icons\otvdm.ico" />
-		<Resource Include="Images\Icons\corylea.ico" />
-		<Resource Include="Images\Icons\ts3store.ico" />
-		<Resource Include="Images\Icons\piracy.ico" />
-		<Resource Include="Images\Icons\sheets.ico" />
-		<Resource Include="Images\Icons\docs.ico" />
-		<Resource Include="Images\Icons\youtube.ico" />
-		<Resource Include="Images\Icons\s3pe.ico" />
-		<Resource Include="Images\Icons\ccmagic.ico" />
 		<Resource Include="Images\Icons\vendors\amazon.ico" />
 		<Resource Include="Images\Icons\vendors\ea.ico" />
 		<Resource Include="Images\Icons\vendors\ebay.ico" />
@@ -207,6 +198,23 @@ Project File
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Images\Holidays\indpday_nye.gif" />
+		<None Remove="Images\Holidays\stpd.png" />
+		<None Remove="Images\Holidays\xmas.png" />
+		<None Remove="Images\Icons\alp.ico" />
+		<None Remove="Images\Icons\cmd.ico" />
+		<None Remove="Images\Icons\dxvk.ico" />
+		<None Remove="Images\Icons\fix.ico" />
+		<None Remove="Images\Icons\grm.ico" />
+		<None Remove="Images\Icons\ld.ico" />
+		<None Remove="Images\Icons\nraas.ico" />
+		<None Remove="Images\Icons\s3ss.ico" />
+		<None Remove="Images\Icons\simitone.ico" />
+		<None Remove="Images\Icons\ts3gpua.ico" />
+		<None Remove="Images\Icons\uasi.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
