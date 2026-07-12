@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Music Packs" Height="640" Width="840" WindowStyle="None" WindowStartupLocation="CenterScreen">
 
-    <Grid>
+    <Grid x:Name="MusicPacksInfo">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Menu_Main.png"/>
         </Grid.Background>
@@ -54,7 +54,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="MusicPacksInfoText" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="182" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200"><Run Text="The music system in SimTools has been vastly overhauled. Rather than a single song playing in the background, the software now presents a fully fleshed-out media player."/><LineBreak/><Run/><LineBreak/><Run Text="Aside from this addition, SimTools actively scans its music directory on start and shuffles the playlist each time."/><LineBreak/><Run/><LineBreak/><Run Text="You may now place your own MP3, M4A, FLAC or WAV files within SimTools' music directory, and they will play on next start."/><LineBreak/><Run/><LineBreak/><Run Text="If you want to expand your library, I have provided music packs for each individual game for automatic download and play on next start."/></TextBlock>
+        <TextBlock x:Name="MusicPacksInfoText" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="219" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200"><Run Text="The music system in SimTools has been vastly overhauled. Rather than a single song playing in the background, the software now presents a fully fleshed-out media player."/><LineBreak/><Run/><LineBreak/><Run Text="Aside from this addition, SimTools actively scans its music directory on start and shuffles the playlist each time."/><LineBreak/><Run/><LineBreak/><Run Text="You may now place your own MP3, M4A, FLAC or WAV files within SimTools' music directory, and they will play on next start."/><LineBreak/><Run/><LineBreak/><Run Text="If you want to expand your library, I have provided music packs for each individual game for automatic download and play on next start."/><LineBreak/><Run/><LineBreak/><Run Text="Additional soundtracks have been provided by KHInsider / VGMTreasureChest. Check them out and support their site!"/></TextBlock>
         <Button x:Name="MusicFolderButton" 
             Content="Open Music Folder" 
             HorizontalAlignment="Left" 
@@ -97,10 +97,67 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="MusicSims1Button" 
-            Content="The Sims" 
+        <Button x:Name="Sims1Button" 
+        Content="The Sims" 
+        HorizontalAlignment="Left" 
+        Margin="184,261,0,0" 
+        VerticalAlignment="Top" 
+        Width="159" 
+        Height="34" 
+        FontFamily="Tahoma" 
+        FontWeight="Bold" 
+        FontSize="11" 
+        Foreground="Black"
+        Click="Sims1Button_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="Sims2Button" 
+            Content="The Sims 2" 
             HorizontalAlignment="Left" 
-            Margin="184,221,0,0" 
+            Margin="364,261,0,0" 
             VerticalAlignment="Top" 
             Width="159" 
             Height="34" 
@@ -108,7 +165,649 @@
             FontWeight="Bold" 
             FontSize="11" 
             Foreground="Black"
-            Click="MusicSims1Button_Click">
+            Click="Sims2Button_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="Sims3Button" 
+            Content="The Sims 3" 
+            HorizontalAlignment="Left" 
+            Margin="544,261,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="Sims3Button_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimsStoriesButton" 
+            Content="The Sims Stories" 
+            HorizontalAlignment="Left" 
+            Margin="184,311,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimsStoriesButton_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimsMedievalButton" 
+            Content="The Sims Medieval" 
+            HorizontalAlignment="Left" 
+            Margin="364,311,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimsMedievalButton_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimCityClassicButton" 
+            Content="SimCity Classic" 
+            HorizontalAlignment="Left" 
+            Margin="544,311,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimCityClassicButton_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimCitySNESButton" 
+            Content="SimCity (SNES)" 
+            HorizontalAlignment="Left" 
+            Margin="184,361,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimCitySNESButton_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimCity2000Button" 
+            Content="SimCity 2000" 
+            HorizontalAlignment="Left" 
+            Margin="364,361,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimCity2000Button_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimCity3000Button" 
+            Content="SimCity 3000" 
+            HorizontalAlignment="Left" 
+            Margin="544,361,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimCity3000Button_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimCity4Button" 
+            Content="SimCity 4" 
+            HorizontalAlignment="Left" 
+            Margin="184,411,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimCity4Button_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimCity2013Button" 
+            Content="SimCity 2013" 
+            HorizontalAlignment="Left" 
+            Margin="364,411,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimCity2013Button_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="StreetsOfSimCityButton" 
+            Content="Streets of SimCity" 
+            HorizontalAlignment="Left" 
+            Margin="544,411,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="StreetsOfSimCityButton_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="SimCopterButton" 
+            Content="SimCopter" 
+            HorizontalAlignment="Left" 
+            Margin="364,461,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimCopterButton_Click">
+
+            <!-- The Expandable Context Menu -->
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
+                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
+                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
+                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
+                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
+                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
+                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
