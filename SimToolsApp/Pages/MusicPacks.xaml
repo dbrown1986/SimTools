@@ -1,16 +1,21 @@
-﻿<Window x:Class="SimTools.MusicPacks"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimTools"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com" x:Name="MusicPacks1" x:Class="SimTools.MusicPacks"
         mc:Ignorable="d"
-        Title="Music Packs" Height="640" Width="840" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="Music Packs" Height="640" Width="840" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/Menu_Main.png"/>
+    </Window.Background>
 
     <Grid x:Name="MusicPacksInfo">
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/Menu_Main.png"/>
+            <ImageBrush/>
         </Grid.Background>
+
 
         <Button x:Name="BackButton" 
                 Content="Back to Main Menu" 
@@ -170,14 +175,24 @@
             <!-- The Expandable Context Menu -->
             <Button.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                    <MenuItem Header="The Sims 2" Click="Sims2_Base_Click"/>
+                    <MenuItem Header="The Sims 2: University" Click="Sims2_University_Click"/>
+                    <MenuItem Header="The Sims 2: Nightlife" Click="Sims2_Nightlife_Click"/>
+                    <MenuItem Header="The Sims 2: Open For Business" Click="Sims2_OpenForBusiness_Click"/>
+                    <MenuItem Header="The Sims 2: Pets" Click="Sims2_Pets_Click"/>
+                    <MenuItem Header="The Sims 2: Seasons" Click="Sims2_Seasons_Click"/>
+                    <MenuItem Header="The Sims 2: Bon Voyage" Click="Sims2_BonVoyage_Click"/>
+                    <MenuItem Header="The Sims 2: Freetime" Click="Sims2_Freetime_Click"/>
+                    <MenuItem Header="The Sims 2: Apartment Life" Click="Sims2_ApartmentLife_Click"/>
+                    <MenuItem Header="The Sims 2: Family Fun Stuff" Click="Sims2_FamilyFunStuff_Click"/>
+                    <MenuItem Header="The Sims 2: Glamour Life Stuff" Click="Sims2_GlamourLifeStuff_Click"/>
+                    <MenuItem Header="The Sims 2: Happy Holiday Stuff" Click="Sims2_HappyHolidayStuff_Click"/>
+                    <MenuItem Header="The Sims 2: Celebration Stuff" Click="Sims2_CelebrationStuff_Click"/>
+                    <MenuItem Header="The Sims 2: H&amp;M Fashion Stuff" Click="Sims2_HMStuff_Click"/>
+                    <MenuItem Header="The Sims 2: Teen Style Stuff" Click="Sims2_TeenStyleStuff_Click"/>
+                    <MenuItem Header="The Sims 2: Kitchen &amp; Bath Stuff" Click="Sims2_KitchenBathStuff_Click"/>
+                    <MenuItem Header="The Sims 2: IKEA Stuff" Click="Sims2_IKEAStuff_Click"/>
+                    <MenuItem Header="The Sims 2: Mansion &amp; Garden Stuff" Click="Sims2_MansionGardenStuff_Click"/>
                 </ContextMenu>
             </Button.ContextMenu>
 
@@ -227,14 +242,16 @@
             <!-- The Expandable Context Menu -->
             <Button.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                    <MenuItem Header="The Sims 3" Click="Sims3_Base_Click"/>
+                    <MenuItem Header="The Sims 3: World Adventures" Click="Sims3_WorldAdventures_Click"/>
+                    <MenuItem Header="The Sims 3: Ambitions" Click="Sims3_Ambitions_Click"/>
+                    <MenuItem Header="The Sims 3: Late Night" Click="Sims3_LateNight_Click"/>
+                    <MenuItem Header="The Sims 3: Generations" Click="Sims3_Generations_Click"/>
+                    <MenuItem Header="The Sims 3: Pets" Click="Sims3_Pets_Click"/>
+                    <MenuItem Header="The Sims 3: Showtime" Click="Sims3_Showtime_Click"/>
+                    <MenuItem Header="The Sims 3: Supernatural" Click="Sims3_Supernatural_Click"/>
+                    <MenuItem Header="The Sims 3: Seasons" Click="Sims3_Seasons_Click"/>
+                    <MenuItem Header="The Sims 3: University Life" Click="Sims3_UniversityLife_Click"/>
                 </ContextMenu>
             </Button.ContextMenu>
 
@@ -838,5 +855,14 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Image x:Name="Clover" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="-1,0,0,0"/>
+        <Image x:Name="Clover2" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="203,0,0,0"/>
+        <Image x:Name="Clover3" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="407,0,0,0"/>
+        <Image x:Name="Clover4" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="611,0,0,0"/>
+        <Image x:Name="Clover5" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="815,0,0,0"/>
+        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
+        <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
+        <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
+        <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
     </Grid>
 </Window>

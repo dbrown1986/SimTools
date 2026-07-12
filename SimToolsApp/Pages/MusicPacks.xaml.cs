@@ -10,6 +10,7 @@ namespace SimTools;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 public partial class MusicPacks : Window
 {
@@ -127,6 +128,76 @@ public partial class MusicPacks : Window
     {
         InitializeComponent();
         ApplyLanguage();
+        ApplyHolidayThemes();
+    }
+
+    private void ApplyHolidayThemes()
+    {
+        // Hide all holiday elements by default
+        Clover.Visibility = Visibility.Collapsed;
+        Clover2.Visibility = Visibility.Collapsed;
+        Clover3.Visibility = Visibility.Collapsed;
+        Clover4.Visibility = Visibility.Collapsed;
+        Clover5.Visibility = Visibility.Collapsed;
+        Fireworks.Visibility = Visibility.Collapsed;
+        SantaHat.Visibility = Visibility.Collapsed;
+
+        DateTime today = DateTime.Today;
+        int currentYear = today.Year;
+
+        // 2. Check St. Patrick's Day (March 17)
+        // Range: March 14 to March 20
+        DateTime stPatricksDay = new DateTime(currentYear, 3, 17);
+        if (today >= stPatricksDay.AddDays(-3) && today <= stPatricksDay.AddDays(3))
+        {
+            Clover.Visibility = Visibility.Visible;
+            Clover2.Visibility = Visibility.Visible;
+            Clover3.Visibility = Visibility.Visible;
+            Clover4.Visibility = Visibility.Visible;
+            Clover5.Visibility = Visibility.Visible;
+        }
+
+        // 3. Check Independence Day (July 4)
+        // Range: July 1 to July 7
+        DateTime independenceDay = new DateTime(currentYear, 7, 4);
+        if (today >= independenceDay.AddDays(-3) && today <= independenceDay.AddDays(3))
+        {
+            Fireworks.Visibility = Visibility.Visible;
+        }
+
+        // 4. Check New Year's Eve (December 31 / January 1 window)
+        // Range: Dec 28 to Jan 4. (Handles wrapping over the year bound perfectly)
+        if (IsDateInNewYearsWindow(today))
+        {
+            Fireworks.Visibility = Visibility.Visible;
+        }
+
+        // 5. Check Christmas (December 25)
+        // Range: December 22 to December 28
+        DateTime christmas = new DateTime(currentYear, 12, 25);
+        if (today >= christmas.AddDays(-3) && today <= christmas.AddDays(3))
+        {
+            SantaHat.Visibility = Visibility.Visible;
+        }
+    }
+
+    private bool IsDateInNewYearsWindow(DateTime targetDate)
+    {
+        // Check if we are at the end of the current year (Dec 28 - Dec 31)
+        DateTime nyeThisYear = new DateTime(targetDate.Year, 12, 31);
+        if (targetDate >= nyeThisYear.AddDays(-3) && targetDate <= nyeThisYear)
+        {
+            return true;
+        }
+
+        // Check if we are at the very start of a new year (Jan 1 - Jan 4)
+        DateTime nydThisYear = new DateTime(targetDate.Year, 1, 1);
+        if (targetDate >= nydThisYear && targetDate <= nydThisYear.AddDays(3))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void Sims1Button_Click(object sender, RoutedEventArgs e)
@@ -175,7 +246,7 @@ public partial class MusicPacks : Window
     public void ApplyLanguage()
     {
         Title = LanguageManager.Get("MusicPacks", "Window_Title", "Music Packs");
-        MusicPacksInfoText.Text= LanguageManager.Get("MusicPacks", "Info_Text", "The music system in SimTools has been vastly overhauled. Rather than a single song playing in the background, the software now presents a fully fleshed-out media player.\\n\\nAside from this addition, SimTools actively scans its music directory on start and shuffles the playlist each time.\\n\\n\r\nYou may now place your own MP3, M4A, FLAC or WAV files within SimTools' music directory, and they will play on next start.\\n\\nIf you want to expand your library, I have provided music packs for each individual game for automatic download and play on next start.\\n\\nAdditional soundtracks have been provided by KHInsider / VGMTreasureChest. Check them out and support their site!");
+        MusicPacksInfoText.Text= LanguageManager.Get("MusicPacks", "Info_Text", "The music system in SimTools has been vastly overhauled. Rather than a single song playing in the background, the software now presents a fully fleshed-out media player.\n\nAside from this addition, SimTools actively scans its music directory on start and shuffles the playlist each time.\n\nYou may now place your own MP3, M4A, FLAC or WAV files within SimTools' music directory, and they will play on next start.\n\nIf you want to expand your library, I have provided music packs for each individual game for automatic download and play on next start.\n\nAdditional soundtracks have been provided by KHInsider / VGMTreasureChest. Check them out and support their site!");
         Sims1Button.Content = LanguageManager.Get("MusicPacks", "Sims1_Button", "The Sims 1");
         Sims2Button.Content = LanguageManager.Get("MusicPacks", "Sims2_Button", "The Sims 2");
         Sims3Button.Content = LanguageManager.Get("MusicPacks", "Sims3_Button", "The Sims 3");
