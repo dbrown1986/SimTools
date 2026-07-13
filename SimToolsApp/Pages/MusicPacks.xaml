@@ -63,7 +63,7 @@
         <Button x:Name="MusicFolderButton" 
             Content="Open Music Folder" 
             HorizontalAlignment="Left" 
-            Margin="658,94,0,0" 
+            Margin="658,74,0,0" 
             VerticalAlignment="Top" 
             Width="159" 
             Height="34" 
@@ -548,7 +548,7 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCity4Button_Click">
-           <Button.Style>
+            <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
                         <Setter.Value>
@@ -590,7 +590,7 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCity2013Button_Click">
-           <Button.Style>
+            <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
                         <Setter.Value>
@@ -713,5 +713,47 @@
         <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
         <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
+        <Button x:Name="DownloadAllButton" 
+            Content="Download All" 
+            HorizontalAlignment="Left" 
+            Margin="658,121,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="DownloadAllButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>
