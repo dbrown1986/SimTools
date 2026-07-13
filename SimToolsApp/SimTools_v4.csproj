@@ -13,7 +13,7 @@ Project File
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<BaseVersion>4.0.5</BaseVersion>
+		<BaseVersion>4.0.6</BaseVersion>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<Company>Archeon Industries, LLC.</Company>
