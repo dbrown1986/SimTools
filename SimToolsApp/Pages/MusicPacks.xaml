@@ -118,8 +118,7 @@
             <!-- The Expandable Context Menu -->
             <Button.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
+                    <MenuItem Header="The Sims &amp; Livin' Large" Click="Sims1_Base_Click"/>
                     <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
                     <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
                     <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
@@ -184,15 +183,6 @@
                     <MenuItem Header="The Sims 2: Bon Voyage" Click="Sims2_BonVoyage_Click"/>
                     <MenuItem Header="The Sims 2: Freetime" Click="Sims2_Freetime_Click"/>
                     <MenuItem Header="The Sims 2: Apartment Life" Click="Sims2_ApartmentLife_Click"/>
-                    <MenuItem Header="The Sims 2: Family Fun Stuff" Click="Sims2_FamilyFunStuff_Click"/>
-                    <MenuItem Header="The Sims 2: Glamour Life Stuff" Click="Sims2_GlamourLifeStuff_Click"/>
-                    <MenuItem Header="The Sims 2: Happy Holiday Stuff" Click="Sims2_HappyHolidayStuff_Click"/>
-                    <MenuItem Header="The Sims 2: Celebration Stuff" Click="Sims2_CelebrationStuff_Click"/>
-                    <MenuItem Header="The Sims 2: H&amp;M Fashion Stuff" Click="Sims2_HMStuff_Click"/>
-                    <MenuItem Header="The Sims 2: Teen Style Stuff" Click="Sims2_TeenStyleStuff_Click"/>
-                    <MenuItem Header="The Sims 2: Kitchen &amp; Bath Stuff" Click="Sims2_KitchenBathStuff_Click"/>
-                    <MenuItem Header="The Sims 2: IKEA Stuff" Click="Sims2_IKEAStuff_Click"/>
-                    <MenuItem Header="The Sims 2: Mansion &amp; Garden Stuff" Click="Sims2_MansionGardenStuff_Click"/>
                 </ContextMenu>
             </Button.ContextMenu>
 
@@ -247,11 +237,10 @@
                     <MenuItem Header="The Sims 3: Ambitions" Click="Sims3_Ambitions_Click"/>
                     <MenuItem Header="The Sims 3: Late Night" Click="Sims3_LateNight_Click"/>
                     <MenuItem Header="The Sims 3: Generations" Click="Sims3_Generations_Click"/>
-                    <MenuItem Header="The Sims 3: Pets" Click="Sims3_Pets_Click"/>
-                    <MenuItem Header="The Sims 3: Showtime" Click="Sims3_Showtime_Click"/>
-                    <MenuItem Header="The Sims 3: Supernatural" Click="Sims3_Supernatural_Click"/>
-                    <MenuItem Header="The Sims 3: Seasons" Click="Sims3_Seasons_Click"/>
-                    <MenuItem Header="The Sims 3: University Life" Click="Sims3_UniversityLife_Click"/>
+                    <MenuItem Header="The Sims 3: Pets &amp; Showtime" Click="Sims3_Pets_Click"/>
+                    <MenuItem Header="The Sims 3: Supernatural &amp; Seasons" Click="Sims3_Supernatural_Click"/>
+                    <MenuItem Header="The Sims 3: University Life &amp; Island Paradise" Click="Sims3_UniversityLife_Click"/>
+                    <MenuItem Header="The Sims 3: Movie Stuff &amp; Into The Future" Click="Sims3_IntoTheFuture_Click"/>
                 </ContextMenu>
             </Button.ContextMenu>
 
@@ -301,14 +290,9 @@
             <!-- The Expandable Context Menu -->
             <Button.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
+                    <MenuItem Header="The Sims: Life Stories" Click="SimsStories_Life_Click"/>
+                    <MenuItem Header="The Sims: Pet Stories" Click="SimsStories_Pet_Click"/>
+                    <MenuItem Header="The Sims: Castaway Stories" Click="SimsStories_Castaway_Click"/>
                 </ContextMenu>
             </Button.ContextMenu>
 
@@ -353,22 +337,7 @@
             FontWeight="Bold" 
             FontSize="11" 
             Foreground="Black"
-            Click="SimsMedievalButton_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
+            Click="SimsMedieval_Base_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -411,21 +380,6 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCityClassicButton_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -468,21 +422,6 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCitySNESButton_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -525,21 +464,6 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCity2000Button_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -582,21 +506,6 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCity3000Button_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -639,22 +548,7 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCity4Button_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
-            <Button.Style>
+           <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
                         <Setter.Value>
@@ -696,22 +590,7 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCity2013Button_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
-            <Button.Style>
+           <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
                         <Setter.Value>
@@ -753,21 +632,6 @@
             FontSize="11" 
             Foreground="Black"
             Click="StreetsOfSimCityButton_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -810,21 +674,6 @@
             FontSize="11" 
             Foreground="Black"
             Click="SimCopterButton_Click">
-
-            <!-- The Expandable Context Menu -->
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="The Sims" Click="Sims1_Base_Click"/>
-                    <MenuItem Header="The Sims: Livin' Large" Click="Sims1_LivinLarge_Click"/>
-                    <MenuItem Header="The Sims: House Party" Click="Sims1_HouseParty_Click"/>
-                    <MenuItem Header="The Sims: Hot Date" Click="Sims1_HotDate_Click"/>
-                    <MenuItem Header="The Sims: Vacation" Click="Sims1_Vacation_Click"/>
-                    <MenuItem Header="The Sims: Unleashed" Click="Sims1_Unleashed_Click"/>
-                    <MenuItem Header="The Sims: Superstar" Click="Sims1_Superstar_Click"/>
-                    <MenuItem Header="The Sims: Makin' Magic" Click="Sims1_MakinMagic_Click"/>
-                </ContextMenu>
-            </Button.ContextMenu>
-
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">

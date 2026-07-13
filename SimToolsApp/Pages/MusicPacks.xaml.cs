@@ -50,77 +50,1047 @@ public partial class MusicPacks : Window
             "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/efqkeqrm/28.%20Rock%201.mp3",
             "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/kqwmsfxv/29.%20Rock%202.mp3",
             "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/ncwamihm/30.%20Rock%203.mp3",
-            "",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/tmfqoxwo/31.%20SIM%20Hagar%20%28Rock%204%29.mp3",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/neietgbp/32%20-%20Rock%205.mp3",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/rrhmmzlh/33%20-%20Beaumont.mp3",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/dvrxmtgz/34%20-%20Devilsdr.mp3",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/ggnuluse/35%20-%20Downroad.mp3",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/teqrkzua/36%20-%20Downyon.mp3",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/qcrcjmls/37%20-%20Sallygoo.mp3",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/gbnmuoib/38%20-%20Splatter.mp3",
+            "https://vgmtreasurechest.com/soundtracks/the-sims-original-video-game-soundtrack/hedcdkqv/39%20-%20Turkey.mp3",
         };
-        public static readonly string[] Sims1LivinLarge = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims1HouseParty = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims1HotDate = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims1Vacation = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims1Unleashed = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims1Superstar = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims1MakinMagic = new string[] { /* URL List Here */ };
+        public static readonly string[] Sims1HouseParty = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/qexdwzjv/02%20-%20Ee%20I%20Ooo%20Oh%20%28shp_rap1%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/bsmgtzqj/03%20-%20Shaka%20Do%20Thang%20%28Disco%202%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/ozdvqroq/01%20-%20Sims%20House%20Party%20%28Rave%203%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/uyitwbre/04%20-%20The%20Band%20%28cntryd5%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/yctlxfib/05%20-%20Sims%20Wipe%20Out%20%28Beach%204%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/gbpucdii/06%20-%20Al%20Sims%20%28Disco%204%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/smhyyudi/07%20-%20SIMboys%20%28Beach%202%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/fcwbpuhz/08%20-%20Simtricity%20%28Rave%202%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/clarkaxj/09%20-%20Spring%20Break%20%28shp_rap4%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/fzebqagd/10%20-%20Lakuwani%20%28Beach%203%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/yitusfwq/11%20-%20Yippio%20Ki%20Oh%20%28cntryd2%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/rmjlcemz/12%20-%20Put%20It%20Down%20%28Rave%201%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/jxkjouen/13%20-%20Wewah%20%28shp_rap3%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/czovnapw/14%20-%20Jerry%20Lee%20Sims%20%28cntryd4%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/piyqjwib/15%20-%20Funky%20Sim%20%28Disco%203%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/gbmhagcw/16%20-%20Simtasy%20%28Rave%204%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/ycsfalcg/17%20-%20Gloria%20Sims%20%28Disco%205%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/ywpiyqlg/18%20-%20The%20Group%20%28shp_rap5%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/xsyozexc/19%20-%20Simtrance%20%28Rave%205%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/uolpobpw/20%20-%20Disco%201.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/ocwaotbc/21%20-%20Rap%202%20%28shp_rap2%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/esawiabi/22%20-%20Country%201%20%28cntryd1%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/lgwrsnnc/23%20-%20Country%203%20%28cntryd3%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/urbfycsd/24%20-%20Beach%201.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-house-party-original-game-soundtrack/omryrmkr/25%20-%20Beach%205.mp3",
+        };
+        public static readonly string[] Sims1HotDate = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-hot-date/dryqispx/01%20-%20Going%20Out.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-hot-date/rtpuencx/02%20-%20The%20Club.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-hot-date/gmppgkhh/03%20-%20Cab%20Ride.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-hot-date/oxufrsrc/04%20-%20Smooth.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-hot-date/ngtzqebs/05%20-%20Let%27s%20Dance.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-hot-date/lceoiytw/06%20-%20Play%20It%20Sim.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-hot-date/dcbbbcij/07%20-%20Dizzy%20Sim.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-hot-date/vcxiwibi/08%20-%20SIMtastic.mp3",
+        };
+        public static readonly string[] Sims1Vacation = new string[] {
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-vacation/jhkdmzke/01%20-%20Sims%20Vacation.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-vacation/ogrpyxrt/02%20-%20Welcome%20To%20The%20Island.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-vacation/sfakypdx/03%20-%20Chimonganalai.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-vacation/earfdznr/04%20-%20Coconuts%20In%20The%20Sand.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-vacation/ttlylksi/05%20-%20Steel%20Drum%20Paradise.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-vacation/mjjuxdxe/06%20-%20Song%20Of%20The%20Island.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-vacation/ddifbpug/07%20-%20Shaggy%20Sim.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-vacation/xsynszuz/08%20-%20Seal%20In%20The%20Sea.mp3",
+        };
+        public static readonly string[] Sims1Unleashed = new string[] {
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/lhcqyrqb/01%20-%20Unleash%20The%20Sims.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/nhxtyoxu/02%20-%20Sims%20Unleashed%20Load%20Loop.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/hcrabhgk/03%20-%20Sim%20The%20Blues.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/gzeydzjx/04%20-%20I%20Got%20The%20Sim%20Blues.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/mrzxmsdp/05%20-%20Cruisin%27%20The%20Delta.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/oxyxsxjb/06%20-%20Unleashed%20Jam.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/gbmiexyb/07%20-%20Down%20By%20The%20River.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/nietijwg/08%20-%20Oh%20Yah%20La%20Do.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/stpsuuqu/09%20-%20Ooh%20Ah.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-unleashed/ymmznrrm/10%20-%20It%27s%20In%20The%20Jam.mp3",
+        };
+        public static readonly string[] Sims1Superstar = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/adrzxpis/01%20-%20Superstar%20Theme%20%28sep6_bb1%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/sipzaggj/02%20-%20Thonsivee%20%28Midnight%20Love%20Mix%29.MP3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/dqsrevsa/03%20-%20Stambadoo%20%28Live%20at%20SimCity%20Arena%29.MP3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/ypglngss/04%20-%20Casting%20Call%20%28sep6_bb4%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/leltkutj/05%20-%20Glabe%20Glarn%20%28Neural%20Net%20Processor%20MegaMix%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/qcmfocxe/06%20-%20Braffee%20Glash.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/denbrhkc/07%20-%20Botox%20Forever%20%28sep6_bb5%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/gbkynsch/08%20-%20Frettesche%20%28Caustic%20Treason%20Mix%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/cpstsfze/09%20-%20Glabe%20Glarn%20%28EuroSimCity%20Mix%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/zlgwrrjv/10%20-%20The%20Spa%20Treatment%20%28sep6_bb3%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/cauusdpo/11%20-%20Frettesche%20%28Live%20at%20SimCity%20Arena%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/zeygjeqt/12%20-%208x10%20Glossy%20%28sep6_bb6%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/wzleofms/13%20-%20Chebadoo%20%28Horny%20Cabaret%20Mix%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/esaxoboo/14%20-%20Backstage%20Pass%20%28sep6_bb2%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/gnwujnlp/15%20-%20Build%201%20%28sep6_trans_wall1%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/piwhwknh/16%20-%20Build%202%20%28sep6_trans_wall2%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/yxrqdvrw/17%20-%20Build%203%20%28sep6_trans_wall3%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-superstar/kkurcktp/18%20-%20Build%204%20%28sep6_trans_wall4%29.mp3",
+        };
+        public static readonly string[] Sims1MakinMagic = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/bimjmguf/01%20-%20Loading%20Loop.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/tdjkxhtw/02%20-%20Medieval%20Neighborhood%20%28sep7_bb1%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/datsilhe/03%20-%20Once%20a%20Cemitery%20%28sep7_bb3%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/xbpvhzzb/04%20-%20Foggy%20Shores%20%28sep7_bb4%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/hhntgxvj/05%20-%20Magic%20Town%20%28sep7_bb5%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/jrgjztyl/06%20-%20Ada-Quaint%20Place%20%28sep7_bb6%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/hfficnhw/07%20-%20Euro-Hood%20%28sep7_bb7%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/lpqkfsyr/08%20-%20Nutcase%20Land%20%28sep7_bb8%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/lfrtvvrw/09%20-%20Buy%20Mode%201.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/jgecasmi/10%20-%20Buy%20Mode%202.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/dundgswf/11%20-%20Buy%20Mode%203.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/lpqkdkpv/12%20-%20Buy%20Mode%204.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/ievszssm/13%20-%20Buy%20Mode%205.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/ejlzqgiv/14%20-%20Build%203.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/elprpzdq/15%20-%20Build%204.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/vgtbaysr/16%20-%20Build%205.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/gglkvxyc/17%20-%20Build%206.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/qvgtbayp/18%20-%20Build%207.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/ebskykgc/19%20-%20Build%208.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/sikbbetc/20%20-%20Build%209.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-makin-magic-original-game-soundtrack/iiqggmtg/21%20-%20Credits%20%28sep7_credits1%29.mp3",
+        };
 
         // --- THE SIMS 2 ---
-        public static readonly string[] Sims2 = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2University = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2Nightlife = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2OpenForBusiness = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2Pets = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2Seasons = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2BonVoyage = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2Freetime = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2ApartmentLife = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2FamilyFunStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2GlamourLifeStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2HappyHolidayStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2CelebrationStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2HMStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2TeenStyleStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2KitchenBathStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2IKEAStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims2MansionGardenStuff = new string[] { /* URL List Here */ };
+        public static readonly string[] Sims2 = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/fakayoxz/01%20-%20The%20Sims%202%20Theme.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/famkmfoe/02%20-%20Sim%20Time%20Sim%20Place.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/gstpsvxe/03%20-%20Sim%20Heaven.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/asjuxbps/04%20-%20Makeover.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/xkfwrvcb/05%20-%20Simsation.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/ayroudlt/06%20-%20Sims%20Heartbeat.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/jpwoefoe/07%20-%20Bare%20Bones.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/ehxrsmic/08%20-%20First%20Volley.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/pqliioxv/09%20-%20Sim%20Builder.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-original-soundtrack/lsetgxxt/10%20-%20Busy%20Sim.mp3",
+        };
+        public static readonly string[] Sims2University = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/tauxdasm/01.%20Brick%20Sim.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/hbjrimof/02.%20Building%20Blocks.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/mthfdbvb/03.%20Sim%20Tile.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/wbrevrxk/04.%20Arch%20of%20the%20Sim.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/jreybpst/05.%20Simtastic.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/psutmdeo/06.%20Sim%20Boutique.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/htvzkazu/07.%20Shopping%20Spree.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/zovmxbos/08.%20Stop%20and%20Sim.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/xiwkkvzh/09.%20Look%20Alive.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/qebtmhzz/10.%20Funny%20Bone.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/zzytatur/11.%20SimFace.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/betesypd/12.%20Simple%20Sim.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/yfiabeui/13.%20Sway%20-%20The%20Perishers.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/jvasjtps/14.%20Very%20Very%20Rich%20Town%20-%20Go%20Betty%20Go.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/uunibged/15.%20Big%20Sky%20-%20Abra%20Moore.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/bauwbrdr/16.%20Beautiful%20Life%20-%20Charlotte%20Martin.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/zvdidune/17.%20Come%20On%20-%20Steadman.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/kmgrsooc/18.%20This%20Conversation%20is%20Over%20-%20Acceptance.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/xhpdxdzk/19.%20Pretty%20People%20-%20Dexter%20Freebish.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/eqrlfszs/20.%20Outsider%20-%20The%20Daylights.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/rexxyxsw/21.%20Move%20-%20Ross%20Golan.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/ehytatsi/22.%20Fly%20Foam%20de%20Flirt.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/lgzeycrd/23.%20Kin%20Tawala.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/ryqlftbd/24.%20See%20Toast%20Te%20Ya.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/ncxgozfd/25.%20Dorm%20Beat.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/ariqfdat/26.%20Good%20Evening%20Bella.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/rbgbnlrb/27.%20Down%20in%20Town.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/etftdlup/28.%20Simply%20bop.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/stptxiyt/29.%20Sim%20on%20the%20Edge.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/xgmqwizz/30.%20Mortimer%27s%20Touch.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/yucfqpct/31.%20Sims2%20Uni%20Theme.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/immxajtr/32.%20Oops-a-Sim.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/ewvoixnz/33.%20Salsa%20of%20the%20SimKing.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/hlihntci/34.%20Fire%20of%20the%20Newbie.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-university/ggpdwyez/35.%20Sinusoidal%20Sim.mp3",
+        };
+        public static readonly string[] Sims2Nightlife = new string[]
+        {
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/jymppdzm/01.%20General%20Midi%20-%20First%20Volley.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/jmgwpiyr/02.%20AdamFreeland%20-%20ArchOfTheSims.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/otcervbw/03.%20Adam%20Freeland%20-%20Makeover.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/cwcyiuyk/04.%20Lemon%20Jelly%20-%20Makeover.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/gzfdapbl/05.%20Lemon%20Jelly%20-%20Arch%20of%20the%20Sim.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/zqdwvqsp/06.%20Adam%20Freeland%20-%20Busy.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/yvgwpive/07.%20General%20Midi%20-%20Stop%20and%20Sim.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/kolquzqe/08.%20General%20Midi%20-%20Shopping%20spree.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/xctmdgxs/09.%20Lemon%20Jelly%20-%20Sim%20Time.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/wcaspswf/10.%20Hyper%20-%20Sim%20the%20Builder.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/nvrxkkuq/11.%20Hyper%20-%20sim%20time%20sim%20place.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/xpfixrnq/12.%20Hayden%20-%20String%20Quartet%20Op%201%20No%202.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/rnlqyubx/13.%20Mozart%20-%20Quintet%20in%20A%20maj.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/ixnzhpzf/14.%20Brahms%20-%20Hungarian%20Dance%20No%207.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/cxfgsuuo/15.%20Haydn%20-%20Flute%20Quartet%20in%20A%20maj.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/kkuradrv/16.%20Hayden%20-%20Serenade%20No%205.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/ejjrioxt/17.%20Schubert%20-%20Standchen.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/dluomtij/18.%20Junkie%20XL%20-%20Sims%202%20Uni%20Theme.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/vzkcjlcd/19.%20Hyper%20-%20Sim%20the%20Builder.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/krbikawi/20.%20Adam%20Freeland%20-%20Busy.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/bhispwpj/21.%20Timo%20Maas%20-%20Sims%202%20Theme.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/ayphpbpt/22.%20Lemon%20Jelly%20-%20Sims%202%20Theme.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/xhvfqoui/23.%20Comansnala.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/ghtutjor/24.%20Muenwana.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/snkmguhy/25.%20Wa%20Wa%20Wa.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/vklcepja/26.%20Onta%20Da%20Lupa%20Alt.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/zytxhubw/27.%20Ishneticht.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/eidqtvyg/28.%20Jeanette%20-%20Run%20with%20me.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/kfvnehxq/29.%20Andy%26Lucas%20-%20Mi%20Barrio.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/nqqfdczt/30.%20Victoria%20-%20Cry.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/tomryqli/31.%20Annie%20-%20Heartbeat.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/fcwzkcfu/32.%20Christian%20Forss%20-%20Hubny%20Harb.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/ighrliea/33.%20The%20Faders%20-%20Jump.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/mkophspv/34.%20LUX%20Spencers%20-%20O%20blay%20wobba%20zoon.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/lsfxyyxq/35.%20Musikk%20Feat.%20John%20Rock%20-%20Summer%20Lovin%27.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/pyadtjoq/36.%20Annie%20-%20Chewing%20Gum.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/nsaypecx/37.%20Andy%26Lucas%20-%20Madre.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-nightlife/ixnxzggm/38.%20The%20Faders%20-%20What%20it%20takes.mp3",
+        };
+        public static readonly string[] Sims2OpenForBusiness = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/rwjgdznr/01.%20Simply%20Hot.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/uwanphuy/02.%20Simantics.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/lhfgmrxm/03.%20Extra%20Simple.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/tijwflok/04.%20Kiss%20My%20Sims.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/mccftcig/05.%20Sims%202%20New%20Wave%20Theme.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/iwizbfak/06.%20SimsSuffer16bit.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/xiytweel/07.%20Howard%20Jones%20-%20Things%20can%20only%20get%20Better.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/qwjilhds/08.%20Touch%20and%20go.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/fxwrritr/09.%20Kajagoogoo%20-%20Too%20Shy%20Shy.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/evpnvmbu/10.%20It%20Wouldn%27t%20be%20so%20bad.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-open-for-business/sgctlarh/11.%20The%20Epoxies%20-%20Synthesized.mp3",
+        };
+        public static readonly string[] Sims2Pets = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/elupqjxk/Build%20-%2001%20Fruit%20A%20topia.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/dmyivfob/Build%20-%2002%20Simantopia.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/pwpkgyyy/Buy%20-%2001%20Gimme%20Sum%20Sim.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/ekmgtcen/Buy%20-%2002%20The%20Sum%20of%20Six.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/ctkwbuqw/CAS%20-%2001%20Simish%20for%20Dummies.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/lwzhpzdu/CAS%20-%2002%20The%20Sims%20are%20Alright.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/ipcpsuvs/CollegeRock%20-%2001%20Brazil%20-%20Candles%20Cast%20Long%20Sha.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/dhzaewtd/CollegeRock%20-%2002%20Flaming%20Lips%20-%20Free%20Radicals.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/djlelrbg/CollegeRock%20-%2003%20New%20Amsterdams%20-%20Turn%20Out%20the.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/hpeyecwe/CollegeRock%20-%2004%20Something%20for%20Rockets%20-%20I%20Neve.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/varinrwg/CollegeRock%20-%2005%20The%20Films%20-%20Black%20Shoes.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/ynxxvltj/CollegeRock%20-%2006%20The%20Format%20-%20The%20Compromise.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/jvaouiez/CollegeRock%20-%2007%20W%20of%20P3%20-%20Aff%20Wubbas%20Doo.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/ttkvzlep/Country%20-%2001%20Cowboy%20Troy%20-%20I%20Play%20Chicken%20w.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/tnicnjfa/Country%20-%2002%20Joanna%20J%20-%20Unthinkable.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/yffmrzuc/Country%20-%2003%20Prescott%20-%20Dixie%20Dixie.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/ozexcsfz/Country%20-%2004%20Prescott%20-%20Hurt%20No%20Nobody.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/nyfefqnp/HipHop%20-%2001%20Dena%20Deadly%20-%20Fortuzala.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/mqsqagdz/HipHop%20-%2002%20Jessi%20Malay-Topsy%20Turvy.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/lwyebrhj/HipHop%20-%2003%20Skye%20Sweetnam%20-%20Boyhunter.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/liggpedc/HipHop%20-%2004%20Tanaila-%20Wow%20Wow%20Wow.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/phrlepmo/HipHop%20-%2005%20The%20Network%20-%20Topy%20Apa%20Ty.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/yvjjusgb/Neighborhood%20-%2001%20Sims%202%20Pets%20Theme.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/bdojbhfd/Pop%20-%2001%20%20Aly%20%26%20AJ%20-%20Chemicals%20React.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/jhhoahnp/Pop%20-%2002%20Isabelle%20Huang%20-%20Hit%20it.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/eiafaisn/Pop%20-%2003%20Kristen%20Dez%20-%20Come%20On%20Come%20On.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/imlvryqj/Pop%20-%2004%20Saving%20Jane%20-%20Girl%20Next%20Door.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/khirmjla/Pop%20-%2005%20The%20Pussy%20Cat%20Dolls%20-%20Don%27t%20Ch.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-pets-soundtrack/nteokfze/Techno%20-%2001%20Touchstone%20-%20Simpatico.mp3",
+        };
+        public static readonly string[] Sims2Seasons = new string[] {
+                        "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/pxtaxkhf/01.%20SimsSticle.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/htyllwzj/02.%20Simful%20Pleasures.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/xkikbaxm/03.%20Eine%20Kliene%20Sims.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/tfyyyyxr/04.%20Buy.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/skauyhqi/05.%20Simplicity%20is%20Key.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/uxeekkvx/06.%20Simple%20Pimple.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/zhkgybjs/07.%20Dont%20Let%20the%20Deal%20Go%20Down.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/kvapzcon/08.%20Rubber%20Backup.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/wwpntdmb/09.%20Lonepine.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/vygmpobp/10.%20Old%20Folks.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/tavaripa/11.%20Rangdol.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/inrvczsn/12.%20moe.%20-%20Blue%20Jeans%20Pizza.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/lradqtxf/13.%20Gov%27t%20Mule%20-%20Mr%20High%20and%20Mighty.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/kijxibfx/14.%20The%20String%20Cheese%20Incident%20-%20Close%20Your%20Eyes.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/wpkfukop/15.%20The%20Chris%20McCarty%20Band%20-%20The%20Next%20One.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/jyrpyvji/16.%20The%20Breadbox%20Band.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/pxuhcnjf/17.%20Sims%202%20In%20Season%20Theme.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/zhllwziq/18.%20Cascade%20Bubbler.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/hllxdykc/19.%20Celestial%20Bungalow.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/fxuhzdqw/20.%20If%20You%20Really%20See%20Eurydice.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/iclyixln/21.%20Frolicking%20Wind%20Dancer.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/gubawgrp/22.%20A%20Plangent%20Sough.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/blatrewu/23.%20Tender%20Portions.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/gzfziqho/24.%20The%20Veronicas%20-%20When%20It%20All%20Falls%20Apart.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/ukptyoyz/25.%20Tata%20Young%20-%20Zoom.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-2-seasons/agctnhzy/26.%20Lily%20Allen%20-%20Smile.mp3",
+        };
+        public static readonly string[] Sims2BonVoyage = new string[]
+        {
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/didtkvul/01.%20Neo%20Swing.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/xfhubawi/02.%20Old%20New%20York.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/aclyixmt/03.%20Hey%20Baby.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/fxywpjcj/04.%20Midnight%20Serenade.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/miewwrsr/05.%20Sims%20Holidaze.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/cnidppdy/06.%20Sail%20Away%20Sim.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/jzveknia/07.%20The%20Sim%20from%20Ipanema.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/fzirjwfm/08.%20Dont%20Let%20the%20Deal%20Go%20Down.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/vqsrexaj/09.%20Rubber%20Backup.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/vyhnwrts/10.%20Lonepine.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/jpyyvknl/11.%20Old%20Folks.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/qtykhdxc/12.%20Rangdol.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/uqwkktqw/13.%20The%20Sims%202%20Bon%20Voyage%20Theme.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/lqwlolng/14.%20Hope%20-%20Angels.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/vgudihmn/15.%20The%20Sims%20feat.%20Jeannie%20Ortega%20-%20When%20love%20Walks%20Away.mp3"            ,
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/fkjpzzcn/16.%20Vassy%20-%20Wanna%20Fly.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/iadppgje/17.%20Charlotte%20Martin%20-%20Keep%20Me%20In%20Your%20Pocket.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/scijtsjs/18.%20Brick%26Lace%20-%20Love%20Is%20Wicked.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/kxgpfgpi/19.%20Stephen%20Marley%20-%20Mind%20Control.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/vdenzirl/20.%20Stephen%20Marley%20feat%20Damian%20Jr.%20Gong%20Marley%20-%20The%20Traffic%20Jam.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/epmmcynu/21.%20Hawk%20-%20Sweet%20Music.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/ighqhoze/22.%20Damian%20Jr.%20Gong%20Marley%20-%20Welcome%20to%20Jamrock.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/ygixnydt/23.%20Ziggy%20Marley%20-%20Make%20Some%20Music.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/mdftzqho/24.%20Mad%20Caddies%20-%20Backyard.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/wtbcgxwn/25.%20Surfs%20Up.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/cxegtykg/26.%20Guitar%20Tsunami.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/csgbqafy/27.%20Guitar%20Fiction.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/eyfgobre/28.%20Surf%20Guitar%20A%20Gogo.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/tijxixny/29.%20Suntan%20Simanic.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/dwxwszrm/30.%20Gaelic%20Storm%20-%20Scalliwag.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/kpuelrcm/31.%20Bossacucanova%20-%20Bom%20Dia%20Rio.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/czsqafyc/32.%20Jef%20Stott%20-%20Funky%20Nawari.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/ptylildj/33.%20Ojos%20de%20Brujo%20-%20Sultanas%20de%20Merkaillo.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/mgxswfkm/34.%20Rocky%20Dawuni%20-%20The%20One.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-bon-voyage/eidsfxuh/35.%20Cheb%20i%20Sabbah%20-%20Tum%20Bin%20Shyam.mp3",
+        };
+        public static readonly string[] Sims2Freetime = new string[]
+        {
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/dulxfhvi/01.%20Build.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/bikdlwxy/02.%20Buy.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/yxudjkxg/03.%20CAS.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/qkbdnflo/04.%20Timo%20Maas%20-%20Sims%202%20Theme.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/kkvzitur/05.%20Adam%20Freeland%20-%20Busy.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/ystrbgdx/06.%20Hyper%20-%20Sim%20the%20Builder.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/bqbgedej/07.%20Junkie%20XL%20-%20Sims%202%20Uni%20Theme.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/jutjpxug/08.%20They%20Might%20Be%20Giants%20-%20Take%20Out%20The%20Trash.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/uhzcomrx/09.%20Great%20Nothern%20-%20Into%20The%20Sun.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/mrytylik/10.%20Fire%20Flies%20-%20It%27s%20A%20Party.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/zrkcepmo/11.%20I%27m%20From%20Barcelona%20-%20Britney.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/lnhxqkdo/12.%20Sims%202%20FreeTime%20Theme%20-%20They%20Might%20Be%20Giants.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/gssjuuni/13.%20Pocket%20Full%20Of%20Sunshine%20Sim%20Mix.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/bilgzdse/14.%20Lara%20-%20La%20Otra%20Princesa.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/the-sims-2-freetime/ryroruwz/15.%20Lexington%20Bridge%20-%20Your%20Forgiveness.mp3",
+        };
+        public static readonly string[] Sims2ApartmentLife = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/fejhjxlm/01.%20The%20Sims%202%20-%20Apartment%20Life%20Theme.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/ddhzdsdm/02.%20The%20Sims%202%20-%20Apartment%20Life%20Loading%20Screen.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/zmndelqv/03.%20Sim%20Will%20Build.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/gvidtgdu/04.%20Sim%20Will%20Buy%20More.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/prnpketd/05.%20Ugly%20Sim%20Be%20Cool.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/lupqliio/06.%20Not%20a%20Love%20Song.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/wpmqpfei/07.%20Brainless.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/cnhxpgnx/08.%20Everything.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/xuhzdqvf/09.%20Getting%20Better.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/qpyyywoc/10.%20Radio.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/uqwmsful/11.%20Good%20Day.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/tlzoxtba/12.%20Come%20My%20Sunshine.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/wjgfegue/13.%20Can%27t%20Believe%20My%20Eyes.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/ndasmiew/14.%20Crazy.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/xvkopgnv/15.%20Hot%20N%20Cold.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/ndcbzwgq/16.%20Sweet%20About%20Me.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/lijwfmrz/17.%20This%20Is%20A%20Test.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/velshgiw/18.%20Violet%20Stars%20Happy%20Hunting%21.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/lpqkaazw/19.%20Where%20Would%20We%20Be%20Now.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/hyvjiosx/20.%20Club%20Soda.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/llzotfrv/21.%20Ghosts.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/cbwgrpwr/22.%20Fancy%20Footwork.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/tshiuykd/23.%20Mad%20Pursuit.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/kshjzspz/24.%20Battle%20Royale.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/zzzywkmc/25.%20Divebomb.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/bbchdtmc/26.%20Mozdulj%20Mar.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/zqfdbyoy/27.%20On%20%26%20On.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-2-apartment-life-macos-windows-gamerip-2008/zbkwcxgm/28.%20Ona%20Odna.mp3",
+        };
 
         // --- THE SIMS 3 ---
-        public static readonly string[] Sims3 = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3WorldAdventures = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3Ambitions = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3LateNight = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3Generations = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3Pets = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3Showtime = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3Supernatural = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3Seasons = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3UniversityLife = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3IslandParadise = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3IntoTheFuture = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3HighEndLoftStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3FastLaneStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3OutdoorLivingStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3TownLifeStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3MasterSuiteStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3KatyPerryStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3DieselStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims370s80s90sStuff = new string[] { /* URL List Here */ };
-        public static readonly string[] Sims3MovieStuff = new string[] { /* URL List Here */ };
+        public static readonly string[] Sims3 = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jysgjegehp/1-01.%20The%20Sims%203%20Theme.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hyzlvfrsom/1-02.%20Constructive%20Simicism%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ejketftzja/1-03.%20Simmering%20Mallets%20%28Build%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/earulctthb/1-04.%20Simple%20Assembly%20%28Build%203%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/aappszpwmh/1-05.%20Some%20Assimbly%20Required%20%28Build%204%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ffkidugyzu/1-06.%20Consumerism%20Simplified%20%28Buy%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ctlpptdbca/1-07.%20Aisles%20of%20Miles%20of%20Smiles%20%28Buy%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/esyohnyzrq/1-08.%20Don%27t%20Be%20Parsimonious%20%28Buy%203%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/sqmcficxqp/1-09.%20Striking%20Similarities%20%28Buy%204%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/olzfcfkhft/1-10.%20Identity%20Check%20%28Create%20a%20Sim%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/trwgtfzsoz/1-11.%20Verisimilitude%20%28Create%20a%20Sim%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/wqnlqyeqdj/1-12.%20Amazing%20Facsimile%20%28Create%20a%20Sim%203%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/oxbjfqxyvg/1-13.%20Fortissimo%20Personality%20%28Create%20a%20Sim%204%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yfakelzuzr/1-14.%20Simple%20Directions%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ajdcxwmyjx/1-15.%20Let%27s%20Assimilate%20%28Map%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/elqgysagzv/1-16.%20Cartographer%27s%20Simphony%20%28Map%203%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/dglmadfqns/1-17.%20Maps%20and%20Simbols%20%28Map%204%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ropemowbll/1-18.%20The%20Sims%203%20Loading%20Theme%20%28Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hekhlaxosr/1-19.%20New%20Game%20Start.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/pipgxgdbaj/1-20.%20Move%20In.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/uegmoiooul/1-21.%20Lifetime%20Opportunity%20Success.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/qtfvrtljbn/1-22.%20Repo%20Man%20Arrives.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/eglydckupc/1-23.%20Age%20Transition%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zjhfbogbzs/1-24.%20Career%20Fail.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jlfgklyump/1-25.%20Busted.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/gxhkjmobjp/1-26.%20Sad%20Things.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/xwrjvxnpiv/1-27.%20Age%20Transition%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/rgimwuailt/1-28.%20Completion%20Collection.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/tfjqghwhuy/1-29.%20Opportunity%20Fail.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/pvjvebygmc/1-30.%20Life%20Sucks.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ehynabaqfy/1-31.%20Dream%20Fail.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/lozsaarzqg/1-32.%20Motive%20Failure.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ahervpsvjc/1-33.%20Ghost%20Appears.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kjwyqdytnf/1-34.%20Lifetime%20Achievement.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jixcfkdykh/1-35.%20Baby%20Born.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hzjljprkby/1-36.%20Lifetime%20Wish%20Success.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/imunamrqea/1-37.%20Age%20Transition%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/iimvndncdl/1-38.%20Dream%20Fulfil.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jlyvedclxo/1-39.%20Career%20Positive.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/dgkvzzukkw/1-40.%20Opportunity%20Success.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/aglajsnyrr/1-41.%20Broken%20Object.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mqsstfvvhf/1-42.%20Promise%20Satisfy.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/cpinowobbh/1-43.%20Age%20Transition%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/uhemugqxph/1-44.%20Social%20Worker%20Arrives.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/pzeitazuoi/1-45.%20Death.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ehyvmfsgcx/1-46.%20Age%20Transition%205.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/fwsibwwvlx/1-47.%20Life%20Great.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vhwmaibpka/1-48.%20Wedding.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zhgcoucaqs/1-49.%20Age%20Transition%206.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/qhvupgmfch/1-50.%20Burglar%20Arrives.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/iwkdjnrdlr/1-51.%20Water%20Music%20Suite%20No.%201%20In%20F%20Major%20%28Air%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/cgvjnodjro/1-52.%20String%20Quartet%20In%20D%20Minor%20%28Barcarolle%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/fqnrgbwsir/1-53.%20Piano%20Quintet%20In%20A%20Major%2C%20D.%20667%20The%20Trout%20%28Andante%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/itegelxwkg/1-54.%20Symphony%20No.%206%20In%20B%20Minor%20Path%C3%A9tique%20%28Allegro%20con%20grazia%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vwahkvrhms/1-55.%20Violin%20Sonata%20In%20A%20Major%20%28Allegretto%20poco%20mosso%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/cmegbopyng/1-56.%20Divertimento%20No.%2017%20In%20D%20Major%20%28Minuet%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/scyyepfoap/1-57.%20Piano%20Sonata%20No.%2012%20In%20F%20Major%2C%20K.%20300k_332%20%28Adagio%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/xtvmlqkxyq/1-58.%20Piano%20Sonata%20No.%2013%20In%20B-Flat%20Major%2C%20K.%20315c_333%20%28Allegretto%20grazioso%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/gqgfphnzfd/1-59.%20Movie%20Piano.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/esqslyggeo/1-60.%20Day%20Spa%20Piano%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/tdcdxfzbkd/1-61.%20Day%20Spa%20Piano%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ayeuzdbgkc/1-62.%20Day%20Spa%20Piano%203.mp3",
+        };
+        public static readonly string[] Sims3WorldAdventures = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/tmpzvcfcnv/2-01.%20World%20Adventures%20%28Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/nljmssjofl/2-02.%20Rice%20Noodles%20%28China%20Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/orggvyqdfz/2-03.%20China%20Fly-By.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/xljosfrzys/2-04.%20Pyramids%20%28Egypt%20Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/sziztqkmue/2-05.%20Egypt%20Fly-By.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/aclpzxmdpo/2-06.%20La%20Baguette%20%28France%20Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/frwvdrmvrf/2-07.%20France%20Fly-By.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/lgovqvokfl/2-08.%20Excavating%20a%20Whole%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/iinacjlmaa/2-09.%20Skylines%20In%20Sand%20%28Build%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/uyhefvnpmm/2-10.%20Me%20All%20Mine%20%28Buy%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ybjetlzfxb/2-11.%20Two%20of%20These%20Please%20%28Buy%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/arxztgaece/2-12.%20Looking%20Again%20%28Create%20a%20Sim%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/efygirzupo/2-13.%20Beyond%20the%20Clouds%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/grsbvtqxvy/2-14.%20Expansive%20Vistas%20%28Map%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yacsnctyet/2-15.%20Lotus%20Pavilion.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/uyoajbggcf/2-16.%20Morning%20On%20the%20Farm.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yttcxtgjis/2-17.%20Prelude%20to%20the%20Opera.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/wztziooxyl/2-18.%20Riders%20of%20the%20North.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/tlnjximnus/2-19.%20Song%20At%20Sunset.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jwemlpkxyq/2-20.%20Summer%20Flowers.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jamtummdkr/2-21.%20Al%20Harb.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mlugyxcmkd/2-22.%20Al%20Mina.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hqrvqtmbij/2-23.%20Caravane.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vrfwkbtjym/2-24.%20Impressions%20Du%20D%C3%A9sert.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mzyuewepog/2-25.%20Karakose.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/xuthzrfxdo/2-26.%20Khafif.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/bsnvtywopa/2-27.%20La%20Piste%20Du%20Sud.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ukblbvjihq/2-28.%20Les%20Dunes.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hypznqsdya/2-29.%20Proph%C3%A9tie.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zldvvxfmdw/2-30.%20Ramlat.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/czwmytwmog/2-31.%20Zahrat%20El%20Sahra.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/awrxmpipge/2-32.%20Doux%20Souvenirs.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/sszbjcrduq/2-33.%20L%27affaire%20D%27une%20Vie.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/bfxbknirxk/2-34.%20L%27autre%20Bal.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/obuuprqeqp/2-35.%20La%20Nuit%20Enchant%C3%A9e.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/dvejuhemnc/2-36.%20Louis%20%C3%A0%20V%C3%A9lo.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ennahbitnq/2-37.%20Marilu.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ootgzbocvw/2-38.%20Sur%20Les%20Quais.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/dbgwsvbbke/2-39.%20The%20Sims%203%20Theme%20%28The%20Young%20Punx%21%20Remix%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mvhqurddwb/2-40.%20High-End%20Loft%20%28Load%20Loop%29.mp3",
+        };
+        public static readonly string[] Sims3Ambitions = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/futwtzkbbx/3-01.%20Flying%20Quest%20%28Ambitions%20Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/rpmgauojqk/3-02.%20Buy%20Me%20the%20Sweet%20Life%20%28Buy%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/dgujoionri/3-03.%20Sculpting%20the%20Sky%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/nvzebibyla/3-04.%20Sale%20On%20Aisle%20Six%20%28Buy%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/cezopcgjky/3-05.%20Returning%20to%20My%20Roots%20%28Create%20a%20Sim%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/viboqgnkzc/3-06.%20You%20Look%20That%20Way%20%28Create%20a%20Sim%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/rmazxwdofe/3-07.%20Where%20Are%20You%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/cvioxfvzol/3-08.%20Ghost%20Invasion.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jmnvvvkuxl/3-09.%20Gnome%20Invasion.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/gbaafibvgm/3-10.%20Emergency.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/wlvjijfryg/3-11.%20Ghost%20Spirit%20Collect.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/naboidxxpt/3-12.%20Ghost%20Presence.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/bezuznytwu/3-13.%20Epic%20Emergency.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/gagcuhcjim/3-14.%20Sculpt%20Brilliant.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/uecmilonja/3-15.%20New%20Customer.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/adanahkwot/3-16.%20Retirement.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mxockrncos/3-17.%20Career%20Grade%20Low.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/rdqfyewbou/3-18.%20Bad%20Event%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ybifwyuops/3-19.%20Pi%20Case.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/wifzmrxfme/3-20.%20Career%20Grade%20Medium.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ctdesfngdr/3-21.%20Career%20Grade%20High.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kevvbbcxrz/3-22.%20Neutral%20Event%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/bguptaldib/3-23.%20Career%20Level-Up.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ptllcynxyj/3-24.%20Good%20Event%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/xkomcqveiy/3-25.%20On%20the%20Spot%20Job%20Lose.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/gwdhwsucyq/3-26.%20On%20the%20Spot%20Job%20Get.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/oiwcbmmfys/3-27.%20Good%20Event%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/pfcvmieypg/3-28.%20Sales%20Success.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vvmrxvhnxi/3-29.%20Stylist%20Fail.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zeeogywksd/3-30.%20Neutral%20Event%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/gwutkoykfp/3-31.%20Job%20Completion.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/oneancaqxh/3-32.%20Career%20Max.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kolqqudxhs/3-33.%20Frankensim%20Alive.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zlpkintjzi/3-34.%20Pi%20Case%20Complete.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/iznlhhgrmy/3-35.%20Masterpiece.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/gjquejdcdt/3-36.%20Bad%20Event%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mgclcrycug/3-37.%20Sculpt%20Masterpiece.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/wxosxkzmje/3-38.%20Lose%20Customer.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vlyeqwyfjn/3-39.%20Ownership.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/boeobzqyri/3-40.%20Sales%20Fail.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/aizlxdtrbe/3-41.%20Meteor%20Foreshadow.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kvundhnnri/3-42.%20New%20Profession.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/bkmbpqhize/3-43.%20Fast%20Lane%20%28Load%20Loop%29.mp3",
+        };
+        public static readonly string[] Sims3LateNight = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ukzxiabuap/4-01.%20The%20Sims%203%20Theme%20%28Junkie%20XL%20Remix%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kifyyuxjzm/4-02.%20Late%20Night%20%28Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/uvjkmhqzbz/4-03.%20Bridges%20Home%20%28Build%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kvdyymrccd/4-04.%20Road%20to%20Wondering%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ryyksspznh/4-05.%20Living%20the%20Dream%20%28Buy%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hrajkpwmnz/4-06.%20Someone%20to%20Talk%20About%20%28Create%20a%20Sim%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jnszkdowvo/4-07.%20Chasing%20the%20Stars%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/tatzstukjd/4-08.%20Urban%20Retreats%20%28Map%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/urrrquyjck/4-09.%20Subway%20Mugged.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vypyjprfjc/4-10.%20Generic%20Tragedy.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kebmvsnysh/4-11.%20Vampire%20Bite.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kqjndbvwpl/4-12.%20Band%20Form.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/odetpekgjl/4-13.%20Generic%20Great.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yglgubbxcn/4-14.%20Age%20Transition.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yicwuxkpkl/4-15.%20Bartending%20New%20Drink.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hpbjzpxbly/4-16.%20Shuffleboard%20Win.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/pgroliiqbd/4-17.%20Dartboard%20Win.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mwkaxycfxi/4-18.%20Celeb%20Achievement%20A.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/blsjddnshr/4-19.%20Celeb%20Achievement%20B.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/rbonyacsrd/4-20.%20Vampire%20Turn.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/lmgglwdpyp/4-21.%20Vampire%20Death.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vwxfvvpaeh/4-22.%20Bartending%20Booted.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/guqbzngasm/4-23.%20Subway%20Play%20for%20Tips%20-%20Guitar%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zxjiaerhdd/4-24.%20Subway%20Play%20for%20Tips%20-%20Guitar%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jxvvdygfxo/4-25.%20Subway%20Play%20for%20Tips%20-%20Guitar%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vzyltvctap/4-26.%20Subway%20Play%20for%20Tips%20-%20Guitar%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/cjwnzigsdg/4-27.%20Subway%20Play%20for%20Tips%20-%20Electric%20Guitar%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/shtbonknbc/4-28.%20Subway%20Play%20for%20Tips%20-%20Electric%20Guitar%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vexjrlywre/4-29.%20Subway%20Play%20for%20Tips%20-%20Electric%20Guitar%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/pvfgeepcck/4-30.%20Subway%20Play%20for%20Tips%20-%20Electric%20Guitar%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jqmkwpmcfr/4-31.%20Subway%20Play%20for%20Tips%20-%20Electric%20Guitar%205.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ruvnyldtrn/4-32.%20Subway%20Play%20for%20Tips%20-%20Bass%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/oanhzodgst/4-33.%20Subway%20Play%20for%20Tips%20-%20Bass%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/aqphyuudto/4-34.%20Subway%20Play%20for%20Tips%20-%20Bass%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/fkkxgetzzs/4-35.%20Subway%20Play%20for%20Tips%20-%20Bass%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/znjnupvqqe/4-36.%20Subway%20Play%20for%20Tips%20-%20Bass%205.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/cmajtqtqyn/4-37.%20Subway%20Play%20for%20Tips%20-%20Drums%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/rlxiwwrjsd/4-38.%20Subway%20Play%20for%20Tips%20-%20Drums%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hwwthjlkvq/4-39.%20Subway%20Play%20for%20Tips%20-%20Drums%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kwrwzbuaox/4-40.%20Subway%20Play%20for%20Tips%20-%20Drums%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/lgkijusqfs/4-41.%20Subway%20Play%20for%20Tips%20-%20Drums%205.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/aamocwqljj/4-42.%20Subway%20Play%20for%20Tips%20-%20Drums%206.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/afdrpgtgsq/4-43.%20Subway%20Play%20for%20Tips%20-%20Keyboard%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/khoohiszgb/4-44.%20Subway%20Play%20for%20Tips%20-%20Keyboard%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/onumgqsqcu/4-45.%20Subway%20Play%20for%20Tips%20-%20Keyboard%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vpduuncgbd/4-46.%20Subway%20Play%20for%20Tips%20-%20Keyboard%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zwhtnnxqbx/4-47.%20Subway%20Play%20for%20Tips%20-%20Keyboard%205.mp3",
+        };
+        public static readonly string[] Sims3Generations = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/dnflzdvmfo/5-01.%20First%20Generation%20%28Generations%20Load%20Loop%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/fbomqoydls/5-02.%20Second%20Generation%20%28Generations%20Load%20Loop%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/whzhedngua/5-03.%20Building%20a%20Nest%20for%20Eggs%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mvqmrqsqhb/5-04.%20Buying%20for%20a%20Baby%20On%20Board%20%28Buy%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ydptnfloif/5-05.%20Grandma%20Wants%20a%20Brand%20New%20Simoleon%20%28Buy%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/arzakafdwk/5-06.%20A%20Family%20Portrait%20In%20Pixels%20%28Create%20a%20Sim%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/nltjiupgmk/5-07.%20The%20Young%2C%20the%20Old%20and%20the%20Genome%20%28Create%20a%20Sim%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/xbroacqkjw/5-08.%20Sunset%20On%20the%20Golden%20Years%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mwziwgrdzm/5-09.%20Athletic%20Completion.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mjoocfxjlo/5-10.%20Child%20Court.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yenfgtkrch/5-11.%20Art%20Completion.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/wdohaneesu/5-12.%20Military%20Completion.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/rfnjblyndo/5-13.%20School%20Level-Up.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hssjdnbejz/5-14.%20Age%20Regress.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vaumemeglr/5-15.%20Prep%20Completion.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/glcchmqqno/5-16.%20Hippy%20Completion.mp3",
+        };
+        public static readonly string[] Sims3Pets = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/wdsmeryfya/6-01.%20The%20Sims%203%20Pets%20Theme.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/afduvshtch/6-02.%20To%20Arrive%20In%20Appaloosa%20Plains%20%28Pets%20Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/cyeooxfnjv/6-03.%20Cul-De-Sac%20of%20Memories%20%28Build%203%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/xfdvqegvir/6-04.%20Foundations%20for%20the%20Future%20%28Build%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/akasqgfvzq/6-05.%20Home%20for%20Us%20All%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vdvbhuqwov/6-06.%20A%20Ball%20of%20Yarn%20%28Buy%203%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yhyxvaatgi/6-07.%20Lace%20and%20Collars%20%28Buy%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/dwzszcygxi/6-08.%20Something%20New%20for%20You%20%28Buy%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jnplnxhokl/6-09.%20Leashes%20and%20Skirts%20%28Create%20a%20Sim%203%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/nqsbqwvobr/6-10.%20Looking%20for%20Kitty%20%28Create%20a%20Sim%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/bogpqmpmid/6-11.%20Puppy%20Dog%20Eyes%20%28Create%20a%20Sim%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/lejwyjkpmc/6-12.%20A%20Nice%20Place%20to%20Dig%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ttqpgzxgxt/6-13.%20Chasing%20Clouds%20%28Map%203%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/xiaxualomz/6-14.%20Howl%20for%20Night%20Skies%20%28Map%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/sjwkyjncue/6-15.%20Magician%20Performance%20A.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ufpgtymkrf/6-16.%20Magician%20Performance%20B.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kfrhdhtmhu/6-17.%20Artist%20Perform%20A.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/gbjbzerpte/6-18.%20Artist%20Perform%20B.mp3",
+        };
+        public static readonly string[] Sims3Supernatural = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/iessaermci/7-01.%20Supernatural%20%28Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/pcbpgtprli/7-02.%20Industry%20of%20Life%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/brdwftepbj/7-03.%20Consuming%20Time%20%28Buy%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vfmxhxgnom/7-04.%20Mannequin%20Dreams%20%28Create%20a%20Sim%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/marjczfonx/7-05.%20Rock%20That%20Look%20%28Create%20a%20Sim%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jzsmltdmwp/7-06.%20Universal%20Lobby%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hsqcmizvom/7-07.%20R%20Hole%20Gypsy%20Loop.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/pjayrkfidf/7-08.%20Seasons%20%28Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jpiedioimm/7-09.%20The%20Sun%20Porch%20Memory%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/tbtnsghphq/7-10.%20Rainy%20Day%20Shopping%20Bliss%20%28Buy%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/czrgczbqln/7-11.%20Spring%20In%20My%20Heart%20%28Create%20a%20Sim%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/grhbmkwynw/7-12.%20Drifting%20Into%20Autumn%20Leaves%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/hesbgclyfp/7-13.%20Solstice%20of%20the%20Ancients%20%28Map%202%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/ezvrmvlbyz/7-14.%20UFO%20Invade.mp3",
+        };
+        public static readonly string[] Sims3UniversityLife = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/eylfzzsffw/8-01.%20University%20Life%20%28Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/bfvzagzvsd/8-02.%20Enrollment%20Panel%201%20%28Enrol%20Loop%20A%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/roghjvmjup/8-03.%20Enrollment%20Panel%202%20%28Enrol%20Loop%20B%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zzmpkoylfb/8-04.%20Rising%20from%20the%20Sea%20%28Build%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/jkpllwpmtk/8-05.%20Mysterious%20Island%20%28Map%201%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/riamgvssqd/8-06.%20Beach%20Party.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/wfirbxwpnq/8-07.%20Pan%20Jam.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yaaumvlabj/8-08.%20Sand%20Dance.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vcoiwivdbg/8-09.%20Steelchase.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/nvcuxeowcr/8-10.%20Sunsplash.mp3",
+        };
+        public static readonly string[] Sims3IntoTheFuture = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/dlhgfeudxz/9-01.%20Cyclone.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/kmxgdtuwzh/9-02.%20HWY%2092.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/nyvleygytf/9-03.%20Naive%20Melody.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/rluozavlfl/9-04.%20Apocalyptic%20Dawn.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/uwsewmbdvu/9-05.%20Race%20of%20the%20Hero.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/nsmhmxaftj/9-06.%20Return%20of%20the%20Superhero.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/lverirsqlt/9-07.%20Unfolding%20Story.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/qzlmynjvow/9-08.%20Worlds%20Collide.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/uyijpvrcux/9-09.%20Abject%20Terror.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/lkgtzvjixw/9-10.%20Cold%20Sweat.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/sfqbubtwxa/9-11.%20Fatal%20Delusions.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/vavzelaabq/9-12.%20House%20of%20Horror.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/mglpfcxyhn/9-13.%20Voices%20of%20Darkness.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/zoslyopkqj/9-14.%20Dollars%20On%20the%20Road.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/qeswecvxsz/9-15.%20Golden%20Country.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/iukrueknqp/9-16.%20Lone%20Star.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yxgtaimotn/9-17.%20Spaghetti%20Rock.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/fgsmhtlafp/9-18.%20Strange%20On%20the%20Range.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/yhsoosqfnf/9-19.%20Into%20the%20Future%20%28Load%20Loop%29.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/iqwbxtgbji/9-20.%20Almanac%20of%20Time%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/the-sims-3-gamerip-2009/qxdvsjcrlu/9-21.%20Almanac%20of%20Time%202.mp3",
+        };
 
         // --- THE SIMS STORIES ---
-        public static readonly string[] SimsStoriesLife = new string[] { /* URL List Here */ };
-        public static readonly string[] SimsStoriesPet = new string[] { /* URL List Here */ };
-        public static readonly string[] SimsStoriesCastaway = new string[] { /* URL List Here */ };
+        public static readonly string[] SimsStoriesLife = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/abhgkgzg/Build%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/iwizysvz/Build%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/kchcrzxp/Build%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/ivejjslc/Buy%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/epkgblcf/Buy%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/rvarhjzw/Buy%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/jhglnekj/Cas%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/tprpyzaf/Cas%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/anknlryt/Cas%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/wdccdihn/Hiphop%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/rttmdhaf/Hiphop%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/ydxzhnru/Metal%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/zoujjvyg/Metal%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/mqrmifcx/Metal%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/gmqsrfdz/Metal%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/lgahkcij/Metal%205.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/uwaopkdo/Neighborhood.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/iyucchaj/Pop%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/qeydwajx/Pop%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/izwievrv/Pop%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/czrmjimm/Rnb%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/yiuyhrml/Rnb%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/unhxodas/Rnb%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/mgvhbmde/Rnb%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/ognycrza/Salsa%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/dqtxfkhh/Salsa%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/pdyffnyc/Salsa%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/shgjdpnu/Salsa%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/ikymrvcc/Techno%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/emaqafzh/Techno%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/oyzblasp/Techno%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-life-stories-the-2007-pc-gamerip/vicoloms/Techno%204.mp3",
+        };
+        public static readonly string[] SimsStoriesPet = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/fvndauvu/Build%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/ngssmfog/Build%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/oakzrlfu/Build%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/gzagffny/Buy%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/ebtnjiou/Buy%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/gyxtzpcr/Buy%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/dqvfqlhb/Cas%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/onamkptz/Cas%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/qfdauvum/Cas%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/ykbdmzlh/Country%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/cpqljlby/Country%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/rkbcfvog/Country%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/odygkgbn/Country%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/nxbnmvqq/Electronica%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/kaxmqstq/Electronica%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/xobqafyc/Electronica%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/psvapwpk/Electronica%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/dpmsabfu/Indie%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/ltjsiowq/Indie%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/ovlurzxq/Indie%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/jxkjnpmm/Indie%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/zotdluon/Indie%205.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/vruxedel/Jazz%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/sgbpsxhv/Jazz%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/gvifbsjr/Jazz%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/iqbnidtg/Jazz%204.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/ainrtuqw/Neighborhood.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/kjskylks/Pop%201.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/ktraerys/Pop%202.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/urcjnnzk/Pop%203.mp3",
+            "https://lambda.vgmtreasurechest.com/soundtracks/sims-pet-stories-the-2007-pc-gamerip/chebqcok/Pop%204.mp3",
+        };
+        public static readonly string[] SimsStoriesCastaway = new string[]
+        {
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/iuxegstq/Beach%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/xqjbdlwy/Beach%202.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/dvvpntgy/Beach%203.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/bjsmenda/Beach%204.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/ripyzbhj/Beach%205.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/wfnxzeww/Build%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/rttlauyh/Build%202.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/rkbdmznp/Build%203.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/lmcynuhf/Buy%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/bskuuqvg/Buy%202.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/txjaadok/Buy%203.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/hhoxwpiy/Cas%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/strcjors/Cas%202.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/mgwnbuti/Disco%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/jyoakatv/Disco%202.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/vtdlwyct/Disco%203.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/jrhjzwkk/Disco%204.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/smdjinqo/Disco%205.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/ybkwbrhk/Island%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/dnfklyli/Island%202.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/kzrkbbeq/Island%203.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/ttmcdltj/Island%204.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/rhhspvjh/Island%205.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/kdmyjxoy/Neighborhood%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/bonzirlf/Zydeco%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/qqfdcdha/Zydeco%202.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/hiuykfte/Zydeco%203.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/ruzoxsxh/Zydeco%204.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/wlnidqsr/Zydeco%205.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sims-castaway-stories-the-2008-pc-gamerip/faoqpcrz/Zydeco%206.mp3",
+        };
 
         // --- THE SIMS MEDIEVAL ---
-        public static readonly string[] SimsMedievalBase = new string[] { /* URL List Here */ };
-        public static readonly string[] SimsMedievalPiratesNobles = new string[] { /* URL List Here */ };
+        public static readonly string[] SimsMedievalBase = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/wibikcig/5.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/skzpbptx/6.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/jbhfehvh/7.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/ywnzhovo/8.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/gnzghsqd/9.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/kdmzjzvd/12.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/gwpjzvfm/13.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/wxwqnujk/14.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/zpcqyvgt/16.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/ceqrjwdd/17.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/idrbheda/19.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/sptbaxll/20.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/yhtwbrdt/21.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/hhmndcem/22.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/zkbbfvne/23.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/hxpjbfuh/26.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/bmemxbor/27.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/painoixo/30.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/akaxllxf/34.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/hubynvoh/35.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/uavcyllu/36.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/ooakztus/39.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/ckrfyeyh/40.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/qgiwibik/41.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/dluqvfqn/42.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/syqjxmol/47.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/pobpufpi/48.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/gmthgivd/51.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/fqntcigh/52.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/srhljmjj/53.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/sfvnbvwv/A%20Royal%20Reception.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/qrjynwtd/Arise%2C%20Watcher.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/luprpyzz/Chinchillas%20Abound.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/acmbwbvz/Epic%20Theme.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/kazvfpjb/Festival%20and%20Faire.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/cjnocyjc/Gathering%20Friends.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/gcpvgvhb/Incantus%20Magicus.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/lzpcshgi/Jacoban%20Church.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/zxqlighr/Mirthful%20Steps.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/nqqgiyrn/Moldheart%27s%20Hornpipe.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/hudftdii/music%20box%20%281%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/rjwdbaux/music%20box%20%282%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/dykciisp/music%20box%20%283%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/tzpcsfwu/music%20box%20%284%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/jmgtbchf/music%20box%20%285%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/pljosvao/Peteran%20Church.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/teohtyja/Playwright%27s%20Lament.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/yrotaxlm/Quest%20Theme.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/bxiwjeun/The%20Build%20Master%27s%20Gigue.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/dbzsrfbs/The%20Dashing%20Young%20Falconer.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/hjayston/The%20Masquerade%20Ball.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/alfueogp/The%20Master%20Chef%20of%20Gastrobury.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/the-sims-medieval-soundtrack-gamerip/ffnakceo/The%20Snoozemeister%27s%20Lullaby.mp3",
+        };
 
         // --- SIMCITY & SPINOFFS ---
-        public static readonly string[] SimCityClassic = new string[] { /* URL List Here */ };
-        public static readonly string[] SimCitySNES = new string[] { /* URL List Here */ };
-        public static readonly string[] SimCity2000 = new string[] { /* URL List Here */ };
-        public static readonly string[] SimCity3000 = new string[] { /* URL List Here */ };
-        public static readonly string[] SimCity4 = new string[] { /* URL List Here */ };
-        public static readonly string[] SimCity2013 = new string[] { /* URL List Here */ };
-        public static readonly string[] SimCopter = new string[] { /* URL List Here */ };
-        public static readonly string[] StreetsOfSimCity = new string[] { /* URL List Here */ };
+        public static readonly string[] SimCityClassic = new string[]
+        {
+            "https://lambda.vgmtreasurechest.com/soundtracks/simcity-classic-1992/mekkylks/01%20Theme.mp3",
+        };
+        public static readonly string[] SimCitySNES = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/lzcnlkcxdp/01.%20Title.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/vlqjuqmroe/02.%20Menu.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/bgaeackhws/03.%20Dr.%20Wright%27s%20Theme.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/ejmcbseygq/04.%20Village.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/wdemrkzxra/05.%20Town.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/cxryywooio/06.%20City.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/otgiimjdau/07.%20Capital.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/byxqrupwhr/08.%20Metropolis.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/sqpqofdcrk/09.%20Achieved%20Megalopolis%21.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/oczffjzjms/10.%20Megalopolis.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/duugqyknzq/11.%20Growth.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/fosjqqljkt/12.%20Problem.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/ymrsdprono/13.%20Bad%20Evaluation.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/mmxohvjffa/14.%20Good%20Evaluation.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/vdkjtzlkzh/15.%20Budget.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/hvicqtzqgt/16.%20Congratulations%21.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/vwldvxwotq/17.%20Bonus%20~%20Dr.%20Wright%27s%20Theme.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/wbcuutjxnn/18.%20Good%20Night%2C%20See%20You%20Soon.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/jpwlvrpypt/19.%20Park%20Construction.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/vyzepqhwci/20.%20Mario.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/ecxqklgzyz/21.%20You%27re%20Fired%21.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-1991-snes/wddetctgzn/22.%20Alert.mp3",
+        };
+        public static readonly string[] SimCity2000 = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/rmhbkuun/01.%20Dawn%20of%20City.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/hxrrhkdn/02.%20Dancing%20Megalopolis.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/goecynuk/03.%20The%20SIM%20Magic%20for%20ENIAC.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/qytauzlg/04.%20The%20SIM%20Magic%20-%20Experience%20MODE.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/ahljlenb/05.%20The%20Construction%20-%20MAXIS.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/skwburzy/06.%20The%20Construction%20-%20LAKELAND.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/tzrleofi/07.%20The%20Construction%20-%20HAPPYLAND.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/drwkimjk/08.%20Selfish%20Citizen.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/xkfvlvwt/09.%20Skyscrapers.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/gaggloln/10.%20Tax%20%26%20Money.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/iadolmcz/11.%20Pale%20City.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/snlrzacj/12.%20Growing%20Up%20Town%20~%20Prologue.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/rdrbfybn/13.%20Growing%20Up%20Town%20~%20Theme.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/klauurzv/14.%20Work%20Work%20Work%21.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/elptxivh/15.%20Ultimate%20City.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/viexzdtj/16.%20Buildings.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/osxjbesb/17.%20Melancholic%20Mayor.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/epnujorq/18.%20Acid%20Land.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/ggmquymn/19.%20Misty%20Lake.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/sim-melody-from-simcity-2000/cymmyivd/20.%20Key%20of%20Success.mp3",
+        };
+        public static readonly string[] SimCity3000 = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/znqrismi/Building.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/fbpuepkg/Central%20Park%20Sunday.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/bptzpcqw/Concrete%20Jungle.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/munhwjhj/Illumination.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/zvelsfvo/Infrastructure.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/grnrtvum/Magic%20City.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/dcfqqipd/New%20Terrain.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/vrzxoaka/Night%20Life.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/wiyucend/Power%20Grid.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/asnnzkzr/Sim%20Broadway.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/lhbkwbtq/SimCity%202000%20Theme%20%28SC2KBUG%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/xqmlshgm/SimCity%203000%20Loop%20%28Jerry%20Martin%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/ruautngr/SimCity%203000%20Theme.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/pblccfuj/South%20Bridge.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/ldifdbwe/Unlimited%20-%20City%20Lights.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/hxqoufug/Unlimited%20-%20City%20of%20Dreams.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/xwmvrwhv/Unlimited%20-%20Desert%20Sand.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/qyxroxtb/Unlimited%20-%20SimCity%203000%20Unlimited%20autoplay%20music.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/gtcgyafb/Unlimited%20-%20SimCity%203000%20Unlimited%20Loop.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/chebqcme/Unlimited%20-%20Sixth%20Floor.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/klzrjwdd/Unlimited%20-%20The%20Howling%20Wind.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/fqnuhbla/Updown%20Town.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/vczpbona/Urban%20Complex.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-3000/ldihkerv/Window%20Washer%27s%20Dream.mp3",
+        };
+        public static readonly string[] SimCity4 = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/pcqytauw/101%20-%20Bumper%20to%20Bumper%20%28SC4ep1_01_M%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/bosxjery/102%20-%20The%20Morning%20Commute%20%28SC4ep1_04_M%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/obrbikdm/103%20-%20Wheels%20of%20Progress%20%28SC4ep1_05_M%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/zlfsztvx/104%20-%20Deserted%20%28SC4ep1_06_M%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/crbgbnmu/105%20-%20Metropolis%20%28SC4ep1_07_M%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/nhxrnsax/106%20-%20ElectriCITY%20%28SC4ep1_09_M%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/kkskuvuj/107%20-%20Floating%20Population%20%28SC4ep1_10_M%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/nmvujoog/108%20-%20Chain%20Reaction%20%28SC4ep1_11_M%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/nxwqqfcz/109%20-%20Rush%20Hour%20%28SC4m01%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/nszstmek/110%20-%20By%20the%20Bay%20%28SC4m02%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/menamltj/111%20-%20The%20New%20Hood%20%28SC4m03%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/osymrxmq/112%20-%20No%20Gridlock%20%28SC4m04%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/txflmekk/113%20-%20Re-Development%20%28SC4m05%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/wbsjqfcv/114%20-%20Bohemian%20Street%20Jam%20%28Simmin%27%29%20%28SC4m06%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/vpqhqgja/115%20-%20Urban%20Underground%20%28SC4m07%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/azxqmkqx/116%20-%20Street%20Sweeper%20%28SC4m08%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/pjayssky/117%20-%20Crosswalk%20Talk%20%28SC4m09%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/nsysrevq/118%20-%20Tarrmack%20%28SC4m10%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/sqzcomth/119%20-%20Night%20Owl%20%28SC4m11%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/gjbgcrcm/120%20-%20Epicenter%20%28EpiCentre%29%20%28SC4m12%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/asorpbmg/121%20-%20Gritty%20City%20%28Rockin%27%20Down%29%20%28SC4m13%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/wnanohrn/122%20-%20Zone%20System%20%28SC4m14%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/nbrhiuyi/123%20-%20Transit%20Angst%20%28SC4m15%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/xlonwsyr/124%20-%20Landfill%20%28SC4m16%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/otbztwzi/125%20-%20Oasis%20%28SC4m17%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/treumznq/201%20-%20Area%2052%20%28Bombay%29%20%28SC4ep1_02_G%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/ozewxxui/202%20-%20Dig%20Deep%20%28SC4ep1_03_G%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/dvppdzka/203%20-%20Arctica%20%28SC4ep1_08_G%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/zuasmgxt/204%20-%20Above%20the%20Clouds%20%28From%20Above%29%20%28SC4g1%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/awfmthez/205%20-%20Shape%20Shifter%20%28The%20Creator%29%20%28SC4g2%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/keneicmb/206%20-%20Terrain%20%28SC4g3%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/xjckrdqt/207%20-%20Without%20Form%20%28SC4g4%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/xhqkdkqx/208%20-%20Taking%20Shape%20%28SC4g5%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/qkckqbil/209%20-%20Primordial%20Dream%20%28SC4g6%29.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcity-4-deluxe/ftbdkptz/210%20-%20Parallel%20View%20%28SC4g7%29.mp3",
+        };
+        public static readonly string[] SimCity2013 = new string[]
+        {
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/rttlznsb/01%20-%20SimCity%20Theme.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/dksgebtr/02%20-%20Population%20-%201.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/ckrhhqjy/03%20-%20Building%20the%20Foundation.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/pborpbme/04%20-%20The%20Long%20Construction.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/nyhozexa/05%20-%20Analytics.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/mfqpbood/06%20-%20Cautionary%20Tale.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/ykcigjck/07%20-%20Town%20and%20Out.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/qyxphqkz/08%20-%20Living%20in%20Infrastructure.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/uxeejjsj/09%20-%20Clear%20Skyscrapers.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/vyeddjhi/10%20-%20Disaster%21.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/uxefnxbp/11%20-%20Clean%20Build%20of%20Health.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/ueltmcaw/12%20-%20Urban%20Sprawler.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/flprqbku/13%20-%20Metropolis%20Made%20Easy.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/vrxlokjo/14%20-%20A%20Tale%20of%20Sim%20Cities.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/uemzmmvv/15%20-%20All%20in%20a%20Decade%27s%20Work.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/pllxgnvo/16%20-%20SimCity%20Trailer.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/izyuccfs/17%20-%20Red%20City%20Lights.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/ypcrclzo/18%20-%20Population%20-%201%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/vkrbimlu/19%20-%20The%20Long%20Construction%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/prmihnpm/20%20-%20Building%20the%20Foundation%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/qrmjlels/21%20-%20Analytics%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/fzeyglnd/22%20-%20Town%20and%20Out%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/ekprrfec/23%20-%20Living%20in%20Infrastructure%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/baxnwuii/24%20-%20Clear%20Skyscrapers%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/qdvschdx/25%20-%20Urban%20Sprawler%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/dxfflqtx/26%20-%20Metropolis%20Made%20Easy%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/ehxodxgn/27%20-%20A%20Tale%20of%20Sim%20Cities%20%28Night%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/sim-city/xwpmqspu/28%20-%20Good%20Evening%2C%20%26%20Good%20Night.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/iwjgffjh/01.%20Cities%20of%20Tomorrow.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/gkgdvulw/02.%20SimCity%2C%20Novermber%202019.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/anlrdpmt/03.%20Population%20-%201%20%28Future%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/hfdzqexa/04.%20Building%20the%20Foundation%20%28Future%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/lceqpbld/05.%20The%20Long%20Construction%20%28Future%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/ifdczpzf/06.%20Town%20and%20Out%20%28Future%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/btmcdlsh/07.%20Living%20In%20Insfrastructure%20%28Future%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/ittolppf/08.%20Clear%20Skyscrapers%20%28Future%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/gqlifdby/09.%20Urban%20Sprawler%20%28Future%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/llvxyzcp/10.%20Metropolis%20Made%20Easy%20%28Future%20Mix%29.mp3",
+            "https://jetta.vgmtreasurechest.com/soundtracks/simcity-cities-of-tomorrow/qjwibgbp/11.%20A%20Tale%20of%20Sim%20Cities%20%28Future%20Mix%29.mp3",
+        };
+        public static readonly string[] SimCopter = new string[]
+        {
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/gxsxixoa/j2mx2eq1.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/ldlsimlr/jazz3mx1.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/clxhqkbe/jazz4mx1.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/oixpfhwj/jazz5mx1.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/qwmvqrmk/JAZZ6MX1.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/gffkmejj/jzz1m2eq.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/uuppfhvf/op13.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/phtusfyd/op27.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/tlxhpdyf/op53.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/gphpfflp/op57.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/pfflnkjp/rock1mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/xtcgzbjs/rock2mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/mgsxkgak/rock3mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/ynuihmoj/rock4mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/ckrhhpcr/rock5mx1.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/esdoixod/rock6mx1.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/buwxybjs/spring3.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/nlonzhns/sumr3.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/zwizytyn/tkno1mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/szvfnalf/tkno2mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/tbcjlcfv/tkno3mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/mwzhnsbc/tkno4mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/hghstoqj/tkno5mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/ayqirmko/tkno6mx2.mp3",
+            "https://nu.vgmtreasurechest.com/soundtracks/simcopter-gamerip/nlservcd/Valk.mp3",
+        };
+        public static readonly string[] StreetsOfSimCity = new string[]
+        {
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/svbsmhaf/01.%20The%20Streets%20of%20SimCity.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/xajrjuuq/02.%20Goin%27%20Down%20the%20Road.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/tvvuijuy/03.%20Middle%20Finger.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/hqfgnwuj/04.%20Speed%20Demon.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/kxgrqbjr/05.%20Sweet%20Octane.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/givcbbdj/06.%20Bad%20Gas.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/nlsesayr/07.%20Greased%20Monkey.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/qagfiyud/08.%20Beaumont%20Rag.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/gvlsfair/09.%20Brakes%20Are%20For%20Whimps.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/hmndemvr/10.%20Combustion%20Junction.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/xmtgbonb/11.%20Devils%20Dream.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/qyxrqfcx/12.%2075%20in%20a%2025.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/eccbcihm/13.%20Slippery%20When%20Wet.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/ohsvxcre/14.%20In%20the%20Garage%20Again.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/ujosvcxe/15.%20Piston%20in%20My%20Pocket.mp3",
+            "https://vgmtreasurechest.com/soundtracks/streets-of-simcity-1997/gssnnxbq/16.%20The%20Theme%20From%20Drive%20Shaft.mp3",
+        };
     }
     #endregion
 
@@ -295,7 +1265,6 @@ public partial class MusicPacks : Window
 
     #region Context Menu Handlers: The Sims 1
     private void Sims1_Base_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims1);
-    private void Sims1_LivinLarge_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims1LivinLarge);
     private void Sims1_HouseParty_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims1HouseParty);
     private void Sims1_HotDate_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims1HotDate);
     private void Sims1_Vacation_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims1Vacation);
@@ -314,15 +1283,6 @@ public partial class MusicPacks : Window
     private void Sims2_BonVoyage_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2BonVoyage);
     private void Sims2_Freetime_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2Freetime);
     private void Sims2_ApartmentLife_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2ApartmentLife);
-    private void Sims2_FamilyFunStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2FamilyFunStuff);
-    private void Sims2_GlamourLifeStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2GlamourLifeStuff);
-    private void Sims2_HappyHolidayStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2HappyHolidayStuff);
-    private void Sims2_CelebrationStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2CelebrationStuff);
-    private void Sims2_HMStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2HMStuff);
-    private void Sims2_TeenStyleStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2TeenStyleStuff);
-    private void Sims2_KitchenBathStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2KitchenBathStuff);
-    private void Sims2_IKEAStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2IKEAStuff);
-    private void Sims2_MansionGardenStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims2MansionGardenStuff);
     #endregion
 
     #region Context Menu Handlers: The Sims 3
@@ -332,21 +1292,9 @@ public partial class MusicPacks : Window
     private void Sims3_LateNight_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3LateNight);
     private void Sims3_Generations_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3Generations);
     private void Sims3_Pets_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3Pets);
-    private void Sims3_Showtime_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3Showtime);
     private void Sims3_Supernatural_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3Supernatural);
-    private void Sims3_Seasons_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3Seasons);
     private void Sims3_UniversityLife_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3UniversityLife);
-    private void Sims3_IslandParadise_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3IslandParadise);
     private void Sims3_IntoTheFuture_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3IntoTheFuture);
-    private void Sims3_HighEndLoftStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3HighEndLoftStuff);
-    private void Sims3_FastLaneStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3FastLaneStuff);
-    private void Sims3_OutdoorLivingStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3OutdoorLivingStuff);
-    private void Sims3_TownLifeStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3TownLifeStuff);
-    private void Sims3_MasterSuiteStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3MasterSuiteStuff);
-    private void Sims3_KatyPerryStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3KatyPerryStuff);
-    private void Sims3_DieselStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3DieselStuff);
-    private void Sims3_70s80s90sStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims370s80s90sStuff);
-    private void Sims3_MovieStuff_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.Sims3MovieStuff);
     #endregion
 
     #region Context Menu Handlers: The Sims Stories
@@ -357,7 +1305,6 @@ public partial class MusicPacks : Window
 
     #region Context Menu Handlers: The Sims Medieval
     private void SimsMedieval_Base_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.SimsMedievalBase);
-    private void SimsMedieval_PiratesNobles_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.SimsMedievalPiratesNobles);
     #endregion
 
     #region Direct Button Click Handlers: SimCity & Spinoffs
