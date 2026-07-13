@@ -86,17 +86,38 @@ namespace SimTools
                 {
                     _cts.Token.ThrowIfCancellationRequested();
 
-                    // Convert any relative paths or base percentages safely if using the manifest framework
-                    string absoluteUrl = _explicitUrls != null ? trackUrl : AppSettings.ResolveUrl(trackUrl);
-                    string fileName = System.IO.Path.GetFileName(new Uri(absoluteUrl).LocalPath);
-                    string destinationPath = System.IO.Path.Combine(_musicFolder, fileName);
-
-                    if (!File.Exists(destinationPath))
+                    try
                     {
-                        try
+                        string absoluteUrl;
+                        string destinationPath;
+                        string fileName;
+
+                        if (_explicitUrls != null)
+                        {
+                            // MusicPacks uses full URLs directly
+                            absoluteUrl = trackUrl;
+                            fileName = System.IO.Path.GetFileName(new Uri(absoluteUrl).LocalPath);
+                            destinationPath = System.IO.Path.Combine(_musicFolder, fileName);
+                        }
+                        else
+                        {
+                            // 1. Get the unescaped absolute web URL via AppSettings
+                            string combinedPath = $"%baseurl%/Resources/Music/{trackUrl}";
+                            absoluteUrl = AppSettings.ResolveUrl(combinedPath);
+
+                            // 2. Derive the local filename directly from the clean track name (preserving literal spaces)
+                            fileName = trackUrl;
+                            destinationPath = System.IO.Path.Combine(_musicFolder, fileName);
+
+                            // 3. ONLY escape the web address spaces for the HTTP request itself
+                            absoluteUrl = absoluteUrl.Replace(" ", "%20");
+                        }
+
+                        if (!File.Exists(destinationPath))
                         {
                             StatusLabel.Text = string.Format(LanguageManager.Get("Music", "DownloadingTrack", "Downloading: {0}"), fileName);
 
+                            // The web request receives the %20 URL, while File.Create uses the clean Windows path
                             using var response = await http.GetAsync(absoluteUrl, HttpCompletionOption.ResponseHeadersRead, _cts.Token);
                             if (response.IsSuccessStatusCode)
                             {
@@ -105,7 +126,10 @@ namespace SimTools
                                 await streamToReadFrom.CopyToAsync(streamToWriteTo, _cts.Token);
                             }
                         }
-                        catch { /* skip unreadable/missing track */ }
+                    }
+                    catch
+                    {
+                        /* Safely skip genuinely missing files */
                     }
 
                     completed++;
