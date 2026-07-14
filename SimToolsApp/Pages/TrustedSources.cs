@@ -16,22 +16,22 @@ namespace SimTools
         /// (e.g. "repo.simtools-app.com" is covered by "simtools-app.com").
         /// </summary>
         public static readonly string[] Mirrors =
-        [
+        {
             "us1-repo.simtools-app.com", // US SimTools repository domain
             "eu1-repo.simtools-app.com", // EU SimTools repository domain
             "localhost", // Localhost (for repo caching with RepoMaker)
-        ];
+        };
 
         /// <summary>
         /// Trusted IPv4/IPv6 addresses for the above domains.
         /// Add all IPs your server may present (primary, CDN, failover, etc.).
         /// </summary>
         public static readonly string[] IPs =
-        [
+        {
             "194.238.26.127", // US SimTools Repo IP
             "62.171.179.173", // EU SimTools Repo IP
             "127.0.0.1" // Localhost (for repo caching with RepoMaker)
-        ];
+        };
     }
 }
 

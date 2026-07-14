@@ -119,43 +119,44 @@ public sealed class GameSettingViewModel : INotifyPropertyChanged
 public partial class SettingsWindow : Window
 {
     // ── Static data (identical to original) ──────────────────────────────────
-    private static readonly (string Key, string Name)[] Games =
-    [
-        ("Sims1",                LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims")),
-        ("Sims2",                LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2")),
-        ("SimsLifeStories",      LanguageManager.Get("BuyTS3", "TSLife", "The Sims Life Stories")),
-        ("SimsPetStories",       LanguageManager.Get("BuyTS3", "TSPets", "The Sims Pet Stories")),
-        ("SimsCastawayStories",  LanguageManager.Get("BuyTS3", "TSCast", "The Sims Castaway Stories")),
-        ("Sims3",                LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3")),
-        ("Sims4",                LanguageManager.Get("BuyTS3", "TS4", "The Sims 4")),
-        ("SimsMedieval",         LanguageManager.Get("BuyTS3", "TSM1", "The Sims Medieval")),
-        ("SimTower",             LanguageManager.Get("BuyTS3", "SimTower", "SimTower")),
-        ("SimCopter",            LanguageManager.Get("BuyTS3", "Copter", "SimCopter")),
-        ("StreetsOfSimCity",     LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity")),
-        ("SimCity2000",          LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000")),
-        ("SimCity3000",          LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000 Unlimited")),
-        ("SimCity4",             LanguageManager.Get("BuyTS3", "SC4DE", "SimCity 4 Deluxe")),
-        ("SimCity2013",          LanguageManager.Get("BuyTS3", "SC2013", "SimCity (2013)")),
-    ];
+    private static readonly (string Key, string Name)[] Games = new (string Key, string Name)[]
+{
+    ("Sims1",                LanguageManager.Get("BuyTS3", "Sims1_Disc", "The Sims")),
+    ("Sims2",                LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2")),
+    ("SimsLifeStories",      LanguageManager.Get("BuyTS3", "TSLife", "The Sims Life Stories")),
+    ("SimsPetStories",       LanguageManager.Get("BuyTS3", "TSPets", "The Sims Pet Stories")),
+    ("SimsCastawayStories",  LanguageManager.Get("BuyTS3", "TSCast", "The Sims Castaway Stories")),
+    ("Sims3",                LanguageManager.Get("BuyTS3", "Sims3", "The Sims 3")),
+    ("Sims4",                LanguageManager.Get("BuyTS3", "TS4", "The Sims 4")),
+    ("SimsMedieval",         LanguageManager.Get("BuyTS3", "TSM1", "The Sims Medieval")),
+    ("SimTower",             LanguageManager.Get("BuyTS3", "SimTower", "SimTower")),
+    ("SimCopter",            LanguageManager.Get("BuyTS3", "Copter", "SimCopter")),
+    ("StreetsOfSimCity",     LanguageManager.Get("BuyTS3", "Streets", "Streets of SimCity")),
+    ("SimCity2000",          LanguageManager.Get("BuyTS3", "SC2K", "SimCity 2000")),
+    ("SimCity3000",          LanguageManager.Get("BuyTS3", "SC3K", "SimCity 3000 Unlimited")),
+    ("SimCity4",             LanguageManager.Get("BuyTS3", "SC4DE", "SimCity 4 Deluxe")),
+    ("SimCity2013",          LanguageManager.Get("BuyTS3", "SC2013", "SimCity (2013)")),
+};
 
     private static readonly System.Collections.Generic.HashSet<string> HasMods =
-    [
+    new System.Collections.Generic.HashSet<string>
+    {
         "Sims2", "SimsLifeStories", "SimsPetStories",
         "SimsCastawayStories", "Sims3", "Sims4", "SimsMedieval"
-    ];
+    };
 
     private static readonly System.Collections.Generic.HashSet<string> HasUserData =
-    [
-        // Replace these with the actual game keys that require User Data
+    new System.Collections.Generic.HashSet<string>
+    {
         "Sims2", "Sims3", "Sims4", "SimsLifeStories", "SimsPetStories", "SimsCastawayStories", "SimsMedieval", "SimCity4"
-    ];
+    };
 
-    private static readonly (string Code, string Name)[] Languages =
-    [
-        ("ar", "عربي"),    ("zh", "中国人"),  ("de", "Deutsch"),
-        ("en", "English"), ("es", "Español"), ("fr", "Français"),
-        ("ja", "日本語"),   ("pt", "Português"), ("ru", "Русский"),
-    ];
+    private static readonly (string Code, string Name)[] Languages = new (string Code, string Name)[]
+    {
+    ("ar", "عربي"),    ("zh", "中国人"),  ("de", "Deutsch"),
+    ("en", "English"), ("es", "Español"), ("fr", "Français"),
+    ("ja", "日本語"),   ("pt", "Português"), ("ru", "Русский"),
+    };
 
     // ── Runtime state ────────────────────────────────────────────────────────
     private readonly List<GameSettingViewModel> _gameViewModels;

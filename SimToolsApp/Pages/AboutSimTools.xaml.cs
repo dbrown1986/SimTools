@@ -310,8 +310,8 @@ public partial class AboutSimTools : Window
 
     // ── Slideshow ─────────────────────────────────────────────────────────────────
 
-    private static readonly string[] _slides =
-    [
+    private static readonly string[] _slides = new string[]
+    {
     "pack://application:,,,/Images/Dev/010.jpg",
     "pack://application:,,,/Images/Dev/009.jpg",
     "pack://application:,,,/Images/Dev/008.jpg",
@@ -322,7 +322,7 @@ public partial class AboutSimTools : Window
     "pack://application:,,,/Images/Dev/003.png",
     "pack://application:,,,/Images/Dev/002.jpg",
     "pack://application:,,,/Images/Dev/001.png",
-];
+    };
 
     private int _slideIndex = 0;
     private DispatcherTimer? _slideTimer;

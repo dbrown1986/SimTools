@@ -113,7 +113,9 @@ namespace SimTools
         /// </summary>
         public static string Resolve(string basePath, params string[] segments)
         {
-            var full = Path.Combine([basePath, .. segments]);
+            var combinedList = new List<string> { basePath };
+            combinedList.AddRange(segments);
+            var full = Path.Combine(combinedList.ToArray());
             var dir  = Path.GetExtension(segments[^1]) != ""
                 ? Path.GetDirectoryName(full)!
                 : full;

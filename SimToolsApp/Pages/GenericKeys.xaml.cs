@@ -186,7 +186,7 @@ public partial class GenericKeys : Window
         try
         {
             using var stream = App.GetResourceStream(uri)?.Stream;
-            if (stream is null) return [];
+            if (stream is null) return Array.Empty<string>();
 
             using var reader = new StreamReader(stream);
             return reader.ReadToEnd()
@@ -197,9 +197,10 @@ public partial class GenericKeys : Window
         }
         catch
         {
-            return [];
+            return Array.Empty<string>();
         }
-    }
+        ;
+        }
 
     // ══════════════════════════════════════════════════════════════════════
     //   Event Handlers

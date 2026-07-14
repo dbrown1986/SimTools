@@ -19,5 +19,5 @@ public class BuyTreeNode
     public ImageSource? Icon     { get; set; }
     public string?      Url      { get; set; }     // non-empty → open browser on select
     public string?      Message  { get; set; }     // non-null  → show info popup on select
-    public ObservableCollection<BuyTreeNode> Children { get; } = [];
+    public ObservableCollection<BuyTreeNode> Children { get; } = new ObservableCollection<BuyTreeNode>();
 }
