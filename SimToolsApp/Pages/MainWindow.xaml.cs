@@ -1409,7 +1409,10 @@ animationsmoothing = 0";
 
         // ── Sweet Treats Conversion Guide ─────────────────────────────────────────
         var ts3_sweetTreats = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3SP06.ico"), Header = LanguageManager.Get("Main", "STCG", "Sweet Treats Conversion Guide") };
-        ts3_sweetTreats.Click += (_, _) => MessageBox.Show(LanguageManager.Get("Main", "STCG_Msg", "Coming Soon..."), LanguageManager.Get("Main", "STCG_Title", "Sweet Treats"));  // ← replace with actual URL
+        ts3_sweetTreats.Click += (_, _) =>
+        {
+            new SweetTreats { Owner = this }.ShowDialog();
+        };
         sims3Item.Items.Add(ts3_sweetTreats);
 
         // ── nRaas Core Mods (sub-menu) ────────────────────────────────────────────

@@ -1,0 +1,167 @@
+﻿<!--
+// SimTools
+// Main Application
+// Sweet Treats Window XAML Design
+// (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.    
+-->
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimTools"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:Mime="clr-namespace:System.Net.Mime;assembly=System.Net.Mail"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Name="MainPage"
+        x:Class="SimTools.SweetTreats"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="SimTools - Main Page" Height="640" Width="840" WindowStyle="None" Icon="/Images/Icons/SimTools.ico" ResizeMode="NoResize">
+    <Grid x:Name="RootGrid" Width="840" Height="640">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Menu_Main.png"/>
+        </Grid.Background>
+        <Image x:Name="Clover" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="-1,0,0,0"/>
+        <Image x:Name="Clover2" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="203,0,0,0"/>
+        <Image x:Name="Clover3" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="407,0,0,0"/>
+        <Image x:Name="Clover4" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="611,0,0,0"/>
+        <Image x:Name="Clover5" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="815,0,0,0"/>
+        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
+        <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
+        <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
+        <!-- <Image HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Source="/plumbob.gif" Stretch="Fill"/> -->
+        <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
+        <TextBlock x:Name="KPSTInfo" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="31" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200" Text="This guide will summarize how you can Install the Retail CD copy of Katy Perry's Sweet Treats and migrate it to Steam using specific folder names and registry edits."/>
+        <!-- Settings button — top-right corner -->
+        <Button x:Name="ExitApp" Content="Button" HorizontalAlignment="Right" Margin="0,8,18,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="32" Height="32" Click="ExitApp_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/close-button.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/close-hover.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                      VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="BackButton" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="8,591,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BackButton_Click" FontSize="11" BorderBrush="{x:Null}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_red.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        
+
+        <TextBlock x:Name="KPSTInfo03" HorizontalAlignment="Left" Margin="184,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="61" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Text="It has been reported that this method no longer works for Origin/EA &gt; Steam. However, using the retail installation of The Sims 3 &gt; Steam still works. You will require an ISO image or physical disc of both the Sims 3 base game and Katy Perry's Sweet Treats in order to migrate the installation over to Steam."/>
+        <TextBlock x:Name="KPSTInfo02" HorizontalAlignment="Left" Margin="184,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="47" FontFamily="Tahoma" FontWeight="Bold" Foreground="DarkOrange" Text="These edits involve adding keys to your registry, so it is crucial that you follow them implicitly. SimTools is not responsible for any damage done to your operating system. As a rule of thumb, take a moment to backup your registry in case you need to restore it."/>
+
+        <!-- Accordions Container -->
+        <ScrollViewer x:Name="AccordionScroller" HorizontalAlignment="Left" Margin="184,225,0,0" VerticalAlignment="Top" Width="588" Height="380" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="AccordionContainer">
+                <!-- Accordion 1 -->
+                <Expander x:Name="Install" Header="Installation Steps" IsExpanded="False" FontFamily="Tahoma" FontWeight="Bold" FontSize="12" Foreground="White" Background="#FF2E2E2E" Margin="0,0,0,8">
+                    <Expander.Style>
+                        <Style TargetType="Expander">
+                            <Setter Property="Background" Value="#FF3E3E3E"/>
+                        </Style>
+                    </Expander.Style>
+                    <TextBlock x:Name="InstallSteps" TextWrapping="Wrap" FontWeight="Normal" Background="#3FEC5600"><Run Text="1.) You will need a retail copy of the Base Game and the Katy Perry Sweet Treats SP before you begin. This can either be a physical disc, or a digital ISO image of the games."/><LineBreak/><Run Text="2.) Install the base game with your own key or a key from the Generic Keys Section."/><LineBreak/><Run Text="3.) Install the Sweet Treats SP with your own key or a key from the Generic Keys Section."/><LineBreak/><Run Text="4.) Navigate to the retail installation directory (typically C:\Program Files (x86)\Electronic Arts\The Sims 3)"/><LineBreak/><Run Text="5.) Find the folder named &quot;Katy Perry's Sweet Treats&quot; and open the folder."/><LineBreak/><Run Text="6.) Open a seperate explorer window and navigate to your Sims 3 Steam directory (typically C:\Program Files (x86)\Steam\steamapps\common\The Sims 3)."/><LineBreak/><Run Text="7.) With both your retail path and Steam Path open, create a new folder in the Steam path and name it 'SP6'."/><LineBreak/><Run Text="8.) Open the new SP6 folder you just created."/><LineBreak/><Run Text="9.) Copy all contents of the 'Katy Perry's Sweet Treats' directory to your new 'SP6' directory."/><LineBreak/><Run/><LineBreak/><Run Text="This concludes this section. Please proceed to Registry Modifications."/></TextBlock>
+                </Expander>
+
+                <!-- Accordion 2 -->
+                <Expander x:Name="Accordion2" Header="Registry Modifications" IsExpanded="False" FontFamily="Tahoma" FontWeight="Bold" FontSize="12" Foreground="White" Background="#FF2E2E2E" Margin="0,0,0,8">
+                    <Expander.Style>
+                        <Style TargetType="Expander">
+                            <Setter Property="Background" Value="#FF3E3E3E"/>
+                        </Style>
+                    </Expander.Style>
+                    <TextBlock x:Name="Accordion2Content" TextWrapping="Wrap" FontFamily="Tahoma" FontSize="11" Foreground="White" Background="#3FEC5600" Padding="8"><Run Text="⚠️ WARNING: Backup your registry before proceeding!"/><LineBreak/><Run/><LineBreak/><Run Text="1.) Press Windows + R on your keyboard"/><LineBreak/><Run Text="2.) Type regedit and hit enter or click OK (Registry Editor)"/><LineBreak/><Run Text="3.) Navigate to HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Sims(Steam)"/><LineBreak/><Run Text="4.) Right click on the Sims(Steam) folder and go to 'New' and then select 'Key.' "/><LineBreak/><Run Text="&#x9;Name this key: The Sims 3 Katy Perry Sweet Treats"/><LineBreak/><Run Text="5.) In this key, right click anywhere and click 'New' and choose 'String.' Name this String &quot;contentid&quot; and enter the value &quot;sims3_sp06_sku7&quot; (without the quotes)"/><LineBreak/><Run Text="6.) Create another string with the name &quot;country&quot; and for the value, put the same value that's in the key for the base game, for the United States, this value is &quot;US&quot;"/><LineBreak/><Run Text="7.) Create another string with the name &quot;DisplayName&quot; and the value &quot;The Sims 3 Katy Perry's Sweet Treats&quot;"/><LineBreak/><Run Text="8.) Create another string with the name &quot;exepath&quot;. The value is the location of the Stuff pack's exe. If you installed the game in Steam's default location, this value is &quot;C:\Program Files (x86)\Steam\steamapps\common\The Sims 3\SP6\Game\\Bin\TS3SP06.exe&quot;"/><LineBreak/><Run Text="If you installed Steam on the root directory, highly recommended, the value would be: &quot;C:\Steam\steamapps\common\The Sims 3\SP6\Game\Bin\TS3SP06.exe&quot;. Adjust this value accordingly if you installed Steam somewhere else"/><LineBreak/><Run Text="9.) Create another string with the name &quot;install dir&quot; and again its value is based on Steam's install directory. The two most common values would be &quot;C:\Program Files (x86)\Steam\steamapps\common\The Sims 3\SP6\&quot; or &quot;C:\Steam\steamapps\common\The Sims 3\SP6\&quot;. Adjust accordingly if you installed somewhere else"/><LineBreak/><Run Text="10.) Create another string named &quot;locale&quot; and copy the value from the same string in the base game's registry key. For the United States this value is &quot;en-US&quot;"/><LineBreak/><Run Text="11.) Right click and choose new, and select DWORD and name it &quot;productid&quot; and enter the value of &quot;d&quot; as a hexadecimal. Do not make a mistake here, if you don't get this part right the stuff pack won't work or it could break other stuff packs or expansions"/><LineBreak/><Run Text="12.) Create another DWORD named &quot;sku&quot; with a value of &quot;7&quot; as a hexadecimal"/><LineBreak/><Run Text="13.) Create another DWORD named &quot;telemetry&quot; with the value of &quot;0&quot; as a hexadecimal"/><LineBreak/><Run Text="14.) Close RegEdit"/><LineBreak/><Run Text="15.) Restart your computer to apply changes"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+                </Expander>
+
+                <!-- Accordion 3 -->
+                <Expander x:Name="Accordion3" Header="Possible EA App/Origin Workaround (Untested)" IsExpanded="False" FontFamily="Tahoma" FontWeight="Bold" FontSize="12" Foreground="#FFEC5600" Background="#FF2E2E2E" Margin="0,0,0,0">
+                    <Expander.Style>
+                        <Style TargetType="Expander">
+                            <Setter Property="Background" Value="#FF3E3E3E"/>
+                        </Style>
+                    </Expander.Style>
+                    <TextBlock x:Name="Accordion3Content" TextWrapping="Wrap" FontFamily="Tahoma" FontSize="11" Foreground="White" Background="#3FEC5600" Padding="8"><Run Text="1.) Copy The Sims 3 folder (in Documents &gt; Electronic Arts) to a safe location."/><LineBreak/><Run Text="2.) Uninstall Steam Sims 3."/><LineBreak/><Run Text="3.) Download and install the base game + KPST from EA App/Origin."/><LineBreak/><Run Text="4.) Start the game up once to ensure it will run."/><LineBreak/><Run Text="5.) Delete the newly-created The Sims 3 folder (in Documents &gt; Electronic Arts) so the game won't get confused about version numbers."/><LineBreak/><Run Text="6.) Copy the registry entries for the Katy Perry stuff pack to a file on my desktop. You'd be looking for two entries - both for a Stuff Pack under HKEY_LOCAL_MACHINE &gt; SOFTWARE &gt; WOW6432Node &gt; Sims(Steam). One should be the name of the stuff pack, then its name and key (ERGC), the other should include its &quot;DisplayName&quot; and install directory."/><LineBreak/><Run Text="7.) Install the Steam version of the base game."/><LineBreak/><Run Text="8.) Start the Steam Sims 3 up once to make sure it will run."/><LineBreak/><Run Text="9.) Copy the SP06 folder from the Origin install directory to the Steam install directory."/><LineBreak/><Run Text="10.) Remove the old Katy Perry stuff pack entries from the registry (if they exist)."/><LineBreak/><Run Text="11.) Use a text editor to change my two registry entries (from 7, above) to match the following:"/><LineBreak/><Run Text="(where XXXX-XXXX-XXXX-XXXX-XXX is the key for the game):"/><LineBreak/><Run Text="Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Electronic Arts\Sims(Steam)\The Sims 3 Katy Perry Sweet Treats] [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Electronic Arts\Sims(Steam)\The Sims 3 Katy Perry Sweet Treats\ergc] @=&quot;XXXX-XXXX-XXXX-XXXX-XXXX&quot;"/><LineBreak/><Run Text="12.) For the other file, ensure that &quot;install dir&quot; matches your actual install directory for Steam Sims 3:"/><LineBreak/><Run Text="Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Sims(Steam)\The Sims 3 Katy Perry Sweet Treats] &quot;ContentID&quot;=&quot;sims3_sp06_sku7&quot; &quot;DisplayName&quot;=&quot;The Sims 3 Katy Perry's Sweet Treats&quot; &quot;ErgcRegPath&quot;=&quot;Electronic Arts\\Sims(Steam)\\The Sims 3 Katy Perry Sweet Treats\\ergc&quot; &quot;install dir&quot;=&quot;N:\\Games\\Steam\\steamapps\\common\\The Sims 3\\SP06&quot; &quot;locale&quot;=&quot;en-US&quot; &quot;country&quot;=&quot;US&quot; &quot;productid&quot;=dword:0000000d &quot;sku&quot;=dword:00000007 &quot;telemetry&quot;=dword:00000000"/><LineBreak/><Run Text="13.) Import these modified files into the registry."/><LineBreak/><Run Text="14.) Start the game up once to make sure it will still run."/><LineBreak/><Run Text="15.) Install the rest of the EPs/SPs from Steam."/><LineBreak/><Run Text="16.) Start the game up once more to make sure everyting still works."/><LineBreak/><Run Text="17.) Delete The Sims 3 folder from Documents &gt; Electronic Arts and put your original folder back."/></TextBlock>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+        <TextBlock x:Name="KPSTInfo04" HorizontalAlignment="Left" Margin="184,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="31" FontFamily="Tahoma" FontWeight="Bold" Foreground="DarkOrange" Text="At some point, I will endeavor to study these methods in-depth and automate the conversion process within SimTools, so that it can also be done with the click of a button."/>
+        <Button x:Name="Convert2Steam" Content="Convert It For Me" HorizontalAlignment="Left" Margin="8,226,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="Convert2Steam_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_normal.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_red.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>
