@@ -67,7 +67,7 @@
                                    Text="♪" FontSize="28"
                                    Foreground="#AAAAAA"
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center" FontFamily="Tahoma"/>
                         <!-- Populated from ID3 tag data at runtime -->
                         <Image x:Name="AlbumArtImage"
                                Stretch="UniformToFill"
@@ -82,7 +82,7 @@
                                Foreground="White"
                                FontSize="12" FontWeight="SemiBold"
                                TextTrimming="CharacterEllipsis"
-                               TextWrapping="NoWrap"/>
+                               TextWrapping="NoWrap" FontFamily="Tahoma"/>
                     <TextBlock x:Name="ArtistBlock"
                                Text=""
                                Foreground="#AAAAAA"
@@ -94,14 +94,14 @@
                                Text="0:00 / 0:00"
                                Foreground="#AAAAAA"
                                FontSize="10"
-                               Margin="0,8,0,0"/>
+                               Margin="0,8,0,0" FontFamily="Tahoma"/>
                 </StackPanel>
             </Grid>
 
             <!-- ═══ Control buttons ═════════════════════════════════════════ -->
             <!-- Order: ⏮  ▶/⏸  ⏭  ■  🔊  ♪ -->
             <UniformGrid Rows="1" Margin="0,2,0,0">
-                <Button Content="⏮" Click="SkipBack_Click">
+                <Button Content="⏮" Click="SkipBack_Click" FontFamily="Tahoma">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
 
@@ -147,7 +147,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="PlayPauseBtn" Content="▶" Click="PlayPause_Click">
+                <Button x:Name="PlayPauseBtn" Content="▶" Click="PlayPause_Click" FontFamily="Tahoma">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
 
@@ -193,7 +193,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button Content="⏭" Click="SkipForward_Click">
+                <Button Content="⏭" Click="SkipForward_Click" FontFamily="Tahoma">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
 
@@ -239,7 +239,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button Content="■" Click="Stop_Click">
+                <Button Content="■" Click="Stop_Click" FontFamily="Tahoma">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
 
@@ -285,7 +285,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="MuteBtn" Content="🔊" Click="Mute_Click">
+                <Button x:Name="MuteBtn" Content="🔊" Click="Mute_Click" FontFamily="Tahoma">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
 
@@ -332,7 +332,7 @@
                     </Button.Style>
                 </Button>
                 <!-- ♪ button opens the song-selection popup -->
-                <Button Content="♪" Click="Note_Click">
+                <Button Content="♪" Click="Note_Click" FontFamily="Tahoma">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource PlayerBtn}">
 

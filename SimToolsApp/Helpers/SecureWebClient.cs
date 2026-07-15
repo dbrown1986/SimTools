@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Tls;
 using Org.BouncyCastle.Tls.Crypto.Impl.BC;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Net.Sockets;
@@ -13,11 +14,16 @@ namespace SimTools
     public static class SecureWebClient
     {
         /// <summary>
-        /// Sends a secure HTTP POST request with a JSON payload using BouncyCastle TLS.
-        /// Bypasses native Windows Schannel entirely (fixes Win 7 SSL issues).
+        /// Downloads a file from a secure URL using BouncyCastle TLS, bypassing Windows Schannel.
+        /// Automatically follows HTTP 301/302/307/308 redirects.
         /// </summary>
-        public static async Task<string> PostJsonAsync(string url, string jsonData)
+        public static async Task DownloadFileAsync(string url, string destinationPath, int redirectCount = 0)
         {
+            if (redirectCount > 5)
+            {
+                throw new Exception("Too many HTTP redirects.");
+            }
+
             var uri = new Uri(url);
             string host = uri.Host;
             int port = uri.Port == -1 ? 443 : uri.Port;
@@ -28,52 +34,99 @@ namespace SimTools
                 Stream rawStream = tcpClient.GetStream();
 
                 var tlsClientProtocol = new TlsClientProtocol(rawStream);
-                tlsClientProtocol.Connect(new LegacyTlsClient());
+
+                // PASSING HOST FOR SNI
+                tlsClientProtocol.Connect(new LegacyTlsClient(host));
 
                 using (Stream secureStream = tlsClientProtocol.Stream)
                 {
-                    byte[] bodyBytes = Encoding.UTF8.GetBytes(jsonData);
-
-                    // Manually construct the raw HTTP/1.1 POST Request headers
-                    string httpRequest = $"POST {uri.PathAndQuery} HTTP/1.1\r\n" +
+                    // Construct HTTP request with spoofed browser headers
+                    string httpRequest = $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
                                          $"Host: {host}\r\n" +
-                                         "Content-Type: application/json; charset=utf-8\r\n" +
-                                         $"Content-Length: {bodyBytes.Length}\r\n" +
-                                         "Connection: close\r\n" +
-                                         "User-Agent: SimToolsUpdater\r\n\r\n";
+                                         "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\r\n" +
+                                         "Referer: https://vgmtreasurechest.com/\r\n" +
+                                         "Connection: close\r\n\r\n";
 
-                    byte[] headerBytes = Encoding.ASCII.GetBytes(httpRequest);
-
-                    // Write the headers, then immediately stream the JSON body payload
-                    await secureStream.WriteAsync(headerBytes, 0, headerBytes.Length);
-                    await secureStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
+                    byte[] requestBytes = Encoding.ASCII.GetBytes(httpRequest);
+                    await secureStream.WriteAsync(requestBytes, 0, requestBytes.Length);
                     await secureStream.FlushAsync();
 
-                    // Parse and process the raw TCP response stream
-                    using (var ms = new MemoryStream())
+                    // Read first block to extract and parse the headers
+                    using (var headerMs = new MemoryStream())
                     {
-                        await secureStream.CopyToAsync(ms);
-                        byte[] responseBytes = ms.ToArray();
+                        byte[] buffer = new byte[8192];
+                        int bytesRead;
+                        int headerEndIndex = -1;
 
-                        int headerEndIndex = FindHeaderEnd(responseBytes);
+                        while ((bytesRead = await secureStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                        {
+                            await headerMs.WriteAsync(buffer, 0, bytesRead);
+                            byte[] currentData = headerMs.ToArray();
+                            headerEndIndex = FindHeaderEnd(currentData);
+
+                            if (headerEndIndex != -1)
+                            {
+                                break;
+                            }
+                        }
+
                         if (headerEndIndex == -1)
+                        {
                             throw new Exception("Invalid HTTP response format.");
-
-                        // Split headers from body
-                        string headersText = Encoding.ASCII.GetString(responseBytes, 0, headerEndIndex);
-                        string bodyText = Encoding.UTF8.GetString(responseBytes, headerEndIndex, responseBytes.Length - headerEndIndex);
-
-                        // Check the headers for standard HTTP error statuses
-                        if (headersText.Contains("HTTP/1.1 409") || headersText.Contains("409 Conflict"))
-                        {
-                            throw new HttpRequestException("409 Conflict", null, System.Net.HttpStatusCode.Conflict);
-                        }
-                        if (headersText.Contains("HTTP/1.1 400") || headersText.Contains("HTTP/1.1 404") || headersText.Contains("HTTP/1.1 500"))
-                        {
-                            throw new HttpRequestException("Server rejected activation.", null, System.Net.HttpStatusCode.BadRequest);
                         }
 
-                        return bodyText;
+                        byte[] fullBufferedHeader = headerMs.ToArray();
+                        string headerText = Encoding.ASCII.GetString(fullBufferedHeader, 0, headerEndIndex);
+
+                        // Check for Redirects (301, 302, 307, 308)
+                        string firstLine = headerText.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                        bool isRedirect = firstLine.Contains(" 301 ") ||
+                                         firstLine.Contains(" 302 ") ||
+                                         firstLine.Contains(" 307 ") ||
+                                         firstLine.Contains(" 308 ");
+
+                        if (isRedirect)
+                        {
+                            string redirectUrl = string.Empty;
+                            string[] headerLines = headerText.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                            foreach (var line in headerLines)
+                            {
+                                if (line.StartsWith("Location:", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    redirectUrl = line.Substring(9).Trim();
+                                    break;
+                                }
+                            }
+
+                            if (!string.IsNullOrEmpty(redirectUrl))
+                            {
+                                // Resolve relative redirect URLs
+                                if (!redirectUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    redirectUrl = new Uri(uri, redirectUrl).AbsoluteUri;
+                                }
+
+                                // Follow the redirect recursively
+                                await DownloadFileAsync(redirectUrl, destinationPath, redirectCount + 1);
+                                return;
+                            }
+                        }
+
+                        // Not a redirect: write body data to the target file
+                        using (var fs = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                        {
+                            int initialBodySize = fullBufferedHeader.Length - headerEndIndex;
+                            if (initialBodySize > 0)
+                            {
+                                await fs.WriteAsync(fullBufferedHeader, headerEndIndex, initialBodySize);
+                            }
+
+                            // Stream the rest of the body directly to disk
+                            while ((bytesRead = await secureStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                            {
+                                await fs.WriteAsync(buffer, 0, bytesRead);
+                            }
+                        }
                     }
                 }
             }
@@ -82,48 +135,12 @@ namespace SimTools
         /// <summary>
         /// Downloads a file from a secure URL using modern BouncyCastle v2.x cryptographic TLS engine,
         /// completely bypassing Windows Schannel. Perfect for Windows 7.
+        /// Automatically resolves HTTP redirects.
         /// </summary>
         public static async Task DownloadFileAsync(string url, string destinationPath)
         {
-            var uri = new Uri(url);
-            string host = uri.Host;
-            int port = uri.Port == -1 ? 443 : uri.Port;
-
-            using (var tcpClient = new TcpClient())
-            {
-                await tcpClient.ConnectAsync(host, port);
-                Stream rawStream = tcpClient.GetStream();
-
-                var tlsClientProtocol = new TlsClientProtocol(rawStream);
-                tlsClientProtocol.Connect(new LegacyTlsClient());
-
-                using (Stream secureStream = tlsClientProtocol.Stream)
-                {
-                    string httpRequest = $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
-                                         $"Host: {host}\r\n" +
-                                         "Connection: close\r\n" +
-                                         "User-Agent: SimToolsUpdater\r\n\r\n";
-
-                    byte[] requestBytes = Encoding.ASCII.GetBytes(httpRequest);
-                    await secureStream.WriteAsync(requestBytes, 0, requestBytes.Length);
-                    await secureStream.FlushAsync();
-
-                    using (var ms = new MemoryStream())
-                    {
-                        await secureStream.CopyToAsync(ms);
-                        byte[] responseBytes = ms.ToArray();
-
-                        int headerEndIndex = FindHeaderEnd(responseBytes);
-                        if (headerEndIndex == -1)
-                            throw new Exception("Invalid HTTP response format.");
-
-                        using (var fs = new FileStream(destinationPath, FileMode.Create, FileAccess.Write))
-                        {
-                            await fs.WriteAsync(responseBytes, headerEndIndex, responseBytes.Length - headerEndIndex);
-                        }
-                    }
-                }
-            }
+            // Redirect to the overload that handles redirects recursively
+            await DownloadFileAsync(url, destinationPath, 0);
         }
 
         /// <summary>
@@ -146,7 +163,9 @@ namespace SimTools
                 Stream rawStream = tcpClient.GetStream();
 
                 var tlsClientProtocol = new TlsClientProtocol(rawStream);
-                tlsClientProtocol.Connect(new LegacyTlsClient());
+
+                // PASSING HOST FOR SNI
+                tlsClientProtocol.Connect(new LegacyTlsClient(host));
 
                 using (Stream secureStream = tlsClientProtocol.Stream)
                 {
@@ -292,12 +311,135 @@ namespace SimTools
 
             return string.Empty;
         }
+
+        /// <summary>
+        /// Sends a secure HTTP POST request with a JSON payload using BouncyCastle TLS.
+        /// </summary>
+        public static async Task<string> PostJsonAsync(string url, string jsonPayload)
+        {
+            var uri = new Uri(url);
+            string host = uri.Host;
+            int port = uri.Port == -1 ? 443 : uri.Port;
+
+            using (var tcpClient = new TcpClient())
+            {
+                await tcpClient.ConnectAsync(host, port);
+                Stream rawStream = tcpClient.GetStream();
+
+                var tlsClientProtocol = new TlsClientProtocol(rawStream);
+
+                // PASSING HOST FOR SNI
+                tlsClientProtocol.Connect(new LegacyTlsClient(host));
+
+                using (Stream secureStream = tlsClientProtocol.Stream)
+                {
+                    byte[] bodyBytes = Encoding.UTF8.GetBytes(jsonPayload);
+
+                    // Construct HTTP POST request headers
+                    string httpRequest = $"POST {uri.PathAndQuery} HTTP/1.1\r\n" +
+                                         $"Host: {host}\r\n" +
+                                         "User-Agent: SimToolsApp\r\n" +
+                                         "Content-Type: application/json; charset=utf-8\r\n" +
+                                         $"Content-Length: {bodyBytes.Length}\r\n" +
+                                         "Connection: close\r\n\r\n";
+
+                    byte[] headerBytes = Encoding.ASCII.GetBytes(httpRequest);
+
+                    // Write headers, then write payload body
+                    await secureStream.WriteAsync(headerBytes, 0, headerBytes.Length);
+                    await secureStream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
+                    await secureStream.FlushAsync();
+
+                    // Read response headers & body
+                    using (var ms = new MemoryStream())
+                    {
+                        byte[] buffer = new byte[8192];
+                        int bytesRead;
+                        int headerEndIndex = -1;
+
+                        while ((bytesRead = await secureStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                        {
+                            await ms.WriteAsync(buffer, 0, bytesRead);
+                            byte[] currentData = ms.ToArray();
+                            headerEndIndex = FindHeaderEnd(currentData);
+
+                            if (headerEndIndex != -1)
+                            {
+                                break;
+                            }
+                        }
+
+                        if (headerEndIndex == -1)
+                        {
+                            throw new Exception("Invalid HTTP response format from security server.");
+                        }
+
+                        byte[] fullBufferedResponse = ms.ToArray();
+
+                        // Stream the rest of the response body if there's more remaining
+                        using (var bodyMs = new MemoryStream())
+                        {
+                            int initialBodySize = fullBufferedResponse.Length - headerEndIndex;
+                            if (initialBodySize > 0)
+                            {
+                                await bodyMs.WriteAsync(fullBufferedResponse, headerEndIndex, initialBodySize);
+                            }
+
+                            while ((bytesRead = await secureStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                            {
+                                await bodyMs.WriteAsync(buffer, 0, bytesRead);
+                            }
+
+                            return Encoding.UTF8.GetString(bodyMs.ToArray());
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public class LegacyTlsClient : DefaultTlsClient
     {
-        public LegacyTlsClient() : base(new BcTlsCrypto(new SecureRandom()))
+        private readonly string _host;
+
+        public LegacyTlsClient(string host) : base(new BcTlsCrypto(new SecureRandom()))
         {
+            _host = host;
+        }
+
+        public override ProtocolVersion[] GetProtocolVersions()
+        {
+            // Specifically negotiates down to TLS 1.0, but starts at TLS 1.3
+            return ProtocolVersion.TLSv13.DownTo(ProtocolVersion.TLSv10);
+        }
+
+        public override IDictionary<int, byte[]> GetClientExtensions()
+        {
+            IDictionary<int, byte[]> extensions = base.GetClientExtensions();
+            if (extensions == null)
+            {
+                extensions = new Dictionary<int, byte[]>();
+            }
+
+            // SNI check: Verify host exists and isn't a raw IP address
+            if (!string.IsNullOrEmpty(_host) &&
+                Uri.CheckHostName(_host) != UriHostNameType.IPv4 &&
+                Uri.CheckHostName(_host) != UriHostNameType.IPv6)
+            {
+                var serverNameList = new List<ServerName>
+                {
+                    new ServerName(NameType.host_name, Encoding.ASCII.GetBytes(_host))
+                };
+
+                // Compile extensions to byte array payload matching v2.x specs
+                var sniList = new ServerNameList(serverNameList);
+                var memoryStream = new MemoryStream();
+                sniList.Encode(memoryStream);
+
+                extensions[ExtensionType.server_name] = memoryStream.ToArray();
+            }
+
+            return extensions;
         }
 
         public override TlsAuthentication GetAuthentication()
