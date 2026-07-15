@@ -22,10 +22,18 @@ Project File
 		<DebuggerSupport>false</DebuggerSupport>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Platforms>AnyCPU;x86</Platforms>
+		<NoWarn>$(NoWarn);NETSDK1057;NETSDK1206</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <None Remove="Uninstaller.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
+	  <PackageReference Include="SharpCompress" Version="0.50.0" />
+	  <PackageReference Include="System.CodeDom" Version="6.0.0" />
+	  <PackageReference Include="System.Management" Version="6.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>

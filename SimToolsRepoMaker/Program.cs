@@ -1,13 +1,23 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Net.Http;
-using System.Diagnostics;
+using System.Net;
 using System.Threading.Tasks;
+using SimTools;
+
+public static class SecurityProtocolHelper
+{
+    public static void EnableModernSecurityProtocols()
+    {
+        // 3072 is the numerical value for SecurityProtocolType.Tls12. 
+        // Casting it allows old frameworks (.NET 4.0) to compile it even if the enum isn't defined natively.
+        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+    }
+}
 
 class Program
 {
-    private static readonly HttpClient client = new HttpClient();
     private const string ListFileName = "recursive_list.txt";
     private const string ApacheZipName = "apache-win.zip";
     private const string ApacheExtractDir = "apache-win";
@@ -260,17 +270,9 @@ class Program
             {
                 Console.WriteLine($"Downloading: {localRelativePath}");
 
-                using (HttpResponseMessage response = await client.GetAsync(validUri, HttpCompletionOption.ResponseHeadersRead))
-                {
-                    response.EnsureSuccessStatusCode();
-                    using (Stream streamToReadFrom = await response.Content.ReadAsStreamAsync())
-                    {
-                        using (Stream streamToWriteTo = File.Open(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
-                        {
-                            await streamToReadFrom.CopyToAsync(streamToWriteTo);
-                        }
-                    }
-                }
+                // Replace the HttpClient block with SecureWebClient
+                await SecureWebClient.DownloadFileAsync(urlStr, destinationPath);
+
                 downloadCount++;
             }
             catch (Exception ex)

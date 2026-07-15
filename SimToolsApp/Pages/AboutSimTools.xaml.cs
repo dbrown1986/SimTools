@@ -6,7 +6,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
@@ -144,23 +143,34 @@ public partial class AboutSimTools : Window
             const string officialVersionUrl = "https://us1-repo.simtools-app.com/version.txt";
             string userVersionUrl = AppSettings.ResolveUrl("%baseurl%/version.txt");
 
-            using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
-            HttpResponseMessage? resp = null;
+            string body = string.Empty;
 
-            // Try the official repo first regardless of user settings
-            try   { resp = await http.GetAsync(officialVersionUrl); }
-            catch { /* unreachable — fall through to user repo */ }
-
-            // Fall back to the user-configured repo only if the official one failed
-            if ((resp == null || !resp.IsSuccessStatusCode)
-                && !userVersionUrl.Equals(officialVersionUrl, StringComparison.OrdinalIgnoreCase))
+            // Try the official repo first using BouncyCastle to bypass Schannel
+            try
             {
-                resp?.Dispose();
-                try   { resp = await http.GetAsync(userVersionUrl); }
-                catch { /* also unreachable */ }
+                body = await SecureWebClient.GetStringAsync(officialVersionUrl);
+            }
+            catch
+            {
+                /* unreachable — fall through to user repo */
             }
 
-            if (resp == null || !resp.IsSuccessStatusCode)
+            // Fall back to the user-configured repo only if the official one failed
+            if (string.IsNullOrWhiteSpace(body)
+                && !userVersionUrl.Equals(officialVersionUrl, StringComparison.OrdinalIgnoreCase))
+            {
+                try
+                {
+                    body = await SecureWebClient.GetStringAsync(userVersionUrl);
+                }
+                catch
+                {
+                    /* also unreachable */
+                }
+            }
+
+            // If both attempts failed, show failure UI
+            if (string.IsNullOrWhiteSpace(body))
             {
                 if (!isAutomatic)
                     MessageBox.Show(
@@ -171,7 +181,6 @@ public partial class AboutSimTools : Window
                 return;
             }
 
-            string body = await resp.Content.ReadAsStringAsync();
             string[] lines = body.Split(
                 new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 

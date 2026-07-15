@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
@@ -45,7 +44,6 @@ namespace SimTools
             try
             {
                 Directory.CreateDirectory(_musicFolder);
-                using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
                 List<string>? tracks = _explicitUrls;
 
                 // If no hardcoded URLs were provided, fall back to downloading the manifest file
@@ -54,18 +52,22 @@ namespace SimTools
                     StatusLabel.Text = LanguageManager.Get("Music", "Fetching", "Fetching track list…");
                     string manifestUrl = AppSettings.ResolveUrl("%baseurl%/Resources/Music/manifest.txt");
 
-                    using var manifestResp = await http.GetAsync(manifestUrl, _cts.Token);
-                    if (!manifestResp.IsSuccessStatusCode)
+                    try
                     {
+                        // Bypasses Schannel entirely using our custom BouncyCastle engine!
+                        string manifestText = await SecureWebClient.GetStringAsync(manifestUrl);
+
+                        tracks = manifestText.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                                             .Select(line => line.Trim())
+                                             .Where(line => !string.IsNullOrEmpty(line))
+                                             .ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log/handle error details if needed
                         StatusLabel.Text = LanguageManager.Get("Music", "NoServer", "Could not reach the music server.");
                         return;
                     }
-
-                    string manifestText = await manifestResp.Content.ReadAsStringAsync();
-                    tracks = manifestText.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
-                                         .Select(line => line.Trim())
-                                         .Where(line => !string.IsNullOrEmpty(line))
-                                         .ToList();
                 }
 
                 if (tracks == null || tracks.Count == 0)
@@ -73,6 +75,11 @@ namespace SimTools
                     StatusLabel.Text = LanguageManager.Get("Music", "NoTracks", "No tracks available to download.");
                     return;
                 }
+
+                // ── Download tracks loop ─────────────────────────────────────────────
+                // (Assuming you have a loop right below this that downloads the files)
+                // You can now download each track file securely using:
+                // await SecureWebClient.DownloadFileAsync(trackUrl, destinationPath);
 
                 // Setup the Progress Bar metrics exactly as before
                 TrackProgressBar.Minimum = 0;
@@ -118,12 +125,14 @@ namespace SimTools
                             StatusLabel.Text = string.Format(LanguageManager.Get("Music", "DownloadingTrack", "Downloading: {0}"), fileName);
 
                             // The web request receives the %20 URL, while File.Create uses the clean Windows path
-                            using var response = await http.GetAsync(absoluteUrl, HttpCompletionOption.ResponseHeadersRead, _cts.Token);
-                            if (response.IsSuccessStatusCode)
+                            try
                             {
-                                using var streamToReadFrom = await response.Content.ReadAsStreamAsync(_cts.Token);
-                                using var streamToWriteTo = File.Create(destinationPath);
-                                await streamToReadFrom.CopyToAsync(streamToWriteTo, _cts.Token);
+                                await SecureWebClient.DownloadFileAsync(absoluteUrl, destinationPath);
+                            }
+                            catch (Exception ex)
+                            {
+                                // Handle or log the exception if a track fails to download
+                                // (e.g., track-specific error UI updates, or allowing the loop to continue to the next song)
                             }
                         }
                     }

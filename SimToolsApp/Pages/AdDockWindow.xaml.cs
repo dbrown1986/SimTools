@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -144,11 +143,11 @@ namespace SimTools
         {
             try
             {
-                using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
-
                 // ── 1. Fetch manifest ──────────────────────────────────────
                 string manifestUrl = AppSettings.ResolveUrl("%baseurl%/ads/manifest.txt");
-                string manifest    = await http.GetStringAsync(manifestUrl);
+
+                // Bypasses Schannel entirely using our custom BouncyCastle engine!
+                string manifest = await SecureWebClient.GetStringAsync(manifestUrl);
 
                 // ── 2. Parse entries ───────────────────────────────────────
                 var entries = manifest
@@ -169,15 +168,23 @@ namespace SimTools
                 // ── 3. Download all images in parallel ─────────────────────
                 var downloadTasks = entries.Select(async entry =>
                 {
+                    // Generate a safe unique temp path for this image
+                    string tempImagePath = Path.Combine(Path.GetTempPath(), $"simtools_ad_{Guid.NewGuid():N}.png");
                     try
                     {
                         string imageUrl = AppSettings.ResolveUrl($"%baseurl%/ads/{entry.File}");
-                        byte[] data     = await http.GetByteArrayAsync(imageUrl);
 
+                        // Download directly to temp location bypassing Schannel
+                        await SecureWebClient.DownloadFileAsync(imageUrl, tempImagePath);
+
+                        if (!File.Exists(tempImagePath))
+                            return (Image: (BitmapImage?)null, entry.Url);
+
+                        // Load the image from disk into memory
                         var bmp = new BitmapImage();
                         bmp.BeginInit();
-                        bmp.StreamSource = new MemoryStream(data);
-                        bmp.CacheOption  = BitmapCacheOption.OnLoad;
+                        bmp.StreamSource = new MemoryStream(await File.ReadAllBytesAsync(tempImagePath));
+                        bmp.CacheOption = BitmapCacheOption.OnLoad;
                         bmp.EndInit();
                         bmp.Freeze();
 
@@ -186,6 +193,16 @@ namespace SimTools
                     catch
                     {
                         return (Image: (BitmapImage?)null, entry.Url);
+                    }
+                    finally
+                    {
+                        // Clean up the temporary file
+                        try
+                        {
+                            if (File.Exists(tempImagePath))
+                                File.Delete(tempImagePath);
+                        }
+                        catch { /* Ignore cleanup failures */ }
                     }
                 });
 
@@ -201,7 +218,7 @@ namespace SimTools
                 // ── 4. Display first ad and start rotation timer ───────────
                 Dispatcher.Invoke(() =>
                 {
-                    _ads     = loaded;
+                    _ads = loaded;
                     _adIndex = 0;
                     ShowAd(_adIndex, animate: false);
 

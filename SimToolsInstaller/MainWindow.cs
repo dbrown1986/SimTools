@@ -141,9 +141,9 @@ namespace SimToolsInstaller
                 string wow64WinHttpPath = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp";
 
                 // Check native registry
-                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(winHttpPath))
+                using (RegistryKey? key = Registry.LocalMachine.OpenSubKey(winHttpPath))
                 {
-                    if (key?.GetValue("DefaultSecureProtocols") != null)
+                    if (key?.GetValue("DefaultSecureProtocols")! != null)
                     {
                         kbInstalled = true;
                         return;
@@ -153,9 +153,9 @@ namespace SimToolsInstaller
                 // Check 32-bit registry on a 64-bit OS
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    using (RegistryKey key = Registry.LocalMachine.OpenSubKey(wow64WinHttpPath))
+                    using (RegistryKey? key = Registry.LocalMachine.OpenSubKey(wow64WinHttpPath))
                     {
-                        if (key?.GetValue("DefaultSecureProtocols") != null)
+                        if (key?.GetValue("DefaultSecureProtocols")! != null)
                         {
                             kbInstalled = true;
                             return;
@@ -299,39 +299,30 @@ namespace SimToolsInstaller
             }
 
             // ---------------------------------------------------------------------------------
-            // STEP 4: Live Test Verification of TLS 1.2 File Delivery Handshakes
+            // STEP 4: Live Test Verification of TLS 1.2 File Delivery Handshakes via SecureWebClient
             // ---------------------------------------------------------------------------------
             string uninstallerTestUrl = "https://us1-repo.simtools-app.com/App/SimToolsUninstaller.exe";
             string isolatedTempFile = Path.Combine(Path.GetTempPath(), $"SimToolsUninstaller_test_{Guid.NewGuid():N}.exe");
 
-            // Explicitly force modern service connection configurations to evaluate native layer availability
-#pragma warning disable SYSLIB0014 // ServicePointManager is standard across multi-target net framework conversions
-            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
-#pragma warning restore SYSLIB0014
-
             bool tlsVerificationSuccess = false;
 
-            using (HttpClient handshakeTesterClient = new HttpClient())
+            try
             {
-                handshakeTesterClient.Timeout = TimeSpan.FromSeconds(15);
-                try
-                {
-                    byte[] downloadedBytes = await handshakeTesterClient.GetByteArrayAsync(uninstallerTestUrl);
-                    System.IO.File.WriteAllBytes(isolatedTempFile, downloadedBytes);
+                // Bypasses Schannel entirely using BouncyCastle SecureWebClient
+                await SimTools.SecureWebClient.DownloadFileAsync(uninstallerTestUrl, isolatedTempFile);
 
-                    if (System.IO.File.Exists(isolatedTempFile))
-                    {
-                        System.IO.File.Delete(isolatedTempFile);
-                    }
-                    tlsVerificationSuccess = true;
-                }
-                catch (Exception)
+                if (System.IO.File.Exists(isolatedTempFile))
                 {
-                    tlsVerificationSuccess = false;
-                    if (System.IO.File.Exists(isolatedTempFile))
-                    {
-                        try { System.IO.File.Delete(isolatedTempFile); } catch { }
-                    }
+                    System.IO.File.Delete(isolatedTempFile);
+                }
+                tlsVerificationSuccess = true;
+            }
+            catch (Exception)
+            {
+                tlsVerificationSuccess = false;
+                if (System.IO.File.Exists(isolatedTempFile))
+                {
+                    try { System.IO.File.Delete(isolatedTempFile); } catch { }
                 }
             }
 
@@ -340,7 +331,7 @@ namespace SimToolsInstaller
             {
                 _baseRepoUrl = "http://us1-repo.simtools-app.com";
             }
-        } // <-- The closing brace of the method now safely lands here!
+        }
 
         private void LoadLicenseText()
         {
@@ -593,15 +584,16 @@ namespace SimToolsInstaller
             {
                 if (!Directory.Exists(installDir)) Directory.CreateDirectory(installDir);
 
-                using HttpClient client = new HttpClient();
                 lblCurrentFile.Text = "Fetching manifests...";
 
                 List<XElement> allFilesToDownload = new List<XElement>();
 
-                // Parse manifests across all required installation components
+                // Parse manifests across all required installation components via SecureWebClient
                 foreach (var xmlUrl in xmlUrls)
                 {
-                    string xmlContent = await client.GetStringAsync(xmlUrl, _cancelTokenSource.Token);
+                    _cancelTokenSource.Token.ThrowIfCancellationRequested();
+
+                    string xmlContent = await SimTools.SecureWebClient.GetStringAsync(xmlUrl);
                     XDocument doc = XDocument.Parse(xmlContent);
 
                     if (doc.Root == null) throw new InvalidDataException($"Manifest at {xmlUrl} is missing its root element.");
@@ -638,7 +630,35 @@ namespace SimToolsInstaller
                     string? destDir = Path.GetDirectoryName(destPath);
                     if (destDir != null) Directory.CreateDirectory(destDir);
 
-                    await DownloadFileAsync(client, url, destPath, _cancelTokenSource.Token);
+                    // Perform TLS Handshake and safe progress updates with direct BouncyCastle connection
+                    await SimTools.SecureWebClient.DownloadFileWithProgressAsync(
+                        url,
+                        destPath,
+                        onProgress: (pct) =>
+                        {
+                            this.Invoke(() =>
+                            {
+                                progCurrent.Style = ProgressBarStyle.Continuous;
+                                progCurrent.Maximum = 100;
+                                progCurrent.Value = pct;
+                            });
+                        },
+                        onIndeterminate: () =>
+                        {
+                            this.Invoke(() =>
+                            {
+                                progCurrent.Style = ProgressBarStyle.Marquee;
+                            });
+                        },
+                        onHeadersParsed: (remoteLastModified) =>
+                        {
+                            this.Invoke(() =>
+                            {
+                                progCurrent.Style = ProgressBarStyle.Continuous;
+                            });
+                        }
+                    );
+
                     _installedFiles.Add(destPath);
 
                     currentFileCount++;
@@ -661,29 +681,6 @@ namespace SimToolsInstaller
                 MessageBox.Show($"Installation error:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Rollback(installDir);
                 _currentStep = 6; UpdateUI();
-            }
-        }
-
-        private async Task DownloadFileAsync(HttpClient client, string url, string destPath, CancellationToken token)
-        {
-            using var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, token);
-            response.EnsureSuccessStatusCode();
-
-            var totalBytes = response.Content.Headers.ContentLength ?? -1L;
-            if (totalBytes != -1) progCurrent.Maximum = (int)totalBytes;
-
-            using var stream = await response.Content.ReadAsStreamAsync(token);
-            using var fileStream = new FileStream(destPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
-
-            var buffer = new byte[8192];
-            long totalRead = 0;
-            int bytesRead;
-
-            while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, token)) != 0)
-            {
-                await fileStream.WriteAsync(buffer, 0, bytesRead, token);
-                totalRead += bytesRead;
-                if (totalBytes != -1) progCurrent.Value = (int)totalRead;
             }
         }
 

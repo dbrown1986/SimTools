@@ -5,11 +5,23 @@
 
 using System;
 using System.IO;
+using System.Net;
 using System.Reflection;
 using System.Runtime.Loader;
 
 namespace SimTools
 {
+
+    public static class SecurityProtocolHelper
+    {
+        public static void EnableModernSecurityProtocols()
+        {
+            // 3072 is the numerical value for SecurityProtocolType.Tls12. 
+            // Casting it allows old frameworks (.NET 4.0) to compile it even if the enum isn't defined natively.
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+        }
+    }
+
     public static class Program
     {
         [STAThread]

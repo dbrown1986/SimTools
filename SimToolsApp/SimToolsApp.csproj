@@ -13,7 +13,7 @@ Project File
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<BaseVersion>4.0.7</BaseVersion>
+		<BaseVersion>4.0.8</BaseVersion>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
 		<Company>Archeon Industries, LLC.</Company>
@@ -32,6 +32,7 @@ Project File
 		<Configurations>Debug;Release;x64</Configurations>
 		<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<NoWarn>$(NoWarn);NETSDK1057;NETSDK1206</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -251,10 +252,13 @@ Project File
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
 		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="System.CodeDom" Version="6.0.0" />
+		<PackageReference Include="System.Management" Version="6.0.2" />
 		<PackageReference Include="TagLibSharp" Version="2.3.0" />
 		<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
-		<PackageReference Include="SharpCompress" Version="0.38.0">
+		<PackageReference Include="SharpCompress" Version="0.50.0">
 			<NoWarn>NU1902</NoWarn>
 		</PackageReference>
 	</ItemGroup>
@@ -304,6 +308,10 @@ Project File
 			<!-- SharpCompress and its Zstd dependency -->
 			<_DepDlls Include="$(OutputPath)SharpCompress.dll" Condition="Exists('$(OutputPath)SharpCompress.dll')" />
 			<_DepDlls Include="$(OutputPath)ZstdSharp.dll" Condition="Exists('$(OutputPath)ZstdSharp.dll')" />
+			<!-- BouncyCastle TLS dependency -->
+			<_DepDlls Include="$(OutputPath)BouncyCastle.Crypto.dll" Condition="Exists('$(OutputPath)BouncyCastle.Crypto.dll')" />
+			<!-- System.Management dependency -->
+			<_DepDlls Include="$(OutputPath)System.Management.dll" Condition="Exists('$(OutputPath)System.Management.dll')" />
 		</ItemGroup>
 
 		<MakeDir Directories="$(OutputPath)Dependencies" />

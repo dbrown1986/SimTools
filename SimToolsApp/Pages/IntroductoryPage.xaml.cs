@@ -195,17 +195,20 @@ namespace SimTools
                 return;
             }
 
-            using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
-
+            // ── Use SecureWebClient in parallel tasks ─────────────────────────────
             var tasks = candidates.Select(async domain =>
             {
                 string url = $"https://{domain}/version.txt";
                 var sw = Stopwatch.StartNew();
                 try
                 {
-                    using var resp = await http.GetAsync(url);
+                    // Bypasses Windows Schannel! Fully compatible with Windows 7, 10, and 11.
+                    string responseText = await SecureWebClient.GetStringAsync(url);
                     sw.Stop();
-                    return (Domain: domain, Ms: resp.IsSuccessStatusCode ? sw.ElapsedMilliseconds : long.MaxValue);
+
+                    // Check if we got a valid response (e.g., not empty)
+                    bool isSuccess = !string.IsNullOrWhiteSpace(responseText);
+                    return (Domain: domain, Ms: isSuccess ? sw.ElapsedMilliseconds : long.MaxValue);
                 }
                 catch
                 {
@@ -316,28 +319,31 @@ namespace SimTools
         {
             try
             {
-                // 1. Fetch version.txt — always try the official repo first,
-                //    then fall back to the user-configured repo if the primary fails.
                 const string officialVersionUrl = "https://us1-repo.simtools-app.com/version.txt";
                 string userVersionUrl = AppSettings.ResolveUrl("%baseurl%/version.txt");
 
-                using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
-                HttpResponseMessage? resp = null;
+                string body = string.Empty;
 
-                // Try the official repo first regardless of user settings
-                try   { resp = await http.GetAsync(officialVersionUrl); }
-                catch { /* unreachable — fall through to user repo */ }
+                // Try the official repo first via SecureWebClient
+                try
+                {
+                    body = await SecureWebClient.GetStringAsync(officialVersionUrl);
+                }
+                catch
+                { /* unreachable — fall through to user repo */ }
 
                 // Fall back to the user-configured repo only if the official one failed
-                if ((resp == null || !resp.IsSuccessStatusCode)
-                    && !userVersionUrl.Equals(officialVersionUrl, StringComparison.OrdinalIgnoreCase))
+                if (string.IsNullOrWhiteSpace(body) && !userVersionUrl.Equals(officialVersionUrl, StringComparison.OrdinalIgnoreCase))
                 {
-                    resp?.Dispose();
-                    try   { resp = await http.GetAsync(userVersionUrl); }
-                    catch { /* also unreachable */ }
+                    try
+                    {
+                        body = await SecureWebClient.GetStringAsync(userVersionUrl);
+                    }
+                    catch
+                    { /* also unreachable */ }
                 }
 
-                if (resp == null || !resp.IsSuccessStatusCode)
+                if (string.IsNullOrWhiteSpace(body))
                 {
                     if (!isAutomatic)
                         MessageBox.Show(
@@ -348,9 +354,7 @@ namespace SimTools
                     return;
                 }
 
-                string body = await resp.Content.ReadAsStringAsync();
-                string[] lines = body.Split(
-                    new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] lines = body.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
                 if (lines.Length < 1)
                 {
@@ -546,73 +550,52 @@ namespace SimTools
 
         private async Task RunBackgroundActivationAuditAsync()
         {
-            // 1. Only audit if they actually have a valid token file locally
             if (!DonorKeyHelper.TokenFileExists()) return;
 
-            // 2. Rate-limiting check: Only look online once every 3 days
             string lastCheckStr = IniHelper.Read("Personalization", "LastOnlineAudit", "");
             if (DateTime.TryParse(lastCheckStr, out DateTime lastCheckTime))
             {
-                // If 3 days haven't passed yet, skip the network request entirely
-                if ((DateTime.UtcNow - lastCheckTime).TotalDays < 3)
-                {
-                    return;
-                }
+                if ((DateTime.UtcNow - lastCheckTime).TotalDays < 3) return;
             }
 
-            // 3. Since the token is valid, grab the current tracking metrics
             string machineGuid = MachineIdentity.GetMachineGuid();
-
-            // We also need to supply the key. Your token file decrypts to "MachineGuid|FirstName|LastName".
-            // We didn't explicitly store the key, but we can verify against the database 
-            // by altering status.php to accept the machine identity. However, your app already 
-            // decodes names. Let's send a quiet status payload check.
-            // Tip: Since the token file doesn't store the raw key, we can simply look up by 
-            // Machine ID, or look up if *any* slot is assigned to this machine.
-
             if (string.IsNullOrWhiteSpace(machineGuid)) return;
 
             try
             {
-                using (var http = new HttpClient { Timeout = TimeSpan.FromSeconds(7) })
+                string url = $"https://simtools-app.com/api/status.php?machine={Uri.EscapeDataString(machineGuid)}&key=audit";
+
+                // Bypasses Schannel engine seamlessly 
+                string response = await SecureWebClient.GetStringAsync(url);
+
+                // Note: If your backend returns an implicit "Forbidden" message string or empty value 
+                // when status evaluation fails, handle the revocation evaluation here:
+                if (response.Contains("Forbidden") || string.IsNullOrWhiteSpace(response))
                 {
-                    // Build request pointing to your status.php script
-                    // Note: We search status by sending the machineGuid parameter.
-                    string url = $"https://simtools-app.com/api/status.php?machine={Uri.EscapeDataString(machineGuid)}&key=audit";
-
-                    // If you want absolute precision, you can update your token generation down the line 
-                    // to preserve key context, but verifying the Machine ID presence is more than enough!
-                    var response = await http.GetAsync(url);
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+                    DonorKeyHelper.ClearPersonalization();
+                    Dispatcher.Invoke(() =>
                     {
-                        // The server successfully replied with a 403, meaning this machine 
-                        // is no longer recognized in the database activation ledger.
-
-                        // Clear out the local authorization structures seamlessly
-                        DonorKeyHelper.ClearPersonalization();
-
-                        // Switch back the UI components on the UI thread safely
-                        Dispatcher.Invoke(() =>
-                        {
-                            // Refresh the personalization display elements back to default
-                            LoadPersonalization();
-                        });
-
-                        return; // Stop here, no need to save a successful timestamp
-                    }
+                        LoadPersonalization();
+                    });
+                    return;
                 }
 
-                // 4. If the request was successful or verified, update the timer stamp in the INI file
                 IniHelper.Write("Personalization", "LastOnlineAudit", DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
             }
-            catch
+            catch (Exception ex)
             {
-                // If the user is offline, network times out, or your site drops momentarily,
-                // it catches here and fails completely silently. The user experiences NO disruption 
-                // and the app remains fully personalized until the next check succeeds.
+                // If it throws a socket/HTTP exception, or a 403 maps to an explicit web error exception,
+                // catch it safely so the offline user faces zero software interruption.
+                if (ex.Message.Contains("403") || ex.Message.Contains("Forbidden"))
+                {
+                    DonorKeyHelper.ClearPersonalization();
+                    Dispatcher.Invoke(() =>
+                    {
+                        LoadPersonalization();
+                    });
+                }
             }
-        }
 
+        }
     }
 }

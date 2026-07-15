@@ -5,9 +5,20 @@
 
 using System;
 using System.Windows.Forms; // This fixes the 'Application' error
+using System.Net;
 
 namespace SimToolsInstaller
 {
+    public static class SecurityProtocolHelper
+    {
+        public static void EnableModernSecurityProtocols()
+        {
+            // 3072 is the numerical value for SecurityProtocolType.Tls12. 
+            // Casting it allows old frameworks (.NET 4.0) to compile it even if the enum isn't defined natively.
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+        }
+    }
+
     internal static class Program
     {
         [STAThread]

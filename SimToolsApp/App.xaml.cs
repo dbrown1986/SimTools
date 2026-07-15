@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,6 +50,12 @@ namespace SimTools
 
         protected override async void OnStartup(StartupEventArgs e)
         {
+
+            // 1. Force TLS 1.2 support immediately on application launch (fixes Windows 7 SSL exceptions)
+            System.Net.ServicePointManager.SecurityProtocol = (System.Net.SecurityProtocolType)3072
+                                                            | System.Net.SecurityProtocolType.Tls11
+                                                            | System.Net.SecurityProtocolType.Tls;
+
             base.OnStartup(e);
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
 

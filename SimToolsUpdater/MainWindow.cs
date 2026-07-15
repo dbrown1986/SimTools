@@ -21,7 +21,6 @@ namespace SimToolsUpdater
         private const string TargetExe = "SimTools.exe";
 
         private bool _is64BitBinary = false;
-        private HttpClient _httpClient = new HttpClient();
 
         // Central Language State Backing Field
         private LanguageStrings _currentLanguage = new LanguageStrings();
@@ -104,7 +103,7 @@ namespace SimToolsUpdater
 
                 // 3. Fetch update remote deployment manifest xml package mapping
                 string xmlManifestUrl = $"{ManifestBaseUrl}/SimTools-Update-{platformFolder}.xml";
-                string manifestData = await _httpClient.GetStringAsync(xmlManifestUrl);
+                string manifestData = await SimTools.SecureWebClient.GetStringAsync(xmlManifestUrl);
 
                 XDocument doc = XDocument.Parse(manifestData);
                 var elements = doc.Descendants("File").ToList();
@@ -180,35 +179,23 @@ namespace SimToolsUpdater
             {
                 try
                 {
-                    using (var response = await _httpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead))
-                    {
-                        response.EnsureSuccessStatusCode();
-                        long? totalBytes = response.Content.Headers.ContentLength;
-
-                        using (var stream = await response.Content.ReadAsStreamAsync())
-                        using (var fileStream = new FileStream(destination, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true))
-                        {
-                            byte[] buffer = new byte[8192];
-                            long totalReadBytes = 0;
-                            int readBytes;
-
-                            while ((readBytes = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
-                            {
-                                await fileStream.WriteAsync(buffer, 0, readBytes);
-                                totalReadBytes += readBytes;
-
-                                if (totalBytes.HasValue)
-                                {
-                                    int progressPercentage = (int)((totalReadBytes * 100) / totalBytes.Value);
-                                    UpdateFileProgress(progressPercentage);
-                                }
-                            }
-                        }
-                    }
+                    // Use BouncyCastle-powered secure download with real-time progress
+                    await SimTools.SecureWebClient.DownloadFileWithProgressAsync(
+                        url,
+                        destination,
+                        onProgress: (pct) => UpdateFileProgress(pct),
+                        onIndeterminate: () => UpdateFileProgress(0),
+                        onHeadersParsed: (lastModified) => { /* Optional: handle lastModified if needed */ }
+                    );
                     return;
                 }
                 catch (IOException) when (attempt < maxAttempts)
                 {
+                    await Task.Delay(TimeSpan.FromSeconds(delaySeconds));
+                }
+                catch (Exception) when (attempt < maxAttempts)
+                {
+                    // Catch socket/TLS errors and retry
                     await Task.Delay(TimeSpan.FromSeconds(delaySeconds));
                 }
             }

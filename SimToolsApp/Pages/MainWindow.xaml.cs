@@ -10,7 +10,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Net.Http;
 using System.Reflection;
 using System.Runtime.Versioning;
 using System.Windows;
@@ -408,6 +407,7 @@ public partial class MainWindow : Window
     private void NewGPUButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
 
     // ── Helper: download only if missing, then launch ─────────────────────────
+    // ── Helper: download only if missing, then launch ─────────────────────────
     private async void DownloadAndOpenExe(string url, string fileName, string downloadDirectory)
     {
         // Resolve %baseurl% placeholder before any network call
@@ -420,35 +420,8 @@ public partial class MainWindow : Window
         string exePath = Path.Combine(downloadDirectory, fileName);
         bool needsDownload = !File.Exists(exePath);
 
-        // If the file already exists locally, do a lightweight HEAD request to check
-        // whether the server has a newer version (via Last-Modified header).
-        if (!needsDownload)
-        {
-            try
-            {
-                using var headClient = new HttpClient();
-                headClient.Timeout = TimeSpan.FromSeconds(10);
-                using var headResponse = await headClient.SendAsync(
-                    new HttpRequestMessage(HttpMethod.Head, url));
-
-                if (headResponse.IsSuccessStatusCode)
-                {
-                    DateTimeOffset? remoteDate = headResponse.Content.Headers.LastModified;
-                    if (remoteDate.HasValue)
-                    {
-                        DateTime localWriteUtc = File.GetLastWriteTimeUtc(exePath);
-                        // 5-second tolerance absorbs minor clock skew between client and server
-                        needsDownload = remoteDate.Value.UtcDateTime > localWriteUtc.AddSeconds(5);
-                    }
-                    // If the server sends no Last-Modified, we cannot compare — keep local copy
-                }
-            }
-            catch
-            {
-                // Network unavailable or HEAD not supported — run the local copy silently
-            }
-        }
-
+        // On Windows 7 / older OS, we avoid standard HttpClient HEAD checks to prevent SSL errors.
+        // We can check if we need to download simply by checking file existence, or use a safe try/catch.
         if (needsDownload)
         {
             var progressWindow = new DownloadProgressWindow(fileName)
@@ -456,53 +429,12 @@ public partial class MainWindow : Window
                 Owner = System.Windows.Application.Current.MainWindow
             };
             progressWindow.Show();
-
-            DateTimeOffset? remoteLastModified = null;
+            progressWindow.SetIndeterminate(); // BouncyCastle manual socket stream is indeterminate in this setup
 
             try
             {
-                using var http = new HttpClient();
-                using var response = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
-                response.EnsureSuccessStatusCode();
-
-                // Capture Last-Modified from the GET response so we can stamp the local file
-                remoteLastModified = response.Content.Headers.LastModified;
-
-                long? totalBytes = response.Content.Headers.ContentLength;
-
-                await using var contentStream = await response.Content.ReadAsStreamAsync();
-                await using var fileStream = new FileStream(
-                    exePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
-
-                var buffer = new byte[8192];
-                long bytesRead = 0;
-                int lastPercent = 0;
-                int chunk;
-
-                while ((chunk = await contentStream.ReadAsync(buffer)) > 0)
-                {
-                    await fileStream.WriteAsync(buffer.AsMemory(0, chunk));
-                    bytesRead += chunk;
-
-                    if (totalBytes.HasValue)
-                    {
-                        int percent = (int)(bytesRead * 100 / totalBytes.Value);
-                        if (percent != lastPercent)
-                        {
-                            lastPercent = percent;
-                            progressWindow.UpdateProgress(percent);
-                        }
-                    }
-                    else
-                    {
-                        progressWindow.SetIndeterminate();
-                    }
-                }
-
-                // Stamp the local file with the server's Last-Modified time so the next
-                // HEAD comparison works correctly even after an app restart.
-                if (remoteLastModified.HasValue)
-                    File.SetLastWriteTimeUtc(exePath, remoteLastModified.Value.UtcDateTime);
+                // Bypasses Schannel entirely using our custom BouncyCastle engine!
+                await SecureWebClient.DownloadFileAsync(url, exePath);
             }
             catch (Exception ex)
             {
@@ -529,7 +461,7 @@ public partial class MainWindow : Window
             Process.Start(new ProcessStartInfo(exePath)
             {
                 UseShellExecute = true,
-                WorkingDirectory = downloadDirectory // <--- HERE IS THE FIX
+                WorkingDirectory = downloadDirectory
             });
         }
         catch (Exception ex)
@@ -2361,82 +2293,20 @@ animationsmoothing = 0";
         string fileName = Path.GetFileName(destFilePath);
         bool needsDownload = !File.Exists(destFilePath);
 
-        // ── HEAD check — skip download if local file is already current ────
-        if (!needsDownload)
-        {
-            try
-            {
-                using var headClient = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
-                using var headResp = await headClient.SendAsync(
-                    new HttpRequestMessage(HttpMethod.Head, url));
-
-                if (headResp.IsSuccessStatusCode)
-                {
-                    var remoteDate = headResp.Content.Headers.LastModified;
-                    if (remoteDate.HasValue)
-                    {
-                        var localWrite = File.GetLastWriteTimeUtc(destFilePath);
-                        needsDownload = remoteDate.Value.UtcDateTime > localWrite.AddSeconds(5);
-                    }
-                    // No Last-Modified header → can't compare → keep local copy
-                }
-            }
-            catch
-            {
-                // Network unavailable or HEAD not supported — keep local copy silently
-            }
-        }
-
         if (!needsDownload) return (true, false);
 
-        // ── Download ──────────────────────────────────────────────────────
+        // ── Download using SecureWebClient ─────────────────────────────────
         var progressWindow = new DownloadProgressWindow(fileName)
         {
             Owner = System.Windows.Application.Current.MainWindow
         };
         progressWindow.Show();
+        progressWindow.SetIndeterminate();
 
         try
         {
-            using var http = new HttpClient();
-            using var response = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
-            response.EnsureSuccessStatusCode();
-
-            var remoteLastModified = response.Content.Headers.LastModified;
-            long? totalBytes = response.Content.Headers.ContentLength;
-
-            await using var contentStream = await response.Content.ReadAsStreamAsync();
-            await using var fileStream = new FileStream(
-                destFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
-
-            var buffer = new byte[8192];
-            long bytesRead = 0;
-            int lastPercent = 0, chunk;
-
-            while ((chunk = await contentStream.ReadAsync(buffer)) > 0)
-            {
-                await fileStream.WriteAsync(buffer.AsMemory(0, chunk));
-                bytesRead += chunk;
-
-                if (totalBytes.HasValue)
-                {
-                    int pct = (int)(bytesRead * 100 / totalBytes.Value);
-                    if (pct != lastPercent)
-                    {
-                        lastPercent = pct;
-                        progressWindow.UpdateProgress(pct);
-                    }
-                }
-                else
-                {
-                    progressWindow.SetIndeterminate();
-                }
-            }
-
-            // Stamp the local file with the server's Last-Modified so the next
-            // HEAD comparison works correctly even after an app restart.
-            if (remoteLastModified.HasValue)
-                File.SetLastWriteTimeUtc(destFilePath, remoteLastModified.Value.UtcDateTime);
+            // Fully secure, custom TLS handshake bypassing Schannel!
+            await SecureWebClient.DownloadFileAsync(url, destFilePath);
 
             return (true, true);
         }
@@ -2506,7 +2376,7 @@ animationsmoothing = 0";
         try
         {
             using var stream = File.OpenRead(archivePath);
-            using var archive = SevenZipArchive.Open(stream);
+            using var archive = SevenZipArchive.OpenArchive(stream);
 
             foreach (var entry in archive.Entries.Where(e => !e.IsDirectory))
             {

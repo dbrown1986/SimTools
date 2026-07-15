@@ -4,7 +4,6 @@
 // (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
 
 using System;
-using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
@@ -35,7 +34,6 @@ namespace SimTools
         }
 
         // ── Unlock ────────────────────────────────────────────────────────────
-        // Note the addition of "async" here so that network requests can run on a background thread.
         private async void UnlockButton_Click(object sender, RoutedEventArgs e)
         {
             string key = KeyTextBox.Text.Trim();
@@ -70,43 +68,38 @@ namespace SimTools
 
             try
             {
-                using (var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) })
+                // Compile the registration text data packet
+                var payload = new
                 {
-                    // Compile the registration text data packet, now including the email property
-                    var payload = new
-                    {
-                        donor_key = key,
-                        email = email,
-                        machine_guid = machineGuid,
-                        machine_name = Environment.MachineName
-                    };
+                    donor_key = key,
+                    email = email,
+                    machine_guid = machineGuid,
+                    machine_name = Environment.MachineName
+                };
 
-                    string json = JsonSerializer.Serialize(payload);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                string json = JsonSerializer.Serialize(payload);
 
-                    // Send to your online API Clerk (Be sure to replace with your live domain)
-                    var response = await http.PostAsync("https://simtools-app.com/api/activate.php", content);
+                // Replaced HttpClient POST request with secure BouncyCastle alternative (fixes Win 7)
+                await SecureWebClient.PostJsonAsync("https://simtools-app.com/api/activate.php", json);
+            }
+            catch (System.Net.Http.HttpRequestException hex) when (hex.StatusCode == System.Net.HttpStatusCode.Conflict)
+            {
+                // Server database returned a 409 conflict
+                MessageBox.Show(
+                    "This donor key has already reached its maximum activation limit (5 machines).\n\n" +
+                    "Please revoke one of your existing active setups via your donor portal before activating this machine.",
+                    "Activation Limit Reached",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
 
-                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
-                    {
-                        // 409 Conflict = Server database says 5 machines are already registered
-                        MessageBox.Show(
-                            "This donor key has already reached its maximum activation limit (5 machines).\n\n" +
-                            "Please revoke one of your existing active setups via your donor portal before activating this machine.",
-                            "Activation Limit Reached",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Warning);
-
-                        ShowStatus("Activation limit exceeded.");
-                        return;
-                    }
-                    else if (!response.IsSuccessStatusCode)
-                    {
-                        // Any unexpected server error like a 500, 404, or 400 (e.g. key email checks failed)
-                        ShowStatus("Server rejected the activation. Check that your key and email match.");
-                        return;
-                    }
-                }
+                ShowStatus("Activation limit exceeded.");
+                return;
+            }
+            catch (System.Net.Http.HttpRequestException)
+            {
+                // Server database returned an activation failure (e.g., 400 or 500)
+                ShowStatus("Server rejected the activation. Check that your key and email match.");
+                return;
             }
             catch (Exception ex)
             {
@@ -154,7 +147,7 @@ namespace SimTools
             Close();
         }
 
-        // ── Remove existing key (Updated to notify online database) ──────────────────
+        // ── Remove existing key ──────────────────
         private async void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show(
@@ -178,20 +171,15 @@ namespace SimTools
 
                 try
                 {
-                    using (var http = new HttpClient { Timeout = TimeSpan.FromSeconds(7) })
-                    {
-                        var payload = new { machine_guid = machineGuid };
-                        string json = JsonSerializer.Serialize(payload);
-                        var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var payload = new { machine_guid = machineGuid };
+                    string json = JsonSerializer.Serialize(payload);
 
-                        // Ping your new deactivation file (Be sure to check your live domain here)
-                        await http.PostAsync("https://simtools-app.com/api/deactivate.php", content);
-                    }
+                    // Replaced HttpClient with our secure BouncyCastle alternative (fixes Win 7)
+                    await SecureWebClient.PostJsonAsync("https://simtools-app.com/api/deactivate.php", json);
                 }
                 catch
                 {
-                    // If they are offline or the web connection fails, we catch the exception silently 
-                    // so they aren't blocked from resetting their local app state.
+                    // Catch failures silently so offline state transitions are not blocked
                 }
                 finally
                 {

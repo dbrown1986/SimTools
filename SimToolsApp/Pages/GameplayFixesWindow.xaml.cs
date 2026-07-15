@@ -243,43 +243,20 @@ public partial class GameplayFixesWindow : Window
 
                 try
                 {
-                    using var http = new HttpClient();
-                    using var response = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
-                    response.EnsureSuccessStatusCode();
+                    DateTime? remoteLastModified = null;
 
-                    var remoteLastModified = response.Content.Headers.LastModified;
-                    long? totalBytes = response.Content.Headers.ContentLength;
+                    // Use our new streaming BouncyCastle client to handle progress updates live!
+                    await SecureWebClient.DownloadFileWithProgressAsync(
+                        url,
+                        destPath,
+                        progress => progressWindow.UpdateProgress(progress),
+                        () => progressWindow.SetIndeterminate(),
+                        lastModified => remoteLastModified = lastModified
+                    );
 
-                    await using var contentStream = await response.Content.ReadAsStreamAsync();
-                    await using var fileStream = new FileStream(
-                        destPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
-
-                    var buffer = new byte[8192];
-                    long bytesRead = 0;
-                    int lastPercent = 0, chunk;
-
-                    while ((chunk = await contentStream.ReadAsync(buffer)) > 0)
-                    {
-                        await fileStream.WriteAsync(buffer.AsMemory(0, chunk));
-                        bytesRead += chunk;
-
-                        if (totalBytes.HasValue)
-                        {
-                            int pct = (int)(bytesRead * 100 / totalBytes.Value);
-                            if (pct != lastPercent)
-                            {
-                                lastPercent = pct;
-                                progressWindow.UpdateProgress(pct);
-                            }
-                        }
-                        else
-                        {
-                            progressWindow.SetIndeterminate();
-                        }
-                    }
-
+                    // Apply the remote timestamp to local file
                     if (remoteLastModified.HasValue)
-                        File.SetLastWriteTimeUtc(destPath, remoteLastModified.Value.UtcDateTime);
+                        File.SetLastWriteTimeUtc(destPath, remoteLastModified.Value.ToUniversalTime());
 
                     downloaded++;
                     item.IsInstalled = true;

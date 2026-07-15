@@ -181,84 +181,20 @@ namespace SimTools
                 Directory.CreateDirectory(dir);
 
             string fileName = Path.GetFileName(destFilePath);
-            bool needsDownload = !File.Exists(destFilePath);
 
-            // ── HEAD check — skip download if local file is already current ────
-            if (!needsDownload)
-            {
-                try
-                {
-                    using var headClient = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
-                    using var headResp = await headClient.SendAsync(
-                        new HttpRequestMessage(HttpMethod.Head, url));
-
-                    if (headResp.IsSuccessStatusCode)
-                    {
-                        var remoteDate = headResp.Content.Headers.LastModified;
-                        if (remoteDate.HasValue)
-                        {
-                            var localWrite = File.GetLastWriteTimeUtc(destFilePath);
-                            needsDownload = remoteDate.Value.UtcDateTime > localWrite.AddSeconds(5);
-                        }
-                        // No Last-Modified header → can't compare → keep local copy
-                    }
-                }
-                catch
-                {
-                    // Network unavailable or HEAD not supported — keep local copy silently
-                }
-            }
-
-            if (!needsDownload) return (true, false);
-
-            // ── Download ──────────────────────────────────────────────────────
+            // Show DownloadProgressWindow as indeterminate since raw BouncyCastle stream
+            // copying here is completed internally in one continuous block.
             var progressWindow = new DownloadProgressWindow(fileName)
             {
                 Owner = System.Windows.Application.Current.MainWindow
             };
             progressWindow.Show();
+            progressWindow.SetIndeterminate(); // Keep indeterminate as we copy raw socket packets
 
             try
             {
-                using var http = new HttpClient();
-                using var response = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
-                response.EnsureSuccessStatusCode();
-
-                var remoteLastModified = response.Content.Headers.LastModified;
-                long? totalBytes = response.Content.Headers.ContentLength;
-
-                await using var contentStream = await response.Content.ReadAsStreamAsync();
-                await using var fileStream = new FileStream(
-                    destFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
-
-                var buffer = new byte[8192];
-                long bytesRead = 0;
-                int lastPercent = 0, chunk;
-
-                while ((chunk = await contentStream.ReadAsync(buffer)) > 0)
-                {
-                    await fileStream.WriteAsync(buffer.AsMemory(0, chunk));
-                    bytesRead += chunk;
-
-                    if (totalBytes.HasValue)
-                    {
-                        int pct = (int)(bytesRead * 100 / totalBytes.Value);
-                        if (pct != lastPercent)
-                        {
-                            lastPercent = pct;
-                            progressWindow.UpdateProgress(pct);
-                        }
-                    }
-                    else
-                    {
-                        progressWindow.SetIndeterminate();
-                    }
-                }
-
-                // Stamp the local file with the server's Last-Modified so the next
-                // HEAD comparison works correctly even after an app restart.
-                if (remoteLastModified.HasValue)
-                    File.SetLastWriteTimeUtc(destFilePath, remoteLastModified.Value.UtcDateTime);
+                // Hand over download completely to your Windows 7 safe BouncyCastle implementation
+                await SecureWebClient.DownloadFileAsync(url, destFilePath);
 
                 return (true, true);
             }
