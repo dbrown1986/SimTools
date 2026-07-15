@@ -36,6 +36,6 @@
 				   HorizontalAlignment="Left"
 				   VerticalAlignment="Top"
 				   FontFamily="Tahoma"
-				   Foreground="White" Margin="376,248,0,0" Width="80" Height="17" FontWeight="Bold"/>
+				   Foreground="White" Margin="376,248,0,0" Width="80" Height="17" FontWeight="Bold" Background="#BF383838"/>
     </Grid>
 </Window>

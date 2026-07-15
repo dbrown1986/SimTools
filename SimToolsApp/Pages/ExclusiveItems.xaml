@@ -74,7 +74,7 @@
         <!-- Content area -->
         <ScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top"
                       Margin="196,58,0,0" Width="621" Height="78"
-                      VerticalScrollBarVisibility="Auto">
+                      VerticalScrollBarVisibility="Auto" Background="#BF383838">
             <StackPanel>
                 <TextBlock x:Name="ExclusiveItemsText"
                            TextWrapping="Wrap"
@@ -82,13 +82,13 @@
                            FontFamily="Tahoma"
                            FontSize="12"
                            Margin="0,0,0,12"
-                           Text="Exclusive donor content will appear here. At the moment, there is no content available yet. I will however update this section as I make things."/>
+                           Text="Exclusive donor content will appear here. At the moment, there is no content available yet. I will however update this section as I make things." FontWeight="Bold"/>
                 <TextBlock x:Name="ExclusiveItemsText2"
                     TextWrapping="Wrap"
                     Foreground="#FFFDFF00"
                     FontFamily="Tahoma"
                     FontSize="12"
-                    Text="Users of SimTools who have donated can share these items with family and friends, but do not upload them to any modding sites."/>
+                    Text="Users of SimTools who have donated can share these items with family and friends, but do not upload them to any modding sites." FontWeight="Bold"/>
             </StackPanel>
         </ScrollViewer>
         <Button x:Name="BackButton" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="8,596,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BackButton_Click" FontSize="11" BorderBrush="{x:Null}">
@@ -128,8 +128,8 @@
             Foreground="#FFD700"
             FontFamily="Tahoma"
             FontWeight="Bold"
-            FontSize="20" Height="26"/>
-        <TextBlock HorizontalAlignment="Left" Margin="336,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FF13FF00" Height="40" Width="481" FontWeight="Bold"><Run FontFamily="Courier New" FontSize="11.333333333333332" Text="A quaint, but luxurious abode. Small and compact at 10x10. A generous starter for any sim with 2 bedrooms and 1 bathroom. Base game items only."/></TextBlock>
+            FontSize="20" Height="26" Background="#BF383838"/>
+        <TextBlock HorizontalAlignment="Left" Margin="336,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FF13FF00" Height="56" Width="481" FontWeight="Bold" Background="#BF383838" FontSize="14"><Run FontFamily="Courier New" FontSize="11.333333333333332" Text="A quaint, but luxurious abode. Small and compact at 10x10. A generous starter for any sim with 2 bedrooms and 1 bathroom. Base game items only."/></TextBlock>
         <Button x:Name="SlimLivinDownloadButton" Content="Download Now" HorizontalAlignment="Left" Margin="336,253,0,0" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SlimLivinDownloadButton_Click" BorderBrush="{x:Null}">
             <Button.Style>
                 <Style TargetType="Button">

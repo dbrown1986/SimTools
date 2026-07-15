@@ -31,8 +31,8 @@
         <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
         <!-- <Image HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Source="/plumbob.gif" Stretch="Fill"/> -->
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
-        <TextBlock x:Name="ButtonInfoText" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="91" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200"><Run Text="When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed."/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="FrameworkInfoText" HorizontalAlignment="Left" Margin="184,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="87" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Text="It is strongly recommended to install the Mod Framework. If you already have the Mod Framework, please purge your 'Mods' folder and reinstall from the buton below. This version of the Mod Framework is specially vetted and prepared for TS3Tools."/>
+        <TextBlock x:Name="ButtonInfoText" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="82" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200" Background="#BF383838"><Run Text="When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed."/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="FrameworkInfoText" HorizontalAlignment="Left" Margin="184,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="65" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Text="It is strongly recommended to install the Mod Framework. If you already have the Mod Framework, please purge your 'Mods' folder and reinstall from the buton below. This version of the Mod Framework is specially vetted and prepared for TS3Tools." Background="#BF383838"/>
         <TextBlock x:Name="ComparisonText" HorizontalAlignment="Left" Margin="624,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Height="25" FontFamily="SimSun" Foreground="White" FontWeight="Bold" FontStyle="Italic" FontSize="22" TextDecorations="Underline" TextAlignment="Center"><Run Text="Comparison"/><LineBreak/><Run/></TextBlock>
         <!-- Settings button — top-right corner -->
         <Button x:Name="SettingsButton"
@@ -228,8 +228,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="GPUText" HorizontalAlignment="Left" Margin="184,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="37" FontFamily="SimSun" Foreground="White" Text="Use these tools to identify and install support for your GPU to help leverage the games engine. Available for Sims 2, Sims Stories and Sims 3." FontSize="11"/>
-        <TextBlock x:Name="TweakText" HorizontalAlignment="Left" Margin="184,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" Text="This menu features loads of tweaks, all of which will help games run better in many different ways. Only select fixes for expansions you have installed." FontSize="11"/>
+        <TextBlock x:Name="GPUText" HorizontalAlignment="Left" Margin="184,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="37" FontFamily="SimSun" Foreground="White" Text="Use these tools to identify and install support for your GPU to help leverage the games engine. Available for Sims 2, Sims Stories and Sims 3." FontSize="11" Background="#BF383838"/>
+        <TextBlock x:Name="TweakText" HorizontalAlignment="Left" Margin="184,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" Text="This menu features loads of tweaks, all of which will help games run better in many different ways. Only select fixes for expansions you have installed." FontSize="11" Background="#BF383838"/>
         <Button x:Name="ExitApp" Content="Button" HorizontalAlignment="Right" Margin="0,8,18,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="32" Height="32" Click="ExitApp_Click">
             <Button.Style>
                 <Style TargetType="Button">
@@ -290,7 +290,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="BugfixText" HorizontalAlignment="Left" Margin="185,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="33" FontFamily="SimSun" Foreground="White" FontSize="11"><Run Text="Various modifications to core and global game variables that work to address the many bugs The Sims 3 has developed over the years."/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="BugfixText" HorizontalAlignment="Left" Margin="185,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="33" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838"><Run Text="Various modifications to core and global game variables that work to address the many bugs The Sims 3 has developed over the years."/><LineBreak/><Run/></TextBlock>
         <Button x:Name="SaveCleanerButton" Content="Save Cleaner" HorizontalAlignment="Left" Margin="8,336,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SaveCleanerButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Style>
                 <Style TargetType="Button">
@@ -321,7 +321,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="SaveCleanerText" HorizontalAlignment="Left" Margin="184,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="The Sims 3 save files will bloat over time to the point that they reach several gigabytes in size and may get corrupted. Use this tool to clean them regularly."/>
+        <TextBlock x:Name="SaveCleanerText" HorizontalAlignment="Left" Margin="184,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="The Sims 3 save files will bloat over time to the point that they reach several gigabytes in size and may get corrupted. Use this tool to clean them regularly." Background="#BF383838"/>
         <Button x:Name="ModButton" Content="Recommended Mods &gt;" HorizontalAlignment="Left" Margin="8,376,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ModButton_Click" FontSize="11" ContextMenuOpening="ModButton_Context" BorderBrush="{x:Null}">
             <Button.Style>
                 <Style TargetType="Button">
@@ -352,7 +352,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="ModsText" HorizontalAlignment="Left" Margin="184,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11"><Run Text="Featured here, are mods recommended by myself and the community but that do not vastly tweak the engine or fix bugs (requires The Sims 3 Mod Framework)."/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="ModsText" HorizontalAlignment="Left" Margin="184,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838"><Run Text="Featured here, are mods recommended by myself and the community but that do not vastly tweak the engine or fix bugs (requires The Sims 3 Mod Framework)."/><LineBreak/><Run/></TextBlock>
         <Button x:Name="StoreButton" Content="Sims 3 Store &gt;" HorizontalAlignment="Left" Margin="8,416,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="StoreButton_Click" FontSize="11" BorderBrush="{x:Null}" ContextMenuOpening="StoreButton_Context">
             <Button.Style>
                 <Style TargetType="Button">
@@ -474,10 +474,10 @@
             </Button.Style>
         </Button>
         <TextBlock x:Name="VersionInfo" HorizontalAlignment="Left" Margin="8,590,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="SimSun" FontSize="11" FontWeight="Bold" TextAlignment="Center" Width="160" Height="36"/>
-        <TextBlock x:Name="TS3StoreText" HorizontalAlignment="Left" Margin="184,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="If you're interested in collecting any of the store items for The Sims 3, then look no further. Everything you need will be in this section."/>
-        <TextBlock x:Name="BuyTS3Text" HorizontalAlignment="Left" Margin="184,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Here you can find links for buying The Sims 3 and it's various expansion and stuff packs. I earn commission per sale if you elect to purchase through SimTools."/>
-        <TextBlock x:Name="ModToolsText" HorizontalAlignment="Left" Margin="184,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11"><Run Text="A collection of tools to help you create worlds, objects, skins, clothing, scripts, packages, etc. Use with care. Various tutorials can be found on YouTube."/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="GenKeysText" HorizontalAlignment="Left" Margin="184,536,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Lost your game case? Bought a game second-hand with no case at all? This menu will display generic keys that can be used to install from Retail discs."/>
+        <TextBlock x:Name="TS3StoreText" HorizontalAlignment="Left" Margin="184,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="If you're interested in collecting any of the store items for The Sims 3, then look no further. Everything you need will be in this section." Background="#BF383838"/>
+        <TextBlock x:Name="BuyTS3Text" HorizontalAlignment="Left" Margin="184,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Here you can find links for buying The Sims 3 and it's various expansion and stuff packs. I earn commission per sale if you elect to purchase through SimTools." Background="#BF383838"/>
+        <TextBlock x:Name="ModToolsText" HorizontalAlignment="Left" Margin="184,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838"><Run Text="A collection of tools to help you create worlds, objects, skins, clothing, scripts, packages, etc. Use with care. Various tutorials can be found on YouTube."/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="GenKeysText" HorizontalAlignment="Left" Margin="184,536,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Lost your game case? Bought a game second-hand with no case at all? This menu will display generic keys that can be used to install from Retail discs." Background="#BF383838"/>
         <Button x:Name="ModFrameworkButton" Content="Mod Framework" HorizontalAlignment="Left" Margin="184,600,0,0" VerticalAlignment="Top" Width="122" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ModFrameworkButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Style>
                 <Style TargetType="Button">

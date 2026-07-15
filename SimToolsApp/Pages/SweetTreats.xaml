@@ -31,7 +31,7 @@
         <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
         <!-- <Image HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Source="/plumbob.gif" Stretch="Fill"/> -->
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
-        <TextBlock x:Name="KPSTInfo" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="31" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200" Text="This guide will summarize how you can Install the Retail CD copy of Katy Perry's Sweet Treats and migrate it to Steam using specific folder names and registry edits."/>
+        <TextBlock x:Name="KPSTInfo" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="31" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200" Text="This guide will summarize how you can Install the Retail CD copy of Katy Perry's Sweet Treats and migrate it to Steam using specific folder names and registry edits." Background="#BF383838"/>
         <!-- Settings button — top-right corner -->
         <Button x:Name="ExitApp" Content="Button" HorizontalAlignment="Right" Margin="0,8,18,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="32" Height="32" Click="ExitApp_Click">
             <Button.Style>
@@ -95,8 +95,8 @@
         </Button>
         
 
-        <TextBlock x:Name="KPSTInfo03" HorizontalAlignment="Left" Margin="184,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="61" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Text="It has been reported that this method no longer works for Origin/EA &gt; Steam. However, using the retail installation of The Sims 3 &gt; Steam still works. You will require an ISO image or physical disc of both the Sims 3 base game and Katy Perry's Sweet Treats in order to migrate the installation over to Steam."/>
-        <TextBlock x:Name="KPSTInfo02" HorizontalAlignment="Left" Margin="184,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="47" FontFamily="Tahoma" FontWeight="Bold" Foreground="DarkOrange" Text="These edits involve adding keys to your registry, so it is crucial that you follow them implicitly. SimTools is not responsible for any damage done to your operating system. As a rule of thumb, take a moment to backup your registry in case you need to restore it."/>
+        <TextBlock x:Name="KPSTInfo03" HorizontalAlignment="Left" Margin="184,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="61" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Text="It has been reported that this method no longer works for Origin/EA &gt; Steam. However, using the retail installation of The Sims 3 &gt; Steam still works. You will require an ISO image or physical disc of both the Sims 3 base game and Katy Perry's Sweet Treats in order to migrate the installation over to Steam." Background="#BF383838"/>
+        <TextBlock x:Name="KPSTInfo02" HorizontalAlignment="Left" Margin="184,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="47" FontFamily="Tahoma" FontWeight="Bold" Foreground="DarkOrange" Text="These edits involve adding keys to your registry, so it is crucial that you follow them implicitly. SimTools is not responsible for any damage done to your operating system. As a rule of thumb, take a moment to backup your registry in case you need to restore it." Background="#BF383838"/>
 
         <!-- Accordions Container -->
         <ScrollViewer x:Name="AccordionScroller" HorizontalAlignment="Left" Margin="184,225,0,0" VerticalAlignment="Top" Width="588" Height="380" VerticalScrollBarVisibility="Auto">
@@ -132,7 +132,7 @@
                 </Expander>
             </StackPanel>
         </ScrollViewer>
-        <TextBlock x:Name="KPSTInfo04" HorizontalAlignment="Left" Margin="184,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="31" FontFamily="Tahoma" FontWeight="Bold" Foreground="DarkOrange" Text="At some point, I will endeavor to study these methods in-depth and automate the conversion process within SimTools, so that it can also be done with the click of a button."/>
+        <TextBlock x:Name="KPSTInfo04" HorizontalAlignment="Left" Margin="184,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Height="31" FontFamily="Tahoma" FontWeight="Bold" Foreground="DarkOrange" Text="At some point, I will endeavor to study these methods in-depth and automate the conversion process within SimTools, so that it can also be done with the click of a button." Background="#BF383838"/>
         <Button x:Name="Convert2Steam" Content="Convert It For Me" HorizontalAlignment="Left" Margin="8,226,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="Convert2Steam_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
