@@ -13,7 +13,7 @@ Project File
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<BaseVersion>4.0.8</BaseVersion>
+		<BaseVersion>4.0.9</BaseVersion>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
 		<Company>Archeon Industries, LLC.</Company>
@@ -22,7 +22,6 @@ Project File
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
-		<DebugSymbols>false</DebugSymbols>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ApplicationIcon>Images\Icons\SimTools.ico</ApplicationIcon>
 		<AssemblyName>SimTools</AssemblyName>
@@ -34,6 +33,16 @@ Project File
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<NoWarn>$(NoWarn);NETSDK1057;NETSDK1206</NoWarn>
 	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
 
 	<ItemGroup>
 		<Resource Include="Images\bmac.png" />
@@ -290,12 +299,8 @@ Project File
 	</Target>
 
 
-	<!-- ── Auto-incrementing build counter ─────────────────────────────────── -->
-	<!-- Reads build.counter, increments by 1 each build, writes it back,      -->
-	<!-- then stamps Version / AssemblyVersion / FileVersion.                  -->
-	<!-- Skipped during VS design-time background builds.                      -->
-	<Target Name="IncrementBuildCounter" BeforeTargets="BeforeBuild" Condition="'$(DesignTimeBuild)' != 'true'">
-
+	<!-- ── 1. READ & STAMP (Runs for both x86 and x64) ────────────────────── -->
+	<Target Name="ReadBuildCounter" BeforeTargets="BeforeBuild">
 		<PropertyGroup>
 			<_CounterFile>$(MSBuildProjectDirectory)\build.counter</_CounterFile>
 		</PropertyGroup>
@@ -304,23 +309,42 @@ Project File
 		<ReadLinesFromFile File="$(_CounterFile)" Condition="Exists('$(_CounterFile)')">
 			<Output TaskParameter="Lines" ItemName="_CounterLines" />
 		</ReadLinesFromFile>
+
 		<PropertyGroup>
 			<_Build Condition="'@(_CounterLines)' != ''">@(_CounterLines)</_Build>
 			<_Build Condition="'$(_Build)' == ''">0</_Build>
-			<_Build>$([MSBuild]::Add($(_Build), 1))</_Build>
-		</PropertyGroup>
 
-		<!-- Write incremented number back to disk -->
-		<WriteLinesToFile File="$(_CounterFile)" Lines="$(_Build)" Overwrite="true" />
-
-		<!-- Stamp the full version -->
-		<PropertyGroup>
+			<!-- Stamp the binaries with the retrieved version -->
 			<Version>$(BaseVersion).$(_Build)</Version>
 			<AssemblyVersion>$(BaseVersion).$(_Build)</AssemblyVersion>
 			<FileVersion>$(BaseVersion).$(_Build)</FileVersion>
 		</PropertyGroup>
 
-		<Message Text="▶ Build number: $(_Build)" Importance="high" />
+		<Message Text="▶ Applying Build Number: $(_Build) (Platform: $(Platform))" Importance="high" />
+	</Target>
+
+	<!-- ── 2. INCREMENT ON DISK (Only runs during x64 builds) ─────────────── -->
+	<Target Name="IncrementBuildCounter"
+			BeforeTargets="BeforeBuild"
+			DependsOnTargets="ReadBuildCounter"
+			Condition="'$(DesignTimeBuild)' != 'true' And '$(Platform)' == 'x64'">
+
+		<PropertyGroup>
+			<!-- Increment the value we just read in memory -->
+			<_NewBuild>$([MSBuild]::Add($(_Build), 1))</_NewBuild>
+		</PropertyGroup>
+
+		<!-- Write the incremented number back to disk for the NEXT compile cycle -->
+		<WriteLinesToFile File="$(_CounterFile)" Lines="$(_NewBuild)" Overwrite="true" />
+
+		<!-- Update the current x64 compile run to use the newly incremented number -->
+		<PropertyGroup>
+			<Version>$(BaseVersion).$(_NewBuild)</Version>
+			<AssemblyVersion>$(BaseVersion).$(_NewBuild)</AssemblyVersion>
+			<FileVersion>$(BaseVersion).$(_NewBuild)</FileVersion>
+		</PropertyGroup>
+
+		<Message Text="▶ Incremented Build Counter on disk to: $(_NewBuild)" Importance="high" />
 	</Target>
 
 </Project>

@@ -18,14 +18,22 @@ Project File
 		<SelfContained>false</SelfContained>
 		<PublishReadyToRun>false</PublishReadyToRun>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-		<DebugType>embedded</DebugType>
-		<DebugSymbols>false</DebugSymbols>
 		<Platforms>Release;x86</Platforms>
 		<Configurations>Debug;Release</Configurations>
 		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
 		<ApplicationIcon>Updater.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<NoWarn>$(NoWarn);NETSDK1057;NETSDK1206</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>
