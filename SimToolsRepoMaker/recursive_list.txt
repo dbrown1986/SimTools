@@ -48,6 +48,8 @@ https://us1-repo.simtools-app.com/App/x86/Dependencies/SharpCompress.dll
 https://us1-repo.simtools-app.com/App/x86/Dependencies/TagLibSharp.dll
 https://us1-repo.simtools-app.com/App/x86/Dependencies/WpfAnimatedGif.dll
 https://us1-repo.simtools-app.com/App/x86/Dependencies/ZstdSharp.dll
+https://us1-repo.simtools-app.com/App/x86/Dependencies/BouncyCastle.Crypto.dll
+https://us1-repo.simtools-app.com/App/x86/Dependencies/System.Management.dll
 https://us1-repo.simtools-app.com/App/x86/Languages
 https://us1-repo.simtools-app.com/App/x86/Languages/de.lang
 https://us1-repo.simtools-app.com/App/x86/Languages/ar.lang
@@ -80,6 +82,8 @@ https://us1-repo.simtools-app.com/App/x64/Dependencies/SharpCompress.dll
 https://us1-repo.simtools-app.com/App/x64/Dependencies/TagLibSharp.dll
 https://us1-repo.simtools-app.com/App/x64/Dependencies/WpfAnimatedGif.dll
 https://us1-repo.simtools-app.com/App/x64/Dependencies/ZstdSharp.dll
+https://us1-repo.simtools-app.com/App/x64/Dependencies/BouncyCastle.Crypto.dll
+https://us1-repo.simtools-app.com/App/x64/Dependencies/System.Management.dll
 https://us1-repo.simtools-app.com/App/x64/Languages
 https://us1-repo.simtools-app.com/App/x64/Languages/de.lang
 https://us1-repo.simtools-app.com/App/x64/Languages/ar.lang
@@ -102,6 +106,10 @@ https://us1-repo.simtools-app.com/App/SimToolsUninstaller.exe
 https://us1-repo.simtools-app.com/App/SimToolsInstaller.exe
 https://us1-repo.simtools-app.com/App/SimTools-Update-x64.xml
 https://us1-repo.simtools-app.com/App/SimTools-Update-x86.xml
+https://us1-repo.simtools-app.com/App/SimToolsRepoMaker.exe
+https://us1-repo.simtools-app.com/App/apache-win.zip
+https://us1-repo.simtools-app.com/App/recursive_list.txt
+https://us1-repo.simtools-app.com/App/SimToolsLanguageTool.exe
 https://us1-repo.simtools-app.com/Mods
 https://us1-repo.simtools-app.com/Mods/index.html
 https://us1-repo.simtools-app.com/Mods/Sims3

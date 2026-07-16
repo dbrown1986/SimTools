@@ -153,6 +153,43 @@ namespace SimTools
             }
         }
 
+        private async void EvergreenAbodeDownloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 1. Verify that the Sims 3 UserData directory is configured before attempting a download
+            if (!GamePaths.IsConfigured(GamePaths.Sims3UserData))
+            {
+                MessageBox.Show(
+                    LanguageManager.Get("Main", "TS3NoDir", "The Sims 3 User Data directory path has not been configured in your settings yet. Please set it up in the configuration file first."),
+                    LanguageManager.Get("Main", "TS3NoDir_Title", "Path Error"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
+            // 2. Resolve the full destination file path under Sims3UserData/Library
+            // GamePaths.Resolve automatically creates any missing subdirectories along the way
+            string filename = "SimTools_Evergreen_Abode.package";
+            string destPath = GamePaths.Resolve(GamePaths.Sims3UserData, "Library", filename);
+
+            // 3. Hand off the transfer to your native download worker
+            // This handles the %baseurl% translation, repository validation, HEAD checks, and progress bar UI
+            var (success, isNew) = await DownloadFileOnly("https://us1-repo.simtools-app.com/Exclusives/Sims 3/SimTools_Evergreen_Abode.package", destPath);
+
+            // 4. Report back to the user based on the operation outcome
+            if (success)
+            {
+                string message = isNew
+                    ? LanguageManager.Get("ExclusiveItems", "Download_Success", "SimTools Slim Livin package has been successfully downloaded and placed in your Library!")
+                    : LanguageManager.Get("ExclusiveItems", "Download_Current", "Your SimTools Slim Livin package is already up to date.");
+
+                MessageBox.Show(
+                    message,
+                    LanguageManager.Get("ExclusiveItems", "Download_Title", "Success"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+        }
+
         // ═══════════════════════════════════════════════════════════════════════
         // SHARED DOWNLOAD HELPERS
         // ═══════════════════════════════════════════════════════════════════════

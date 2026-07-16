@@ -61,7 +61,8 @@ Project File
 		<Resource Include="Images\discord.png" />
 		<Resource Include="Images\DownloadProgress1.png" />
 		<Resource Include="Images\DownloadProgress2.png" />
-		<Resource Include="Images\Exclusives\SlimLivin.jpg" />
+		<Resource Include="Images\Exclusives\EvergreenAbode.png" />
+		<Resource Include="Images\Exclusives\SlimLivin.png" />
 		<Resource Include="Images\facebook-hover.png" />
 		<Resource Include="Images\Flags\ar.jpg" />
 		<Resource Include="Images\Flags\de.jpg" />
@@ -216,39 +217,6 @@ Project File
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Remove="Images\Exclusives\SlimLivin.jpg" />
-		<None Remove="Images\Holidays\indpday_nye.gif" />
-		<None Remove="Images\Holidays\stpd.png" />
-		<None Remove="Images\Holidays\xmas.png" />
-		<None Remove="Images\Icons\alp.ico" />
-		<None Remove="Images\Icons\ccmagic.ico" />
-		<None Remove="Images\Icons\cmd.ico" />
-		<None Remove="Images\Icons\corylea.ico" />
-		<None Remove="Images\Icons\docs.ico" />
-		<None Remove="Images\Icons\dxvk.ico" />
-		<None Remove="Images\Icons\fix.ico" />
-		<None Remove="Images\Icons\grm.ico" />
-		<None Remove="Images\Icons\ld.ico" />
-		<None Remove="Images\Icons\nraas.ico" />
-		<None Remove="Images\Icons\otvdm.ico" />
-		<None Remove="Images\Icons\piracy.ico" />
-		<None Remove="Images\Icons\s3pe.ico" />
-		<None Remove="Images\Icons\s3ss.ico" />
-		<None Remove="Images\Icons\sbp.ico" />
-		<None Remove="Images\Icons\sc2000x.ico" />
-		<None Remove="Images\Icons\SimCopterX.ico" />
-		<None Remove="Images\Icons\simitone.ico" />
-		<None Remove="Images\Icons\SimStreetsX.ico" />
-		<None Remove="Images\Icons\SimTools-Red.ico" />
-		<None Remove="Images\Icons\SimTools-Yellow.ico" />
-		<None Remove="Images\Icons\SimTower.ico" />
-		<None Remove="Images\Icons\ts3gpua.ico" />
-		<None Remove="Images\Icons\ts3store.ico" />
-		<None Remove="Images\Icons\uasi.ico" />
-		<None Remove="Images\Icons\youtube.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
