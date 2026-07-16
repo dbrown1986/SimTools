@@ -3,9 +3,15 @@
 // SimTools Exclusive Items Code-Behind
 // (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
 
+using System;
 using System.IO;
-using System.Net.Http;
 using System.Windows;
+using System.Linq;
+using System.Text;
+using SharpCompress.Archives;
+using SharpCompress.Archives.SevenZip;
+using SharpCompress.Common;
+using SharpCompress.Readers;
 
 using MessageBox = System.Windows.MessageBox;
 
@@ -116,77 +122,219 @@ namespace SimTools
             Close();
         }
 
+        private string GetArchivePassword()
+        {
+            // The output generated from Step A (e.g., "YourSuperSecretPasswordHere")
+            byte[] obfuscatedBytes = new byte[] { 0x2F, 0x69, 0x79, 0xD3, 0x00, 0x69, 0x65, 0xE3, 0x16, 0x1A, 0x7A, 0xCB, 0x75, 0x38, 0x78, 0xED };
+            byte[] key = { 0x41, 0x5A, 0x32, 0x99 }; // Must match key from Step A
+
+            byte[] decrypted = new byte[obfuscatedBytes.Length];
+            for (int i = 0; i < obfuscatedBytes.Length; i++)
+            {
+                decrypted[i] = (byte)(obfuscatedBytes[i] ^ key[i % key.Length]);
+            }
+
+            return Encoding.UTF8.GetString(decrypted);
+        }
         private async void SlimLivinDownloadButton_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Verify that the Sims 3 UserData directory is configured before attempting a download
+            // 1. Verify that the Sims 3 UserData directory is configured
             if (!GamePaths.IsConfigured(GamePaths.Sims3UserData))
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Main", "TS3NoDir", "The Sims 3 User Data directory path has not been configured in your settings yet. Please set it up in the configuration file first."),
+                    LanguageManager.Get("Main", "TS3NoDir", "The Sims 3 User Data directory path has not been configured in your settings yet."),
                     LanguageManager.Get("Main", "TS3NoDir_Title", "Path Error"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
                 return;
             }
 
-            // 2. Resolve the full destination file path under Sims3UserData/Library
-            // GamePaths.Resolve automatically creates any missing subdirectories along the way
-            string filename = "SimTools_Slim_Livin.package";
-            string destPath = GamePaths.Resolve(GamePaths.Sims3UserData, "Library", filename);
+            // 2. Setup paths
+            // We download a temporary .7z file instead of the raw .package file
+            string archiveFilename = "SimTools_Slim_Livin.7z";
+            string tempArchivePath = GamePaths.Resolve(GamePaths.Sims3UserData, "Library", archiveFilename);
+            string destDirectory = Path.GetDirectoryName(tempArchivePath);
 
-            // 3. Hand off the transfer to your native download worker
-            // This handles the %baseurl% translation, repository validation, HEAD checks, and progress bar UI
-            var (success, isNew) = await DownloadFileOnly("https://us1-repo.simtools-app.com/Exclusives/Sims 3/SimTools_Slim_Livin.package", destPath);
+            // 3. Download the password-protected 7z archive
+            var (success, isNew) = await DownloadFileOnly(
+                "https://us1-repo.simtools-app.com/Exclusives/Sims 3/SimTools_Slim_Livin.7z",
+                tempArchivePath
+            );
 
-            // 4. Report back to the user based on the operation outcome
             if (success)
             {
-                string message = isNew
-                    ? LanguageManager.Get("ExclusiveItems", "Download_Success", "SimTools Slim Livin package has been successfully downloaded and placed in your Library!")
-                    : LanguageManager.Get("ExclusiveItems", "Download_Current", "Your SimTools Slim Livin package is already up to date.");
+                bool extractionSuccess = false;
 
-                MessageBox.Show(
-                    message,
-                    LanguageManager.Get("ExclusiveItems", "Download_Title", "Success"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                if (isNew && File.Exists(tempArchivePath))
+                {
+                    try
+                    {
+                        // Retrieve the de-obfuscated password
+                        string archivePassword = GetArchivePassword();
+
+                        var readerOptions = new ReaderOptions
+                        {
+                            Password = archivePassword
+                        };
+
+                        // 4. Extract using SharpCompress
+                        // Note: Open as a SevenZipArchive. 
+                        using (var archive = SevenZipArchive.OpenArchive(tempArchivePath, readerOptions))
+                        {
+                            // WriteToDirectory handles the sequential extraction required for solid 7z files
+                            archive.WriteToDirectory(destDirectory, new ExtractionOptions
+                            {
+                                ExtractFullPath = true,
+                                Overwrite = true
+                            });
+                        }
+
+                        extractionSuccess = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            $"Extraction failed: {ex.Message}",
+                            "Error",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+                    finally
+                    {
+                        // 5. Always delete the local temporary archive to clean up
+                        if (File.Exists(tempArchivePath))
+                        {
+                            try
+                            {
+                                File.Delete(tempArchivePath);
+                            }
+                            catch (IOException)
+                            {
+                                // Handle potential file lock issues during immediate deletion
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // If the file wasn't new, we assume it's already up to date
+                    extractionSuccess = true;
+                }
+
+                // 6. Report outcome
+                if (extractionSuccess)
+                {
+                    string message = isNew
+                        ? LanguageManager.Get("ExclusiveItems", "Download_Success", "SimTools Slim Livin package has been successfully downloaded, extracted, and placed in your Library!")
+                        : LanguageManager.Get("ExclusiveItems", "Download_Current", "Your SimTools Slim Livin package is already up to date.");
+
+                    MessageBox.Show(
+                        message,
+                        LanguageManager.Get("ExclusiveItems", "Download_Title", "Success"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
             }
         }
 
         private async void EvergreenAbodeDownloadButton_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Verify that the Sims 3 UserData directory is configured before attempting a download
+            // 1. Verify that the Sims 3 UserData directory is configured
             if (!GamePaths.IsConfigured(GamePaths.Sims3UserData))
             {
                 MessageBox.Show(
-                    LanguageManager.Get("Main", "TS3NoDir", "The Sims 3 User Data directory path has not been configured in your settings yet. Please set it up in the configuration file first."),
+                    LanguageManager.Get("Main", "TS3NoDir", "The Sims 3 User Data directory path has not been configured in your settings yet."),
                     LanguageManager.Get("Main", "TS3NoDir_Title", "Path Error"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
                 return;
             }
 
-            // 2. Resolve the full destination file path under Sims3UserData/Library
-            // GamePaths.Resolve automatically creates any missing subdirectories along the way
-            string filename = "SimTools_Evergreen_Abode.package";
-            string destPath = GamePaths.Resolve(GamePaths.Sims3UserData, "Library", filename);
+            // 2. Setup paths
+            // We download a temporary .7z file instead of the raw .package file
+            string archiveFilename = "SimTools_Evergreen_Abode.7z";
+            string tempArchivePath = GamePaths.Resolve(GamePaths.Sims3UserData, "Library", archiveFilename);
+            string destDirectory = Path.GetDirectoryName(tempArchivePath);
 
-            // 3. Hand off the transfer to your native download worker
-            // This handles the %baseurl% translation, repository validation, HEAD checks, and progress bar UI
-            var (success, isNew) = await DownloadFileOnly("https://us1-repo.simtools-app.com/Exclusives/Sims 3/SimTools_Evergreen_Abode.package", destPath);
+            // 3. Download the password-protected 7z archive
+            var (success, isNew) = await DownloadFileOnly(
+                "https://us1-repo.simtools-app.com/Exclusives/Sims 3/SimTools_Evergreen_Abode.7z",
+                tempArchivePath
+            );
 
-            // 4. Report back to the user based on the operation outcome
             if (success)
             {
-                string message = isNew
-                    ? LanguageManager.Get("ExclusiveItems", "Download_Success", "SimTools Slim Livin package has been successfully downloaded and placed in your Library!")
-                    : LanguageManager.Get("ExclusiveItems", "Download_Current", "Your SimTools Slim Livin package is already up to date.");
+                bool extractionSuccess = false;
 
-                MessageBox.Show(
-                    message,
-                    LanguageManager.Get("ExclusiveItems", "Download_Title", "Success"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                if (isNew && File.Exists(tempArchivePath))
+                {
+                    try
+                    {
+                        // Retrieve the de-obfuscated password
+                        string archivePassword = GetArchivePassword();
+
+                        var readerOptions = new ReaderOptions
+                        {
+                            Password = archivePassword
+                        };
+
+                        // 4. Extract using SharpCompress
+                        // Note: Open as a SevenZipArchive. 
+                        using (var archive = SevenZipArchive.OpenArchive(tempArchivePath, readerOptions))
+                        {
+                            // WriteToDirectory handles the sequential extraction required for solid 7z files
+                            archive.WriteToDirectory(destDirectory, new ExtractionOptions
+                            {
+                                ExtractFullPath = true,
+                                Overwrite = true
+                            });
+                        }
+
+                        extractionSuccess = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            $"Extraction failed: {ex.Message}",
+                            "Error",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+                    finally
+                    {
+                        // 5. Always delete the local temporary archive to clean up
+                        if (File.Exists(tempArchivePath))
+                        {
+                            try
+                            {
+                                File.Delete(tempArchivePath);
+                            }
+                            catch (IOException)
+                            {
+                                // Handle potential file lock issues during immediate deletion
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // If the file wasn't new, we assume it's already up to date
+                    extractionSuccess = true;
+                }
+
+                // 6. Report outcome
+                if (extractionSuccess)
+                {
+                    string message = isNew
+                        ? LanguageManager.Get("ExclusiveItems", "Download_Success", "SimTools Slim Livin package has been successfully downloaded, extracted, and placed in your Library!")
+                        : LanguageManager.Get("ExclusiveItems", "Download_Current", "Your SimTools Slim Livin package is already up to date.");
+
+                    MessageBox.Show(
+                        message,
+                        LanguageManager.Get("ExclusiveItems", "Download_Title", "Success"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
             }
         }
 
