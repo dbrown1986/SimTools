@@ -231,6 +231,10 @@ Project File
 	<ItemGroup>
 		<PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
 		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="Obfuscar" Version="2.2.50">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="System.CodeDom" Version="6.0.0" />
 		<PackageReference Include="System.Management" Version="6.0.2" />
 		<PackageReference Include="TagLibSharp" Version="2.3.0" />
@@ -324,10 +328,7 @@ Project File
 	</Target>
 
 	<!-- ── 2. INCREMENT ON DISK (Only runs during x64 builds) ─────────────── -->
-	<Target Name="IncrementBuildCounter"
-			BeforeTargets="BeforeBuild"
-			DependsOnTargets="ReadBuildCounter"
-			Condition="'$(DesignTimeBuild)' != 'true' And '$(Platform)' == 'x64'">
+	<Target Name="IncrementBuildCounter" BeforeTargets="BeforeBuild" DependsOnTargets="ReadBuildCounter" Condition="'$(DesignTimeBuild)' != 'true' And '$(Platform)' == 'x64'">
 
 		<PropertyGroup>
 			<!-- Increment the value we just read in memory -->
