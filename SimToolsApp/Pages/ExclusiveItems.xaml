@@ -106,8 +106,8 @@
                             Foreground="#FFD700"
                             FontFamily="Tahoma"
                             FontWeight="Bold"
-                            FontSize="20" Height="26" Background="#BF383838"/>
-                        <TextBlock x:Name="SlimLivinInfo" Margin="0,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FF13FF00" Width="481" FontWeight="Bold" Background="#BF383838" Text="A quaint, but luxurious abode. Small and compact at 10x10. A generous starter for any sim with 2 bedrooms and 1 bathroom. Base game items only."/>
+                            FontSize="20" Height="26"/>
+                        <TextBlock x:Name="SlimLivinInfo" Margin="0,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FF13FF00" Width="481" FontWeight="Bold" Text="A quaint, but luxurious abode. Small and compact at 10x10. A generous starter for any sim with 2 bedrooms and 1 bathroom. Base game items only."/>
                         <Grid Height="34" Margin="0,8,0,0">
                             <Button x:Name="SlimLivinDownloadButton" Content="Download Now" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SlimLivinDownloadButton_Click" BorderBrush="{x:Null}">
                                 <Button.Style>
@@ -141,6 +141,7 @@
                             </Button>
                             <Image x:Name="ReqBaseGame" HorizontalAlignment="Left" Height="16" Margin="170,9,0,0" VerticalAlignment="Top" Width="16" Source="/Images/Icons/Sims3.ico"/>
                         </Grid>
+                        <TextBlock x:Name="SlimLivinPrice" TextWrapping="Wrap" FontFamily="Tahoma" Foreground="#FF13FF00" Width="84" FontWeight="Bold" Text="§45,173" Height="21" FontSize="16" Margin="-20,-35,0,0"/>
                     </StackPanel>
                     <StackPanel x:Name="EvergreenAbodeStackPanel" Orientation="Vertical" Margin="140,150,0,-150">
                         <TextBlock x:Name="EvergreenAbodeHeader" VerticalAlignment="Top"
@@ -148,8 +149,8 @@
                             Foreground="#FFD700"
                             FontFamily="Tahoma"
                             FontWeight="Bold"
-                            FontSize="20" Height="26" Background="#BF383838"/>
-                        <TextBlock x:Name="EvergreenAbodeInfo" Margin="0,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FF13FF00" Width="481" FontWeight="Bold" Background="#BF383838" Text="Evergreen Abode is a charming, two-story suburban residence situated on a 40 x 30 lot. The exterior features light-colored siding, a dark roof, and a contemporary design that includes an integrated garage."/>
+                            FontSize="20" Height="26"/>
+                        <TextBlock x:Name="EvergreenAbodeInfo" Margin="0,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FF13FF00" Width="481" FontWeight="Bold" Text="Evergreen Abode is a charming, two-story suburban residence situated on a 40 x 30 lot. The exterior features light-colored siding, a dark roof, and a contemporary design that includes an integrated garage."/>
                         <Grid Height="34" Margin="0,8,0,0">
                             <Button x:Name="EvergreenAbodeDownloadButton" Content="Download Now" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="EvergreenAbodeDownloadButton_Click" BorderBrush="{x:Null}">
                                 <Button.Style>
@@ -183,6 +184,8 @@
                             </Button>
                             <Image x:Name="ReqBaseGame1" HorizontalAlignment="Left" Height="16" Margin="170,9,0,0" VerticalAlignment="Top" Width="16" Source="/Images/Icons/Sims3.ico"/>
                         </Grid>
+                        <TextBlock x:Name="EvergreenAbodePrice" TextWrapping="Wrap" FontFamily="Tahoma" Foreground="#FF13FF00" Width="81" FontWeight="Bold" Text="§109,858
+" FontSize="16" Margin="-20,-30,0,0" Height="23"/>
                     </StackPanel>
                 </Grid>
 
