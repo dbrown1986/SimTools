@@ -1,16 +1,4 @@
-﻿<!--
-SimTools
-Main Application
-Project File
-(C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
-
-** Ongoing Projects **
-
-> Music Packs for the various games.
-
--->
-
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<BaseVersion>4.0.9</BaseVersion>
@@ -34,15 +22,16 @@ Project File
 		<NoWarn>$(NoWarn);NETSDK1057;NETSDK1206</NoWarn>
 	</PropertyGroup>
 	
+	<!-- ── Configuration-Specific Debug/PDB Settings ────────────────────── -->
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-  </PropertyGroup>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<Resource Include="Images\bmac.png" />
@@ -231,12 +220,9 @@ Project File
 	<ItemGroup>
 		<PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
 		<PackageReference Include="NAudio" Version="2.2.1" />
-		<PackageReference Include="Obfuscar" Version="2.2.50">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
 		<PackageReference Include="System.CodeDom" Version="6.0.0" />
-		<PackageReference Include="System.Management" Version="6.0.2" />
+		<!-- Exclude runtime assets here so NuGet stops creating /runtimes folder -->
+		<PackageReference Include="System.Management" Version="6.0.2" ExcludeAssets="runtime" />
 		<PackageReference Include="TagLibSharp" Version="2.3.0" />
 		<PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
 		<PackageReference Include="SharpCompress" Version="0.50.0">
@@ -300,52 +286,39 @@ Project File
 		<Copy SourceFiles="@(_DepDlls)" DestinationFolder="$(OutputPath)Dependencies" SkipUnchangedFiles="true" />
 
 		<Delete Files="@(_DepDlls)" />
+
+		<!-- Clean up any stray runtime folders if they somehow slip through -->
+		<RemoveDir Directories="$(OutputPath)runtimes" Condition="Exists('$(OutputPath)runtimes')" />
 	</Target>
 
 
-	<!-- ── 1. READ & STAMP (Runs for both x86 and x64) ────────────────────── -->
+	<!-- ── 1. READ & STAMP (Runs for both x86 and x64) ── -->
 	<Target Name="ReadBuildCounter" BeforeTargets="BeforeBuild">
 		<PropertyGroup>
 			<_CounterFile>$(MSBuildProjectDirectory)\build.counter</_CounterFile>
 		</PropertyGroup>
 
-		<!-- Read current number (defaults to 0 if file is missing) -->
-		<ReadLinesFromFile File="$(_CounterFile)" Condition="Exists('$(_CounterFile)')">
+		<!-- Default build number to 0 if the file doesn't exist yet -->
+		<WriteLinesToFile File="$(_CounterFile)" Lines="0" Condition="!Exists('$(_CounterFile)')" Overwrite="false" />
+
+		<!-- Read current number -->
+		<ReadLinesFromFile File="$(_CounterFile)">
 			<Output TaskParameter="Lines" ItemName="_CounterLines" />
 		</ReadLinesFromFile>
 
 		<PropertyGroup>
-			<_Build Condition="'@(_CounterLines)' != ''">@(_CounterLines)</_Build>
-			<_Build Condition="'$(_Build)' == ''">0</_Build>
-
-			<!-- Stamp the binaries with the retrieved version -->
-			<Version>$(BaseVersion).$(_Build)</Version>
-			<AssemblyVersion>$(BaseVersion).$(_Build)</AssemblyVersion>
-			<FileVersion>$(BaseVersion).$(_Build)</FileVersion>
+			<!-- Apply the exact same version number to both x86 and x64 builds -->
+			<Version>$(BaseVersion).@(_CounterLines)</Version>
+			<AssemblyVersion>$(BaseVersion).@(_CounterLines)</AssemblyVersion>
+			<FileVersion>$(BaseVersion).@(_CounterLines)</FileVersion>
 		</PropertyGroup>
-
-		<Message Text="▶ Applying Build Number: $(_Build) (Platform: $(Platform))" Importance="high" />
 	</Target>
 
-	<!-- ── 2. INCREMENT ON DISK (Only runs during x64 builds) ─────────────── -->
-	<Target Name="IncrementBuildCounter" BeforeTargets="BeforeBuild" DependsOnTargets="ReadBuildCounter" Condition="'$(DesignTimeBuild)' != 'true' And '$(Platform)' == 'x64'">
-
-		<PropertyGroup>
-			<!-- Increment the value we just read in memory -->
-			<_NewBuild>$([MSBuild]::Add($(_Build), 1))</_NewBuild>
-		</PropertyGroup>
-
-		<!-- Write the incremented number back to disk for the NEXT compile cycle -->
-		<WriteLinesToFile File="$(_CounterFile)" Lines="$(_NewBuild)" Overwrite="true" />
-
-		<!-- Update the current x64 compile run to use the newly incremented number -->
-		<PropertyGroup>
-			<Version>$(BaseVersion).$(_NewBuild)</Version>
-			<AssemblyVersion>$(BaseVersion).$(_NewBuild)</AssemblyVersion>
-			<FileVersion>$(BaseVersion).$(_NewBuild)</FileVersion>
-		</PropertyGroup>
-
-		<Message Text="▶ Incremented Build Counter on disk to: $(_NewBuild)" Importance="high" />
+	<!-- ── 2. INCREMENT (Only runs AFTER x64 finishes compiling) ── -->
+	<Target Name="IncrementBuildCounter" AfterTargets="Build" Condition="'$(DesignTimeBuild)' != 'true' And '$(Platform)' == 'x64'">
+		<!-- Let PowerShell cleanly add 1 and rewrite the file. No MSBuild math/convert errors possible! -->
+		<Exec Command="powershell -Command &quot;$val = [int](Get-Content '$(_CounterFile)'); $val++; Set-Content '$(_CounterFile)' $val&quot;" />
+		<Message Text="▶ x64 Build Completed. Counter incremented for the next run." Importance="high" />
 	</Target>
 
 </Project>
