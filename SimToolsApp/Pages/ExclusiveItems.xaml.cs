@@ -117,10 +117,7 @@ namespace SimTools
 
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        private void BackButton_Click(object sender, RoutedEventArgs e) => Close();
 
         private string GetArchivePassword()
         {
