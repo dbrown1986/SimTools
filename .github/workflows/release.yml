@@ -2,7 +2,6 @@ name: Build and Release
 
 on:
   push:
-    # Remove 'branches' entirely if you want this to run on every push to any branch
     branches:
       - master 
 
@@ -28,7 +27,7 @@ jobs:
       - name: Restore dependencies
         run: nuget restore SimTools.sln
 
-      # Build SimToolsApp for both platforms
+      # Build SimToolsApp
       - name: Build SimToolsApp
         run: >
           msbuild SimTools.sln 
@@ -36,7 +35,7 @@ jobs:
           /p:Platform=${{ matrix.platform }} 
           /t:SimToolsApp
 
-      # Build everything else ONLY for x86
+      # Build remaining projects
       - name: Build Remaining Projects (x86 only)
         if: matrix.platform == 'x86'
         run: >
@@ -44,11 +43,24 @@ jobs:
           /p:Configuration=Release 
           /p:Platform=x86
 
+      # This step ensures the files are actually captured
+      - name: Upload Binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries-${{ matrix.platform }}
+          path: |
+            **/bin/Release/*.exe
+            **/bin/Release/*.dll
+            **/bin/Release/Dependencies/*.dll
+            **/bin/Release/Languages/*.lang
+            **/bin/Release/Resources/Music/*.txt
+            **/bin/Release/Resources/Music/*.m4a
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          # This will create a 'continuous' release for every push
           tag_name: latest
+          # We use the explicit path from the build to ensure it finds them
           files: |
             **/bin/Release/*.exe
             **/bin/Release/*.dll
