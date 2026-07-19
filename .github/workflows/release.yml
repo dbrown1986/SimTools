@@ -11,8 +11,6 @@ jobs:
     strategy:
       matrix:
         platform: [x86, x64]
-    permissions:
-      contents: write
     
     steps:
       - name: Checkout code
@@ -27,15 +25,16 @@ jobs:
       - name: Restore dependencies
         run: nuget restore SimTools.sln
 
-      # Build SimToolsApp for both platforms (enabling single-file publishing if desired)
+      # Build SimToolsApp for current matrix platform
       - name: Build SimToolsApp
         run: >
           msbuild SimTools.sln 
           /p:Configuration=Release 
           /p:Platform=${{ matrix.platform }} 
+          /p:PublishSingleFile=true 
           /t:SimToolsApp
 
-      # Build remaining projects ONLY for x86
+      # Build remaining projects ONLY during the x86 pass
       - name: Build Remaining Projects (x86 only)
         if: matrix.platform == 'x86'
         run: >
@@ -44,38 +43,50 @@ jobs:
           /p:Platform=x86 
           /p:PublishSingleFile=true
 
-      - name: Package all outputs dynamically
+      - name: Package artifacts
         shell: powershell
         run: |
           New-Item -ItemType Directory -Path "staging" -Force
           
-          # Find all release output directories matching the current platform matrix
-          $targetPath = "*bin\${{ matrix.platform }}\Release\net6.0-windows\*"
+          # Collect all built outputs for this specific platform run
+          $targetPath = "*\bin\${{ matrix.platform }}\Release\net6.0-windows\*"
           $outputDirs = Get-ChildItem -Path . -Recurse -Directory | Where-Object { $_.FullName -like $targetPath }
 
           foreach ($dir in $outputDirs) {
-              # Get the parent project folder name to use as the archive name
-              $projectName = $dir.Parent.Parent.Parent.Name
-              
-              # If it's a multi-project layout, ensure we don't grab generic 'bin' paths improperly
-              if ($dir.Name -match "net\d+\.\d+") {
-                  $zipName = "staging\${{ matrix.platform }}-${{ github.sha }}.zip" # Fallback pattern if needed
-                  # Better yet, name it after the project folder containing the .csproj
-                  $projFile = Get-ChildItem -Path $dir.Parent.Parent.Parent -Filter "*.csproj" | Select-Object -First 1
-                  if ($projFile) {
-                      $projectName = $projFile.BaseName
-                  }
-                  
+              $projFile = Get-ChildItem -Path $dir.Parent.Parent.Parent -Filter "*.csproj" | Select-Object -First 1
+              if ($projFile) {
+                  $projectName = $projFile.BaseName
                   $destZip = "staging\$projectName-${{ matrix.platform }}.zip"
-                  Write-Child "Compressing $projectName for ${{ matrix.platform }}..."
+                  Write-Output "Compressing $projectName for ${{ matrix.platform }}..."
                   Compress-Archive -Path "$($dir.FullName)\*" -DestinationPath $destZip -Force
               }
           }
+
+      # Upload the packaged zips to GitHub Actions internal storage
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts-${{ matrix.platform }}
+          path: staging/*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # Download artifacts from both the x86 and x64 build jobs into a single directory
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: all-releases
+          merge-multiple: true
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest-${{ github.run_id }}
-          files: staging/*
+          files: all-releases/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
