@@ -31,7 +31,6 @@ jobs:
           msbuild SimTools.sln 
           /p:Configuration=Release 
           /p:Platform=${{ matrix.platform }} 
-          /p:PublishSingleFile=true 
           /t:SimToolsApp
 
       # Build remaining projects ONLY during the x86 pass
@@ -48,18 +47,17 @@ jobs:
         run: |
           New-Item -ItemType Directory -Path "staging" -Force
           
-          # Collect all built outputs for this specific platform run
-          $targetPath = "*\bin\${{ matrix.platform }}\Release\net6.0-windows\*"
-          $outputDirs = Get-ChildItem -Path . -Recurse -Directory | Where-Object { $_.FullName -like $targetPath }
+          # Find all project folders containing a bin\<platform>\Release\net6.0-windows path
+          $netPath = "bin\${{ matrix.platform }}\Release\net6.0-windows"
+          $projectDirs = Get-ChildItem -Path . -Recurse -Directory | Where-Object { Test-Path "$($_.FullName)\$netPath" }
 
-          foreach ($dir in $outputDirs) {
-              $projFile = Get-ChildItem -Path $dir.Parent.Parent.Parent -Filter "*.csproj" | Select-Object -First 1
-              if ($projFile) {
-                  $projectName = $projFile.BaseName
-                  $destZip = "staging\$projectName-${{ matrix.platform }}.zip"
-                  Write-Output "Compressing $projectName for ${{ matrix.platform }}..."
-                  Compress-Archive -Path "$($dir.FullName)\*" -DestinationPath $destZip -Force
-              }
+          foreach ($projDir in $projectDirs) {
+              $projectName = $projDir.Name
+              $sourceBinPath = "$($projDir.FullName)\$netPath"
+              $destZip = "staging\$projectName-${{ matrix.platform }}.zip"
+              
+              Write-Output "Compressing $projectName for ${{ matrix.platform }}..."
+              Compress-Archive -Path "$sourceBinPath\*" -DestinationPath $destZip -Force
           }
 
       # Upload the packaged zips to GitHub Actions internal storage
