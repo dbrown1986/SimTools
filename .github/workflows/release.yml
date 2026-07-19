@@ -29,22 +29,21 @@ jobs:
         id: version
         shell: powershell
         run: |
-          # Read base version from SimToolsApp.csproj checking BaseVersion then Version
+          # Read base version using robust XML selection to handle namespaces
           $csprojPath = Get-ChildItem -Recurse -Filter "SimToolsApp.csproj" | Select-Object -First 1 -ExpandProperty FullName
           [xml]$csproj = Get-Content $csprojPath
-          $baseVersion = $null
           
-          if ($csproj.Project.PropertyGroup) {
-              foreach ($group in $csproj.Project.PropertyGroup) {
-                  if ($group.BaseVersion) {
-                      $baseVersion = $group.BaseVersion.Trim()
-                      break
-                  } elseif ($group.Version) {
-                      $baseVersion = $group.Version.Trim()
-                      break
-                  }
+          $baseVersion = $null
+          $baseVersionNode = Select-Xml -Xml $csproj -XPath "//*[local-name()='BaseVersion']" | Select-Object -First 1
+          if ($baseVersionNode) {
+              $baseVersion = $baseVersionNode.Node.InnerText.Trim()
+          } else {
+              $versionNode = Select-Xml -Xml $csproj -XPath "//*[local-name()='Version']" | Select-Object -First 1
+              if ($versionNode) {
+                  $baseVersion = $versionNode.Node.InnerText.Trim()
               }
           }
+
           if (-not $baseVersion) {
               $baseVersion = "1.0.0"
           }
@@ -64,7 +63,7 @@ jobs:
       - name: Restore dependencies
         run: nuget restore SimTools.sln
 
-      # Build SimToolsApp for current matrix platform
+      # Build SimToolsApp (multi-file output)
       - name: Build SimToolsApp
         run: >
           msbuild SimTools.sln 
@@ -73,7 +72,7 @@ jobs:
           /p:PublishSingleFile=false
           /t:SimToolsApp
 
-      # Build remaining projects ONLY during the x86 pass with single-file publishing
+      # Build remaining projects (single-file publishing enabled for utilities)
       - name: Build Remaining Projects (x86 only)
         if: matrix.platform == 'x86'
         run: >
@@ -87,7 +86,6 @@ jobs:
         run: |
           New-Item -ItemType Directory -Path "staging" -Force
           
-          # Find all project folders containing a bin\<platform>\Release\net6.0-windows path
           $netPath = "bin\${{ matrix.platform }}\Release\net6.0-windows"
           $projectDirs = Get-ChildItem -Path . -Recurse -Directory | Where-Object { Test-Path "$($_.FullName)\$netPath" }
 
@@ -95,18 +93,32 @@ jobs:
               $projectName = $projDir.Name
               $sourceBinPath = "$($projDir.FullName)\$netPath"
               
-              # Check if single-file publishing resulted in a standalone executable
-              $exeFiles = Get-ChildItem -Path $sourceBinPath -Filter "*.exe"
+              # Explicit rule sets based on project requirements
+              $zipProjects = @("SimToolsApp", "SimToolsRepoMaker")
               
-              if ($exeFiles.Count -eq 1) {
-                  $sourceExe = $exeFiles[0].FullName
-                  $destExe = "staging\$projectName-${{ matrix.platform }}.exe"
-                  Write-Output "Copying single-file executable for $projectName (${{ matrix.platform }})..."
-                  Copy-Item -Path $sourceExe -Destination $destExe -Force
-              } else {
+              if ($zipProjects -contains $projectName) {
                   $destZip = "staging\$projectName-${{ matrix.platform }}.zip"
                   Write-Output "Compressing multi-file project $projectName for ${{ matrix.platform }}..."
                   Compress-Archive -Path "$sourceBinPath\*" -DestinationPath $destZip -Force
+              } else {
+                  # Copy single-file standalone executable
+                  $exeFiles = Get-ChildItem -Path $sourceBinPath -Filter "$projectName.exe"
+                  if ($exeFiles.Count -eq 0) {
+                      # Fallback to any exe if exact name match varies slightly
+                      $exeFiles = Get-ChildItem -Path $sourceBinPath -Filter "*.exe"
+                  }
+                  
+                  if ($exeFiles.Count -eq 1) {
+                      $sourceExe = $exeFiles[0].FullName
+                      $destExe = "staging\$projectName-${{ matrix.platform }}.exe"
+                      Write-Output "Copying single-file executable for $projectName (${{ matrix.platform }})..."
+                      Copy-Item -Path $sourceExe -Destination $destExe -Force
+                  } else {
+                      # Fallback safety: zip it if single-file expectations aren't met
+                      $destZip = "staging\$projectName-${{ matrix.platform }}.zip"
+                      Write-Output "Fallback: Compressing $projectName for ${{ matrix.platform }}..."
+                      Compress-Archive -Path "$sourceBinPath\*" -DestinationPath $destZip -Force
+                  }
               }
           }
 
