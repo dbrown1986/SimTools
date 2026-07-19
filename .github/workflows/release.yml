@@ -67,17 +67,17 @@ jobs:
       - name: Restore dependencies
         run: nuget restore SimTools.sln
 
-      # Build SimToolsApp (multi-file output)
-      - name: Build SimToolsApp
+      # Build SimToolsApp and SimToolsRepoMaker (multi-file outputs)
+      - name: Build Multi-File Projects
         run: >
           msbuild SimTools.sln 
           /p:Configuration=Release 
           /p:Platform=${{ matrix.platform }} 
           /p:PublishSingleFile=false
-          /t:SimToolsApp
+          /t:SimToolsApp;SimToolsRepoMaker
 
-      # Build remaining projects (single-file publishing enabled for utilities)
-      - name: Build Remaining Projects (x86 only)
+      # Build remaining single-file utility projects (x86 only pass)
+      - name: Build Single-File Utilities (x86 only)
         if: matrix.platform == 'x86'
         run: >
           msbuild SimTools.sln 
@@ -108,7 +108,6 @@ jobs:
                   # Copy single-file standalone executable
                   $exeFiles = Get-ChildItem -Path $sourceBinPath -Filter "$projectName.exe"
                   if ($exeFiles.Count -eq 0) {
-                      # Fallback to any exe if exact name match varies slightly
                       $exeFiles = Get-ChildItem -Path $sourceBinPath -Filter "*.exe"
                   }
                   
@@ -118,7 +117,6 @@ jobs:
                       Write-Output "Copying single-file executable for $projectName (${{ matrix.platform }})..."
                       Copy-Item -Path $sourceExe -Destination $destExe -Force
                   } else {
-                      # Fallback safety: zip it if single-file expectations aren't met
                       $destZip = "staging\$projectName-${{ matrix.platform }}.zip"
                       Write-Output "Fallback: Compressing $projectName for ${{ matrix.platform }}..."
                       Compress-Archive -Path "$sourceBinPath\*" -DestinationPath $destZip -Force
