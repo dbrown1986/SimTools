@@ -1,6 +1,6 @@
 ![](SimToolsApp/Images/SimTools_Logo.png)
 
-[![Build](https://github.com/dbrown1986/SimTools/actions/workflows/build.yml/badge.svg)](https://github.com/dbrown1986/SimTools/actions/workflows/build.yml)
+[![Build and Release](https://github.com/dbrown1986/SimTools/actions/workflows/release.yml/badge.svg)](https://github.com/dbrown1986/SimTools/actions/workflows/release.yml)
 
 > A desktop utility for fans of The Sims and SimCity series. SimTools brings together GPU configuration tools, game tweaks, mod framework setup, and directory management into a single, easy-to-use application — available in 9 languages.
 
