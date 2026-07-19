@@ -2,8 +2,9 @@ name: Build and Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    # Remove 'branches' entirely if you want this to run on every push to any branch
+    branches:
+      - master 
 
 jobs:
   build:
@@ -11,6 +12,8 @@ jobs:
     strategy:
       matrix:
         platform: [x86, x64]
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout code
@@ -44,6 +47,8 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          # This will create a 'continuous' release for every push
+          tag_name: latest
           files: |
             **/bin/Release/*.exe
             **/bin/Release/*.dll
