@@ -44,25 +44,17 @@ jobs:
           /p:Platform=x86
 
       # This step ensures the files are actually captured
-      - name: Upload Binaries
-        uses: actions/upload-artifact@v4
-        with:
-          name: binaries-${{ matrix.platform }}
-          path: |
-            **/bin/Release/*.exe
-            **/bin/Release/*.dll
-            **/bin/Release/Dependencies/*.dll
-            **/bin/Release/Languages/*.lang
-            **/bin/Release/Resources/Music/*.txt
-            **/bin/Release/Resources/Music/*.m4a
+      - name: Copy binaries to staging
+        run: |
+          mkdir staging
+          Get-ChildItem -Path . -Include *.exe,*.dll -Recurse | 
+          Where-Object { $_.FullName -like "*bin\Release*" } | 
+          Copy-Item -Destination staging
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
-          # We use the explicit path from the build to ensure it finds them
-          files: |
-            **/bin/Release/*.exe
-            **/bin/Release/*.dll
+          files: staging/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
