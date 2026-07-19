@@ -29,10 +29,22 @@ jobs:
         id: version
         shell: powershell
         run: |
-          # Read base version from SimToolsApp.csproj
+          # Read base version from SimToolsApp.csproj checking BaseVersion then Version
           $csprojPath = Get-ChildItem -Recurse -Filter "SimToolsApp.csproj" | Select-Object -First 1 -ExpandProperty FullName
           [xml]$csproj = Get-Content $csprojPath
-          $baseVersion = $csproj.Project.PropertyGroup.Version
+          $baseVersion = $null
+          
+          if ($csproj.Project.PropertyGroup) {
+              foreach ($group in $csproj.Project.PropertyGroup) {
+                  if ($group.BaseVersion) {
+                      $baseVersion = $group.BaseVersion.Trim()
+                      break
+                  } elseif ($group.Version) {
+                      $baseVersion = $group.Version.Trim()
+                      break
+                  }
+              }
+          }
           if (-not $baseVersion) {
               $baseVersion = "1.0.0"
           }
@@ -52,12 +64,13 @@ jobs:
       - name: Restore dependencies
         run: nuget restore SimTools.sln
 
-      # Build SimToolsApp for current matrix platform with single-file publishing
+      # Build SimToolsApp for current matrix platform
       - name: Build SimToolsApp
         run: >
           msbuild SimTools.sln 
           /p:Configuration=Release 
           /p:Platform=${{ matrix.platform }} 
+          /p:PublishSingleFile=false
           /t:SimToolsApp
 
       # Build remaining projects ONLY during the x86 pass with single-file publishing
@@ -85,8 +98,6 @@ jobs:
               # Check if single-file publishing resulted in a standalone executable
               $exeFiles = Get-ChildItem -Path $sourceBinPath -Filter "*.exe"
               
-              # If there is precisely one exe and very few total files (or a single file bundle), treat as single-file
-              # Alternatively, if you want ALL single-file builds published as loose .exes:
               if ($exeFiles.Count -eq 1) {
                   $sourceExe = $exeFiles[0].FullName
                   $destExe = "staging\$projectName-${{ matrix.platform }}.exe"
