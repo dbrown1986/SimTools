@@ -25,7 +25,7 @@ jobs:
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2
 
-      - name: Extract Version and Build Counter
+      - name: Extract Version, Build Counter, and Datestamp
         id: version
         shell: powershell
         run: |
@@ -56,7 +56,11 @@ jobs:
               $buildCount = "${{ github.run_number }}"
           }
 
-          $tag = "SimTools-$baseVersion.$buildCount"
+          # Generate a unique datestamp to prevent existing tag collisions
+          $dateStamp = Get-Date -Format "yyyyMMdd-HHmmss"
+
+          # Construct tag with version, build count, and datestamp
+          $tag = "SimTools-$baseVersion.$buildCount-$dateStamp"
           Write-Output "Generated Release Tag: $tag"
           echo "TAG=$tag" >> $env:GITHUB_OUTPUT
 
