@@ -94,6 +94,7 @@
 		<Resource Include="Images\Icons\ld.ico" />
 		<Resource Include="Images\Icons\MTS.ico" />
 		<Resource Include="Images\Icons\nraas.ico" />
+		<Resource Include="Images\Icons\opensave.ico" />
 		<Resource Include="Images\Icons\otvdm.ico" />
 		<Resource Include="Images\Icons\piracy.ico" />
 		<Resource Include="Images\Icons\s3pe.ico" />
@@ -215,6 +216,10 @@
 		<Content Include="Languages\*.lang">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Images\Icons\opensave.ico" />
 	</ItemGroup>
 
 	<ItemGroup>

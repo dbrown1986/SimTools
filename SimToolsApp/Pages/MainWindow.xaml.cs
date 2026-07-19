@@ -1506,8 +1506,52 @@ animationsmoothing = 0";
                 destFilePath: destDll);
         };
         medievalItem.Items.Add(medieval_smoothPatch);
-
         contextMenu.Items.Add(medievalItem);
+
+        // OpenSave Cloud Saving
+        var OpenSaveItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/opensave.ico"), Header = LanguageManager.Get("Main", "OpenSave", "OpenSave") };
+        OpenSaveItem.Click += async (_, _) =>
+        {
+            // Inform the user that the download and installation process is starting
+            MessageBox.Show(
+                LanguageManager.Get("Main", "OpenSave_IntroMessage", "OpenSave syncs your game saves between devices, peer-to-peer — no Steam required, no accounts, no subscriptions. Point it at a folder, pair your devices, and your saves follow you everywhere."),
+                LanguageManager.Get("Main", "OpenSave_IntroTitle", "OpenSave Setup"),
+                MessageBoxButton.OK, MessageBoxImage.Information);
+
+            string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries");
+            string fileName = "OpenSave.Setup.exe";
+            string downloadUrl = "https://github.com/sivadaboi/OpenSave/releases/download/v2.1.0/OpenSave.Setup.exe";
+
+            // Reuses the baseline single-file delivery infrastructure structured inside SimTools
+            await DownloadFileOnly(
+                url: downloadUrl,
+                destFilePath: Path.Combine(binDir, fileName)
+            );
+
+            string exePath = Path.Combine(binDir, fileName);
+
+            // Verify it exists locally before spawning the executable thread execution loop
+            if (File.Exists(exePath))
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo(exePath)
+                    {
+                        UseShellExecute = true,
+                        WorkingDirectory = binDir
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"{LanguageManager.Format("Main", "Error_LaunchFailed", fileName)}\n{ex.Message}",
+                        LanguageManager.Get("Main", "Error_LaunchTitle", "Execution Error"),
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        };
+
+        contextMenu.Items.Add(OpenSaveItem);
 
         TweakButton.ContextMenu = contextMenu;
     }
