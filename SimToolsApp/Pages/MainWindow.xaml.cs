@@ -270,8 +270,8 @@ public partial class MainWindow : Window
                 MessageBoxButton.OK, MessageBoxImage.Warning);
 
             DownloadAndOpenExe(
-                url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
-                fileName: "graphicsrulesmaker-32bit.exe",
+                url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
+                fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
         };
@@ -285,8 +285,8 @@ public partial class MainWindow : Window
                 MessageBoxButton.OK, MessageBoxImage.Warning);
 
             DownloadAndOpenExe(
-                url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
-                fileName: "graphicsrulesmaker-64bit.exe",
+                url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
+                fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
         };
@@ -299,20 +299,40 @@ public partial class MainWindow : Window
 
         var simsStories_32 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
         simsStories_32.Click += (s, args) => DownloadAndOpenExe(
-            url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
-            fileName: "graphicsrulesmaker-32bit.exe",
+            url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
+            fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
 
         var simsStories_64 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
         simsStories_64.Click += (s, args) => DownloadAndOpenExe(
-            url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
-            fileName: "graphicsrulesmaker-64bit.exe",
+            url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
+            fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
 
         simsStoriesItem.Items.Add(simsStories_32);
         simsStoriesItem.Items.Add(simsStories_64);
+
+        // ── Simcity 4 (sub-menu) ──────────────────────────────────────────
+        var simcity4Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/SC4DE.ico"), Header = LanguageManager.Get("BuyTS3", "SC4DE", "SimCity 4: Deluxe Edition") };
+
+        var simcity4_32 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
+        simcity4_32.Click += (s, args) => DownloadAndOpenExe(
+            url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
+            fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
+            downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
+        );
+
+        var simcity4_64 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
+        simcity4_64.Click += (s, args) => DownloadAndOpenExe(
+            url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
+            fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
+            downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
+        );
+
+        simcity4Item.Items.Add(simcity4_32);
+        simcity4Item.Items.Add(simcity4_64);
 
         // ── The Sims 3 (sub-menu) ─────────────────────────────────────────
         var sims3Item = new MenuItem
@@ -398,6 +418,7 @@ public partial class MainWindow : Window
 
         contextMenu.Items.Add(sims2Item);
         contextMenu.Items.Add(simsStoriesItem);
+        contextMenu.Items.Add(simcity4Item);
         contextMenu.Items.Add(sims3Item);
 
         NewGPUButton.ContextMenu = contextMenu;
@@ -406,7 +427,6 @@ public partial class MainWindow : Window
     // Handler is now empty — menu is pre-built, nothing to do here
     private void NewGPUButton_Context(object sender, ContextMenuEventArgs e) { e.Handled = true; }
 
-    // ── Helper: download only if missing, then launch ─────────────────────────
     // ── Helper: download only if missing, then launch ─────────────────────────
     private async void DownloadAndOpenExe(string url, string fileName, string downloadDirectory)
     {
@@ -510,7 +530,7 @@ public partial class MainWindow : Window
             string tempZip = Path.Combine(Path.GetTempPath(), "SimitoneWindows.zip");
 
             var (ok, _) = await DownloadFileOnly(
-                url: "%baseurl%/Sideload-Apps/x86/SimitoneWindows.zip",  // ← replace
+                url: "https://github.com/riperiperi/Simitone/releases/download/v0.8.12/SimitoneWindows.zip",  // ← replace
                 destFilePath: tempZip);
 
             if (!ok) return;
@@ -899,7 +919,7 @@ animationsmoothing = 0";
                     if (header == LanguageManager.Get("Main", "BSLimitFPS", "Limit Game FPS"))
                     {
                         MessageBox.Show(
-                            LanguageManager.Get("Main", "LimitFPSTip", "Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner) or via DXVK.\n\n SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware."),
+                            LanguageManager.Get("Main", "LimitFPSTip", "Framerate limits must be applied at the driver level (e.g., NVIDIA Control Panel or RivaTuner), through Sims 3 Setttings Setter or via DXVK.\n\n SimTools will now launch the manual guide detailing exactly how to set this up for your specific graphics hardware."),
                             LanguageManager.Get("Main", "LimitFPSTip_Title", "Driver-Level Configuration Required"),
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
