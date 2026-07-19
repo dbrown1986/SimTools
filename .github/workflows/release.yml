@@ -12,6 +12,9 @@ jobs:
       matrix:
         platform: [x86, x64]
     
+    outputs:
+      release_tag: ${{ steps.version.outputs.TAG }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,10 +25,34 @@ jobs:
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2
 
+      - name: Extract Version and Build Counter
+        id: version
+        shell: powershell
+        run: |
+          # Read base version from SimToolsApp.csproj
+          $csprojPath = Get-ChildItem -Recurse -Filter "SimToolsApp.csproj" | Select-Object -First 1 -ExpandProperty FullName
+          [xml]$csproj = Get-Content $csprojPath
+          $baseVersion = $csproj.Project.PropertyGroup.Version
+          if (-not $baseVersion) {
+              $baseVersion = "1.0.0"
+          }
+
+          # Read build counter or fallback to run number
+          $counterPath = Get-ChildItem -Recurse -Filter "build.counter" | Select-Object -First 1 -ExpandProperty FullName
+          if ($counterPath -and (Test-Path $counterPath)) {
+              $buildCount = (Get-Content $counterPath).Trim()
+          } else {
+              $buildCount = "${{ github.run_number }}"
+          }
+
+          $tag = "SimTools-$baseVersion.$buildCount"
+          Write-Output "Generated Release Tag: $tag"
+          echo "TAG=$tag" >> $env:GITHUB_OUTPUT
+
       - name: Restore dependencies
         run: nuget restore SimTools.sln
 
-      # Build SimToolsApp for current matrix platform
+      # Build SimToolsApp for current matrix platform with single-file publishing
       - name: Build SimToolsApp
         run: >
           msbuild SimTools.sln 
@@ -33,7 +60,7 @@ jobs:
           /p:Platform=${{ matrix.platform }} 
           /t:SimToolsApp
 
-      # Build remaining projects ONLY during the x86 pass
+      # Build remaining projects ONLY during the x86 pass with single-file publishing
       - name: Build Remaining Projects (x86 only)
         if: matrix.platform == 'x86'
         run: >
@@ -54,13 +81,24 @@ jobs:
           foreach ($projDir in $projectDirs) {
               $projectName = $projDir.Name
               $sourceBinPath = "$($projDir.FullName)\$netPath"
-              $destZip = "staging\$projectName-${{ matrix.platform }}.zip"
               
-              Write-Output "Compressing $projectName for ${{ matrix.platform }}..."
-              Compress-Archive -Path "$sourceBinPath\*" -DestinationPath $destZip -Force
+              # Check if single-file publishing resulted in a standalone executable
+              $exeFiles = Get-ChildItem -Path $sourceBinPath -Filter "*.exe"
+              
+              # If there is precisely one exe and very few total files (or a single file bundle), treat as single-file
+              # Alternatively, if you want ALL single-file builds published as loose .exes:
+              if ($exeFiles.Count -eq 1) {
+                  $sourceExe = $exeFiles[0].FullName
+                  $destExe = "staging\$projectName-${{ matrix.platform }}.exe"
+                  Write-Output "Copying single-file executable for $projectName (${{ matrix.platform }})..."
+                  Copy-Item -Path $sourceExe -Destination $destExe -Force
+              } else {
+                  $destZip = "staging\$projectName-${{ matrix.platform }}.zip"
+                  Write-Output "Compressing multi-file project $projectName for ${{ matrix.platform }}..."
+                  Compress-Archive -Path "$sourceBinPath\*" -DestinationPath $destZip -Force
+              }
           }
 
-      # Upload the packaged zips to GitHub Actions internal storage
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -74,7 +112,6 @@ jobs:
       contents: write
 
     steps:
-      # Download artifacts from both the x86 and x64 build jobs into a single directory
       - name: Download All Artifacts
         uses: actions/download-artifact@v4
         with:
@@ -84,7 +121,8 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: latest-${{ github.run_id }}
+          tag_name: ${{ needs.build.outputs.release_tag }}
+          name: Release ${{ needs.build.outputs.release_tag }}
           files: all-releases/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
