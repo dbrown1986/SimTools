@@ -67,14 +67,14 @@ jobs:
       - name: Restore dependencies
         run: nuget restore SimTools.sln
 
-      # Build SimToolsApp and SimToolsRepoMaker (multi-file outputs)
+      # Build SimToolsApp and SimToolsRepoMaker with properly quoted multi-targets
       - name: Build Multi-File Projects
         run: >
           msbuild SimTools.sln 
           /p:Configuration=Release 
           /p:Platform=${{ matrix.platform }} 
           /p:PublishSingleFile=false
-          /t:SimToolsApp;SimToolsRepoMaker
+          /t:"SimToolsApp;SimToolsRepoMaker"
 
       # Build remaining single-file utility projects (x86 only pass)
       - name: Build Single-File Utilities (x86 only)
