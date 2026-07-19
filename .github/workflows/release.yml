@@ -47,14 +47,14 @@ jobs:
       - name: Copy binaries to staging
         run: |
           mkdir staging
-          Get-ChildItem -Path . -Include *.exe,*.dll -Recurse | 
-          Where-Object { $_.FullName -like "*bin\Release*" } | 
+          Get-ChildItem -Path . -Include *.exe,*.dll,*.lang,*.txt,*.m4a,*.json -Recurse | 
+          Where-Object { $_.FullName -like "*bin\x86\Release\net6.0-windows*" } | 
           Copy-Item -Destination staging
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: latest
+          tag_name: latest-${{ github.run_id }}
           files: staging/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
