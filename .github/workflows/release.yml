@@ -67,33 +67,14 @@ jobs:
       - name: Restore dependencies
         run: nuget restore SimTools.sln
 
-      # Build SimToolsApp and SimToolsRepoMaker with properly quoted multi-targets
-      - name: Build Multi-File Projects
+      # Build SimToolsApp
+      - name: Build SimToolsApp Project
         run: >
           msbuild SimTools.sln 
           /p:Configuration=Release 
           /p:Platform=${{ matrix.platform }} 
           /p:PublishSingleFile=false
           /t:"SimToolsApp"
-
-      # Build Repo Maker project (x86 only pass)
-      - name: Build Repo Maker Utility (x86 only)
-        if: matrix.platform == 'x86'
-        run: >
-          msbuild SimTools.sln 
-          /p:Configuration=Release 
-          /p:Platform=x86 
-          /p:PublishSingleFile=true
-          /t:"SimToolsRepoMaker"
-
-      # Build remaining single-file utility projects (x86 only pass)
-      - name: Build Single-File Utilities (x86 only)
-        if: matrix.platform == 'x86'
-        run: >
-          msbuild SimTools.sln 
-          /p:Configuration=Release 
-          /p:Platform=x86 
-          /p:PublishSingleFile=true
 
       - name: Package artifacts
         shell: powershell
