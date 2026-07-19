@@ -138,7 +138,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.build.outputs.release_tag }}
-          name: Release ${{ needs.build.outputs.release_tag }}
+          name: ${{ needs.build.outputs.release_tag }}
           files: all-releases/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
