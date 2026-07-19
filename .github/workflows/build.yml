@@ -24,8 +24,8 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Restore dependencies
-        run: dotnet restore SimTools_v4.sln
+        run: dotnet restore SimTools.sln
 
       # Uses MSBuild instead of 'dotnet build' to support ResolveComReference
       - name: Build
-        run: msbuild SimTools_v4.sln /p:Configuration=Release /p:NoRestore=true
+        run: msbuild SimTools.sln /p:Configuration=Release /p:NoRestore=true
