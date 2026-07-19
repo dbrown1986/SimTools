@@ -74,7 +74,17 @@ jobs:
           /p:Configuration=Release 
           /p:Platform=${{ matrix.platform }} 
           /p:PublishSingleFile=false
-          /t:"SimToolsApp;SimToolsRepoMaker"
+          /t:"SimToolsApp"
+
+      # Build Repo Maker project (x86 only pass)
+      - name: Build Repo Maker Utility (x86 only)
+        if: matrix.platform == 'x86'
+        run: >
+          msbuild SimTools.sln 
+          /p:Configuration=Release 
+          /p:Platform=x86 
+          /p:PublishSingleFile=true
+          /t:"SimToolsRepoMaker"
 
       # Build remaining single-file utility projects (x86 only pass)
       - name: Build Single-File Utilities (x86 only)
