@@ -1033,7 +1033,7 @@ animationsmoothing = 0";
             string tempZip = Path.Combine(Path.GetTempPath(), "AlderLakePatch.zip");
 
             var (ok, _) = await DownloadFileOnly(
-                url: "%baseurl%/Sideload-Apps/x86/AlderLakePatch.zip",  // ← replace
+                url: "https://github.com/LazyDuchess/AlderLakePatcher/releases/download/1.0.1/AlderLakePatch.zip",  // ← replace
                 destFilePath: tempZip);
 
             if (!ok) return;
@@ -1170,7 +1170,7 @@ animationsmoothing = 0";
 
             // Proceed with download if not installed
             await DownloadFileOnly(
-                url: "%baseurl%/Sideload-Apps/x86/S3SS/Sims3SettingsSetter.asi",
+                url: "https://github.com/sims3fiend/Sims3SettingsSetter/releases/download/1.6.2/Sims3SettingsSetter.asi",
                 destFilePath: destPath);
         };
         sims3Item.Items.Add(ts3_s3ss);
@@ -1352,7 +1352,7 @@ animationsmoothing = 0";
                 return;
             }
             DownloadAndOpenExe(
-                url: "%baseurl%/Sideload-Apps/x86/tiny-ui-fix-for-ts3.bat",
+                url: "https://github.com/just-harry/tiny-ui-fix-for-ts3/releases/download/v1.5.3/tiny-ui-fix-for-ts3.bat",
                 fileName: "tiny-ui-fix-for-ts3.bat",
                 downloadDirectory: GamePaths.Sims3Game
             );
@@ -2984,13 +2984,13 @@ animationsmoothing = 0";
 
         var caw167 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/caw.ico"), Header = LanguageManager.Get("Main", "CAW167", "CAW for 1.67") };
         caw167.Click += (_, _) => DownloadAndOpenExe(
-            url: "%baseurl%/Sideload-Apps/x86/CAW_1.67.exe",
+            url: "https://archive.org/download/screenshot-2023-07-12-130417/CAW%201.67.exe",
             fileName: "CAW_1.67.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
         var caw169 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/caw.ico"), Header = LanguageManager.Get("Main", "CAW169", "CAW for 1.69") };
         caw169.Click += (_, _) => DownloadAndOpenExe(
-            url: "%baseurl%/Sideload-Apps/x86/CAW_1.69.exe",
+            url: "https://archive.org/download/screenshot-2023-07-12-130417/CAW%201.69.exe",
             fileName: "CAW_1.69.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries"));
 
