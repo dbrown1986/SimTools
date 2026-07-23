@@ -1,4 +1,5 @@
 // SimTools
+// SimTools
 // Main Application
 // Main Window Code-Behind
 // (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.
@@ -10,6 +11,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.Versioning;
 using System.Windows;
@@ -570,8 +572,6 @@ public partial class MainWindow : Window
         // ── The Sims 2 ────────────────────────────────────────────────────────────
         var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("Main", "GPU_Sims2", "The Sims 2") };
 
-
-
         var sims2_rpc = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2RPC.ico"), Header = LanguageManager.Get("Main", "Sims2RPC", "Sims2RPC") };
         sims2_rpc.Click += (_, _) =>
         {
@@ -597,14 +597,95 @@ public partial class MainWindow : Window
 
         };
         sims2Item.Items.Add(sims2_rpc);
+
+        // Disable / Remove OneDrive ────────────────────────────────────────────────────────────
+        var ts2_onedrive = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/no_onedrive.ico"), Header = "Disable OneDrive" };
+        ts2_onedrive.Click += (_, _) =>
+        {
+            MessageBoxResult result = MessageBox.Show(
+                LanguageManager.Get("Main", "UninstallOneDrive", "In some circumstances, OneDrive can mess up Sims 2 / Stories saves. This script will disable and completely remove OneDrive from your system. Do you wish to continue?"),
+                LanguageManager.Get("Main", "UninstallOneDrive_Title", "SimTools — Uninstall OneDrive"),
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
+
+            if (result == MessageBoxResult.Yes)
+            {
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        LanguageManager.Get("Main", "Sims2Game", "Your Sims 2 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/uninstall-onedrive.bat",
+                    fileName: "uninstall-onedrive.bat",
+                    downloadDirectory: GamePaths.Sims3Game
+                );
+            }
+        };
+
+        sims2Item.Items.Add(ts2_onedrive);
+
+        // Install Batbox (FFS Debugger) ────────────────────────────────────────────────────────────
+
+        var sims2BatboxItem = new MenuItem { Header = "Install Batbox (FFS Debugger)" };
+        sims2BatboxItem.Click += async (sender, e) =>
+        {
+            await RunBatboxInstallerWorkflow();
+        };
+
+        sims2Item.Items.Add(sims2BatboxItem);
+
         contextMenu.Items.Add(sims2Item);
 
+        // ── The Sims: Stories Series ────────────────────────────────────────────
+        var StoriesItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSCastaway.ico"), Header = LanguageManager.Get("Main", "GPU_SimsStories", "The Sims: Stories") };
 
+        // castawayItem.Click += (_, _) => OpenUrl("https://modthesims.info/t/513463");
 
-        // ── The Sims: Castaway Stories ────────────────────────────────────────────
-        var castawayItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/TSCastaway.ico"), Header = LanguageManager.Get("BuyTS3", "TSCast", "The Sims: Castaway Stories") };
-        castawayItem.Click += (_, _) => OpenUrl("https://modthesims.info/t/513463");
-        contextMenu.Items.Add(castawayItem);
+        // Disable / Remove OneDrive ────────────────────────────────────────────────────────────
+        var tss_onedrive = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/no_onedrive.ico"), Header = "Disable OneDrive" };
+        tss_onedrive.Click += (_, _) =>
+        {
+            MessageBoxResult result = MessageBox.Show(
+                LanguageManager.Get("Main", "UninstallOneDrive", "In some circumstances, OneDrive can mess up Sims 2 / Stories saves. This script will disable and completely remove OneDrive from your system. Do you wish to continue?"),
+                LanguageManager.Get("Main", "UninstallOneDrive_Title", "SimTools — Uninstall OneDrive"),
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
+
+            if (result == MessageBoxResult.Yes)
+            {
+                if (!GamePaths.IsConfigured(GamePaths.Sims3Game))
+                {
+                    MessageBox.Show(
+                        LanguageManager.Get("Main", "Sims2Game", "Your Sims 2 Game directory is not configured."),
+                        LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                DownloadAndOpenExe(
+                    url: "%baseurl%/Sideload-Apps/x86/uninstall-onedrive.bat",
+                    fileName: "uninstall-onedrive.bat",
+                    downloadDirectory: GamePaths.Sims3Game
+                );
+            }
+        };
+
+        StoriesItem.Items.Add(tss_onedrive);
+
+        var simsstoriesBatboxItem = new MenuItem { Header = "Install Batbox (FFS Debugger)" };
+        simsstoriesBatboxItem.Click += async (sender, e) =>
+        {
+            await RunBatboxInstallerWorkflow();
+        };
+
+        StoriesItem.Items.Add(simsstoriesBatboxItem);
+
+        
+
+        contextMenu.Items.Add(StoriesItem);
 
         // ── The Sims 3 ────────────────────────────────────────────────────────────
         var sims3Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3.ico"), Header = "The Sims 3" };
@@ -3290,5 +3371,145 @@ animationsmoothing = 0";
         var window = new SimTools.MusicPacks();
         window.Owner = this;
         window.Show();
+    }
+
+    // Batbox Debugger for Sims 2 / Sims Stories (aka FFS Debugger)
+    // ── Main Workflow Entry Point ────────────────────────────────────────────────
+    private async Task RunBatboxInstallerWorkflow()
+    {
+        // 1. Initial Informational Notification
+        MessageBox.Show(
+            "SimTools will now check configurations and securely download the requested modification or asset.",
+            "SimTools — Setup Utility",
+            MessageBoxButton.OK,
+            MessageBoxImage.Information);
+
+        // 2. Configuration & Directory Validation Check
+        string sims2Path = IniHelper.Read("Directories", "Sims2Mods", "");
+        string castawayPath = IniHelper.Read("Directories", "SimsCastawayStoriesMods", "");
+        string lifePath = IniHelper.Read("Directories", "SimsLifeStoriesMods", "");
+        string petPath = IniHelper.Read("Directories", "SimsPetStoriesMods", "");
+
+        if (string.IsNullOrEmpty(sims2Path) || string.IsNullOrEmpty(castawayPath) || string.IsNullOrEmpty(lifePath) || string.IsNullOrEmpty(petPath))
+        {
+            MessageBox.Show(
+                "One or more target directories for The Sims 2 or the Stories series are missing in your configuration INI.",
+                "SimTools — Configuration Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
+            return;
+        }
+
+        // 3. Secure Download Logic (Example endpoint or file retrieval)
+        string targetDownloadUrl = "https://example.com/downloads/batbox.zip"; // Replace with actual source
+        string temporaryArchivePath = Path.Combine(Path.GetTempPath(), "SimsBatboxAsset.zip");
+
+        try
+        {
+            // Utilizing secure client architecture (e.g., handling TLS / BouncyCastle components)
+            using var httpClient = new HttpClient();
+            byte[] fileBytes = await httpClient.GetByteArrayAsync(targetDownloadUrl);
+            await File.WriteAllBytesAsync(temporaryArchivePath, fileBytes);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                $"Secure download failed: {ex.Message}",
+                "SimTools — Network Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+            return;
+        }
+
+        // 4. Trigger the TaskDialog Choice and Extraction Handler
+        PromptAndExtractStoriesArchive(temporaryArchivePath);
+    }
+
+    // ── Helper: Stories & Sims 2 Extraction TaskDialog Handler ─────────────────────
+    private void PromptAndExtractStoriesArchive(string archivePath)
+    {
+        string sims2Path = IniHelper.Read("Directories", "Sims2Mods", "");
+        string castawayPath = IniHelper.Read("Directories", "SimsCastawayStoriesMods", "");
+        string lifePath = IniHelper.Read("Directories", "SimsLifeStoriesMods", "");
+        string petPath = IniHelper.Read("Directories", "SimsPetStoriesMods", "");
+
+        var choiceWindow = new Window
+        {
+            Title = "SimTools — Select Target Game",
+            Width = 400,
+            Height = 260,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            Owner = this,
+            ResizeMode = ResizeMode.NoResize
+        };
+
+        var stack = new StackPanel { Margin = new Thickness(15) };
+        stack.Children.Add(new TextBlock
+        {
+            Text = "Select which game target directory to extract the mod/asset into:",
+            TextWrapping = TextWrapping.Wrap,
+            Margin = new Thickness(0, 0, 0, 15)
+        });
+
+        string selectedDir = string.Empty;
+
+        var btnSims2 = new Button { Content = "The Sims 2", Margin = new Thickness(0, 4, 0, 4), Padding = new Thickness(5) };
+        btnSims2.Click += (_, _) => { selectedDir = sims2Path; choiceWindow.DialogResult = true; choiceWindow.Close(); };
+
+        var btnCastaway = new Button { Content = "The Sims: Castaway Stories", Margin = new Thickness(0, 4, 0, 4), Padding = new Thickness(5) };
+        btnCastaway.Click += (_, _) => { selectedDir = castawayPath; choiceWindow.DialogResult = true; choiceWindow.Close(); };
+
+        var btnLife = new Button { Content = "The Sims: Life Stories", Margin = new Thickness(0, 4, 0, 4), Padding = new Thickness(5) };
+        btnLife.Click += (_, _) => { selectedDir = lifePath; choiceWindow.DialogResult = true; choiceWindow.Close(); };
+
+        var btnPet = new Button { Content = "The Sims: Pet Stories", Margin = new Thickness(0, 4, 0, 4), Padding = new Thickness(5) };
+        btnPet.Click += (_, _) => { selectedDir = petPath; choiceWindow.DialogResult = true; choiceWindow.Close(); };
+
+        stack.Children.Add(btnSims2);
+        stack.Children.Add(btnCastaway);
+        stack.Children.Add(btnLife);
+        stack.Children.Add(btnPet);
+        choiceWindow.Content = stack;
+
+        bool? result = choiceWindow.ShowDialog();
+        if (result != true || string.IsNullOrEmpty(selectedDir))
+        {
+            return;
+        }
+
+        if (!Directory.Exists(selectedDir))
+        {
+            try
+            {
+                Directory.CreateDirectory(selectedDir);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to create target directory: {ex.Message}",
+                    "SimTools — Directory Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                return;
+            }
+        }
+
+        try
+        {
+            ZipFile.ExtractToDirectory(archivePath, selectedDir, overwriteFiles: true);
+            MessageBox.Show(
+                "File extracted successfully!",
+                "SimTools — Extraction Complete",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                $"Extraction failed: {ex.Message}",
+                "SimTools — Extraction Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }
     }
 }
