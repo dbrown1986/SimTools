@@ -785,5 +785,47 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Button x:Name="SimToolsMusicButton" 
+            Content="SimTools Music Pack" 
+            HorizontalAlignment="Left" 
+            Margin="364,511,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" 
+            Height="34" 
+            FontFamily="Tahoma" 
+            FontWeight="Bold" 
+            FontSize="11" 
+            Foreground="Black"
+            Click="SimToolsMusicButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/button_yellow.png"/>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/button_normal.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>
