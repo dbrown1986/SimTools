@@ -37,18 +37,22 @@ namespace SimTools
         // ── The Sims 2 ────────────────────────────────────────────────────────
         public static string Sims2Game               => Game("Sims2");
         public static string Sims2Mods               => Mods("Sims2");
+        public static string Sims2UserData           => UserData("Sims2");
 
         // ── The Sims Life Stories ─────────────────────────────────────────────
         public static string SimsLifeStoriesGame     => Game("SimsLifeStories");
         public static string SimsLifeStoriesMods     => Mods("SimsLifeStories");
+        public static string SimsLifeStoriesUserData => UserData("SimsLifeStories");
 
         // ── The Sims Pet Stories ──────────────────────────────────────────────
         public static string SimsPetStoriesGame      => Game("SimsPetStories");
         public static string SimsPetStoriesMods      => Mods("SimsPetStories");
+        public static string SimsPetStoriesUserData => UserData("SimsPetStories");
 
         // ── The Sims Castaway Stories ─────────────────────────────────────────
         public static string SimsCastawayStoriesGame => Game("SimsCastawayStories");
         public static string SimsCastawayStoriesMods => Mods("SimsCastawayStories");
+        public static string SimsCastawayStoriesUserData => UserData("SimsCastawayStories");
 
         // ── The Sims 3 ────────────────────────────────────────────────────────
         public static string Sims3Game               => Game("Sims3");

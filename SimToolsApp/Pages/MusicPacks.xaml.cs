@@ -17,6 +17,31 @@ public partial class MusicPacks : Window
     #region Track Collections (VGM Links Repository)
     private static class TrackData
     {
+        // --- SIMTOOLS TRACKS ---
+        public static readonly string[] SimToolsMusic = new string[]
+        {
+            "https://us1-repo.simtools-app.com/Resources/Music/Arise%2C%20Watcher.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Daknit%20-%20The%20Sims%20-%20Acid%20Techno%20Trip.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Deluka%20-%20Cascade.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Donkeyboy%20-%20Cityboy.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/FUN%20-%20We%20Are%20Young.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Jerry%20Martin%20-%20Just%20A%20Splatter.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Jerry%20Martin%20-%20SIMtastic.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Jerry%20Martin%20-%20The%20Streets%20of%20SimCity.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Katy%20Perry%20-%20Last%20Friday%20Night.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Kirk%20Casey%20-%20South%20Bridge.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Lady%20Antebellum%20-%20Need%20You%20Now.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Le%20Faxon%20-%20SimCopter.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Mark%20Mothersbaugh%20-%20Sims%202%20Theme.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Mike%20Posner%20-%20Cooler%20Than%20Me.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Neighborhood%202.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Sims%203%20-%20Main%20Theme.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Sims%203%20-%20Map%20Theme.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Sims%20Vacation.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/Simsi45%20-%20Makeover.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/The%20Humble%20Brothers%20-%20ElectriCITY.m4a",
+            "https://us1-repo.simtools-app.com/Resources/Music/The%20Humble%20Brothers%20-%20EpiCenter.m4a",
+        };
         // --- THE SIMS 1 ---
         public static readonly string[] Sims1 = new string[]
         {
@@ -2275,6 +2300,7 @@ public partial class MusicPacks : Window
     private void SimCopterButton_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.SimCopter);
     private void StreetsOfSimCityButton_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.StreetsOfSimCity);
     private void DownloadAllButton_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.DownloadAll);
+    private void SimToolsMusicButton_Click(object sender, RoutedEventArgs e) => ExecuteTrackDownload(TrackData.SimToolsMusic);
     #endregion
 
     #region Directory Management

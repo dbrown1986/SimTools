@@ -683,7 +683,7 @@ public partial class MainWindow : Window
 
         StoriesItem.Items.Add(simsstoriesBatboxItem);
 
-        
+
 
         contextMenu.Items.Add(StoriesItem);
 
@@ -1519,7 +1519,7 @@ animationsmoothing = 0";
 
             return item;
         }
-         
+
         ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for EA (1.69)", "NRaas_ErrorTrap_EA.package", "pack://application:,,,/Images/Icons/vendors/ea.ico"));
         ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Steam (1.67)", "NRaas_ErrorTrap_Steam.package", "pack://application:,,,/Images/Icons/vendors/steam.ico"));
         ts3_nraas.Items.Add(NRaasPackageItem("ErrorTrap for Retail (1.67)", "NRaas_ErrorTrap_Retail.package", "pack://application:,,,/Images/Icons/Sims3.ico"));
@@ -3379,33 +3379,52 @@ animationsmoothing = 0";
     {
         // 1. Initial Informational Notification
         MessageBox.Show(
-            "SimTools will now check configurations and securely download the requested modification or asset.",
+            "SimTools will now check your game configurations.",
             "SimTools — Setup Utility",
             MessageBoxButton.OK,
             MessageBoxImage.Information);
 
-        // 2. Configuration & Directory Validation Check
-        string sims2Path = IniHelper.Read("Directories", "Sims2Mods", "");
-        string castawayPath = IniHelper.Read("Directories", "SimsCastawayStoriesMods", "");
-        string lifePath = IniHelper.Read("Directories", "SimsLifeStoriesMods", "");
-        string petPath = IniHelper.Read("Directories", "SimsPetStoriesMods", "");
+        // 2. Configuration & Directory Validation Check (Individual Checks)
+        string sims2Mods = IniHelper.Read("Directories", "Sims2_Mods", "");
+        string castawayMods = IniHelper.Read("Directories", "SimsCastawayStories_Mods", "");
+        string lifeMods = IniHelper.Read("Directories", "SimsLifeStories_Mods", "");
+        string petMods = IniHelper.Read("Directories", "SimsPetStories_Mods", "");
 
-        if (string.IsNullOrEmpty(sims2Path) || string.IsNullOrEmpty(castawayPath) || string.IsNullOrEmpty(lifePath) || string.IsNullOrEmpty(petPath))
+        bool hasSims2 = !string.IsNullOrEmpty(sims2Mods);
+        bool hasCastaway = !string.IsNullOrEmpty(castawayMods);
+        bool hasLife = !string.IsNullOrEmpty(lifeMods);
+        bool hasPet = !string.IsNullOrEmpty(petMods);
+
+        // Ensure at least one game directory is configured before proceeding
+        if (!hasSims2 && !hasCastaway && !hasLife && !hasPet)
         {
             MessageBox.Show(
-                "One or more target directories for The Sims 2 or the Stories series are missing in your configuration INI.",
+                "No target directories for The Sims 2 or the Stories series are configured in your INI.",
                 "SimTools — Configuration Error",
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
             return;
         }
 
-        // 3. Secure Download Logic (Example endpoint or file retrieval)
-        string targetDownloadUrl = "https://example.com/downloads/batbox.zip"; // Replace with actual source
+        // 3. Prompt User for Target Game FIRST (before downloading)
+        string selectedDir = PromptAndSelectTargetDirectory(sims2Mods, castawayMods, lifeMods, petMods);
+        if (string.IsNullOrEmpty(selectedDir))
+        {
+            return; // User cancelled the selection window
+        }
+
+        // 4. Secure Download Logic based on user selection
+        string targetDownloadUrl = "http://www.moreawesomethanyou.com/ffs/nl/hacks/ffsdebugger.zip"; // Replace with actual source
         string temporaryArchivePath = Path.Combine(Path.GetTempPath(), "SimsBatboxAsset.zip");
 
         try
         {
+            MessageBox.Show(
+                "SimTools will now securely download the requested modification or asset.",
+                "SimTools — Setup Utility",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+
             // Utilizing secure client architecture (e.g., handling TLS / BouncyCastle components)
             using var httpClient = new HttpClient();
             byte[] fileBytes = await httpClient.GetByteArrayAsync(targetDownloadUrl);
@@ -3421,62 +3440,7 @@ animationsmoothing = 0";
             return;
         }
 
-        // 4. Trigger the TaskDialog Choice and Extraction Handler
-        PromptAndExtractStoriesArchive(temporaryArchivePath);
-    }
-
-    // ── Helper: Stories & Sims 2 Extraction TaskDialog Handler ─────────────────────
-    private void PromptAndExtractStoriesArchive(string archivePath)
-    {
-        string sims2Path = IniHelper.Read("Directories", "Sims2Mods", "");
-        string castawayPath = IniHelper.Read("Directories", "SimsCastawayStoriesMods", "");
-        string lifePath = IniHelper.Read("Directories", "SimsLifeStoriesMods", "");
-        string petPath = IniHelper.Read("Directories", "SimsPetStoriesMods", "");
-
-        var choiceWindow = new Window
-        {
-            Title = "SimTools — Select Target Game",
-            Width = 400,
-            Height = 260,
-            WindowStartupLocation = WindowStartupLocation.CenterOwner,
-            Owner = this,
-            ResizeMode = ResizeMode.NoResize
-        };
-
-        var stack = new StackPanel { Margin = new Thickness(15) };
-        stack.Children.Add(new TextBlock
-        {
-            Text = "Select which game target directory to extract the mod/asset into:",
-            TextWrapping = TextWrapping.Wrap,
-            Margin = new Thickness(0, 0, 0, 15)
-        });
-
-        string selectedDir = string.Empty;
-
-        var btnSims2 = new Button { Content = "The Sims 2", Margin = new Thickness(0, 4, 0, 4), Padding = new Thickness(5) };
-        btnSims2.Click += (_, _) => { selectedDir = sims2Path; choiceWindow.DialogResult = true; choiceWindow.Close(); };
-
-        var btnCastaway = new Button { Content = "The Sims: Castaway Stories", Margin = new Thickness(0, 4, 0, 4), Padding = new Thickness(5) };
-        btnCastaway.Click += (_, _) => { selectedDir = castawayPath; choiceWindow.DialogResult = true; choiceWindow.Close(); };
-
-        var btnLife = new Button { Content = "The Sims: Life Stories", Margin = new Thickness(0, 4, 0, 4), Padding = new Thickness(5) };
-        btnLife.Click += (_, _) => { selectedDir = lifePath; choiceWindow.DialogResult = true; choiceWindow.Close(); };
-
-        var btnPet = new Button { Content = "The Sims: Pet Stories", Margin = new Thickness(0, 4, 0, 4), Padding = new Thickness(5) };
-        btnPet.Click += (_, _) => { selectedDir = petPath; choiceWindow.DialogResult = true; choiceWindow.Close(); };
-
-        stack.Children.Add(btnSims2);
-        stack.Children.Add(btnCastaway);
-        stack.Children.Add(btnLife);
-        stack.Children.Add(btnPet);
-        choiceWindow.Content = stack;
-
-        bool? result = choiceWindow.ShowDialog();
-        if (result != true || string.IsNullOrEmpty(selectedDir))
-        {
-            return;
-        }
-
+        // 5. Ensure Directory Exists and Extract Archive
         if (!Directory.Exists(selectedDir))
         {
             try
@@ -3496,7 +3460,7 @@ animationsmoothing = 0";
 
         try
         {
-            ZipFile.ExtractToDirectory(archivePath, selectedDir, overwriteFiles: true);
+            ZipFile.ExtractToDirectory(temporaryArchivePath, selectedDir, overwriteFiles: true);
             MessageBox.Show(
                 "File extracted successfully!",
                 "SimTools — Extraction Complete",
@@ -3511,5 +3475,61 @@ animationsmoothing = 0";
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
         }
+    }
+
+    // ── Helper: Target Selection Prompt Handler ──────────────────────────────────
+    private string PromptAndSelectTargetDirectory(string sims2Path, string castawayPath, string lifePath, string petPath)
+    {
+        var choiceWindow = new Window
+        {
+            Title = "SimTools — Select Target Game",
+            Width = 420,
+            Height = 280,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            Owner = this,
+            ResizeMode = ResizeMode.NoResize
+        };
+
+        var stack = new StackPanel { Margin = new Thickness(15) };
+        stack.Children.Add(new TextBlock
+        {
+            Text = "Select which game target directory to extract the mod/asset into:",
+            TextWrapping = TextWrapping.Wrap,
+            Margin = new Thickness(0, 0, 0, 15)
+        });
+
+        string selectedDir = string.Empty;
+
+        Button CreateGameButton(string title, string targetPath)
+        {
+            bool isAvailable = !string.IsNullOrEmpty(targetPath);
+            var btn = new Button
+            {
+                Content = isAvailable ? title : $"{title} (Not Configured)",
+                Margin = new Thickness(0, 4, 0, 4),
+                Padding = new Thickness(5),
+                IsEnabled = isAvailable
+            };
+
+            if (isAvailable)
+            {
+                btn.Click += (_, _) => { selectedDir = targetPath; choiceWindow.DialogResult = true; choiceWindow.Close(); };
+            }
+            return btn;
+        }
+
+        var btnSims2 = CreateGameButton("The Sims 2", sims2Path);
+        var btnCastaway = CreateGameButton("The Sims: Castaway Stories", castawayPath);
+        var btnLife = CreateGameButton("The Sims: Life Stories", lifePath);
+        var btnPet = CreateGameButton("The Sims: Pet Stories", petPath);
+
+        stack.Children.Add(btnSims2);
+        stack.Children.Add(btnCastaway);
+        stack.Children.Add(btnLife);
+        stack.Children.Add(btnPet);
+        choiceWindow.Content = stack;
+
+        bool? result = choiceWindow.ShowDialog();
+        return result == true ? selectedDir : string.Empty;
     }
 }
