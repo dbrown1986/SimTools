@@ -272,7 +272,7 @@ public partial class MainWindow : Window
                 MessageBoxButton.OK, MessageBoxImage.Warning);
 
             DownloadAndOpenExe(
-                url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
+                url: "https://us1-repo.simtools-app.com/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
                 fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
@@ -287,7 +287,7 @@ public partial class MainWindow : Window
                 MessageBoxButton.OK, MessageBoxImage.Warning);
 
             DownloadAndOpenExe(
-                url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
+                url: "https://us1-repo.simtools-app.com/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
                 fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
@@ -301,14 +301,14 @@ public partial class MainWindow : Window
 
         var simsStories_32 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
         simsStories_32.Click += (s, args) => DownloadAndOpenExe(
-            url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
+            url: "https://us1-repo.simtools-app.com/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
             fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
 
         var simsStories_64 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
         simsStories_64.Click += (s, args) => DownloadAndOpenExe(
-            url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
+            url: "https://us1-repo.simtools-app.com/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
             fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
@@ -321,14 +321,14 @@ public partial class MainWindow : Window
 
         var simcity4_32 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
         simcity4_32.Click += (s, args) => DownloadAndOpenExe(
-            url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-32bit.exe",  // ← replace
+            url: "https://us1-repo.simtools-app.com/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
             fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
 
         var simcity4_64 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
         simcity4_64.Click += (s, args) => DownloadAndOpenExe(
-            url: "https://www.simsnetwork.com/files/graphicsrulesmaker/graphicsrulesmaker-2.3.0-64bit.exe",  // ← replace
+            url: "https://us1-repo.simtools-app.com/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
             fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
