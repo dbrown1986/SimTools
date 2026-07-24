@@ -92,6 +92,7 @@
 		<Resource Include="Images\Icons\github.ico" />
 		<Resource Include="Images\Icons\grm.ico" />
 		<Resource Include="Images\Icons\ld.ico" />
+		<Resource Include="Images\Icons\maty.ico" />
 		<Resource Include="Images\Icons\MTS.ico" />
 		<Resource Include="Images\Icons\no_onedrive.ico" />
 		<Resource Include="Images\Icons\nraas.ico" />
@@ -220,6 +221,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\Icons\maty.ico" />
 	  <None Remove="Images\Icons\no_onedrive.ico" />
 	  <None Remove="Images\Icons\opensave.ico" />
 	</ItemGroup>

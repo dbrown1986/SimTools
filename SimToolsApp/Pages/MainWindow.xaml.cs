@@ -630,7 +630,7 @@ public partial class MainWindow : Window
 
         // Install Batbox (FFS Debugger) ────────────────────────────────────────────────────────────
 
-        var sims2BatboxItem = new MenuItem { Header = "Install Batbox (FFS Debugger)" };
+        var sims2BatboxItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/maty.ico"), Header = "Install Batbox (FFS Debugger)" };
         sims2BatboxItem.Click += async (sender, e) =>
         {
             await RunBatboxInstallerWorkflow();
@@ -675,7 +675,7 @@ public partial class MainWindow : Window
 
         StoriesItem.Items.Add(tss_onedrive);
 
-        var simsstoriesBatboxItem = new MenuItem { Header = "Install Batbox (FFS Debugger)" };
+        var simsstoriesBatboxItem = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/maty.ico"), Header = "Install Batbox (FFS Debugger)" };
         simsstoriesBatboxItem.Click += async (sender, e) =>
         {
             await RunBatboxInstallerWorkflow();
