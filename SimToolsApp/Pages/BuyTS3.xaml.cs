@@ -3,6 +3,7 @@
 // Buy Sims Games Code-Behind
 // (C) Archeon Industries, LLC. 2024 - 2026, All Rights Reserved.    
 
+using NAudio.CoreAudioApi;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -33,7 +34,10 @@ public partial class BuyTS3 : Window
         Clover4.Visibility = Visibility.Collapsed;
         Clover5.Visibility = Visibility.Collapsed;
         Fireworks.Visibility = Visibility.Collapsed;
+        USFlag.Visibility = Visibility.Collapsed;
         SantaHat.Visibility = Visibility.Collapsed;
+        Pumpkin.Visibility = Visibility.Collapsed;
+        Jack.Visibility = Visibility.Collapsed;
 
         DateTime today = DateTime.Today;
         int currentYear = today.Year;
@@ -56,6 +60,7 @@ public partial class BuyTS3 : Window
         if (today >= independenceDay.AddDays(-3) && today <= independenceDay.AddDays(3))
         {
             Fireworks.Visibility = Visibility.Visible;
+            USFlag.Visibility = Visibility.Visible;
         }
 
         // 4. Check New Year's Eve (December 31 / January 1 window)
@@ -71,6 +76,15 @@ public partial class BuyTS3 : Window
         if (today >= christmas.AddDays(-3) && today <= christmas.AddDays(3))
         {
             SantaHat.Visibility = Visibility.Visible;
+        }
+
+        // 6. Check Halloween (October 31)
+        // Range: October 28 to November 3
+        DateTime halloween = new DateTime(currentYear, 10, 31);
+        if (today >= halloween.AddDays(-3) && today <= halloween.AddDays(3))
+        {
+            Pumpkin.Visibility = Visibility.Visible;
+            Jack.Visibility = Visibility.Visible;
         }
     }
 

@@ -18,22 +18,29 @@
         WindowStartupLocation="CenterScreen"
         Title="SimTools - Main Page" Height="640" Width="840" WindowStyle="None" Icon="/Images/Icons/SimTools.ico" ResizeMode="NoResize">
     <Grid x:Name="RootGrid" Width="840" Height="640">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Menu_Main.png"/>
         </Grid.Background>
-        <Image x:Name="Clover" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="-1,0,0,0"/>
-        <Image x:Name="Clover2" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="203,0,0,0"/>
-        <Image x:Name="Clover3" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="407,0,0,0"/>
-        <Image x:Name="Clover4" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="611,0,0,0"/>
-        <Image x:Name="Clover5" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="815,0,0,0"/>
-        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
-        <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
-        <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
+        <Image x:Name="Clover" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="-1,0,0,0" Grid.ColumnSpan="2"/>
+        <Image x:Name="Clover2" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="133,0,0,0" Grid.Column="1"/>
+        <Image x:Name="Clover3" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="337,0,0,0" Grid.Column="1"/>
+        <Image x:Name="Clover4" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="541,0,0,0" Grid.Column="1"/>
+        <Image x:Name="Clover5" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="745,0,0,0" Grid.Column="1"/>
+        <Image x:Name="Jack" Visibility="Collapsed" HorizontalAlignment="Left" Height="193" VerticalAlignment="Top" Width="110" Source="/Images/Holidays/jack.png" Grid.ColumnSpan="2" Margin="0,8,0,0"/>
+        <Image x:Name="USFlag" gif:ImageBehavior.AnimatedSource="/Images/Holidays/us_flag.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="180" Margin="10,16,0,2" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
+        <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="120" Margin="47,-11,0,0" VerticalAlignment="Top" Width="120" Source="/Images/Holidays/xmas.png" Grid.ColumnSpan="2"/>
+        <Image x:Name="Pumpkin" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="7,139,0,0" VerticalAlignment="Top" Width="97" Source="/Images/Holidays/pumpkin.png" Grid.Column="1"/>
         <!-- <Image HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Source="/plumbob.gif" Stretch="Fill"/> -->
-        <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
-        <TextBlock x:Name="ButtonInfoText" HorizontalAlignment="Left" Margin="184,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="82" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200" Background="#BF383838"><Run Text="When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed."/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="FrameworkInfoText" HorizontalAlignment="Left" Margin="184,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="65" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Text="It is strongly recommended to install the Mod Framework. If you already have the Mod Framework, please purge your 'Mods' folder and reinstall from the buton below. This version of the Mod Framework is specially vetted and prepared for TS3Tools." Background="#BF383838"/>
-        <TextBlock x:Name="ComparisonText" HorizontalAlignment="Left" Margin="624,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Height="25" FontFamily="SimSun" Foreground="White" FontWeight="Bold" FontStyle="Italic" FontSize="22" TextDecorations="Underline" TextAlignment="Center"><Run Text="Comparison"/><LineBreak/><Run/></TextBlock>
+        <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ButtonInfoText" HorizontalAlignment="Left" Margin="114,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="82" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFD200" Background="#BF383838" Grid.Column="1"><Run Text="When selecting an option, each button will change colors when your mouse is over it. These colors will indicate the importance of each function. Green is normal, yellow is recommended, red is highly recommended. As a rule of thumb, almost all tweaks and bugfixes will probably require the mod framework to be installed."/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="FrameworkInfoText" HorizontalAlignment="Left" Margin="114,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="433" Height="65" FontFamily="Tahoma" FontWeight="Bold" Foreground="Red" Text="It is strongly recommended to install the Mod Framework. If you already have the Mod Framework, please purge your 'Mods' folder and reinstall from the buton below. This version of the Mod Framework is specially vetted and prepared for TS3Tools." Background="#BF383838" Grid.Column="1"/>
+        <TextBlock x:Name="ComparisonText" HorizontalAlignment="Left" Margin="554,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Height="25" FontFamily="SimSun" Foreground="White" FontWeight="Bold" FontStyle="Italic" FontSize="22" TextDecorations="Underline" TextAlignment="Center" Grid.Column="1"><Run Text="Comparison"/><LineBreak/><Run/></TextBlock>
         <!-- Settings button — top-right corner -->
         <Button x:Name="SettingsButton"
         Content="⚙"
@@ -42,7 +49,7 @@
         Width="32" Height="32"
         FontSize="16"
         ToolTip="Settings"
-        Click="SettingsButton_Click" BorderBrush="{x:Null}">
+        Click="SettingsButton_Click" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Foreground>
                 <ImageBrush ImageSource="/Images/Settings.png"/>
             </Button.Foreground>
@@ -75,7 +82,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="TS3Vanilla" Content="TS3 Vanilla (No Mods)" HorizontalAlignment="Left" Margin="624,56,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TS3Vanilla_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="TS3Vanilla" Content="TS3 Vanilla (No Mods)" HorizontalAlignment="Left" Margin="554,56,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TS3Vanilla_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -105,7 +112,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="TS3WithSimTools" Content="TS3 With SimTools" HorizontalAlignment="Left" Margin="624,95,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="WithSimTools_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="TS3WithSimTools" Content="TS3 With SimTools" HorizontalAlignment="Left" Margin="554,95,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="WithSimTools_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -135,7 +142,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="VideoTutorial" Content="SimTools Video Guide" HorizontalAlignment="Left" Margin="624,168,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="VideoTutorial_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="VideoTutorial" Content="SimTools Video Guide" HorizontalAlignment="Left" Margin="554,168,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="VideoTutorial_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -168,7 +175,7 @@
         <Button x:Name="NewGPUButton" Content="GPU Support &gt;"
         HorizontalAlignment="Left" Margin="8,216,0,0" VerticalAlignment="Top"
         Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11"
-        ContextMenuOpening="NewGPUButton_Context" BorderBrush="{x:Null}" Click="NewGPUButton_Click">
+        ContextMenuOpening="NewGPUButton_Context" BorderBrush="{x:Null}" Click="NewGPUButton_Click" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -198,7 +205,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="TweakButton" Content="Game Tweaks &gt;" HorizontalAlignment="Left" Margin="8,256,0,0" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="TweakButton" Content="Game Tweaks &gt;" HorizontalAlignment="Left" Margin="8,256,0,0" VerticalAlignment="Top" Width="162" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="TweakButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -228,9 +235,9 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="GPUText" HorizontalAlignment="Left" Margin="184,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="37" FontFamily="SimSun" Foreground="White" Text="Use these tools to identify and install support for your GPU to help leverage the games engine. Available for Sims 2, Sims Stories and Sims 3." FontSize="11" Background="#BF383838"/>
-        <TextBlock x:Name="TweakText" HorizontalAlignment="Left" Margin="184,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" Text="This menu features loads of tweaks, all of which will help games run better in many different ways. Only select fixes for expansions you have installed." FontSize="11" Background="#BF383838"/>
-        <Button x:Name="ExitApp" Content="Button" HorizontalAlignment="Right" Margin="0,8,18,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="32" Height="32" Click="ExitApp_Click">
+        <TextBlock x:Name="GPUText" HorizontalAlignment="Left" Margin="114,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="37" FontFamily="SimSun" Foreground="White" Text="Use these tools to identify and install support for your GPU to help leverage the games engine. Available for Sims 2, Sims Stories and Sims 3." FontSize="11" Background="#BF383838" Grid.Column="1"/>
+        <TextBlock x:Name="TweakText" HorizontalAlignment="Left" Margin="114,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" Text="This menu features loads of tweaks, all of which will help games run better in many different ways. Only select fixes for expansions you have installed." FontSize="11" Background="#BF383838" Grid.Column="1"/>
+        <Button x:Name="ExitApp" Content="Button" HorizontalAlignment="Right" Margin="0,8,18,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="32" Height="32" Click="ExitApp_Click" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -260,7 +267,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="BugFixButton" Content="Bugfix Central &gt;" HorizontalAlignment="Left" Margin="8,296,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BugFixButton_Click" FontSize="11" ContextMenuOpening="BugFixButton_Context" BorderBrush="{x:Null}">
+        <Button x:Name="BugFixButton" Content="Bugfix Central &gt;" HorizontalAlignment="Left" Margin="8,296,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BugFixButton_Click" FontSize="11" ContextMenuOpening="BugFixButton_Context" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -290,8 +297,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="BugfixText" HorizontalAlignment="Left" Margin="185,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="33" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838"><Run Text="Various modifications to core and global game variables that work to address the many bugs The Sims 3 has developed over the years."/><LineBreak/><Run/></TextBlock>
-        <Button x:Name="SaveCleanerButton" Content="Save Cleaner" HorizontalAlignment="Left" Margin="8,336,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SaveCleanerButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <TextBlock x:Name="BugfixText" HorizontalAlignment="Left" Margin="115,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="33" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838" Grid.Column="1"><Run Text="Various modifications to core and global game variables that work to address the many bugs The Sims 3 has developed over the years."/><LineBreak/><Run/></TextBlock>
+        <Button x:Name="SaveCleanerButton" Content="Save Cleaner" HorizontalAlignment="Left" Margin="8,336,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SaveCleanerButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -321,8 +328,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="SaveCleanerText" HorizontalAlignment="Left" Margin="184,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="The Sims 3 save files will bloat over time to the point that they reach several gigabytes in size and may get corrupted. Use this tool to clean them regularly." Background="#BF383838"/>
-        <Button x:Name="ModButton" Content="Recommended Mods &gt;" HorizontalAlignment="Left" Margin="8,376,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ModButton_Click" FontSize="11" ContextMenuOpening="ModButton_Context" BorderBrush="{x:Null}">
+        <TextBlock x:Name="SaveCleanerText" HorizontalAlignment="Left" Margin="114,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="The Sims 3 save files will bloat over time to the point that they reach several gigabytes in size and may get corrupted. Use this tool to clean them regularly." Background="#BF383838" Grid.Column="1"/>
+        <Button x:Name="ModButton" Content="Recommended Mods &gt;" HorizontalAlignment="Left" Margin="8,376,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ModButton_Click" FontSize="11" ContextMenuOpening="ModButton_Context" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -352,8 +359,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="ModsText" HorizontalAlignment="Left" Margin="184,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838"><Run Text="Featured here, are mods recommended by myself and the community but that do not vastly tweak the engine or fix bugs (requires The Sims 3 Mod Framework)."/><LineBreak/><Run/></TextBlock>
-        <Button x:Name="StoreButton" Content="Sims 3 Store &gt;" HorizontalAlignment="Left" Margin="8,416,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="StoreButton_Click" FontSize="11" BorderBrush="{x:Null}" ContextMenuOpening="StoreButton_Context">
+        <TextBlock x:Name="ModsText" HorizontalAlignment="Left" Margin="114,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838" Grid.Column="1"><Run Text="Featured here, are mods recommended by myself and the community but that do not vastly tweak the engine or fix bugs (requires The Sims 3 Mod Framework)."/><LineBreak/><Run/></TextBlock>
+        <Button x:Name="StoreButton" Content="Sims 3 Store &gt;" HorizontalAlignment="Left" Margin="8,416,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="StoreButton_Click" FontSize="11" BorderBrush="{x:Null}" ContextMenuOpening="StoreButton_Context" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -383,7 +390,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="BuySimsButton" Content="Buy Sims Games" HorizontalAlignment="Left" Margin="8,457,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BuySimsButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="BuySimsButton" Content="Buy Sims Games" HorizontalAlignment="Left" Margin="8,457,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BuySimsButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -413,7 +420,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="ModToolsButton" Content="Mod Tools &gt;" HorizontalAlignment="Left" Margin="8,496,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="ModToolsButton_Click">
+        <Button x:Name="ModToolsButton" Content="Mod Tools &gt;" HorizontalAlignment="Left" Margin="8,496,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="ModToolsButton_Click" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -443,7 +450,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="GenericKeysButton" Content="Generic Game Keys" HorizontalAlignment="Left" Margin="8,536,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="GenericKeysButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="GenericKeysButton" Content="Generic Game Keys" HorizontalAlignment="Left" Margin="8,536,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="GenericKeysButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -473,12 +480,12 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock x:Name="VersionInfo" HorizontalAlignment="Left" Margin="8,590,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="SimSun" FontSize="11" FontWeight="Bold" TextAlignment="Center" Width="160" Height="36"/>
-        <TextBlock x:Name="TS3StoreText" HorizontalAlignment="Left" Margin="184,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="If you're interested in collecting any of the store items for The Sims 3, then look no further. Everything you need will be in this section." Background="#BF383838"/>
-        <TextBlock x:Name="BuyTS3Text" HorizontalAlignment="Left" Margin="184,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Here you can find links for buying The Sims 3 and it's various expansion and stuff packs. I earn commission per sale if you elect to purchase through SimTools." Background="#BF383838"/>
-        <TextBlock x:Name="ModToolsText" HorizontalAlignment="Left" Margin="184,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838"><Run Text="A collection of tools to help you create worlds, objects, skins, clothing, scripts, packages, etc. Use with care. Various tutorials can be found on YouTube."/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="GenKeysText" HorizontalAlignment="Left" Margin="184,536,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Lost your game case? Bought a game second-hand with no case at all? This menu will display generic keys that can be used to install from Retail discs." Background="#BF383838"/>
-        <Button x:Name="ModFrameworkButton" Content="Mod Framework" HorizontalAlignment="Left" Margin="184,600,0,0" VerticalAlignment="Top" Width="122" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ModFrameworkButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <TextBlock x:Name="VersionInfo" HorizontalAlignment="Left" Margin="8,590,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="SimSun" FontSize="11" FontWeight="Bold" TextAlignment="Center" Width="160" Height="36" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="TS3StoreText" HorizontalAlignment="Left" Margin="114,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="If you're interested in collecting any of the store items for The Sims 3, then look no further. Everything you need will be in this section." Background="#BF383838" Grid.Column="1"/>
+        <TextBlock x:Name="BuyTS3Text" HorizontalAlignment="Left" Margin="114,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Here you can find links for buying The Sims 3 and it's various expansion and stuff packs. I earn commission per sale if you elect to purchase through SimTools." Background="#BF383838" Grid.Column="1"/>
+        <TextBlock x:Name="ModToolsText" HorizontalAlignment="Left" Margin="114,496,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Background="#BF383838" Grid.Column="1"><Run Text="A collection of tools to help you create worlds, objects, skins, clothing, scripts, packages, etc. Use with care. Various tutorials can be found on YouTube."/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="GenKeysText" HorizontalAlignment="Left" Margin="114,536,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="36" FontFamily="SimSun" Foreground="White" FontSize="11" Text="Lost your game case? Bought a game second-hand with no case at all? This menu will display generic keys that can be used to install from Retail discs." Background="#BF383838" Grid.Column="1"/>
+        <Button x:Name="ModFrameworkButton" Content="Mod Framework" HorizontalAlignment="Left" Margin="114,600,0,0" VerticalAlignment="Top" Width="122" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ModFrameworkButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -508,7 +515,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="DonateButton" Content="Support Me!" HorizontalAlignment="Left" Margin="313,600,0,0" VerticalAlignment="Top" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="DonateButton_Click">
+        <Button x:Name="DonateButton" Content="Support Me!" HorizontalAlignment="Left" Margin="243,600,0,0" VerticalAlignment="Top" Width="130" Height="34" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="DonateButton_Click" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -538,7 +545,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="ThanksButton" Content="Special Thanks" HorizontalAlignment="Left" Margin="449,600,0,0" VerticalAlignment="Top" Width="146" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ThanksButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="ThanksButton" Content="Special Thanks" HorizontalAlignment="Left" Margin="379,600,0,0" VerticalAlignment="Top" Width="146" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ThanksButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -568,8 +575,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image x:Name="SulSul" HorizontalAlignment="Left" Height="225" Margin="584,281,0,0" VerticalAlignment="Top" Width="225" Source="/Images/sulsul.png"/>
-        <Button x:Name="WarningButton" Content="IMPORTANT NOTICE!" HorizontalAlignment="Left" Margin="624,512,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="WarningButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Image x:Name="SulSul" HorizontalAlignment="Left" Height="225" Margin="514,281,0,0" VerticalAlignment="Top" Width="225" Source="/Images/sulsul.png" Grid.Column="1"/>
+        <Button x:Name="WarningButton" Content="IMPORTANT NOTICE!" HorizontalAlignment="Left" Margin="554,512,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="WarningButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -599,7 +606,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="SimPortButton" Content="Add Me on SimPort" HorizontalAlignment="Left" Margin="624,552,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SimPortButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="SimPortButton" Content="Add Me on SimPort" HorizontalAlignment="Left" Margin="554,552,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="SimPortButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -629,7 +636,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="DiscordButton" Content="" HorizontalAlignment="Left" Margin="600,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="DiscordButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="DiscordButton" Content="" HorizontalAlignment="Left" Margin="530,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="DiscordButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -659,7 +666,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="FacebookButton" Content="" HorizontalAlignment="Left" Margin="640,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="FacebookButton_Click">
+        <Button x:Name="FacebookButton" Content="" HorizontalAlignment="Left" Margin="570,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" FontSize="11" BorderBrush="{x:Null}" Click="FacebookButton_Click" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -689,7 +696,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="YoutubeButton" Content="" HorizontalAlignment="Left" Margin="680,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="YoutubeButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="YoutubeButton" Content="" HorizontalAlignment="Left" Margin="610,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="YoutubeButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -719,7 +726,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="SteamButton" Content="" HorizontalAlignment="Left" Margin="720,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="SteamButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="SteamButton" Content="" HorizontalAlignment="Left" Margin="650,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="SteamButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -749,7 +756,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="InfoButton" Content="" HorizontalAlignment="Left" Margin="760,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="InfoButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="InfoButton" Content="" HorizontalAlignment="Left" Margin="690,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="InfoButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background">
@@ -780,11 +787,11 @@
             </Button.Style>
         </Button>
         <Button x:Name="EasterEgg1" Content="Button"
-        HorizontalAlignment="Left" Margin="688,396,0,0" VerticalAlignment="Top"
+        HorizontalAlignment="Left" Margin="618,396,0,0" VerticalAlignment="Top"
         Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}"
         Width="16" Height="16"
-        Click="EasterEgg1_Click"/>
-        <Button x:Name="ReportBugUpdate" Content="Report Bug / Update" HorizontalAlignment="Left" Margin="624,208,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ReportBugUpdate_Click" FontSize="11" BorderBrush="{x:Null}">
+        Click="EasterEgg1_Click" Grid.Column="1"/>
+        <Button x:Name="ReportBugUpdate" Content="Report Bug / Update" HorizontalAlignment="Left" Margin="554,208,0,0" VerticalAlignment="Top" Width="154" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="ReportBugUpdate_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">
@@ -814,7 +821,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="MusicButton" Content="" HorizontalAlignment="Left" Margin="800,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="MusicButton_Click" FontSize="11" BorderBrush="{x:Null}">
+        <Button x:Name="MusicButton" Content="" HorizontalAlignment="Left" Margin="730,600,0,0" VerticalAlignment="Top" Width="33" Height="33" FontFamily="Tahoma" FontWeight="Bold" Click="MusicButton_Click" FontSize="11" BorderBrush="{x:Null}" Grid.Column="1">
             <Button.Background>
                 <ImageBrush ImageSource="/Images/musicon.png"/>
             </Button.Background>

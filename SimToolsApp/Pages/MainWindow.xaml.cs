@@ -51,6 +51,9 @@ public partial class MainWindow : Window
         Clover5.Visibility = Visibility.Collapsed;
         Fireworks.Visibility = Visibility.Collapsed;
         SantaHat.Visibility = Visibility.Collapsed;
+        Pumpkin.Visibility = Visibility.Collapsed;
+        Jack.Visibility = Visibility.Collapsed;
+        USFlag.Visibility = Visibility.Collapsed;
 
         DateTime today = DateTime.Today;
         int currentYear = today.Year;
@@ -73,6 +76,7 @@ public partial class MainWindow : Window
         if (today >= independenceDay.AddDays(-3) && today <= independenceDay.AddDays(3))
         {
             Fireworks.Visibility = Visibility.Visible;
+            USFlag.Visibility = Visibility.Visible;
         }
 
         // 4. Check New Year's Eve (December 31 / January 1 window)
@@ -88,6 +92,15 @@ public partial class MainWindow : Window
         if (today >= christmas.AddDays(-3) && today <= christmas.AddDays(3))
         {
             SantaHat.Visibility = Visibility.Visible;
+        }
+
+        // 6. Check Halloween (October 31)
+        // Range: October 28 to November 3
+        DateTime halloween = new DateTime(currentYear, 10, 31);
+        if (today >= halloween.AddDays(-3) && today <= halloween.AddDays(3))
+        {
+            Pumpkin.Visibility = Visibility.Visible;
+            Jack.Visibility = Visibility.Visible;
         }
     }
 

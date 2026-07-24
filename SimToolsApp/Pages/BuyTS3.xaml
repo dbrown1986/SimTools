@@ -40,9 +40,12 @@
         <Image x:Name="Clover3" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="407,0,0,0"/>
         <Image x:Name="Clover4" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="611,0,0,0"/>
         <Image x:Name="Clover5" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="204" Source="/Images/Holidays/stpd.png" StretchDirection="UpOnly" Margin="815,0,0,0"/>
+        <Image x:Name="Jack" Visibility="Collapsed" HorizontalAlignment="Left" Height="193" VerticalAlignment="Top" Width="110" Source="/Images/Holidays/jack.png" Grid.ColumnSpan="2" Margin="0,8,0,0"/>
+        <Image x:Name="USFlag" gif:ImageBehavior.AnimatedSource="/Images/Holidays/us_flag.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="180" Margin="10,16,0,2" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
         <Image gif:ImageBehavior.AnimatedSource="/Images/plumbob.gif" HorizontalAlignment="Left" Height="201" Margin="32,8,0,0" VerticalAlignment="Top" Width="113" Stretch="Fill"/>
         <Image x:Name="Fireworks" gif:ImageBehavior.AnimatedSource="/Images/Holidays/indpday_nye.gif" Visibility="Collapsed" HorizontalAlignment="Left" Height="201" Margin="10,8,0,0" VerticalAlignment="Top" Width="160" Stretch="Fill"/>
         <Image x:Name="SantaHat" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="47,-11,0,0" VerticalAlignment="Top" Width="69" Source="/Images/Holidays/xmas.png"/>
+        <Image x:Name="Pumpkin" Visibility="Collapsed" HorizontalAlignment="Left" Height="83" Margin="7,139,0,0" VerticalAlignment="Top" Width="97" Source="/Images/Holidays/pumpkin.png" Grid.Column="1"/>
         <Image x:Name="SimTools_Logo" HorizontalAlignment="Left" Height="200" Margin="8,6,0,0" VerticalAlignment="Top" Width="162" Source="/Images/SimTools_Logo.png" Stretch="Fill"/>
         <Button x:Name="BackButton" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="8,596,0,0" VerticalAlignment="Top" Width="159" Height="34" FontFamily="Tahoma" FontWeight="Bold" Click="BackButton_Click" FontSize="11" BorderBrush="{x:Null}">
             <Button.Style>
