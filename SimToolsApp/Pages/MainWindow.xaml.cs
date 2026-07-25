@@ -2022,6 +2022,28 @@ animationsmoothing = 0";
         };
         sims2Item.Items.Add(sims2_brightCas);
 
+        // ── TS2 Gameplay Fixes ────────────────────────────────────────────────
+        // Opens the multi-section AIO checkbox installer window.
+        var ts2_gameplayFixes = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = "Gameplay Fixes" };
+        ts2_gameplayFixes.Click += (_, _) =>
+        {
+            MessageBox.Show(
+                LanguageManager.Get("Tweaks", "GameplayFixes_Info", "Launching Gameplay Fixes AIO installer. Please only select fixes for games that you have installed and only for items you frequently use."),
+                LanguageManager.Get("Tweaks", "GameplayFixes_Title", "Gameplay Fixes — The Sims 2"),
+                MessageBoxButton.OK, MessageBoxImage.Information);
+
+            if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
+            {
+                MessageBox.Show(
+                    LanguageManager.Get("Main", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
+                    LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            new TS2GameplayFixesWindow(GamePaths.Sims2Mods) { Owner = this }.ShowDialog();
+        };
+        sims2Item.Items.Add(ts2_gameplayFixes);
+
         contextMenu.Items.Add(sims2Item);
 
         // ─────────────────────────────────────────────────────────────────
