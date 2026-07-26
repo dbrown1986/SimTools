@@ -172,8 +172,6 @@ public partial class TS2GameplayFixesWindow : Window
             return;
         }
 
-        if (!ModFrameworkHelper.EnsureInstalled(_sims2Mods)) return;
-
         var toDownload = _sections
             .SelectMany(s => s.Items)
             .Where(i => i.IsChecked && i.CanCheck && !string.IsNullOrEmpty(i.FileName))
@@ -283,8 +281,8 @@ public partial class TS2GameplayFixesWindow : Window
             WpfMessageBox.Show(
                 LanguageManager.Format("GameplayFix", "Done",
                     downloaded, skipped, failed),
-                LanguageManager.Get("GameplayFix", "Done_Title",
-                    "Gameplay Fixes — The Sims 3"),
+                LanguageManager.Get("GameplayFix", "TS2_Done_Title",
+                    "Gameplay Fixes — The Sims 2"),
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
         finally
@@ -298,40 +296,14 @@ public partial class TS2GameplayFixesWindow : Window
     // ══════════════════════════════════════════════════════════════════════════
     private static IEnumerable<(string Header, List<GameplayFixItem> Items)> BuildSections()
     {
-        // ── Base Game (23 items) ──────────────────────────────────────────────
+        // ── Base Game (? items) ──────────────────────────────────────────────
         yield return (LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2"), new List<GameplayFixItem>
         {
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                   "SimTools/Packages/OhRudi__BaseGame__Sims_need_less_Space.package",                          "%baseurl%/Mods/Sims3/Fixes/Packages/base/OhRudi__BaseGame__Sims_need_less_Space.package"),
-            new(LanguageManager.Get("GameplayFix", "ImpMemories", "Only Important Memories by VelocityGrass"),         "SimTools/Packages/velocitygrass_only_important_memories.package",                          "%baseurl%/Mods/Sims3/Fixes/Packages/base/velocitygrass_only_important_memories.package"),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),             "SimTools/Packages/BG_Tileable_Items_Shader_FIXED.package",                                 "%baseurl%/Mods/Sims3/Fixes/Packages/base/BG_Tileable_Items_Shader_FIXED.package"),
-            new(LanguageManager.Get("GameplayFix", "SlopedTerrainFix", "Interact on Sloped Terrain by Nikel23"),            "SimTools/Packages/Nikel23 - Interact on sloped terrain.package",                           "%baseurl%/Mods/Sims3/Fixes/Packages/base/Nikel23 - Interact on sloped terrain.package"),
-            new(LanguageManager.Get("GameplayFix", "HalfWallFix", "Half Wall Fix by Simsi45"),                         "SimTools/Packages/Half walls fixed - all.package",                                         "%baseurl%/Mods/Sims3/Fixes/Packages/base/Half walls fixed - all.package"),
-            new(LanguageManager.Get("GameplayFix", "EyeballUVFix", "Eyeball UV Fix by S-Club"),                         "SimTools/Packages/S-Club ts3 mod EA Eyeball F UVFix.package",                              "%baseurl%/Mods/Sims3/Fixes/Packages/base/S-Club ts3 mod EA Eyeball F UVFix.package"),
-            new(LanguageManager.Get("GameplayFix", "EyeshadowFix", "EA Eyeshadow Fix by Lavsm"),                        "SimTools/Packages/EyeshadowAlphaFix_BaseGame_DefaultReplacement.package",                  "%baseurl%/Mods/Sims3/Fixes/Packages/base/EyeshadowAlphaFix_BaseGame_DefaultReplacement.package"),
-            new(LanguageManager.Get("GameplayFix", "MuscleSliderFix", "Muscle Slider Fix by Nysha"),                       "SimTools/Packages/whiteriderMTS_LNMuscleSliderNudeFix.package",                            "%baseurl%/Mods/Sims3/Fixes/Packages/base/whiteriderMTS_LNMuscleSliderNudeFix.package"),
-            new(LanguageManager.Get("GameplayFix", "GTKFix", "Get To Know Fix by SimBouquet"),                    "SimTools/Packages/simbouquet_GetToKnowFix.package",                                        "%baseurl%/Mods/Sims3/Fixes/Packages/base/simbouquet_GetToKnowFix.package",
-                LanguageManager.Get("GameplayFix", "MonoPatcherWarning", "This mod requires Mono Patcher by LazyDuchess to be installed. Please be sure you have installed it from the Bugfix menu first.")),
-            new(LanguageManager.Get("GameplayFix", "GTKUtils", "Get To Know Fix Utils by SimBouquet"),              "SimTools/Packages/simbouquet_Utils.package",                                               "%baseurl%/Mods/Sims3/Fixes/Packages/base/simbouquet_Utils.package",
-                LanguageManager.Get("GameplayFix", "MonoPatcherWarning", "This mod requires Mono Patcher by LazyDuchess to be installed. Please be sure you have installed it from the Bugfix menu first.")),
-            new(LanguageManager.Get("GameplayFix", "WelcomeMattFix", "Welcome Matt De-Shined by CeltySims"),              "SimTools/Packages/celtysimsWelcomeMattdeshined.package",                                   "%baseurl%/Mods/Sims3/Fixes/Packages/base/celtysimsWelcomeMattdeshined.package"),
-            new(LanguageManager.Get("GameplayFix", "ClapboardFix", "Horizontal Clapboard Fix by CircusWolf"),           "SimTools/Packages/CW_HorizontalClapboardFixed.package",                                    "%baseurl%/Mods/Sims3/Fixes/Packages/base/CW_HorizontalClapboardFixed.package"),
-            new(LanguageManager.Get("GameplayFix", "NoCommLots", "No Auto Placing Community Lots by Bluegenjutsu"),   "SimTools/Packages/bluegenjutsu_NoAutoPlacingCommunityLots.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/base/bluegenjutsu_NoAutoPlacingCommunityLots.package",
-                LanguageManager.Get("GameplayFix", "NoCommLotsWarning", "CAUTION: No Auto Placing Community Lots will disable the script which places lots such as the Fire Station, Salon, Laundromat, etc etc. If you like these lots, do not install this package. This mod will also require at least one of these EP's: Ambitions, Showtime, Supernatural or Seasons. If you do not have any of these EP's, you can safely skip this mod.")),
-            new(LanguageManager.Get("GameplayFix", "AtomicStairFix", "Atomic Age Stair Fix by EnableLlamas"),             "SimTools/Packages/enablellamasAtomicAgeStairsFixDR.package",                               "%baseurl%/Mods/Sims3/Fixes/Packages/base/enablellamasAtomicAgeStairsFixDR.package"),
-            new(LanguageManager.Get("GameplayFix", "WalkCycleFix", "Walk Cycle Edits by SimBouquet"),                   "SimTools/Overrides/simbouquet_OVERRIDE_WalkCycleEdits.package",                            "%baseurl%/Mods/Sims3/Fixes/Overrides/base/simbouquet_OVERRIDE_WalkCycleEdits.package"),
-            new(LanguageManager.Get("GameplayFix", "TSMFaceExpressions", "Medieval Facial Expressions by SimBouquet"),        "SimTools/Overrides/simbouquet_OVERRIDE_TSMtoTS3_FacialExpressions.package",                "%baseurl%/Mods/Sims3/Fixes/Overrides/base/simbouquet_OVERRIDE_TSMtoTS3_FacialExpressions.package"),
-            new(LanguageManager.Get("GameplayFix", "RandomSimFixes", "Random Sim Fixes by LazyDuchess"),                  "SimTools/Packages/ld_RandomSimFixes.package",                                              "%baseurl%/Mods/Sims3/Fixes/Packages/base/ld_RandomSimFixes.package"),
-            new(LanguageManager.Get("GameplayFix", "SimBinGeneticsMale", "Sim Bin Genetics Male Presets by Anime_Boom"),      "SimTools/Packages/SimBinYAAMPresets.package",                                              "%baseurl%/Mods/Sims3/Fixes/Packages/base/SimBinYAAMPresets.package"),
-            new(LanguageManager.Get("GameplayFix", "SimBinGeneticsFemale", "Sim Bin Genetics Female Presets by Anime_Boom"),    "SimTools/Packages/SimBinYAFAFPresets.package",                                             "%baseurl%/Mods/Sims3/Fixes/Packages/base/SimBinYAFAFPresets.package"),
-            new(LanguageManager.Get("GameplayFix", "PickUpToddlerFix", "Pick Up Toddler Fix by TheSweetSimmer"),            "SimTools/Packages/TSS_PickUpToddlerFix.package",                                           "%baseurl%/Mods/Sims3/Fixes/Packages/base/TSS_PickUpToddlerFix.package"),
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),      "SimTools/Packages/BASE GAME - Stencils Unlocked.package",                                  "%baseurl%/Mods/Sims3/Fixes/Packages/base/BASE GAME - Stencils Unlocked.package"),
-            new(LanguageManager.Get("GameplayFix", "FishingBoxFix", "Fishing Box Fix by NanaBx3 & caoride"),             "SimTools/Packages/NanaBx3_fishingBoxChest_collectionFix.package",                          "%baseurl%/Mods/Sims3/Fixes/Packages/base/NanaBx3_fishingBoxChest_collectionFix.package"),
-            new(LanguageManager.Get("GameplayFix", "CrossEyeFix", "Cross-Eye Fix by LazyDuchess"),                     "SimTools/Packages/ld_CrossEyeFix.package",                                                 "%baseurl%/Mods/Sims3/Fixes/Packages/base/ld_CrossEyeFix.package"),
-            new(LanguageManager.Get("GameplayFix", "PigtailsFix", "Pigtails Glitch Fix by Phantom99"),                 "SimTools/Packages/PigtailGlitchFix.package",                                               "%baseurl%/Mods/Sims3/Fixes/Packages/base/PigtailGlitchFix.package"),
-            new(LanguageManager.Get("GameplayFix", "WateryGraveFix", "Watery Grave Plaque Fix by fantuanss12"),           "SimTools/Packages/Fantuanss12_UrnstonePlaqueEditV2.package",                               "%baseurl%/Mods/Sims3/Fixes/Packages/base/Fantuanss12_UrnstonePlaqueEditV2.package"),
-            new(LanguageManager.Get("GameplayFix", "GroceryFixes", "Grocery Fixes by Swiffy"),                          "SimTools/Packages/swiffyMisc.GroceryFixes-RequiresMonoPatcher-v1.1.package",               "%baseurl%/Mods/Sims3/Fixes/Packages/base/swiffyMisc.GroceryFixes-RequiresMonoPatcher-v1.1.package", "This mod requires Mono Patcher by LazyDuchess to be installed. Please be sure you have installed it from the Bugfix menu first."),
+            new(LanguageManager.Get("TS2GameplayFix", "ShadowFix", "Sims Shadow Fix by Nopke"),                   "simNopke-simShadowFix-maxisMatch.package",                          "%baseurl%/Mods/Sims2/Fixes/base/simNopke-simShadowFix-maxisMatch.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "BrightCASFix", "Bright CAS Fix by LazyDuchess"),                   "ld_BrightCASFix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/ld_BrightCASFix.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "AbductionFix", "Abduction Fix by Doctor Boris"),                   "debugabductfix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/debugabductfix.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "BiotechFix", "Biotech Station Medicine Fix by J. M. Pescado"),                   "biotechfix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/biotechfix.package"),
         });
-
 
         // ── World Adventures (6 items) ────────────────────────────────────────
         yield return ("World Adventures", new List<GameplayFixItem>

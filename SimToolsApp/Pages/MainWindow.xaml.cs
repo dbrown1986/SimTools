@@ -285,7 +285,7 @@ public partial class MainWindow : Window
                 MessageBoxButton.OK, MessageBoxImage.Warning);
 
             DownloadAndOpenExe(
-                url: "https://us1-repo.simtools-app.com/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
+                url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
                 fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
@@ -300,7 +300,7 @@ public partial class MainWindow : Window
                 MessageBoxButton.OK, MessageBoxImage.Warning);
 
             DownloadAndOpenExe(
-                url: "https://us1-repo.simtools-app.com/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
+                url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
                 fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
                 downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
             );
@@ -314,14 +314,14 @@ public partial class MainWindow : Window
 
         var simsStories_32 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
         simsStories_32.Click += (s, args) => DownloadAndOpenExe(
-            url: "https://us1-repo.simtools-app.com/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
+            url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
             fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
 
         var simsStories_64 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
         simsStories_64.Click += (s, args) => DownloadAndOpenExe(
-            url: "https://us1-repo.simtools-app.com/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
+            url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
             fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
@@ -334,14 +334,14 @@ public partial class MainWindow : Window
 
         var simcity4_32 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_32", "32-Bit") };
         simcity4_32.Click += (s, args) => DownloadAndOpenExe(
-            url: "https://us1-repo.simtools-app.com/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
+            url: "%baseurl%/Sideload-Apps/x86/graphicsrulesmaker.exe",  // ← replace
             fileName: "graphicsrulesmaker-2.3.0-32bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
 
         var simcity4_64 = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/grm.ico"), Header = LanguageManager.Get("Main", "Bit_64", "64-Bit") };
         simcity4_64.Click += (s, args) => DownloadAndOpenExe(
-            url: "https://us1-repo.simtools-app.com/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
+            url: "%baseurl%/Sideload-Apps/x64/graphicsrulesmaker.exe",  // ← replace
             fileName: "graphicsrulesmaker-2.3.0-64bit.exe",
             downloadDirectory: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Binaries")
         );
@@ -1127,7 +1127,7 @@ animationsmoothing = 0";
             string tempZip = Path.Combine(Path.GetTempPath(), "AlderLakePatch.zip");
 
             var (ok, _) = await DownloadFileOnly(
-                url: "https://github.com/LazyDuchess/AlderLakePatcher/releases/download/1.0.1/AlderLakePatch.zip",  // ← replace
+                url: "%baseurl%/Sideload-Apps/x86/AlderLakePatch.zip",  // ← replace
                 destFilePath: tempZip);
 
             if (!ok) return;
@@ -1264,7 +1264,7 @@ animationsmoothing = 0";
 
             // Proceed with download if not installed
             await DownloadFileOnly(
-                url: "https://github.com/sims3fiend/Sims3SettingsSetter/releases/download/1.6.2/Sims3SettingsSetter.asi",
+                url: "%baseurl%/Sideload-Apps/x86/S3SS/Sims3SettingsSetter.asi",
                 destFilePath: destPath);
         };
         sims3Item.Items.Add(ts3_s3ss);
@@ -1446,15 +1446,15 @@ animationsmoothing = 0";
                 return;
             }
             DownloadAndOpenExe(
-                url: "https://github.com/just-harry/tiny-ui-fix-for-ts3/releases/download/v1.5.3/tiny-ui-fix-for-ts3.bat",
+                url: "%baseurl%/Sideload-Apps/x86/tiny-ui-fix-for-ts3.bat",
                 fileName: "tiny-ui-fix-for-ts3.bat",
                 downloadDirectory: GamePaths.Sims3Game
             );
         };
         sims3Item.Items.Add(ts3_tinyUI);
 
-        // ── Sweet Treats Conversion Guide ─────────────────────────────────────────
-        var ts3_sweetTreats = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3SP06.ico"), Header = LanguageManager.Get("Main", "STCG", "Sweet Treats Conversion Guide") };
+        // ── Sweet Treats Conversion ─────────────────────────────────────────
+        var ts3_sweetTreats = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims3SP06.ico"), Header = LanguageManager.Get("Main", "STCG", "Sweet Treats Conversion") };
         ts3_sweetTreats.Click += (_, _) =>
         {
             new SweetTreats { Owner = this }.ShowDialog();
@@ -1903,124 +1903,124 @@ animationsmoothing = 0";
         var sims2Item = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/Sims2.ico"), Header = LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2") };
 
         // ── Sim Shadow Fix ────────────────────────────────────────────────
-        var sims2_shadowFix = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = LanguageManager.Get("Main", "ShadowFix_Menu", "Sim Shadow Fix") };
-        sims2_shadowFix.Click += async (_, _) =>
-        {
-            if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
-            {
-                MessageBox.Show(
-                    LanguageManager.Get("Main", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
-                    LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            string shadowFixPath = Path.Combine(GamePaths.Sims2Mods, "simNopke-simShadowFix-maxisMatch.package");
-
-            // Already installed — offer to remove instead of reinstalling
-            if (File.Exists(shadowFixPath))
-            {
-                var removeResult = MessageBox.Show(
-                    LanguageManager.Get("Main", "ShadowFix_AlreadyInstalled_Remove", "Sim Shadow Fix is already installed. Do you want to remove it?"),
-                    LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Question);
-
-                if (removeResult == MessageBoxResult.Yes)
-                {
-                    try
-                    {
-                        File.Delete(shadowFixPath);
-
-                        MessageBox.Show(
-                            LanguageManager.Get("Main", "ShadowFix_RemovedSuccess", "Sim Shadow Fix has been successfully removed."),
-                            LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(
-                            LanguageManager.Get("Main", "ShadowFix_RemoveError", $"Failed to remove Sim Shadow Fix. Ensure the game is closed.\n\nError: {ex.Message}"),
-                            LanguageManager.Get("Main", "Error_Title", "Error"),
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Error);
-                    }
-                }
-
-                return;
-            }
-
-            // Not installed — show info and proceed with download
-            MessageBox.Show(
-                LanguageManager.Get("Main", "ShadowFix_Info", "Fixes an issue in The Sims 2 where the shadow appears as a black square."),
-                LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
-                MessageBoxButton.OK, MessageBoxImage.Information);
-
-            await DownloadFileOnly(
-                "%baseurl%/Mods/Sims2/Downloads/simNopke-simShadowFix-maxisMatch.package",
-                shadowFixPath);
-        };
-        sims2Item.Items.Add(sims2_shadowFix);
+        //var sims2_shadowFix = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = LanguageManager.Get("Main", "ShadowFix_Menu", "Sim Shadow Fix") };
+        //sims2_shadowFix.Click += async (_, _) =>
+        //{
+        //    if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
+        //    {
+        //        MessageBox.Show(
+        //            LanguageManager.Get("Main", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
+        //            LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        return;
+        //    }
+        //
+        //    string shadowFixPath = Path.Combine(GamePaths.Sims2Mods, "simNopke-simShadowFix-maxisMatch.package");
+        //
+        //    // Already installed — offer to remove instead of reinstalling
+        //    if (File.Exists(shadowFixPath))
+        //    {
+        //        var removeResult = MessageBox.Show(
+        //            LanguageManager.Get("Main", "ShadowFix_AlreadyInstalled_Remove", "Sim Shadow Fix is already installed. Do you want to remove it?"),
+        //            LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
+        //            MessageBoxButton.YesNo,
+        //            MessageBoxImage.Question);
+        //
+        //        if (removeResult == MessageBoxResult.Yes)
+        //        {
+        //            try
+        //            {
+        //                File.Delete(shadowFixPath);
+        //
+        //                MessageBox.Show(
+        //                    LanguageManager.Get("Main", "ShadowFix_RemovedSuccess", "Sim Shadow Fix has been successfully removed."),
+        //                    LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
+        //                    MessageBoxButton.OK,
+        //                    MessageBoxImage.Information);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show(
+        //                    LanguageManager.Get("Main", "ShadowFix_RemoveError", $"Failed to remove Sim Shadow Fix. Ensure the game is closed.\n\nError: {ex.Message}"),
+        //                    LanguageManager.Get("Main", "Error_Title", "Error"),
+        //                    MessageBoxButton.OK,
+        //                    MessageBoxImage.Error);
+        //            }
+        //        }
+        //
+        //        return;
+        //    }
+        //
+        //    // Not installed — show info and proceed with download
+        //    MessageBox.Show(
+        //        LanguageManager.Get("Main", "ShadowFix_Info", "Fixes an issue in The Sims 2 where the shadow appears as a black square."),
+        //        LanguageManager.Get("Main", "ShadowFix_Title", "Sim Shadow Fix — The Sims 2"),
+        //        MessageBoxButton.OK, MessageBoxImage.Information);
+        //
+        //    await DownloadFileOnly(
+        //        "%baseurl%/Mods/Sims2/Downloads/simNopke-simShadowFix-maxisMatch.package",
+        //        shadowFixPath);
+        //};
+        //sims2Item.Items.Add(sims2_shadowFix);
 
         // ── Bright CAS Fix ────────────────────────────────────────────────
-        var sims2_brightCas = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = "Bright CAS Fix" };
-        sims2_brightCas.Click += async (_, _) =>
-        {
-            if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
-            {
-                MessageBox.Show(
-                    LanguageManager.Get("Main", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
-                    LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            string brightCasPath = Path.Combine(GamePaths.Sims2Mods, "ld_BrightCASFix.package");
-
-            // Already installed — offer to remove instead of reinstalling
-            if (File.Exists(brightCasPath))
-            {
-                var removeResult = MessageBox.Show(
-                    LanguageManager.Get("Main", "BrightCAS_AlreadyInstalled_Remove", "Bright CAS Fix is already installed. Do you want to remove it?"),
-                    LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Question);
-
-                if (removeResult == MessageBoxResult.Yes)
-                {
-                    try
-                    {
-                        File.Delete(brightCasPath);
-
-                        MessageBox.Show(
-                            LanguageManager.Get("Main", "BrightCAS_RemovedSuccess", "Bright CAS Fix has been successfully removed."),
-                            LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(
-                            LanguageManager.Get("Main", "BrightCAS_RemoveError", $"Failed to remove Bright CAS Fix. Ensure the game is closed.\n\nError: {ex.Message}"),
-                            LanguageManager.Get("Main", "Error_Title", "Error"),
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Error);
-                    }
-                }
-
-                return;
-            }
-
-            // Not installed — show info and proceed with download
-            MessageBox.Show(
-                LanguageManager.Get("Main", "BrightCAS_Info", "This mod fixes the bright Create-A-Sim by toning down the lights a bit."),
-                LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
-                MessageBoxButton.OK, MessageBoxImage.Information);
-
-            await DownloadFileOnly(
-                "%baseurl%/Mods/Sims2/Downloads/ld_BrightCASFix.package",
-                brightCasPath);
-        };
-        sims2Item.Items.Add(sims2_brightCas);
+        //var sims2_brightCas = new MenuItem { Icon = MenuIcon("pack://application:,,,/Images/Icons/fix.ico"), Header = "Bright CAS Fix" };
+        //sims2_brightCas.Click += async (_, _) =>
+        //{
+        //    if (!GamePaths.IsConfigured(GamePaths.Sims2Mods))
+        //    {
+        //        MessageBox.Show(
+        //            LanguageManager.Get("Main", "Sims2Mods", "Your Sims 2 Mods directory is not configured."),
+        //            LanguageManager.Get("Main", "NoGamePath_Title", "SimTools — Path Not Set"), MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        return;
+        //    }
+        //
+        //    string brightCasPath = Path.Combine(GamePaths.Sims2Mods, "ld_BrightCASFix.package");
+        //
+        //    // Already installed — offer to remove instead of reinstalling
+        //    if (File.Exists(brightCasPath))
+        //    {
+        //        var removeResult = MessageBox.Show(
+        //            LanguageManager.Get("Main", "BrightCAS_AlreadyInstalled_Remove", "Bright CAS Fix is already installed. Do you want to remove it?"),
+        //            LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
+        //            MessageBoxButton.YesNo,
+        //            MessageBoxImage.Question);
+        //
+        //        if (removeResult == MessageBoxResult.Yes)
+        //        {
+        //            try
+        //            {
+        //                File.Delete(brightCasPath);
+        //
+        //                MessageBox.Show(
+        //                    LanguageManager.Get("Main", "BrightCAS_RemovedSuccess", "Bright CAS Fix has been successfully removed."),
+        //                    LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
+        //                    MessageBoxButton.OK,
+        //                    MessageBoxImage.Information);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show(
+        //                    LanguageManager.Get("Main", "BrightCAS_RemoveError", $"Failed to remove Bright CAS Fix. Ensure the game is closed.\n\nError: {ex.Message}"),
+        //                    LanguageManager.Get("Main", "Error_Title", "Error"),
+        //                    MessageBoxButton.OK,
+        //                    MessageBoxImage.Error);
+        //            }
+        //        }
+        //
+        //        return;
+        //    }
+        //
+        //    // Not installed — show info and proceed with download
+        //    MessageBox.Show(
+        //        LanguageManager.Get("Main", "BrightCAS_Info", "This mod fixes the bright Create-A-Sim by toning down the lights a bit."),
+        //        LanguageManager.Get("Main", "BrightCAS_Title", "Bright CAS Fix — The Sims 2"),
+        //        MessageBoxButton.OK, MessageBoxImage.Information);
+        //
+        //    await DownloadFileOnly(
+        //        "%baseurl%/Mods/Sims2/Downloads/ld_BrightCASFix.package",
+        //        brightCasPath);
+        //};
+        //sims2Item.Items.Add(sims2_brightCas);
 
         // ── TS2 Gameplay Fixes ────────────────────────────────────────────────
         // Opens the multi-section AIO checkbox installer window.
