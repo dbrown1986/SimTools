@@ -303,6 +303,10 @@ public partial class TS2GameplayFixesWindow : Window
             new(LanguageManager.Get("TS2GameplayFix", "BrightCASFix", "Bright CAS Fix by LazyDuchess"),                   "ld_BrightCASFix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/ld_BrightCASFix.package"),
             new(LanguageManager.Get("TS2GameplayFix", "AbductionFix", "Abduction Fix by Doctor Boris"),                   "debugabductfix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/debugabductfix.package"),
             new(LanguageManager.Get("TS2GameplayFix", "BiotechFix", "Biotech Station Medicine Fix by J. M. Pescado"),                   "biotechfix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/biotechfix.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "TVRepairAnimFix", "Repair Animation Fix for 2-tiled Floor TVs by Lord Darcy"),                   "LdDarcy_TV2TiledRepairAnimFix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/LdDarcy_TV2TiledRepairAnimFix.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "NoCorruptedDeath", "No Corrupted Death Memory Fix by J. M. Pescado"),                   "nocorruptdeath.package",                          "%baseurl%/Mods/Sims2/Fixes/base/nocorruptdeath.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "JugglingDeleteFix", "Juggling / Portal Delete Fix by crammyboy"),                   "CBOY_Portal_deletion_fix2.package",                          "%baseurl%/Mods/Sims2/Fixes/base/CBOY_Portal_deletion_fix2.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "PortalDeleteMonitor", "Portal Delete Monitor by crammyboy"),                   "CBOY_portal_monitor.package",                          "%baseurl%/Mods/Sims2/Fixes/base/CBOY_portal_monitor.package"),
         });
 
         // ── World Adventures (6 items) ────────────────────────────────────────
