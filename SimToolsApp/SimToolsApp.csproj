@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<BaseVersion>4.0.9</BaseVersion>
+		<BaseVersion>4.1.0</BaseVersion>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
 		<Company>Archeon Industries, LLC.</Company>
