@@ -24,12 +24,13 @@ namespace SimTools
         // ── State ─────────────────────────────────────────────────────────
         private Window? _parent;
         private bool    _appClosing = false;
+        private readonly Random _random = new();
 
         // ── Ad rotation ───────────────────────────────────────────────────
         private List<(BitmapImage Image, string? Url)> _ads = new();
         private int              _adIndex        = 0;
         private DispatcherTimer? _rotationTimer;
-        private const double     RotationSeconds = 15.0;
+        private const double     RotationSeconds = 30.0;
         private const double     FadeMs          = 350.0;
 
         // ── Current click URL ─────────────────────────────────────────────
@@ -215,11 +216,13 @@ namespace SimTools
 
                 if (loaded.Count == 0) return;
 
-                // ── 4. Display first ad and start rotation timer ───────────
+                // ── 4. Display random initial ad and start rotation timer ───────────
                 Dispatcher.Invoke(() =>
                 {
                     _ads = loaded;
-                    _adIndex = 0;
+
+                    // Pick a random starting ad instead of always starting at 0
+                    _adIndex = _random.Next(_ads.Count);
                     ShowAd(_adIndex, animate: false);
 
                     if (_ads.Count > 1)
@@ -283,7 +286,16 @@ namespace SimTools
         // ── Rotation tick ─────────────────────────────────────────────────
         private void RotationTimer_Tick(object? sender, EventArgs e)
         {
-            _adIndex = (_adIndex + 1) % _ads.Count;
+            if (_ads.Count <= 1) return;
+
+            int nextIndex;
+            do
+            {
+                nextIndex = _random.Next(_ads.Count);
+            }
+            while (nextIndex == _adIndex && _ads.Count > 1);
+
+            _adIndex = nextIndex;
             ShowAd(_adIndex, animate: true);
         }
     }

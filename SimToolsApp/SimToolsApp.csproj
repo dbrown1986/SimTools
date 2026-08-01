@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<BaseVersion>4.0.9</BaseVersion>
+		<BaseVersion>4.1.0</BaseVersion>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
 		<Company>Archeon Industries, LLC.</Company>
@@ -75,7 +75,10 @@
 		<Resource Include="Images\gradient.png" />
 		<Resource Include="Images\gradient_hi.png" />
 		<Resource Include="Images\Holidays\indpday_nye.gif" />
+		<Resource Include="Images\Holidays\jack.png" />
+		<Resource Include="Images\Holidays\pumpkin.png" />
 		<Resource Include="Images\Holidays\stpd.png" />
+		<Resource Include="Images\Holidays\us_flag.gif" />
 		<Resource Include="Images\Holidays\xmas.png" />
 		<Resource Include="Images\Icons\alp.ico" />
 		<Resource Include="Images\Icons\AuroraSkies.ico" />
@@ -92,6 +95,7 @@
 		<Resource Include="Images\Icons\github.ico" />
 		<Resource Include="Images\Icons\grm.ico" />
 		<Resource Include="Images\Icons\ld.ico" />
+		<Resource Include="Images\Icons\maty.ico" />
 		<Resource Include="Images\Icons\MTS.ico" />
 		<Resource Include="Images\Icons\no_onedrive.ico" />
 		<Resource Include="Images\Icons\nraas.ico" />
@@ -220,6 +224,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\Holidays\jack.png" />
+	  <None Remove="Images\Holidays\pumpkin.png" />
+	  <None Remove="Images\Holidays\us_flag.gif" />
+	  <None Remove="Images\Icons\maty.ico" />
 	  <None Remove="Images\Icons\no_onedrive.ico" />
 	  <None Remove="Images\Icons\opensave.ico" />
 	</ItemGroup>
