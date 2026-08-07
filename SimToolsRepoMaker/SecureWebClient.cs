@@ -396,6 +396,71 @@ namespace SimTools
                 }
             }
         }
+
+        /// <summary>
+        /// Fetches file metadata using an HTTP HEAD request to avoid downloading the payload.
+        /// </summary>
+        public static async Task<(long? ContentLength, DateTime? LastModified)> GetFileMetadataAsync(string url)
+        {
+            var uri = new Uri(url);
+            string host = uri.Host;
+            int port = uri.Port == -1 ? 443 : uri.Port;
+
+            using (var tcpClient = new TcpClient())
+            {
+                await tcpClient.ConnectAsync(host, port);
+                Stream rawStream = tcpClient.GetStream();
+
+                var tlsClientProtocol = new TlsClientProtocol(rawStream);
+                tlsClientProtocol.Connect(new LegacyTlsClient(host));
+
+                using (Stream secureStream = tlsClientProtocol.Stream)
+                {
+                    // Issue a HEAD request instead of GET
+                    string httpRequest = $"HEAD {uri.PathAndQuery} HTTP/1.1\r\n" +
+                                         $"Host: {host}\r\n" +
+                                         "Connection: close\r\n" +
+                                         "User-Agent: SimToolsUpdater\r\n\r\n";
+
+                    byte[] requestBytes = Encoding.ASCII.GetBytes(httpRequest);
+                    await secureStream.WriteAsync(requestBytes, 0, requestBytes.Length);
+                    await secureStream.FlushAsync();
+
+                    using (var ms = new MemoryStream())
+                    {
+                        byte[] tempBuffer = new byte[4096];
+                        int bytesRead;
+                        int headerEndIndex = -1;
+
+                        while ((bytesRead = await secureStream.ReadAsync(tempBuffer, 0, tempBuffer.Length)) > 0)
+                        {
+                            await ms.WriteAsync(tempBuffer, 0, bytesRead);
+                            headerEndIndex = FindHeaderEnd(ms.ToArray());
+                            if (headerEndIndex != -1) break;
+                        }
+
+                        if (headerEndIndex == -1) return (null, null);
+
+                        string headerText = Encoding.ASCII.GetString(ms.ToArray(), 0, headerEndIndex);
+                        long? length = null;
+                        DateTime? modified = null;
+
+                        foreach (var line in headerText.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
+                        {
+                            if (line.StartsWith("Content-Length:", StringComparison.OrdinalIgnoreCase))
+                            {
+                                if (long.TryParse(line.Substring(15).Trim(), out long l)) length = l;
+                            }
+                            else if (line.StartsWith("Last-Modified:", StringComparison.OrdinalIgnoreCase))
+                            {
+                                if (DateTime.TryParse(line.Substring(14).Trim(), out DateTime d)) modified = d;
+                            }
+                        }
+                        return (length, modified);
+                    }
+                }
+            }
+        }
     }
 
     public class LegacyTlsClient : DefaultTlsClient
