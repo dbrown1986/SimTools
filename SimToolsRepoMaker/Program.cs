@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -8,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Avalonia;
 using SimTools;
 
 public static class SecurityProtocolHelper
@@ -24,10 +26,17 @@ class Program
     private const string ApacheZipName = "apache-win.zip";
     private const string ApacheExtractDir = "apache-win";
 
+    // Windows API hook to restore the console output for --cli mode when using WinExe OutputType
+    [DllImport("kernel32.dll")]
+    private static extern bool AttachConsole(int dwProcessId);
+    private const int ATTACH_PARENT_PROCESS = -1;
+
+    [STAThread]
     static async Task Main(string[] args)
     {
         SecurityProtocolHelper.EnableModernSecurityProtocols();
 
+        // MODE 1: Headless Daemon (Background Service)
         if (args.Length > 0 && args[0].Equals("--daemon", StringComparison.OrdinalIgnoreCase))
         {
             IHost host = Host.CreateDefaultBuilder(args)
@@ -42,6 +51,34 @@ class Program
             await host.RunAsync();
             return;
         }
+
+        // MODE 2: Interactive CLI
+        if (args.Length > 0 && args[0].Equals("--cli", StringComparison.OrdinalIgnoreCase))
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                AttachConsole(ATTACH_PARENT_PROCESS);
+            }
+
+            await RunCliModeAsync();
+            return;
+        }
+
+        // MODE 3: Avalonia GUI (Default)
+        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+    }
+
+    // Avalonia configuration
+    public static AppBuilder BuildAvaloniaApp()
+        => AppBuilder.Configure<App>()
+            .UsePlatformDetect()
+            .WithInterFont()
+            .LogToTrace();
+
+    // The interactive CLI loop moved into its own method
+    private static async Task RunCliModeAsync()
+    {
+        Console.WriteLine("\n[ SimTools CLI Mode Started ]");
 
         while (true)
         {
@@ -463,6 +500,48 @@ class Program
                             Console.ResetColor();
                         }
                     }
+                }
+            }
+        }
+
+        // --- GENERATE LOCAL PHP MANIFEST ---
+        if (!token.IsCancellationRequested && Directory.Exists(rootTargetDir))
+        {
+            if (!isSilent) UpdateStatusLine("[*] Generating local index.php manifest script...");
+
+            string phpScriptPath = Path.Combine(rootTargetDir, "index.php");
+            string phpScriptContent = @"<?php
+header('Content-Type: text/plain');
+$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__));
+
+foreach ($iterator as $file) {
+    if ($file->isFile() && $file->getFilename() !== 'index.php' && $file->getFilename() !== '.htaccess') {
+        $path = str_replace('\\', '/', $file->getPathname());
+        $relativePath = str_replace(__DIR__ . '/', '', $path);
+        
+        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'];
+        $baseDir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+        
+        echo $protocol . '://' . $host . $baseDir . '/' . $relativePath . ""\n"";
+    }
+}
+?>";
+            try
+            {
+                // Write the file (overwrites if it already exists to ensure it is up-to-date)
+                File.WriteAllText(phpScriptPath, phpScriptContent);
+                // We need to add this to our expected files so the Orphan Cleanup doesn't delete it next time!
+                expectedFiles.Add("index.php");
+            }
+            catch (Exception ex)
+            {
+                if (!isSilent)
+                {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($" [!] Failed to create local index.php: {ex.Message}");
+                    Console.ResetColor();
                 }
             }
         }
