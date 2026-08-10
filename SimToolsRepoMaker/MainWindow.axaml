@@ -2,10 +2,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="SimTools.MainWindow"
         Title="SimTools Repository Builder"
-        Width="750" Height="550"
-        WindowStartupLocation="CenterScreen">
+        Width="820" Height="600"
+        WindowStartupLocation="CenterScreen"
+        Icon="/icon.ico">
     
-    <Grid RowDefinitions="Auto, Auto, *, Auto" Margin="20">
+    <Grid RowDefinitions="Auto, Auto, Auto, *, Auto" Margin="20">
         
         <!-- Top Controls -->
         <StackPanel Grid.Row="0" Spacing="10">
@@ -14,27 +15,42 @@
                 <Button Name="BtnMirror" Content="Fetch Repo for Mirroring" Click="BtnMirror_Click" />
                 <Button Name="BtnLocalHost" Content="Fetch Repo for Local Hosting" Click="BtnLocalHost_Click" />
                 <Button Name="BtnService" Content="Manage Background Service" Click="BtnService_Click" />
+                <Button Name="BtnToggleApache" Content="Start Apache Server" Click="BtnToggleApache_Click" />
             </StackPanel>
         </StackPanel>
 
-        <!-- Target Directory Selector -->
+        <!-- Source Server Selector -->
         <StackPanel Grid.Row="1" Spacing="5" Margin="0, 15, 0, 0">
+            <TextBlock Text="Source Server:" FontWeight="Bold" />
+            <ComboBox Name="CmbServerSource" HorizontalAlignment="Stretch" SelectedIndex="0">
+                <ComboBoxItem Content="United States (West)" />
+                <ComboBoxItem Content="United States (East)" />
+                <ComboBoxItem Content="Germany (Frankfurt)" />
+                <ComboBoxItem Content="Japan (Tokyo)" />
+                <ComboBoxItem Content="Netherlands (Amsterdam)" />
+                <ComboBoxItem Content="Singapore" />
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Target Directory Selector -->
+        <StackPanel Grid.Row="2" Spacing="5" Margin="0, 15, 0, 0">
             <TextBlock Text="Output Directory:" FontWeight="Bold" />
             <Grid ColumnDefinitions="*, Auto">
                 <TextBox Name="TxtOutputDir" Grid.Column="0" Watermark="Select output folder..." IsReadOnly="True" />
                 <Button Name="BtnBrowse" Grid.Column="1" Content="Browse..." Margin="5,0,0,0" Click="BtnBrowse_Click" />
             </Grid>
+            <CheckBox Name="ChkCreateZip" Content="Compress contents into a zip file after mirroring" IsChecked="False" />
         </StackPanel>
 
         <!-- Log Output -->
-        <Border Grid.Row="2" Background="#1E1E1E" CornerRadius="5" Margin="0, 15, 0, 10">
+        <Border Grid.Row="3" Background="#1E1E1E" CornerRadius="5" Margin="0, 15, 0, 10">
             <ScrollViewer Name="LogScrollViewer">
                 <TextBlock Name="TxtLog" Foreground="#00FF00" FontFamily="Consolas" Margin="10" TextWrapping="Wrap" />
             </ScrollViewer>
         </Border>
 
         <!-- Bottom Progress Bar -->
-        <StackPanel Grid.Row="3" Spacing="5">
+        <StackPanel Grid.Row="4" Spacing="5">
             <TextBlock Name="TxtStatus" Text="Ready." />
             <ProgressBar Name="SyncProgressBar" Minimum="0" Maximum="100" Height="20" />
         </StackPanel>

@@ -23,8 +23,8 @@ namespace SimTools
                         Directory.CreateDirectory(targetDir);
                     }
 
-                    // Execute the download logic silently without Console.ReadLine blocks
-                    await Program.DownloadRepositoryFiles(targetDir, isSilent: true, stoppingToken);
+                    // Execute the download logic silently, pulling from the default Base URL
+                    await Program.DownloadRepositoryFiles(targetDir, Program.DefaultBaseRepoUrl, isSilent: true, stoppingToken);
                 }
                 catch (Exception)
                 {

@@ -8,11 +8,12 @@
 		<Nullable>enable</Nullable>
 		<RuntimeIdentifier>win-x86</RuntimeIdentifier>
 		<PublishSingleFile>true</PublishSingleFile>
+		<!-- Restored standard Windows Application Icon -->
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Platforms>AnyCPU;x86</Platforms>
 		<NoWarn>$(NoWarn);NETSDK1057;NETSDK1206</NoWarn>
-		<Version>1.1.0.0</Version>
+		<Version>1.2.0.0</Version>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 	</PropertyGroup>
 
@@ -31,7 +32,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="icon.ico" />
+		<!-- Placed AvaloniaResource in the correct ItemGroup -->
+		<AvaloniaResource Include="icon.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -64,6 +66,12 @@
 		<None Update="apache-win.zip">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Stop Visual Studio from using the WPF Compiler on Avalonia files -->
+		<ApplicationDefinition Remove="App.axaml" />
+		<Page Remove="**\*.axaml" />
 	</ItemGroup>
 
 </Project>

@@ -22,7 +22,9 @@ public static class SecurityProtocolHelper
 
 class Program
 {
-    private const string BaseRepoUrl = "https://us1-repo.simtools-app.com/";
+    // The fallback default URL used for the CLI and headless Service Daemon
+    public const string DefaultBaseRepoUrl = "https://us1-repo.simtools-app.com/";
+
     private const string ApacheZipName = "apache-win.zip";
     private const string ApacheExtractDir = "apache-win";
 
@@ -31,10 +33,17 @@ class Program
     private static extern bool AttachConsole(int dwProcessId);
     private const int ATTACH_PARENT_PROCESS = -1;
 
+    // Track apache process in CLI to clean up on exit
+    private static Process? _cliApacheProcess;
+
     [STAThread]
     static async Task Main(string[] args)
     {
         SecurityProtocolHelper.EnableModernSecurityProtocols();
+
+        // Hook exits to cleanup Apache
+        AppDomain.CurrentDomain.ProcessExit += CleanupApache;
+        Console.CancelKeyPress += CleanupApache;
 
         // MODE 1: Headless Daemon (Background Service)
         if (args.Length > 0 && args[0].Equals("--daemon", StringComparison.OrdinalIgnoreCase))
@@ -68,12 +77,42 @@ class Program
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
     }
 
+    private static void CleanupApache(object? sender, EventArgs e)
+    {
+        if (_cliApacheProcess != null && !_cliApacheProcess.HasExited)
+        {
+            _cliApacheProcess.Kill();
+            _cliApacheProcess.Dispose();
+        }
+    }
+
     // Avalonia configuration
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace();
+
+    // Utility Method to Copy Directories Recursively
+    public static void CopyDirectory(string sourceDir, string destinationDir)
+    {
+        var dir = new DirectoryInfo(sourceDir);
+        if (!dir.Exists) return;
+
+        Directory.CreateDirectory(destinationDir);
+
+        foreach (FileInfo file in dir.GetFiles())
+        {
+            string targetFilePath = Path.Combine(destinationDir, file.Name);
+            file.CopyTo(targetFilePath, true);
+        }
+
+        foreach (DirectoryInfo subDir in dir.GetDirectories())
+        {
+            string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+            CopyDirectory(subDir.FullName, newDestinationDir);
+        }
+    }
 
     // The interactive CLI loop moved into its own method
     private static async Task RunCliModeAsync()
@@ -201,7 +240,7 @@ class Program
             Directory.CreateDirectory(targetDir);
         }
 
-        await DownloadRepositoryFiles(targetDir);
+        await DownloadRepositoryFiles(targetDir, DefaultBaseRepoUrl);
 
         Console.Write("\n[*] Do you want to compress the downloaded repo into a zip file? (Y/N): ");
         if (Console.ReadLine()?.Trim().ToUpper() == "Y")
@@ -209,6 +248,7 @@ class Program
             Console.WriteLine("\n[*] Creating repo.zip using Store mode (No Compression)...");
             if (File.Exists(zipPath)) File.Delete(zipPath);
 
+            // false ensures we only zip the contents, not the parent folder itself
             ZipFile.CreateFromDirectory(targetDir, zipPath, CompressionLevel.NoCompression, false);
             Console.WriteLine("[*] Zip creation complete.");
         }
@@ -236,6 +276,7 @@ class Program
 
         string apachePath = Path.Combine(Environment.CurrentDirectory, ApacheExtractDir);
         string targetDir = Path.Combine(apachePath, "htdocs");
+        string defaultRepoDir = Path.Combine(Environment.CurrentDirectory, "repo");
 
         if (!Directory.Exists(apachePath))
         {
@@ -268,13 +309,19 @@ class Program
             Console.WriteLine($"[*] Found existing .\\{ApacheExtractDir} folder, skipping extraction.");
         }
 
-        if (!Directory.Exists(targetDir))
+        // Smart Copy existing mirror to speed up download
+        if (Directory.Exists(defaultRepoDir))
+        {
+            Console.WriteLine("[*] Found existing repo directory. Copying files to htdocs to speed up sync...");
+            CopyDirectory(defaultRepoDir, targetDir);
+        }
+        else if (!Directory.Exists(targetDir))
         {
             Directory.CreateDirectory(targetDir);
         }
 
         Console.WriteLine("\n[*] Commencing repository downloads...");
-        await DownloadRepositoryFiles(targetDir);
+        await DownloadRepositoryFiles(targetDir, DefaultBaseRepoUrl);
         Console.WriteLine("[*] All repository files have finished downloading.");
 
         Console.Write("\n[*] Do you want to run the local Apache server now? (Y/N): ");
@@ -316,12 +363,10 @@ class Program
 
             try
             {
-                using (Process? apacheProcess = Process.Start(psi))
+                _cliApacheProcess = Process.Start(psi);
+                if (_cliApacheProcess != null)
                 {
-                    if (apacheProcess != null)
-                    {
-                        await apacheProcess.WaitForExitAsync();
-                    }
+                    await _cliApacheProcess.WaitForExitAsync();
                 }
             }
             catch (Exception ex)
@@ -332,16 +377,16 @@ class Program
         }
     }
 
-    public static async Task DownloadRepositoryFiles(string rootTargetDir, bool isSilent = false, CancellationToken token = default)
+    public static async Task DownloadRepositoryFiles(string rootTargetDir, string baseRepoUrl, bool isSilent = false, CancellationToken token = default)
     {
-        if (!isSilent) Console.WriteLine("\n[*] Fetching dynamic file manifest from the master server...");
+        if (!isSilent) Console.WriteLine($"\n[*] Fetching dynamic file manifest from {baseRepoUrl}...");
 
         string manifestData = string.Empty;
 
         try
         {
             // Pull the raw text output from the PHP index file
-            manifestData = await SecureWebClient.GetStringAsync(BaseRepoUrl);
+            manifestData = await SecureWebClient.GetStringAsync(baseRepoUrl);
         }
         catch (Exception ex)
         {
