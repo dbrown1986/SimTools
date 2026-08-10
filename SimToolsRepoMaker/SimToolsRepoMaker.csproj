@@ -1,65 +1,77 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-	  
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
-	<PublishSingleFile>true</PublishSingleFile>
-	<ApplicationIcon>icon.ico</ApplicationIcon>
-	<ApplicationManifest>app.manifest</ApplicationManifest>
-	<Platforms>AnyCPU;x86</Platforms>
-	<NoWarn>$(NoWarn);NETSDK1057;NETSDK1206</NoWarn>
-	<Version>1.1.0.0</Version>
-  </PropertyGroup>
-	
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+		<PublishSingleFile>true</PublishSingleFile>
+		<!-- Restored standard Windows Application Icon -->
+		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<Platforms>AnyCPU;x86</Platforms>
+		<NoWarn>$(NoWarn);NETSDK1057;NETSDK1206</NoWarn>
+		<Version>1.2.0.0</Version>
+		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-  </PropertyGroup>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="app.manifest" />
-  </ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="app.manifest" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="icon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<!-- Placed AvaloniaResource in the correct ItemGroup -->
+		<AvaloniaResource Include="icon.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
-    <PackageReference Include="Obfuscar" Version="2.2.50">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="SharpCompress" Version="0.50.0" />
-    <PackageReference Include="System.CodeDom" Version="6.0.0" />
-    <PackageReference Include="System.Management" Version="6.0.2" />
-	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-	  <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="6.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
+		<PackageReference Include="Obfuscar" Version="2.2.50">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="SharpCompress" Version="0.50.0" />
+		<PackageReference Include="System.CodeDom" Version="6.0.0" />
+		<PackageReference Include="System.Management" Version="6.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.1" />
 
-  <ItemGroup>
-    <Compile Update="Program.cs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
+		<!-- Avalonia GUI Dependencies -->
+		<PackageReference Include="Avalonia" Version="11.0.6" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.0.6" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.6" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.6" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="apache-win.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="recursive_list.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Program.cs">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="apache-win.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Stop Visual Studio from using the WPF Compiler on Avalonia files -->
+		<ApplicationDefinition Remove="App.axaml" />
+		<Page Remove="**\*.axaml" />
+	</ItemGroup>
 
 </Project>

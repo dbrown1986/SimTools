@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -8,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Avalonia;
 using SimTools;
 
 public static class SecurityProtocolHelper
@@ -20,14 +22,30 @@ public static class SecurityProtocolHelper
 
 class Program
 {
-    private const string BaseRepoUrl = "https://us1-repo.simtools-app.com/";
+    // The fallback default URL used for the CLI and headless Service Daemon
+    public const string DefaultBaseRepoUrl = "https://us1-repo.simtools-app.com/";
+
     private const string ApacheZipName = "apache-win.zip";
     private const string ApacheExtractDir = "apache-win";
 
+    // Windows API hook to restore the console output for --cli mode when using WinExe OutputType
+    [DllImport("kernel32.dll")]
+    private static extern bool AttachConsole(int dwProcessId);
+    private const int ATTACH_PARENT_PROCESS = -1;
+
+    // Track apache process in CLI to clean up on exit
+    private static Process? _cliApacheProcess;
+
+    [STAThread]
     static async Task Main(string[] args)
     {
         SecurityProtocolHelper.EnableModernSecurityProtocols();
 
+        // Hook exits to cleanup Apache
+        AppDomain.CurrentDomain.ProcessExit += CleanupApache;
+        Console.CancelKeyPress += CleanupApache;
+
+        // MODE 1: Headless Daemon (Background Service)
         if (args.Length > 0 && args[0].Equals("--daemon", StringComparison.OrdinalIgnoreCase))
         {
             IHost host = Host.CreateDefaultBuilder(args)
@@ -42,6 +60,64 @@ class Program
             await host.RunAsync();
             return;
         }
+
+        // MODE 2: Interactive CLI
+        if (args.Length > 0 && args[0].Equals("--cli", StringComparison.OrdinalIgnoreCase))
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                AttachConsole(ATTACH_PARENT_PROCESS);
+            }
+
+            await RunCliModeAsync();
+            return;
+        }
+
+        // MODE 3: Avalonia GUI (Default)
+        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+    }
+
+    private static void CleanupApache(object? sender, EventArgs e)
+    {
+        if (_cliApacheProcess != null && !_cliApacheProcess.HasExited)
+        {
+            _cliApacheProcess.Kill();
+            _cliApacheProcess.Dispose();
+        }
+    }
+
+    // Avalonia configuration
+    public static AppBuilder BuildAvaloniaApp()
+        => AppBuilder.Configure<App>()
+            .UsePlatformDetect()
+            .WithInterFont()
+            .LogToTrace();
+
+    // Utility Method to Copy Directories Recursively
+    public static void CopyDirectory(string sourceDir, string destinationDir)
+    {
+        var dir = new DirectoryInfo(sourceDir);
+        if (!dir.Exists) return;
+
+        Directory.CreateDirectory(destinationDir);
+
+        foreach (FileInfo file in dir.GetFiles())
+        {
+            string targetFilePath = Path.Combine(destinationDir, file.Name);
+            file.CopyTo(targetFilePath, true);
+        }
+
+        foreach (DirectoryInfo subDir in dir.GetDirectories())
+        {
+            string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+            CopyDirectory(subDir.FullName, newDestinationDir);
+        }
+    }
+
+    // The interactive CLI loop moved into its own method
+    private static async Task RunCliModeAsync()
+    {
+        Console.WriteLine("\n[ SimTools CLI Mode Started ]");
 
         while (true)
         {
@@ -164,7 +240,7 @@ class Program
             Directory.CreateDirectory(targetDir);
         }
 
-        await DownloadRepositoryFiles(targetDir);
+        await DownloadRepositoryFiles(targetDir, DefaultBaseRepoUrl);
 
         Console.Write("\n[*] Do you want to compress the downloaded repo into a zip file? (Y/N): ");
         if (Console.ReadLine()?.Trim().ToUpper() == "Y")
@@ -172,6 +248,7 @@ class Program
             Console.WriteLine("\n[*] Creating repo.zip using Store mode (No Compression)...");
             if (File.Exists(zipPath)) File.Delete(zipPath);
 
+            // false ensures we only zip the contents, not the parent folder itself
             ZipFile.CreateFromDirectory(targetDir, zipPath, CompressionLevel.NoCompression, false);
             Console.WriteLine("[*] Zip creation complete.");
         }
@@ -199,6 +276,7 @@ class Program
 
         string apachePath = Path.Combine(Environment.CurrentDirectory, ApacheExtractDir);
         string targetDir = Path.Combine(apachePath, "htdocs");
+        string defaultRepoDir = Path.Combine(Environment.CurrentDirectory, "repo");
 
         if (!Directory.Exists(apachePath))
         {
@@ -231,13 +309,19 @@ class Program
             Console.WriteLine($"[*] Found existing .\\{ApacheExtractDir} folder, skipping extraction.");
         }
 
-        if (!Directory.Exists(targetDir))
+        // Smart Copy existing mirror to speed up download
+        if (Directory.Exists(defaultRepoDir))
+        {
+            Console.WriteLine("[*] Found existing repo directory. Copying files to htdocs to speed up sync...");
+            CopyDirectory(defaultRepoDir, targetDir);
+        }
+        else if (!Directory.Exists(targetDir))
         {
             Directory.CreateDirectory(targetDir);
         }
 
         Console.WriteLine("\n[*] Commencing repository downloads...");
-        await DownloadRepositoryFiles(targetDir);
+        await DownloadRepositoryFiles(targetDir, DefaultBaseRepoUrl);
         Console.WriteLine("[*] All repository files have finished downloading.");
 
         Console.Write("\n[*] Do you want to run the local Apache server now? (Y/N): ");
@@ -279,12 +363,10 @@ class Program
 
             try
             {
-                using (Process? apacheProcess = Process.Start(psi))
+                _cliApacheProcess = Process.Start(psi);
+                if (_cliApacheProcess != null)
                 {
-                    if (apacheProcess != null)
-                    {
-                        await apacheProcess.WaitForExitAsync();
-                    }
+                    await _cliApacheProcess.WaitForExitAsync();
                 }
             }
             catch (Exception ex)
@@ -295,16 +377,16 @@ class Program
         }
     }
 
-    public static async Task DownloadRepositoryFiles(string rootTargetDir, bool isSilent = false, CancellationToken token = default)
+    public static async Task DownloadRepositoryFiles(string rootTargetDir, string baseRepoUrl, bool isSilent = false, CancellationToken token = default)
     {
-        if (!isSilent) Console.WriteLine("\n[*] Fetching dynamic file manifest from the master server...");
+        if (!isSilent) Console.WriteLine($"\n[*] Fetching dynamic file manifest from {baseRepoUrl}...");
 
         string manifestData = string.Empty;
 
         try
         {
             // Pull the raw text output from the PHP index file
-            manifestData = await SecureWebClient.GetStringAsync(BaseRepoUrl);
+            manifestData = await SecureWebClient.GetStringAsync(baseRepoUrl);
         }
         catch (Exception ex)
         {
@@ -463,6 +545,48 @@ class Program
                             Console.ResetColor();
                         }
                     }
+                }
+            }
+        }
+
+        // --- GENERATE LOCAL PHP MANIFEST ---
+        if (!token.IsCancellationRequested && Directory.Exists(rootTargetDir))
+        {
+            if (!isSilent) UpdateStatusLine("[*] Generating local index.php manifest script...");
+
+            string phpScriptPath = Path.Combine(rootTargetDir, "index.php");
+            string phpScriptContent = @"<?php
+header('Content-Type: text/plain');
+$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__));
+
+foreach ($iterator as $file) {
+    if ($file->isFile() && $file->getFilename() !== 'index.php' && $file->getFilename() !== '.htaccess') {
+        $path = str_replace('\\', '/', $file->getPathname());
+        $relativePath = str_replace(__DIR__ . '/', '', $path);
+        
+        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'];
+        $baseDir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+        
+        echo $protocol . '://' . $host . $baseDir . '/' . $relativePath . ""\n"";
+    }
+}
+?>";
+            try
+            {
+                // Write the file (overwrites if it already exists to ensure it is up-to-date)
+                File.WriteAllText(phpScriptPath, phpScriptContent);
+                // We need to add this to our expected files so the Orphan Cleanup doesn't delete it next time!
+                expectedFiles.Add("index.php");
+            }
+            catch (Exception ex)
+            {
+                if (!isSilent)
+                {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($" [!] Failed to create local index.php: {ex.Message}");
+                    Console.ResetColor();
                 }
             }
         }
