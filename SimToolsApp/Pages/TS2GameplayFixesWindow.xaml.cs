@@ -296,7 +296,7 @@ public partial class TS2GameplayFixesWindow : Window
     // ══════════════════════════════════════════════════════════════════════════
     private static IEnumerable<(string Header, List<GameplayFixItem> Items)> BuildSections()
     {
-        // ── Base Game (? items) ──────────────────────────────────────────────
+        // ── Base Game (13 items) ──────────────────────────────────────────────
         yield return (LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2"), new List<GameplayFixItem>
         {
             new(LanguageManager.Get("TS2GameplayFix", "ShadowFix", "Sims Shadow Fix by Nopke"),                   "simNopke-simShadowFix-maxisMatch.package",                          "%baseurl%/Mods/Sims2/Fixes/base/simNopke-simShadowFix-maxisMatch.package"),
@@ -307,9 +307,15 @@ public partial class TS2GameplayFixesWindow : Window
             new(LanguageManager.Get("TS2GameplayFix", "NoCorruptedDeath", "No Corrupted Death Memory Fix by J. M. Pescado"),                   "nocorruptdeath.package",                          "%baseurl%/Mods/Sims2/Fixes/base/nocorruptdeath.package"),
             new(LanguageManager.Get("TS2GameplayFix", "JugglingDeleteFix", "Juggling / Portal Delete Fix by crammyboy"),                   "CBOY_Portal_deletion_fix2.package",                          "%baseurl%/Mods/Sims2/Fixes/base/CBOY_Portal_deletion_fix2.package"),
             new(LanguageManager.Get("TS2GameplayFix", "PortalDeleteMonitor", "Portal Delete Monitor by crammyboy"),                   "CBOY_portal_monitor.package",                          "%baseurl%/Mods/Sims2/Fixes/base/CBOY_portal_monitor.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "NoXylophoneSound", "No Xylophone Sound When Peeing by Smonaff"),                   "Smonaff_NoXylophoneWhenPeeing.package",                          "%baseurl%/Mods/Sims2/Fixes/base/Smonaff_NoXylophoneWhenPeeing.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "DoorJamFix", "Doors Don't Get Stuck Open by J. M. Pescado"),                   "doorjamfix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/doorjamfix.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "PlumbingBreaksLess", "Plumbing Breaks Less by J. M. Pescado"),                   "plumbing-lessbreaking.package",                          "%baseurl%/Mods/Sims2/Fixes/base/plumbing-lessbreaking.package"),
+//            new(LanguageManager.Get("TS2GameplayFix", "TeenLoveFix", "Teens Don't Fall Out of Love When One Grows Up by Doc Doofus"),                   "DOOFStayInLove-Freetime.package",                          "%baseurl%/Mods/Sims2/Fixes/base/DOOFStayInLove-Freetime.package", "This mod states that Freetime is required, it has not been tested without Freetime installed."),
+            new(LanguageManager.Get("TS2GameplayFix", "FitnessForTownies", "Townies Can Get Fat or Fit by J. M. Pescado"),                   "fitness4all.package",                          "%baseurl%/Mods/Sims2/Fixes/base/fitness4all.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "WriteWithPenDiaryFix", "Write In Diary Pen Fix by MenaceMan44"),                   "Menaceman44_DiaryPenFix_19-11-07.package",                          "%baseurl%/Mods/Sims2/Fixes/base/Menaceman44_DiaryPenFix_19-11-07.package"),
         });
 
-        // ── World Adventures (6 items) ────────────────────────────────────────
+        // ── University (6 items) ────────────────────────────────────────
         yield return ("World Adventures", new List<GameplayFixItem>
         {
             new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                              "SimTools/Packages/OhRudi__WorldAdventures__Sims_need_less_Space.package",                     "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/OhRudi__WorldAdventures__Sims_need_less_Space.package"),
