@@ -296,7 +296,7 @@ public partial class TS2GameplayFixesWindow : Window
     // ══════════════════════════════════════════════════════════════════════════
     private static IEnumerable<(string Header, List<GameplayFixItem> Items)> BuildSections()
     {
-        // ── Base Game (? items) ──────────────────────────────────────────────
+        // ── Base Game (13 items) ──────────────────────────────────────────────
         yield return (LanguageManager.Get("BuyTS3", "Sims2_Disc", "The Sims 2"), new List<GameplayFixItem>
         {
             new(LanguageManager.Get("TS2GameplayFix", "ShadowFix", "Sims Shadow Fix by Nopke"),                   "simNopke-simShadowFix-maxisMatch.package",                          "%baseurl%/Mods/Sims2/Fixes/base/simNopke-simShadowFix-maxisMatch.package"),
@@ -307,180 +307,186 @@ public partial class TS2GameplayFixesWindow : Window
             new(LanguageManager.Get("TS2GameplayFix", "NoCorruptedDeath", "No Corrupted Death Memory Fix by J. M. Pescado"),                   "nocorruptdeath.package",                          "%baseurl%/Mods/Sims2/Fixes/base/nocorruptdeath.package"),
             new(LanguageManager.Get("TS2GameplayFix", "JugglingDeleteFix", "Juggling / Portal Delete Fix by crammyboy"),                   "CBOY_Portal_deletion_fix2.package",                          "%baseurl%/Mods/Sims2/Fixes/base/CBOY_Portal_deletion_fix2.package"),
             new(LanguageManager.Get("TS2GameplayFix", "PortalDeleteMonitor", "Portal Delete Monitor by crammyboy"),                   "CBOY_portal_monitor.package",                          "%baseurl%/Mods/Sims2/Fixes/base/CBOY_portal_monitor.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "NoXylophoneSound", "No Xylophone Sound When Peeing by Smonaff"),                   "Smonaff_NoXylophoneWhenPeeing.package",                          "%baseurl%/Mods/Sims2/Fixes/base/Smonaff_NoXylophoneWhenPeeing.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "DoorJamFix", "Doors Don't Get Stuck Open by J. M. Pescado"),                   "doorjamfix.package",                          "%baseurl%/Mods/Sims2/Fixes/base/doorjamfix.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "PlumbingBreaksLess", "Plumbing Breaks Less by J. M. Pescado"),                   "plumbing-lessbreaking.package",                          "%baseurl%/Mods/Sims2/Fixes/base/plumbing-lessbreaking.package"),
+//            new(LanguageManager.Get("TS2GameplayFix", "TeenLoveFix", "Teens Don't Fall Out of Love When One Grows Up by Doc Doofus"),                   "DOOFStayInLove-Freetime.package",                          "%baseurl%/Mods/Sims2/Fixes/base/DOOFStayInLove-Freetime.package", "This mod states that Freetime is required, it has not been tested without Freetime installed."),
+            new(LanguageManager.Get("TS2GameplayFix", "FitnessForTownies", "Townies Can Get Fat or Fit by J. M. Pescado"),                   "fitness4all.package",                          "%baseurl%/Mods/Sims2/Fixes/base/fitness4all.package"),
+            new(LanguageManager.Get("TS2GameplayFix", "WriteWithPenDiaryFix", "Write In Diary Pen Fix by MenaceMan44"),                   "Menaceman44_DiaryPenFix_19-11-07.package",                          "%baseurl%/Mods/Sims2/Fixes/base/Menaceman44_DiaryPenFix_19-11-07.package"),
         });
 
-        // ── World Adventures (6 items) ────────────────────────────────────────
-        yield return ("World Adventures", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                              "SimTools/Packages/OhRudi__WorldAdventures__Sims_need_less_Space.package",                     "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/OhRudi__WorldAdventures__Sims_need_less_Space.package"),
-            new(LanguageManager.Get("GameplayFix", "DisTerrainFix", "Champs les Sims Distant Terrain Tree Fix by PotatoBalladSims"),"SimTools/Packages/PotatoBalladSims_terraindistantFrance_FIX.package",                         "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/PotatoBalladSims_terraindistantFrance_FIX.package"),
-            new(LanguageManager.Get("GameplayFix", "SteamTrainFix", "European Steam Train Fix by PotatoBalladSims"),                "SimTools/Packages/PotatoBalladSims_European_Steam_Train.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/PotatoBalladSims_European_Steam_Train.package"),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),                        "SimTools/Packages/WORLD ADVENTURES - Tileable_Items_Shader_FIXED.package",                   "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/WORLD ADVENTURES - Tileable_Items_Shader_FIXED.package"),
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),                 "SimTools/Packages/WORLD ADVENTURES - Unlocked Stencils.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/WORLD ADVENTURES - Unlocked Stencils.package"),
-            new(LanguageManager.Get("GameplayFix", "AsianWindowFix", "Asian Window Reflects Light Fix by OhRudi"),                   "SimTools/Packages/OhRudi__WorldAdventures__asian_window_fix__king_qings_window.package",      "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/OhRudi__WorldAdventures__asian_window_fix__king_qings_window.package"),
-        });
+        //// ── University (6 items) ────────────────────────────────────────
+        //yield return ("World Adventures", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                              "SimTools/Packages/OhRudi__WorldAdventures__Sims_need_less_Space.package",                     "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/OhRudi__WorldAdventures__Sims_need_less_Space.package"),
+        //    new(LanguageManager.Get("GameplayFix", "DisTerrainFix", "Champs les Sims Distant Terrain Tree Fix by PotatoBalladSims"),"SimTools/Packages/PotatoBalladSims_terraindistantFrance_FIX.package",                         "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/PotatoBalladSims_terraindistantFrance_FIX.package"),
+        //    new(LanguageManager.Get("GameplayFix", "SteamTrainFix", "European Steam Train Fix by PotatoBalladSims"),                "SimTools/Packages/PotatoBalladSims_European_Steam_Train.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/PotatoBalladSims_European_Steam_Train.package"),
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),                        "SimTools/Packages/WORLD ADVENTURES - Tileable_Items_Shader_FIXED.package",                   "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/WORLD ADVENTURES - Tileable_Items_Shader_FIXED.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),                 "SimTools/Packages/WORLD ADVENTURES - Unlocked Stencils.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/WORLD ADVENTURES - Unlocked Stencils.package"),
+        //    new(LanguageManager.Get("GameplayFix", "AsianWindowFix", "Asian Window Reflects Light Fix by OhRudi"),                   "SimTools/Packages/OhRudi__WorldAdventures__asian_window_fix__king_qings_window.package",      "%baseurl%/Mods/Sims3/Fixes/Packages/world_adventures/OhRudi__WorldAdventures__asian_window_fix__king_qings_window.package"),
+        //});
 
-        // ── High End Loft Stuff (1 item) ──────────────────────────────────────
-        yield return ("High End Loft Stuff", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"), "SimTools/Packages/HELS - Tileable_Items_Shader_FIXED.package", "%baseurl%/Mods/Sims3/Fixes/Packages/high_end_loft_stuff/HELS - Tileable_Items_Shader_FIXED.package"),
-        });
+        //// ── High End Loft Stuff (1 item) ──────────────────────────────────────
+        //yield return ("High End Loft Stuff", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"), "SimTools/Packages/HELS - Tileable_Items_Shader_FIXED.package", "%baseurl%/Mods/Sims3/Fixes/Packages/high_end_loft_stuff/HELS - Tileable_Items_Shader_FIXED.package"),
+        //});
 
-        // ── Ambitions (6 items) ───────────────────────────────────────────────
-        yield return ("Ambitions", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "HarvesterFix", "Harvester Fix by Fantuanss12"),                "SimTools/Packages/Fantuanss12_Harverster_TempFix.package",                         "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/Fantuanss12_Harverster_TempFix.package"),
-            new(LanguageManager.Get("GameplayFix", "NoMagicClothesFix", "No Magic Clothesline Fix by Gamefreak130"),    "SimTools/Packages/Gamefreak130_NoMagicClothesline.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/Gamefreak130_NoMagicClothesline.package"),
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/AMBITIONS - Unlocked Stencils.package",                          "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/AMBITIONS - Unlocked Stencils.package"),
-            new(LanguageManager.Get("GameplayFix", "EyeshadowFix", "EA Eyeshadow Fix by Lavsm"),                   "SimTools/Packages/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package",         "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),              "SimTools/Packages/OhRudi__Ambitions__-Sims_need_less_Space.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/OhRudi__Ambitions__Sims_need_less_Space.package"),
-            new(LanguageManager.Get("GameplayFix", "InvestigatorFix", "No More Non-Cases for Investigators by jm2k"),         "SimTools/Packages/jm2k_InvestigatorCaseFix.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/jm2k_InvestigatorCaseFix.package", "Fixes an issue were investigators could roll university and supernatural opportunities instead of the opportunities from the investigator career. University Life or Supernatural are required to also be installed otherwise the bug will not be present."),
-        });
+        //// ── Ambitions (6 items) ───────────────────────────────────────────────
+        //yield return ("Ambitions", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "HarvesterFix", "Harvester Fix by Fantuanss12"),                "SimTools/Packages/Fantuanss12_Harverster_TempFix.package",                         "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/Fantuanss12_Harverster_TempFix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "NoMagicClothesFix", "No Magic Clothesline Fix by Gamefreak130"),    "SimTools/Packages/Gamefreak130_NoMagicClothesline.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/Gamefreak130_NoMagicClothesline.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/AMBITIONS - Unlocked Stencils.package",                          "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/AMBITIONS - Unlocked Stencils.package"),
+        //    new(LanguageManager.Get("GameplayFix", "EyeshadowFix", "EA Eyeshadow Fix by Lavsm"),                   "SimTools/Packages/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package",         "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/EyeshadowAlphaFix_Ambitions_DefaultReplacement.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),              "SimTools/Packages/OhRudi__Ambitions__-Sims_need_less_Space.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/OhRudi__Ambitions__Sims_need_less_Space.package"),
+        //    new(LanguageManager.Get("GameplayFix", "InvestigatorFix", "No More Non-Cases for Investigators by jm2k"),         "SimTools/Packages/jm2k_InvestigatorCaseFix.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/ambitions/jm2k_InvestigatorCaseFix.package", "Fixes an issue were investigators could roll university and supernatural opportunities instead of the opportunities from the investigator career. University Life or Supernatural are required to also be installed otherwise the bug will not be present."),
+        //});
 
-        // ── Late Night (8 items) ──────────────────────────────────────────────
-        yield return ("Late Night", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "CelebFridgeFix", "Celeb Fridge Texture Fix by EnableLlamas"),        "SimTools/Packages/enablellamasRefrigeratorCelebSpecFix.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/enablellamasRefrigeratorCelebSpecFix.package"),
-            new(LanguageManager.Get("GameplayFix", "CraneMed", "Enable Crane (Medium) in buydebug by Armiel"),     "SimTools/Packages/armiel_craneMedium.package",                            "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/armiel_craneMedium.package"),
-            new(LanguageManager.Get("GameplayFix", "CraneLg", "Enable Crane (Large) in buydebug by Armiel"),      "SimTools/Packages/armiel_craneLarge.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/armiel_craneLarge.package"),
-            new(LanguageManager.Get("GameplayFix", "LNPlantFix", "Late Night Plant Fixes by Robodl95"),               "SimTools/Packages/Robodl95_ LN Plant fix.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/Robodl95_ LN Plant fix.package"),
-            new(LanguageManager.Get("GameplayFix", "BPWorkbenchFix", "Bridgeport Workbench Fix by DividingByZero"),       "SimTools/Packages/Bridgeport Workbench Fix.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/Bridgeport Workbench Fix.package"),
-            new(LanguageManager.Get("GameplayFix", "LNElevatorFix", "Elevator Shaft Placement Fix by Vesko"),       "SimTools/Packages/[vesko_sims3] Elevator Shaft Placement FIX.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/[vesko_sims3] Elevator Shaft Placement FIX.package"),
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),     "SimTools/Packages/LATE NIGHT - Unlocked Stencils.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/LATE NIGHT - Unlocked Stencils.package"),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),             "SimTools/Packages/LATE NIGHT - Tileable_Items_Shader_FIXED.package",      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/LATE NIGHT - Tileable_Items_Shader_FIXED.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                   "SimTools/Packages/OhRudi__LateNight__Sims_need_less_Space.package",       "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/OhRudi__LateNight__Sims_need_less_Space.package"),
-        });
+        //// ── Late Night (8 items) ──────────────────────────────────────────────
+        //yield return ("Late Night", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "CelebFridgeFix", "Celeb Fridge Texture Fix by EnableLlamas"),        "SimTools/Packages/enablellamasRefrigeratorCelebSpecFix.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/enablellamasRefrigeratorCelebSpecFix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "CraneMed", "Enable Crane (Medium) in buydebug by Armiel"),     "SimTools/Packages/armiel_craneMedium.package",                            "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/armiel_craneMedium.package"),
+        //    new(LanguageManager.Get("GameplayFix", "CraneLg", "Enable Crane (Large) in buydebug by Armiel"),      "SimTools/Packages/armiel_craneLarge.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/armiel_craneLarge.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LNPlantFix", "Late Night Plant Fixes by Robodl95"),               "SimTools/Packages/Robodl95_ LN Plant fix.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/Robodl95_ LN Plant fix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "BPWorkbenchFix", "Bridgeport Workbench Fix by DividingByZero"),       "SimTools/Packages/Bridgeport Workbench Fix.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/Bridgeport Workbench Fix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LNElevatorFix", "Elevator Shaft Placement Fix by Vesko"),       "SimTools/Packages/[vesko_sims3] Elevator Shaft Placement FIX.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/[vesko_sims3] Elevator Shaft Placement FIX.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),     "SimTools/Packages/LATE NIGHT - Unlocked Stencils.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/LATE NIGHT - Unlocked Stencils.package"),
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),             "SimTools/Packages/LATE NIGHT - Tileable_Items_Shader_FIXED.package",      "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/LATE NIGHT - Tileable_Items_Shader_FIXED.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                   "SimTools/Packages/OhRudi__LateNight__Sims_need_less_Space.package",       "%baseurl%/Mods/Sims3/Fixes/Packages/late_night/OhRudi__LateNight__Sims_need_less_Space.package"),
+        //});
 
-        // ── Generations (7 items) ─────────────────────────────────────────────
-        yield return ("Generations", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "GenShirtFix", "Generations Shirt & Sweater Top - Channel Fix by sweetdevil"),"SimTools/Packages/sweetdevil_GENShirtSweaterTopChannelFix_TAM_DR.package",     "%baseurl%/Mods/Sims3/Fixes/Packages/generations/sweetdevil_GENShirtSweaterTopChannelFix_TAM_DR.package"),
-            new(LanguageManager.Get("GameplayFix", "GenPaintingFix1", "Teen Fantasy Painting Fix by ThomasRiordan"),       "SimTools/Packages/PTS3_ThomasRiordan_paintingGenTeenFantasyFixed.package",          "%baseurl%/Mods/Sims3/Fixes/Packages/generations/PTS3_ThomasRiordan_paintingGenTeenFantasyFixed.package"),
-            new(LanguageManager.Get("GameplayFix", "GenPaintingFix2", "Awkward Family Photo Fixed by ThomasRiordan"),      "SimTools/Packages/PTS3_ThomasRiordan_paintingGenAwkwardFamilyPhotoFixed.package",   "%baseurl%/Mods/Sims3/Fixes/Packages/generations/PTS3_ThomasRiordan_paintingGenAwkwardFamilyPhotoFixed.package"),
-            new(LanguageManager.Get("GameplayFix", "RTSFix", "Read Toddler to Sleep Fix by Danjaley"),            "SimTools/Packages/danjaley_read2sleepfix.package",                                 "%baseurl%/Mods/Sims3/Fixes/Packages/generations/danjaley_read2sleepfix.package"),
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),      "SimTools/Packages/GENERATIONS - Unlocked Stencils.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/generations/GENERATIONS - Unlocked Stencils.package"),
-            new(LanguageManager.Get("GameplayFix", "PaintingStencilsMerged", "Stencils & Paintings Fixes Merged by SimTools"),      "SimTools/Packages/Gen_PortraitFixes_StencilsUnlockedFix_Merged.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/generations/Gen_PortraitFixes_StencilsUnlockedFix_Merged.package", "This is a merged package of the Family Portrait Fixes by ThomasRiordan and the Unlocked Stencils Fix by Simsi45, which usually conflict with each other. It should only be used if you want both. Please be sure you do not install either of the other three mods."),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),             "SimTools/Packages/DECADES -Tileable_Items_Shader_FIXED.package",                   "%baseurl%/Mods/Sims3/Fixes/Packages/generations/DECADES -Tileable_Items_Shader_FIXED.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                   "SimTools/Packages/OhRudi__Generations__Sims_need_less_Space.package",              "%baseurl%/Mods/Sims3/Fixes/Packages/generations/OhRudi__Generations__Sims_need_less_Space.package"),
-        });
+        //// ── Generations (7 items) ─────────────────────────────────────────────
+        //yield return ("Generations", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "GenShirtFix", "Generations Shirt & Sweater Top - Channel Fix by sweetdevil"),"SimTools/Packages/sweetdevil_GENShirtSweaterTopChannelFix_TAM_DR.package",     "%baseurl%/Mods/Sims3/Fixes/Packages/generations/sweetdevil_GENShirtSweaterTopChannelFix_TAM_DR.package"),
+        //    new(LanguageManager.Get("GameplayFix", "GenPaintingFix1", "Teen Fantasy Painting Fix by ThomasRiordan"),       "SimTools/Packages/PTS3_ThomasRiordan_paintingGenTeenFantasyFixed.package",          "%baseurl%/Mods/Sims3/Fixes/Packages/generations/PTS3_ThomasRiordan_paintingGenTeenFantasyFixed.package"),
+        //    new(LanguageManager.Get("GameplayFix", "GenPaintingFix2", "Awkward Family Photo Fixed by ThomasRiordan"),      "SimTools/Packages/PTS3_ThomasRiordan_paintingGenAwkwardFamilyPhotoFixed.package",   "%baseurl%/Mods/Sims3/Fixes/Packages/generations/PTS3_ThomasRiordan_paintingGenAwkwardFamilyPhotoFixed.package"),
+        //    new(LanguageManager.Get("GameplayFix", "RTSFix", "Read Toddler to Sleep Fix by Danjaley"),            "SimTools/Packages/danjaley_read2sleepfix.package",                                 "%baseurl%/Mods/Sims3/Fixes/Packages/generations/danjaley_read2sleepfix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),      "SimTools/Packages/GENERATIONS - Unlocked Stencils.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/generations/GENERATIONS - Unlocked Stencils.package"),
+        //    new(LanguageManager.Get("GameplayFix", "PaintingStencilsMerged", "Stencils & Paintings Fixes Merged by SimTools"),      "SimTools/Packages/Gen_PortraitFixes_StencilsUnlockedFix_Merged.package",                        "%baseurl%/Mods/Sims3/Fixes/Packages/generations/Gen_PortraitFixes_StencilsUnlockedFix_Merged.package", "This is a merged package of the Family Portrait Fixes by ThomasRiordan and the Unlocked Stencils Fix by Simsi45, which usually conflict with each other. It should only be used if you want both. Please be sure you do not install either of the other three mods."),
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),             "SimTools/Packages/DECADES -Tileable_Items_Shader_FIXED.package",                   "%baseurl%/Mods/Sims3/Fixes/Packages/generations/DECADES -Tileable_Items_Shader_FIXED.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                   "SimTools/Packages/OhRudi__Generations__Sims_need_less_Space.package",              "%baseurl%/Mods/Sims3/Fixes/Packages/generations/OhRudi__Generations__Sims_need_less_Space.package"),
+        //});
 
-        // ── Pets (6 items) ────────────────────────────────────────────────────
-        yield return ("Pets", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "PetsLessSpaceMod", "Pets Need Less Space by OhRudi"),              "SimTools/Packages/OhRudi__Routing Fix__Pets_need_less_space.package",      "%baseurl%/Mods/Sims3/Fixes/Packages/pets/OhRudi__Routing Fix__Pets_need_less_space.package"),
-            new(LanguageManager.Get("GameplayFix", "GallopFasterFix", "Gallop Faster Animation Fix by Shimrod101"),   "SimTools/Packages/ShimrodsAnimHorseGallopFastestFix.package",             "%baseurl%/Mods/Sims3/Fixes/Packages/pets/ShimrodsAnimHorseGallopFastestFix.package"),
-            new(LanguageManager.Get("GameplayFix", "PetTombstoneFix", "Pet Tombstone Shadow Fix by MenaceMan44"),     "SimTools/Packages/MM_PetTombstoneShadowFix.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/pets/MM_PetTombstoneShadowFix.package"),
-            new(LanguageManager.Get("GameplayFix", "HorseTailFix", "Horse Tail Fixes by Simsi45"),                 "SimTools/Packages/Simsi45_Horse_Braided_Tail_NoRandom.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/pets/Simsi45_Horse_Braided_Tail_NoRandom.package"),
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/PETS - Unlocked Stencils.package",                     "%baseurl%/Mods/Sims3/Fixes/Packages/pets/PETS - Unlocked Stencils.package"),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),        "SimTools/Packages/PETS - Tileable_Items_Shader_FIXED.package",            "%baseurl%/Mods/Sims3/Fixes/Packages/pets/PETS - Tileable_Items_Shader_FIXED.package"),
-        });
+        //// ── Pets (6 items) ────────────────────────────────────────────────────
+        //yield return ("Pets", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "PetsLessSpaceMod", "Pets Need Less Space by OhRudi"),              "SimTools/Packages/OhRudi__Routing Fix__Pets_need_less_space.package",      "%baseurl%/Mods/Sims3/Fixes/Packages/pets/OhRudi__Routing Fix__Pets_need_less_space.package"),
+        //    new(LanguageManager.Get("GameplayFix", "GallopFasterFix", "Gallop Faster Animation Fix by Shimrod101"),   "SimTools/Packages/ShimrodsAnimHorseGallopFastestFix.package",             "%baseurl%/Mods/Sims3/Fixes/Packages/pets/ShimrodsAnimHorseGallopFastestFix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "PetTombstoneFix", "Pet Tombstone Shadow Fix by MenaceMan44"),     "SimTools/Packages/MM_PetTombstoneShadowFix.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/pets/MM_PetTombstoneShadowFix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HorseTailFix", "Horse Tail Fixes by Simsi45"),                 "SimTools/Packages/Simsi45_Horse_Braided_Tail_NoRandom.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/pets/Simsi45_Horse_Braided_Tail_NoRandom.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/PETS - Unlocked Stencils.package",                     "%baseurl%/Mods/Sims3/Fixes/Packages/pets/PETS - Unlocked Stencils.package"),
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),        "SimTools/Packages/PETS - Tileable_Items_Shader_FIXED.package",            "%baseurl%/Mods/Sims3/Fixes/Packages/pets/PETS - Tileable_Items_Shader_FIXED.package"),
+        //});
 
-        // ── Master Suite Stuff (1 item) ───────────────────────────────────────
-        yield return ("Master Suite Stuff", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/MASTER SUITE STUFF - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/Fixes/Packages/master_suite_stuff/MASTER SUITE STUFF - Unlocked Stencils.package"),
-        });
+        //// ── Master Suite Stuff (1 item) ───────────────────────────────────────
+        //yield return ("Master Suite Stuff", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/MASTER SUITE STUFF - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/Fixes/Packages/master_suite_stuff/MASTER SUITE STUFF - Unlocked Stencils.package"),
+        //});
 
-        // ── Showtime (4 items) ────────────────────────────────────────────────
-        yield return ("Showtime", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "NoNPCTips", "No NPC's Performing For Tips by Spicsshane"),  "SimTools/Packages/NoNPCsPerformingforTips.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/showtime/NoNPCsPerformingforTips.package"),
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/SHOWTIME - Unlocked Stencils.package",                 "%baseurl%/Mods/Sims3/Fixes/Packages/showtime/SHOWTIME - Unlocked Stencils.package"),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),        "SimTools/Packages/SHOWTIME - Tileable_Items_Shader_FIXED.package",        "%baseurl%/Mods/Sims3/Fixes/Packages/showtime/SHOWTIME - Tileable_Items_Shader_FIXED.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),              "SimTools/Packages/OhRudi__Showtime__Sims_need_less_Space.package",        "%baseurl%/Mods/Sims3/Fixes/Packages/showtime/OhRudi__Showtime__Sims_need_less_Space.package"),
-        });
+        //// ── Showtime (4 items) ────────────────────────────────────────────────
+        //yield return ("Showtime", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "NoNPCTips", "No NPC's Performing For Tips by Spicsshane"),  "SimTools/Packages/NoNPCsPerformingforTips.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/showtime/NoNPCsPerformingforTips.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/SHOWTIME - Unlocked Stencils.package",                 "%baseurl%/Mods/Sims3/Fixes/Packages/showtime/SHOWTIME - Unlocked Stencils.package"),
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),        "SimTools/Packages/SHOWTIME - Tileable_Items_Shader_FIXED.package",        "%baseurl%/Mods/Sims3/Fixes/Packages/showtime/SHOWTIME - Tileable_Items_Shader_FIXED.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),              "SimTools/Packages/OhRudi__Showtime__Sims_need_less_Space.package",        "%baseurl%/Mods/Sims3/Fixes/Packages/showtime/OhRudi__Showtime__Sims_need_less_Space.package"),
+        //});
 
-        // ── Diesel Stuff (1 item) ─────────────────────────────────────────────
-        yield return ("Diesel Stuff", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/DIESEL - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/Fixes/Packages/diesel_stuff/DIESEL - Unlocked Stencils.package"),
-        });
+        //// ── Diesel Stuff (1 item) ─────────────────────────────────────────────
+        //yield return ("Diesel Stuff", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"), "SimTools/Packages/DIESEL - Unlocked Stencils.package", "%baseurl%/Mods/Sims3/Fixes/Packages/diesel_stuff/DIESEL - Unlocked Stencils.package"),
+        //});
 
-        // ── Supernatural (8 items) ────────────────────────────────────────────
-        yield return ("Supernatural", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "ProperTraitFix", "A Proper Fix for A Proper Trait by SpotlessLeopard"),"SimTools/Packages/ProperTraitFix_[spotlessleopard].package",          "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ProperTraitFix_[spotlessleopard].package"),
-            new(LanguageManager.Get("GameplayFix", "RestoSpellFix", "Restoration Spell Fix by Arsil"),               "SimTools/Packages/Arsil_RestorationSpellFix.package",                    "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/Arsil_RestorationSpellFix.package"),
-            new(LanguageManager.Get("GameplayFix", "MoneyTreeFix", "Money Tree Bug Fix by Chicken0895"),            "SimTools/Packages/Chicken0895 Money Tree Bug Fix.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/Chicken0895 Money Tree Bug Fix.package"),
-            new(LanguageManager.Get("GameplayFix", "ProperTraitMoneyTreeFix", "Proper Trait & Money Tree Bug Fix Merged by SimTools"),            "SimTools/Packages/ProperTraitFix_MoneyTreeFix_Merged_SimTools.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ProperTraitFix_MoneyTreeFix_Merged_SimTools.package", "This is a merged package of the Money Tree Fix by Chicken0895 and the Proper Trait Fix by SpotlessLeopard, which usually conflict with each other. It should only be used if you want both. Please be sure you do not install either of the other two mods."),
-            new(LanguageManager.Get("GameplayFix", "ByeByeZombies", "No More Zombies Generated At Full Moon by PersonCalledJoy"),"SimTools/Packages/ByeByeZombie.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ByeByeZombie.package"),
-            new(LanguageManager.Get("GameplayFix", "LLAMASoundFix", "LLAMA Sound Fix by ProtectusCZ"),                    "SimTools/Packages/ProtectusCZ_Llama_Sound_Fix.package", "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ProtectusCZ_Llama_Sound_Fix.package"),
-            new(LanguageManager.Get("GameplayFix", "EyeshadowFix", "EA Eyeshadow Fix by Lavsm"),                    "SimTools/Packages/EyeshadowAlphaFix_Supernatural_DefaultReplacement.package","%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/EyeshadowAlphaFix_Supernatural_DefaultReplacement.package"),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),         "SimTools/Packages/SUPERNATURAL - Tileable_Items_Shader_FIXED.package",   "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/SUPERNATURAL - Tileable_Items_Shader_FIXED.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),               "SimTools/Packages/OhRudi__Supernatural__Sims_need_less_Space.package",   "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/OhRudi__Supernatural__Sims_need_less_Space.package"),
-            new(LanguageManager.Get("GameplayFix", "MotiveMobileFix", "Motive Mobile Workaround by YamiTheDragon"),    "SimTools/Overrides/YTD_MotiveMobile_NoHygiene.package",                  "%baseurl%/Mods/Sims3/Fixes/Overrides/supernatural/YTD_MotiveMobile_NoHygiene.package",
-                LanguageManager.Get("GameplayFix", "MotiveMobileMsg", "This fix presents a potential workaround to the Motive Mobile by greatly nerfing it so that it only fills Fun & Social. This will keep it from breaking needs that would have been made static by a sim becoming supernatural. Alternatively, you can simply avoid buying or using the Motive Mobile.")),
-        });
+        //// ── Supernatural (8 items) ────────────────────────────────────────────
+        //yield return ("Supernatural", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "ProperTraitFix", "A Proper Fix for A Proper Trait by SpotlessLeopard"),"SimTools/Packages/ProperTraitFix_[spotlessleopard].package",          "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ProperTraitFix_[spotlessleopard].package"),
+        //    new(LanguageManager.Get("GameplayFix", "RestoSpellFix", "Restoration Spell Fix by Arsil"),               "SimTools/Packages/Arsil_RestorationSpellFix.package",                    "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/Arsil_RestorationSpellFix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "MoneyTreeFix", "Money Tree Bug Fix by Chicken0895"),            "SimTools/Packages/Chicken0895 Money Tree Bug Fix.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/Chicken0895 Money Tree Bug Fix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "ProperTraitMoneyTreeFix", "Proper Trait & Money Tree Bug Fix Merged by SimTools"),            "SimTools/Packages/ProperTraitFix_MoneyTreeFix_Merged_SimTools.package",                "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ProperTraitFix_MoneyTreeFix_Merged_SimTools.package", "This is a merged package of the Money Tree Fix by Chicken0895 and the Proper Trait Fix by SpotlessLeopard, which usually conflict with each other. It should only be used if you want both. Please be sure you do not install either of the other two mods."),
+        //    new(LanguageManager.Get("GameplayFix", "ByeByeZombies", "No More Zombies Generated At Full Moon by PersonCalledJoy"),"SimTools/Packages/ByeByeZombie.package",                      "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ByeByeZombie.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LLAMASoundFix", "LLAMA Sound Fix by ProtectusCZ"),                    "SimTools/Packages/ProtectusCZ_Llama_Sound_Fix.package", "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/ProtectusCZ_Llama_Sound_Fix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "EyeshadowFix", "EA Eyeshadow Fix by Lavsm"),                    "SimTools/Packages/EyeshadowAlphaFix_Supernatural_DefaultReplacement.package","%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/EyeshadowAlphaFix_Supernatural_DefaultReplacement.package"),
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),         "SimTools/Packages/SUPERNATURAL - Tileable_Items_Shader_FIXED.package",   "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/SUPERNATURAL - Tileable_Items_Shader_FIXED.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),               "SimTools/Packages/OhRudi__Supernatural__Sims_need_less_Space.package",   "%baseurl%/Mods/Sims3/Fixes/Packages/supernatural/OhRudi__Supernatural__Sims_need_less_Space.package"),
+        //    new(LanguageManager.Get("GameplayFix", "MotiveMobileFix", "Motive Mobile Workaround by YamiTheDragon"),    "SimTools/Overrides/YTD_MotiveMobile_NoHygiene.package",                  "%baseurl%/Mods/Sims3/Fixes/Overrides/supernatural/YTD_MotiveMobile_NoHygiene.package",
+        //        LanguageManager.Get("GameplayFix", "MotiveMobileMsg", "This fix presents a potential workaround to the Motive Mobile by greatly nerfing it so that it only fills Fun & Social. This will keep it from breaking needs that would have been made static by a sim becoming supernatural. Alternatively, you can simply avoid buying or using the Motive Mobile.")),
+        //});
 
-        // ── Seasons (6 items) ─────────────────────────────────────────────────
-        yield return ("Seasons", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "nR_Tempest", "nRaas Tempest by Chain_Reaction"),                       "SimTools/Packages/NRaas_Tempest.package",                             "%baseurl%/Mods/Sims3/nRaas/NRaas_Tempest.package"),
-            new(LanguageManager.Get("GameplayFix", "FasterRaking", "Faster Raking by Mikey"),                       "SimTools/Packages/faster_raking.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/faster_raking.package"),
-            new(LanguageManager.Get("GameplayFix", "ForecastTweaks", "Weather Forecast Tweaks by Gamefreak130"),      "SimTools/Packages/Gamefreak130_WeatherForecastTweaks.package",         "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/Gamefreak130_WeatherForecastTweaks.package"),
-            new(LanguageManager.Get("GameplayFix", "EclipsingFog", "Truly Eclipsing Fog by Gamefreak130"),          "SimTools/Packages/Gamefreak130_TrulyEclipsingFog.package",            "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/Gamefreak130_TrulyEclipsingFog.package"),
-            new(LanguageManager.Get("GameplayFix", "AppleBobbingFix", "Apple Bobbing Tank - Fix for Children by Hundefreund"),          "SimTools/Packages/appleBobbingTank_FixForChildren.package",            "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/appleBobbingTank_FixForChildren.package"),
-            new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),  "SimTools/Packages/SEASONS - Unlocked Stencils.package",              "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/SEASONS - Unlocked Stencils.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),               "SimTools/Packages/OhRudi__Seasons__Sims_need_less_Space.package",     "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/OhRudi__Seasons__Sims_need_less_Space.package"),
-            new(LanguageManager.Get("GameplayFix", "NoUglySnowprints", "No More Ugly Snowprints by Lyralei"),           "SimTools/Overrides/Lyralei - NoMoreUglySnowPrints.package",           "%baseurl%/Mods/Sims3/Fixes/Overrides/seasons/Lyralei - NoMoreUglySnowPrints.package"),
-        });
+        //// ── Seasons (6 items) ─────────────────────────────────────────────────
+        //yield return ("Seasons", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "nR_Tempest", "nRaas Tempest by Chain_Reaction"),                       "SimTools/Packages/NRaas_Tempest.package",                             "%baseurl%/Mods/Sims3/nRaas/NRaas_Tempest.package"),
+        //    new(LanguageManager.Get("GameplayFix", "FasterRaking", "Faster Raking by Mikey"),                       "SimTools/Packages/faster_raking.package",                             "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/faster_raking.package"),
+        //    new(LanguageManager.Get("GameplayFix", "ForecastTweaks", "Weather Forecast Tweaks by Gamefreak130"),      "SimTools/Packages/Gamefreak130_WeatherForecastTweaks.package",         "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/Gamefreak130_WeatherForecastTweaks.package"),
+        //    new(LanguageManager.Get("GameplayFix", "EclipsingFog", "Truly Eclipsing Fog by Gamefreak130"),          "SimTools/Packages/Gamefreak130_TrulyEclipsingFog.package",            "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/Gamefreak130_TrulyEclipsingFog.package"),
+        //    new(LanguageManager.Get("GameplayFix", "AppleBobbingFix", "Apple Bobbing Tank - Fix for Children by Hundefreund"),          "SimTools/Packages/appleBobbingTank_FixForChildren.package",            "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/appleBobbingTank_FixForChildren.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HiddenStencils", "Hidden Stencils Unlocked & Fixed by Simsi45"),  "SimTools/Packages/SEASONS - Unlocked Stencils.package",              "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/SEASONS - Unlocked Stencils.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),               "SimTools/Packages/OhRudi__Seasons__Sims_need_less_Space.package",     "%baseurl%/Mods/Sims3/Fixes/Packages/seasons/OhRudi__Seasons__Sims_need_less_Space.package"),
+        //    new(LanguageManager.Get("GameplayFix", "NoUglySnowprints", "No More Ugly Snowprints by Lyralei"),           "SimTools/Overrides/Lyralei - NoMoreUglySnowPrints.package",           "%baseurl%/Mods/Sims3/Fixes/Overrides/seasons/Lyralei - NoMoreUglySnowPrints.package"),
+        //});
 
-        // ── 70s, 80s & 90s Stuff (1 item) ────────────────────────────────────
-        yield return ("70s, 80s & 90s Stuff", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "EyeshadowFix", "EA Eyeshadow Fix by Lavsm"), "SimTools/Packages/EyeshadowAlphaFix_70s80s90sStuff_DefaultReplacement.package", "%baseurl%/Mods/Sims3/Fixes/Packages/70s80s90s/EyeshadowAlphaFix_70s80s90sStuff_DefaultReplacement.package"),
-        });
+        //// ── 70s, 80s & 90s Stuff (1 item) ────────────────────────────────────
+        //yield return ("70s, 80s & 90s Stuff", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "EyeshadowFix", "EA Eyeshadow Fix by Lavsm"), "SimTools/Packages/EyeshadowAlphaFix_70s80s90sStuff_DefaultReplacement.package", "%baseurl%/Mods/Sims3/Fixes/Packages/70s80s90s/EyeshadowAlphaFix_70s80s90sStuff_DefaultReplacement.package"),
+        //});
 
-        // ── University Life (7 items) ─────────────────────────────────────────
-        yield return ("University Life", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "ADUniShellEntry", "University - More Shell Entries by AussomeDays"),   "SimTools/Overrides/University - More Shell Entries.package",                   "%baseurl%/Mods/Sims3/Fixes/Overrides/university/University - More Shell Entries.package"),
-            new(LanguageManager.Get("GameplayFix", "ADUniShellReplace", "University - Replacement Shells by AussomeDays"),   "SimTools/Overrides/University - Replacement Shells (overrides).package",       "%baseurl%/Mods/Sims3/Fixes/Overrides/university/University - Replacement Shells (overrides).package"),
-            new(LanguageManager.Get("GameplayFix", "UniVisFix", "University Life Visual Fixes by SimBouquet"),       "SimTools/Overrides/simbouquet_OVERRIDE_EP9visualfixes.package",                "%baseurl%/Mods/Sims3/Fixes/Overrides/university/simbouquet_OVERRIDE_EP9visualfixes.package"),
-            new(LanguageManager.Get("GameplayFix", "UniNoProtests", "No More University Protests by Don Babilon"),       "SimTools/Packages/DB_ImprovedProtestSituation_NoNPCProtests.package",          "%baseurl%/Mods/Sims3/Fixes/Packages/university/DB_ImprovedProtestSituation_NoNPCProtests.package"),
-            new(LanguageManager.Get("GameplayFix", "UniDoorFix", "Alpha & Omega Door Fix by CeltySims"),              "SimTools/Packages/AlphaOmegaDoorFixed.package",                               "%baseurl%/Mods/Sims3/Fixes/Packages/university/AlphaOmegaDoorFixed.package"),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),             "SimTools/Packages/UNIVERSITY LIFE - Tileable_Items_FIXED.package",             "%baseurl%/Mods/Sims3/Fixes/Packages/university/UNIVERSITY LIFE - Tileable_Items_FIXED.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                   "SimTools/Packages/OhRudi__UniversityLife__Sims_need_less_Space.package",       "%baseurl%/Mods/Sims3/Fixes/Packages/university/OhRudi__UniversityLife__Sims_need_less_Space.package"),
-        });
+        //// ── University Life (7 items) ─────────────────────────────────────────
+        //yield return ("University Life", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "ADUniShellEntry", "University - More Shell Entries by AussomeDays"),   "SimTools/Overrides/University - More Shell Entries.package",                   "%baseurl%/Mods/Sims3/Fixes/Overrides/university/University - More Shell Entries.package"),
+        //    new(LanguageManager.Get("GameplayFix", "ADUniShellReplace", "University - Replacement Shells by AussomeDays"),   "SimTools/Overrides/University - Replacement Shells (overrides).package",       "%baseurl%/Mods/Sims3/Fixes/Overrides/university/University - Replacement Shells (overrides).package"),
+        //    new(LanguageManager.Get("GameplayFix", "UniVisFix", "University Life Visual Fixes by SimBouquet"),       "SimTools/Overrides/simbouquet_OVERRIDE_EP9visualfixes.package",                "%baseurl%/Mods/Sims3/Fixes/Overrides/university/simbouquet_OVERRIDE_EP9visualfixes.package"),
+        //    new(LanguageManager.Get("GameplayFix", "UniNoProtests", "No More University Protests by Don Babilon"),       "SimTools/Packages/DB_ImprovedProtestSituation_NoNPCProtests.package",          "%baseurl%/Mods/Sims3/Fixes/Packages/university/DB_ImprovedProtestSituation_NoNPCProtests.package"),
+        //    new(LanguageManager.Get("GameplayFix", "UniDoorFix", "Alpha & Omega Door Fix by CeltySims"),              "SimTools/Packages/AlphaOmegaDoorFixed.package",                               "%baseurl%/Mods/Sims3/Fixes/Packages/university/AlphaOmegaDoorFixed.package"),
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),             "SimTools/Packages/UNIVERSITY LIFE - Tileable_Items_FIXED.package",             "%baseurl%/Mods/Sims3/Fixes/Packages/university/UNIVERSITY LIFE - Tileable_Items_FIXED.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),                   "SimTools/Packages/OhRudi__UniversityLife__Sims_need_less_Space.package",       "%baseurl%/Mods/Sims3/Fixes/Packages/university/OhRudi__UniversityLife__Sims_need_less_Space.package"),
+        //});
 
-        // ── Island Paradise (3 items) ─────────────────────────────────────────
-        yield return ("Island Paradise", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "HangingLanternFix", "Hanging Lantern Fix by Heaven"),        "SimTools/Packages/heaven_IPHangingLanternFix.package",                    "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/heaven_IPHangingLanternFix.package"),
-            new(LanguageManager.Get("GameplayFix", "HouseboatLagFix", "Reduce Houseboat Lag by MaryDeHoyos"),  "SimTools/Packages/StopAutopilot_Helm_Updated_03_29_22.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/StopAutopilot_Helm_Updated_03_29_22.package"),
-            new(LanguageManager.Get("GameplayFix", "PITO_Fix", "Autonomous Play In The Ocean Fix by Phantom99"),       "SimTools/Packages/GoAndPlayInOceanFix.package",  "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/GoAndPlayInOceanFix.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),       "SimTools/Packages/OhRudi__IslandParadise__Sims_need_less_Space.package",  "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/OhRudi__IslandParadise__Sims_need_less_Space.package"),
-        });
+        //// ── Island Paradise (3 items) ─────────────────────────────────────────
+        //yield return ("Island Paradise", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "HangingLanternFix", "Hanging Lantern Fix by Heaven"),        "SimTools/Packages/heaven_IPHangingLanternFix.package",                    "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/heaven_IPHangingLanternFix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "HouseboatLagFix", "Reduce Houseboat Lag by MaryDeHoyos"),  "SimTools/Packages/StopAutopilot_Helm_Updated_03_29_22.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/StopAutopilot_Helm_Updated_03_29_22.package"),
+        //    new(LanguageManager.Get("GameplayFix", "PITO_Fix", "Autonomous Play In The Ocean Fix by Phantom99"),       "SimTools/Packages/GoAndPlayInOceanFix.package",  "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/GoAndPlayInOceanFix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),       "SimTools/Packages/OhRudi__IslandParadise__Sims_need_less_Space.package",  "%baseurl%/Mods/Sims3/Fixes/Packages/island_paradise/OhRudi__IslandParadise__Sims_need_less_Space.package"),
+        //});
 
-        // ── Into the Future (4 items) ─────────────────────────────────────────
-        yield return ("Into the Future", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "LaserRhythmFix", "Watch Laser Rhythm-A-Con Fix by SimsAddict777"),"SimTools/Packages/MTS_simsaddict777_lazerharp_FIX.package",        "%baseurl%/Mods/Sims3/Fixes/Packages/into_the_future/MTS_simsaddict777_lazerharp_FIX.package"),
-            new(LanguageManager.Get("GameplayFix", "ITFPlanterFix", "Perigree Planter Fix by Heaven"),               "SimTools/Packages/heaven_fenceFuturePlanterFix.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/into_the_future/heaven_fenceFuturePlanterFix.package"),
-            new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),         "SimTools/Packages/INTO THE FUTURE - Tileable_Items_FIXED.package", "%baseurl%/Mods/Sims3/Fixes/Packages/into_the_future/INTO THE FUTURE - Tileable_Items_FIXED.package"),
-            new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),               "SimTools/Packages/OhRudi__IntoTheFuture__Sims_need_less_Space.package","%baseurl%/Mods/Sims3/Fixes/Packages/into_the_future/OhRudi__IntoTheFuture__Sims_need_less_Space.package"),
-        });
+        //// ── Into the Future (4 items) ─────────────────────────────────────────
+        //yield return ("Into the Future", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "LaserRhythmFix", "Watch Laser Rhythm-A-Con Fix by SimsAddict777"),"SimTools/Packages/MTS_simsaddict777_lazerharp_FIX.package",        "%baseurl%/Mods/Sims3/Fixes/Packages/into_the_future/MTS_simsaddict777_lazerharp_FIX.package"),
+        //    new(LanguageManager.Get("GameplayFix", "ITFPlanterFix", "Perigree Planter Fix by Heaven"),               "SimTools/Packages/heaven_fenceFuturePlanterFix.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/into_the_future/heaven_fenceFuturePlanterFix.package"),
+        //    new(LanguageManager.Get("GameplayFix", "TISFix", "Tileable Items Shader Fix by Simsi45"),         "SimTools/Packages/INTO THE FUTURE - Tileable_Items_FIXED.package", "%baseurl%/Mods/Sims3/Fixes/Packages/into_the_future/INTO THE FUTURE - Tileable_Items_FIXED.package"),
+        //    new(LanguageManager.Get("GameplayFix", "LessSpaceMod", "Sims Need Less Space by OhRudi"),               "SimTools/Packages/OhRudi__IntoTheFuture__Sims_need_less_Space.package","%baseurl%/Mods/Sims3/Fixes/Packages/into_the_future/OhRudi__IntoTheFuture__Sims_need_less_Space.package"),
+        //});
 
-        // ── Store Fixes (5 items) ─────────────────────────────────────────────
-        yield return ("Store Fixes", new List<GameplayFixItem>
-        {
-            new(LanguageManager.Get("GameplayFix", "PerfumeFix", "Armoure Perfume Moodlet Fix by Gamefreak130"), "SimTools/Packages/Gamefreak130_PerfumeMoodletFix.package.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/store/Gamefreak130_PerfumeMoodletFix.package",
-            LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
-            new(LanguageManager.Get("GameplayFix", "BanquetFanFix", "Banquet Fan Routing Fix by OmegaStarr82"),     "SimTools/Packages/BanquetFanFix.package",                                   "%baseurl%/Mods/Sims3/Fixes/Packages/store/BanquetFanFix.package",
-            LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
-            new(LanguageManager.Get("GameplayFix", "EfficientUpgradeNameFix", "More Efficient Upgrade Name Fix by Buzzler"),  "SimTools/Packages/Buzz_MoreEfficientUpgradeNameFix.package",                 "%baseurl%/Mods/Sims3/Fixes/Packages/store/Buzz_MoreEfficientUpgradeNameFix.package",
-            LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
-            new(LanguageManager.Get("GameplayFix", "HaciendaFireplaceFix", "Haute Hacienda Fireplace Fix by Qahne"),       "SimTools/Packages/Qahne_MOD_HauteHaciendaFireplace Fixes.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/store/Qahne_MOD_HauteHaciendaFireplace Fixes.package",
-            LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
-            new(LanguageManager.Get("GameplayFix", "NTStairFix" , "Now & Then Staircase Fix by Simsi45"),         "SimTools/Packages/Simsi45_Curved_Staircase_FIX_RECAT.package",               "%baseurl%/Mods/Sims3/Fixes/Packages/store/Simsi45_Curved_Staircase_FIX_RECAT.package",
-            LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
-        });
+        //// ── Store Fixes (5 items) ─────────────────────────────────────────────
+        //yield return ("Store Fixes", new List<GameplayFixItem>
+        //{
+        //    new(LanguageManager.Get("GameplayFix", "PerfumeFix", "Armoure Perfume Moodlet Fix by Gamefreak130"), "SimTools/Packages/Gamefreak130_PerfumeMoodletFix.package.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/store/Gamefreak130_PerfumeMoodletFix.package",
+        //    LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
+        //    new(LanguageManager.Get("GameplayFix", "BanquetFanFix", "Banquet Fan Routing Fix by OmegaStarr82"),     "SimTools/Packages/BanquetFanFix.package",                                   "%baseurl%/Mods/Sims3/Fixes/Packages/store/BanquetFanFix.package",
+        //    LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
+        //    new(LanguageManager.Get("GameplayFix", "EfficientUpgradeNameFix", "More Efficient Upgrade Name Fix by Buzzler"),  "SimTools/Packages/Buzz_MoreEfficientUpgradeNameFix.package",                 "%baseurl%/Mods/Sims3/Fixes/Packages/store/Buzz_MoreEfficientUpgradeNameFix.package",
+        //    LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
+        //    new(LanguageManager.Get("GameplayFix", "HaciendaFireplaceFix", "Haute Hacienda Fireplace Fix by Qahne"),       "SimTools/Packages/Qahne_MOD_HauteHaciendaFireplace Fixes.package",           "%baseurl%/Mods/Sims3/Fixes/Packages/store/Qahne_MOD_HauteHaciendaFireplace Fixes.package",
+        //    LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
+        //    new(LanguageManager.Get("GameplayFix", "NTStairFix" , "Now & Then Staircase Fix by Simsi45"),         "SimTools/Packages/Simsi45_Curved_Staircase_FIX_RECAT.package",               "%baseurl%/Mods/Sims3/Fixes/Packages/store/Simsi45_Curved_Staircase_FIX_RECAT.package",
+        //    LanguageManager.Get("GameplayFix", "StorePiracyWarning2", "Please make sure you are not using any related hacked/pirated store items prior to installing store fixes.")),
+        //});
 
-        // ── Probationary Mods (0 items) ─────────────────────────────────────────────
-        yield return (LanguageManager.Get("GameplayFix", "ProbationMods", "Probationary Mods (In Testing)"), new List<GameplayFixItem>
-        {
-            new("", "", ""),
-        });
+        //// ── Probationary Mods (0 items) ─────────────────────────────────────────────
+        //yield return (LanguageManager.Get("GameplayFix", "ProbationMods", "Probationary Mods (In Testing)"), new List<GameplayFixItem>
+        //{
+        //    new("", "", ""),
+        //});
     }
 
     // Called on load and by SettingsWindow after a language change
